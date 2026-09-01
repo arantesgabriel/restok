@@ -144,7 +144,7 @@ function Sheet({
         <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-line sm:hidden" />
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <h2 id="sheet-title" className="text-xl font-bold tracking-[-0.02em] text-ink">{title}</h2>
+            <h2 id="sheet-title" className="text-xl font-semibold tracking-[-0.02em] text-ink">{title}</h2>
             {description ? <p className="mt-1 max-w-md text-sm leading-6 text-muted">{description}</p> : null}
           </div>
           <IconButton label="Fechar" onClick={onClose} variant="bordered"><X size={18} /></IconButton>
@@ -172,7 +172,7 @@ function QuantityStepper({
         inputMode="numeric"
         value={quantity}
         onChange={(event) => onChange(Math.max(1, Number(event.target.value.replace(/\D/g, "")) || 1))}
-        className="h-10 w-9 bg-transparent text-center text-sm font-bold text-ink outline-none"
+        className="h-10 w-9 bg-transparent text-center text-sm font-semibold text-ink outline-none"
       />
       <button type="button" aria-label="Aumentar quantidade" className="grid h-10 w-10 place-items-center rounded-lg text-muted hover:bg-sage hover:text-ink" onClick={() => onChange(quantity + 1)}><Plus size={16} /></button>
     </div>
@@ -208,10 +208,10 @@ function AppNavigation({ screen, onChange }: { screen: AppScreen; onChange: (scr
 }
 
 function BrandMark({ compact = false }: { compact?: boolean }) {
-  return <span className={cn("font-black tracking-[-0.08em] text-ink", compact ? "text-lg" : "text-[22px]")}>restok<span className="text-primary">.</span></span>;
+  return <span className={cn("font-semibold tracking-[-0.04em] text-ink", compact ? "text-lg" : "text-[22px]")}>restok<span className="text-primary">.</span></span>;
 }
 
-function BudgetSummary({ list }: { list: ShoppingList }) {
+function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => void }) {
   const total = listTotal(list);
   const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : 0;
   const over = total - list.budget;
@@ -220,11 +220,11 @@ function BudgetSummary({ list }: { list: ShoppingList }) {
       <div className="flex items-end justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Gasto até agora</p>
-          <p className="mt-1 text-[26px] font-black tracking-[-0.05em] text-ink">{formatBRL(total)}</p>
+          <p className="mt-1 text-[26px] font-semibold tracking-[-0.03em] text-ink">{formatBRL(total)}</p>
         </div>
         <p className={cn("text-right text-sm font-semibold", over > 0 ? "text-terracotta" : "text-muted")}>
           {over > 0 ? `${formatBRL(over)} acima` : `${formatBRL(list.budget - total)} disponíveis`}
-          <span className="mt-1 block text-xs font-normal text-muted">de {formatBRL(list.budget)}</span>
+          <span className="mt-1 flex items-center justify-end gap-1 text-xs font-normal text-muted">de {formatBRL(list.budget)}<button type="button" onClick={onEdit} className="inline-flex min-h-7 items-center gap-1 rounded-md px-1.5 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={12} />Editar</button></span>
         </p>
       </div>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-sage" aria-hidden="true"><div className={cn("h-full rounded-full transition-all duration-300", over > 0 ? "bg-terracotta" : "bg-primary")} style={{ width: `${percentage}%` }} /></div>
@@ -261,7 +261,7 @@ function ShoppingItemRow({
   return (
     <article className={cn("group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition", item.status !== "pending" && "item-resolved")}>
       <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`}>
-        <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-bold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
+        <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-semibold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
           {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <span>{categoryIcon(item.category)}</span>}
         </span>
         <span className="min-w-0 flex-1">
@@ -273,7 +273,7 @@ function ShoppingItemRow({
         </span>
       </button>
       <div className="flex shrink-0 items-center gap-1.5">
-        {subtotal > 0 ? <span className="hidden text-right text-sm font-bold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
+        {subtotal > 0 ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
         {item.status === "pending" ? <button type="button" aria-label={`Marcar ${item.name} como já temos`} title="Já temos" onClick={onAlreadyHave} className="grid h-10 w-10 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><House size={17} /></button> : <span className="w-10" />}
         <ChevronRight size={17} className="text-line transition group-hover:text-primary" aria-hidden="true" />
       </div>
@@ -299,8 +299,8 @@ function CategorySection({
   return (
     <section className="border-t border-line pt-3">
       <button type="button" className="flex min-h-12 w-full items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
-        <span className="text-lg font-bold text-primary">{categoryIcon(category)}</span>
-        <span className="flex-1"><span className="block text-sm font-bold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
+        <span className="text-lg font-semibold text-primary">{categoryIcon(category)}</span>
+        <span className="flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
         {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
       </button>
       {open ? <div className="divide-y-0">{items.map((item) => <ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={() => onEdit(item)} onAlreadyHave={() => onAlreadyHave(item)} />)}</div> : null}
@@ -340,7 +340,7 @@ function ItemEditorSheet({
         <QuantityStepper quantity={quantity} onChange={setQuantity} />
       </div>
       <label className="field-label">Preço unitário
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input autoFocus inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-bold" /></div>
+        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input autoFocus inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
         {previous ? <span className="mt-2 block text-xs text-muted">Anterior {formatBRL(previous)} {numericPrice > 0 ? <span className={numericPrice > previous ? "text-terracotta" : "text-primary"}>· {numericPrice > previous ? "mais caro" : "mais barato"}</span> : null}</span> : <span className="mt-2 block text-xs text-muted">Ao informar um preço, o item vira comprado.</span>}
       </label>
       <div>
@@ -413,7 +413,7 @@ function NewPurchaseSheet({
         <label className="field-label">Nome<input value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
         <label className="field-label">Orçamento<div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10" /></div></label>
       </div>
-      <div className="flex items-center justify-between border-b border-line pb-3"><div><p className="text-sm font-bold text-ink">Produtos da casa</p><p className="mt-1 text-xs text-muted">{selected.size} selecionados</p></div><button type="button" className="text-xs font-bold text-primary hover:underline" onClick={() => setSelected(selected.size === activeProducts.length ? new Set() : new Set(activeProducts.map((product) => product.id)))}>{selected.size === activeProducts.length ? "Desmarcar todos" : "Selecionar todos"}</button></div>
+      <div className="flex items-center justify-between border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p className="mt-1 text-xs text-muted">{selected.size} selecionados</p></div><button type="button" className="text-xs font-semibold text-primary hover:underline" onClick={() => setSelected(selected.size === activeProducts.length ? new Set() : new Set(activeProducts.map((product) => product.id)))}>{selected.size === activeProducts.length ? "Desmarcar todos" : "Selecionar todos"}</button></div>
       <div className="max-h-[42vh] overflow-y-auto rounded-[12px] border border-line bg-surface px-3">
         {activeProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="flex-1 text-sm font-semibold text-ink">{product.name}</span><span className="text-xs text-muted">{product.defaultQuantity} un.</span></label>)}
       </div>
@@ -422,11 +422,30 @@ function NewPurchaseSheet({
   </Sheet>;
 }
 
+function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => void; onSave: (budget: number) => void }) {
+  const [budget, setBudget] = useState(list.budget.toFixed(2).replace(".", ","));
+  const numericBudget = Number(budget.replace(",", ".").replace(/[^0-9.]/g, ""));
+
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (Number.isFinite(numericBudget) && numericBudget > 0) onSave(Number(numericBudget.toFixed(2)));
+  };
+
+  return <Sheet title="Meta da compra" description="Ajuste o limite para esta ida ao mercado." onClose={onClose}>
+    <form onSubmit={submit} className="space-y-5">
+      <label className="field-label">Orçamento da compra
+        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input autoFocus required inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10 text-lg font-semibold" placeholder="0,00" /></div>
+      </label>
+      <Button type="submit" className="w-full" disabled={!Number.isFinite(numericBudget) || numericBudget <= 0}>Salvar meta <Check size={17} /></Button>
+    </form>
+  </Sheet>;
+}
+
 function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClose: () => void; onHistory: () => void }) {
   return <Sheet title="Compra concluída" description="Tudo certo. A casa está um pouco mais abastecida." onClose={onClose}>
     <div className="space-y-5">
-      <div className="rounded-[14px] bg-sage p-5"><div className="flex items-center gap-3 text-primary"><span className="grid h-10 w-10 place-items-center rounded-full bg-surface"><Check size={20} strokeWidth={3} /></span><span className="text-sm font-bold">{list.items.length} produtos resolvidos</span></div><p className="mt-5 text-3xl font-black tracking-[-0.06em] text-ink">{formatBRL(listTotal(list))}</p><p className="mt-1 text-sm text-muted">registrados nesta compra</p></div>
-      <div className="grid grid-cols-2 gap-3 text-sm"><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Comprados</span><span className="mt-1 block font-bold text-ink">{list.items.filter((item) => item.status === "purchased").length}</span></div><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Já tínhamos</span><span className="mt-1 block font-bold text-ink">{list.items.filter((item) => item.status === "already_have").length}</span></div></div>
+      <div className="rounded-[14px] bg-sage p-5"><div className="flex items-center gap-3 text-primary"><span className="grid h-10 w-10 place-items-center rounded-full bg-surface"><Check size={20} strokeWidth={3} /></span><span className="text-sm font-semibold">{list.items.length} produtos resolvidos</span></div><p className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p><p className="mt-1 text-sm text-muted">registrados nesta compra</p></div>
+      <div className="grid grid-cols-2 gap-3 text-sm"><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Comprados</span><span className="mt-1 block font-semibold text-ink">{list.items.filter((item) => item.status === "purchased").length}</span></div><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Já tínhamos</span><span className="mt-1 block font-semibold text-ink">{list.items.filter((item) => item.status === "already_have").length}</span></div></div>
       <Button className="w-full" onClick={onHistory}>Ver histórico</Button>
     </div>
   </Sheet>;
@@ -440,25 +459,25 @@ function ConfirmFinishSheet({ onClose, onConfirm, pending }: { onClose: () => vo
 
 function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
   const completed = lists.filter((list) => list.status === "completed");
-  return <div className="space-y-6"><div><p className="text-sm font-semibold text-primary">O que já passou pelo caixa</p><h1 className="mt-1 text-[28px] font-black tracking-[-0.05em] text-ink">Histórico</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Preços anteriores ficam aqui para a próxima compra começar com contexto.</p></div>
-    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[94px] w-full items-center gap-4 text-left transition hover:bg-sage/35"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><CheckCircle2 size={20} /></span><span className="min-w-0 flex-1"><span className="block truncate text-[15px] font-bold text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{monthLabel(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span></span><span className="text-right"><span className="block text-sm font-bold text-ink">{formatBRL(listTotal(list))}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)}</span></span><ChevronRight size={17} className="text-line" /></button>)}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
+  return <div className="space-y-6"><div><p className="text-sm font-semibold text-primary">O que já passou pelo caixa</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Histórico</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Preços anteriores ficam aqui para a próxima compra começar com contexto.</p></div>
+    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[94px] w-full items-center gap-4 text-left transition hover:bg-sage/35"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><CheckCircle2 size={20} /></span><span className="min-w-0 flex-1"><span className="block truncate text-[15px] font-semibold text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{monthLabel(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span></span><span className="text-right"><span className="block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)}</span></span><ChevronRight size={17} className="text-line" /></button>)}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
   </div>;
 }
 
 function HistoryDetail({ list, onBack }: { list: ShoppingList; onBack: () => void }) {
   const groups = groupItems(list.items);
-  return <div className="space-y-6"><button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button><div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 text-[28px] font-black tracking-[-0.05em] text-ink">{list.name}</h1><div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-muted"><span className="rounded-full bg-sage px-3 py-1.5">{list.items.length} itens</span><span className="rounded-full bg-sage px-3 py-1.5">{formatBRL(listTotal(list))}</span></div></div><div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-bold text-ink">{category}</h2>{groups[category]?.map((item) => <div key={item.id} className="flex items-center gap-3 py-2"><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-primary"><Check size={15} /></span><span className="min-w-0 flex-1 truncate text-sm text-ink">{item.name}<span className="ml-2 text-xs text-muted">× {item.quantity}</span></span><span className="text-right text-sm font-semibold text-ink">{item.unitPrice ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice ? `${formatBRL(item.unitPrice)} un.` : "sem preço"}</span></span></div>)}</section> : null)}</div></div>;
+  return <div className="space-y-6"><button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button><div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">{list.name}</h1><div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-muted"><span className="rounded-full bg-sage px-3 py-1.5">{list.items.length} itens</span><span className="rounded-full bg-sage px-3 py-1.5">{formatBRL(listTotal(list))}</span></div></div><div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-semibold text-ink">{category}</h2>{groups[category]?.map((item) => <div key={item.id} className="flex items-center gap-3 py-2"><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-primary"><Check size={15} /></span><span className="min-w-0 flex-1 truncate text-sm text-ink">{item.name}<span className="ml-2 text-xs text-muted">× {item.quantity}</span></span><span className="text-right text-sm font-semibold text-ink">{item.unitPrice ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice ? `${formatBRL(item.unitPrice)} un.` : "sem preço"}</span></span></div>)}</section> : null)}</div></div>;
 }
 
 function EmptyState({ icon, title, description, action }: { icon: React.ReactNode; title: string; description: string; action?: React.ReactNode }) {
-  return <div className="rounded-[14px] border border-dashed border-line bg-surface px-5 py-10 text-center"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-sage text-primary">{icon}</span><h2 className="mt-4 text-base font-bold text-ink">{title}</h2><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-muted">{description}</p>{action ? <div className="mt-5 flex justify-center">{action}</div> : null}</div>;
+  return <div className="rounded-[14px] border border-dashed border-line bg-surface px-5 py-10 text-center"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-sage text-primary">{icon}</span><h2 className="mt-4 text-base font-semibold text-ink">{title}</h2><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-muted">{description}</p>{action ? <div className="mt-5 flex justify-center">{action}</div> : null}</div>;
 }
 
 function ProductsHome({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
   const active = products.filter((product) => product.active);
-  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-black tracking-[-0.05em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
-    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-bold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
-    <div><div className="mb-3 flex items-center justify-between"><h2 className="text-sm font-bold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><button type="button" className="text-sm font-bold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div><div className="divide-y divide-line border-y border-line">{active.length ? active.map((product) => <div key={product.id} className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={() => onEditProduct(product)}><Pencil size={16} /></IconButton><button type="button" onClick={() => onToggleProduct(product.id)} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>) : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div></div>
+  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
+    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
+    <div><div className="mb-3 flex items-center justify-between"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div><div className="divide-y divide-line border-y border-line">{active.length ? active.map((product) => <div key={product.id} className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={() => onEditProduct(product)}><Pencil size={16} /></IconButton><button type="button" onClick={() => onToggleProduct(product.id)} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>) : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div></div>
   </div>;
 }
 
@@ -488,6 +507,7 @@ export default function RestokApp() {
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
   const [finishOpen, setFinishOpen] = useState(false);
+  const [budgetEditor, setBudgetEditor] = useState<ShoppingList | null>(null);
   const [completeList, setCompleteList] = useState<ShoppingList | null>(null);
   const [productEditor, setProductEditor] = useState<Product | "new" | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -589,6 +609,13 @@ export default function RestokApp() {
     void persistList(finished);
     setFinishOpen(false); setCompleteList(finished); setToast("Compra salva no histórico");
   };
+  const saveBudget = (budget: number) => {
+    if (!budgetEditor) return;
+    const updated = { ...budgetEditor, budget };
+    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === updated.id ? updated : list) }));
+    void persistList(updated);
+    setBudgetEditor(null); setToast("Meta da compra atualizada");
+  };
   const saveProduct = (product: Omit<Product, "id" | "active">, id?: string) => {
     const savedProduct: Product = id ? { ...state.products.find((item) => item.id === id)!, ...product, id, active: state.products.find((item) => item.id === id)?.active ?? true } : { ...product, id: makeId("product"), active: true };
     setState((current) => ({ ...current, products: id ? current.products.map((item) => item.id === id ? savedProduct : item) : [...current.products, savedProduct] }));
@@ -601,28 +628,29 @@ export default function RestokApp() {
   const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
   return <div className="min-h-dvh bg-canvas text-ink">
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
-      <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 text-xs text-muted">Casa Gabriel & Brunna</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-bold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
+      <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 text-xs text-muted">Casa Gabriel & Brunna</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
       <main className="min-w-0 flex-1 pb-24 sm:pb-8">
-        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden text-right sm:block"><span className="block text-xs font-semibold text-ink">GB</span><span className="block text-[11px] text-muted">online</span></span><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-bold text-white" aria-label="Perfil">GB</button></div></header>
+        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden text-right sm:block"><span className="block text-xs font-semibold text-ink">GB</span><span className="block text-[11px] text-muted">online</span></span><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label="Perfil">GB</button></div></header>
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onShare={shareHousehold} /> : activeList ? <div className="space-y-5">
-            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-black leading-tight tracking-[-0.05em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
-            <BudgetSummary list={activeList} />
-            <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-10 shrink-0 rounded-full border px-3.5 text-xs font-bold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
+            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
+            <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
+            <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-10 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
             {filteredItems.length ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} items={groups[category] ?? []} lists={state.lists} onEdit={setEditorItem} onAlreadyHave={(item) => setItemStatus(item, "already_have")} /> : null)}</div> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
           </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
         </div>
       </main>
     </div>
     <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div>
-    {screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-bold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-black text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-10 w-full rounded-[10px] bg-primary px-3 text-sm font-bold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
+    {screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-10 w-full rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => setEditorItem(null)} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => setAddItemOpen(false)} onAdd={addItem} /> : null}
     {newPurchaseOpen ? <NewPurchaseSheet products={state.products} onClose={() => setNewPurchaseOpen(false)} onCreate={createPurchase} /> : null}
     {finishOpen ? <ConfirmFinishSheet pending={pending} onClose={() => setFinishOpen(false)} onConfirm={finishPurchase} /> : null}
+    {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => setBudgetEditor(null)} onSave={saveBudget} /> : null}
     {completeList ? <CompleteSheet list={completeList} onClose={() => setCompleteList(null)} onHistory={() => { setCompleteList(null); setScreen("history"); }} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => setProductEditor(null)} onSave={saveProduct} /> : null}
-    {toast ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-bold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
+    {toast ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
     {screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
   </div>;
 }

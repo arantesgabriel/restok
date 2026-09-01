@@ -15,6 +15,14 @@ const config: Config = {
         terracotta: "oklch(var(--terracotta) / <alpha-value>)",
         muted: "oklch(var(--muted) / <alpha-value>)",
       },
+      fontWeight: {
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "600",
+        extrabold: "600",
+        black: "600",
+      },
       boxShadow: {
         sheet: "0 -8px 32px oklch(0.18 0.02 145 / 0.12)",
       },
