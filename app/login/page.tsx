@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, LockKeyhole, Sparkles } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -15,6 +15,12 @@ export default function LoginPage() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const [nextPath, setNextPath] = useState("/app");
+  useEffect(() => {
+    const requestedNext = new URLSearchParams(window.location.search).get("next");
+    if (requestedNext?.startsWith("/") && !requestedNext.startsWith("//")) setNextPath(requestedNext);
+  }, []);
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,12 +36,12 @@ export default function LoginPage() {
     }
 
     const result = isSignUp
-      ? await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: `${window.location.origin}/auth/callback`, data: { full_name: name.trim() } } })
+      ? await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`, data: { full_name: name.trim() } } })
       : await supabase.auth.signInWithPassword({ email: email.trim(), password });
 
     if (result.error) setError(result.error.message);
     else if (isSignUp && !result.data.session) setMessage("Conta criada. Confirme seu email para continuar.");
-    else router.push("/app");
+    else router.push(nextPath);
     setLoading(false);
   };
 
