@@ -24,8 +24,8 @@ Sem variáveis de ambiente, o app abre em modo demonstração local com a seed b
 1. Crie um projeto Supabase.
 2. Copie `.env.example` para `.env.local` e preencha a URL e a chave anon pública.
 3. Execute `supabase/migrations/20260901000000_initial_schema.sql` no SQL Editor.
-4. Ative Google OAuth e/ou Magic Link em Authentication > Providers.
-5. Adicione `http://localhost:3000/auth/callback` e a URL da Vercel às URLs de redirect.
+4. Em Authentication > Providers, mantenha Email habilitado e defina se a confirmação de email será obrigatória.
+5. Para o login por email e senha, não é necessário configurar Google OAuth ou Magic Link.
 
 O SQL cria profiles, households, membros, categorias, produtos, compras, itens, índices de histórico de preço, RLS e a publicação Realtime dos itens da compra. A tela também pode continuar sendo explorada em modo demonstração quando as credenciais ainda não estão disponíveis.
 
@@ -49,7 +49,7 @@ Importe o repositório na Vercel, defina as duas variáveis públicas no ambient
 ## Principais rotas
 
 - `/` — landing page
-- `/login` — magic link, Google OAuth (com Supabase) e entrada de demonstração
+- `/login` — criação de conta e login com email e senha, além da entrada de demonstração
 - `/app` — modo mercado, histórico e produtos da casa
 - `/auth/callback` — retorno da autenticação Supabase
 
