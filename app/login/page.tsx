@@ -30,7 +30,7 @@ export default function LoginPage() {
     }
 
     const result = isSignUp
-      ? await supabase.auth.signUp({ email: email.trim(), password, options: { data: { full_name: name.trim() } } })
+      ? await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: `${window.location.origin}/auth/callback`, data: { full_name: name.trim() } } })
       : await supabase.auth.signInWithPassword({ email: email.trim(), password });
 
     if (result.error) setError(result.error.message);
