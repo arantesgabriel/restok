@@ -3,7 +3,9 @@ import { seedProducts, seedState } from "@/lib/seed";
 import type { CategoryName, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 
 const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpeza", "Outros"];
-const legacySeedNames = new Set(["Arroz", "Azeite", "Batata palha", "Chimichurri", "Creme de leite", "Farinha de trigo", "Lemon pepper", "Macarrão", "Massa de alho", "Massa de bolo", "Milho", "Óleo de cozinha", "Ovos", "Pão de forma", "Picanha suína", "Pimenta-do-reino", "Sal", "Coca Zero (fardo)", "Cotonete", "Colgate", "Creme de pentear", "Desodorante Brunna", "Desodorante Gabriel", "Lenço umedecido", "Cif", "Papel higiênico (pct c/12)", "Sabão em pó", "Saco de lixo grande"]);
+const legacySeedNames = new Set(["Arroz", "Azeite", "Batata palha", "Cebola", "Chá mate com gás", "Chimichurri", "Creme de leite", "Farinha de trigo", "Feijão", "Filé de peito de frango", "Leite condensado", "Leite desnatado", "Lemon pepper", "Limão", "Macarrão", "Massa de alho", "Massa de bolo", "Milho", "Molho de tomate", "Muçarela 600g", "Óleo de cozinha", "Ovos", "Pão de forma", "Picanha suína", "Pimenta-do-reino", "Presunto 300g", "Requeijão", "Sal", "Água com gás (fardo)", "Coca Zero (fardo)", "Energético Monster", "Cotonete", "Colgate", "Creme de pentear", "Desodorante Brunna", "Desodorante Gabriel", "Lenço umedecido", "Sabonete", "Shampoo", "Cif", "Detergente", "Papel higiênico (pct c/12)", "Papel toalha", "Sabão em pó", "Saco de lixo grande", "Veja"]);
+
+const normalizeProductName = (name: string) => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
 
 type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; householdId: string };
 
@@ -43,12 +45,18 @@ export async function loadRemoteState(): Promise<RestokState | null> {
     const { data: seeded } = await context.client.from("products").insert(rows).select("id,name,default_quantity,active,category_id");
     products = seeded ?? [];
   }
+  const targetByName = new Map(seedProducts.map((product) => [normalizeProductName(product.name), product]));
+  const matchedTargetIds = new Set<string>();
+  await Promise.all((products ?? []).map(async (product) => {
+    const target = targetByName.get(normalizeProductName(product.name));
+    if (!target || matchedTargetIds.has(target.name)) return;
+    matchedTargetIds.add(target.name);
+    await context.client.from("products").update({ name: target.name, category_id: categoryIds[target.category] ?? null, default_quantity: target.defaultQuantity, active: true }).eq("id", product.id);
+  }));
+  const missingProducts = seedProducts.filter((product) => !matchedTargetIds.has(product.name));
+  if (missingProducts.length) await context.client.from("products").insert(missingProducts.map((product) => ({ household_id: context.householdId, category_id: categoryIds[product.category] ?? null, name: product.name, default_quantity: product.defaultQuantity, active: true })));
   const targetNames = new Set(seedProducts.map((product) => product.name));
-  const missingProducts = seedProducts.filter((product) => !(products ?? []).some((current) => current.name === product.name));
-  if (missingProducts.length) {
-    await context.client.from("products").insert(missingProducts.map((product) => ({ household_id: context.householdId, category_id: categoryIds[product.category] ?? null, name: product.name, default_quantity: product.defaultQuantity, active: true })));
-  }
-  const legacyProducts = (products ?? []).filter((product) => product.active && legacySeedNames.has(product.name) && !targetNames.has(product.name));
+  const legacyProducts = (products ?? []).filter((product) => product.active && legacySeedNames.has(product.name) && !targetNames.has(targetByName.get(normalizeProductName(product.name))?.name ?? ""));
   if (legacyProducts.length) await Promise.all(legacyProducts.map((product) => context.client.from("products").update({ active: false }).eq("id", product.id)));
   if (missingProducts.length || legacyProducts.length) {
     const { data: refreshedProducts } = await context.client.from("products").select("id,name,default_quantity,active,category_id").eq("household_id", context.householdId).order("created_at");
