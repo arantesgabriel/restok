@@ -43,7 +43,8 @@ const productSeed: Array<[string, Product["category"], number]> = [
   ["Café", "Alimentos", 1],
   ["Pão de Hamburguer", "Alimentos", 1],
   ["Cebolinha", "Alimentos", 2],
-  ["Batata Monalisa", "Alimentos", 5],
+  ["Batata", "Alimentos", 5],
+  ["Milho de pipoca", "Alimentos", 1],
 ];
 
 export const seedProducts: Product[] = productSeed.map(([name, category, defaultQuantity], index) => ({

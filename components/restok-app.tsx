@@ -47,7 +47,7 @@ import {
 type AppScreen = "shop" | "history" | "home";
 type Filter = "all" | "pending" | "purchased" | "already_have";
 
-const STORAGE_KEY = "restok-state-v1";
+const STORAGE_KEY = "restok-state-v2";
 
 const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
 
