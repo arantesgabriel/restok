@@ -1,0 +1,9 @@
+# Dependencies (including nested package installations)
+node_modules/
+**/node_modules/
+.next/
+out/
+coverage/
+.env*
+!.env.example
+*.tsbuildinfo
