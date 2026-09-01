@@ -46,6 +46,7 @@ import {
 
 type AppScreen = "shop" | "history" | "home";
 type Filter = "all" | "pending" | "purchased" | "already_have";
+type ProductViewMode = "category" | "alphabetical";
 
 const STORAGE_KEY = "restok-state-v2";
 
@@ -329,7 +330,7 @@ function ItemEditorSheet({
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const nextStatus: ItemStatus = status === "already_have" ? "already_have" : numericPrice > 0 ? "purchased" : "pending";
+    const nextStatus: ItemStatus = status === "purchased" && numericPrice <= 0 ? "pending" : status;
     onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
   };
 
@@ -346,7 +347,7 @@ function ItemEditorSheet({
       <div>
         <p className="field-label">Situação</p>
         <div className="mt-2 grid grid-cols-3 gap-2">
-          {(["pending", "purchased", "already_have"] as ItemStatus[]).map((value) => <button type="button" key={value} onClick={() => setStatus(value)} className={cn("min-h-11 rounded-[10px] border px-2 text-xs font-semibold transition", status === value ? "border-primary bg-sage text-primary" : "border-line bg-surface text-muted hover:border-primary/30")}>{statusLabel(value)}</button>)}
+          {(["pending", "purchased", "already_have"] as ItemStatus[]).map((value) => <button type="button" key={value} onClick={() => { setStatus(value); if (value !== "purchased") setPrice(""); }} className={cn("min-h-11 rounded-[10px] border px-2 text-xs font-semibold transition", status === value ? "border-primary bg-sage text-primary" : "border-line bg-surface text-muted hover:border-primary/30")}>{statusLabel(value)}</button>)}
         </div>
       </div>
       <details className="group rounded-[12px] border border-line bg-surface px-4">
@@ -473,11 +474,29 @@ function EmptyState({ icon, title, description, action }: { icon: React.ReactNod
   return <div className="rounded-[14px] border border-dashed border-line bg-surface px-5 py-10 text-center"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-sage text-primary">{icon}</span><h2 className="mt-4 text-base font-semibold text-ink">{title}</h2><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-muted">{description}</p>{action ? <div className="mt-5 flex justify-center">{action}</div> : null}</div>;
 }
 
-function ProductsHome({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
+function ProductsHomeLegacy({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
   const active = products.filter((product) => product.active);
   return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
     <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
     <div><div className="mb-3 flex items-center justify-between"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div><div className="divide-y divide-line border-y border-line">{active.length ? active.map((product) => <div key={product.id} className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={() => onEditProduct(product)}><Pencil size={16} /></IconButton><button type="button" onClick={() => onToggleProduct(product.id)} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>) : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div></div>
+  </div>;
+}
+
+void ProductsHomeLegacy;
+
+function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
+  return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>;
+}
+
+function ProductsHome({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
+  const [viewMode, setViewMode] = useState<ProductViewMode>("category");
+  const active = products.filter((product) => product.active);
+  const sorted = [...active].sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }));
+  const grouped = CATEGORY_ORDER.map((category) => ({ category, products: active.filter((product) => product.category === category).sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" })) })).filter((section) => section.products.length);
+
+  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
+    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
+    <div><div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label="Ordenar produtos"><button type="button" onClick={() => setViewMode("category")} aria-pressed={viewMode === "category"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => setViewMode("alphabetical")} aria-pressed={viewMode === "alphabetical"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>{active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><h3 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div>
   </div>;
 }
 
