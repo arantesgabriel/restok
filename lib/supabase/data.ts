@@ -1,5 +1,5 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { seedProducts } from "@/lib/seed";
+import { seedProducts, seedState } from "@/lib/seed";
 import type { CategoryName, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 
 const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpeza", "Outros"];
@@ -43,7 +43,17 @@ export async function loadRemoteState(): Promise<RestokState | null> {
     products = seeded ?? [];
   }
   const categoryById = Object.fromEntries(Object.entries(categoryIds).map(([name, id]) => [id, name])) as Record<string, CategoryName>;
-  const { data: lists } = await context.client.from("shopping_lists").select("id,name,budget,status,started_at,finished_at").eq("household_id", context.householdId).order("started_at", { ascending: false });
+  let { data: lists } = await context.client.from("shopping_lists").select("id,name,budget,status,started_at,finished_at").eq("household_id", context.householdId).order("started_at", { ascending: false });
+  if (!lists?.length) {
+    const template = seedState.lists[0];
+    const { data: seededList } = await context.client.from("shopping_lists").insert({ household_id: context.householdId, name: template.name, budget: template.budget, status: template.status, started_at: template.startedAt, created_by: context.userId }).select("id,name,budget,status,started_at,finished_at").single();
+    if (seededList) {
+      const productByName = Object.fromEntries((products ?? []).map((product) => [product.name, product]));
+      const itemRows = template.items.map((item) => ({ shopping_list_id: seededList.id, product_id: productByName[item.name]?.id ?? null, category_id: categoryIds[item.category] ?? null, name: item.name, quantity: item.quantity, unit_price: item.unitPrice ?? null, status: item.status }));
+      await context.client.from("shopping_list_items").insert(itemRows);
+      lists = [seededList];
+    }
+  }
   const listIds = (lists ?? []).map((list) => list.id);
   const { data: items } = listIds.length ? await context.client.from("shopping_list_items").select("id,shopping_list_id,product_id,category_id,name,quantity,unit_price,status").in("shopping_list_id", listIds).order("created_at") : { data: [] };
   const itemsByList = (items ?? []).reduce<Record<string, ShoppingItem[]>>((grouped, item) => {
