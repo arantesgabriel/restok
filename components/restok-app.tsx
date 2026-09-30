@@ -20,15 +20,16 @@ import {
   Search,
   ShoppingBasket,
   Sparkles,
+  Undo2,
   Users,
   X,
 } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { seedState } from "@/lib/seed";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
-import { subscribeToShoppingList } from "@/lib/supabase/realtime";
-import { acceptHouseholdInvite, activeHouseholdStorageKey, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistItem, persistList, persistProduct, resolveRemoteContext } from "@/lib/supabase/data";
+import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
+import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
 import { clearRemoteStateCaches, DEMO_STATE_KEY, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -45,6 +46,7 @@ import {
   listResolved,
   listTotal,
   monthLabel,
+  statusAfterPrice,
   shortDate,
   statusLabel,
   makeId,
@@ -53,6 +55,7 @@ import {
 type AppScreen = "shop" | "history" | "home";
 type Filter = "all" | "pending" | "purchased" | "already_have";
 type ProductViewMode = "category" | "alphabetical";
+type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
 const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
 
@@ -255,12 +258,16 @@ function ShoppingItemRow({
   item,
   lists,
   onEdit,
+  onPurchased,
   onAlreadyHave,
+  onUndo,
 }: {
   item: ShoppingItem;
   lists: ShoppingList[];
   onEdit: () => void;
+  onPurchased: () => void;
   onAlreadyHave: () => void;
+  onUndo: () => void;
 }) {
   const subtotal = itemSubtotal(item);
   return (
@@ -279,7 +286,7 @@ function ShoppingItemRow({
       </button>
       <div className="flex shrink-0 items-center gap-1.5">
         {subtotal > 0 ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
-        {item.status === "pending" ? <button type="button" aria-label={`Marcar ${item.name} como já temos`} title="Já temos" onClick={onAlreadyHave} className="grid h-10 w-10 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><House size={17} /></button> : <span className="w-10" />}
+        {item.status === "pending" ? <><button type="button" aria-label={`Marcar ${item.name} como comprado`} title="Comprar" onClick={onPurchased} className="grid h-10 w-10 place-items-center rounded-[10px] text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Check size={18} strokeWidth={2.5} /></button><button type="button" aria-label={`Marcar ${item.name} como já temos`} title="Já temos" onClick={onAlreadyHave} className="grid h-10 w-10 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><House size={17} /></button></> : <button type="button" aria-label={`Desfazer situação de ${item.name}`} title="Desfazer" onClick={onUndo} className="grid h-10 w-10 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Undo2 size={17} /></button>}
         <ChevronRight size={17} className="text-line transition group-hover:text-primary" aria-hidden="true" />
       </div>
     </article>
@@ -291,13 +298,17 @@ function CategorySection({
   items,
   lists,
   onEdit,
+  onPurchased,
   onAlreadyHave,
+  onUndo,
 }: {
   category: CategoryName;
   items: ShoppingItem[];
   lists: ShoppingList[];
   onEdit: (item: ShoppingItem) => void;
+  onPurchased: (item: ShoppingItem) => void;
   onAlreadyHave: (item: ShoppingItem) => void;
+  onUndo: (item: ShoppingItem) => void;
 }) {
   const [open, setOpen] = useState(true);
   const resolved = items.filter((item) => item.status !== "pending").length;
@@ -308,7 +319,7 @@ function CategorySection({
         <span className="flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
         {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
       </button>
-      {open ? <div className="divide-y-0">{items.map((item) => <ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={() => onEdit(item)} onAlreadyHave={() => onAlreadyHave(item)} />)}</div> : null}
+      {open ? <div className="divide-y-0">{items.map((item) => <ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={() => onEdit(item)} onPurchased={() => onPurchased(item)} onAlreadyHave={() => onAlreadyHave(item)} onUndo={() => onUndo(item)} />)}</div> : null}
     </section>
   );
 }
@@ -334,8 +345,8 @@ function ItemEditorSheet({
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const nextStatus: ItemStatus = status === "purchased" && numericPrice <= 0 ? "pending" : status;
-    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
+    const nextStatus = statusAfterPrice(status, numericPrice);
+    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" && Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
   };
 
   return <Sheet title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose}>
@@ -547,8 +558,30 @@ export default function RestokApp() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [writeOperations, setWriteOperations] = useState<WriteOperation[]>([]);
+  const [realtimeStatus, setRealtimeStatus] = useState<RealtimeConnectionStatus>("connecting");
+  const [isOnline, setIsOnline] = useState(true);
+  const [snapshotFailed, setSnapshotFailed] = useState(false);
+  const [revalidationVersion, setRevalidationVersion] = useState(0);
   const activeUserIdRef = useRef<string | null>(null);
   const activeStorageKeyRef = useRef<string | null>(null);
+  const writeOperationsRef = useRef<WriteOperation[]>([]);
+  const writeChainsRef = useRef(new Map<string, Promise<RemoteWriteResult>>());
+  const writeVersionsRef = useRef(new Map<string, string>());
+  const needsRevalidationRef = useRef(false);
+  const revalidationInFlightRef = useRef(false);
+  const revalidationRetryDelayRef = useRef(2000);
+  const revalidationDebounceRef = useRef<number | undefined>(undefined);
+
+  const requestRemoteRevalidation = useCallback(() => {
+    needsRevalidationRef.current = true;
+    if (revalidationInFlightRef.current) return;
+    if (revalidationDebounceRef.current !== undefined) window.clearTimeout(revalidationDebounceRef.current);
+    revalidationDebounceRef.current = window.setTimeout(() => {
+      revalidationDebounceRef.current = undefined;
+      setRevalidationVersion((version) => version + 1);
+    }, 120);
+  }, []);
 
   useEffect(() => {
     const viewport = window.visualViewport;
@@ -748,6 +781,28 @@ export default function RestokApp() {
     return () => window.clearTimeout(timeout);
   }, [toast]);
 
+  useEffect(() => { writeOperationsRef.current = writeOperations; }, [writeOperations]);
+
+  useEffect(() => {
+    setIsOnline(window.navigator.onLine);
+    const onOffline = () => setIsOnline(false);
+    const onOnline = () => {
+      setIsOnline(true);
+      window.setTimeout(() => {
+        for (const operation of writeOperationsRef.current) {
+          if (operation.status === "failed") operation.retry();
+        }
+        requestRemoteRevalidation();
+      }, 400);
+    };
+    window.addEventListener("offline", onOffline);
+    window.addEventListener("online", onOnline);
+    return () => {
+      window.removeEventListener("offline", onOffline);
+      window.removeEventListener("online", onOnline);
+    };
+  }, [requestRemoteRevalidation]);
+
   const activeList = state.lists.find((list) => list.id === activeListId && list.status === "active") ?? state.lists.find((list) => list.status === "active") ?? null;
   const filteredItems = useMemo(() => {
     if (!activeList) return [];
@@ -757,77 +812,153 @@ export default function RestokApp() {
   const groups = groupItems(filteredItems);
   const resolved = activeList ? listResolved(activeList) : 0;
   const pending = activeList ? listPending(activeList) : 0;
+  const activeHouseholdId = activeHousehold?.id;
+  const realtimeListId = activeList?.id;
 
-  useEffect(() => {
-    if (!activeList) return;
-    return subscribeToShoppingList(activeList.id, (payload) => {
-      const incoming = payload.eventType === "DELETE" ? payload.old : payload.new;
-      if (!incoming?.id) return;
-      setState((current) => ({
-        ...current,
-        lists: current.lists.map((list) => list.id !== activeList.id ? list : {
-          ...list,
-          items: payload.eventType === "DELETE"
-            ? list.items.filter((item) => item.id !== incoming.id)
-            : list.items.map((item) => item.id !== incoming.id ? item : {
-              ...item,
-              name: "name" in incoming && incoming.name ? incoming.name : item.name,
-              quantity: "quantity" in incoming && incoming.quantity ? Number(incoming.quantity) : item.quantity,
-              unitPrice: "unit_price" in incoming ? (incoming.unit_price == null ? undefined : Number(incoming.unit_price)) : item.unitPrice,
-              status: "status" in incoming && incoming.status ? incoming.status : item.status,
-            }),
-        }),
-      }));
-      setToast("Lista atualizada por outra pessoa");
+  const runRemoteWrite = (key: string, label: string, write: () => Promise<RemoteWriteResult>, onSuccess?: () => void) => {
+    const token = makeId("write");
+    writeVersionsRef.current.set(key, token);
+    const retry = () => runRemoteWrite(key, label, write, onSuccess);
+    setWriteOperations((current) => [
+      ...current.filter((operation) => operation.key !== key),
+      { key, token, label, status: "pending", retry },
+    ]);
+
+    const previous = writeChainsRef.current.get(key) ?? Promise.resolve({ ok: true, synced: true } as const);
+    const task = previous.then(() => !isSupabaseConfigured || window.navigator.onLine ? write() : ({ ok: false, message: "Sem conexão com a internet." } as const)).catch(() => ({ ok: false, message: "Não foi possível sincronizar esta alteração." } as const));
+    writeChainsRef.current.set(key, task);
+    void task.then((result) => {
+      if (writeVersionsRef.current.get(key) !== token) return;
+      writeChainsRef.current.delete(key);
+      if (result.ok) {
+        writeVersionsRef.current.delete(key);
+        setWriteOperations((current) => current.filter((operation) => operation.token !== token));
+        setToast(result.synced ? label : "Salvo neste aparelho");
+        onSuccess?.();
+        if (result.synced) requestRemoteRevalidation();
+      } else {
+        setWriteOperations((current) => current.map((operation) => operation.token === token ? { ...operation, status: "failed" } : operation));
+        setToast(`${result.message} A alteração ficou neste aparelho; tente novamente.`);
+      }
     });
-  }, [activeList]);
-
-  const updateActiveItems = (updater: (items: ShoppingItem[]) => ShoppingItem[]) => {
-    if (!activeList) return;
-    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? { ...list, items: updater(list.items) } : list) }));
   };
 
-  const saveItem = (item: ShoppingItem) => { updateActiveItems((items) => items.map((current) => current.id === item.id ? item : current)); void persistItem(activeList?.id, item); setEditorItem(null); setToast(item.status === "purchased" ? "Adicionado ao carrinho" : "Item atualizado"); };
-  const setItemStatus = (item: ShoppingItem, status: ItemStatus) => { const nextItem = { ...item, status }; updateActiveItems((items) => items.map((current) => current.id === item.id ? nextItem : current)); void persistItem(activeList?.id, nextItem); setToast(status === "already_have" ? "Marcado como já temos" : "Item atualizado"); };
+  useEffect(() => {
+    if (!isSupabaseConfigured || !activeHouseholdId) {
+      setRealtimeStatus("disconnected");
+      return;
+    }
+    return subscribeToShoppingList(realtimeListId, activeHouseholdId, {
+      onItemChange: requestRemoteRevalidation,
+      onDomainChange: requestRemoteRevalidation,
+      onStatus: (status) => {
+        setRealtimeStatus(status);
+        if (status === "connected" || status === "reconnecting") requestRemoteRevalidation();
+      },
+    });
+  }, [activeHouseholdId, realtimeListId, requestRemoteRevalidation]);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured || !isOnline || !activeHouseholdId || writeOperations.length || !needsRevalidationRef.current || revalidationInFlightRef.current) return;
+    needsRevalidationRef.current = false;
+    revalidationInFlightRef.current = true;
+    let cancelled = false;
+    let retryTimer: number | undefined;
+    const refresh = async () => {
+      const context = await resolveRemoteContext(activeHouseholdId).catch(() => null);
+      const remote = context ? await loadRemoteState(context).catch(() => null) : null;
+      if (cancelled) return;
+      if (!remote || remote.householdId !== activeHouseholdId) {
+        needsRevalidationRef.current = true;
+        setSnapshotFailed(true);
+        if (window.navigator.onLine) {
+          const delay = revalidationRetryDelayRef.current;
+          revalidationRetryDelayRef.current = Math.min(delay * 2, 30000);
+          retryTimer = window.setTimeout(() => setRevalidationVersion((version) => version + 1), delay);
+        }
+      } else {
+        setSnapshotFailed(false);
+        revalidationRetryDelayRef.current = 2000;
+        setState((current) => JSON.stringify(current) === JSON.stringify(remote.state) ? current : remote.state);
+      }
+      revalidationInFlightRef.current = false;
+      if (needsRevalidationRef.current && remote) setRevalidationVersion((version) => version + 1);
+    };
+    void refresh();
+    return () => {
+      cancelled = true;
+      revalidationInFlightRef.current = false;
+      needsRevalidationRef.current = true;
+      if (retryTimer !== undefined) window.clearTimeout(retryTimer);
+    };
+  }, [activeHouseholdId, isOnline, revalidationVersion, writeOperations.length]);
+
+  const updateActiveItems = (updater: (items: ShoppingItem[]) => ShoppingItem[]) => {
+    if (!activeList) return null;
+    const updated = { ...activeList, items: updater(activeList.items) };
+    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? updated : list) }));
+    return updated;
+  };
+
+  const persistUpdatedList = (list: ShoppingList, label: string) => {
+    runRemoteWrite(`list:${list.id}`, label, () => persistList(list, activeHouseholdId));
+  };
+
+  const saveItem = (item: ShoppingItem) => {
+    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? item : current));
+    if (updated) persistUpdatedList(updated, item.status === "purchased" ? "Item adicionado ao carrinho" : "Item atualizado");
+    setEditorItem(null);
+  };
+
+  const setItemStatus = (item: ShoppingItem, status: ItemStatus) => {
+    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status, unitPrice: status === "purchased" ? current.unitPrice : undefined } : current));
+    if (updated) persistUpdatedList(updated, status === "already_have" ? "Marcado como já temos" : status === "purchased" ? "Adicionado ao carrinho" : "Situação desfeita");
+  };
   const addItem = (item: Omit<ShoppingItem, "id">, addToHome: boolean) => {
     const productId = addToHome ? makeId("product") : undefined;
     const newItem = { ...item, id: makeId("item"), ...(productId ? { productId } : {}) };
-    updateActiveItems((items) => [...items, newItem]);
-    void persistItem(activeList?.id, newItem);
-    if (addToHome && productId) { const newProduct = { id: productId, name: item.name, category: item.category, defaultQuantity: item.quantity, active: true }; setState((current) => ({ ...current, products: [...current.products, newProduct] })); void persistProduct(newProduct); }
-    setAddItemOpen(false); setToast("Item adicionado à compra");
+    const updated = updateActiveItems((items) => [...items, newItem]);
+    if (!updated) return;
+    const newProduct = addToHome && productId ? { id: productId, name: item.name, category: item.category, defaultQuantity: item.quantity, active: true } : null;
+    if (newProduct) setState((current) => ({ ...current, products: [...current.products, newProduct] }));
+    runRemoteWrite(`list:${updated.id}`, "Item adicionado à compra", async () => {
+      if (newProduct) {
+        const productResult = await persistProduct(newProduct, activeHouseholdId);
+        if (!productResult.ok) return productResult;
+      }
+      return persistList(updated, activeHouseholdId);
+    });
+    setAddItemOpen(false);
   };
   const createPurchase = (name: string, budget: number, selectedIds: string[]) => {
     const items: ShoppingItem[] = state.products.filter((product) => selectedIds.includes(product.id)).map((product) => ({ id: makeId("item"), productId: product.id, name: product.name, category: product.category, quantity: product.defaultQuantity, status: "pending" }));
     const list: ShoppingList = { id: makeId("list"), name, budget, status: "active", startedAt: new Date().toISOString(), items };
     const completedAt = new Date().toISOString();
-    const previousActive = state.lists.find((currentList) => currentList.status === "active");
-    const completedPrevious = previousActive ? { ...previousActive, status: "completed" as const, finishedAt: completedAt } : null;
     setState((current) => ({ ...current, lists: [list, ...current.lists.map((currentList): ShoppingList => currentList.status === "active" ? { ...currentList, status: "completed", finishedAt: completedAt } : currentList)] }));
-    void (async () => { if (completedPrevious) await persistList(completedPrevious); await persistList(list); await Promise.all(items.map((item) => persistItem(list.id, item))); })();
-    setActiveListId(list.id); setNewPurchaseOpen(false); setScreen("shop"); setQuery(""); setFilter("all"); setToast("Nova compra pronta");
+    setActiveListId(list.id); setNewPurchaseOpen(false); setScreen("shop"); setQuery(""); setFilter("all");
+    runRemoteWrite(`list:${list.id}`, "Nova compra pronta", () => createShoppingListWithItems(list, activeHouseholdId));
   };
   const finishPurchase = () => {
     if (!activeList) return;
     const finished = { ...activeList, status: "completed" as const, finishedAt: new Date().toISOString() };
     setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? finished : list) }));
-    void persistList(finished);
-    setFinishOpen(false); setCompleteList(finished); setToast("Compra salva no histórico");
+    setFinishOpen(false);
+    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistList(finished, activeHouseholdId), () => setCompleteList(finished));
   };
   const saveBudget = (budget: number) => {
     if (!budgetEditor) return;
     const updated = { ...budgetEditor, budget };
     setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === updated.id ? updated : list) }));
-    void persistList(updated);
-    setBudgetEditor(null); setToast("Meta da compra atualizada");
+    persistUpdatedList(updated, "Meta da compra atualizada");
+    setBudgetEditor(null);
   };
   const saveProduct = (product: Omit<Product, "id" | "active">, id?: string) => {
     const savedProduct: Product = id ? { ...state.products.find((item) => item.id === id)!, ...product, id, active: state.products.find((item) => item.id === id)?.active ?? true } : { ...product, id: makeId("product"), active: true };
     setState((current) => ({ ...current, products: id ? current.products.map((item) => item.id === id ? savedProduct : item) : [...current.products, savedProduct] }));
-    void persistProduct(savedProduct);
-    setProductEditor(null); setToast(id ? "Produto atualizado" : "Produto adicionado à casa");
+    runRemoteWrite(`product:${savedProduct.id}`, id ? "Produto atualizado" : "Produto adicionado à casa", () => persistProduct(savedProduct, activeHouseholdId));
+    setProductEditor(null);
   };
-  const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); void persistProduct(updated); setToast("Produto desativado"); };
+  const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); runRemoteWrite(`product:${updated.id}`, "Produto desativado", () => persistProduct(updated, activeHouseholdId)); };
   const activateHousehold = async (householdId: string) => {
     if (!isSupabaseConfigured) return householdId === "demo-household";
     const context = await resolveRemoteContext(householdId).catch(() => null);
@@ -943,12 +1074,13 @@ export default function RestokApp() {
       <main className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
         <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><div className="relative"><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label={`Perfil de ${profileLabel}`} aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>{profileInitials}</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-56 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setProfileOpen(false); setHouseholdManagerOpen(true); }}><House size={16} />Casas e pessoas</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-10 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-10 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
+        {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-10 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
             <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-10 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
-            {filteredItems.length ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} items={groups[category] ?? []} lists={state.lists} onEdit={setEditorItem} onAlreadyHave={(item) => setItemStatus(item, "already_have")} /> : null)}</div> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
+            {filteredItems.length ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} items={groups[category] ?? []} lists={state.lists} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
           </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
         </div>
       </main>

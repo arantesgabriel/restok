@@ -14,9 +14,15 @@ export const monthLabel = (date: string) =>
 export const shortDate = (date: string) =>
   new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "short" }).format(new Date(date));
 
-export const makeId = (prefix: string) => {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) return crypto.randomUUID();
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
+export const makeId = (_prefix: string) => {
+  const bytes = new Uint8Array(16);
+  const cryptoApi = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
+  if (cryptoApi) cryptoApi.getRandomValues(bytes);
+  else bytes.forEach((_, index) => { bytes[index] = Math.floor(Math.random() * 256); });
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 };
 
 export const categoryIcon = (category: CategoryName) => {
@@ -37,6 +43,12 @@ export const statusLabel = (status: ItemStatus) => {
     already_have: "Já temos",
   };
   return labels[status];
+};
+
+export const statusAfterPrice = (status: ItemStatus, unitPrice: number) => {
+  if (status === "already_have") return "already_have" as const;
+  if (unitPrice > 0) return "purchased" as const;
+  return status;
 };
 
 export const itemSubtotal = (item: ShoppingItem) =>

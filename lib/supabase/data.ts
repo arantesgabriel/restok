@@ -1,4 +1,5 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { seedProducts } from "@/lib/seed";
 import type { CategoryName, HouseholdInvite, HouseholdMember, HouseholdRole, HouseholdSummary, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 
@@ -6,6 +7,11 @@ const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpe
 export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; email: string | null; profileName: string | null; householdId: string; householdName: string; role: HouseholdRole };
 export type RemoteState = { state: RestokState; userId: string; householdId: string; householdName: string; role: HouseholdRole };
 export type CurrentProfile = { userId: string; email: string | null; displayName: string | null };
+export type RemoteWriteResult = { ok: true; synced: boolean } | { ok: false; message: string };
+
+const localWriteResult: RemoteWriteResult = { ok: true, synced: false };
+const syncedWriteResult: RemoteWriteResult = { ok: true, synced: true };
+const failedWriteResult: RemoteWriteResult = { ok: false, message: "Não foi possível sincronizar esta alteração." };
 
 async function readCurrentProfile(client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>): Promise<CurrentProfile | null> {
   const { data: { user }, error: authError } = await client.auth.getUser();
@@ -246,32 +252,96 @@ export async function transferHouseholdOwnership(householdId: string, newOwner: 
   return !error;
 }
 
-export async function persistItem(listId: string | undefined, item: ShoppingItem) {
-  if (!listId) return;
-  const context = await resolveRemoteContext();
-  if (!context) return;
-  const { data: list, error: listError } = await context.client
-    .from("shopping_lists")
-    .select("id")
-    .eq("id", listId)
-    .eq("household_id", context.householdId)
-    .maybeSingle();
-  if (listError || !list) return;
-  const categoryIds = await getCategoryIds(context);
-  if (!categoryIds) return;
-  await context.client.from("shopping_list_items").upsert({ id: item.id, shopping_list_id: listId, product_id: item.productId ?? null, category_id: categoryIds[item.category] ?? null, name: item.name, quantity: item.quantity, unit_price: item.unitPrice ?? null, status: item.status });
+export async function persistItem(listId: string | undefined, item: ShoppingItem, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
+  if (!isSupabaseConfigured) return localWriteResult;
+  if (!listId) return failedWriteResult;
+  try {
+    const context = await resolveRemoteContext(preferredHouseholdId);
+    if (!context) return failedWriteResult;
+    const { data: list, error: listError } = await context.client
+      .from("shopping_lists")
+      .select("id")
+      .eq("id", listId)
+      .eq("household_id", context.householdId)
+      .maybeSingle();
+    if (listError || !list) return failedWriteResult;
+    const categoryIds = await getCategoryIds(context);
+    if (!categoryIds) return failedWriteResult;
+    const { error } = await context.client.from("shopping_list_items").upsert({
+      id: item.id,
+      shopping_list_id: listId,
+      product_id: item.productId ?? null,
+      category_id: categoryIds[item.category] ?? null,
+      name: item.name,
+      quantity: item.quantity,
+      unit_price: item.unitPrice ?? null,
+      status: item.status,
+    });
+    return error ? failedWriteResult : syncedWriteResult;
+  } catch {
+    return failedWriteResult;
+  }
 }
 
-export async function persistProduct(product: Product) {
-  const context = await resolveRemoteContext();
-  if (!context) return;
-  const categoryIds = await getCategoryIds(context);
-  if (!categoryIds) return;
-  await context.client.from("products").upsert({ id: product.id, household_id: context.householdId, category_id: categoryIds[product.category] ?? null, name: product.name, default_quantity: product.defaultQuantity, active: product.active });
+export async function persistProduct(product: Product, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
+  if (!isSupabaseConfigured) return localWriteResult;
+  try {
+    const context = await resolveRemoteContext(preferredHouseholdId);
+    if (!context) return failedWriteResult;
+    const categoryIds = await getCategoryIds(context);
+    if (!categoryIds) return failedWriteResult;
+    const { error } = await context.client.from("products").upsert({
+      id: product.id,
+      household_id: context.householdId,
+      category_id: categoryIds[product.category] ?? null,
+      name: product.name,
+      default_quantity: product.defaultQuantity,
+      active: product.active,
+    });
+    return error ? failedWriteResult : syncedWriteResult;
+  } catch {
+    return failedWriteResult;
+  }
 }
 
-export async function persistList(list: ShoppingList) {
-  const context = await resolveRemoteContext();
-  if (!context) return;
-  await context.client.from("shopping_lists").upsert({ id: list.id, household_id: context.householdId, name: list.name, budget: list.budget, status: list.status, started_at: list.startedAt, finished_at: list.finishedAt ?? null, created_by: context.userId });
+async function persistShoppingListWithItems(list: ShoppingList, preferredHouseholdId: string | undefined, idempotentCreate: boolean): Promise<RemoteWriteResult> {
+  if (!isSupabaseConfigured) return localWriteResult;
+  try {
+    const context = await resolveRemoteContext(preferredHouseholdId);
+    if (!context) return failedWriteResult;
+    const categoryIds = await getCategoryIds(context);
+    if (!categoryIds) return failedWriteResult;
+    const { error } = await context.client.rpc("create_shopping_list_with_items", {
+      requested_household: context.householdId,
+      requested_list: {
+        id: list.id,
+        name: list.name,
+        budget: list.budget,
+        status: list.status,
+        started_at: list.startedAt,
+        finished_at: list.finishedAt ?? null,
+      },
+      requested_items: list.items.map((item) => ({
+        id: item.id,
+        product_id: item.productId ?? null,
+        category_id: categoryIds[item.category] ?? null,
+        name: item.name,
+        quantity: item.quantity,
+        unit_price: item.unitPrice ?? null,
+        status: item.status,
+      })),
+      idempotent_create: idempotentCreate,
+    });
+    return error ? failedWriteResult : syncedWriteResult;
+  } catch {
+    return failedWriteResult;
+  }
+}
+
+export async function persistList(list: ShoppingList, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
+  return persistShoppingListWithItems(list, preferredHouseholdId, false);
+}
+
+export async function createShoppingListWithItems(list: ShoppingList, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
+  return persistShoppingListWithItems(list, preferredHouseholdId, true);
 }
