@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AccessibleDialog } from "@/components/accessible-dialog";
+import { ActionMenu } from "@/components/action-menu";
 import { seedState } from "@/lib/seed";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
@@ -88,7 +89,7 @@ function Button({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold transition duration-fast ease-restok focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:cursor-not-allowed disabled:opacity-50",
         variant === "primary" && "bg-primary text-white shadow-[0_3px_0_oklch(0.31_0.08_152)] hover:-translate-y-px hover:bg-primary-strong active:translate-y-px",
         variant === "secondary" && "border border-line bg-surface text-ink hover:border-primary/40 hover:bg-sage/50",
         variant === "quiet" && "text-muted hover:bg-sage/60 hover:text-ink",
@@ -121,7 +122,7 @@ function IconButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "grid h-11 w-11 shrink-0 place-items-center rounded-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+        "grid h-11 w-11 shrink-0 place-items-center rounded-[10px] transition duration-fast ease-restok focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
         variant === "quiet" && "text-muted hover:bg-sage hover:text-ink",
         variant === "bordered" && "border border-line bg-surface text-muted hover:border-primary/40 hover:text-ink",
         className,
@@ -142,7 +143,7 @@ function Sheet({
   title: string;
   description?: string;
   children: React.ReactNode;
-  onClose: () => void;
+  onClose: () => boolean;
   wide?: boolean;
 }) {
   return (
@@ -152,6 +153,7 @@ function Sheet({
       className="fixed inset-0 z-modal m-0 flex h-dvh w-screen max-h-none max-w-none items-end justify-center overflow-hidden border-0 bg-transparent p-0 backdrop:bg-ink/35 sm:items-center sm:p-6"
     >
       <section
+        data-dialog-motion
         className={cn(
           "relative max-h-[92dvh] w-full overflow-y-auto rounded-t-[22px] border border-line bg-canvas px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-sheet sm:max-h-[90vh] sm:rounded-[18px] sm:px-7 sm:pb-7",
           wide ? "max-w-2xl" : "max-w-lg",
@@ -160,7 +162,7 @@ function Sheet({
         <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-line sm:hidden" />
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <h2 id="sheet-title" className="text-xl font-semibold tracking-[-0.02em] text-ink">{title}</h2>
+            <h2 id="sheet-title" tabIndex={-1} data-dialog-initial-focus className="rounded-sm text-xl font-semibold tracking-[-0.02em] text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{title}</h2>
             {description ? <p className="mt-1 max-w-md text-sm leading-6 text-muted">{description}</p> : null}
           </div>
           <IconButton label="Fechar" onClick={onClose} variant="bordered"><X size={18} /></IconButton>
@@ -188,7 +190,7 @@ function QuantityStepper({
         inputMode="numeric"
         value={quantity}
         onChange={(event) => onChange(Math.max(1, Number(event.target.value.replace(/\D/g, "")) || 1))}
-        className="h-10 w-9 bg-transparent text-center text-sm font-semibold text-ink outline-none"
+        className="h-10 w-9 rounded-sm bg-transparent text-center text-sm font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       />
       <button type="button" aria-label="Aumentar quantidade" className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-sage hover:text-ink" onClick={() => onChange(quantity + 1)}><Plus size={16} /></button>
     </div>
@@ -233,7 +235,7 @@ function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => voi
   const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : 0;
   const over = total - list.budget;
   return (
-    <section className={cn("rounded-[14px] border border-line bg-surface p-4", over > 0 && "border-terracotta/30 bg-terracotta/5")} aria-label="Resumo do orçamento">
+    <section className={cn("min-w-0 rounded-[14px] border border-line bg-surface p-4", over > 0 && "border-terracotta/30 bg-terracotta/5")} aria-label="Resumo do orçamento">
       <div className="flex items-end justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Gasto até agora</p>
@@ -241,7 +243,7 @@ function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => voi
         </div>
         <p className={cn("text-right text-sm font-semibold", over > 0 ? "text-terracotta" : "text-muted")}>
           {over > 0 ? `${formatBRL(over)} acima` : `${formatBRL(list.budget - total)} disponíveis`}
-          <span className="mt-1 flex items-center justify-end gap-1 text-xs font-normal text-muted">de {formatBRL(list.budget)}<button type="button" onClick={onEdit} className="inline-flex min-h-7 items-center gap-1 rounded-md px-1.5 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={12} />Editar</button></span>
+          <span className="mt-1 flex items-center justify-end gap-1 text-xs font-normal text-muted">de {formatBRL(list.budget)}<button type="button" onClick={onEdit} className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={14} />Editar</button></span>
         </p>
       </div>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-sage" aria-hidden="true"><div className={cn("h-full rounded-full transition-all duration-300", over > 0 ? "bg-terracotta" : "bg-primary")} style={{ width: `${percentage}%` }} /></div>
@@ -280,7 +282,7 @@ function ShoppingItemRow({
 }) {
   const subtotal = itemSubtotal(item);
   return (
-    <article className={cn("group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition", item.status !== "pending" && "item-resolved")}>
+    <article className="group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition">
       <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`}>
         <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-semibold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
           {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <span>{categoryIcon(item.category)}</span>}
@@ -348,7 +350,7 @@ function ItemEditorSheet({
 }: {
   item: ShoppingItem;
   lists: ShoppingList[];
-  onClose: () => void;
+  onClose: () => boolean;
   onSave: (item: ShoppingItem) => void;
 }) {
   const [quantity, setQuantity] = useState(item.quantity);
@@ -361,6 +363,7 @@ function ItemEditorSheet({
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!onClose()) return;
     const nextStatus = statusAfterPrice(status, numericPrice);
     onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" && Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
   };
@@ -372,15 +375,15 @@ function ItemEditorSheet({
         <QuantityStepper quantity={quantity} onChange={setQuantity} />
       </div>
       <label className="field-label">Preço unitário
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input autoFocus inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
+        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
         {previous ? <span className="mt-2 block text-xs text-muted">Anterior {formatBRL(previous)} {numericPrice > 0 ? <span className={numericPrice > previous ? "text-terracotta" : "text-primary"}>· {numericPrice > previous ? "mais caro" : "mais barato"}</span> : null}</span> : <span className="mt-2 block text-xs text-muted">Ao informar um preço, o item vira comprado.</span>}
       </label>
-      <div>
-        <p className="field-label">Situação</p>
+      <fieldset>
+        <legend className="field-label">Situação</legend>
         <div className="mt-2 grid grid-cols-3 gap-2">
-          {(["pending", "purchased", "already_have"] as ItemStatus[]).map((value) => <button type="button" key={value} onClick={() => { setStatus(value); if (value !== "purchased") setPrice(""); }} className={cn("min-h-11 rounded-[10px] border px-2 text-xs font-semibold transition", status === value ? "border-primary bg-sage text-primary" : "border-line bg-surface text-muted hover:border-primary/30")}>{statusLabel(value)}</button>)}
+          {(["pending", "purchased", "already_have"] as ItemStatus[]).map((value) => <button type="button" key={value} aria-pressed={status === value} onClick={() => { setStatus(value); if (value !== "purchased") setPrice(""); }} className={cn("min-h-11 rounded-[10px] border px-2 text-xs font-semibold transition", status === value ? "border-primary bg-sage text-primary" : "border-line bg-surface text-muted hover:border-primary/30")}>{statusLabel(value)}</button>)}
         </div>
-      </div>
+      </fieldset>
       <details className="group rounded-[12px] border border-line bg-surface px-4">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between text-sm font-semibold text-ink"><span>Mais detalhes</span><ChevronDown size={16} className="text-muted transition group-open:rotate-180" /></summary>
         <div className="space-y-4 border-t border-line pb-4 pt-4">
@@ -397,7 +400,7 @@ function AddItemSheet({
   onClose,
   onAdd,
 }: {
-  onClose: () => void;
+  onClose: () => boolean;
   onAdd: (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => void;
 }) {
   const [name, setName] = useState("");
@@ -409,11 +412,12 @@ function AddItemSheet({
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!name.trim()) return;
+    if (!onClose()) return;
     onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: numericPrice > 0 ? "purchased" : "pending" }, addToHome);
   };
   return <Sheet title="Adicionar item" description="Inclua aquele produto que não estava na lista." onClose={onClose}>
     <form onSubmit={submit} className="space-y-4">
-      <label className="field-label">Nome do produto<input autoFocus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural" className="field-input mt-2" /></label>
+      <label className="field-label">Nome do produto<input data-initial-focus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural" className="field-input mt-2" /></label>
       <div className="grid grid-cols-2 gap-3">
         <label className="field-label">Quantidade<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
         <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
@@ -431,7 +435,7 @@ function NewPurchaseSheet({
   onCreate,
 }: {
   products: Product[];
-  onClose: () => void;
+  onClose: () => boolean;
   onCreate: (name: string, budget: number, selectedIds: string[]) => void;
 }) {
   const [name, setName] = useState(`Compras de ${new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(new Date())}`);
@@ -442,38 +446,41 @@ function NewPurchaseSheet({
   return <Sheet title="Nova compra" description="Comece com os produtos que costumam fazer parte da casa." onClose={onClose} wide>
     <div className="space-y-5">
       <div className="grid gap-3 sm:grid-cols-[1fr_180px]">
-        <label className="field-label">Nome<input value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
+        <label className="field-label">Nome<input data-initial-focus value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
         <label className="field-label">Orçamento<div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10" /></div></label>
       </div>
       <div className="flex items-center justify-between border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p className="mt-1 text-xs text-muted">{selected.size} selecionados</p></div><button type="button" className="text-xs font-semibold text-primary hover:underline" onClick={() => setSelected(selected.size === activeProducts.length ? new Set() : new Set(activeProducts.map((product) => product.id)))}>{selected.size === activeProducts.length ? "Desmarcar todos" : "Selecionar todos"}</button></div>
       <div className="max-h-[42vh] overflow-y-auto rounded-[12px] border border-line bg-surface px-3">
         {activeProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="flex-1 text-sm font-semibold text-ink">{product.name}</span><span className="text-xs text-muted">{product.defaultQuantity} un.</span></label>)}
       </div>
-      <Button className="w-full" onClick={() => onCreate(name.trim() || "Nova compra", Number(budget.replace(",", ".").replace(/[^0-9.]/g, "")) || 0, [...selected])}>Começar compra <ArrowLeft className="rotate-180" size={17} /></Button>
+      <Button className="w-full" onClick={() => { if (onClose()) onCreate(name.trim() || "Nova compra", Number(budget.replace(",", ".").replace(/[^0-9.]/g, "")) || 0, [...selected]); }}>Começar compra <ArrowLeft className="rotate-180" size={17} /></Button>
     </div>
   </Sheet>;
 }
 
-function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => void; onSave: (budget: number) => void }) {
+function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => boolean; onSave: (budget: number) => void }) {
   const [budget, setBudget] = useState(list.budget.toFixed(2).replace(".", ","));
   const numericBudget = Number(budget.replace(",", ".").replace(/[^0-9.]/g, ""));
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Number.isFinite(numericBudget) && numericBudget > 0) onSave(Number(numericBudget.toFixed(2)));
+    if (Number.isFinite(numericBudget) && numericBudget > 0) {
+      if (!onClose()) return;
+      onSave(Number(numericBudget.toFixed(2)));
+    }
   };
 
   return <Sheet title="Meta da compra" description="Ajuste o limite para esta ida ao mercado." onClose={onClose}>
     <form onSubmit={submit} className="space-y-5">
       <label className="field-label">Orçamento da compra
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input autoFocus required inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10 text-lg font-semibold" placeholder="0,00" /></div>
+        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus required inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10 text-lg font-semibold" placeholder="0,00" /></div>
       </label>
       <Button type="submit" className="w-full" disabled={!Number.isFinite(numericBudget) || numericBudget <= 0}>Salvar meta <Check size={17} /></Button>
     </form>
   </Sheet>;
 }
 
-function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClose: () => void; onHistory: () => void }) {
+function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClose: () => boolean; onHistory: () => void }) {
   return <Sheet title="Compra concluída" description="Tudo certo. A casa está um pouco mais abastecida." onClose={onClose}>
     <div className="space-y-5">
       <div className="rounded-[14px] bg-sage p-5"><div className="flex items-center gap-3 text-primary"><span className="grid h-10 w-10 place-items-center rounded-full bg-surface"><Check size={20} strokeWidth={3} /></span><span className="text-sm font-semibold">{list.items.length} produtos resolvidos</span></div><p className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p><p className="mt-1 text-sm text-muted">registrados nesta compra</p></div>
@@ -483,9 +490,9 @@ function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClo
   </Sheet>;
 }
 
-function ConfirmFinishSheet({ onClose, onConfirm, pending }: { onClose: () => void; onConfirm: () => void; pending: number }) {
+function ConfirmFinishSheet({ onClose, onConfirm, pending }: { onClose: () => boolean; onConfirm: () => void; pending: number }) {
   return <Sheet title="Finalizar compra?" description={pending > 0 ? `Ainda existem ${pending} itens pendentes. Você poderá consultar tudo no histórico depois.` : "Todos os itens foram resolvidos."} onClose={onClose}>
-    <div className="space-y-3"><Button className="w-full" onClick={onConfirm}>Finalizar e salvar</Button><Button variant="secondary" className="w-full" onClick={onClose}>Continuar comprando</Button></div>
+    <div className="space-y-3"><Button className="w-full" onClick={() => { if (onClose()) onConfirm(); }}>Finalizar e salvar</Button><Button variant="secondary" className="w-full" onClick={onClose}>Continuar comprando</Button></div>
   </Sheet>;
 }
 
@@ -503,6 +510,27 @@ function HistoryDetail({ list, onBack }: { list: ShoppingList; onBack: () => voi
 
 function EmptyState({ icon, title, description, action }: { icon: React.ReactNode; title: string; description: string; action?: React.ReactNode }) {
   return <div className="rounded-[14px] border border-dashed border-line bg-surface px-5 py-10 text-center"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-sage text-primary">{icon}</span><h2 className="mt-4 text-base font-semibold text-ink">{title}</h2><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-muted">{description}</p>{action ? <div className="mt-5 flex justify-center">{action}</div> : null}</div>;
+}
+
+function ToastMessage({ message, onDismiss }: { message: string; onDismiss: () => void }) {
+  const [closing, setClosing] = useState(false);
+  const onDismissRef = useRef(onDismiss);
+  onDismissRef.current = onDismiss;
+
+  useEffect(() => {
+    let exitTimeout: number | undefined;
+    const timeout = window.setTimeout(() => {
+      setClosing(true);
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      exitTimeout = window.setTimeout(() => onDismissRef.current(), reducedMotion ? 0 : 220);
+    }, 2600);
+    return () => {
+      window.clearTimeout(timeout);
+      if (exitTimeout !== undefined) window.clearTimeout(exitTimeout);
+    };
+  }, [message]);
+
+  return <div data-toast-motion data-state={closing ? "closing" : "open"} role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{message}</div>;
 }
 
 function ProductsHomeLegacy({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
@@ -539,15 +567,15 @@ function useCategoryNameSort(householdId: string | undefined) {
 
 function CategoryNameSortButton({ category, direction, onToggle }: { category: CategoryName; direction: NameSortDirection; onToggle: () => void }) {
   const label = direction === "desc" ? "Z–A" : "A–Z";
-  return <button type="button" onClick={onToggle} aria-pressed={direction === "desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} className="inline-flex min-h-9 items-center gap-1 rounded-[7px] px-2 text-xs font-semibold text-muted transition hover:bg-sage hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{direction === "desc" ? <ArrowDownZA size={15} /> : <ArrowDownAZ size={15} />}{label}</button>;
+  return <button type="button" onClick={onToggle} aria-pressed={direction === "desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} className="inline-flex min-h-11 items-center gap-1 rounded-[7px] px-2 text-xs font-semibold text-muted transition hover:bg-sage hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{direction === "desc" ? <ArrowDownZA size={15} /> : <ArrowDownAZ size={15} />}{label}</button>;
 }
 
 function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
-  return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>;
+  return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="min-h-11 px-2 text-xs font-semibold text-muted hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Desativar</button></div>;
 }
 
 function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
-  return <div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label={label}><button type="button" onClick={() => onChange("category")} aria-pressed={mode === "category"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => onChange("alphabetical")} aria-pressed={mode === "alphabetical"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div>;
+  return <div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label={label}><button type="button" onClick={() => onChange("category")} aria-pressed={mode === "category"} className={cn("min-h-11 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => onChange("alphabetical")} aria-pressed={mode === "alphabetical"} className={cn("min-h-11 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div>;
 }
 
 function ProductsHome({ products, lists, householdName, categorySort, onToggleCategorySort, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; categorySort: Partial<Record<CategoryName, NameSortDirection>>; onToggleCategorySort: (category: CategoryName) => void; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
@@ -565,13 +593,13 @@ function ProductsHome({ products, lists, householdName, categorySort, onToggleCa
   </div>;
 }
 
-function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; onClose: () => void; onSave: (product: Omit<Product, "id" | "active">, id?: string) => void }) {
+function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; onClose: () => boolean; onSave: (product: Omit<Product, "id" | "active">, id?: string) => void }) {
   const [name, setName] = useState(product?.name ?? "");
   const [category, setCategory] = useState<CategoryName>(product?.category ?? "Alimentos");
   const [quantity, setQuantity] = useState(product?.defaultQuantity ?? 1);
   return <Sheet title={product ? "Editar produto" : "Novo produto da casa"} description="Mantenha a lista recorrente leve e útil." onClose={onClose}>
-    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim()) onSave({ name: name.trim(), category, defaultQuantity: Math.max(1, quantity) }, product?.id); }}>
-      <label className="field-label">Nome<input autoFocus required value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" placeholder="Ex.: Café" /></label>
+    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim() && onClose()) onSave({ name: name.trim(), category, defaultQuantity: Math.max(1, quantity) }, product?.id); }}>
+      <label className="field-label">Nome<input data-initial-focus required value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" placeholder="Ex.: Café" /></label>
       <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
       <label className="field-label">Quantidade padrão<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
       <Button type="submit" className="w-full">Salvar produto <Check size={17} /></Button>
@@ -606,9 +634,8 @@ export default function RestokApp() {
   const [finishOpen, setFinishOpen] = useState(false);
   const [budgetEditor, setBudgetEditor] = useState<ShoppingList | null>(null);
   const [completeList, setCompleteList] = useState<ShoppingList | null>(null);
+  const [finishResult, setFinishResult] = useState<ShoppingList | null>(null);
   const [productEditor, setProductEditor] = useState<Product | "new" | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [writeOperations, setWriteOperations] = useState<WriteOperation[]>([]);
   const [realtimeStatus, setRealtimeStatus] = useState<RealtimeConnectionStatus>("connecting");
@@ -624,6 +651,7 @@ export default function RestokApp() {
   const revalidationInFlightRef = useRef(false);
   const revalidationRetryDelayRef = useRef(2000);
   const revalidationDebounceRef = useRef<number | undefined>(undefined);
+  const closingDialogRef = useRef<HTMLDialogElement | null>(null);
 
   const requestRemoteRevalidation = useCallback(() => {
     needsRevalidationRef.current = true;
@@ -634,6 +662,30 @@ export default function RestokApp() {
       setRevalidationVersion((version) => version + 1);
     }, 120);
   }, []);
+
+  const requestSheetClose = (onClose: () => void) => {
+    const dialog = document.querySelector<HTMLDialogElement>("dialog[open]");
+    if (!dialog) {
+      onClose();
+      return true;
+    }
+    if (closingDialogRef.current === dialog) return false;
+
+    closingDialogRef.current = dialog;
+    dialog.dataset.state = "closing";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.setTimeout(() => {
+      closingDialogRef.current = null;
+      onClose();
+    }, reducedMotion ? 0 : 220);
+    return true;
+  };
+
+  useEffect(() => {
+    if (finishOpen || !finishResult) return;
+    setCompleteList(finishResult);
+    setFinishResult(null);
+  }, [finishOpen, finishResult]);
 
   useEffect(() => {
     const viewport = window.visualViewport;
@@ -827,12 +879,6 @@ export default function RestokApp() {
     if (hydrated && storageKey) window.localStorage.setItem(storageKey, JSON.stringify(state));
   }, [state, hydrated, storageKey]);
 
-  useEffect(() => {
-    if (!toast) return;
-    const timeout = window.setTimeout(() => setToast(null), 2600);
-    return () => window.clearTimeout(timeout);
-  }, [toast]);
-
   useEffect(() => { writeOperationsRef.current = writeOperations; }, [writeOperations]);
 
   useEffect(() => {
@@ -960,7 +1006,6 @@ export default function RestokApp() {
   const saveItem = (item: ShoppingItem) => {
     const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? item : current));
     if (updated) persistUpdatedList(updated, item.status === "purchased" ? "Item adicionado ao carrinho" : "Item atualizado");
-    setEditorItem(null);
   };
 
   const setItemStatus = (item: ShoppingItem, status: ItemStatus) => {
@@ -981,35 +1026,31 @@ export default function RestokApp() {
       }
       return persistList(updated, activeHouseholdId);
     });
-    setAddItemOpen(false);
   };
   const createPurchase = (name: string, budget: number, selectedIds: string[]) => {
     const items: ShoppingItem[] = state.products.filter((product) => selectedIds.includes(product.id)).map((product, index) => ({ id: makeId("item"), productId: product.id, name: product.name, category: product.category, quantity: product.defaultQuantity, status: "pending", sortOrder: index }));
     const list: ShoppingList = { id: makeId("list"), name, budget, status: "active", startedAt: new Date().toISOString(), items };
     const completedAt = new Date().toISOString();
     setState((current) => ({ ...current, lists: [list, ...current.lists.map((currentList): ShoppingList => currentList.status === "active" ? { ...currentList, status: "completed", finishedAt: completedAt } : currentList)] }));
-    setActiveListId(list.id); setNewPurchaseOpen(false); setScreen("shop"); setQuery(""); setFilter("all");
+    setActiveListId(list.id); setScreen("shop"); setQuery(""); setFilter("all");
     runRemoteWrite(`list:${list.id}`, "Nova compra pronta", () => createShoppingListWithItems(list, activeHouseholdId));
   };
   const finishPurchase = () => {
     if (!activeList) return;
     const finished = { ...activeList, status: "completed" as const, finishedAt: new Date().toISOString() };
     setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? finished : list) }));
-    setFinishOpen(false);
-    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistList(finished, activeHouseholdId), () => setCompleteList(finished));
+    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistList(finished, activeHouseholdId), () => setFinishResult(finished));
   };
   const saveBudget = (budget: number) => {
     if (!budgetEditor) return;
     const updated = { ...budgetEditor, budget };
     setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === updated.id ? updated : list) }));
     persistUpdatedList(updated, "Meta da compra atualizada");
-    setBudgetEditor(null);
   };
   const saveProduct = (product: Omit<Product, "id" | "active">, id?: string) => {
     const savedProduct: Product = id ? { ...state.products.find((item) => item.id === id)!, ...product, id, active: state.products.find((item) => item.id === id)?.active ?? true } : { ...product, id: makeId("product"), active: true };
     setState((current) => ({ ...current, products: id ? current.products.map((item) => item.id === id ? savedProduct : item) : [...current.products, savedProduct] }));
     runRemoteWrite(`product:${savedProduct.id}`, id ? "Produto atualizado" : "Produto adicionado à casa", () => persistProduct(savedProduct, activeHouseholdId));
-    setProductEditor(null);
   };
   const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); runRemoteWrite(`product:${updated.id}`, "Produto desativado", () => persistProduct(updated, activeHouseholdId)); };
   const activateHousehold = async (householdId: string) => {
@@ -1085,7 +1126,6 @@ export default function RestokApp() {
     setOnboarding(true);
   };
   const signOut = async () => {
-    setProfileOpen(false);
     if (!isSupabaseConfigured) {
       window.localStorage.removeItem(DEMO_STATE_KEY);
       window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
@@ -1124,15 +1164,29 @@ export default function RestokApp() {
   return <div className="min-h-dvh bg-canvas text-ink">
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
       <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
-      <main className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
-        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><div className="relative"><button type="button" className="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label={`Perfil de ${profileLabel}`} aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>{profileInitials}</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-56 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setProfileOpen(false); setHouseholdManagerOpen(true); }}><House size={16} />Casas e pessoas</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
+      <main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
+        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><ActionMenu
+          label={`Perfil de ${profileLabel}`}
+          triggerClassName="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          items={[
+            { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
+            { label: isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
+          ]}
+        >{profileInitials}</ActionMenu></div></header>
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
-            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
+            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
+                label="Menu da compra"
+                triggerClassName="grid h-11 w-11 place-items-center rounded-[10px] border border-line bg-surface text-muted transition hover:border-primary/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                items={[
+                  { label: "Nova compra", icon: <Plus size={16} />, onSelect: () => setNewPurchaseOpen(true) },
+                  { label: "Finalizar compra", icon: <CheckCircle2 size={16} />, onSelect: () => setFinishOpen(true) },
+                ]}
+              ><Menu size={19} /></ActionMenu></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
-            <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
+            <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar na lista" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
             {filteredItems.length ? <><div className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
           </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
         </div>
@@ -1140,15 +1194,15 @@ export default function RestokApp() {
     </div>
     {!keyboardOpen ? <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div> : null}
     {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-11 w-full rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
-    {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => setEditorItem(null)} onSave={saveItem} /> : null}
-    {addItemOpen ? <AddItemSheet onClose={() => setAddItemOpen(false)} onAdd={addItem} /> : null}
-    {newPurchaseOpen ? <NewPurchaseSheet products={state.products} onClose={() => setNewPurchaseOpen(false)} onCreate={createPurchase} /> : null}
-    {finishOpen ? <ConfirmFinishSheet pending={pending} onClose={() => setFinishOpen(false)} onConfirm={finishPurchase} /> : null}
-    {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => setBudgetEditor(null)} onSave={saveBudget} /> : null}
-    {completeList ? <CompleteSheet list={completeList} onClose={() => setCompleteList(null)} onHistory={() => { setCompleteList(null); setScreen("history"); }} /> : null}
-    {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => setProductEditor(null)} onSave={saveProduct} /> : null}
-    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => setHouseholdManagerOpen(false)} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
-    {toast && !keyboardOpen ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
+    {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
+    {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
+    {newPurchaseOpen ? <NewPurchaseSheet products={state.products} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
+    {finishOpen ? <ConfirmFinishSheet pending={pending} onClose={() => requestSheetClose(() => setFinishOpen(false))} onConfirm={finishPurchase} /> : null}
+    {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => requestSheetClose(() => setBudgetEditor(null))} onSave={saveBudget} /> : null}
+    {completeList ? <CompleteSheet list={completeList} onClose={() => requestSheetClose(() => setCompleteList(null))} onHistory={() => requestSheetClose(() => { setCompleteList(null); setScreen("history"); })} /> : null}
+    {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
+    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
+    {toast && !keyboardOpen ? <ToastMessage key={toast} message={toast} onDismiss={() => setToast(null)} /> : null}
     {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
   </div>;
 }

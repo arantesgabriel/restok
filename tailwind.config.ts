@@ -26,6 +26,14 @@ const config: Config = {
       boxShadow: {
         sheet: "0 -8px 32px oklch(0.18 0.02 145 / 0.12)",
       },
+      transitionDuration: {
+        fast: "var(--motion-fast)",
+        base: "var(--motion-base)",
+        slow: "var(--motion-slow)",
+      },
+      transitionTimingFunction: {
+        restok: "var(--motion-out)",
+      },
       zIndex: {
         dropdown: "20",
         sticky: "30",

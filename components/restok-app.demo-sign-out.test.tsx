@@ -29,7 +29,7 @@ describe("demo sign out", () => {
     localStorage.setItem(LEGACY_REMOTE_STATE_KEY, "legacy");
 
     fireEvent.click(profile);
-    fireEvent.click(screen.getByRole("button", { name: "Limpar dados locais" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Limpar dados locais" }));
 
     expect(await screen.findByText("Dados locais da demonstração apagados")).toBeTruthy();
     expect(localStorage.getItem(LEGACY_REMOTE_STATE_KEY)).toBeNull();

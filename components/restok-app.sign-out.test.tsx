@@ -57,7 +57,7 @@ async function openAccountMenu() {
   const { default: RestokApp } = await import("@/components/restok-app");
   render(<RestokApp />);
   fireEvent.click(await screen.findByRole("button", { name: "Perfil de Ana" }));
-  return screen.getByRole("button", { name: "Sair da conta" });
+  return screen.getByRole("menuitem", { name: "Sair da conta" });
 }
 
 describe("account sign out", () => {

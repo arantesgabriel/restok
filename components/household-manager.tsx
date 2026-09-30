@@ -143,10 +143,10 @@ export function HouseholdManager({
 
   return (
     <AccessibleDialog titleId="household-manager-title" onClose={onClose} className="fixed inset-0 z-modal m-0 flex h-dvh w-screen max-h-none max-w-none items-end justify-center overflow-hidden border-0 bg-transparent p-0 backdrop:bg-ink/35 sm:items-center sm:p-6">
-      <section className="relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto rounded-t-[22px] border border-line bg-canvas px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-5 shadow-sheet sm:max-h-[90vh] sm:rounded-[18px] sm:px-7 sm:pb-7">
+      <section data-dialog-motion className="relative max-h-[92dvh] w-full max-w-2xl overflow-y-auto rounded-t-[22px] border border-line bg-canvas px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-5 shadow-sheet sm:max-h-[90vh] sm:rounded-[18px] sm:px-7 sm:pb-7">
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
-            <h2 id="household-manager-title" className="text-xl font-semibold tracking-[-0.02em] text-ink">Casas e pessoas</h2>
+            <h2 id="household-manager-title" tabIndex={-1} data-dialog-initial-focus className="rounded-sm text-xl font-semibold tracking-[-0.02em] text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Casas e pessoas</h2>
             <p className="mt-1 text-sm leading-6 text-muted">Escolha uma casa, gerencie quem participa e controle os convites.</p>
           </div>
           <button type="button" onClick={onClose} className="grid h-11 w-11 shrink-0 place-items-center rounded-[10px] border border-line bg-surface text-lg text-muted" aria-label="Fechar">×</button>

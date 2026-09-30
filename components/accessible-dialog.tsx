@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type MouseEvent, type ReactNode } from "react";
 
 export function AccessibleDialog({
   titleId,
@@ -17,7 +17,7 @@ export function AccessibleDialog({
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
@@ -25,10 +25,16 @@ export function AccessibleDialog({
       ? document.activeElement
       : null;
     dialog.showModal();
+    const initialFocus = dialog.querySelector<HTMLElement>("[data-initial-focus]")
+      ?? dialog.querySelector<HTMLElement>("[data-dialog-initial-focus]");
+    initialFocus?.focus({ preventScroll: true });
 
     return () => {
       if (dialog.open) dialog.close();
-      if (previouslyFocused?.isConnected) previouslyFocused.focus();
+      const returnTarget = previouslyFocused?.isConnected
+        ? previouslyFocused
+        : document.querySelector<HTMLElement>("[data-dialog-return-focus]");
+      returnTarget?.focus();
     };
   }, []);
 
@@ -39,6 +45,7 @@ export function AccessibleDialog({
   return (
     <dialog
       ref={dialogRef}
+      data-state="open"
       aria-modal="true"
       aria-labelledby={titleId}
       onCancel={(event) => {
