@@ -599,7 +599,8 @@ function CategoryNameSortButton({ category, direction, onToggle }: { category: C
 }
 
 function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
-  return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="min-h-11 px-2 text-xs font-semibold text-muted hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Desativar</button></div>;
+  const action = product.active ? "Desativar" : "Ativar";
+  return <div className="flex min-h-[68px] items-center gap-3"><span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm", product.active ? "bg-sage text-primary" : "bg-surface text-muted")}>{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" data-product-toggle-id={product.id} onClick={onToggle} className={cn("min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", product.active ? "text-muted hover:text-terracotta" : "text-primary hover:bg-sage")}>{action}<span className="sr-only"> {product.name}</span></button></div>;
 }
 
 function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
@@ -609,15 +610,24 @@ function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onCh
 function ProductsHome({ products, lists, householdName, categorySort, onToggleCategorySort, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; categorySort: Partial<Record<CategoryName, NameSortDirection>>; onToggleCategorySort: (category: CategoryName) => void; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
   const [viewMode, setViewMode] = useState<ProductViewMode>("category");
   const active = products.filter((product) => product.active);
+  const inactive = sortByName(products.filter((product) => !product.active), "asc");
   const sorted = sortByName(active, "asc");
   const grouped = CATEGORY_ORDER.map((category) => {
     const direction = categorySort[category] ?? "asc";
     return { category, direction, products: sortByName(active.filter((product) => product.category === category), direction) };
   }).filter((section) => section.products.length);
 
-  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
+  return <div className="space-y-7">
+    <div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
     <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
-    <div><div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><ViewModeToggle mode={viewMode} onChange={setViewMode} label="Ordenar produtos" /><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>{active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><div className="mb-2 flex items-center justify-between gap-3"><h3 className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><CategoryNameSortButton category={section.category} direction={section.direction} onToggle={() => onToggleCategorySort(section.category)} /></div><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div>
+    <div>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 data-products-heading tabIndex={-1} className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><ViewModeToggle mode={viewMode} onChange={setViewMode} label="Ordenar produtos" /><button type="button" className="min-h-11 rounded-md px-2 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>
+      {active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><div className="mb-2 flex items-center justify-between gap-3"><h3 className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><CategoryNameSortButton category={section.category} direction={section.direction} onToggle={() => onToggleCategorySort(section.category)} /></div><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description={inactive.length ? "Todos os produtos recorrentes estão inativos. Reative um item ou adicione um novo." : "Adicione os itens que não podem faltar em casa."} action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}
+    </div>
+    {inactive.length ? <details open={!active.length} className="border-t border-line pt-3">
+      <summary data-inactive-products-summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-md text-sm font-semibold text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden"><span>Produtos inativos <span className="ml-1 font-normal">{inactive.length}</span></span><ChevronDown size={17} className="shrink-0 transition-transform open:rotate-180" /></summary>
+      <div className="mt-2 divide-y divide-line border-y border-line">{inactive.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div>
+    </details> : null}
   </div>;
 }
 
@@ -1089,7 +1099,20 @@ export default function RestokApp() {
     setState((current) => ({ ...current, products: id ? current.products.map((item) => item.id === id ? savedProduct : item) : [...current.products, savedProduct] }));
     runRemoteWrite(`product:${savedProduct.id}`, id ? "Produto atualizado" : "Produto adicionado à casa", () => persistProduct(savedProduct, activeHouseholdId));
   };
-  const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); runRemoteWrite(`product:${updated.id}`, "Produto desativado", () => persistProduct(updated, activeHouseholdId)); };
+  const toggleProduct = (id: string) => {
+    const product = state.products.find((item) => item.id === id);
+    if (!product) return;
+    const focusedToggle = document.activeElement instanceof HTMLElement && document.activeElement.dataset.productToggleId === id;
+    const updated = { ...product, active: !product.active };
+    setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) }));
+    if (focusedToggle) window.requestAnimationFrame(() => {
+      const productToggles = [...document.querySelectorAll<HTMLButtonElement>("[data-product-toggle-id]")];
+      const nextToggle = productToggles.find((button) => button.dataset.productToggleId === id);
+      const destination = updated.active ? nextToggle : document.querySelector<HTMLElement>("[data-inactive-products-summary]");
+      (destination ?? document.querySelector<HTMLElement>("[data-products-heading]"))?.focus();
+    });
+    runRemoteWrite(`product:${updated.id}`, updated.active ? "Produto ativado" : "Produto desativado", () => persistProduct(updated, activeHouseholdId));
+  };
   const activateHousehold = async (householdId: string) => {
     if (!isSupabaseConfigured) return householdId === "demo-household";
     const context = await resolveRemoteContext(householdId).catch(() => null);
