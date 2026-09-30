@@ -5,8 +5,8 @@
 | Fase | Descrição | Status |
 |---|---|---|
 | 0 | Discovery e planejamento | Concluída e aprovada — decisões registradas abaixo |
-| 1 | Composição visual estática | Concluída — aguardando aprovação para a Fase 2 |
-| 2 | Fundação do sistema de animação | Não iniciada |
+| 1 | Composição visual estática | Concluída e aprovada — início da Fase 2 autorizado |
+| 2 | Fundação do sistema de animação | Concluída — aguardando aprovação para a Fase 3 |
 | 3 | Cena 1: planejamento e colaboração | Não iniciada |
 | 4 | Cena 2: dentro do mercado | Não iniciada |
 | 5 | Cena 3: finalização e métricas | Não iniciada |
@@ -37,6 +37,16 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 2. **Dataset** — uma compra de 11 itens em `showcase-data.ts`. Total R$ 468,05 (soma dos comprados), orçamento R$ 800,00, disponíveis R$ 331,95. "Já temos" (sabonete) fica de fora. Economizados R$ 38,00 é a soma do que ficou abaixo do preço anterior, não o mock antigo de R$ 46,28 / 28 itens / R$ 483,72.
 3. **Quadro parado** — lista em "Dentro do mercado" com 11 de 11 resolvidos, cartão "Maria adicionou Café" e cartão "Compra concluída" com o mesmo total. O passo em destaque é **Compre**, porque a lista é o cartão dominante. Sem animação.
 4. **Painel** — continua oculto em ≤800px. Abaixo de 820px de altura o bloco compacta para caber em 768px sem rolagem.
+
+## Decisões da Fase 2
+
+1. **Fonte de verdade** — `showcase-timeline.ts` guarda o roteiro e o reducer puro. `use-showcase-timeline.ts` arma um único `setTimeout` encadeado. Não há timers nos componentes e nenhuma biblioteca nova.
+2. **Estados** — `idle` (quadro parado, antes de saber o ambiente), `playing`, `paused` (retomável) e `stopped` (interrupção ou reduced motion). A cena derivada é `still` ou `script`.
+3. **O que a tela mostra nesta fase** — o indicador Planeje / Compre / Acompanhe segue a etapa. O miolo dos cartões continua o quadro da Fase 1. Os beats existem no roteiro e ainda não animam.
+4. **Duração** — ciclo de 15s. Planejamento 0–4,2s, mercado 4,2–10s, acompanhamento 10–15s, com pausa de 2s no final (13–15s) antes de reiniciar.
+5. **Ajustes em relação ao exemplo do briefing** — o café entra na lista antes da ida ao mercado; marcar um item e atualizar o orçamento é o mesmo beat, porque a Fase 4 pede que sejam uma única ação; a pausa final é de 2s.
+6. **Reduced motion, aba e painel** — com `prefers-reduced-motion: reduce` o script não corre e o quadro parado permanece. Aba oculta ou painel em ≤800px congela o relógio sem descartar o instante. Interromper volta ao quadro parado e não religa sozinho. O autoplay só começa em `idle`, com motion permitido, painel visível e aba visível.
+7. **Primeiro quadro** — servidor e primeiro render do cliente mostram o quadro parado (Compre), para não divergir na hidratação. O autoplay passa a Planeje no efeito seguinte.
 
 ---
 

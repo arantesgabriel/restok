@@ -1,3 +1,5 @@
+"use client";
+
 import { Check, House } from "lucide-react";
 import { formatBRL, categoryIcon } from "@/lib/utils";
 import {
@@ -8,7 +10,6 @@ import {
   demoItems,
   demoListName,
   demoStillItemIds,
-  demoStillStep,
   demoStory,
   lineCents,
   resolvedCount,
@@ -16,6 +17,8 @@ import {
   spentCents,
   type DemoItem,
 } from "@/components/login-showcase/showcase-data";
+import { showcaseStepId } from "@/components/login-showcase/showcase-timeline";
+import { useShowcaseTimeline } from "@/components/login-showcase/use-showcase-timeline";
 
 const money = (cents: number) => formatBRL(cents / 100);
 
@@ -25,6 +28,8 @@ const stillItems = demoStillItemIds.flatMap((id) => {
 });
 
 export function LoginShowcase() {
+  const { scene } = useShowcaseTimeline();
+  const stepId = showcaseStepId(scene);
   const spent = spentCents(demoItems);
   const remaining = demoBudgetCents - spent;
   const saved = savedCents(demoItems);
@@ -39,7 +44,7 @@ export function LoginShowcase() {
         <p>Vocês planejam juntos, acompanham o gasto no mercado e levam o total para a próxima compra.</p>
       </header>
 
-      <div className="login-showcase-stage" aria-hidden="true">
+      <div className="login-showcase-stage" data-stage={scene.mode === "still" ? "still" : scene.stage} aria-hidden="true">
         <article className="login-showcase-collab">
           <span className="login-showcase-avatar">{demoCollaborator.initials}</span>
           <p><b>{demoCollaborator.name}</b> {demoCollaborator.action}</p>
@@ -81,7 +86,7 @@ export function LoginShowcase() {
 
       <ol className="login-showcase-steps" aria-hidden="true">
         {demoStory.map((step) => (
-          <li key={step.id} className={step.id === demoStillStep ? "is-current" : undefined}>
+          <li key={step.id} className={step.id === stepId ? "is-current" : undefined}>
             <span>{step.label}</span>
           </li>
         ))}
