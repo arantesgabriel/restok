@@ -214,7 +214,7 @@ button { cursor: pointer; }
 .login-showcase-bar span { display: block; width: 100%; height: 100%; border-radius: inherit; background: oklch(var(--primary)); transform: scaleX(0); transform-origin: left center; transition: transform 420ms ease-out; }
 .login-showcase-items { position: relative; max-height: 240px; margin-top: 4px; padding: 0 14px; transition: opacity 280ms ease-out, max-height 360ms ease-out, margin 360ms ease-out; }
 .login-showcase-items.is-dismissed { max-height: 0; margin-top: 0; opacity: 0; overflow: hidden; }
-.login-showcase-items::after { content: ""; position: absolute; right: 14px; bottom: 0; left: 14px; height: 22px; background: linear-gradient(to bottom, oklch(1 0 0 / 0), oklch(var(--surface))); pointer-events: none; }
+.login-showcase-items::after { content: ""; position: absolute; right: 14px; bottom: 0; left: 14px; height: 4px; background: linear-gradient(to bottom, oklch(1 0 0 / 0), oklch(var(--surface))); pointer-events: none; }
 .login-showcase-items.is-planning::after { content: none; }
 .login-showcase-item { display: flex; align-items: center; gap: 10px; min-height: 48px; border-bottom: 1px solid oklch(var(--line) / 0.8); }
 .login-showcase-item:last-child { border-bottom: 0; }
@@ -259,6 +259,9 @@ button { cursor: pointer; }
 .login-showcase-steps li { position: relative; display: flex; flex: 1; flex-direction: column; align-items: center; gap: 8px; color: oklch(var(--muted)); font-size: 13px; transition: color var(--login-showcase-fade, 560ms) ease-out; }
 .login-showcase-steps li::before { content: ""; z-index: 1; width: 9px; height: 9px; border: 1.5px solid oklch(var(--line)); border-radius: 50%; background: oklch(0.94 0.03 145); transition: background-color var(--login-showcase-fade, 560ms) ease-out, border-color var(--login-showcase-fade, 560ms) ease-out; }
 .login-showcase-steps li:not(:last-child)::after { content: ""; position: absolute; top: 4px; left: 50%; width: 100%; height: 1px; background: oklch(var(--line)); }
+.login-showcase-steps li.is-complete { color: oklch(var(--ink)); }
+.login-showcase-steps li.is-complete::before { border-color: oklch(var(--primary)); background: oklch(var(--primary)); }
+.login-showcase-steps li.is-complete::after { background: oklch(var(--primary)); }
 .login-showcase-steps li.is-current { color: oklch(var(--ink)); font-weight: var(--weight-semibold); }
 .login-showcase-steps li.is-current::before { border-color: oklch(var(--primary)); background: oklch(var(--primary)); }
 
@@ -304,6 +307,7 @@ button { cursor: pointer; }
   .login-showcase-budget strong { font-size: 20px; }
   .login-showcase-item { min-height: 42px; }
   .login-showcase-collab { margin-bottom: -10px; }
+  .login-showcase-items::after { content: none; }
   .login-showcase-stage[data-stage="still"],
   .login-showcase-stage[data-stage="planning"],
   .login-showcase-stage[data-stage="shopping"],

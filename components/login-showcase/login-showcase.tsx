@@ -52,6 +52,7 @@ export function LoginShowcase() {
 
   const script = scene.mode === "script" && scene.beat !== null;
   const handoff = script && showcaseLoopHandoff(scene);
+  const stepIndex = demoStory.findIndex((step) => step.id === stepId);
 
   return (
     <aside
@@ -95,8 +96,8 @@ export function LoginShowcase() {
       </div>
 
       <ol className="login-showcase-steps" aria-hidden="true">
-        {demoStory.map((step) => (
-          <li key={step.id} className={step.id === stepId ? "is-current" : undefined}>
+        {demoStory.map((step, index) => (
+          <li key={step.id} className={index === stepIndex ? "is-current" : index < stepIndex ? "is-complete" : undefined}>
             <span>{step.label}</span>
           </li>
         ))}

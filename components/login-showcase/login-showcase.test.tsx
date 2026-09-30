@@ -101,6 +101,17 @@ describe("login showcase motion", () => {
     expect(screen.getByText("10 itens")).toBeTruthy();
   });
 
+  it("marks the steps already passed in the story", () => {
+    enableImmediateAutoplay();
+    installMatchMedia({
+      [showcaseReducedMotionQuery]: true,
+      [showcasePanelQuery]: true,
+    });
+    render(<LoginShowcase />);
+    const steps = [...document.querySelectorAll(".login-showcase-steps li")].map((step) => step.className);
+    expect(steps).toEqual(["is-complete", "is-current", ""]);
+  });
+
   it("stays on the still market frame when reduced motion is requested", async () => {
     enableImmediateAutoplay();
     const quiet = installMatchMedia({
