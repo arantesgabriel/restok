@@ -38,6 +38,14 @@ export const demoItems: DemoItem[] = [
 /** Janela do cartão: comprado, comprado, item da colaboração e "já temos". */
 export const demoStillItemIds = ["frango", "leite", "cafe", "sabonete"] as const;
 
+/**
+ * Itens que entram na cena de planejamento, nesta ordem.
+ * Os três primeiros já fazem parte das 10; o café é o 11º, acrescentado pela colaboração.
+ */
+export const planningSlotIds = ["arroz", "leite", "frango", "cafe"] as const;
+export const planningBaseItemCount = 10;
+export const planningJoinedItemCount = 11;
+
 export const demoCollaborator = {
   name: "Maria",
   initials: "MA",

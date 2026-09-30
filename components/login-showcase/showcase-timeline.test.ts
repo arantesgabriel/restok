@@ -5,6 +5,7 @@ import {
   initialShowcaseTimelineState,
   isShowcaseRunning,
   nextCueDelayMs,
+  planningFrame,
   reduceShowcaseTimeline,
   sceneFromElapsed,
   showcaseCues,
@@ -88,6 +89,31 @@ describe("showcase timeline script", () => {
 
   it.each(marks)("at %sms is %s / %s", (elapsedMs, stage, beat) => {
     expect(sceneFromElapsed(elapsedMs)).toEqual({ stage, beat });
+  });
+});
+
+describe("planning scene", () => {
+  it("opens on an existing list of 10 and only counts the collaborative item", () => {
+    expect(planningFrame("planning-start")).toEqual({
+      revealedIds: [],
+      itemCount: 10,
+      collaborationVisible: false,
+    });
+    expect(planningFrame("item-arroz")).toMatchObject({ revealedIds: ["arroz"], itemCount: 10, collaborationVisible: false });
+    expect(planningFrame("item-leite")).toMatchObject({ revealedIds: ["arroz", "leite"], itemCount: 10 });
+    expect(planningFrame("item-frango")).toMatchObject({ revealedIds: ["arroz", "leite", "frango"], itemCount: 10, collaborationVisible: false });
+    expect(planningFrame("collaboration")).toMatchObject({
+      revealedIds: ["arroz", "leite", "frango"],
+      itemCount: 10,
+      collaborationVisible: true,
+    });
+    expect(planningFrame("item-cafe")).toEqual({
+      revealedIds: ["arroz", "leite", "frango", "cafe"],
+      itemCount: 11,
+      collaborationVisible: true,
+    });
+    expect(planningFrame("to-shopping").revealedIds).toEqual([]);
+    expect(planningFrame(null).itemCount).toBe(10);
   });
 });
 

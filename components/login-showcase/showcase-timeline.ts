@@ -1,8 +1,14 @@
-import { demoStillStep, demoStory } from "@/components/login-showcase/showcase-data";
+import {
+  demoStillStep,
+  demoStory,
+  planningBaseItemCount,
+  planningJoinedItemCount,
+  planningSlotIds,
+} from "@/components/login-showcase/showcase-data";
 
 /**
  * Roteiro da demonstração de login e o reducer que o executa.
- * A tela desta fase só lê a etapa. Os beats ficam prontos para as cenas.
+ * A cena de planejamento lê o beat. Mercado e acompanhamento ainda usam o quadro parado.
  *
  * 0.0s planning start
  * 1.0s arroz · 1.6s leite · 2.2s frango
@@ -154,6 +160,31 @@ export function deriveShowcaseScene(state: ShowcaseTimelineState): ShowcaseScene
     stage: cue.stage,
     beat: cue.beat,
     running: isShowcaseRunning(state),
+  };
+}
+
+export type PlanningFrame = {
+  revealedIds: readonly string[];
+  itemCount: number;
+  collaborationVisible: boolean;
+};
+
+const planningRevealCount: Partial<Record<ShowcaseBeat, number>> = {
+  "planning-start": 0,
+  "item-arroz": 1,
+  "item-leite": 2,
+  "item-frango": 3,
+  collaboration: 3,
+  "item-cafe": 4,
+};
+
+/** Quadro da cena 1. Fora do planejamento não revela itens: essa função não desenha as cenas seguintes. */
+export function planningFrame(beat: ShowcaseBeat | null): PlanningFrame {
+  const revealed = beat ? planningRevealCount[beat] ?? 0 : 0;
+  return {
+    revealedIds: planningSlotIds.slice(0, revealed),
+    itemCount: revealed >= planningSlotIds.length ? planningJoinedItemCount : planningBaseItemCount,
+    collaborationVisible: beat === "collaboration" || beat === "item-cafe",
   };
 }
 

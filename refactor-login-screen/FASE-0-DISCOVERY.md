@@ -6,8 +6,8 @@
 |---|---|---|
 | 0 | Discovery e planejamento | Concluída e aprovada — decisões registradas abaixo |
 | 1 | Composição visual estática | Concluída e aprovada — início da Fase 2 autorizado |
-| 2 | Fundação do sistema de animação | Concluída — aguardando aprovação para a Fase 3 |
-| 3 | Cena 1: planejamento e colaboração | Não iniciada |
+| 2 | Fundação do sistema de animação | Concluída e aprovada — início da Fase 3 autorizado |
+| 3 | Cena 1: planejamento e colaboração | Concluída — aguardando aprovação para a Fase 4 |
 | 4 | Cena 2: dentro do mercado | Não iniciada |
 | 5 | Cena 3: finalização e métricas | Não iniciada |
 | 6 | Loop e storytelling completo | Não iniciada |
@@ -47,6 +47,15 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 5. **Ajustes em relação ao exemplo do briefing** — o café entra na lista antes da ida ao mercado; marcar um item e atualizar o orçamento é o mesmo beat, porque a Fase 4 pede que sejam uma única ação; a pausa final é de 2s.
 6. **Reduced motion, aba e painel** — com `prefers-reduced-motion: reduce` o script não corre e o quadro parado permanece. Aba oculta ou painel em ≤800px congela o relógio sem descartar o instante. Interromper volta ao quadro parado e não religa sozinho. O autoplay só começa em `idle`, com motion permitido, painel visível e aba visível.
 7. **Primeiro quadro** — servidor e primeiro render do cliente mostram o quadro parado (Compre), para não divergir na hidratação. O autoplay passa a Planeje no efeito seguinte.
+
+## Decisões da Fase 3
+
+1. **Escopo** — só a cena de planejamento anima. Com `stage === "planning"` o painel mostra a lista da casa. Mercado e acompanhamento continuam o quadro parado da Fase 1; as Fases 4 e 5 é que trocam esses miolos.
+2. **Contador** — abre em 10 itens. Arroz, leite e frango entram sem mudar o total. O café, no beat seguinte ao aviso da Maria, leva o contador a 11, com um salto curto de opacidade.
+3. **Entrada** — o cartão começa só com o título. Cada produto entra com opacidade e `translateY` de 8px. A altura da cena fica reservada, então o título e o indicador não se mexem enquanto a lista cresce. O café ainda recebe um flash sage.
+4. **Colaboração** — o cartão "MA · Maria adicionou Café" aparece 600ms antes do item, por cima da lista, e permanece até o fim da cena.
+5. **Itens** — nesta cena ficam pendentes, sem preço. O kicker é "Lista da casa". O indicador marca Planeje.
+6. **Reduced motion** — o script continua parado no quadro da Fase 1. Esta cena não roda.
 
 ---
 

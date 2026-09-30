@@ -5,6 +5,9 @@ import {
   demoHistoryCents,
   demoItems,
   demoStillItemIds,
+  planningBaseItemCount,
+  planningJoinedItemCount,
+  planningSlotIds,
   lineCents,
   resolvedCount,
   savedCents,
@@ -33,5 +36,8 @@ describe("login showcase dataset", () => {
     expect(savedCents(demoItems)).toBe(3_800);
     expect(demoHistoryCents.at(-1)).toBe(spentCents(demoItems));
     expect(demoStillItemIds.every((id) => demoItems.some((entry) => entry.id === id))).toBe(true);
+    expect(planningSlotIds).toEqual(["arroz", "leite", "frango", "cafe"]);
+    expect(planningBaseItemCount).toBe(demoItems.length - 1);
+    expect(planningJoinedItemCount).toBe(demoItems.length);
   });
 });
