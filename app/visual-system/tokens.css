@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Restok Geist";
+  src: url("/fonts/geist-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Phase 2 proposal: scoped until the foundations are approved for migration. */
+.visual-system {
+  --restok-green: #174c3c;
+  --restok-soft: #b8d8c7;
+  --restok-mist: #eaf3ee;
+  --restok-canvas: #fafaf7;
+  --restok-ink: #171a18;
+  --restok-text-secondary: #52645b;
+  --restok-line: #d6dfd9;
+  --restok-line-strong: #70877b;
+  --restok-danger: #963f36;
+  --restok-danger-surface: #faefed;
+  --restok-warning: #755119;
+  --restok-warning-surface: #f8f1e5;
+  --restok-space-1: 4px;
+  --restok-space-2: 8px;
+  --restok-space-3: 12px;
+  --restok-space-4: 16px;
+  --restok-space-5: 20px;
+  --restok-space-6: 24px;
+  --restok-space-8: 32px;
+  --restok-space-10: 40px;
+  --restok-radius-control: 8px;
+  --restok-radius-surface: 12px;
+  --restok-radius-sheet: 16px;
+  --restok-radius-pill: 999px;
+  --restok-shadow-menu: 0 2px 8px rgb(23 76 60 / 12%);
+  --restok-shadow-sheet: 0 -2px 8px rgb(23 76 60 / 12%);
+  --restok-motion-instant: 100ms;
+  --restok-motion-fast: 160ms;
+  --restok-motion-base: 220ms;
+  --restok-motion-slow: 280ms;
+  --restok-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --restok-z-menu: 20;
+  --restok-z-sticky: 30;
+  --restok-z-dialog: 40;
+  --restok-z-toast: 50;
+  --restok-touch: 44px;
+  --restok-nav-height: 60px;
+  --restok-dock-height: 64px;
+  min-height: 100dvh;
+  background: var(--restok-canvas);
+  color: var(--restok-ink);
+  font-family: "Restok Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.visual-system *, .visual-system *::before, .visual-system *::after { box-sizing: border-box; }
+.visual-system :where(h1, h2, h3, p) { margin: 0; }
+.visual-system :where(h1, h2, h3) { font-weight: 600; text-wrap: balance; }
+.visual-system :where(button, input, select) { font: inherit; }
+.visual-system :where(button, a, input, select, summary):focus-visible {
+  outline: 2px solid var(--restok-green);
+  outline-offset: 3px;
+}
+.visual-system :where(button) { cursor: pointer; }
+.visual-system :where(button:disabled) { cursor: not-allowed; }
+.visual-system :where(svg) { flex-shrink: 0; stroke-width: 1.75; }
+
+@media (prefers-reduced-motion: reduce) {
+  .visual-system { --restok-motion-instant: 0ms; --restok-motion-fast: 0ms; --restok-motion-base: 0ms; --restok-motion-slow: 0ms; }
+  .visual-system *, .visual-system *::before, .visual-system *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
