@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Check, Eye, EyeOff, House, LockKeyhole, Mail, ShoppingBasket, UserRound } from "lucide-react";
+import { Eye, EyeOff, LockKeyhole, Mail, ShoppingBasket, UserRound } from "lucide-react";
+import { LoginShowcase } from "@/components/login-showcase/login-showcase";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -171,28 +172,7 @@ export default function LoginPage() {
         <footer className="login-foot">© 2026 RESTOK</footer>
       </section>
 
-      <aside className="login-aside">
-        <div className="login-scene" aria-hidden="true">
-          <div className="landing-preview">
-            <div className="preview-top"><span className="preview-brand">restok<span>.</span></span><span className="preview-user">GB</span></div>
-            <div className="preview-heading"><div><span className="preview-kicker">Dentro do mercado</span><strong>Compras de Setembro</strong><small>18 de 32 resolvidos</small></div></div>
-            <div className="preview-budget"><div><small>Gasto até agora</small><strong>R$ 483,72</strong></div><span><b>R$ 316,28</b><small>disponíveis</small></span><i><em style={{ width: "61%" }} /></i></div>
-            <div className="preview-items">
-              <div className="preview-item resolved"><span className="preview-check"><Check size={12} /></span><div><b>Filé de peito de frango</b><small>10 un. · R$ 158,90</small></div></div>
-              <div className="preview-item"><span className="preview-symbol">◌</span><div><b>Leite desnatado</b><small>2 un. · Adicionar preço</small></div></div>
-              <div className="preview-item resolved"><span className="preview-symbol"><House size={12} /></span><div><b>Sabonete</b><small>3 un. · Já temos</small></div></div>
-            </div>
-          </div>
-        </div>
-        <div className="login-caption">
-          <p>A lista que vai com vocês até o caixa.</p>
-          <ul>
-            <li><Check size={14} aria-hidden="true" />Marque sem soltar o carrinho</li>
-            <li><Check size={14} aria-hidden="true" />O total segue o preço real</li>
-            <li><Check size={14} aria-hidden="true" />“Já temos” fica fora da conta</li>
-          </ul>
-        </div>
-      </aside>
+      <LoginShowcase />
     </main>
   );
 }
