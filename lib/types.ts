@@ -45,6 +45,7 @@ export type ShoppingItem = {
   quantity: number;
   unitPrice?: number;
   status: ItemStatus;
+  sortOrder: number;
 };
 
 export type ShoppingList = {

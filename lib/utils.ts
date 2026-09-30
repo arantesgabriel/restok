@@ -71,8 +71,23 @@ export const latestPriceFor = (productId: string | undefined, lists: ShoppingLis
   return previous?.unitPrice;
 };
 
+export const nextSortOrder = (items: ShoppingItem[]) =>
+  items.reduce((max, item) => (Number.isFinite(item.sortOrder) ? Math.max(max, item.sortOrder) : max), -1) + 1;
+
+export const orderedShoppingItems = (items: ShoppingItem[]) => {
+  let next = nextSortOrder(items);
+  return items
+    .map((item) => {
+      if (Number.isFinite(item.sortOrder)) return item;
+      const sortOrder = next;
+      next += 1;
+      return { ...item, sortOrder };
+    })
+    .sort((a, b) => a.sortOrder - b.sortOrder || a.id.localeCompare(b.id));
+};
+
 export const groupItems = (items: ShoppingItem[]) =>
-  items.reduce<Partial<Record<CategoryName, ShoppingItem[]>>>((groups, item) => {
+  orderedShoppingItems(items).reduce<Partial<Record<CategoryName, ShoppingItem[]>>>((groups, item) => {
     (groups[item.category] ??= []).push(item);
     return groups;
   }, {});

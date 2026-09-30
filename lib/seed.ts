@@ -102,6 +102,7 @@ const makeItems = (statusPattern: (index: number, product: Product) => ShoppingI
       quantity: product.defaultQuantity,
       ...(withPrices && price ? { unitPrice: price } : {}),
       status: statusPattern(index, product),
+      sortOrder: index,
     };
   });
 

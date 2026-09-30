@@ -397,4 +397,76 @@ describe("tenant isolation through PostgREST", () => {
     });
     expect(unauthorizedCreate.error).not.toBeNull();
   });
+
+  it("keeps item order when an item is marked already in the house", async () => {
+    const listId = randomUUID();
+    const firstId = randomUUID();
+    const secondId = randomUUID();
+    const thirdId = randomUUID();
+    const appendedId = randomUUID();
+    const requestedList = {
+      id: listId,
+      name: `Ordered trip ${randomUUID()}`,
+      budget: 80,
+      status: "active",
+      started_at: new Date().toISOString(),
+    };
+    const item = (id: string, name: string, sortOrder: number, status: "pending" | "already_have" = "pending") => ({
+      id,
+      product_id: null,
+      category_id: null,
+      name,
+      quantity: 1,
+      unit_price: null,
+      status,
+      sort_order: sortOrder,
+    });
+    const created = await userA.rpc("create_shopping_list_with_items", {
+      requested_household: fixture.householdA,
+      requested_list: requestedList,
+      requested_items: [
+        item(thirdId, "Third", 2),
+        item(firstId, "First", 0),
+        item(secondId, "Second", 1),
+      ],
+      idempotent_create: true,
+    });
+    expect(created.error).toBeNull();
+
+    const reshuffled = await userA.rpc("create_shopping_list_with_items", {
+      requested_household: fixture.householdA,
+      requested_list: requestedList,
+      requested_items: [
+        item(secondId, "Second", 9, "already_have"),
+        item(thirdId, "Third", 8),
+        item(firstId, "First", 7),
+      ],
+      idempotent_create: false,
+    });
+    expect(reshuffled.error).toBeNull();
+
+    const appended = await userA.rpc("create_shopping_list_with_items", {
+      requested_household: fixture.householdA,
+      requested_list: requestedList,
+      requested_items: [
+        item(firstId, "First", 0),
+        item(secondId, "Second", 1, "already_have"),
+        item(thirdId, "Third", 2),
+        { ...item(appendedId, "Fourth", 0), sort_order: 0 },
+      ],
+      idempotent_create: false,
+    });
+    expect(appended.error).toBeNull();
+
+    const saved = await userA
+      .from("shopping_list_items")
+      .select("id,status,sort_order")
+      .eq("shopping_list_id", listId)
+      .order("sort_order")
+      .order("id");
+    expect(saved.error).toBeNull();
+    expect(saved.data?.map((row) => row.id)).toEqual([firstId, secondId, thirdId, appendedId]);
+    expect(saved.data?.map((row) => row.sort_order)).toEqual([0, 1, 2, 3]);
+    expect(saved.data?.find((row) => row.id === secondId)?.status).toBe("already_have");
+  });
 });

@@ -2,6 +2,7 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { seedProducts } from "@/lib/seed";
 import type { CategoryName, HouseholdInvite, HouseholdMember, HouseholdRole, HouseholdSummary, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
+import { orderedShoppingItems } from "@/lib/utils";
 
 const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpeza", "Outros"];
 export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; email: string | null; profileName: string | null; householdId: string; householdName: string; role: HouseholdRole };
@@ -145,14 +146,14 @@ export async function loadRemoteState(existingContext?: RemoteContext): Promise<
   if (listsError) return null;
   const lists = foundLists ?? [];
   const listIds = (lists ?? []).map((list) => list.id);
-  let items: { id: string; shopping_list_id: string; product_id: string | null; category_id: string | null; name: string; quantity: number; unit_price: number | null; status: ShoppingItem["status"] }[] = [];
+  let items: { id: string; shopping_list_id: string; product_id: string | null; category_id: string | null; name: string; quantity: number; unit_price: number | null; status: ShoppingItem["status"]; sort_order: number }[] = [];
   if (listIds.length) {
-    const { data: foundItems, error: itemsError } = await context.client.from("shopping_list_items").select("id,shopping_list_id,product_id,category_id,name,quantity,unit_price,status").in("shopping_list_id", listIds).order("created_at");
+    const { data: foundItems, error: itemsError } = await context.client.from("shopping_list_items").select("id,shopping_list_id,product_id,category_id,name,quantity,unit_price,status,sort_order").in("shopping_list_id", listIds).order("sort_order").order("id");
     if (itemsError) return null;
     items = foundItems ?? [];
   }
   const itemsByList = items.reduce<Record<string, ShoppingItem[]>>((grouped, item) => {
-    (grouped[item.shopping_list_id] ??= []).push({ id: item.id, productId: item.product_id ?? undefined, name: item.name, category: item.category_id ? categoryById[item.category_id] ?? "Outros" : "Outros", quantity: Number(item.quantity), unitPrice: item.unit_price == null ? undefined : Number(item.unit_price), status: item.status });
+    (grouped[item.shopping_list_id] ??= []).push({ id: item.id, productId: item.product_id ?? undefined, name: item.name, category: item.category_id ? categoryById[item.category_id] ?? "Outros" : "Outros", quantity: Number(item.quantity), unitPrice: item.unit_price == null ? undefined : Number(item.unit_price), status: item.status, sortOrder: Number(item.sort_order) });
     return grouped;
   }, {});
   return {
@@ -276,6 +277,7 @@ export async function persistItem(listId: string | undefined, item: ShoppingItem
       quantity: item.quantity,
       unit_price: item.unitPrice ?? null,
       status: item.status,
+      sort_order: item.sortOrder,
     });
     return error ? failedWriteResult : syncedWriteResult;
   } catch {
@@ -321,7 +323,7 @@ async function persistShoppingListWithItems(list: ShoppingList, preferredHouseho
         started_at: list.startedAt,
         finished_at: list.finishedAt ?? null,
       },
-      requested_items: list.items.map((item) => ({
+      requested_items: orderedShoppingItems(list.items).map((item) => ({
         id: item.id,
         product_id: item.productId ?? null,
         category_id: categoryIds[item.category] ?? null,
@@ -329,6 +331,7 @@ async function persistShoppingListWithItems(list: ShoppingList, preferredHouseho
         quantity: item.quantity,
         unit_price: item.unitPrice ?? null,
         status: item.status,
+        sort_order: item.sortOrder,
       })),
       idempotent_create: idempotentCreate,
     });

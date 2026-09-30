@@ -41,6 +41,7 @@ import {
   formatBRL,
   formatPercent,
   groupItems,
+  nextSortOrder,
   itemSubtotal,
   latestPriceFor,
   listPending,
@@ -384,7 +385,7 @@ function AddItemSheet({
   onAdd,
 }: {
   onClose: () => void;
-  onAdd: (item: Omit<ShoppingItem, "id">, addToHome: boolean) => void;
+  onAdd: (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => void;
 }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -916,9 +917,9 @@ export default function RestokApp() {
     const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status, unitPrice: status === "purchased" ? current.unitPrice : undefined } : current));
     if (updated) persistUpdatedList(updated, status === "already_have" ? "Marcado como já temos" : status === "purchased" ? "Adicionado ao carrinho" : "Situação desfeita");
   };
-  const addItem = (item: Omit<ShoppingItem, "id">, addToHome: boolean) => {
+  const addItem = (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => {
     const productId = addToHome ? makeId("product") : undefined;
-    const newItem = { ...item, id: makeId("item"), ...(productId ? { productId } : {}) };
+    const newItem = { ...item, id: makeId("item"), sortOrder: nextSortOrder(activeList?.items ?? []), ...(productId ? { productId } : {}) };
     const updated = updateActiveItems((items) => [...items, newItem]);
     if (!updated) return;
     const newProduct = addToHome && productId ? { id: productId, name: item.name, category: item.category, defaultQuantity: item.quantity, active: true } : null;
@@ -933,7 +934,7 @@ export default function RestokApp() {
     setAddItemOpen(false);
   };
   const createPurchase = (name: string, budget: number, selectedIds: string[]) => {
-    const items: ShoppingItem[] = state.products.filter((product) => selectedIds.includes(product.id)).map((product) => ({ id: makeId("item"), productId: product.id, name: product.name, category: product.category, quantity: product.defaultQuantity, status: "pending" }));
+    const items: ShoppingItem[] = state.products.filter((product) => selectedIds.includes(product.id)).map((product, index) => ({ id: makeId("item"), productId: product.id, name: product.name, category: product.category, quantity: product.defaultQuantity, status: "pending", sortOrder: index }));
     const list: ShoppingList = { id: makeId("list"), name, budget, status: "active", startedAt: new Date().toISOString(), items };
     const completedAt = new Date().toISOString();
     setState((current) => ({ ...current, lists: [list, ...current.lists.map((currentList): ShoppingList => currentList.status === "active" ? { ...currentList, status: "completed", finishedAt: completedAt } : currentList)] }));

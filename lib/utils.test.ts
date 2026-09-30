@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { itemSubtotal, latestPriceFor, listPending, listResolved, listTotal } from "@/lib/utils";
-import type { ShoppingList } from "@/lib/types";
+import { groupItems, itemSubtotal, latestPriceFor, listPending, listResolved, listTotal, nextSortOrder } from "@/lib/utils";
+import type { ShoppingItem, ShoppingList } from "@/lib/types";
 
 const list: ShoppingList = {
   id: "list-test",
@@ -9,9 +9,9 @@ const list: ShoppingList = {
   status: "active",
   startedAt: "2026-09-01T10:00:00.000Z",
   items: [
-    { id: "a", productId: "rice", name: "Arroz", category: "Alimentos", quantity: 2, unitPrice: 10, status: "purchased" },
-    { id: "b", productId: "milk", name: "Leite", category: "Alimentos", quantity: 1, status: "pending" },
-    { id: "c", name: "Sal", category: "Alimentos", quantity: 1, status: "already_have" },
+    { id: "a", productId: "rice", name: "Arroz", category: "Alimentos", quantity: 2, unitPrice: 10, status: "purchased", sortOrder: 0 },
+    { id: "b", productId: "milk", name: "Leite", category: "Alimentos", quantity: 1, status: "pending", sortOrder: 1 },
+    { id: "c", name: "Sal", category: "Alimentos", quantity: 1, status: "already_have", sortOrder: 2 },
   ],
 };
 
@@ -30,5 +30,31 @@ describe("shopping calculations", () => {
     ];
     expect(latestPriceFor("rice", history)).toBe(9);
     expect(latestPriceFor("unknown", history)).toBeUndefined();
+  });
+});
+
+describe("shopping item order", () => {
+  const shuffled: ShoppingItem[] = [
+    { id: "b", name: "Leite", category: "Bebidas", quantity: 1, status: "pending", sortOrder: 2 },
+    { id: "c", name: "Sabonete", category: "Higiene", quantity: 1, status: "already_have", sortOrder: 1 },
+    { id: "d", name: "Feijão", category: "Alimentos", quantity: 1, status: "purchased", sortOrder: 3 },
+    { id: "a", name: "Arroz", category: "Alimentos", quantity: 1, status: "pending", sortOrder: 0 },
+    { id: "e", name: "Café", category: "Bebidas", quantity: 1, status: "pending", sortOrder: 2 },
+  ];
+
+  it("keeps each category in the saved position after a status change reshuffles the array", () => {
+    const groups = groupItems(shuffled);
+    expect(groups.Alimentos?.map((item) => item.id)).toEqual(["a", "d"]);
+    expect(groups.Bebidas?.map((item) => item.id)).toEqual(["b", "e"]);
+    expect(groups.Higiene?.map((item) => item.id)).toEqual(["c"]);
+  });
+
+  it("breaks equal positions by id", () => {
+    expect(groupItems(shuffled).Bebidas?.map((item) => item.id)).toEqual(["b", "e"]);
+  });
+
+  it("puts a new item after the last saved position", () => {
+    expect(nextSortOrder(shuffled)).toBe(4);
+    expect(nextSortOrder([])).toBe(0);
   });
 });
