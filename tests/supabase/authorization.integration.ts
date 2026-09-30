@@ -17,6 +17,18 @@ if (testTarget !== "disposable") {
 if (!testUrl || !anonKey || Object.values(credentials).some(({ email, password }) => !email || !password)) {
   throw new Error("The PostgREST suite requires a test URL, anon key, and A/B/C test-user credentials.");
 }
+let testTargetUrl: URL;
+try {
+  testTargetUrl = new URL(testUrl);
+} catch {
+  throw new Error("RESTOK_TEST_SUPABASE_URL must be a valid local Supabase URL.");
+}
+if (!["http:", "https:"].includes(testTargetUrl.protocol) || testTargetUrl.username || testTargetUrl.password) {
+  throw new Error("RESTOK_TEST_SUPABASE_URL must use HTTP(S) and cannot embed credentials.");
+}
+if (!["localhost", "127.0.0.1", "[::1]", "::1"].includes(testTargetUrl.hostname.toLowerCase())) {
+  throw new Error("The isolation suite only permits a local Supabase URL (localhost or loopback IP).");
+}
 if (process.env.NEXT_PUBLIC_SUPABASE_URL && testUrl === process.env.NEXT_PUBLIC_SUPABASE_URL) {
   throw new Error("The isolation suite refuses to target the app's configured Supabase project.");
 }
@@ -58,33 +70,9 @@ async function signIn(email: string, password: string) {
   return { client, userId: user.id };
 }
 
-async function createHousehold(client: SupabaseClient, userId: string, name: string) {
-  const { data: household, error: householdError } = await client
-    .from("households")
-    .insert({ name, created_by: userId })
-    .select("id")
-    .single();
-  const created = assertData(household, householdError, "create household");
-  const { error: memberError } = await client.from("household_members").insert({
-    household_id: created.id,
-    user_id: userId,
-    role: "owner",
-  });
-  if (memberError) throw new Error(`create owner membership failed: ${memberError.message}`);
-  return created.id as string;
-}
-
-async function resolveOwnHousehold(client: SupabaseClient, userId: string, name: string) {
-  const { data: membership, error } = await client
-    .from("household_members")
-    .select("household_id")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: true })
-    .order("household_id", { ascending: true })
-    .limit(1)
-    .maybeSingle();
-  if (error) throw new Error(`resolve test household failed: ${error.message}`);
-  return membership?.household_id as string | undefined ?? createHousehold(client, userId, name);
+async function createHousehold(client: SupabaseClient, name: string) {
+  const { data, error } = await client.rpc("create_household", { requested_name: name });
+  return assertData(data, error, "create household") as string;
 }
 
 async function createCategory(client: SupabaseClient, householdId: string, name: string) {
@@ -126,16 +114,10 @@ beforeAll(async () => {
   anonymous = createClient(testUrl!, anonKey!, clientOptions);
 
   const suffix = randomUUID();
-  const { error: profileError } = await userA.from("profiles").upsert({
-    id: a.userId,
-    display_name: `RESTOK test A ${suffix}`,
-  });
-  if (profileError) throw new Error(`create profile fixture failed: ${profileError.message}`);
+  const householdA = await createHousehold(userA, `RESTOK test A ${suffix}`);
+  const householdB = await createHousehold(userB, `RESTOK test B ${suffix}`);
 
-  const householdA = await resolveOwnHousehold(userA, a.userId, `RESTOK test A ${suffix}`);
-  const householdB = await resolveOwnHousehold(userB, b.userId, `RESTOK test B ${suffix}`);
-
-  const { data: invite, error: inviteError } = await userA.rpc("create_household_invite");
+  const { data: invite, error: inviteError } = await userA.rpc("create_household_invite", { target_household: householdA });
   const token = assertData(invite, inviteError, "create invite");
   const { data: acceptedHousehold, error: acceptError } = await userC.rpc("accept_household_invite", { invite_token: token });
   const householdAFromInvite = assertData(acceptedHousehold, acceptError, "accept invite") as string;
@@ -201,22 +183,17 @@ describe("tenant isolation through PostgREST", () => {
   });
 
   it("rejects direct membership creation and forged roles", async () => {
-    const { data: probe, error: householdError } = await userA
-      .from("households")
-      .insert({ name: `Membership probe ${randomUUID()}`, created_by: fixture.userA })
-      .select("id")
-      .single();
-    const probeHousehold = assertData(probe, householdError, "create membership probe household");
+    const probeHousehold = await createHousehold(userA, `Membership probe ${randomUUID()}`);
 
     const forgedMember = await userA.from("household_members").insert({
-      household_id: probeHousehold.id,
+      household_id: probeHousehold,
       user_id: fixture.userA,
       role: "member",
     });
     expect(forgedMember.error).not.toBeNull();
 
     const forgedThirdParty = await userA.from("household_members").insert({
-      household_id: probeHousehold.id,
+      household_id: probeHousehold,
       user_id: fixture.userC,
       role: "owner",
     });
@@ -229,12 +206,12 @@ describe("tenant isolation through PostgREST", () => {
     });
     expect(arbitraryJoin.error).not.toBeNull();
 
-    const legitimateOwner = await userA.from("household_members").insert({
-      household_id: probeHousehold.id,
-      user_id: fixture.userA,
-      role: "owner",
+    const { data: members, error: membersError } = await userA.rpc("get_household_members", {
+      target_household: probeHousehold,
     });
-    expect(legitimateOwner.error).toBeNull();
+    expect(membersError).toBeNull();
+    expect(members).toHaveLength(1);
+    expect(members?.[0]).toMatchObject({ user_id: fixture.userA, role: "owner", is_self: true });
   });
 
   it("rejects cross-household product and category references but accepts snapshots", async () => {
@@ -300,5 +277,124 @@ describe("tenant isolation through PostgREST", () => {
 
     const anonymousRead = await anonymous.from("shopping_lists").select("id").eq("id", fixture.listA);
     expect(anonymousRead.error !== null || (anonymousRead.data ?? []).length === 0).toBe(true);
+  });
+
+  it("enforces role lifecycle and single-use invitations", async () => {
+    const memberInvite = await userC.rpc("create_household_invite", { target_household: fixture.householdA });
+    expect(memberInvite.error).not.toBeNull();
+
+    const promotion = await userA.rpc("change_household_member_role", {
+      target_household: fixture.householdA,
+      target_user: fixture.userC,
+      new_role: "admin",
+    });
+    expect(promotion.error).toBeNull();
+
+    const { data: invite, error: inviteError } = await userC.rpc("create_household_invite", {
+      target_household: fixture.householdA,
+    });
+    const adminToken = assertData(invite, inviteError, "admin creates invite");
+    expect(typeof adminToken).toBe("string");
+
+    const { data: visibleInvites, error: visibleInvitesError } = await userC.rpc("get_household_invites", {
+      target_household: fixture.householdA,
+    });
+    expect(visibleInvitesError).toBeNull();
+    expect(visibleInvites?.[0]).toHaveProperty("created_by", fixture.userC);
+    expect(visibleInvites?.[0]).not.toHaveProperty("token");
+    expect(visibleInvites?.[0]).not.toHaveProperty("token_hash");
+
+    const ownershipAttempt = await userC.rpc("transfer_household_ownership", {
+      target_household: fixture.householdA,
+      new_owner: fixture.userA,
+    });
+    expect(ownershipAttempt.error).not.toBeNull();
+
+    const adminPromotionAttempt = await userC.rpc("change_household_member_role", {
+      target_household: fixture.householdA,
+      target_user: fixture.userA,
+      new_role: "admin",
+    });
+    expect(adminPromotionAttempt.error).not.toBeNull();
+
+    const adminInvites = assertData(visibleInvites, visibleInvitesError, "read admin invites") as Array<{ id: string; created_by: string }>;
+    const createdInvite = adminInvites.find((candidate) => candidate.created_by === fixture.userC);
+    expect(createdInvite).toBeDefined();
+    const revoke = await userC.rpc("revoke_household_invite", { target_invite: createdInvite!.id });
+    expect(revoke.error).toBeNull();
+    const revokedAcceptance = await userB.rpc("accept_household_invite", { invite_token: adminToken });
+    expect(revokedAcceptance.error).not.toBeNull();
+
+    const demotion = await userA.rpc("change_household_member_role", {
+      target_household: fixture.householdA,
+      target_user: fixture.userC,
+      new_role: "member",
+    });
+    expect(demotion.error).toBeNull();
+
+    const ownerInvite = await userA.rpc("create_household_invite", { target_household: fixture.householdA });
+    const ownerToken = assertData(ownerInvite.data, ownerInvite.error, "owner creates invite");
+    const accepted = await userC.rpc("accept_household_invite", { invite_token: ownerToken });
+    expect(accepted.error).toBeNull();
+    expect(accepted.data).toBe(fixture.householdA);
+    const replay = await userB.rpc("accept_household_invite", { invite_token: ownerToken });
+    expect(replay.error).not.toBeNull();
+
+    const leave = await userC.rpc("leave_household", { target_household: fixture.householdA });
+    expect(leave.error).toBeNull();
+    const removedMemberRead = await userC.from("shopping_lists").select("id").eq("id", fixture.listA);
+    expect(removedMemberRead.data ?? []).toHaveLength(0);
+
+    const lastOwnerLeave = await userA.rpc("leave_household", { target_household: fixture.householdA });
+    expect(lastOwnerLeave.error).not.toBeNull();
+  });
+
+  it("creates a shopping trip atomically and treats a retry as a no-op", async () => {
+    const listId = randomUUID();
+    const itemId = randomUUID();
+    const requestedList = {
+      id: listId,
+      name: `Atomic trip ${randomUUID()}`,
+      budget: 100,
+      status: "active",
+      started_at: new Date().toISOString(),
+    };
+    const requestedItems = [{
+      id: itemId,
+      product_id: null,
+      category_id: fixture.categoryA,
+      name: "Manual snapshot",
+      quantity: 2,
+      unit_price: 10,
+      status: "pending",
+    }];
+    const payload = {
+      requested_household: fixture.householdA,
+      requested_list: requestedList,
+      requested_items: requestedItems,
+      idempotent_create: true,
+    };
+
+    const create = await userA.rpc("create_shopping_list_with_items", payload);
+    expect(create.error).toBeNull();
+    const retry = await userA.rpc("create_shopping_list_with_items", payload);
+    expect(retry.error).toBeNull();
+    expect(retry.data).toBe(listId);
+
+    const [savedList, savedItems, activeLists] = await Promise.all([
+      userA.from("shopping_lists").select("id,status").eq("id", listId).single(),
+      userA.from("shopping_list_items").select("id").eq("shopping_list_id", listId),
+      userA.from("shopping_lists").select("id").eq("household_id", fixture.householdA).eq("status", "active"),
+    ]);
+    expect(savedList.data?.status).toBe("active");
+    expect(savedItems.data).toHaveLength(1);
+    expect(savedItems.data?.[0]?.id).toBe(itemId);
+    expect(activeLists.data).toHaveLength(1);
+
+    const unauthorizedCreate = await userB.rpc("create_shopping_list_with_items", {
+      ...payload,
+      requested_list: { ...requestedList, id: randomUUID() },
+    });
+    expect(unauthorizedCreate.error).not.toBeNull();
   });
 });
