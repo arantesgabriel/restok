@@ -230,23 +230,31 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
   return <span className={cn("font-semibold tracking-[-0.04em] text-ink", compact ? "text-lg" : "text-[22px]")}>restok<span className="text-primary">.</span></span>;
 }
 
+function purchasedWithoutPrice(list: ShoppingList) {
+  return list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
+}
+
 function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => void }) {
   const total = listTotal(list);
+  const withoutPrice = purchasedWithoutPrice(list);
   const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : 0;
   const over = total - list.budget;
   return (
-    <section className={cn("min-w-0 rounded-[14px] border border-line bg-surface p-4", over > 0 && "border-terracotta/30 bg-terracotta/5")} aria-label="Resumo do orçamento">
-      <div className="flex items-end justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Gasto até agora</p>
-          <p className="mt-1 text-[26px] font-semibold tracking-[-0.03em] text-ink">{formatBRL(total)}</p>
+    <section data-budget-summary data-budget-over={over > 0 ? "true" : "false"} className={cn("min-w-0 rounded-[14px] border border-line bg-surface p-4", over > 0 && "border-terracotta/30 bg-terracotta/5")} aria-label="Resumo do orçamento">
+      <div className="flex min-w-0 items-end justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p>
+          <p data-budget-total className="mt-1 text-[clamp(1.05rem,6vw,1.625rem)] font-semibold leading-tight tracking-[-0.03em] text-ink">{formatBRL(total)}</p>
         </div>
-        <p className={cn("text-right text-sm font-semibold", over > 0 ? "text-terracotta" : "text-muted")}>
+        <div className="min-w-0 max-w-[48%] text-right">
+          <p data-budget-remaining className={cn("break-words text-sm font-semibold", over > 0 ? "text-terracotta" : "text-muted")}>
           {over > 0 ? `${formatBRL(over)} acima` : `${formatBRL(list.budget - total)} disponíveis`}
-          <span className="mt-1 flex items-center justify-end gap-1 text-xs font-normal text-muted">de {formatBRL(list.budget)}<button type="button" onClick={onEdit} className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={14} />Editar</button></span>
-        </p>
+          </p>
+          <p data-budget-meta-line className="mt-1 flex flex-wrap items-center justify-end gap-x-1 text-xs font-normal text-muted"><span>Meta {formatBRL(list.budget)}</span><button type="button" onClick={onEdit} className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={14} />Editar</button></p>
+        </div>
       </div>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-sage" aria-hidden="true"><div className={cn("h-full rounded-full transition-all duration-300", over > 0 ? "bg-terracotta" : "bg-primary")} style={{ width: `${percentage}%` }} /></div>
+      {withoutPrice > 0 ? <p className="mt-2 text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}
     </section>
   );
 }
@@ -282,7 +290,7 @@ function ShoppingItemRow({
 }) {
   const subtotal = itemSubtotal(item);
   return (
-    <article className="group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition">
+    <article data-shopping-row className="group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition">
       <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`}>
         <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-semibold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
           {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <span>{categoryIcon(item.category)}</span>}
@@ -328,7 +336,7 @@ function CategorySection({
   const [open, setOpen] = useState(true);
   const resolved = items.filter((item) => item.status !== "pending").length;
   return (
-    <section className="border-t border-line pt-3">
+    <section data-category-section className="border-t border-line pt-3">
       <div className="flex items-center gap-2">
         <button type="button" className="flex min-h-12 min-w-0 flex-1 items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
           <span className="text-lg font-semibold text-primary">{categoryIcon(category)}</span>
@@ -431,17 +439,23 @@ function AddItemSheet({
 
 function NewPurchaseSheet({
   products,
+  activeList,
   onClose,
   onCreate,
 }: {
   products: Product[];
+  activeList: ShoppingList | null;
   onClose: () => boolean;
   onCreate: (name: string, budget: number, selectedIds: string[]) => void;
 }) {
   const [name, setName] = useState(`Compras de ${new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(new Date())}`);
   const [budget, setBudget] = useState("800");
+  const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(() => new Set(products.filter((product) => product.active).map((product) => product.id)));
   const activeProducts = products.filter((product) => product.active);
+  const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
+  const visibleProducts = activeProducts.filter((product) => product.name.toLocaleLowerCase("pt-BR").includes(normalizedQuery));
+  const allVisibleSelected = visibleProducts.length > 0 && visibleProducts.every((product) => selected.has(product.id));
   const toggle = (id: string) => setSelected((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   return <Sheet title="Nova compra" description="Comece com os produtos que costumam fazer parte da casa." onClose={onClose} wide>
     <div className="space-y-5">
@@ -449,11 +463,13 @@ function NewPurchaseSheet({
         <label className="field-label">Nome<input data-initial-focus value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
         <label className="field-label">Orçamento<div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10" /></div></label>
       </div>
-      <div className="flex items-center justify-between border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p className="mt-1 text-xs text-muted">{selected.size} selecionados</p></div><button type="button" className="text-xs font-semibold text-primary hover:underline" onClick={() => setSelected(selected.size === activeProducts.length ? new Set() : new Set(activeProducts.map((product) => product.id)))}>{selected.size === activeProducts.length ? "Desmarcar todos" : "Selecionar todos"}</button></div>
-      <div className="max-h-[42vh] overflow-y-auto rounded-[12px] border border-line bg-surface px-3">
-        {activeProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="flex-1 text-sm font-semibold text-ink">{product.name}</span><span className="text-xs text-muted">{product.defaultQuantity} un.</span></label>)}
+      {activeList ? <p role="status" className="rounded-[10px] border border-terracotta/25 bg-terracotta/5 px-3 py-2.5 text-sm leading-5 text-ink">Começar esta compra vai encerrar “{activeList.name}” e movê-la para o histórico. {listPending(activeList) > 0 ? `Ainda há ${listPending(activeList)} itens pendentes.` : "Todos os itens atuais foram resolvidos."}</p> : null}
+      <label className="relative block"><Search size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar produtos da casa" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar produtos da casa" className="field-input h-11 pl-10" /></label>
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p role="status" aria-live="polite" className="mt-1 text-xs text-muted">{selected.size} de {activeProducts.length} selecionados</p></div><button type="button" className="min-h-11 rounded-md px-2 text-xs font-semibold text-primary hover:bg-sage" onClick={() => setSelected((current) => { const next = new Set(current); for (const product of visibleProducts) { if (allVisibleSelected) next.delete(product.id); else next.add(product.id); } return next; })}>{allVisibleSelected ? "Desmarcar resultados" : normalizedQuery ? "Selecionar resultados" : "Selecionar todos"}</button></div>
+      <div className="rounded-[12px] border border-line bg-surface px-3">
+        {visibleProducts.length ? visibleProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{product.name}</span><span className="shrink-0 text-xs text-muted">{product.defaultQuantity} un.</span></label>) : <p className="py-6 text-center text-sm text-muted">{activeProducts.length ? "Nenhum produto corresponde à busca." : "Adicione produtos da casa para preparar uma compra mais rápido."}</p>}
       </div>
-      <Button className="w-full" onClick={() => { if (onClose()) onCreate(name.trim() || "Nova compra", Number(budget.replace(",", ".").replace(/[^0-9.]/g, "")) || 0, [...selected]); }}>Começar compra <ArrowLeft className="rotate-180" size={17} /></Button>
+      <Button className="w-full" onClick={() => { if (onClose()) onCreate(name.trim() || "Nova compra", Number(budget.replace(",", ".").replace(/[^0-9.]/g, "")) || 0, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>
     </div>
   </Sheet>;
 }
@@ -481,10 +497,22 @@ function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onCl
 }
 
 function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClose: () => boolean; onHistory: () => void }) {
-  return <Sheet title="Compra concluída" description="Tudo certo. A casa está um pouco mais abastecida." onClose={onClose}>
+  const purchased = list.items.filter((item) => item.status === "purchased").length;
+  const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
+  const pending = list.items.filter((item) => item.status === "pending").length;
+  const withoutPrice = purchasedWithoutPrice(list);
+  return <Sheet title="Compra finalizada" description={pending > 0 ? "Você pode consultar os itens pendentes pelo histórico." : "A lista foi guardada no histórico."} onClose={onClose}>
     <div className="space-y-5">
-      <div className="rounded-[14px] bg-sage p-5"><div className="flex items-center gap-3 text-primary"><span className="grid h-10 w-10 place-items-center rounded-full bg-surface"><Check size={20} strokeWidth={3} /></span><span className="text-sm font-semibold">{list.items.length} produtos resolvidos</span></div><p className="mt-5 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p><p className="mt-1 text-sm text-muted">registrados nesta compra</p></div>
-      <div className="grid grid-cols-2 gap-3 text-sm"><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Comprados</span><span className="mt-1 block font-semibold text-ink">{list.items.filter((item) => item.status === "purchased").length}</span></div><div className="rounded-[12px] border border-line p-3"><span className="block text-xs text-muted">Já tínhamos</span><span className="mt-1 block font-semibold text-ink">{list.items.filter((item) => item.status === "already_have").length}</span></div></div>
+      <div className="rounded-[14px] bg-sage p-5">
+        <dl className="grid grid-cols-3 gap-2 text-center text-xs">
+          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Comprados</dt><dd className="mt-1 text-base font-semibold text-ink">{purchased}</dd></div>
+          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Já tínhamos</dt><dd className="mt-1 text-base font-semibold text-ink">{alreadyHave}</dd></div>
+          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Pendentes</dt><dd className="mt-1 text-base font-semibold text-ink">{pending}</dd></div>
+        </dl>
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p>
+        <p className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p>
+        {withoutPrice > 0 ? <p className="mt-1 text-sm text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}
+      </div>
       <Button className="w-full" onClick={onHistory}>Ver histórico</Button>
     </div>
   </Sheet>;
@@ -628,6 +656,7 @@ export default function RestokApp() {
   const [historyDetail, setHistoryDetail] = useState<ShoppingList | null>(null);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
@@ -652,6 +681,7 @@ export default function RestokApp() {
   const revalidationRetryDelayRef = useRef(2000);
   const revalidationDebounceRef = useRef<number | undefined>(undefined);
   const closingDialogRef = useRef<HTMLDialogElement | null>(null);
+  const purchaseResultsRef = useRef<HTMLDivElement>(null);
 
   const requestRemoteRevalidation = useCallback(() => {
     needsRevalidationRef.current = true;
@@ -911,6 +941,13 @@ export default function RestokApp() {
   const alphabeticalItems = sortByName(filteredItems, "asc");
   const resolved = activeList ? listResolved(activeList) : 0;
   const pending = activeList ? listPending(activeList) : 0;
+  const withoutPrice = activeList ? purchasedWithoutPrice(activeList) : 0;
+  const showPendingItems = () => {
+    setQuery("");
+    setFilter("pending");
+    setMobileFiltersOpen(true);
+    purchaseResultsRef.current?.scrollIntoView?.({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  };
   const activeHouseholdId = activeHousehold?.id;
   const realtimeListId = activeList?.id;
 
@@ -1165,7 +1202,7 @@ export default function RestokApp() {
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
       <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
       <main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
-        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><ActionMenu
+        <header data-app-header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><ActionMenu
           label={`Perfil de ${profileLabel}`}
           triggerClassName="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           items={[
@@ -1175,34 +1212,37 @@ export default function RestokApp() {
         >{profileInitials}</ActionMenu></div></header>
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
-        <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
+        <div data-purchase-content={screen === "shop" ? "true" : undefined} className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
-            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
+            <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="hidden text-sm font-semibold text-primary sm:block">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
                 label="Menu da compra"
                 triggerClassName="grid h-11 w-11 place-items-center rounded-[10px] border border-line bg-surface text-muted transition hover:border-primary/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 items={[
                   { label: "Nova compra", icon: <Plus size={16} />, onSelect: () => setNewPurchaseOpen(true) },
                   { label: "Finalizar compra", icon: <CheckCircle2 size={16} />, onSelect: () => setFinishOpen(true) },
+                  { label: "Agrupar por categoria", icon: <ListFilter size={16} />, onSelect: () => setShopViewMode("category") },
+                  { label: "Ordenar por nome A–Z", icon: <ArrowDownAZ size={16} />, onSelect: () => setShopViewMode("alphabetical") },
                 ]}
               ><Menu size={19} /></ActionMenu></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
-            <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar na lista" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
-            {filteredItems.length ? <><div className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
+            <div data-purchase-filters className="space-y-2.5"><div className="flex gap-2"><label className="relative block min-w-0 flex-1"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar na lista" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><button data-mobile-filter-toggle type="button" aria-expanded={mobileFiltersOpen} aria-controls="purchase-status-options" onClick={() => setMobileFiltersOpen((open) => !open)} className="hidden min-h-11 shrink-0 items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-xs font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><ListFilter size={16} />Filtros<span className="sr-only">: {filter === "all" ? "Todos" : statusLabel(filter)}</span></button></div><div id="purchase-status-options" data-filter-options data-expanded={mobileFiltersOpen} role="group" aria-label="Filtros da lista" className="purchase-filter-scroll -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => { setFilter(value); setMobileFiltersOpen(true); }} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
+            <div ref={purchaseResultsRef} data-purchase-results>
+              {filteredItems.length ? <><div data-purchase-viewmode className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : activeList.items.length === 0 ? <EmptyState icon={<ShoppingBasket size={23} />} title="Sua lista ainda está vazia" description="Adicione itens para acompanhar a compra." action={<Button onClick={() => setAddItemOpen(true)}><Plus size={17} />Adicionar item</Button>} /> : <EmptyState icon={<Search size={23} />} title={query.trim() ? "Nenhum item encontrado" : filter === "all" ? "Nenhum item encontrado" : `Nenhum item em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}`} description={query.trim() ? `Nada corresponde a “${query.trim()}”${filter !== "all" ? ` em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}` : ""}.` : "Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>{query.trim() ? "Limpar busca e filtros" : "Limpar filtro"}</Button>} />}
+            </div>
           </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
         </div>
       </main>
     </div>
     {!keyboardOpen ? <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div> : null}
-    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-11 w-full rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
+    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div data-purchase-footer className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div className="min-w-0"><p aria-live="polite" className="text-sm font-semibold text-ink">{pending} pendentes</p>{withoutPrice > 0 ? <p className="mt-0.5 truncate text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado" : "comprados"} sem preço</p> : null}</div><div className="min-w-0 text-right"><p className="text-[11px] font-medium text-muted">Total registrado</p><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div></div><div className="mt-2.5 flex items-center gap-2"><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : showPendingItems()} className="min-h-11 min-w-0 flex-1 rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{pending === 0 ? "Finalizar compra" : "Ver pendentes"}</button><button type="button" aria-label="Adicionar item à compra" title="Adicionar item" onClick={() => setAddItemOpen(true)} className="grid h-11 w-11 shrink-0 place-items-center rounded-[10px] border border-line bg-canvas text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Plus size={20} /></button></div></div> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
-    {newPurchaseOpen ? <NewPurchaseSheet products={state.products} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
+    {newPurchaseOpen ? <NewPurchaseSheet products={state.products} activeList={activeList} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
     {finishOpen ? <ConfirmFinishSheet pending={pending} onClose={() => requestSheetClose(() => setFinishOpen(false))} onConfirm={finishPurchase} /> : null}
     {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => requestSheetClose(() => setBudgetEditor(null))} onSave={saveBudget} /> : null}
     {completeList ? <CompleteSheet list={completeList} onClose={() => requestSheetClose(() => setCompleteList(null))} onHistory={() => requestSheetClose(() => { setCompleteList(null); setScreen("history"); })} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
     {toast && !keyboardOpen ? <ToastMessage key={toast} message={toast} onDismiss={() => setToast(null)} /> : null}
-    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
   </div>;
 }

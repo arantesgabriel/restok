@@ -74,6 +74,43 @@ button { cursor: pointer; }
   [data-dialog-motion], [data-toast-motion], dialog::backdrop { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
+.purchase-filter-scroll { scrollbar-width: thin; scrollbar-color: oklch(var(--line)) transparent; }
+.purchase-filter-scroll::-webkit-scrollbar { height: 3px; }
+.purchase-filter-scroll::-webkit-scrollbar-thumb { border-radius: 999px; background: oklch(var(--line)); }
+
+@media (min-width: 320px) and (max-width: 430px) {
+  [data-mobile-filter-toggle] { display: inline-flex; }
+  [data-purchase-filters] { row-gap: 0; }
+  [data-filter-options][data-expanded="false"] { display: none; }
+  [data-filter-options][data-expanded="true"] { display: flex; }
+}
+
+@media (max-height: 620px) and (max-width: 430px) {
+  [data-app-header] { min-height: 56px; }
+  [data-purchase-content="true"] { padding-top: 10px; padding-bottom: 10px; }
+  [data-purchase-content="true"] > .space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top: 8px; }
+  [data-purchase-title] h1 { margin-top: 0; font-size: 22px; }
+  [data-purchase-title] > div > p:last-child { margin-top: 2px; }
+  [data-resolved-count] { display: none; }
+  [data-budget-summary] { padding: 10px 12px; }
+  [data-budget-summary] > div:first-child { align-items: center; }
+  [data-budget-summary] > div:first-child > div:first-child > p:first-child { font-size: 10px; letter-spacing: 0.06em; white-space: nowrap; }
+  [data-budget-summary] [data-budget-total] { margin-top: 2px; }
+  [data-budget-summary][data-budget-over="false"] [data-budget-remaining] { display: none; }
+  [data-budget-summary] [data-budget-remaining] { font-size: 11px; line-height: 1.2; white-space: nowrap; }
+  [data-budget-summary] [data-budget-meta-line] { flex-wrap: nowrap; margin-top: 0; }
+  [data-budget-summary] [data-budget-meta-line] button { width: 44px; justify-content: center; overflow: hidden; padding-inline: 0; font-size: 0; }
+  [data-budget-summary] > .mt-4 { display: none; }
+  [data-purchase-filters] .field-input { height: 44px; min-height: 44px; }
+  [data-purchase-viewmode] { display: none; }
+  [data-category-section] { padding-top: 4px; }
+  [data-category-section] > div:first-child > button:first-child { min-height: 44px; }
+  [data-shopping-row] { min-height: 64px; padding-block: 8px; }
+  [data-purchase-footer] { padding-block: 8px; }
+  [data-purchase-footer] > div:last-child { margin-top: 6px; }
+  [data-purchase-results] [role="group"] { min-height: 40px; }
+}
+
 /* Marketing surface: a quiet green pantry, with the product itself as the hero. */
 .landing-page { overflow: hidden; background: oklch(0.965 0.025 103); color: oklch(0.23 0.035 145); }
 .landing-nav { display: flex; align-items: center; justify-content: space-between; max-width: 1240px; margin: auto; padding: 24px clamp(20px, 5vw, 64px); }
