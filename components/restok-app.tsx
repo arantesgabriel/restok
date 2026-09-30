@@ -2,6 +2,8 @@
 
 import {
   ArrowDown,
+  ArrowDownAZ,
+  ArrowDownZA,
   ArrowLeft,
   ArrowUp,
   Check,
@@ -37,6 +39,7 @@ import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
 import {
   categoryIcon,
+  categoryNameSortKey,
   cn,
   formatBRL,
   formatPercent,
@@ -48,6 +51,9 @@ import {
   listResolved,
   listTotal,
   monthLabel,
+  type NameSortDirection,
+  readCategoryNameSorts,
+  sortByName,
   statusAfterPrice,
   shortDate,
   statusLabel,
@@ -298,16 +304,20 @@ function ShoppingItemRow({
 
 function CategorySection({
   category,
+  direction,
   items,
   lists,
+  onToggleSort,
   onEdit,
   onPurchased,
   onAlreadyHave,
   onUndo,
 }: {
   category: CategoryName;
+  direction: NameSortDirection;
   items: ShoppingItem[];
   lists: ShoppingList[];
+  onToggleSort: () => void;
   onEdit: (item: ShoppingItem) => void;
   onPurchased: (item: ShoppingItem) => void;
   onAlreadyHave: (item: ShoppingItem) => void;
@@ -317,11 +327,14 @@ function CategorySection({
   const resolved = items.filter((item) => item.status !== "pending").length;
   return (
     <section className="border-t border-line pt-3">
-      <button type="button" className="flex min-h-12 w-full items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
-        <span className="text-lg font-semibold text-primary">{categoryIcon(category)}</span>
-        <span className="flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
-        {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
-      </button>
+      <div className="flex items-center gap-2">
+        <button type="button" className="flex min-h-12 min-w-0 flex-1 items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
+          <span className="text-lg font-semibold text-primary">{categoryIcon(category)}</span>
+          <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
+          {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
+        </button>
+        <CategoryNameSortButton category={category} direction={direction} onToggle={onToggleSort} />
+      </div>
       {open ? <div className="divide-y-0">{items.map((item) => <ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={() => onEdit(item)} onPurchased={() => onPurchased(item)} onAlreadyHave={() => onAlreadyHave(item)} onUndo={() => onUndo(item)} />)}</div> : null}
     </section>
   );
@@ -502,19 +515,53 @@ function ProductsHomeLegacy({ products, lists, onNewPurchase, onAddProduct, onTo
 
 void ProductsHomeLegacy;
 
+function useCategoryNameSort(householdId: string | undefined) {
+  const [categorySort, setCategorySort] = useState<Partial<Record<CategoryName, NameSortDirection>>>({});
+
+  useEffect(() => {
+    if (!householdId) {
+      setCategorySort({});
+      return;
+    }
+    setCategorySort(readCategoryNameSorts(window.localStorage.getItem(categoryNameSortKey(householdId))));
+  }, [householdId]);
+
+  const toggleCategorySort = (category: CategoryName) => {
+    setCategorySort((current) => {
+      const next = { ...current, [category]: (current[category] ?? "asc") === "asc" ? "desc" : "asc" } as Partial<Record<CategoryName, NameSortDirection>>;
+      if (householdId) window.localStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
+      return next;
+    });
+  };
+
+  return { categorySort, toggleCategorySort };
+}
+
+function CategoryNameSortButton({ category, direction, onToggle }: { category: CategoryName; direction: NameSortDirection; onToggle: () => void }) {
+  const label = direction === "desc" ? "Z–A" : "A–Z";
+  return <button type="button" onClick={onToggle} aria-pressed={direction === "desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} className="inline-flex min-h-9 items-center gap-1 rounded-[7px] px-2 text-xs font-semibold text-muted transition hover:bg-sage hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{direction === "desc" ? <ArrowDownZA size={15} /> : <ArrowDownAZ size={15} />}{label}</button>;
+}
+
 function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
   return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>;
 }
 
-function ProductsHome({ products, lists, householdName, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
+function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
+  return <div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label={label}><button type="button" onClick={() => onChange("category")} aria-pressed={mode === "category"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => onChange("alphabetical")} aria-pressed={mode === "alphabetical"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", mode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div>;
+}
+
+function ProductsHome({ products, lists, householdName, categorySort, onToggleCategorySort, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; categorySort: Partial<Record<CategoryName, NameSortDirection>>; onToggleCategorySort: (category: CategoryName) => void; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
   const [viewMode, setViewMode] = useState<ProductViewMode>("category");
   const active = products.filter((product) => product.active);
-  const sorted = [...active].sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }));
-  const grouped = CATEGORY_ORDER.map((category) => ({ category, products: active.filter((product) => product.category === category).sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" })) })).filter((section) => section.products.length);
+  const sorted = sortByName(active, "asc");
+  const grouped = CATEGORY_ORDER.map((category) => {
+    const direction = categorySort[category] ?? "asc";
+    return { category, direction, products: sortByName(active.filter((product) => product.category === category), direction) };
+  }).filter((section) => section.products.length);
 
   return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
     <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
-    <div><div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label="Ordenar produtos"><button type="button" onClick={() => setViewMode("category")} aria-pressed={viewMode === "category"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => setViewMode("alphabetical")} aria-pressed={viewMode === "alphabetical"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>{active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><h3 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div>
+    <div><div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><ViewModeToggle mode={viewMode} onChange={setViewMode} label="Ordenar produtos" /><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>{active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><div className="mb-2 flex items-center justify-between gap-3"><h3 className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><CategoryNameSortButton category={section.category} direction={section.direction} onToggle={() => onToggleCategorySort(section.category)} /></div><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div>
   </div>;
 }
 
@@ -539,6 +586,7 @@ export default function RestokApp() {
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
   const [households, setHouseholds] = useState<HouseholdSummary[]>([]);
   const [activeHousehold, setActiveHousehold] = useState<HouseholdSummary | null>(null);
+  const { categorySort, toggleCategorySort } = useCategoryNameSort(activeHousehold?.id);
   const [profileName, setProfileName] = useState<string | null>(null);
   const [profileEmail, setProfileEmail] = useState<string | null>(null);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
@@ -547,6 +595,7 @@ export default function RestokApp() {
   const [onboardingInviteFailed, setOnboardingInviteFailed] = useState(false);
   const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
   const [screen, setScreen] = useState<AppScreen>("shop");
+  const [shopViewMode, setShopViewMode] = useState<ProductViewMode>("category");
   const [activeListId, setActiveListId] = useState("list-active");
   const [historyDetail, setHistoryDetail] = useState<ShoppingList | null>(null);
   const [query, setQuery] = useState("");
@@ -813,6 +862,7 @@ export default function RestokApp() {
     return activeList.items.filter((item) => (!normalizedQuery || item.name.toLocaleLowerCase("pt-BR").includes(normalizedQuery)) && (filter === "all" || item.status === filter));
   }, [activeList, filter, query]);
   const groups = groupItems(filteredItems);
+  const alphabeticalItems = sortByName(filteredItems, "asc");
   const resolved = activeList ? listResolved(activeList) : 0;
   const pending = activeList ? listPending(activeList) : 0;
   const activeHouseholdId = activeHousehold?.id;
@@ -1079,11 +1129,11 @@ export default function RestokApp() {
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
-          {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
+          {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
             <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
-            {filteredItems.length ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} items={groups[category] ?? []} lists={state.lists} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
+            {filteredItems.length ? <><div className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : <EmptyState icon={<Search size={23} />} title="Nenhum item encontrado" description={query ? `Nada corresponde a “${query}”.` : "Esse filtro ainda não tem itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>Limpar filtros</Button>} />}
           </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
         </div>
       </main>

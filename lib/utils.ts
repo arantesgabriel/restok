@@ -1,4 +1,4 @@
-import type { CategoryName, ItemStatus, ShoppingItem, ShoppingList } from "@/lib/types";
+import { CATEGORY_ORDER, type CategoryName, type ItemStatus, type ShoppingItem, type ShoppingList } from "@/lib/types";
 
 export const cn = (...values: Array<string | false | null | undefined>) => values.filter(Boolean).join(" ");
 
@@ -70,6 +70,36 @@ export const latestPriceFor = (productId: string | undefined, lists: ShoppingLis
     .find((item) => item.productId === productId && item.status === "purchased" && item.unitPrice);
   return previous?.unitPrice;
 };
+
+export type NameSortDirection = "asc" | "desc";
+
+export const compareNames = (left: string, right: string, direction: NameSortDirection = "asc") => {
+  const order = left.localeCompare(right, "pt-BR", { sensitivity: "base" });
+  return direction === "desc" ? -order : order;
+};
+
+export const sortByName = <T extends { name: string }>(items: T[], direction: NameSortDirection) =>
+  [...items].sort((left, right) => compareNames(left.name, right.name, direction));
+
+const isNameSortDirection = (value: unknown): value is NameSortDirection => value === "asc" || value === "desc";
+
+export const readCategoryNameSorts = (raw: string | null): Partial<Record<CategoryName, NameSortDirection>> => {
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== "object") return {};
+    const directions: Partial<Record<CategoryName, NameSortDirection>> = {};
+    for (const category of CATEGORY_ORDER) {
+      const value = (parsed as Record<string, unknown>)[category];
+      if (isNameSortDirection(value)) directions[category] = value;
+    }
+    return directions;
+  } catch {
+    return {};
+  }
+};
+
+export const categoryNameSortKey = (householdId: string) => `restok-category-name-sort:${householdId}`;
 
 export const nextSortOrder = (items: ShoppingItem[]) =>
   items.reduce((max, item) => (Number.isFinite(item.sortOrder) ? Math.max(max, item.sortOrder) : max), -1) + 1;

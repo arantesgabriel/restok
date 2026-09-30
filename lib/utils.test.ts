@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { groupItems, itemSubtotal, latestPriceFor, listPending, listResolved, listTotal, nextSortOrder } from "@/lib/utils";
+import { groupItems, itemSubtotal, latestPriceFor, listPending, listResolved, listTotal, nextSortOrder, readCategoryNameSorts, sortByName } from "@/lib/utils";
 import type { ShoppingItem, ShoppingList } from "@/lib/types";
 
 const list: ShoppingList = {
@@ -56,5 +56,28 @@ describe("shopping item order", () => {
   it("puts a new item after the last saved position", () => {
     expect(nextSortOrder(shuffled)).toBe(4);
     expect(nextSortOrder([])).toBe(0);
+  });
+});
+
+describe("category name order", () => {
+  const products = [
+    { name: "Óleo" },
+    { name: "Água" },
+    { name: "Arroz" },
+  ];
+
+  it("sorts one category from A to Z and another from Z to A", () => {
+    expect(sortByName(products, "asc").map((product) => product.name)).toEqual(["Água", "Arroz", "Óleo"]);
+    expect(sortByName(products, "desc").map((product) => product.name)).toEqual(["Óleo", "Arroz", "Água"]);
+    expect(products.map((product) => product.name)).toEqual(["Óleo", "Água", "Arroz"]);
+  });
+
+  it("keeps only a valid direction for each known category", () => {
+    expect(readCategoryNameSorts(JSON.stringify({ Alimentos: "desc", Higiene: "asc", Bebidas: "sideways", Extra: "desc" }))).toEqual({
+      Alimentos: "desc",
+      Higiene: "asc",
+    });
+    expect(readCategoryNameSorts("not-json")).toEqual({});
+    expect(readCategoryNameSorts(null)).toEqual({});
   });
 });
