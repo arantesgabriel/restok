@@ -1,14 +1,33 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { seedProducts, seedState } from "@/lib/seed";
+import { seedProducts } from "@/lib/seed";
 import type { CategoryName, HouseholdInvite, HouseholdMember, HouseholdRole, HouseholdSummary, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 
 const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpeza", "Outros"];
-const legacySeedNames = new Set(["Arroz", "Azeite", "Batata palha", "Cebola", "Chá mate com gás", "Chimichurri", "Creme de leite", "Farinha de trigo", "Feijão", "Filé de peito de frango", "Leite condensado", "Leite desnatado", "Lemon pepper", "Limão", "Macarrão", "Massa de alho", "Massa de bolo", "Milho", "Molho de tomate", "Muçarela 600g", "Óleo de cozinha", "Ovos", "Pão de forma", "Picanha suína", "Pimenta-do-reino", "Presunto 300g", "Requeijão", "Sal", "Água com gás (fardo)", "Coca Zero (fardo)", "Energético Monster", "Cotonete", "Colgate", "Creme de pentear", "Desodorante Brunna", "Desodorante Gabriel", "Lenço umedecido", "Sabonete", "Shampoo", "Cif", "Detergente", "Papel higiênico (pct c/12)", "Papel toalha", "Sabão em pó", "Saco de lixo grande", "Veja"]);
-
-const normalizeProductName = (name: string) => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
-
-export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; householdId: string; householdName: string; role: HouseholdRole };
+export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; email: string | null; profileName: string | null; householdId: string; householdName: string; role: HouseholdRole };
 export type RemoteState = { state: RestokState; userId: string; householdId: string; householdName: string; role: HouseholdRole };
+export type CurrentProfile = { userId: string; email: string | null; displayName: string | null };
+
+async function readCurrentProfile(client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>): Promise<CurrentProfile | null> {
+  const { data: { user }, error: authError } = await client.auth.getUser();
+  if (authError || !user) return null;
+  const metadataName = typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name.trim() : "";
+  const { data: profile, error: profileError } = await client.from("profiles").select("display_name").eq("id", user.id).maybeSingle();
+  if (profileError) return null;
+  const displayName = profile?.display_name?.trim() || metadataName || null;
+  if (!profile) {
+    const { error } = await client.from("profiles").upsert({ id: user.id, display_name: metadataName || null }, { onConflict: "id", ignoreDuplicates: true });
+    if (error) return null;
+  } else if (!profile.display_name && metadataName) {
+    const { error } = await client.from("profiles").update({ display_name: metadataName }).eq("id", user.id).is("display_name", null);
+    if (error) return null;
+  }
+  return { userId: user.id, email: user.email ?? null, displayName };
+}
+
+export async function loadCurrentProfile(): Promise<CurrentProfile | null> {
+  const client = getSupabaseBrowserClient();
+  return client ? readCurrentProfile(client) : null;
+}
 
 export function activeHouseholdStorageKey(userId: string) {
   return `restok-active-household:${encodeURIComponent(userId)}`;
@@ -50,31 +69,20 @@ export async function loadUserHouseholds(): Promise<HouseholdSummary[] | null> {
 export async function resolveRemoteContext(preferredHouseholdId?: string | null): Promise<RemoteContext | null> {
   const client = getSupabaseBrowserClient();
   if (!client) return null;
-  const { data: { user }, error: authError } = await client.auth.getUser();
-  if (authError || !user) return null;
+  const identity = await readCurrentProfile(client);
+  if (!identity) return null;
   const { data: memberships, error: membershipError } = await client
     .from("household_members")
     .select("household_id,role,created_at")
-    .eq("user_id", user.id)
+    .eq("user_id", identity.userId)
     .order("created_at", { ascending: true })
     .order("household_id", { ascending: true });
   if (membershipError) return null;
 
-  let availableMemberships = memberships ?? [];
-  if (!availableMemberships.length) {
-    const { data: newHouseholdId, error: createError } = await client.rpc("create_household", { requested_name: "Minha casa" });
-    if (createError || !newHouseholdId) return null;
-    const { data: createdMembership, error: createdMembershipError } = await client
-      .from("household_members")
-      .select("household_id,role,created_at")
-      .eq("user_id", user.id)
-      .eq("household_id", newHouseholdId)
-      .single();
-    if (createdMembershipError || !createdMembership) return null;
-    availableMemberships = [createdMembership];
-  }
+  const availableMemberships = memberships ?? [];
+  if (!availableMemberships.length) return null;
 
-  const requestedId = preferredHouseholdId === undefined ? savedHouseholdId(user.id) : preferredHouseholdId;
+  const requestedId = preferredHouseholdId === undefined ? savedHouseholdId(identity.userId) : preferredHouseholdId;
   const membership = availableMemberships.find((candidate) => candidate.household_id === requestedId) ?? availableMemberships[0];
   const { data: household, error: householdError } = await client
     .from("households")
@@ -82,7 +90,7 @@ export async function resolveRemoteContext(preferredHouseholdId?: string | null)
     .eq("id", membership.household_id)
     .single();
   if (householdError || !household) return null;
-  return { client, userId: user.id, householdId: membership.household_id, householdName: household.name, role: membership.role as HouseholdRole };
+  return { client, userId: identity.userId, email: identity.email, profileName: identity.displayName, householdId: membership.household_id, householdName: household.name, role: membership.role as HouseholdRole };
 }
 
 async function getCategoryIds(context: RemoteContext) {
@@ -93,14 +101,17 @@ async function getCategoryIds(context: RemoteContext) {
     .order("sort_order");
   if (categoryError) return null;
 
-  let categories = foundCategories;
-  if (!categories?.length) {
-    const { data: seeded, error: seedError } = await context.client
+  let categories = foundCategories ?? [];
+  const foundNames = new Set(categories.map((category) => category.name));
+  const missingCategories = categoryNames.filter((name) => !foundNames.has(name));
+  if (missingCategories.length) {
+    const { error: seedError } = await context.client
       .from("categories")
-      .insert(categoryNames.map((name, sort_order) => ({ household_id: context.householdId, name, sort_order })))
-      .select("id,name");
+      .upsert(missingCategories.map((name) => ({ household_id: context.householdId, name, sort_order: categoryNames.indexOf(name) })), { onConflict: "household_id,name", ignoreDuplicates: true });
     if (seedError) return null;
-    categories = seeded ?? [];
+    const { data: refreshed, error: refreshError } = await context.client.from("categories").select("id,name").eq("household_id", context.householdId).order("sort_order");
+    if (refreshError) return null;
+    categories = refreshed ?? [];
   }
   return Object.fromEntries((categories ?? []).map((category) => [category.name as CategoryName, category.id])) as Partial<Record<CategoryName, string>>;
 }
@@ -108,8 +119,6 @@ async function getCategoryIds(context: RemoteContext) {
 export async function loadRemoteState(existingContext?: RemoteContext): Promise<RemoteState | null> {
   const context = existingContext ?? await resolveRemoteContext();
   if (!context) return null;
-  const { error: profileError } = await context.client.from("profiles").upsert({ id: context.userId });
-  if (profileError) return null;
   const categoryIds = await getCategoryIds(context);
   if (!categoryIds) return null;
   const { data: foundProducts, error: productsError } = await context.client
@@ -125,51 +134,10 @@ export async function loadRemoteState(existingContext?: RemoteContext): Promise<
     if (seedError) return null;
     products = seeded ?? [];
   }
-  const targetByName = new Map(seedProducts.map((product) => [normalizeProductName(product.name), product]));
-  const matchedTargetIds = new Set<string>();
-  const reconcileErrors = await Promise.all((products ?? []).map(async (product) => {
-    const target = targetByName.get(normalizeProductName(product.name));
-    if (!target || matchedTargetIds.has(target.name)) return null;
-    matchedTargetIds.add(target.name);
-    const { error } = await context.client.from("products").update({ name: target.name, category_id: categoryIds[target.category] ?? null, default_quantity: target.defaultQuantity, active: true }).eq("id", product.id);
-    return error;
-  }));
-  if (reconcileErrors.some(Boolean)) return null;
-  const missingProducts = seedProducts.filter((product) => !matchedTargetIds.has(product.name));
-  if (missingProducts.length) {
-    const { error } = await context.client.from("products").insert(missingProducts.map((product) => ({ household_id: context.householdId, category_id: categoryIds[product.category] ?? null, name: product.name, default_quantity: product.defaultQuantity, active: true })));
-    if (error) return null;
-  }
-  const targetNames = new Set(seedProducts.map((product) => product.name));
-  const legacyProducts = (products ?? []).filter((product) => product.active && legacySeedNames.has(product.name) && !targetNames.has(targetByName.get(normalizeProductName(product.name))?.name ?? ""));
-  if (legacyProducts.length) {
-    const legacyErrors = await Promise.all(legacyProducts.map(async (product) => {
-      const { error } = await context.client.from("products").update({ active: false }).eq("id", product.id);
-      return error;
-    }));
-    if (legacyErrors.some(Boolean)) return null;
-  }
-  if (missingProducts.length || legacyProducts.length) {
-    const { data: refreshedProducts, error: refreshError } = await context.client.from("products").select("id,name,default_quantity,active,category_id").eq("household_id", context.householdId).order("created_at");
-    if (refreshError) return null;
-    products = refreshedProducts ?? products;
-  }
   const categoryById = Object.fromEntries(Object.entries(categoryIds).map(([name, id]) => [id, name])) as Record<string, CategoryName>;
   const { data: foundLists, error: listsError } = await context.client.from("shopping_lists").select("id,name,budget,status,started_at,finished_at").eq("household_id", context.householdId).order("started_at", { ascending: false });
   if (listsError) return null;
-  let lists = foundLists;
-  if (!lists?.length) {
-    const template = seedState.lists[0];
-    const { data: seededList, error: listSeedError } = await context.client.from("shopping_lists").insert({ household_id: context.householdId, name: template.name, budget: template.budget, status: template.status, started_at: template.startedAt, created_by: context.userId }).select("id,name,budget,status,started_at,finished_at").single();
-    if (listSeedError) return null;
-    if (seededList) {
-      const productByName = Object.fromEntries((products ?? []).map((product) => [product.name, product]));
-      const itemRows = template.items.map((item) => ({ shopping_list_id: seededList.id, product_id: productByName[item.name]?.id ?? null, category_id: categoryIds[item.category] ?? null, name: item.name, quantity: item.quantity, unit_price: item.unitPrice ?? null, status: item.status }));
-      const { error: itemSeedError } = await context.client.from("shopping_list_items").insert(itemRows);
-      if (itemSeedError) return null;
-      lists = [seededList];
-    }
-  }
+  const lists = foundLists ?? [];
   const listIds = (lists ?? []).map((list) => list.id);
   let items: { id: string; shopping_list_id: string; product_id: string | null; category_id: string | null; name: string; quantity: number; unit_price: number | null; status: ShoppingItem["status"] }[] = [];
   if (listIds.length) {

@@ -26,8 +26,9 @@ import {
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { seedState } from "@/lib/seed";
 import { HouseholdManager } from "@/components/household-manager";
+import { HouseholdOnboarding } from "@/components/household-onboarding";
 import { subscribeToShoppingList } from "@/lib/supabase/realtime";
-import { acceptHouseholdInvite, activeHouseholdStorageKey, loadRemoteState, loadUserHouseholds, persistItem, persistList, persistProduct, resolveRemoteContext } from "@/lib/supabase/data";
+import { acceptHouseholdInvite, activeHouseholdStorageKey, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistItem, persistList, persistProduct, resolveRemoteContext } from "@/lib/supabase/data";
 import { clearRemoteStateCaches, DEMO_STATE_KEY, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -524,6 +525,12 @@ export default function RestokApp() {
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
   const [households, setHouseholds] = useState<HouseholdSummary[]>([]);
   const [activeHousehold, setActiveHousehold] = useState<HouseholdSummary | null>(null);
+  const [profileName, setProfileName] = useState<string | null>(null);
+  const [profileEmail, setProfileEmail] = useState<string | null>(null);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [onboarding, setOnboarding] = useState(false);
+  const [onboardingInvite, setOnboardingInvite] = useState("");
+  const [onboardingInviteFailed, setOnboardingInviteFailed] = useState(false);
   const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
   const [screen, setScreen] = useState<AppScreen>("shop");
   const [activeListId, setActiveListId] = useState("list-active");
@@ -544,6 +551,30 @@ export default function RestokApp() {
   const activeStorageKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const updateKeyboardState = () => {
+      const focused = document.activeElement;
+      const editing = focused instanceof HTMLElement && focused.matches("input, textarea, select, [contenteditable='true']");
+      setKeyboardOpen(Boolean(editing && window.innerHeight - viewport.height - viewport.offsetTop > 140));
+    };
+    const updateAfterFocus = () => window.requestAnimationFrame(updateKeyboardState);
+    viewport.addEventListener("resize", updateKeyboardState);
+    viewport.addEventListener("scroll", updateKeyboardState);
+    window.addEventListener("resize", updateKeyboardState);
+    document.addEventListener("focusin", updateKeyboardState);
+    document.addEventListener("focusout", updateAfterFocus);
+    updateKeyboardState();
+    return () => {
+      viewport.removeEventListener("resize", updateKeyboardState);
+      viewport.removeEventListener("scroll", updateKeyboardState);
+      window.removeEventListener("resize", updateKeyboardState);
+      document.removeEventListener("focusin", updateKeyboardState);
+      document.removeEventListener("focusout", updateAfterFocus);
+    };
+  }, []);
+
+  useEffect(() => {
     const client = getSupabaseBrowserClient();
     if (!client) return;
 
@@ -557,6 +588,9 @@ export default function RestokApp() {
         setState({ products: [], lists: [] });
         setHouseholds([]);
         setActiveHousehold(null);
+        setProfileName(null);
+        setProfileEmail(null);
+        setOnboarding(false);
         setHouseholdManagerOpen(false);
         setHydrated(false);
         setSyncWarning(null);
@@ -579,12 +613,14 @@ export default function RestokApp() {
   useEffect(() => {
     let cancelled = false;
     const boot = async () => {
-      const invite = new URLSearchParams(window.location.search).get("invite");
-      const acceptedHouseholdId = invite && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
+      const params = new URLSearchParams(window.location.search);
+      const invite = params.get("invite");
+      const acceptedHouseholdId = invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
       const inviteFailed = Boolean(invite && isSupabaseConfigured && !acceptedHouseholdId);
-      if (invite) {
+      if (invite || params.has("flow")) {
         const inviteUrl = new URL(window.location.href);
         inviteUrl.searchParams.delete("invite");
+        inviteUrl.searchParams.delete("flow");
         window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
       }
 
@@ -600,6 +636,9 @@ export default function RestokApp() {
           const demoHousehold = { id: "demo-household", name: "Casa de demonstração", role: "owner" as const, createdAt: "" };
           setHouseholds([demoHousehold]);
           setActiveHousehold(demoHousehold);
+          setProfileName(null);
+          setProfileEmail(null);
+          setOnboarding(false);
           setSyncWarning(null);
           setHydrated(true);
           if (invite) setToast("Convites só funcionam quando a conta está conectada ao servidor.");
@@ -610,9 +649,26 @@ export default function RestokApp() {
       const context = await resolveRemoteContext(acceptedHouseholdId);
       if (cancelled) return;
       if (!context) {
+        const [availableHouseholds, identity] = await Promise.all([loadUserHouseholds(), loadCurrentProfile()]);
+        if (cancelled) return;
+        if (identity && availableHouseholds?.length === 0) {
+          setState({ products: [], lists: [] });
+          setHouseholds([]);
+          setActiveHousehold(null);
+          setProfileName(identity.displayName);
+          setProfileEmail(identity.email);
+          setOnboardingInvite(inviteFailed ? invite ?? "" : "");
+          setOnboardingInviteFailed(inviteFailed);
+          setOnboarding(true);
+          setStorageKey(null);
+          setSyncWarning(null);
+          setHydrated(true);
+          return;
+        }
         setState({ products: [], lists: [] });
         setHouseholds([]);
         setActiveHousehold(null);
+        setOnboarding(false);
         setStorageKey(null);
         setSyncWarning("Não foi possível validar sua sessão e carregar os dados da casa. Entre novamente.");
         setHydrated(true);
@@ -621,6 +677,9 @@ export default function RestokApp() {
       }
 
       activeUserIdRef.current = context.userId;
+      setProfileName(context.profileName);
+      setProfileEmail(context.email);
+      setOnboarding(false);
       const previouslySelectedHouseholdId = window.localStorage.getItem(activeHouseholdStorageKey(context.userId));
       const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
       activeStorageKeyRef.current = scopedKey;
@@ -666,7 +725,16 @@ export default function RestokApp() {
       if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
       else if (acceptedHouseholdId) setToast("Convite aceito. Esta casa está selecionada.");
     };
-    void boot();
+    void boot().catch(() => {
+      if (cancelled) return;
+      setState({ products: [], lists: [] });
+      setHouseholds([]);
+      setActiveHousehold(null);
+      setStorageKey(null);
+      setOnboarding(false);
+      setSyncWarning("Não foi possível carregar os dados da casa. Verifique sua conexão e tente novamente.");
+      setHydrated(true);
+    });
     return () => { cancelled = true; };
   }, []);
 
@@ -762,7 +830,7 @@ export default function RestokApp() {
   const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); void persistProduct(updated); setToast("Produto desativado"); };
   const activateHousehold = async (householdId: string) => {
     if (!isSupabaseConfigured) return householdId === "demo-household";
-    const context = await resolveRemoteContext(householdId);
+    const context = await resolveRemoteContext(householdId).catch(() => null);
     if (!context || context.householdId !== householdId) {
       setToast("Você não tem acesso a essa casa.");
       return false;
@@ -773,7 +841,7 @@ export default function RestokApp() {
       return false;
     }
 
-    const availableHouseholds = await loadUserHouseholds();
+    const availableHouseholds = await loadUserHouseholds().catch(() => null);
     const summary = availableHouseholds?.find((household) => household.id === householdId) ?? {
       id: context.householdId,
       name: context.householdName,
@@ -787,6 +855,8 @@ export default function RestokApp() {
     setStorageKey(scopedKey);
     setHouseholds(availableHouseholds ?? [summary]);
     setActiveHousehold(summary);
+    setProfileName(context.profileName);
+    setProfileEmail(context.email);
     setState(remote.state);
     setActiveListId(remote.state.lists.find((list) => list.status === "active")?.id ?? "");
     setHistoryDetail(null);
@@ -794,11 +864,14 @@ export default function RestokApp() {
     setFilter("all");
     setSyncWarning(null);
     setHydrated(true);
+    setOnboarding(false);
+    setOnboardingInvite("");
+    setOnboardingInviteFailed(false);
     return true;
   };
   const refreshMemberships = async () => {
     if (!isSupabaseConfigured) return;
-    const availableHouseholds = await loadUserHouseholds();
+    const availableHouseholds = await loadUserHouseholds().catch(() => null);
     if (!availableHouseholds) {
       setToast("Não foi possível atualizar a lista de casas.");
       return;
@@ -815,8 +888,17 @@ export default function RestokApp() {
       await activateHousehold(availableHouseholds[0].id);
       return;
     }
-    const newContext = await resolveRemoteContext(null);
-    if (newContext) await activateHousehold(newContext.householdId);
+    if (activeHousehold && activeUserIdRef.current) {
+      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+    }
+    const identity = await loadCurrentProfile().catch(() => null);
+    setProfileName(identity?.displayName ?? null);
+    setProfileEmail(identity?.email ?? null);
+    setActiveHousehold(null);
+    setState({ products: [], lists: [] });
+    setActiveListId("");
+    setStorageKey(null);
+    setOnboarding(true);
   };
   const signOut = async () => {
     setProfileOpen(false);
@@ -831,8 +913,13 @@ export default function RestokApp() {
 
     const client = getSupabaseBrowserClient();
     if (!client) return;
-    const { error } = await client.auth.signOut();
-    if (error) {
+    try {
+      const { error } = await client.auth.signOut();
+      if (error) {
+        setToast("Não foi possível encerrar a sessão. Tente novamente.");
+        return;
+      }
+    } catch {
       setToast("Não foi possível encerrar a sessão. Tente novamente.");
       return;
     }
@@ -845,13 +932,17 @@ export default function RestokApp() {
     window.location.replace("/login");
   };
 
-  const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
+    const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
+    const profileLabel = profileName || profileEmail || (isSupabaseConfigured ? "Conta" : "Demonstração");
+    const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "D";
+    if (!hydrated) return <main className="grid min-h-dvh place-items-center bg-canvas px-5 text-sm text-muted" role="status">Carregando seus dados…</main>;
+    if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
   return <div className="min-h-dvh bg-canvas text-ink">
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
       <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
-      <main className="min-w-0 flex-1 pb-24 sm:pb-8">
-        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden text-right sm:block"><span className="block text-xs font-semibold text-ink">GB</span><span className="block text-[11px] text-muted">online</span></span><div className="relative"><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label="Perfil" aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>GB</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-56 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setProfileOpen(false); setHouseholdManagerOpen(true); }}><House size={16} />Casas e pessoas</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
-        {syncWarning ? <p role="status" className="mx-4 mt-4 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8">{syncWarning}</p> : null}
+      <main className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
+        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isSupabaseConfigured ? "Conta conectada" : "Modo demonstração")}</span></span><div className="relative"><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label={`Perfil de ${profileLabel}`} aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>{profileInitials}</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-56 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setProfileOpen(false); setHouseholdManagerOpen(true); }}><House size={16} />Casas e pessoas</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
+        {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-10 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-10 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
@@ -862,8 +953,8 @@ export default function RestokApp() {
         </div>
       </main>
     </div>
-    <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div>
-    {screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-10 w-full rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
+    {!keyboardOpen ? <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div> : null}
+    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-semibold text-ink">{pending} pendentes</p><p className="mt-0.5 text-xs text-muted">{pending ? "A lista fica com você" : "Tudo resolvido"}</p></div><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : setToast("Resolva ou marque como já temos para finalizar")} className="mt-3 min-h-10 w-full rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong">{pending === 0 ? "Finalizar compra" : "Continuar compra"}</button></div> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => setEditorItem(null)} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => setAddItemOpen(false)} onAdd={addItem} /> : null}
     {newPurchaseOpen ? <NewPurchaseSheet products={state.products} onClose={() => setNewPurchaseOpen(false)} onCreate={createPurchase} /> : null}
@@ -872,7 +963,7 @@ export default function RestokApp() {
     {completeList ? <CompleteSheet list={completeList} onClose={() => setCompleteList(null)} onHistory={() => { setCompleteList(null); setScreen("history"); }} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => setProductEditor(null)} onSave={saveProduct} /> : null}
     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => setHouseholdManagerOpen(false)} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
-    {toast ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
-    {screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
+    {toast && !keyboardOpen ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
+    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
   </div>;
 }

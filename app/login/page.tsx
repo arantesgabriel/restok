@@ -6,6 +6,7 @@ import { LoginShowcase } from "@/components/login-showcase/login-showcase";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { safeInternalPath, signupDestination } from "@/lib/auth/redirect";
 
 const rememberedEmailKey = "restok-login-email";
 
@@ -24,15 +25,23 @@ export default function LoginPage() {
   const [nextPath, setNextPath] = useState("/app");
 
   useEffect(() => {
-    const requestedNext = new URLSearchParams(window.location.search).get("next");
-    if (requestedNext?.startsWith("/") && !requestedNext.startsWith("//")) setNextPath(requestedNext);
-    const savedEmail = window.localStorage.getItem(rememberedEmailKey);
-    if (savedEmail) setEmail(savedEmail);
+    const params = new URLSearchParams(window.location.search);
+    setNextPath(safeInternalPath(params.get("next")));
+    const authError = params.get("auth");
+    if (authError === "unavailable") setError("A autenticação está indisponível no momento. Tente novamente mais tarde.");
+    else if (authError === "invalid-link" || authError === "exchange-failed") setError("Este link expirou ou já foi usado. Solicite um novo link e tente novamente.");
+    else if (authError === "confirmation-failed") setError("Não foi possível confirmar seu email. Solicite um novo link de confirmação.");
+    try {
+      const savedEmail = window.localStorage.getItem(rememberedEmailKey);
+      if (savedEmail) setEmail(savedEmail);
+    } catch { /* Login can proceed when browser storage is unavailable. */ }
   }, []);
 
   const remember = (value: string) => {
-    if (rememberEmail) window.localStorage.setItem(rememberedEmailKey, value);
-    else window.localStorage.removeItem(rememberedEmailKey);
+    try {
+      if (rememberEmail) window.localStorage.setItem(rememberedEmailKey, value);
+      else window.localStorage.removeItem(rememberedEmailKey);
+    } catch { /* Login can continue when browser storage is unavailable. */ }
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -40,33 +49,38 @@ export default function LoginPage() {
     setError(null);
     setMessage(null);
     setLoading(true);
-    const supabase = getSupabaseBrowserClient();
+    try {
+      const supabase = getSupabaseBrowserClient();
+      if (!supabase) {
+        setError("Configure o Supabase para entrar com email e senha.");
+        return;
+      }
 
-    if (!supabase) {
-      setError("Configure o Supabase para entrar com email e senha.");
+      const cleanEmail = email.trim();
+      const result = isSignUp
+        ? await supabase.auth.signUp({
+            email: cleanEmail,
+            password,
+            options: {
+              emailRedirectTo: `${window.location.origin}/auth/callback?flow=signup&next=${encodeURIComponent(nextPath)}`,
+              data: { full_name: name.trim() },
+            },
+          })
+        : await supabase.auth.signInWithPassword({ email: cleanEmail, password });
+
+      if (result.error) setError(isSignUp ? "Não foi possível criar a conta. Confira os dados ou tente entrar se já possui uma conta." : "Email ou senha inválidos. Confira os dados e tente novamente.");
+      else if (isSignUp && !result.data.session) {
+        remember(cleanEmail);
+        setMessage("Conta criada. Confirme seu email para continuar.");
+      } else {
+        remember(cleanEmail);
+        router.push(isSignUp ? signupDestination(nextPath) : nextPath);
+      }
+    } catch {
+      setError("Não foi possível concluir a autenticação. Verifique sua conexão e tente novamente.");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    const cleanEmail = email.trim();
-    const result = isSignUp
-      ? await supabase.auth.signUp({
-          email: cleanEmail,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`,
-            data: { full_name: name.trim() },
-          },
-        })
-      : await supabase.auth.signInWithPassword({ email: cleanEmail, password });
-
-    if (result.error) setError(result.error.message);
-    else if (isSignUp && !result.data.session) setMessage("Conta criada. Confirme seu email para continuar.");
-    else {
-      remember(cleanEmail);
-      router.push(nextPath);
-    }
-    setLoading(false);
   };
 
   const sendReset = async () => {
@@ -83,12 +97,17 @@ export default function LoginPage() {
       return;
     }
     setResetting(true);
-    const { error: resetError } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
-      redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent("/login")}`,
-    });
-    if (resetError) setError(resetError.message);
-    else setMessage("Enviamos um link de redefinição para esse email.");
-    setResetting(false);
+    try {
+      const { error: resetError } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
+        redirectTo: `${window.location.origin}/auth/callback?flow=recovery`,
+      });
+      if (resetError) setError("Não foi possível enviar o link agora. Confira o email e tente novamente.");
+      else setMessage("Se esse email estiver cadastrado, enviaremos um link para redefinir a senha.");
+    } catch {
+      setError("Não foi possível enviar o link. Verifique sua conexão e tente novamente.");
+    } finally {
+      setResetting(false);
+    }
   };
 
   return (
