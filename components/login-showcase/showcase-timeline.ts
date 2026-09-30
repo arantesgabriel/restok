@@ -25,7 +25,7 @@ import type { ItemStatus } from "@/lib/types";
  * 5.0s frango checked · 6.0s leite checked · 7.0s already have
  * 8.0s 7/11 · 8.3s 10/11 · 8.6s 11/11 · 9.0s checkout
  * 10.0s summary · 10.7s metrics · 11.5s chart
- * 13.0s hold · 15.0s restart
+ * 13.0s hold · 15.0s restart (crossfade back into planning)
  */
 
 export type ShowcaseStage = "planning" | "shopping" | "summary";
@@ -60,6 +60,9 @@ export type StoryStepId = (typeof demoStory)[number]["id"];
 
 export const showcaseLoopMs = 15_000;
 
+/** Dissolve of the held summary into the next planning pass. Ends before the first item returns. */
+export const showcaseRestartFadeMs = 560;
+
 export const showcaseCues = [
   { atMs: 0, stage: "planning", beat: "planning-start" },
   { atMs: 1_000, stage: "planning", beat: "item-arroz" },
@@ -86,6 +89,8 @@ export type ShowcaseIntent = "idle" | "playing" | "paused" | "stopped";
 export type ShowcaseTimelineState = {
   intent: ShowcaseIntent;
   elapsedMs: number;
+  /** Increments only when a playing pass wraps. Zero on a fresh start. */
+  cycle: number;
   reducedMotion: boolean;
   panelVisible: boolean;
   tabVisible: boolean;
@@ -96,6 +101,7 @@ export type ShowcaseScene = {
   stage: ShowcaseStage;
   beat: ShowcaseBeat | null;
   running: boolean;
+  cycle: number;
 };
 
 export type ShowcaseTimelineEvent =
@@ -116,6 +122,7 @@ export type ShowcaseTimelineEvent =
 export const initialShowcaseTimelineState: ShowcaseTimelineState = {
   intent: "idle",
   elapsedMs: 0,
+  cycle: 0,
   reducedMotion: false,
   panelVisible: false,
   tabVisible: true,
@@ -164,7 +171,7 @@ export function shouldAutoplay(state: ShowcaseTimelineState): boolean {
 
 export function deriveShowcaseScene(state: ShowcaseTimelineState): ShowcaseScene {
   if (state.reducedMotion || state.intent === "idle" || state.intent === "stopped") {
-    return { mode: "still", stage: "shopping", beat: null, running: false };
+    return { mode: "still", stage: "shopping", beat: null, running: false, cycle: state.cycle };
   }
   const cue = sceneFromElapsed(state.elapsedMs);
   return {
@@ -172,7 +179,13 @@ export function deriveShowcaseScene(state: ShowcaseTimelineState): ShowcaseScene
     stage: cue.stage,
     beat: cue.beat,
     running: isShowcaseRunning(state),
+    cycle: state.cycle,
   };
+}
+
+/** True only for the opening beat of a pass that followed the hold. The first play does not qualify. */
+export function showcaseLoopHandoff(scene: ShowcaseScene): boolean {
+  return scene.mode === "script" && scene.cycle > 0 && scene.beat === "planning-start";
 }
 
 export type PlanningFrame = {
@@ -291,19 +304,24 @@ export function reduceShowcaseTimeline(
     case "play":
       if (state.reducedMotion || state.intent === "playing") return state;
       if (state.intent === "paused") return { ...state, intent: "playing" };
-      return { ...state, intent: "playing", elapsedMs: 0 };
+      return { ...state, intent: "playing", elapsedMs: 0, cycle: 0 };
     case "pause":
       if (state.intent !== "playing") return state;
       return { ...state, intent: "paused", elapsedMs: normalizeElapsed(event.elapsedMs) };
     case "restart":
       if (state.reducedMotion) {
-        if (state.intent === "stopped" && state.elapsedMs === 0) return state;
-        return { ...state, intent: "stopped", elapsedMs: 0 };
+        if (state.intent === "stopped" && state.elapsedMs === 0 && state.cycle === 0) return state;
+        return { ...state, intent: "stopped", elapsedMs: 0, cycle: 0 };
       }
-      return { ...state, intent: "playing", elapsedMs: 0 };
+      return {
+        ...state,
+        intent: "playing",
+        elapsedMs: 0,
+        cycle: state.elapsedMs > 0 ? state.cycle + 1 : 0,
+      };
     case "interrupt":
-      if (state.intent === "stopped" && state.elapsedMs === 0) return state;
-      return { ...state, intent: "stopped", elapsedMs: 0 };
+      if (state.intent === "stopped" && state.elapsedMs === 0 && state.cycle === 0) return state;
+      return { ...state, intent: "stopped", elapsedMs: 0, cycle: 0 };
     case "goTo": {
       if (state.reducedMotion) return state;
       const elapsedMs = elapsedForStage(event.stage);
@@ -314,8 +332,9 @@ export function reduceShowcaseTimeline(
     case "tick": {
       if (!isShowcaseRunning(state)) return state;
       const elapsedMs = normalizeElapsed(event.elapsedMs);
-      if (elapsedMs === state.elapsedMs) return state;
-      return { ...state, elapsedMs };
+      const wrapped = event.elapsedMs >= showcaseLoopMs;
+      if (!wrapped && elapsedMs === state.elapsedMs) return state;
+      return { ...state, elapsedMs, cycle: wrapped ? state.cycle + 1 : state.cycle };
     }
     case "environment":
       return applyEnvironment(state, event);
@@ -333,6 +352,7 @@ function applyEnvironment(
       state.reducedMotion &&
       state.intent === "stopped" &&
       state.elapsedMs === 0 &&
+      state.cycle === 0 &&
       state.panelVisible === event.panelVisible &&
       state.tabVisible === event.tabVisible
     ) {
@@ -345,6 +365,7 @@ function applyEnvironment(
       tabVisible: event.tabVisible,
       intent: "stopped",
       elapsedMs: 0,
+      cycle: 0,
     };
   }
 

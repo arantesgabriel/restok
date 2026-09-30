@@ -9,8 +9,8 @@
 | 2 | Fundação do sistema de animação | Concluída e aprovada — início da Fase 3 autorizado |
 | 3 | Cena 1: planejamento e colaboração | Concluída — aguardando aprovação para a Fase 4 |
 | 4 | Cena 2: dentro do mercado | Concluída nesta execução, junto com a Fase 5 |
-| 5 | Cena 3: finalização e métricas | Concluída nesta execução — aguardando aprovação para a Fase 6 |
-| 6 | Loop e storytelling completo | Não iniciada |
+| 5 | Cena 3: finalização e métricas | Concluída — início da Fase 6 autorizado |
+| 6 | Loop e storytelling completo | Concluída nesta execução — aguardando aprovação para a Fase 7 |
 | 7 | Microinterações do login | Não iniciada |
 | 8 | Mobile, tablet e reduced motion | Não iniciada |
 | 9 | Acessibilidade e performance | Não iniciada |
@@ -71,6 +71,13 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 3. **Métricas** — 10 itens comprados, R$ 38,00 economizados e "1 já tínhamos". O 10 é a contagem de comprados do produto, não a soma das quantidades.
 4. **Gráfico** — a linha das compras anteriores é desenhada, o último ponto entra depois e ganha um halo. O indicador marca Acompanhe.
 5. **Fora desta fase** — o retorno do acompanhamento para o planejamento ainda corta. O fade de reinício é a Fase 6.
+
+## Decisões da Fase 6
+
+1. **Pausa** — o quadro final continua parado de 13s a 15s (2s). O gráfico já assentou por volta de 12,5s, então a composição fica quieta antes de recomeçar.
+2. **Reinício** — ao voltar o ciclo, a compra concluída permanece por cima e some em 560ms. A lista da casa já está embaixo, no mesmo topo e com o mesmo título, então o palco não esvazia nem duplica o nome da lista. O indicador passa para Planeje no mesmo tempo. O espaço do aviso da Maria abre depois, junto com o primeiro item.
+3. **Primeira vez** — a abertura, a partir do quadro parado, não usa esse fade. Ele só acontece depois de um ciclo completo. Interromper ou pedir reduced motion zera a contagem e a próxima entrada começa limpa.
+4. **Sem relógio novo** — a cópia que sai fica montada até o arroz entrar (1s). A animação em si dura 560ms e termina com a lista ainda vazia.
 
 ---
 

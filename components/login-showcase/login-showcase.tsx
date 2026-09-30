@@ -22,6 +22,8 @@ import {
 import {
   planningFrame,
   shoppingFrame,
+  showcaseLoopHandoff,
+  showcaseRestartFadeMs,
   showcaseStepId,
   summaryFrame,
   type ShowcaseBeat,
@@ -48,21 +50,38 @@ export function LoginShowcase() {
   const ratio = demoBudgetCents > 0 ? Math.min(100, (spent / demoBudgetCents) * 100) : 0;
 
   const script = scene.mode === "script" && scene.beat !== null;
+  const handoff = script && showcaseLoopHandoff(scene);
 
   return (
-    <aside className="login-showcase" aria-labelledby="login-showcase-title">
+    <aside
+      className="login-showcase"
+      aria-labelledby="login-showcase-title"
+      style={{ ["--login-showcase-fade" as string]: `${showcaseRestartFadeMs}ms` }}
+    >
       <header className="login-showcase-copy">
         <h2 id="login-showcase-title">Sua compra, da lista à próxima.</h2>
         <p>Vocês planejam juntos, acompanham o gasto no mercado e levam o total para a próxima compra.</p>
       </header>
 
       <div
-        className="login-showcase-stage"
+        className={handoff ? "login-showcase-stage is-handoff" : "login-showcase-stage"}
         data-stage={scene.mode === "still" ? "still" : scene.stage}
         data-beat={scene.beat ?? "still"}
+        data-handoff={handoff ? "true" : undefined}
         aria-hidden="true"
       >
-        {script ? <ScriptScene stage={scene.stage} beat={scene.beat!} /> : (
+        {script ? (
+          <>
+            {handoff ? (
+              <div className="login-showcase-pass is-leaving is-settled">
+                <ScriptScene stage="summary" beat="hold" ghost />
+              </div>
+            ) : null}
+            <div className="login-showcase-pass">
+              <ScriptScene stage={scene.stage} beat={scene.beat!} />
+            </div>
+          </>
+        ) : (
           <StillScene
             spent={spent}
             remaining={remaining}
@@ -143,7 +162,7 @@ function StillScene({
   );
 }
 
-function ScriptScene({ stage, beat }: { stage: ShowcaseStage; beat: ShowcaseBeat }) {
+function ScriptScene({ stage, beat, ghost = false }: { stage: ShowcaseStage; beat: ShowcaseBeat; ghost?: boolean }) {
   const planning = stage === "planning" ? planningFrame(beat) : null;
   const shopping = stage === "shopping" ? shoppingFrame(beat) : null;
   const summary = stage === "summary" ? summaryFrame(beat) : null;
@@ -156,7 +175,7 @@ function ScriptScene({ stage, beat }: { stage: ShowcaseStage; beat: ShowcaseBeat
       ? `${shopping.resolved} de ${shopping.total} resolvidos`
       : null;
   const countBumped = planning ? planning.itemCount === planningJoinedItemCount : shopping !== null;
-  const kicker = planning ? "Lista da casa" : summary ? "" : "Dentro do mercado";
+  const kicker = planning ? "Lista da casa" : summary ? (ghost ? "Lista da casa" : "") : "Dentro do mercado";
   const rows = scriptRows(stage, beat);
 
   return (
@@ -168,7 +187,7 @@ function ScriptScene({ stage, beat }: { stage: ShowcaseStage; beat: ShowcaseBeat
 
       <article className="login-showcase-list">
         <header className="login-showcase-list-head">
-          <p className="login-showcase-kicker">{kicker}</p>
+          <p className={ghost ? "login-showcase-kicker is-spacer" : "login-showcase-kicker"}>{kicker}</p>
           <h3>{demoListName}</h3>
           {countText ? (
             <p>

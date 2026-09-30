@@ -11,7 +11,9 @@ import {
   summaryFrame,
   sceneFromElapsed,
   showcaseCues,
+  showcaseLoopHandoff,
   showcaseLoopMs,
+  showcaseRestartFadeMs,
   showcaseStepId,
   shouldAutoplay,
   type ShowcaseBeat,
@@ -59,9 +61,10 @@ const marks = [
   [15000, "planning", "planning-start"],
 ] as const satisfies ReadonlyArray<readonly [number, ShowcaseStage, ShowcaseBeat]>;
 
-const playingAt = (elapsedMs: number): ShowcaseTimelineState => ({
+const playingAt = (elapsedMs: number, cycle = 0): ShowcaseTimelineState => ({
   intent: "playing",
   elapsedMs,
+  cycle,
   reducedMotion: false,
   panelVisible: true,
   tabVisible: true,
@@ -180,6 +183,52 @@ describe("summary scene", () => {
   });
 });
 
+describe("loop handoff", () => {
+  it("holds the finished purchase, then crossfades into the next plan", () => {
+    const holdMs = showcaseLoopMs - showcaseCues.at(-1)!.atMs;
+    expect(holdMs).toBeGreaterThanOrEqual(2_000);
+    expect(holdMs).toBeLessThanOrEqual(3_000);
+    expect(showcaseRestartFadeMs).toBeGreaterThanOrEqual(400);
+    expect(showcaseRestartFadeMs).toBeLessThan(showcaseCues[1].atMs);
+
+    const opened = reduceShowcaseTimeline(
+      reduceShowcaseTimeline(initialShowcaseTimelineState, desktop),
+      { type: "play" },
+    );
+    expect(opened.cycle).toBe(0);
+    expect(showcaseLoopHandoff(deriveShowcaseScene(opened))).toBe(false);
+
+    const wrapped = reduceShowcaseTimeline(playingAt(13_000), { type: "tick", elapsedMs: showcaseLoopMs });
+    const scene = deriveShowcaseScene(wrapped);
+    expect(wrapped).toMatchObject({ intent: "playing", elapsedMs: 0, cycle: 1 });
+    expect(scene).toMatchObject({ stage: "planning", beat: "planning-start" });
+    expect(showcaseLoopHandoff(scene)).toBe(true);
+    expect(summaryFrame("hold")).toMatchObject({ metricsVisible: true, chartVisible: true });
+
+    const arroz = reduceShowcaseTimeline(wrapped, { type: "tick", elapsedMs: 1_000 });
+    expect(arroz.cycle).toBe(1);
+    expect(showcaseLoopHandoff(deriveShowcaseScene(arroz))).toBe(false);
+
+    const again = reduceShowcaseTimeline(playingAt(13_000, 1), { type: "tick", elapsedMs: showcaseLoopMs });
+    expect(again.cycle).toBe(2);
+    expect(showcaseLoopHandoff(deriveShowcaseScene(again))).toBe(true);
+  });
+
+  it("does not replay the handoff after a fresh start", () => {
+    const looped = playingAt(8_000, 2);
+    const stopped = reduceShowcaseTimeline(looped, { type: "interrupt" });
+    expect(stopped.cycle).toBe(0);
+    const replayed = reduceShowcaseTimeline(stopped, { type: "play" });
+    expect(replayed).toMatchObject({ intent: "playing", elapsedMs: 0, cycle: 0 });
+    expect(showcaseLoopHandoff(deriveShowcaseScene(replayed))).toBe(false);
+
+    const restarted = reduceShowcaseTimeline(playingAt(10_000, 1), { type: "restart" });
+    expect(restarted.cycle).toBe(2);
+    expect(showcaseLoopHandoff(deriveShowcaseScene(restarted))).toBe(true);
+    expect(reduceShowcaseTimeline(playingAt(0, 1), { type: "restart" }).cycle).toBe(0);
+  });
+});
+
 describe("showcase timeline controls", () => {
   it("starts on the still frame and autoplays only when the panel can run", () => {
     const still = deriveShowcaseScene(initialShowcaseTimelineState);
@@ -222,6 +271,7 @@ describe("showcase timeline controls", () => {
     const held = playingAt(13_000);
     const wrapped = reduceShowcaseTimeline(held, { type: "tick", elapsedMs: 15_000 });
     expect(wrapped.elapsedMs).toBe(0);
+    expect(wrapped.cycle).toBe(1);
     expect(deriveShowcaseScene(wrapped).beat).toBe("planning-start");
   });
 
