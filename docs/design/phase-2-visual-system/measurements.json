@@ -1,0 +1,236 @@
+[
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 412,
+    "width": 412
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-shop",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 320,
+        "scrollWidth": 320
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 360,
+        "scrollWidth": 360
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 375,
+        "scrollWidth": 375
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 390,
+        "scrollWidth": 390
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 412,
+        "scrollWidth": 412
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 412,
+    "width": 412
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 430,
+        "scrollWidth": 430
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 480,
+        "scrollWidth": 480
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 480,
+        "scrollWidth": 480
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "controls": [],
+    "dialogWidths": [
+      {
+        "clientWidth": 480,
+        "scrollWidth": 480
+      }
+    ],
+    "label": "after-item-sheet",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 412,
+    "width": 412
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "controls": [],
+    "dialogWidths": [],
+    "label": "after-home",
+    "scrollWidth": 1280,
+    "width": 1280
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "method": "WCAG relative luminance from exact sRGB hex tokens",
+  "colors": {
+    "canvas": "#FAFAF7",
+    "ink": "#171A18",
+    "green": "#174C3C",
+    "secondary": "#52645B",
+    "mist": "#EAF3EE",
+    "lineStrong": "#70877B",
+    "danger": "#963F36",
+    "warning": "#755119"
+  },
+  "contrast": {
+    "ink_on_canvas": 16.772,
+    "secondary_on_canvas": 6.026,
+    "green_on_canvas": 9.404,
+    "green_on_mist": 8.688,
+    "secondary_on_mist": 5.567,
+    "lineStrong_on_canvas": 3.691,
+    "danger_on_canvas": 6.56,
+    "warning_on_canvas": 6.814
+  }
+}

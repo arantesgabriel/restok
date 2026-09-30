@@ -20,6 +20,18 @@
   --restok-danger-surface: #faefed;
   --restok-warning: #755119;
   --restok-warning-surface: #f8f1e5;
+  --restok-text-label: 12px;
+  --restok-text-caption: 13px;
+  --restok-text-small: 14px;
+  --restok-text-body: 15px;
+  --restok-text-input: 16px;
+  --restok-text-section: 18px;
+  --restok-text-value: 22px;
+  --restok-text-title: 24px;
+  --restok-text-title-wide: 28px;
+  --restok-weight-body: 400;
+  --restok-weight-action: 500;
+  --restok-weight-heading: 600;
   --restok-space-1: 4px;
   --restok-space-2: 8px;
   --restok-space-3: 12px;
@@ -42,7 +54,9 @@
   --restok-z-menu: 20;
   --restok-z-sticky: 30;
   --restok-z-dialog: 40;
+  --restok-z-backdrop: 35;
   --restok-z-toast: 50;
+  --restok-z-tooltip: 60;
   --restok-touch: 44px;
   --restok-nav-height: 60px;
   --restok-dock-height: 64px;
@@ -67,8 +81,10 @@
 .visual-system :where(button) { cursor: pointer; }
 .visual-system :where(button:disabled) { cursor: not-allowed; }
 .visual-system :where(svg) { flex-shrink: 0; stroke-width: 1.75; }
+.visual-system[data-reduced-motion="true"] { --restok-motion-instant: 0ms; --restok-motion-fast: 0ms; --restok-motion-base: 0ms; --restok-motion-slow: 0ms; }
+.visual-system[data-reduced-motion="true"] *, .visual-system[data-reduced-motion="true"] *::before, .visual-system[data-reduced-motion="true"] *::after, .visual-system[data-reduced-motion="true"] dialog::backdrop { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .visual-system { --restok-motion-instant: 0ms; --restok-motion-fast: 0ms; --restok-motion-base: 0ms; --restok-motion-slow: 0ms; }
-  .visual-system *, .visual-system *::before, .visual-system *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .visual-system *, .visual-system *::before, .visual-system *::after, .visual-system dialog::backdrop { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
