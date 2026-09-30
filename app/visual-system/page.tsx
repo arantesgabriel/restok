@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { VisualSystemProof } from "@/components/visual-system-proof";
 import "./tokens.css";
+import "./proof.css";
 
 export const metadata: Metadata = {
   title: "Restok — proposta do sistema visual",
@@ -8,11 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function VisualSystemPage() {
-  return (
-    <main className="visual-system" style={{ padding: 24 }}>
-      <Image src="/brand/restok-logo.png" alt="Restok" width={124} height={41} priority />
-      <h1>Produtos da casa</h1>
-      <p>O que costuma fazer parte da sua lista.</p>
-    </main>
-  );
+  return <VisualSystemProof />;
 }
