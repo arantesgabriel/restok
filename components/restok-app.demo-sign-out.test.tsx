@@ -32,7 +32,7 @@ describe("demo sign out", () => {
     fireEvent.click(screen.getByRole("menuitem", { name: "Limpar dados locais" }));
 
     expect(await screen.findByText("Dados locais da demonstração apagados")).toBeTruthy();
-    expect(localStorage.getItem(LEGACY_REMOTE_STATE_KEY)).toBeNull();
+    expect(localStorage.getItem(LEGACY_REMOTE_STATE_KEY)).toBe("legacy");
     expect(localStorage.getItem(DEMO_STATE_KEY) ?? "").not.toContain("custom");
   });
 });

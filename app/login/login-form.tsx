@@ -203,7 +203,7 @@ export function LoginForm() {
                 </button>
               </p>
               <div className="login-divider"><span />ou<span /></div>
-              <Link href="/app" className="login-demo">Experimentar com dados de exemplo</Link>
+              <Link href="/app?demo=1" className="login-demo">Experimentar com dados de exemplo</Link>
             </form>
           </>
         )}

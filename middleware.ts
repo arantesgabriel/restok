@@ -5,6 +5,7 @@ import { isSupabaseConfigured, supabaseAnonKey, supabaseUrl } from "@/lib/supaba
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next({ request });
   if (!isSupabaseConfigured) return response;
+  if (request.nextUrl.pathname === "/app" && request.nextUrl.searchParams.get("demo") === "1") return response;
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll: () => request.cookies.getAll(),

@@ -19,8 +19,13 @@ function roleLabel(role: HouseholdRole) {
   return role === "owner" ? "Proprietário" : role === "admin" ? "Administrador" : "Membro";
 }
 
-function memberLabel(member: HouseholdMember, index: number) {
-  return member.isSelf ? "Você" : `Membro ${index} · ${member.userId.slice(0, 8)}`;
+function memberLabel(member: HouseholdMember) {
+  if (member.isSelf) return "Você";
+  return member.displayName?.trim() || `Membro sem nome · código ${member.userId.slice(-8).toUpperCase()}`;
+}
+
+function memberContext(member: HouseholdMember) {
+  return member.isSelf ? "Você" : `${memberLabel(member)} · ${roleLabel(member.role)} · desde ${formatDate(member.joinedAt)}`;
 }
 
 function inviteStatus(invite: HouseholdInvite) {
@@ -60,21 +65,38 @@ export function HouseholdManager({
   const [createdLink, setCreatedLink] = useState("");
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   const canInvite = activeHousehold.role === "owner" || activeHousehold.role === "admin";
 
   const refresh = async () => {
+    if (!enabled) {
+      setMembers([]);
+      setInvites([]);
+      setLoadError(false);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
-    const [nextMembers, nextInvites] = await Promise.all([
-      loadHouseholdMembers(activeHousehold.id),
-      canInvite ? loadHouseholdInvites(activeHousehold.id) : Promise.resolve([]),
-    ]);
-    setMembers(nextMembers ?? []);
-    setInvites(nextInvites ?? []);
-    setLoading(false);
+    try {
+      const [nextMembers, nextInvites] = await Promise.all([
+        loadHouseholdMembers(activeHousehold.id),
+        canInvite ? loadHouseholdInvites(activeHousehold.id) : Promise.resolve([]),
+      ]);
+      if (!nextMembers || (canInvite && !nextInvites)) throw new Error("Could not load household members.");
+      setMembers(nextMembers);
+      setInvites(nextInvites ?? []);
+      setLoadError(false);
+    } catch {
+      setMembers([]);
+      setInvites([]);
+      setLoadError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  useEffect(() => { void refresh(); }, [activeHousehold.id, activeHousehold.role]);
+  useEffect(() => { void refresh(); }, [activeHousehold.id, activeHousehold.role, enabled]);
 
   const perform = async (action: () => Promise<boolean>, successMessage: string) => {
     setBusy(true);
@@ -167,7 +189,7 @@ export function HouseholdManager({
               <input id="new-household-name" required maxLength={80} value={newName} onChange={(event) => setNewName(event.target.value)} placeholder="Nome da casa" className="field-input min-w-0 flex-1" />
               <button type="submit" disabled={busy || !newName.trim()} className="min-h-11 rounded-[10px] bg-primary px-4 text-sm font-semibold text-white disabled:opacity-50">Criar casa</button>
             </form> : null}
-            {!enabled ? <p className="text-xs leading-5 text-muted">Casas e convites ficam disponíveis quando a conta estiver conectada ao servidor.</p> : null}
+            {!enabled ? <p className="text-xs leading-5 text-muted">Casas, pessoas e convites ficam indisponíveis no modo de demonstração.</p> : null}
           </section>
 
           <section>
@@ -176,14 +198,14 @@ export function HouseholdManager({
               {canInvite && enabled ? <button type="button" disabled={busy} onClick={() => void makeInvite()} className="min-h-11 rounded-[9px] bg-primary px-3 text-xs font-semibold text-white disabled:opacity-50">Criar convite</button> : null}
             </div>
             {createdLink ? <div className="mb-3 rounded-[10px] border border-primary/20 bg-sage/50 p-3"><p className="text-xs font-semibold text-ink">Link do convite (visível só nesta tela)</p><div className="mt-2 flex gap-2"><input readOnly value={createdLink} onFocus={(event) => event.currentTarget.select()} className="field-input min-w-0 flex-1 text-xs" aria-label="Link do convite" /><button type="button" onClick={() => { void (async () => { try { await navigator.clipboard.writeText(createdLink); notify("Convite copiado."); } catch { notify("Selecione e copie o link do convite."); } })(); }} className="min-h-11 rounded-[9px] border border-line bg-surface px-3 text-xs font-semibold text-ink">Copiar</button></div></div> : null}
-            {!enabled ? <p className="py-4 text-sm text-muted">A lista de pessoas aparece quando a conta estiver conectada ao servidor.</p> : loading ? <p className="py-4 text-sm text-muted">Carregando pessoas…</p> : members.length ? <ul className="divide-y divide-line rounded-[10px] border border-line bg-surface">
-              {members.map((member, index) => <li key={member.userId} className="flex flex-wrap items-center gap-2 px-3 py-3">
-                <span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{memberLabel(member, index + 1)}</span><span className="mt-0.5 block text-xs text-muted">{roleLabel(member.role)} · desde {formatDate(member.joinedAt)}</span></span>
+            {!enabled ? <p className="py-4 text-sm text-muted">Pessoas e convites ficam indisponíveis nesta demonstração.</p> : loading ? <p className="py-4 text-sm text-muted" role="status">Carregando pessoas…</p> : loadError ? <div className="rounded-[10px] border border-terracotta/25 bg-terracotta/5 p-3" role="alert"><p className="text-sm text-ink">Não foi possível carregar as pessoas e convites.</p><button type="button" onClick={() => void refresh()} className="mt-2 min-h-11 rounded-md px-2 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Tentar novamente</button></div> : members.length ? <ul className="divide-y divide-line rounded-[10px] border border-line bg-surface">
+              {members.map((member) => <li key={member.userId} className="flex flex-wrap items-center gap-2 px-3 py-3">
+                <span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{memberLabel(member)}</span><span className="mt-0.5 block text-xs text-muted">{roleLabel(member.role)} · desde {formatDate(member.joinedAt)}</span></span>
                 {enabled && activeHousehold.role === "owner" && member.role !== "owner" ? <>
-                  <select aria-label={`Papel de ${memberLabel(member, index + 1)}`} disabled={busy} value={member.role} onChange={(event) => { const role = event.target.value as HouseholdRole; void perform(() => changeHouseholdMemberRole(activeHousehold.id, member.userId, role), "Papel atualizado."); }} className="min-h-11 rounded-[8px] border border-line bg-canvas px-2 text-xs text-ink"><option value="member">Membro</option><option value="admin">Administrador</option></select>
-                  <button type="button" disabled={busy} onClick={() => { if (window.confirm(`Transferir a propriedade para ${memberLabel(member, index + 1)}? Você passará a administrador.`)) void perform(() => transferHouseholdOwnership(activeHousehold.id, member.userId), "Propriedade transferida."); }} className="min-h-11 px-2 text-xs font-semibold text-primary">Transferir</button>
-                  <button type="button" disabled={busy} onClick={() => { if (window.confirm(`Remover ${memberLabel(member, index + 1)} desta casa?`)) void perform(() => removeHouseholdMember(activeHousehold.id, member.userId), "Pessoa removida da casa."); }} className="min-h-11 px-2 text-xs font-semibold text-terracotta">Remover</button>
-                </> : enabled && activeHousehold.role === "admin" && member.role === "member" && !member.isSelf ? <button type="button" disabled={busy} onClick={() => { if (window.confirm(`Remover ${memberLabel(member, index + 1)} desta casa?`)) void perform(() => removeHouseholdMember(activeHousehold.id, member.userId), "Pessoa removida da casa."); }} className="min-h-11 px-2 text-xs font-semibold text-terracotta">Remover</button> : null}
+                  <select aria-label={`Papel de ${memberContext(member)}`} disabled={busy} value={member.role} onChange={(event) => { const role = event.target.value as HouseholdRole; void perform(() => changeHouseholdMemberRole(activeHousehold.id, member.userId, role), "Papel atualizado."); }} className="min-h-11 rounded-[8px] border border-line bg-canvas px-2 text-xs text-ink"><option value="member">Membro</option><option value="admin">Administrador</option></select>
+                  <button type="button" aria-label={`Transferir propriedade para ${memberContext(member)}`} disabled={busy} onClick={() => { if (window.confirm(`Transferir a propriedade para ${memberContext(member)}? Você passará a administrador.`)) void perform(() => transferHouseholdOwnership(activeHousehold.id, member.userId), "Propriedade transferida."); }} className="min-h-11 px-2 text-xs font-semibold text-primary">Transferir</button>
+                  <button type="button" aria-label={`Remover ${memberContext(member)} desta casa`} disabled={busy} onClick={() => { if (window.confirm(`Remover ${memberContext(member)} desta casa?`)) void perform(() => removeHouseholdMember(activeHousehold.id, member.userId), "Pessoa removida da casa."); }} className="min-h-11 px-2 text-xs font-semibold text-terracotta">Remover</button>
+                </> : enabled && activeHousehold.role === "admin" && member.role === "member" && !member.isSelf ? <button type="button" aria-label={`Remover ${memberContext(member)} desta casa`} disabled={busy} onClick={() => { if (window.confirm(`Remover ${memberContext(member)} desta casa?`)) void perform(() => removeHouseholdMember(activeHousehold.id, member.userId), "Pessoa removida da casa."); }} className="min-h-11 px-2 text-xs font-semibold text-terracotta">Remover</button> : null}
               </li>)}
             </ul> : <p className="py-4 text-sm text-muted">Não foi possível carregar as pessoas desta casa.</p>}
             {enabled && members.some((member) => member.isSelf) ? <button type="button" disabled={busy} onClick={() => { if (window.confirm("Sair desta casa? Seu acesso aos dados será removido.")) void perform(() => leaveHousehold(activeHousehold.id), "Você saiu da casa.").then((left) => { if (left) onClose(); }); }} className="mt-3 min-h-11 text-sm font-semibold text-terracotta">Sair desta casa</button> : null}

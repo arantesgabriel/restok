@@ -296,7 +296,7 @@ describe("login form", () => {
 
   it("offers the demo account and the mobile story on the form", () => {
     render(<LoginForm />);
-    expect(screen.getByRole("link", { name: "Experimentar com dados de exemplo" }).getAttribute("href")).toBe("/app");
+    expect(screen.getByRole("link", { name: "Experimentar com dados de exemplo" }).getAttribute("href")).toBe("/app?demo=1");
     expect(screen.getByText("Planeje, compre e acompanhe.")).toBeTruthy();
     expect(screen.getByText("Planeje")).toBeTruthy();
     expect(screen.getByText("Compre")).toBeTruthy();

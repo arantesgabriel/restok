@@ -14,6 +14,7 @@ export type HouseholdSummary = {
 
 export type HouseholdMember = {
   userId: string;
+  displayName?: string | null;
   role: HouseholdRole;
   joinedAt: string;
   isSelf: boolean;

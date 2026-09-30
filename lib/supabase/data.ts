@@ -180,12 +180,25 @@ export async function loadHouseholdMembers(householdId: string): Promise<Househo
   if (!client) return null;
   const { data, error } = await client.rpc("get_household_members", { target_household: householdId });
   if (error || !data) return null;
-  return (data as Array<{ user_id: string; role: HouseholdRole; joined_at: string; is_self: boolean }>).map((member) => ({
+  const members = (data as Array<{ user_id: string; role: HouseholdRole; joined_at: string; is_self: boolean }>).map((member) => ({
     userId: member.user_id,
     role: member.role,
     joinedAt: member.joined_at,
     isSelf: member.is_self,
   }));
+  const displayNameByUserId = new Map<string, string>();
+  if (members.length) {
+    try {
+      const { data: profiles, error: profileError } = await client.from("profiles").select("id,display_name").in("id", members.map((member) => member.userId));
+      if (!profileError) {
+        for (const profile of profiles ?? []) {
+          const displayName = profile.display_name?.trim();
+          if (displayName) displayNameByUserId.set(profile.id, displayName);
+        }
+      }
+    } catch { /* member management remains available with an ID fallback */ }
+  }
+  return members.map((member) => ({ ...member, displayName: displayNameByUserId.get(member.userId) ?? null }));
 }
 
 export async function loadHouseholdInvites(householdId: string): Promise<HouseholdInvite[] | null> {
