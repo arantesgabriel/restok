@@ -525,15 +525,62 @@ function ConfirmFinishSheet({ onClose, onConfirm, pending }: { onClose: () => bo
 }
 
 function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
-  const completed = lists.filter((list) => list.status === "completed");
+  const completed = lists.filter((list) => list.status === "completed").sort((left, right) =>
+    +new Date(right.finishedAt ?? right.startedAt) - +new Date(left.finishedAt ?? left.startedAt),
+  );
   return <div className="space-y-6"><div><p className="text-sm font-semibold text-primary">O que já passou pelo caixa</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Histórico</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Preços anteriores ficam aqui para a próxima compra começar com contexto.</p></div>
-    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[94px] w-full items-center gap-4 text-left transition hover:bg-sage/35"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><CheckCircle2 size={20} /></span><span className="min-w-0 flex-1"><span className="block truncate text-[15px] font-semibold text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{monthLabel(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span></span><span className="text-right"><span className="block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)}</span></span><ChevronRight size={17} className="text-line" /></button>)}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
+    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => {
+      const purchased = list.items.filter((item) => item.status === "purchased").length;
+      const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
+      const pending = list.items.filter((item) => item.status === "pending").length;
+      const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
+      return <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[108px] w-full items-center gap-3 py-3 text-left transition hover:bg-sage/35 sm:gap-4">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><ShoppingBasket size={20} /></span>
+        <span className="min-w-0 flex-1"><span className="block truncate text-[15px] font-semibold text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span><span className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted"><span>{purchased} comprados</span><span>{alreadyHave} já tínhamos</span><span>{pending} pendentes</span></span>{withoutPrice ? <span className="mt-1 block text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado sem preço" : "comprados sem preço"}</span> : null}</span>
+        <span className="shrink-0 text-right"><span className="block text-[11px] text-muted">Total registrado</span><span className="mt-0.5 block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span></span><ChevronRight size={17} className="shrink-0 text-muted" />
+      </button>;
+    })}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
   </div>;
 }
 
-function HistoryDetail({ list, onBack }: { list: ShoppingList; onBack: () => void }) {
+function previousHistoryPrice(item: ShoppingItem, list: ShoppingList, lists: ShoppingList[]) {
+  if (!item.productId) return undefined;
+  const listDate = +new Date(list.finishedAt ?? list.startedAt);
+  const earlierLists = lists.filter((candidate) => candidate.status === "completed"
+    && candidate.id !== list.id
+    && +new Date(candidate.finishedAt ?? candidate.startedAt) < listDate);
+  return latestPriceFor(item.productId, earlierLists);
+}
+
+function HistoryPriceComparison({ item, previousPrice }: { item: ShoppingItem; previousPrice?: number }) {
+  if (item.status !== "purchased" || item.unitPrice === undefined || previousPrice === undefined) return null;
+  const difference = item.unitPrice - previousPrice;
+  if (Math.abs(difference) < 0.005) return <span className="text-xs text-muted">Mesmo preço que a compra anterior ({formatBRL(previousPrice)}/un.)</span>;
+  return <span className={cn("text-xs font-medium", difference > 0 ? "text-terracotta" : "text-primary")}>
+    {formatBRL(Math.abs(difference))} {difference > 0 ? "a mais" : "a menos"} por unidade que a compra anterior ({formatBRL(previousPrice)}/un.)
+  </span>;
+}
+
+function HistoryDetail({ list, lists, onBack }: { list: ShoppingList; lists: ShoppingList[]; onBack: () => void }) {
   const groups = groupItems(list.items);
-  return <div className="space-y-6"><button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button><div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">{list.name}</h1><div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-muted"><span className="rounded-full bg-sage px-3 py-1.5">{list.items.length} itens</span><span className="rounded-full bg-sage px-3 py-1.5">{formatBRL(listTotal(list))}</span></div></div><div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-semibold text-ink">{category}</h2>{groups[category]?.map((item) => <div key={item.id} className="flex items-center gap-3 py-2"><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-primary"><Check size={15} /></span><span className="min-w-0 flex-1 truncate text-sm text-ink">{item.name}<span className="ml-2 text-xs text-muted">× {item.quantity}</span></span><span className="text-right text-sm font-semibold text-ink">{item.unitPrice ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice ? `${formatBRL(item.unitPrice)} un.` : "sem preço"}</span></span></div>)}</section> : null)}</div></div>;
+  const purchased = list.items.filter((item) => item.status === "purchased").length;
+  const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
+  const pending = list.items.filter((item) => item.status === "pending").length;
+  const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
+  return <div className="space-y-6">
+    <button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button>
+    <div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 break-words text-[28px] font-semibold tracking-[-0.03em] text-ink">{list.name}</h1><p className="mt-2 text-sm text-muted">{list.items.length} itens nesta compra</p>
+      <dl className="mt-4 grid grid-cols-3 gap-2 text-center text-xs"><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Comprados</dt><dd className="mt-1 text-base font-semibold text-ink">{purchased}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Já tínhamos</dt><dd className="mt-1 text-base font-semibold text-ink">{alreadyHave}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Pendentes</dt><dd className="mt-1 text-base font-semibold text-ink">{pending}</dd></div></dl>
+      <div className="mt-4"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p><p className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p>{withoutPrice ? <p className="mt-1 text-sm text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}</div>
+    </div>
+    <div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-semibold text-ink">{category}</h2>{groups[category]?.map((item) => {
+      const previousPrice = previousHistoryPrice(item, list, lists);
+      return <div key={item.id} className="flex items-start gap-3 py-3">
+        <span className="min-w-0 flex-1"><span className="block break-words text-sm font-medium text-ink">{item.name}<span className="ml-2 text-xs font-normal text-muted">× {item.quantity}</span></span><span className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1"><StatusBadge status={item.status} />{item.status === "purchased" ? <HistoryPriceComparison item={item} previousPrice={previousPrice} /> : null}</span></span>
+        {item.status === "purchased" ? <span className="w-[92px] shrink-0 text-right text-sm font-semibold text-ink">{item.unitPrice !== undefined ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice !== undefined ? `${formatBRL(item.unitPrice)} / un.` : "sem preço"}</span></span> : null}
+      </div>;
+    })}</section> : null)}</div>
+  </div>;
 }
 
 function EmptyState({ icon, title, description, action }: { icon: React.ReactNode; title: string; description: string; action?: React.ReactNode }) {
@@ -1236,7 +1283,7 @@ export default function RestokApp() {
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div data-purchase-content={screen === "shop" ? "true" : undefined} className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
-          {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
+          {historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="hidden text-sm font-semibold text-primary sm:block">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
                 label="Menu da compra"
                 triggerClassName="grid h-11 w-11 place-items-center rounded-[10px] border border-line bg-surface text-muted transition hover:border-primary/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
