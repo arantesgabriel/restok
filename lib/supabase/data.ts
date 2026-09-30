@@ -1,36 +1,88 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { seedProducts, seedState } from "@/lib/seed";
-import type { CategoryName, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
+import type { CategoryName, HouseholdInvite, HouseholdMember, HouseholdRole, HouseholdSummary, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 
 const categoryNames: CategoryName[] = ["Alimentos", "Bebidas", "Higiene", "Limpeza", "Outros"];
 const legacySeedNames = new Set(["Arroz", "Azeite", "Batata palha", "Cebola", "Chá mate com gás", "Chimichurri", "Creme de leite", "Farinha de trigo", "Feijão", "Filé de peito de frango", "Leite condensado", "Leite desnatado", "Lemon pepper", "Limão", "Macarrão", "Massa de alho", "Massa de bolo", "Milho", "Molho de tomate", "Muçarela 600g", "Óleo de cozinha", "Ovos", "Pão de forma", "Picanha suína", "Pimenta-do-reino", "Presunto 300g", "Requeijão", "Sal", "Água com gás (fardo)", "Coca Zero (fardo)", "Energético Monster", "Cotonete", "Colgate", "Creme de pentear", "Desodorante Brunna", "Desodorante Gabriel", "Lenço umedecido", "Sabonete", "Shampoo", "Cif", "Detergente", "Papel higiênico (pct c/12)", "Papel toalha", "Sabão em pó", "Saco de lixo grande", "Veja"]);
 
 const normalizeProductName = (name: string) => name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
 
-export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; householdId: string };
-export type RemoteState = { state: RestokState; userId: string; householdId: string };
+export type RemoteContext = { client: NonNullable<ReturnType<typeof getSupabaseBrowserClient>>; userId: string; householdId: string; householdName: string; role: HouseholdRole };
+export type RemoteState = { state: RestokState; userId: string; householdId: string; householdName: string; role: HouseholdRole };
 
-export async function resolveRemoteContext(): Promise<RemoteContext | null> {
+export function activeHouseholdStorageKey(userId: string) {
+  return `restok-active-household:${encodeURIComponent(userId)}`;
+}
+
+function savedHouseholdId(userId: string) {
+  if (typeof window === "undefined") return null;
+  try { return window.localStorage.getItem(activeHouseholdStorageKey(userId)); }
+  catch { return null; }
+}
+
+export async function loadUserHouseholds(): Promise<HouseholdSummary[] | null> {
   const client = getSupabaseBrowserClient();
   if (!client) return null;
-  const { data: { user } } = await client.auth.getUser();
-  if (!user) return null;
-  let { data: membership } = await client
+  const { data: { user }, error: authError } = await client.auth.getUser();
+  if (authError || !user) return null;
+
+  const { data: memberships, error: membershipError } = await client
     .from("household_members")
-    .select("household_id")
+    .select("household_id,role,created_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: true })
-    .order("household_id", { ascending: true })
-    .limit(1)
-    .maybeSingle();
-  if (!membership) {
-    const { data: household, error: householdError } = await client.from("households").insert({ name: "Minha casa", created_by: user.id }).select("id").single();
-    if (householdError || !household) return null;
-    const { data: newMembership, error: membershipError } = await client.from("household_members").insert({ household_id: household.id, user_id: user.id, role: "owner" }).select("household_id").single();
-    if (membershipError || !newMembership) return null;
-    membership = newMembership;
+    .order("household_id", { ascending: true });
+  if (membershipError) return null;
+  if (!memberships?.length) return [];
+
+  const { data: households, error: householdError } = await client
+    .from("households")
+    .select("id,name,created_at")
+    .in("id", memberships.map((membership) => membership.household_id));
+  if (householdError) return null;
+  const membershipByHousehold = new Map(memberships.map((membership) => [membership.household_id, membership]));
+  return (households ?? []).map((household) => {
+    const membership = membershipByHousehold.get(household.id)!;
+    return { id: household.id, name: household.name, role: membership.role as HouseholdRole, createdAt: membership.created_at };
+  }).sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id));
+}
+
+export async function resolveRemoteContext(preferredHouseholdId?: string | null): Promise<RemoteContext | null> {
+  const client = getSupabaseBrowserClient();
+  if (!client) return null;
+  const { data: { user }, error: authError } = await client.auth.getUser();
+  if (authError || !user) return null;
+  const { data: memberships, error: membershipError } = await client
+    .from("household_members")
+    .select("household_id,role,created_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: true })
+    .order("household_id", { ascending: true });
+  if (membershipError) return null;
+
+  let availableMemberships = memberships ?? [];
+  if (!availableMemberships.length) {
+    const { data: newHouseholdId, error: createError } = await client.rpc("create_household", { requested_name: "Minha casa" });
+    if (createError || !newHouseholdId) return null;
+    const { data: createdMembership, error: createdMembershipError } = await client
+      .from("household_members")
+      .select("household_id,role,created_at")
+      .eq("user_id", user.id)
+      .eq("household_id", newHouseholdId)
+      .single();
+    if (createdMembershipError || !createdMembership) return null;
+    availableMemberships = [createdMembership];
   }
-  return { client, userId: user.id, householdId: membership.household_id };
+
+  const requestedId = preferredHouseholdId === undefined ? savedHouseholdId(user.id) : preferredHouseholdId;
+  const membership = availableMemberships.find((candidate) => candidate.household_id === requestedId) ?? availableMemberships[0];
+  const { data: household, error: householdError } = await client
+    .from("households")
+    .select("id,name")
+    .eq("id", membership.household_id)
+    .single();
+  if (householdError || !household) return null;
+  return { client, userId: user.id, householdId: membership.household_id, householdName: household.name, role: membership.role as HouseholdRole };
 }
 
 async function getCategoryIds(context: RemoteContext) {
@@ -132,6 +184,8 @@ export async function loadRemoteState(existingContext?: RemoteContext): Promise<
   return {
     userId: context.userId,
     householdId: context.householdId,
+    householdName: context.householdName,
+    role: context.role,
     state: {
       products: (products ?? []).map((product) => ({ id: product.id, name: product.name, category: categoryById[product.category_id] ?? "Outros", defaultQuantity: Number(product.default_quantity), active: product.active })),
       lists: (lists ?? []).map((list) => ({ id: list.id, name: list.name, budget: Number(list.budget), status: list.status, startedAt: list.started_at, finishedAt: list.finished_at ?? undefined, items: itemsByList[list.id] ?? [] })),
@@ -139,17 +193,88 @@ export async function loadRemoteState(existingContext?: RemoteContext): Promise<
   };
 }
 
-export async function createHouseholdInvite() {
+export async function createHousehold(name: string) {
   const client = getSupabaseBrowserClient();
   if (!client) return null;
-  const { data, error } = await client.rpc("create_household_invite");
+  const { data, error } = await client.rpc("create_household", { requested_name: name });
+  return error ? null : data as string;
+}
+
+export async function loadHouseholdMembers(householdId: string): Promise<HouseholdMember[] | null> {
+  const client = getSupabaseBrowserClient();
+  if (!client) return null;
+  const { data, error } = await client.rpc("get_household_members", { target_household: householdId });
+  if (error || !data) return null;
+  return (data as Array<{ user_id: string; role: HouseholdRole; joined_at: string; is_self: boolean }>).map((member) => ({
+    userId: member.user_id,
+    role: member.role,
+    joinedAt: member.joined_at,
+    isSelf: member.is_self,
+  }));
+}
+
+export async function loadHouseholdInvites(householdId: string): Promise<HouseholdInvite[] | null> {
+  const client = getSupabaseBrowserClient();
+  if (!client) return null;
+  const { data, error } = await client.rpc("get_household_invites", { target_household: householdId });
+  if (error || !data) return null;
+  return (data as Array<{ id: string; created_by: string; created_at: string; expires_at: string; consumed_at: string | null; consumed_by: string | null; revoked_at: string | null }>).map((invite) => ({
+    id: invite.id,
+    createdBy: invite.created_by,
+    createdAt: invite.created_at,
+    expiresAt: invite.expires_at,
+    consumedAt: invite.consumed_at,
+    consumedBy: invite.consumed_by,
+    revokedAt: invite.revoked_at,
+  }));
+}
+
+export async function createHouseholdInvite(householdId: string) {
+  const client = getSupabaseBrowserClient();
+  if (!client) return null;
+  const { data, error } = await client.rpc("create_household_invite", { target_household: householdId });
   return error ? null : (data as string);
 }
 
 export async function acceptHouseholdInvite(token: string) {
   const client = getSupabaseBrowserClient();
+  if (!client) return null;
+  const { data, error } = await client.rpc("accept_household_invite", { invite_token: token });
+  return error ? null : data as string;
+}
+
+export async function revokeHouseholdInvite(inviteId: string) {
+  const client = getSupabaseBrowserClient();
   if (!client) return false;
-  const { error } = await client.rpc("accept_household_invite", { invite_token: token });
+  const { error } = await client.rpc("revoke_household_invite", { target_invite: inviteId });
+  return !error;
+}
+
+export async function changeHouseholdMemberRole(householdId: string, userId: string, role: HouseholdRole) {
+  const client = getSupabaseBrowserClient();
+  if (!client) return false;
+  const { error } = await client.rpc("change_household_member_role", { target_household: householdId, target_user: userId, new_role: role });
+  return !error;
+}
+
+export async function removeHouseholdMember(householdId: string, userId: string) {
+  const client = getSupabaseBrowserClient();
+  if (!client) return false;
+  const { error } = await client.rpc("remove_household_member", { target_household: householdId, target_user: userId });
+  return !error;
+}
+
+export async function leaveHousehold(householdId: string) {
+  const client = getSupabaseBrowserClient();
+  if (!client) return false;
+  const { error } = await client.rpc("leave_household", { target_household: householdId });
+  return !error;
+}
+
+export async function transferHouseholdOwnership(householdId: string, newOwner: string) {
+  const client = getSupabaseBrowserClient();
+  if (!client) return false;
+  const { error } = await client.rpc("transfer_household_ownership", { target_household: householdId, new_owner: newOwner });
   return !error;
 }
 

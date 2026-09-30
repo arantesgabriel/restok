@@ -25,12 +25,13 @@ import {
 } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { seedState } from "@/lib/seed";
+import { HouseholdManager } from "@/components/household-manager";
 import { subscribeToShoppingList } from "@/lib/supabase/realtime";
-import { acceptHouseholdInvite, createHouseholdInvite, loadRemoteState, persistItem, persistList, persistProduct, resolveRemoteContext } from "@/lib/supabase/data";
+import { acceptHouseholdInvite, activeHouseholdStorageKey, loadRemoteState, loadUserHouseholds, persistItem, persistList, persistProduct, resolveRemoteContext } from "@/lib/supabase/data";
 import { clearRemoteStateCaches, DEMO_STATE_KEY, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { CATEGORY_ORDER, type CategoryName, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
+import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
 import {
   categoryIcon,
   cn,
@@ -490,13 +491,13 @@ function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle:
   return <div className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" onClick={onToggle} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>;
 }
 
-function ProductsHome({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
+function ProductsHome({ products, lists, householdName, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
   const [viewMode, setViewMode] = useState<ProductViewMode>("category");
   const active = products.filter((product) => product.active);
   const sorted = [...active].sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }));
   const grouped = CATEGORY_ORDER.map((category) => ({ category, products: active.filter((product) => product.category === category).sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" })) })).filter((section) => section.products.length);
 
-  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
+  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
     <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
     <div><div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><div className="flex rounded-[9px] border border-line bg-surface p-0.5" role="group" aria-label="Ordenar produtos"><button type="button" onClick={() => setViewMode("category")} aria-pressed={viewMode === "category"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "category" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>Categoria</button><button type="button" onClick={() => setViewMode("alphabetical")} aria-pressed={viewMode === "alphabetical"} className={cn("min-h-9 rounded-[7px] px-2.5 text-xs font-semibold transition", viewMode === "alphabetical" ? "bg-sage text-primary" : "text-muted hover:text-ink")}>A–Z</button></div><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>{active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><h3 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div>
   </div>;
@@ -521,6 +522,9 @@ export default function RestokApp() {
   const [hydrated, setHydrated] = useState(false);
   const [storageKey, setStorageKey] = useState<string | null>(null);
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
+  const [households, setHouseholds] = useState<HouseholdSummary[]>([]);
+  const [activeHousehold, setActiveHousehold] = useState<HouseholdSummary | null>(null);
+  const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
   const [screen, setScreen] = useState<AppScreen>("shop");
   const [activeListId, setActiveListId] = useState("list-active");
   const [historyDetail, setHistoryDetail] = useState<ShoppingList | null>(null);
@@ -551,6 +555,9 @@ export default function RestokApp() {
         activeStorageKeyRef.current = null;
         setStorageKey(null);
         setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
+        setHouseholdManagerOpen(false);
         setHydrated(false);
         setSyncWarning(null);
         window.location.assign("/login");
@@ -573,7 +580,13 @@ export default function RestokApp() {
     let cancelled = false;
     const boot = async () => {
       const invite = new URLSearchParams(window.location.search).get("invite");
-      if (invite) await acceptHouseholdInvite(invite);
+      const acceptedHouseholdId = invite && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
+      const inviteFailed = Boolean(invite && isSupabaseConfigured && !acceptedHouseholdId);
+      if (invite) {
+        const inviteUrl = new URL(window.location.href);
+        inviteUrl.searchParams.delete("invite");
+        window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
+      }
 
       if (!isSupabaseConfigured) {
         try {
@@ -584,23 +597,31 @@ export default function RestokApp() {
         if (!cancelled) {
           activeStorageKeyRef.current = DEMO_STATE_KEY;
           setStorageKey(DEMO_STATE_KEY);
+          const demoHousehold = { id: "demo-household", name: "Casa de demonstração", role: "owner" as const, createdAt: "" };
+          setHouseholds([demoHousehold]);
+          setActiveHousehold(demoHousehold);
           setSyncWarning(null);
           setHydrated(true);
+          if (invite) setToast("Convites só funcionam quando a conta está conectada ao servidor.");
         }
         return;
       }
 
-      const context = await resolveRemoteContext();
+      const context = await resolveRemoteContext(acceptedHouseholdId);
       if (cancelled) return;
       if (!context) {
         setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
         setStorageKey(null);
         setSyncWarning("Não foi possível validar sua sessão e carregar os dados da casa. Entre novamente.");
         setHydrated(true);
+        if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
         return;
       }
 
       activeUserIdRef.current = context.userId;
+      const previouslySelectedHouseholdId = window.localStorage.getItem(activeHouseholdStorageKey(context.userId));
       const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
       activeStorageKeyRef.current = scopedKey;
       setStorageKey(scopedKey);
@@ -617,7 +638,20 @@ export default function RestokApp() {
       } catch { /* invalid scoped cache is ignored and replaced by remote state */ }
 
       const remote = await loadRemoteState(context).catch(() => null);
+      const availableHouseholds = await loadUserHouseholds();
       if (cancelled) return;
+      const activeSummary = availableHouseholds?.find((household) => household.id === context.householdId) ?? {
+        id: context.householdId,
+        name: context.householdName,
+        role: context.role,
+        createdAt: new Date().toISOString(),
+      };
+      if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId && availableHouseholds && !availableHouseholds.some((household) => household.id === previouslySelectedHouseholdId)) {
+        window.localStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
+      }
+      window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+      setHouseholds(availableHouseholds ?? [activeSummary]);
+      setActiveHousehold(activeSummary);
       if (remote && remote.userId === context.userId && remote.householdId === context.householdId) {
         setState(remote.state);
         setActiveListId(remote.state.lists.find((list) => list.status === "active")?.id ?? "");
@@ -629,6 +663,8 @@ export default function RestokApp() {
         setSyncWarning("Não foi possível carregar os dados da casa. Verifique a conexão e tente novamente.");
       }
       setHydrated(true);
+      if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
+      else if (acceptedHouseholdId) setToast("Convite aceito. Esta casa está selecionada.");
     };
     void boot();
     return () => { cancelled = true; };
@@ -724,15 +760,63 @@ export default function RestokApp() {
     setProductEditor(null); setToast(id ? "Produto atualizado" : "Produto adicionado à casa");
   };
   const toggleProduct = (id: string) => { const product = state.products.find((item) => item.id === id); if (!product) return; const updated = { ...product, active: false }; setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) })); void persistProduct(updated); setToast("Produto desativado"); };
-  const shareHousehold = async () => {
-    const token = await createHouseholdInvite();
-    if (isSupabaseConfigured && !token) {
-      setToast("Não foi possível criar o convite. Verifique a conexão ou se sua conta pode convidar.");
+  const activateHousehold = async (householdId: string) => {
+    if (!isSupabaseConfigured) return householdId === "demo-household";
+    const context = await resolveRemoteContext(householdId);
+    if (!context || context.householdId !== householdId) {
+      setToast("Você não tem acesso a essa casa.");
+      return false;
+    }
+    const remote = await loadRemoteState(context).catch(() => null);
+    if (!remote || remote.householdId !== householdId || remote.userId !== context.userId) {
+      setToast("Não foi possível carregar essa casa. A casa atual continua selecionada.");
+      return false;
+    }
+
+    const availableHouseholds = await loadUserHouseholds();
+    const summary = availableHouseholds?.find((household) => household.id === householdId) ?? {
+      id: context.householdId,
+      name: context.householdName,
+      role: context.role,
+      createdAt: new Date().toISOString(),
+    };
+    window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+    activeUserIdRef.current = context.userId;
+    const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
+    activeStorageKeyRef.current = scopedKey;
+    setStorageKey(scopedKey);
+    setHouseholds(availableHouseholds ?? [summary]);
+    setActiveHousehold(summary);
+    setState(remote.state);
+    setActiveListId(remote.state.lists.find((list) => list.status === "active")?.id ?? "");
+    setHistoryDetail(null);
+    setQuery("");
+    setFilter("all");
+    setSyncWarning(null);
+    setHydrated(true);
+    return true;
+  };
+  const refreshMemberships = async () => {
+    if (!isSupabaseConfigured) return;
+    const availableHouseholds = await loadUserHouseholds();
+    if (!availableHouseholds) {
+      setToast("Não foi possível atualizar a lista de casas.");
       return;
     }
-    const link = `${window.location.origin}/app${token ? `?invite=${token}` : ""}`;
-    try { await navigator.clipboard.writeText(link); setToast(token ? "Convite copiado para compartilhar" : "Link de demonstração copiado"); }
-    catch { setToast(token ? "Convite pronto para compartilhar" : "Modo demonstração ativo"); }
+    setHouseholds(availableHouseholds);
+    if (activeHousehold && availableHouseholds.some((household) => household.id === activeHousehold.id)) {
+      setActiveHousehold(availableHouseholds.find((household) => household.id === activeHousehold.id)!);
+      return;
+    }
+    if (activeHousehold && activeUserIdRef.current) {
+      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+    }
+    if (availableHouseholds.length) {
+      await activateHousehold(availableHouseholds[0].id);
+      return;
+    }
+    const newContext = await resolveRemoteContext(null);
+    if (newContext) await activateHousehold(newContext.householdId);
   };
   const signOut = async () => {
     setProfileOpen(false);
@@ -764,12 +848,12 @@ export default function RestokApp() {
   const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
   return <div className="min-h-dvh bg-canvas text-ink">
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
-      <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 text-xs text-muted">Casa Gabriel & Brunna</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
+      <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
       <main className="min-w-0 flex-1 pb-24 sm:pb-8">
-        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden text-right sm:block"><span className="block text-xs font-semibold text-ink">GB</span><span className="block text-[11px] text-muted">online</span></span><div className="relative"><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label="Perfil" aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>GB</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
+        <header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden text-right sm:block"><span className="block text-xs font-semibold text-ink">GB</span><span className="block text-[11px] text-muted">online</span></span><div className="relative"><button type="button" className="grid h-10 w-10 place-items-center rounded-full bg-primary text-sm font-semibold text-white" aria-label="Perfil" aria-expanded={profileOpen} onClick={() => setProfileOpen((open) => !open)}>GB</button>{profileOpen ? <div className="absolute right-0 top-12 z-dropdown w-56 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setProfileOpen(false); setHouseholdManagerOpen(true); }}><House size={16} />Casas e pessoas</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { void signOut(); }}><LogOut size={16} />{isSupabaseConfigured ? "Sair da conta" : "Limpar dados locais"}</button></div> : null}</div></div></header>
         {syncWarning ? <p role="status" className="mx-4 mt-4 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8">{syncWarning}</p> : null}
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
-          {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onShare={shareHousehold} /> : activeList ? <div className="space-y-5">
+          {historyDetail ? <HistoryDetail list={historyDetail} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-sm font-semibold text-primary">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><div className="relative"><IconButton label="Menu da compra" variant="bordered" onClick={() => setMenuOpen((open) => !open)}><Menu size={19} /></IconButton>{menuOpen ? <div className="absolute right-0 top-12 z-dropdown w-52 rounded-[12px] border border-line bg-surface p-1.5 shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setNewPurchaseOpen(true); }}><Plus size={16} />Nova compra</button><button type="button" className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-left text-sm font-semibold text-ink hover:bg-sage" onClick={() => { setMenuOpen(false); setFinishOpen(true); }}><CheckCircle2 size={16} />Finalizar compra</button></div> : null}</div></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
             <div className="space-y-3"><label className="relative block"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} onClick={() => setFilter(value)} className={cn("min-h-10 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
@@ -787,6 +871,7 @@ export default function RestokApp() {
     {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => setBudgetEditor(null)} onSave={saveBudget} /> : null}
     {completeList ? <CompleteSheet list={completeList} onClose={() => setCompleteList(null)} onHistory={() => { setCompleteList(null); setScreen("history"); }} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => setProductEditor(null)} onSave={saveProduct} /> : null}
+    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => setHouseholdManagerOpen(false)} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
     {toast ? <div role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{toast}</div> : null}
     {screen === "shop" && activeList && !historyDetail ? <button type="button" className="fixed bottom-[calc(153px+env(safe-area-inset-bottom))] right-4 z-sticky grid h-14 w-14 place-items-center rounded-full bg-primary text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.2)] transition hover:-translate-y-0.5 hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8 sm:right-8" onClick={() => setAddItemOpen(true)} aria-label="Adicionar item"><Plus size={24} /></button> : null}
   </div>;
