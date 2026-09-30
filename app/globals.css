@@ -113,7 +113,7 @@ button { cursor: pointer; }
 
 /* Marketing surface: a quiet green pantry, with the product itself as the hero. */
 .landing-page { overflow: hidden; background: oklch(0.965 0.025 103); color: oklch(0.23 0.035 145); }
-.landing-nav { display: flex; align-items: center; justify-content: space-between; max-width: 1240px; margin: auto; padding: 24px clamp(20px, 5vw, 64px); }
+.landing-nav { display: flex; align-items: center; justify-content: space-between; max-width: 1240px; margin: auto; padding: calc(24px + env(safe-area-inset-top)) clamp(20px, 5vw, 64px) 24px; }
 .landing-wordmark { color: oklch(0.23 0.035 145); font-size: 24px; font-weight: var(--weight-semibold); letter-spacing: -0.04em; text-decoration: none; }
 .landing-wordmark span, .landing-brand span, .login-brand span { color: oklch(0.43 0.105 151); }
 .landing-nav nav { display: flex; gap: 28px; margin-left: 120px; }
@@ -170,7 +170,7 @@ button { cursor: pointer; }
 .budget-section { display: grid; grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: clamp(50px, 10vw, 150px); border-top: 1px solid oklch(0.84 0.04 145); }.budget-copy .landing-text-link { margin-top: 31px; }.budget-art { display: grid; place-items: center; min-height: 420px; background: oklch(0.82 0.05 31); }.budget-paper { width: min(86%, 440px); border: 1px solid oklch(0.75 0.08 31); background: oklch(0.98 0.03 95); padding: 30px; transform: rotate(2.5deg); box-shadow: 5px 7px 0 oklch(0.53 0.14 30 / 0.15); }.budget-paper small, .budget-paper strong { display: block; }.budget-paper > div:first-child small { color: oklch(0.49 0.04 31); font-size: 10px; font-weight: var(--weight-semibold); }.budget-paper > div:first-child strong { margin-top: 7px; font-family: Georgia, serif; font-size: 34px; font-weight: 400; letter-spacing: -0.03em; }.budget-rule { height: 8px; margin-top: 24px; background: oklch(0.87 0.06 31); }.budget-rule span { display: block; height: 100%; background: oklch(0.43 0.105 151); }.budget-foot { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; color: oklch(0.49 0.04 31); font-size: 10px; }.budget-foot b { color: oklch(0.43 0.105 151); }.price-row { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid oklch(0.84 0.06 31); margin-top: 20px; padding-top: 15px; color: oklch(0.42 0.04 31); font-size: 11px; }.price-row + .price-row { margin-top: 12px; padding-top: 12px; }.price-row b { color: oklch(0.23 0.035 145); white-space: nowrap; }.price-row small { color: oklch(0.53 0.14 30); font-size: 9px; }.price-row small.down { color: oklch(0.43 0.105 151); }
 .final-section { display: grid; place-items: center; border-top: 1px solid oklch(0.84 0.04 145); padding-top: 150px; padding-bottom: 155px; text-align: center; }.final-icon { margin: 0 auto 21px; color: oklch(0.43 0.105 151); }.final-section h2 { font-size: clamp(42px, 6vw, 76px); }.final-section p { max-width: 390px; margin: 23px auto 30px; color: oklch(0.42 0.035 145); font-size: 16px; line-height: 1.6; }.landing-footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; max-width: 1240px; margin: auto; border-top: 1px solid oklch(0.84 0.04 145); padding: 25px clamp(20px, 5vw, 64px); color: oklch(0.49 0.035 145); font-size: 11px; }.landing-footer .landing-wordmark { font-size: 18px; }
 .login-page { display: grid; min-height: 100dvh; grid-template-columns: minmax(420px, 1.05fr) minmax(360px, 0.95fr); background: oklch(1 0 0); }
-.login-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-height: 100dvh; background: oklch(1 0 0); padding: 28px clamp(28px, 5vw, 72px) 18px; }
+.login-panel { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-height: 100dvh; background: oklch(1 0 0); padding: calc(28px + env(safe-area-inset-top)) clamp(28px, 5vw, 72px) calc(18px + env(safe-area-inset-bottom)); }
 .login-brand { display: inline-flex; align-items: center; gap: 10px; width: fit-content; color: oklch(0.23 0.035 145); font-size: 22px; font-weight: var(--weight-semibold); letter-spacing: -0.03em; text-decoration: none; }
 .login-page .login-mark { display: grid; height: 32px; width: 32px; place-items: center; border-radius: 9px; background: oklch(0.43 0.105 151); color: white; }
 .login-main { display: flex; flex-direction: column; justify-content: center; width: min(100%, 440px); padding: 28px 0 36px; }
@@ -394,7 +394,7 @@ button { cursor: pointer; }
 @media (max-width: 1023px) {
   .login-page { grid-template-columns: 1fr; }
   .login-showcase { display: none; }
-  .login-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; justify-content: safe center; gap: 22px; overflow: auto; padding: 32px 24px 24px; }
+  .login-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; justify-content: safe center; gap: 22px; overflow: auto; padding: calc(32px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom)); }
   .login-main { width: min(100%, 400px); padding: 0; }
   .login-copy, .login-switch, .login-divider, .login-demo, .login-success, .login-foot { text-align: center; }
   .login-copy p { margin-inline: auto; }
