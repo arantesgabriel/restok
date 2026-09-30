@@ -12,7 +12,7 @@ import {
 } from "@/components/login-showcase/showcase-timeline";
 
 const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
-const panelQuery = "(min-width: 801px)";
+const panelQuery = "(min-width: 1024px)";
 
 export function useShowcaseTimeline() {
   const [state, dispatch] = useReducer(reduceShowcaseTimeline, initialShowcaseTimelineState);

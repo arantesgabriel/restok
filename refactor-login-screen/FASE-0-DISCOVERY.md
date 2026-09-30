@@ -10,9 +10,9 @@
 | 3 | Cena 1: planejamento e colaboração | Concluída — aguardando aprovação para a Fase 4 |
 | 4 | Cena 2: dentro do mercado | Concluída nesta execução, junto com a Fase 5 |
 | 5 | Cena 3: finalização e métricas | Concluída — início da Fase 6 autorizado |
-| 6 | Loop e storytelling completo | Concluída nesta execução — aguardando aprovação para a Fase 7 |
-| 7 | Microinterações do login | Não iniciada |
-| 8 | Mobile, tablet e reduced motion | Não iniciada |
+| 6 | Loop e storytelling completo | Concluída e aprovada — início da Fase 7 autorizado |
+| 7 | Microinterações do login | Concluída — início da Fase 8 autorizado |
+| 8 | Mobile, tablet e reduced motion | Concluída nesta execução — aguardando aprovação para a Fase 9 |
 | 9 | Acessibilidade e performance | Não iniciada |
 | 10 | Testes e hardening | Não iniciada |
 | 11 | Polish final | Não iniciada |
@@ -78,6 +78,21 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 2. **Reinício** — ao voltar o ciclo, a compra concluída permanece por cima e some em 560ms. A lista da casa já está embaixo, no mesmo topo e com o mesmo título, então o palco não esvazia nem duplica o nome da lista. O indicador passa para Planeje no mesmo tempo. O espaço do aviso da Maria abre depois, junto com o primeiro item.
 3. **Primeira vez** — a abertura, a partir do quadro parado, não usa esse fade. Ele só acontece depois de um ciclo completo. Interromper ou pedir reduced motion zera a contagem e a próxima entrada começa limpa.
 4. **Sem relógio novo** — a cópia que sai fica montada até o arroz entrar (1s). A animação em si dura 560ms e termina com a lista ainda vazia.
+
+## Decisões da Fase 7
+
+1. **Campos** — o foco fica na borda verde com uma sombra de 1px. Hover e campo preenchido escurecem a borda um passo. Depois que o navegador marca o campo como inválido, a borda vai para terracota, sem texto extra. O autofill do navegador permanece branco.
+2. **Email** — um ✓ aparece no campo quando o email é válido. Não há mensagem.
+3. **Senha** — o ícone de mostrar/ocultar troca com um fade de 180ms.
+4. **Entrar** — repouso, hover e pressionado ficam no verde. No envio o rótulo vira "Entrando..." (ou "Criando..." no cadastro) com um traço girando, e o botão não volta ao repouso se a navegação já começou. O erro continua no aviso que já existia.
+5. **Depois de autenticar** — não há transição entre o login e o app. O destino é outra árvore (`/app`), e uma continuidade visual pediria View Transitions na navegação e no shell autenticado. Fica como oportunidade futura.
+
+## Decisões da Fase 8
+
+1. **Abaixo de 1024px** — formulário e showcase lado a lado não cabem com folga (os cartões pedem cerca de 440px). A tela fica só a autenticação, centrada: marca, título, formulário e a linha "Planeje · Compre · Acompanhe". A composição segue a referência do Visor (coluna única, conteúdo no centro, ação em largura cheia), com os campos do Restok no lugar dos botões de rede social.
+2. **A partir de 1024px** — o showcase completo volta. O relógio do painel usa o mesmo corte, então a animação não corre escondida.
+3. **Reduced motion** — o quadro parado da compra no mercado é o estado explícito. A regra global que zera durações continua, e uma regra própria desliga o fade de reinício, o gráfico pela metade e o giro do botão.
+4. **Aba oculta** — o relógio já parava com `document.visibilityState`. Nada novo aí.
 
 ---
 

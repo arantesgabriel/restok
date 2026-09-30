@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Eye, EyeOff, LockKeyhole, Mail, ShoppingBasket, UserRound } from "lucide-react";
+import { Check, Eye, EyeOff, LockKeyhole, Mail, ShoppingBasket, UserRound } from "lucide-react";
 import { LoginShowcase } from "@/components/login-showcase/login-showcase";
+import { demoStory } from "@/components/login-showcase/showcase-data";
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -49,6 +50,7 @@ export default function LoginPage() {
     setError(null);
     setMessage(null);
     setLoading(true);
+    let pendingNavigation = false;
     try {
       const supabase = getSupabaseBrowserClient();
       if (!supabase) {
@@ -74,12 +76,13 @@ export default function LoginPage() {
         setMessage("Conta criada. Confirme seu email para continuar.");
       } else {
         remember(cleanEmail);
+        pendingNavigation = true;
         router.push(isSignUp ? signupDestination(nextPath) : nextPath);
       }
     } catch {
       setError("Não foi possível concluir a autenticação. Verifique sua conexão e tente novamente.");
     } finally {
-      setLoading(false);
+      if (!pendingNavigation) setLoading(false);
     }
   };
 
@@ -147,6 +150,7 @@ export default function LoginPage() {
                   <span className="login-control">
                     <Mail size={16} aria-hidden="true" />
                     <input id="email" type="email" required autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="voce@exemplo.com" />
+                    <Check className="login-email-valid" size={15} aria-hidden="true" />
                   </span>
                 </label>
                 <label className="login-field" htmlFor="password">
@@ -155,7 +159,9 @@ export default function LoginPage() {
                     <LockKeyhole size={16} aria-hidden="true" />
                     <input id="password" type={showPassword ? "text" : "password"} required minLength={6} autoComplete={isSignUp ? "new-password" : "current-password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Mínimo de 6 caracteres" />
                     <button type="button" className="login-reveal" aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"} aria-pressed={showPassword} onClick={() => setShowPassword((current) => !current)}>
-                      {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      <span className="login-reveal-glyph" key={showPassword ? "hidden" : "visible"}>
+                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </span>
                     </button>
                   </span>
                 </label>
@@ -172,8 +178,9 @@ export default function LoginPage() {
                 )}
                 {error ? <p className="login-error" role="alert">{error}</p> : null}
                 {message ? <p className="login-note" role="status">{message}</p> : null}
-                <button type="submit" className="login-submit" disabled={loading}>
-                  {loading ? "Aguarde…" : isSignUp ? "Criar conta" : "Entrar"}
+                <button type="submit" className={loading ? "login-submit is-loading" : "login-submit"} disabled={loading} aria-busy={loading}>
+                  {loading ? <span className="login-spinner" aria-hidden="true" /> : null}
+                  {loading ? (isSignUp ? "Criando..." : "Entrando...") : isSignUp ? "Criar conta" : "Entrar"}
                 </button>
                 <p className="login-switch">
                   {isSignUp ? "Já tem conta?" : "Não tem conta?"}
@@ -187,6 +194,15 @@ export default function LoginPage() {
             </>
           )}
         </div>
+
+        <p className="login-mobile-story">
+          {demoStory.map((step, index) => (
+            <span key={step.id}>
+              {index > 0 ? <span className="login-mobile-story-dot" aria-hidden="true">·</span> : null}
+              {step.label}
+            </span>
+          ))}
+        </p>
 
         <footer className="login-foot">© 2026 RESTOK</footer>
       </section>
