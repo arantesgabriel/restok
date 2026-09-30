@@ -11,8 +11,8 @@ import {
   type ShowcaseStage,
 } from "@/components/login-showcase/showcase-timeline";
 
-const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
-const panelQuery = "(min-width: 1024px)";
+export const showcaseReducedMotionQuery = "(prefers-reduced-motion: reduce)";
+export const showcasePanelQuery = "(min-width: 1024px)";
 
 export function useShowcaseTimeline() {
   const [state, dispatch] = useReducer(reduceShowcaseTimeline, initialShowcaseTimelineState);
@@ -27,8 +27,8 @@ export function useShowcaseTimeline() {
   };
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(reducedMotionQuery);
-    const panel = window.matchMedia(panelQuery);
+    const reducedMotion = window.matchMedia(showcaseReducedMotionQuery);
+    const panel = window.matchMedia(showcasePanelQuery);
 
     const publish = () => {
       dispatch({
