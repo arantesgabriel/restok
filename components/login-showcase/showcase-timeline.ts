@@ -1,21 +1,29 @@
 import {
+  countStatus,
+  demoItems,
   demoStillStep,
   demoStory,
+  lineCents,
   planningBaseItemCount,
   planningJoinedItemCount,
   planningSlotIds,
+  resolutionOrder,
+  savedCents,
+  shoppingWindowIds,
+  spentCents,
 } from "@/components/login-showcase/showcase-data";
+import type { ItemStatus } from "@/lib/types";
 
 /**
  * Roteiro da demonstração de login e o reducer que o executa.
- * A cena de planejamento lê o beat. Mercado e acompanhamento ainda usam o quadro parado.
+ * Planejamento, mercado e acompanhamento leem o beat. O quadro parado fica para reduced motion.
  *
  * 0.0s planning start
  * 1.0s arroz · 1.6s leite · 2.2s frango
  * 2.8s collaboration · 3.4s café
  * 4.2s shopping
  * 5.0s frango checked · 6.0s leite checked · 7.0s already have
- * 8.0s accelerated completion · 9.0s checkout
+ * 8.0s 7/11 · 8.3s 10/11 · 8.6s 11/11 · 9.0s checkout
  * 10.0s summary · 10.7s metrics · 11.5s chart
  * 13.0s hold · 15.0s restart
  */
@@ -34,6 +42,8 @@ export type ShowcaseBeat =
   | "check-leite"
   | "already-have"
   | "accelerate"
+  | "accelerate-10"
+  | "accelerate-11"
   | "checkout"
   | "summary"
   | "metrics"
@@ -62,6 +72,8 @@ export const showcaseCues = [
   { atMs: 6_000, stage: "shopping", beat: "check-leite" },
   { atMs: 7_000, stage: "shopping", beat: "already-have" },
   { atMs: 8_000, stage: "shopping", beat: "accelerate" },
+  { atMs: 8_300, stage: "shopping", beat: "accelerate-10" },
+  { atMs: 8_600, stage: "shopping", beat: "accelerate-11" },
   { atMs: 9_000, stage: "shopping", beat: "checkout" },
   { atMs: 10_000, stage: "summary", beat: "summary" },
   { atMs: 10_700, stage: "summary", beat: "metrics" },
@@ -185,6 +197,84 @@ export function planningFrame(beat: ShowcaseBeat | null): PlanningFrame {
     revealedIds: planningSlotIds.slice(0, revealed),
     itemCount: revealed >= planningSlotIds.length ? planningJoinedItemCount : planningBaseItemCount,
     collaborationVisible: beat === "collaboration" || beat === "item-cafe",
+  };
+}
+
+export type ShoppingItemFrame = {
+  id: string;
+  status: ItemStatus;
+  emphasized: boolean;
+};
+
+export type ShoppingFrame = {
+  resolved: number;
+  total: number;
+  spentCents: number;
+  checkoutVisible: boolean;
+  items: ShoppingItemFrame[];
+};
+
+const shoppingResolvedCount: Partial<Record<ShowcaseBeat, number>> = {
+  "to-shopping": 0,
+  "check-frango": 1,
+  "check-leite": 2,
+  "already-have": 3,
+  accelerate: 7,
+  "accelerate-10": 10,
+  "accelerate-11": 11,
+  checkout: 11,
+};
+
+const shoppingEmphasis: Partial<Record<ShowcaseBeat, string>> = {
+  "check-frango": "frango",
+  "check-leite": "leite",
+  "already-have": "sabonete",
+};
+
+const demoItemById = new Map(demoItems.map((item) => [item.id, item]));
+
+/** Quadro da cena 2. A progressão 7 → 10 → 11 acelera o contador sem uma ação por produto. */
+export function shoppingFrame(beat: ShowcaseBeat): ShoppingFrame {
+  const resolvedCount = shoppingResolvedCount[beat] ?? 0;
+  const resolvedIds = new Set(resolutionOrder.slice(0, resolvedCount));
+  const emphasis = shoppingEmphasis[beat];
+  return {
+    resolved: resolvedCount,
+    total: demoItems.length,
+    spentCents: resolutionOrder.slice(0, resolvedCount).reduce((total, id) => {
+      const item = demoItemById.get(id);
+      return total + (item ? lineCents(item) : 0);
+    }, 0),
+    checkoutVisible: beat === "checkout",
+    items: shoppingWindowIds.map((id) => ({
+      id,
+      status: !resolvedIds.has(id) ? "pending" : id === "sabonete" ? "already_have" : "purchased",
+      emphasized: emphasis === id,
+    })),
+  };
+}
+
+export type SummaryFrame = {
+  label: "Compra concluída";
+  spentCents: number;
+  purchased: number;
+  alreadyHave: number;
+  savedCents: number;
+  metricsVisible: boolean;
+  chartVisible: boolean;
+};
+
+/** Quadro da cena 3. O total é o da compra inteira; métricas e gráfico entram depois. */
+export function summaryFrame(beat: ShowcaseBeat): SummaryFrame {
+  const metricsVisible = beat === "metrics" || beat === "chart" || beat === "hold";
+  return {
+    label: "Compra concluída",
+    spentCents: spentCents(demoItems),
+    purchased: countStatus(demoItems, "purchased"),
+    alreadyHave: countStatus(demoItems, "already_have"),
+    savedCents: savedCents(demoItems),
+    metricsVisible,
+    chartVisible: beat === "chart" || beat === "hold",
   };
 }
 

@@ -150,16 +150,20 @@ button { cursor: pointer; }
 .login-showcase-copy h2 { margin: 0; color: oklch(var(--ink)); font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 2.5vw, 40px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.08; }
 .login-showcase-copy p { max-width: 42ch; margin: 10px 0 0; color: oklch(var(--muted)); font-size: 15px; line-height: 1.4; }
 .login-showcase-stage { display: grid; align-content: start; }
-.login-showcase-stage[data-stage="planning"] { min-height: 360px; }
+.login-showcase-stage[data-stage="planning"],
+.login-showcase-stage[data-stage="shopping"],
+.login-showcase-stage[data-stage="summary"] { min-height: 468px; }
 .login-showcase-collab, .login-showcase-list, .login-showcase-summary { border: 1px solid oklch(var(--line)); border-radius: 14px; background: oklch(var(--surface)); box-shadow: 0 4px 8px oklch(0.18 0.02 145 / 0.12); }
 .login-showcase-collab { z-index: 2; display: flex; align-items: center; gap: 10px; justify-self: start; width: min(246px, 78%); margin-bottom: -12px; padding: 10px 12px; }
-.login-showcase-reveal { opacity: 0; transform: translateY(8px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
+.login-showcase-reveal { max-height: 72px; opacity: 0; overflow: hidden; transform: translateY(8px); transition: opacity 320ms ease-out, transform 320ms ease-out, max-height 320ms ease-out, margin 320ms ease-out, padding 320ms ease-out, border-width 320ms ease-out; }
 .login-showcase-reveal.is-shown { opacity: 1; transform: translateY(0); }
+.login-showcase-collab.is-dismissed { max-height: 0; margin: 0; padding-top: 0; padding-bottom: 0; border-width: 0; opacity: 0; }
 .login-showcase-collab p { margin: 0; color: oklch(var(--ink)); font-size: 13px; line-height: 1.3; }
 .login-showcase-avatar { display: grid; height: 32px; width: 32px; flex: none; place-items: center; border-radius: 50%; background: oklch(var(--primary)); color: white; font-size: 11px; font-weight: var(--weight-semibold); letter-spacing: 0.02em; }
 .login-showcase-list { z-index: 1; width: 100%; padding-bottom: 8px; }
 .login-showcase-list-head { padding: 14px 16px 12px; }
 .login-showcase-kicker { margin: 0; color: oklch(var(--primary)); font-size: 12px; font-weight: var(--weight-semibold); }
+.login-showcase-kicker:empty { display: none; }
 .login-showcase-list-head h3 { margin: 2px 0 0; color: oklch(var(--ink)); font-size: 20px; font-weight: var(--weight-semibold); letter-spacing: -0.03em; }
 .login-showcase-list-head p:last-child { margin: 2px 0 0; color: oklch(var(--muted)); font-size: 12px; }
 .login-showcase-count { display: inline-block; font-variant-numeric: tabular-nums; }
@@ -170,11 +174,14 @@ button { cursor: pointer; }
 .login-showcase-budget small { display: block; font-size: 11px; }
 .login-showcase-budget strong, .login-showcase-total, .login-showcase-item strong { font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
 .login-showcase-budget strong { display: block; margin-top: 2px; color: oklch(var(--ink)); font-size: 22px; }
+.login-showcase-budget strong.is-bumped { animation: login-showcase-money 360ms ease-out; }
+.login-showcase-budget.is-script { animation: login-showcase-rise 320ms ease-out both; }
 .login-showcase-budget-top > p { margin: 0; color: oklch(var(--muted)); font-size: 12px; font-weight: var(--weight-semibold); text-align: right; }
 .login-showcase-budget-top > p span { display: block; margin-top: 2px; font-weight: var(--weight-regular); }
 .login-showcase-bar { height: 6px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: oklch(var(--sage)); }
-.login-showcase-bar span { display: block; height: 100%; border-radius: inherit; background: oklch(var(--primary)); }
-.login-showcase-items { position: relative; margin-top: 4px; padding: 0 14px; }
+.login-showcase-bar span { display: block; height: 100%; border-radius: inherit; background: oklch(var(--primary)); transition: width 420ms ease-out; }
+.login-showcase-items { position: relative; max-height: 240px; margin-top: 4px; padding: 0 14px; transition: opacity 280ms ease-out, max-height 360ms ease-out, margin 360ms ease-out; }
+.login-showcase-items.is-dismissed { max-height: 0; margin-top: 0; opacity: 0; overflow: hidden; }
 .login-showcase-items::after { content: ""; position: absolute; right: 14px; bottom: 0; left: 14px; height: 22px; background: linear-gradient(to bottom, oklch(1 0 0 / 0), oklch(var(--surface))); pointer-events: none; }
 .login-showcase-items.is-planning::after { content: none; }
 .login-showcase-item { display: flex; align-items: center; gap: 10px; min-height: 48px; border-bottom: 1px solid oklch(var(--line) / 0.8); }
@@ -187,8 +194,19 @@ button { cursor: pointer; }
 .login-showcase-item.is-resolved b { color: oklch(var(--muted)); text-decoration: line-through; text-decoration-color: oklch(var(--line)); }
 .login-showcase-items.is-planning .login-showcase-item { animation: login-showcase-rise 320ms ease-out both; }
 .login-showcase-items.is-planning .login-showcase-item.is-fresh { animation: login-showcase-rise 320ms ease-out both, login-showcase-flash 640ms ease-out; }
-.login-showcase-mark { display: grid; height: 32px; width: 32px; flex: none; place-items: center; border-radius: 10px; border: 1px solid oklch(var(--line)); background: oklch(var(--canvas)); color: oklch(var(--muted)); font-size: 13px; }
+.login-showcase-mark { display: grid; height: 32px; width: 32px; flex: none; place-items: center; border-radius: 10px; border: 1px solid oklch(var(--line)); background: oklch(var(--canvas)); color: oklch(var(--muted)); font-size: 13px; transition: background 280ms ease-out, border-color 280ms ease-out, color 280ms ease-out; }
 .login-showcase-mark.is-purchased { border-color: oklch(var(--primary) / 0.3); background: oklch(var(--sage)); color: oklch(var(--primary)); }
+.login-showcase-item.is-active { animation: login-showcase-flash 640ms ease-out; }
+.login-showcase-finish { margin: 8px 14px 10px; animation: login-showcase-rise 280ms ease-out both; }
+.login-showcase-finish p { margin: 0 0 8px; color: oklch(var(--muted)); font-size: 12px; }
+.login-showcase-finish span { display: block; border-radius: 10px; background: oklch(var(--primary)); color: white; padding: 10px 12px; font-size: 13px; font-weight: var(--weight-semibold); text-align: center; }
+.login-showcase-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 14px 4px; animation: login-showcase-rise 320ms ease-out both; }
+.login-showcase-metrics p { margin: 0; }
+.login-showcase-metrics b { display: block; color: oklch(var(--ink)); font-size: 18px; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+.login-showcase-metrics small, .login-showcase-metrics .login-showcase-summary-meta { color: oklch(var(--muted)); font-size: 11px; }
+.login-showcase-metrics .login-showcase-summary-meta { grid-column: 1 / -1; margin-top: 2px; }
+.login-showcase-chart-block { max-height: 0; margin: 0 14px; opacity: 0; overflow: hidden; transition: max-height 320ms ease-out, opacity 320ms ease-out; }
+.login-showcase-chart-block.is-shown { max-height: 72px; margin-bottom: 8px; opacity: 1; }
 .login-showcase-summary { z-index: 2; justify-self: end; width: min(280px, 84%); margin-top: -36px; padding: 12px 14px 10px; }
 .login-showcase-total { margin: 4px 0 0; color: oklch(var(--ink)); font-size: 22px; font-weight: var(--weight-semibold); }
 .login-showcase-summary-meta, .login-showcase-saved, .login-showcase-chart-label { margin: 0; font-size: 12px; }
@@ -198,6 +216,12 @@ button { cursor: pointer; }
 .login-showcase-chart { display: block; width: 100%; height: 36px; margin-top: 8px; }
 .login-showcase-chart polyline { stroke: oklch(var(--primary)); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .login-showcase-chart circle { fill: oklch(var(--primary)); }
+.login-showcase-chart circle.login-showcase-chart-halo { fill: oklch(var(--sage)); }
+.login-showcase-chart.is-script polyline { stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 700ms ease-out; }
+.login-showcase-chart.is-script.is-drawn polyline { stroke-dashoffset: 0; }
+.login-showcase-chart.is-script circle { opacity: 0; transition: opacity 260ms ease-out 680ms; }
+.login-showcase-chart.is-script.is-drawn circle { opacity: 1; }
+.login-showcase-chart.is-script.is-drawn circle.login-showcase-chart-halo { transition-delay: 980ms; }
 .login-showcase-chart-label { margin-top: 2px; }
 .login-showcase-steps { display: flex; margin-top: 2px; padding: 0; list-style: none; }
 .login-showcase-steps li { position: relative; display: flex; flex: 1; flex-direction: column; align-items: center; gap: 8px; color: oklch(var(--muted)); font-size: 13px; }
@@ -209,6 +233,10 @@ button { cursor: pointer; }
 @keyframes login-showcase-count {
   from { opacity: 0.15; transform: translateY(5px); }
   to { opacity: 1; transform: none; }
+}
+@keyframes login-showcase-money {
+  from { transform: translateY(4px); }
+  to { transform: none; }
 }
 @keyframes login-showcase-rise {
   from { opacity: 0; transform: translateY(8px); }
@@ -229,7 +257,9 @@ button { cursor: pointer; }
   .login-showcase-budget strong { font-size: 20px; }
   .login-showcase-item { min-height: 42px; }
   .login-showcase-collab { margin-bottom: -10px; }
-  .login-showcase-stage[data-stage="planning"] { min-height: 324px; }
+  .login-showcase-stage[data-stage="planning"],
+  .login-showcase-stage[data-stage="shopping"],
+  .login-showcase-stage[data-stage="summary"] { min-height: 430px; }
   .login-showcase-summary { margin-top: -28px; padding: 10px 12px 8px; }
   .login-showcase-total { font-size: 20px; }
   .login-showcase-chart { height: 28px; margin-top: 6px; }

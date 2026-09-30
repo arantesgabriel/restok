@@ -8,6 +8,8 @@ import {
   planningBaseItemCount,
   planningJoinedItemCount,
   planningSlotIds,
+  resolutionOrder,
+  shoppingWindowIds,
   lineCents,
   resolvedCount,
   savedCents,
@@ -39,5 +41,7 @@ describe("login showcase dataset", () => {
     expect(planningSlotIds).toEqual(["arroz", "leite", "frango", "cafe"]);
     expect(planningBaseItemCount).toBe(demoItems.length - 1);
     expect(planningJoinedItemCount).toBe(demoItems.length);
+    expect(shoppingWindowIds).toEqual(["leite", "frango", "cafe", "sabonete"]);
+    expect([...resolutionOrder].sort()).toEqual(demoItems.map((entry) => entry.id).sort());
   });
 });

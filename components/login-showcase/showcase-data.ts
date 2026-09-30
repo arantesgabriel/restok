@@ -46,6 +46,27 @@ export const planningSlotIds = ["arroz", "leite", "frango", "cafe"] as const;
 export const planningBaseItemCount = 10;
 export const planningJoinedItemCount = 11;
 
+/**
+ * Janela do mercado. Leite, frango e café continuam na ordem da lista;
+ * o sabonete entra no lugar do arroz para a ação "já temos".
+ */
+export const shoppingWindowIds = ["leite", "frango", "cafe", "sabonete"] as const;
+
+/** Ordem em que a compra se resolve. Os três primeiros são as ações explícitas no mercado. */
+export const resolutionOrder = [
+  "frango",
+  "leite",
+  "sabonete",
+  "arroz",
+  "cafe",
+  "feijao",
+  "ovos",
+  "carne",
+  "queijo",
+  "azeite",
+  "papel",
+] as const;
+
 export const demoCollaborator = {
   name: "Maria",
   initials: "MA",

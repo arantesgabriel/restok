@@ -7,6 +7,8 @@ import {
   nextCueDelayMs,
   planningFrame,
   reduceShowcaseTimeline,
+  shoppingFrame,
+  summaryFrame,
   sceneFromElapsed,
   showcaseCues,
   showcaseLoopMs,
@@ -39,7 +41,11 @@ const marks = [
   [7000, "shopping", "already-have"],
   [7999, "shopping", "already-have"],
   [8000, "shopping", "accelerate"],
-  [8999, "shopping", "accelerate"],
+  [8299, "shopping", "accelerate"],
+  [8300, "shopping", "accelerate-10"],
+  [8599, "shopping", "accelerate-10"],
+  [8600, "shopping", "accelerate-11"],
+  [8999, "shopping", "accelerate-11"],
   [9000, "shopping", "checkout"],
   [9999, "shopping", "checkout"],
   [10000, "summary", "summary"],
@@ -114,6 +120,63 @@ describe("planning scene", () => {
     });
     expect(planningFrame("to-shopping").revealedIds).toEqual([]);
     expect(planningFrame(null).itemCount).toBe(10);
+  });
+});
+
+describe("shopping scene", () => {
+  it("opens the market at zero and checks frango, leite, and already-have as one action each", () => {
+    expect(shoppingFrame("to-shopping")).toEqual({
+      resolved: 0,
+      total: 11,
+      spentCents: 0,
+      checkoutVisible: false,
+      items: [
+        { id: "leite", status: "pending", emphasized: false },
+        { id: "frango", status: "pending", emphasized: false },
+        { id: "cafe", status: "pending", emphasized: false },
+        { id: "sabonete", status: "pending", emphasized: false },
+      ],
+    });
+
+    const frango = shoppingFrame("check-frango");
+    expect(frango.resolved).toBe(1);
+    expect(frango.spentCents).toBe(3_290);
+    expect(frango.items.find((item) => item.id === "frango")).toEqual({ id: "frango", status: "purchased", emphasized: true });
+    expect(frango.items.find((item) => item.id === "leite")?.status).toBe("pending");
+
+    const leite = shoppingFrame("check-leite");
+    expect(leite).toMatchObject({ resolved: 2, spentCents: 4_588, checkoutVisible: false });
+    expect(leite.items.find((item) => item.id === "leite")).toEqual({ id: "leite", status: "purchased", emphasized: true });
+
+    const already = shoppingFrame("already-have");
+    expect(already).toMatchObject({ resolved: 3, spentCents: 4_588, checkoutVisible: false });
+    expect(already.items.find((item) => item.id === "sabonete")).toEqual({ id: "sabonete", status: "already_have", emphasized: true });
+  });
+
+  it("advances the counter without a beat per product, then offers checkout at the full total", () => {
+    expect(shoppingFrame("accelerate")).toMatchObject({ resolved: 7, spentCents: 22_765, checkoutVisible: false });
+    expect(shoppingFrame("accelerate").items.every((item) => item.emphasized === false)).toBe(true);
+    expect(shoppingFrame("accelerate-10")).toMatchObject({ resolved: 10, spentCents: 43_515, checkoutVisible: false });
+    expect(shoppingFrame("accelerate-11")).toMatchObject({ resolved: 11, spentCents: 46_805, checkoutVisible: false });
+    expect(shoppingFrame("checkout")).toMatchObject({ resolved: 11, spentCents: 46_805, checkoutVisible: true });
+  });
+});
+
+describe("summary scene", () => {
+  it("keeps the market total and reveals metrics, then the chart", () => {
+    expect(summaryFrame("summary")).toEqual({
+      label: "Compra concluída",
+      spentCents: 46_805,
+      purchased: 10,
+      alreadyHave: 1,
+      savedCents: 3_800,
+      metricsVisible: false,
+      chartVisible: false,
+    });
+    expect(summaryFrame("metrics")).toMatchObject({ spentCents: 46_805, metricsVisible: true, chartVisible: false });
+    expect(summaryFrame("chart")).toMatchObject({ metricsVisible: true, chartVisible: true });
+    expect(summaryFrame("hold")).toMatchObject({ metricsVisible: true, chartVisible: true, savedCents: 3_800 });
+    expect(summaryFrame("summary").spentCents).toBe(shoppingFrame("checkout").spentCents);
   });
 });
 

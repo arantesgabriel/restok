@@ -8,8 +8,8 @@
 | 1 | Composição visual estática | Concluída e aprovada — início da Fase 2 autorizado |
 | 2 | Fundação do sistema de animação | Concluída e aprovada — início da Fase 3 autorizado |
 | 3 | Cena 1: planejamento e colaboração | Concluída — aguardando aprovação para a Fase 4 |
-| 4 | Cena 2: dentro do mercado | Não iniciada |
-| 5 | Cena 3: finalização e métricas | Não iniciada |
+| 4 | Cena 2: dentro do mercado | Concluída nesta execução, junto com a Fase 5 |
+| 5 | Cena 3: finalização e métricas | Concluída nesta execução — aguardando aprovação para a Fase 6 |
 | 6 | Loop e storytelling completo | Não iniciada |
 | 7 | Microinterações do login | Não iniciada |
 | 8 | Mobile, tablet e reduced motion | Não iniciada |
@@ -56,6 +56,21 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 4. **Colaboração** — o cartão "MA · Maria adicionou Café" aparece 600ms antes do item, por cima da lista, e permanece até o fim da cena.
 5. **Itens** — nesta cena ficam pendentes, sem preço. O kicker é "Lista da casa". O indicador marca Planeje.
 6. **Reduced motion** — o script continua parado no quadro da Fase 1. Esta cena não roda.
+
+## Decisões da Fase 4
+
+1. **Mesma lista** — o cartão não é trocado. O título "Compras de setembro" permanece. O kicker passa de "Lista da casa" para "Dentro do mercado", o contador de "11 itens" para "0 de 11 resolvidos" e a faixa de orçamento entra em R$ 0,00 / R$ 800,00 disponíveis.
+2. **Janela** — leite, frango e café ficam na ordem em que já estavam. O arroz sai e o sabonete entra no fim, para a ação "já temos" ter um alvo estável.
+3. **Três ações, uma consequência cada** — frango marcado leva o total a R$ 32,90 e o contador a 1/11. Leite marcado mostra o total da linha (R$ 12,98) e o gasto vai a R$ 45,88. Sabonete vira "Já temos" (ícone de casa, risco, sem preço) e o gasto não se move.
+4. **Indicador** — Compre.
+
+## Decisões da Fase 5
+
+1. **Progressão** — sem uma batida por produto: 3/11, depois 7/11 (R$ 227,65), 10/11 (R$ 435,15) e 11/11 (R$ 468,05). O botão "Finalizar compra" só aparece com tudo resolvido.
+2. **Hero** — o mesmo valor da faixa, R$ 468,05, troca o rótulo "Gasto até agora" por "Compra concluída", que é o título real da folha de conclusão. O mock do briefing (R$ 483,72, 28 itens, R$ 46,28) continua fora.
+3. **Métricas** — 10 itens comprados, R$ 38,00 economizados e "1 já tínhamos". O 10 é a contagem de comprados do produto, não a soma das quantidades.
+4. **Gráfico** — a linha das compras anteriores é desenhada, o último ponto entra depois e ganha um halo. O indicador marca Acompanhe.
+5. **Fora desta fase** — o retorno do acompanhamento para o planejamento ainda corta. O fade de reinício é a Fase 6.
 
 ---
 
