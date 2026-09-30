@@ -12,8 +12,8 @@
 | 5 | Cena 3: finalização e métricas | Concluída — início da Fase 6 autorizado |
 | 6 | Loop e storytelling completo | Concluída e aprovada — início da Fase 7 autorizado |
 | 7 | Microinterações do login | Concluída — início da Fase 8 autorizado |
-| 8 | Mobile, tablet e reduced motion | Concluída nesta execução — aguardando aprovação para a Fase 9 |
-| 9 | Acessibilidade e performance | Não iniciada |
+| 8 | Mobile, tablet e reduced motion | Concluída — Fase 9 iniciada a pedido |
+| 9 | Acessibilidade e performance | Concluída nesta execução — aguardando aprovação para a Fase 10 |
 | 10 | Testes e hardening | Não iniciada |
 | 11 | Polish final | Não iniciada |
 
@@ -93,6 +93,14 @@ Consequência: o showcase representa capacidades planejadas. Até elas existirem
 2. **A partir de 1024px** — o showcase completo volta. O relógio do painel usa o mesmo corte, então a animação não corre escondida.
 3. **Reduced motion** — o quadro parado da compra no mercado é o estado explícito. A regra global que zera durações continua, e uma regra própria desliga o fade de reinício, o gráfico pela metade e o giro do botão.
 4. **Aba oculta** — o relógio já parava com `document.visibilityState`. Nada novo aí.
+
+## Decisões da Fase 9
+
+1. **O que o leitor de tela ouve** — o título e o parágrafo do painel ficam expostos. A réplica animada e o indicador Planeje / Compre / Acompanhe ficam `aria-hidden`: repetem a frase e mudam a cada batida. No celular, a linha visual continua escondida e uma frase única ("Planeje, compre e acompanhe.") ocupa o lugar dela.
+2. **Formulário** — o painel de autenticação é o `<main>`. O formulário aponta para o `h1`. Erro de credencial, de cadastro ou de email vazio marca o campo com `aria-invalid` e aponta para o alerta. Ícones decorativos ficam `aria-hidden`.
+3. **Foco e carregamento** — depois de "Conta criada", o foco vai para "Quase lá.". "Entrando...", "Criando..." e "Enviando…" saem numa região `status`, porque o botão desabilitado não anuncia a troca. O teclado ganha um contorno de 2px no campo; o clique continua na borda verde da Fase 7.
+4. **Contraste** — a borda em repouso dos campos sobe para `oklch(0.64 0.035 145)` (cerca de 3,3:1 no branco). Hover e campo preenchido escurecem um passo a partir daí. O "Enviando…" não perde opacidade, para o texto não cair abaixo de 4,5:1. O texto miúdo do showcase já passava e não mudou.
+5. **Performance** — o formulário e o showcase são bundles separados; o HTML do painel continua no primeiro carregamento. A primeira troca de cena espera um idle de no máximo 600ms. A faixa de orçamento anima com `scaleX`, o gráfico é calculado uma vez, e o painel usa `contain: layout` para o miolo não reflowar o formulário. A altura mínima do quadro parado é a mesma das cenas, para o indicador não pular quando a história começa.
 
 ---
 

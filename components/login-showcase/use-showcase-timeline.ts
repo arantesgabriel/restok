@@ -53,7 +53,22 @@ export function useShowcaseTimeline() {
 
   useEffect(() => {
     if (!shouldAutoplay(state)) return;
-    dispatch({ type: "play" });
+
+    let cancelled = false;
+    const start = () => {
+      if (cancelled || !shouldAutoplay(stateRef.current)) return;
+      dispatch({ type: "play" });
+    };
+
+    // The first scene change waits for an idle slot so the form can take the first keystrokes.
+    const idleId = window.requestIdleCallback?.(start, { timeout: 600 });
+    const timeoutId = idleId === undefined ? window.setTimeout(start, 300) : undefined;
+
+    return () => {
+      cancelled = true;
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
   }, [state]);
 
   useEffect(() => {

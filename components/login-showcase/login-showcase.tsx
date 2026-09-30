@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, House } from "lucide-react";
-import { formatBRL, categoryIcon } from "@/lib/utils";
+import { categoryIcon } from "@/lib/utils";
 import {
   countStatus,
   demoBudgetCents,
@@ -32,7 +32,8 @@ import {
 import type { ItemStatus } from "@/lib/types";
 import { useShowcaseTimeline } from "@/components/login-showcase/use-showcase-timeline";
 
-const money = (cents: number) => formatBRL(cents / 100);
+const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+const money = (cents: number) => brl.format(cents / 100);
 
 const stillItems = demoStillItemIds.flatMap((id) => {
   const found = demoItems.find((item) => item.id === id);
@@ -47,7 +48,7 @@ export function LoginShowcase() {
   const saved = savedCents(demoItems);
   const purchased = countStatus(demoItems, "purchased");
   const alreadyHave = countStatus(demoItems, "already_have");
-  const ratio = demoBudgetCents > 0 ? Math.min(100, (spent / demoBudgetCents) * 100) : 0;
+  const ratio = demoBudgetCents > 0 ? Math.min(1, spent / demoBudgetCents) : 0;
 
   const script = scene.mode === "script" && scene.beat !== null;
   const handoff = script && showcaseLoopHandoff(scene);
@@ -143,7 +144,7 @@ function StillScene({
               <span>de {money(demoBudgetCents)}</span>
             </p>
           </div>
-          <div className="login-showcase-bar"><span style={{ width: `${ratio}%` }} /></div>
+          <BudgetBar ratio={ratio} />
         </div>
         <div className="login-showcase-items">
           {stillItems.map((item) => <DemoItemRow key={item.id} item={item} />)}
@@ -155,7 +156,7 @@ function StillScene({
         <p className="login-showcase-total">{money(spent)}</p>
         <p className="login-showcase-summary-meta">{purchased} comprados · {alreadyHave} já tínhamos</p>
         <p className="login-showcase-saved"><b>{money(saved)}</b> economizados</p>
-        <HistoryChart totals={demoHistoryCents} />
+        <HistoryChart />
         <p className="login-showcase-chart-label">Compras anteriores</p>
       </article>
     </>
@@ -211,11 +212,7 @@ function ScriptScene({ stage, beat, ghost = false }: { stage: ShowcaseStage; bea
                 </p>
               ) : null}
             </div>
-            {shopping ? (
-              <div className="login-showcase-bar">
-                <span style={{ width: `${demoBudgetCents > 0 ? Math.min(100, (spent / demoBudgetCents) * 100) : 0}%` }} />
-              </div>
-            ) : null}
+            {shopping ? <BudgetBar ratio={demoBudgetCents > 0 ? Math.min(1, spent / demoBudgetCents) : 0} /> : null}
           </div>
         ) : null}
         <div className={rowsClass(stage)}>
@@ -238,7 +235,7 @@ function ScriptScene({ stage, beat, ghost = false }: { stage: ShowcaseStage; bea
         ) : null}
         {summary && (summary.chartVisible || beat === "metrics") ? (
           <div className={summary.chartVisible ? "login-showcase-chart-block is-shown" : "login-showcase-chart-block"}>
-            <HistoryChart totals={demoHistoryCents} scripted drawn={summary.chartVisible} />
+            <HistoryChart scripted drawn={summary.chartVisible} />
             <p className="login-showcase-chart-label">Compras anteriores</p>
           </div>
         ) : null}
@@ -334,7 +331,17 @@ function DemoItemRow({ item }: { item: DemoItem }) {
   );
 }
 
-function HistoryChart({ totals, scripted = false, drawn = false }: { totals: number[]; scripted?: boolean; drawn?: boolean }) {
+function BudgetBar({ ratio }: { ratio: number }) {
+  return (
+    <div className="login-showcase-bar">
+      <span style={{ transform: `scaleX(${ratio})` }} />
+    </div>
+  );
+}
+
+const historyChart = chartGeometry(demoHistoryCents);
+
+function chartGeometry(totals: number[]) {
   const width = 220;
   const height = 36;
   const min = Math.min(...totals);
@@ -345,15 +352,23 @@ function HistoryChart({ totals, scripted = false, drawn = false }: { totals: num
     const y = height - 4 - ((value - min) / span) * (height - 8);
     return { x, y };
   });
-  const last = coords[coords.length - 1];
+  return {
+    width,
+    height,
+    points: coords.map((point) => `${point.x},${point.y}`).join(" "),
+    last: coords[coords.length - 1],
+  };
+}
 
+function HistoryChart({ scripted = false, drawn = false }: { scripted?: boolean; drawn?: boolean }) {
   const chartClass = scripted
     ? drawn ? "login-showcase-chart is-script is-drawn" : "login-showcase-chart is-script"
     : "login-showcase-chart";
+  const { width, height, points, last } = historyChart;
 
   return (
-    <svg className={chartClass} viewBox={`0 0 ${width} ${height}`} role="presentation">
-      <polyline pathLength={100} fill="none" points={coords.map((point) => `${point.x},${point.y}`).join(" ")} />
+    <svg className={chartClass} viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
+      <polyline pathLength={100} fill="none" points={points} />
       {scripted && last ? <circle className="login-showcase-chart-halo" cx={last.x} cy={last.y} r="7" /> : null}
       {last ? <circle cx={last.x} cy={last.y} r="3" /> : null}
     </svg>
