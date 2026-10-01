@@ -1,0 +1,117 @@
+[
+  {
+    "scrollWidth": 305,
+    "stages": [
+      {
+        "columns": "273px",
+        "id": "planejar"
+      },
+      {
+        "columns": "273px",
+        "id": "compartilhar"
+      },
+      {
+        "columns": "273px",
+        "id": "comprar"
+      },
+      {
+        "columns": "273px",
+        "id": "acompanhar"
+      }
+    ],
+    "undersized": 0,
+    "width": 320
+  },
+  {
+    "scrollWidth": 375,
+    "stages": [
+      {
+        "columns": "343px",
+        "id": "planejar"
+      },
+      {
+        "columns": "343px",
+        "id": "compartilhar"
+      },
+      {
+        "columns": "343px",
+        "id": "comprar"
+      },
+      {
+        "columns": "343px",
+        "id": "acompanhar"
+      }
+    ],
+    "undersized": 0,
+    "width": 390
+  },
+  {
+    "scrollWidth": 753,
+    "stages": [
+      {
+        "columns": "705px",
+        "id": "planejar"
+      },
+      {
+        "columns": "705px",
+        "id": "compartilhar"
+      },
+      {
+        "columns": "705px",
+        "id": "comprar"
+      },
+      {
+        "columns": "705px",
+        "id": "acompanhar"
+      }
+    ],
+    "undersized": 0,
+    "width": 768
+  },
+  {
+    "scrollWidth": 1009,
+    "stages": [
+      {
+        "columns": "389.25px 475.75px",
+        "id": "planejar"
+      },
+      {
+        "columns": "475.75px 389.25px",
+        "id": "compartilhar"
+      },
+      {
+        "columns": "389.25px 475.75px",
+        "id": "comprar"
+      },
+      {
+        "columns": "475.75px 389.25px",
+        "id": "acompanhar"
+      }
+    ],
+    "undersized": 0,
+    "width": 1024
+  },
+  {
+    "scrollWidth": 1265,
+    "stages": [
+      {
+        "columns": "475.195px 580.805px",
+        "id": "planejar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "id": "compartilhar"
+      },
+      {
+        "columns": "475.195px 580.805px",
+        "id": "comprar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "id": "acompanhar"
+      }
+    ],
+    "undersized": 0,
+    "width": 1280
+  }
+]

@@ -357,12 +357,12 @@ Cada fase entrega um incremento revisável. Atualizar os checkboxes e registrar 
 
 **Dependência:** fase 2. **Arquivos:** `journey-section.tsx`, `product-demos.tsx`, `demo-data.ts`, `landing.css`.
 
-- [ ] Construir os quatro blocos alternados, sem duplicar trechos dos anexos.
-- [ ] Conectar visualmente os painéis com produtos e pessoas ilustrativas consistentes.
-- [ ] Implementar apenas interações locais que esclareçam planejamento, convite, estados e histórico.
-- [ ] Garantir total/progresso corretos e separar comprado de “Já temos”.
-- [ ] Mostrar histórico por compra; retirar gráfico mensal e filtro inexistente.
-- [ ] Adicionar reset de exemplo e caminhos claros para CTAs de seção.
+- [x] Construir os quatro blocos alternados, sem duplicar trechos dos anexos.
+- [x] Conectar visualmente os painéis com produtos e pessoas ilustrativas consistentes.
+- [x] Implementar apenas interações locais que esclareçam planejamento, convite, estados e histórico.
+- [x] Garantir total/progresso corretos e separar comprado de “Já temos”.
+- [x] Mostrar histórico por compra; retirar gráfico mensal e filtro inexistente.
+- [x] Adicionar reset de exemplo e caminhos claros para CTAs de seção.
 
 **Aceite:** o visitante entende cada etapa pelo texto e pelo painel, sem backend ou sessão. Todas as affordances interativas têm efeito real e todos os valores batem com os dados.
 
@@ -563,3 +563,29 @@ Shell semântico, um H1, headings/IDs das etapas, mobile com texto antes do pain
 **Evidências:** [antes em 390px](../audit/landing-phase-2-2026-10-01/before-390.jpg), [depois em 390px](../audit/landing-phase-2-2026-10-01/after-390.jpg), [desktop 1280×900](../audit/landing-phase-2-2026-10-01/after-1280.jpg), [showcase desktop completo](../audit/landing-phase-2-2026-10-01/showcase-1280.jpg), [mobile 320×568](../audit/landing-phase-2-2026-10-01/after-320x568.jpg), [resumo mobile sem scripts](../audit/landing-phase-2-2026-10-01/nojs-showcase-390.jpg), [medições anteriores](../audit/landing-phase-2-2026-10-01/before-measurements.json) e [medições finais](../audit/landing-phase-2-2026-10-01/after-measurements.json). A pasta também contém pares antes/depois em 320 e 768px.
 
 **Limites:** não foram medidos LCP/CLS/INP ou desempenho em aparelhos reais; dimensões reservadas e conteúdo SSR são medidas preventivas, não prova de CLS zero. Validação completa de acessibilidade, zoom, motion, regressão autenticada e performance permanece nas fases previstas. Trabalho anterior mantido no checkout; sem commit, merge ou deploy nesta etapa.
+
+
+## 16. Execução e validação da fase 3 — 01/10/2026
+
+**Autorização:** solicitação do usuário para iniciar a fase 3. Implementação concluída; fase 4 aguarda autorização.
+
+- Quatro etapas mantidas em uma coluna no mobile, com texto antes do painel, e alternadas no desktop. CTAs de seção mantêm destinos reais nas próprias demos.
+- Planejamento permite selecionar os quatro produtos habituais e reiniciar a seleção. As cinco categorias são contexto ilustrativo, sem controles falsos.
+- Compartilhamento mostra convite visual, entrada da pessoa B e atualização do Pão para as duas pessoas. Todas as ações são explicitamente simuladas, sem URL de convite real, clipboard ou conexão com backend.
+- Compra permite abrir cada item, alterar estado e preço unitário. Usa `listTotal`, contagem separada de comprados e “Já temos”, progresso nativo rotulado e aviso de total parcial para comprado sem preço. Quantidade do Leite permanece 2 e participa do cálculo. Reset restaura R$ 12,40 e 2 de 4 comprados.
+- Histórico usa disclosures nativos para consultar três compras concluídas, com itens, quantidades, preços e totais derivados (R$ 31,70, R$ 35,70 e R$ 17,00). Produtos recorrentes coincidem com os demais painéis. Preço anterior do Pão, R$ 6,20, deriva do histórico por `latestPriceFor`.
+- Página e showcase continuam no servidor. Apenas planejamento, compartilhamento e compra são ilhas client locais; estado não persiste, não consulta sessão e não importa Supabase. Controles de alteração chegam desabilitados no HTML e são habilitados após hidratação. Histórico funciona mesmo com scripts bloqueados.
+
+### Verificação
+
+| Caso | Resultado |
+| --- | --- |
+| Checks | Lint, typecheck, build e `git diff --check` aprovados. Suíte completa: **69 testes em 22 arquivos**, incluindo cinco novos testes de interações e histórico. |
+| Totais | No navegador: R$ 12,40 → Tomate comprado R$ 21,30 → Leite comprado R$ 33,10. Tomate em “Já temos”: R$ 24,20, 3 comprados e 1 já temos. Comprado sem preço continua contado e exibe total parcial. Resets e convite exercitados. |
+| Responsividade | Produção local no Codex In-app Browser: 320, 390, 768, 1024 e 1280px, sem overflow horizontal. Alvos de botões, summaries, labels de checkbox e campos com pelo menos 44px. Campos abertos conferidos em 320×568. |
+| Teclado e fallback | Checkbox alternado por Space; editor e histórico abertos por Enter, com foco visível. Proxy temporário com CSP `script-src 'none'`: dados e histórico continuam legíveis; disclosures abrem e controles de mutação ficam desabilitados. |
+| Console e bundle | Sem erros/warnings capturados na visita normal. `/` estática, 4,53 kB de rota e 116 kB First Load JS (111 kB na fase 2). Sem novas dependências. Aviso preexistente sobre plugin Next no ESLint permanece no build. |
+
+**Evidências:** [planejamento desktop](../audit/landing-phase-3-2026-10-01/planning-desktop.jpg), [compra mobile](../audit/landing-phase-3-2026-10-01/purchase-mobile.jpg), [histórico desktop](../audit/landing-phase-3-2026-10-01/history-desktop.jpg), [histórico mobile com scripts bloqueados](../audit/landing-phase-3-2026-10-01/history-mobile-nojs.jpg) e [medições responsivas](../audit/landing-phase-3-2026-10-01/responsive.json).
+
+**Limites:** sem validação em aparelhos reais, leitor de tela, zoom 200% ou medição de Core Web Vitals. Sticky, estado ativo do dock, enhancement do menu e motion pertencem às próximas fases. A ressalva histórica de baseline da fase 0 permanece registrada. Nenhum merge ou deploy realizado.
