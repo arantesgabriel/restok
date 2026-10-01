@@ -68,17 +68,17 @@ describe("household member display and recovery", () => {
     expect(document.body.textContent).not.toContain("fd65f4a8");
   });
 
-  it("keeps unnamed members distinct in labels and sensitive action names", async () => {
+  it("does not expose IDs or offer sensitive actions for unidentified members", async () => {
     data.members.mockResolvedValue([
       { userId: "11111111-0000-0000-0000-000000000001", displayName: null, role: "member", joinedAt: "2026-09-29T00:00:00.000Z", isSelf: false },
       { userId: "22222222-0000-0000-0000-000000000002", displayName: null, role: "member", joinedAt: "2026-09-29T00:00:00.000Z", isSelf: false },
     ]);
     renderManager();
 
-    expect(await screen.findByText("Membro sem nome · código 00000001")).toBeTruthy();
-    expect(screen.getByText("Membro sem nome · código 00000002")).toBeTruthy();
-    expect(screen.getByRole("button", { name: /Remover Membro sem nome · código 00000001/ })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /Transferir propriedade para Membro sem nome · código 00000002/ })).toBeTruthy();
+    expect(await screen.findAllByText("Nome não informado")).toHaveLength(2);
+    expect(document.body.textContent).not.toContain("00000001");
+    expect(screen.queryByRole("button", { name: /^Remover / })).toBeNull();
+    expect(screen.queryByRole("button", { name: /^Transferir propriedade/ })).toBeNull();
   });
 
   it("shows a recoverable error and retries the member and invite loads", async () => {

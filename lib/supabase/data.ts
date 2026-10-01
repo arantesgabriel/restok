@@ -182,14 +182,14 @@ export async function loadHouseholdMembers(householdId: string): Promise<Househo
   const displayNameByUserId = new Map<string, string>();
   if (members.length) {
     try {
-      const { data: profiles, error: profileError } = await client.from("profiles").select("id,display_name").in("id", members.map((member) => member.userId));
-      if (!profileError) {
-        for (const profile of profiles ?? []) {
+      const { data: names, error: namesError } = await client.rpc("get_household_member_names", { target_household: householdId });
+      if (!namesError) {
+        for (const profile of (names ?? []) as Array<{ user_id: string; display_name: string | null }>) {
           const displayName = profile.display_name?.trim();
-          if (displayName) displayNameByUserId.set(profile.id, displayName);
+          if (displayName) displayNameByUserId.set(profile.user_id, displayName);
         }
       }
-    } catch { /* member management remains available with an ID fallback */ }
+    } catch { /* Unknown names stay explicit; sensitive actions require an identifiable person */ }
   }
   return members.map((member) => ({ ...member, displayName: displayNameByUserId.get(member.userId) ?? null }));
 }
@@ -353,4 +353,15 @@ export async function persistList(list: ShoppingList, preferredHouseholdId?: str
 
 export async function createShoppingListWithItems(list: ShoppingList, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
   return persistShoppingListWithItems(list, preferredHouseholdId, true);
+}
+
+export async function persistProfileName(name: string): Promise<boolean> {
+  const displayName = name.trim();
+  if (!displayName || displayName.length > 80) return false;
+  const client = getSupabaseBrowserClient();
+  if (!client) return false;
+  const { data: { user }, error: authError } = await client.auth.getUser();
+  if (authError || !user) return false;
+  const { error } = await client.from("profiles").upsert({ id: user.id, display_name: displayName }, { onConflict: "id" });
+  return !error;
 }

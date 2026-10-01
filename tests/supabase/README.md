@@ -4,7 +4,7 @@ This suite sends requests through PostgREST using the public anon key and three
 pre-created, email-confirmed test users. It creates fresh household fixtures as
 A and B and adds C to A through the invite RPC. It covers cross-house reads and
 writes, direct membership and role forgery, owner/admin/member permissions,
-single-use invitations, last-owner protection, and idempotent list creation.
+single-use invitations, household-scoped display names, last-owner protection, and idempotent list creation.
 Fixture rows remain in the target, so reset the local project between runs.
 
 Set these environment variables before running `npm run test:supabase`:

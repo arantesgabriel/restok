@@ -21,25 +21,23 @@ import {
   Plus,
   Search,
   ShoppingBasket,
-  Sparkles,
   Undo2,
   Users,
   X,
 } from "lucide-react";
-import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { AccessibleDialog } from "@/components/accessible-dialog";
 import { ActionMenu } from "@/components/action-menu";
 import { BrandMark } from "@/components/brand-mark";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
 import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
-import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
+import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, persistProfileName, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
 import { clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
 import {
-  categoryIcon,
   categoryNameSortKey,
   cn,
   formatBRL,
@@ -236,24 +234,11 @@ function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => voi
   const withoutPrice = purchasedWithoutPrice(list);
   const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : 0;
   const over = total - list.budget;
-  return (
-    <section data-budget-summary data-budget-over={over > 0 ? "true" : "false"} className={cn("min-w-0 rounded-[14px] border border-line bg-surface p-4", over > 0 && "border-terracotta/30 bg-terracotta/5")} aria-label="Resumo do orçamento">
-      <div className="flex min-w-0 items-end justify-between gap-2">
-        <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p>
-          <p data-budget-total className="mt-1 text-[clamp(1.05rem,6vw,1.625rem)] font-semibold leading-tight tracking-[-0.03em] text-ink">{formatBRL(total)}</p>
-        </div>
-        <div className="min-w-0 max-w-[48%] text-right">
-          <p data-budget-remaining className={cn("break-words text-sm font-semibold", over > 0 ? "text-terracotta" : "text-muted")}>
-          {over > 0 ? `${formatBRL(over)} acima` : `${formatBRL(list.budget - total)} disponíveis`}
-          </p>
-          <p data-budget-meta-line className="mt-1 flex flex-wrap items-center justify-end gap-x-1 text-xs font-normal text-muted"><span>Meta {formatBRL(list.budget)}</span><button type="button" onClick={onEdit} className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 font-semibold text-primary hover:bg-sage" aria-label="Editar meta da compra" title="Editar meta da compra"><Pencil size={14} />Editar</button></p>
-        </div>
-      </div>
-      <div className="mt-4 h-2 overflow-hidden rounded-full bg-sage" aria-hidden="true"><div className={cn("h-full rounded-full transition-all duration-300", over > 0 ? "bg-terracotta" : "bg-primary")} style={{ width: `${percentage}%` }} /></div>
-      {withoutPrice > 0 ? <p className="mt-2 text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}
-    </section>
-  );
+  return <section data-budget-summary data-budget-over={over > 0 ? "true" : "false"} data-wide-values={Math.max(total, Math.abs(over)) >= 100000 || undefined} className="purchase-budget" aria-label="Resumo do orçamento">
+    <div className="budget-values"><div><span>Total registrado</span><strong>{formatBRL(total)}</strong></div><div><span>{over > 0 ? "Acima da meta" : "Disponível"}</span><b>{formatBRL(Math.abs(over))}</b></div></div>
+    <div className="budget-meta"><span>Meta de {formatBRL(list.budget)}{withoutPrice > 0 ? <span className="block">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</span> : null}</span><button type="button" onClick={onEdit} aria-label="Editar meta da compra"><Pencil size={14} />Editar</button></div>
+    <div className="budget-progress" role="progressbar" aria-label="Uso do orçamento" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage}><span style={{ transform: `scaleX(${percentage / 100})` }} /></div>
+  </section>;
 }
 
 function StatusBadge({ status }: { status: ItemStatus }) {
@@ -288,13 +273,13 @@ function ShoppingItemRow({
   const subtotal = itemSubtotal(item);
   return (
     <article data-shopping-row className="group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition">
-      <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`}>
+      <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`} aria-describedby={`item-meta-${item.id}`}>
         <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-semibold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
-          {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <span>{categoryIcon(item.category)}</span>}
+          {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <ShoppingBasket size={18} />}
         </span>
         <span className="min-w-0 flex-1">
-          <span className={cn("block truncate text-[15px] font-semibold text-ink", item.status !== "pending" && "text-muted line-through decoration-line/80")}>{item.name}</span>
-          <span className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted">
+          <span className={cn("block break-words text-[15px] font-medium text-ink", item.status !== "pending" && "text-muted font-normal")}>{item.name}</span>
+          <span id={`item-meta-${item.id}`} className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-muted">
             <span>{item.quantity} un.</span>
             {item.status === "purchased" && item.unitPrice !== undefined ? <><span>·</span><span>{formatBRL(item.unitPrice)} un.</span><PreviousPrice item={item} lists={lists} /></> : <StatusBadge status={item.status} />}
           </span>
@@ -303,7 +288,7 @@ function ShoppingItemRow({
       <div className="flex shrink-0 items-center gap-1.5">
         {subtotal > 0 ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
         {item.status === "pending" ? <><button type="button" aria-label={`Marcar ${item.name} como comprado`} title="Comprar" onClick={onPurchased} className="grid h-11 w-11 place-items-center rounded-[10px] text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Check size={18} strokeWidth={2.5} /></button><button type="button" aria-label={`Marcar ${item.name} como já temos`} title="Já temos" onClick={onAlreadyHave} className="grid h-11 w-11 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><House size={17} /></button></> : <button type="button" aria-label={`Desfazer situação de ${item.name}`} title="Desfazer" onClick={onUndo} className="grid h-11 w-11 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Undo2 size={17} /></button>}
-        <ChevronRight size={17} className="text-line transition group-hover:text-primary" aria-hidden="true" />
+
       </div>
     </article>
   );
@@ -336,7 +321,7 @@ function CategorySection({
     <section data-category-section className="border-t border-line pt-3">
       <div className="flex items-center gap-2">
         <button type="button" className="flex min-h-12 min-w-0 flex-1 items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
-          <span className="text-lg font-semibold text-primary">{categoryIcon(category)}</span>
+          <span className="text-lg font-semibold text-primary"><ShoppingBasket size={18} /></span>
           <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
           {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
         </button>
@@ -363,11 +348,13 @@ function ItemEditorSheet({
   const [name, setName] = useState(item.name);
   const [category, setCategory] = useState<CategoryName>(item.category);
   const [status, setStatus] = useState<ItemStatus>(item.status);
+  const [error, setError] = useState("");
   const previous = latestPriceFor(item.productId, lists);
-  const numericPrice = Number(price.replace(",", ".").replace(/[^0-9.]/g, ""));
+  const numericPrice = Number(price.trim().replace(",", "."));
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!Number.isFinite(numericPrice) || numericPrice < 0) { setError("Informe um preço válido, igual ou maior que zero."); return; }
     if (!onClose()) return;
     const nextStatus = statusAfterPrice(status, numericPrice);
     onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" && Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
@@ -375,13 +362,14 @@ function ItemEditorSheet({
 
   return <Sheet title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose}>
     <form onSubmit={submit} className="space-y-5">
+      {error ? <p id="item-price-error" role="alert" className="text-sm text-terracotta">{error}</p> : null}
       <div className="flex items-center justify-between gap-4 rounded-[12px] bg-sage/65 p-3">
         <div><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Quantidade</p><p className="mt-1 text-xs text-muted">Ajuste antes de salvar</p></div>
         <QuantityStepper quantity={quantity} onChange={setQuantity} />
       </div>
       <label className="field-label">Preço unitário
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
-        {previous ? <span className="mt-2 block text-xs text-muted">Anterior {formatBRL(previous)} {numericPrice > 0 ? <span className={numericPrice > previous ? "text-terracotta" : "text-primary"}>· {numericPrice > previous ? "mais caro" : "mais barato"}</span> : null}</span> : <span className="mt-2 block text-xs text-muted">Ao informar um preço, o item vira comprado.</span>}
+        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus aria-invalid={Boolean(error)} aria-describedby={error ? "item-price-error" : undefined} inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
+        {previous ? <span className="mt-2 block text-xs text-muted">Anterior {formatBRL(previous)} {numericPrice > 0 ? <span className={numericPrice > previous ? "text-terracotta" : "text-primary"}>· {numericPrice === previous ? "mesmo preço" : numericPrice > previous ? "mais caro" : "mais barato"}</span> : null}</span> : <span className="mt-2 block text-xs text-muted">Ao informar um preço, o item vira comprado.</span>}
       </label>
       <fieldset>
         <legend className="field-label">Situação</legend>
@@ -396,7 +384,7 @@ function ItemEditorSheet({
           <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
         </div>
       </details>
-      <Button type="submit" className="w-full">{numericPrice > 0 && status !== "already_have" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>
+      <Button type="submit" className="w-full">{numericPrice > 0 && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>
     </form>
   </Sheet>;
 }
@@ -413,15 +401,18 @@ function AddItemSheet({
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState<CategoryName>("Outros");
   const [addToHome, setAddToHome] = useState(false);
-  const numericPrice = Number(price.replace(",", ".").replace(/[^0-9.]/g, ""));
+  const [error, setError] = useState("");
+  const numericPrice = Number(price.trim().replace(",", "."));
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!name.trim()) return;
+    if (!name.trim()) { setError("Informe o nome do produto."); return; }
+    if (!Number.isFinite(numericPrice) || numericPrice < 0) { setError("Informe um preço válido, igual ou maior que zero."); return; }
     if (!onClose()) return;
     onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: numericPrice > 0 ? "purchased" : "pending" }, addToHome);
   };
   return <Sheet title="Adicionar item" description="Inclua aquele produto que não estava na lista." onClose={onClose}>
     <form onSubmit={submit} className="space-y-4">
+      {error ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
       <label className="field-label">Nome do produto<input data-initial-focus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural" className="field-input mt-2" /></label>
       <div className="grid grid-cols-2 gap-3">
         <label className="field-label">Quantidade<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
@@ -447,6 +438,7 @@ function NewPurchaseSheet({
 }) {
   const [name, setName] = useState(`Compras de ${new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(new Date())}`);
   const [budget, setBudget] = useState("800");
+  const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(() => new Set(products.filter((product) => product.active).map((product) => product.id)));
   const activeProducts = products.filter((product) => product.active);
@@ -456,6 +448,7 @@ function NewPurchaseSheet({
   const toggle = (id: string) => setSelected((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   return <Sheet title="Nova compra" description="Comece com os produtos que costumam fazer parte da casa." onClose={onClose} wide>
     <div className="space-y-5">
+      {error ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
       <div className="grid gap-3 sm:grid-cols-[1fr_180px]">
         <label className="field-label">Nome<input data-initial-focus value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
         <label className="field-label">Orçamento<div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10" /></div></label>
@@ -464,16 +457,16 @@ function NewPurchaseSheet({
       <label className="relative block"><Search size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar produtos da casa" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar produtos da casa" className="field-input h-11 pl-10" /></label>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p role="status" aria-live="polite" className="mt-1 text-xs text-muted">{selected.size} de {activeProducts.length} selecionados</p></div><button type="button" className="min-h-11 rounded-md px-2 text-xs font-semibold text-primary hover:bg-sage" onClick={() => setSelected((current) => { const next = new Set(current); for (const product of visibleProducts) { if (allVisibleSelected) next.delete(product.id); else next.add(product.id); } return next; })}>{allVisibleSelected ? "Desmarcar resultados" : normalizedQuery ? "Selecionar resultados" : "Selecionar todos"}</button></div>
       <div className="rounded-[12px] border border-line bg-surface px-3">
-        {visibleProducts.length ? visibleProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{product.name}</span><span className="shrink-0 text-xs text-muted">{product.defaultQuantity} un.</span></label>) : <p className="py-6 text-center text-sm text-muted">{activeProducts.length ? "Nenhum produto corresponde à busca." : "Adicione produtos da casa para preparar uma compra mais rápido."}</p>}
+        {visibleProducts.length ? visibleProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary"><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{product.name}</span><span className="shrink-0 text-xs text-muted">{product.defaultQuantity} un.</span></label>) : <p className="py-6 text-center text-sm text-muted">{activeProducts.length ? "Nenhum produto corresponde à busca." : "Adicione produtos da casa para preparar uma compra mais rápido."}</p>}
       </div>
-      <Button className="w-full" onClick={() => { if (onClose()) onCreate(name.trim() || "Nova compra", Number(budget.replace(",", ".").replace(/[^0-9.]/g, "")) || 0, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>
+      <Button className="w-full" onClick={() => { const value = Number(budget.trim().replace(",", ".")); if (!Number.isFinite(value) || value < 0) { setError("Informe um orçamento válido, igual ou maior que zero."); return; } if (onClose()) onCreate(name.trim() || "Nova compra", value, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>
     </div>
   </Sheet>;
 }
 
 function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => boolean; onSave: (budget: number) => void }) {
   const [budget, setBudget] = useState(list.budget.toFixed(2).replace(".", ","));
-  const numericBudget = Number(budget.replace(",", ".").replace(/[^0-9.]/g, ""));
+  const numericBudget = Number(budget.trim().replace(",", "."));
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -533,7 +526,7 @@ function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: 
       const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
       return <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[108px] w-full items-center gap-3 py-3 text-left transition hover:bg-sage/35 sm:gap-4">
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><ShoppingBasket size={20} /></span>
-        <span className="min-w-0 flex-1"><span className="block truncate text-[15px] font-semibold text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span><span className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted"><span>{purchased} comprados</span><span>{alreadyHave} já tínhamos</span><span>{pending} pendentes</span></span>{withoutPrice ? <span className="mt-1 block text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado sem preço" : "comprados sem preço"}</span> : null}</span>
+        <span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span><span className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted"><span>{purchased} comprados</span><span>{alreadyHave} já tínhamos</span><span>{pending} pendentes</span></span>{withoutPrice ? <span className="mt-1 block text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado sem preço" : "comprados sem preço"}</span> : null}</span>
         <span className="shrink-0 text-right"><span className="block text-[11px] text-muted">Total registrado</span><span className="mt-0.5 block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span></span><ChevronRight size={17} className="shrink-0 text-muted" />
       </button>;
     })}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
@@ -605,20 +598,10 @@ function ToastMessage({ message, onDismiss }: { message: string; onDismiss: () =
   return <div data-toast-motion data-state={closing ? "closing" : "open"} role="status" className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1/2 z-toast -translate-x-1/2 rounded-full bg-ink px-4 py-2.5 text-xs font-semibold text-white shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.16)] sm:bottom-7">{message}</div>;
 }
 
-function ProductsHomeLegacy({ products, lists, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onShare }: { products: Product[]; lists: ShoppingList[]; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onShare: () => void }) {
-  const active = products.filter((product) => product.active);
-  return <div className="space-y-7"><div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">Casa Gabriel & Brunna</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Compartilhar casa" variant="bordered" onClick={onShare}><Users size={18} /></IconButton></div>
-    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
-    <div><div className="mb-3 flex items-center justify-between"><h2 className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><button type="button" className="text-sm font-semibold text-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div><div className="divide-y divide-line border-y border-line">{active.length ? active.map((product) => <div key={product.id} className="flex min-h-[68px] items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-lg bg-sage text-sm text-primary">{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.category} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={() => onEditProduct(product)}><Pencil size={16} /></IconButton><button type="button" onClick={() => onToggleProduct(product.id)} className="px-2 text-xs font-semibold text-muted hover:text-terracotta">Desativar</button></div>) : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description="Adicione os itens que não podem faltar em casa." action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}</div></div>
-  </div>;
-}
-
-void ProductsHomeLegacy;
-
 function useCategoryNameSort(householdId: string | undefined) {
   const [categorySort, setCategorySort] = useState<Partial<Record<CategoryName, NameSortDirection>>>({});
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!householdId) {
       setCategorySort({});
       return;
@@ -644,7 +627,7 @@ function CategoryNameSortButton({ category, direction, onToggle }: { category: C
 
 function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
   const action = product.active ? "Desativar" : "Ativar";
-  return <div className="flex min-h-[68px] items-center gap-3"><span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm", product.active ? "bg-sage text-primary" : "bg-surface text-muted")}>{categoryIcon(product.category)}</span><span className="min-w-0 flex-1"><span className="block truncate text-sm font-semibold text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" data-product-toggle-id={product.id} onClick={onToggle} className={cn("min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", product.active ? "text-muted hover:text-terracotta" : "text-primary hover:bg-sage")}>{action}<span className="sr-only"> {product.name}</span></button></div>;
+  return <div className="flex min-h-[68px] items-center gap-3"><span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm", product.active ? "bg-sage text-primary" : "bg-surface text-muted")}><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" data-product-toggle-id={product.id} onClick={onToggle} className={cn("min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", product.active ? "text-muted hover:text-terracotta" : "text-primary hover:bg-sage")}>{action}<span className="sr-only"> {product.name}</span></button></div>;
 }
 
 function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
@@ -689,6 +672,29 @@ function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; o
   </Sheet>;
 }
 
+function ProfileEditorSheet({ name, onClose, onSaved }: { name: string; onClose: () => boolean; onSaved: (name: string) => void }) {
+  const [value, setValue] = useState(name);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  return <Sheet title="Seu nome" description="Este nome identifica você para as pessoas da sua casa." onClose={onClose}>
+    <form className="space-y-4" onSubmit={async (event) => {
+      event.preventDefault();
+      if (busy) return;
+      if (!value.trim()) { setError("Informe seu nome."); return; }
+      setBusy(true); setError("");
+      try {
+        if (!await persistProfileName(value)) { setError("Não foi possível salvar seu nome. Tente novamente."); return; }
+        onSaved(value.trim()); onClose();
+      } catch { setError("Não foi possível salvar seu nome. Tente novamente."); }
+      finally { setBusy(false); }
+    }}>
+      <label className="field-label">Seu nome<input data-initial-focus required maxLength={80} autoComplete="name" value={value} onChange={(event) => setValue(event.target.value)} aria-invalid={Boolean(error)} aria-describedby={error ? "profile-name-error" : undefined} className="field-input mt-2" /></label>
+      {error ? <p id="profile-name-error" role="alert" className="text-sm text-terracotta">{error}</p> : null}
+      <Button type="submit" disabled={busy} className="w-full">{busy ? "Salvando…" : "Salvar nome"}</Button>
+    </form>
+  </Sheet>;
+}
+
 export default function RestokApp() {
   const [state, setState] = useState<RestokState>({ products: [], lists: [] });
   const [hydrated, setHydrated] = useState(false);
@@ -698,19 +704,39 @@ export default function RestokApp() {
   const [activeHousehold, setActiveHousehold] = useState<HouseholdSummary | null>(null);
   const { categorySort, toggleCategorySort } = useCategoryNameSort(activeHousehold?.id);
   const [profileName, setProfileName] = useState<string | null>(null);
+  const [profileEditorOpen, setProfileEditorOpen] = useState(false);
   const [profileEmail, setProfileEmail] = useState<string | null>(null);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [onboarding, setOnboarding] = useState(false);
   const [onboardingInvite, setOnboardingInvite] = useState("");
   const [onboardingInviteFailed, setOnboardingInviteFailed] = useState(false);
   const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
-  const [screen, setScreen] = useState<AppScreen>("shop");
+  const [screen, updateScreen] = useState<AppScreen>("shop");
+  const setScreen = (next: AppScreen) => {
+    if (window.location.hash !== `#${next}`) window.history.pushState(window.history.state, "", `#${next}`);
+    updateScreen(next);
+  };
+  useEffect(() => {
+    const restore = () => {
+      const [section, id] = window.location.hash.slice(1).split("/");
+      updateScreen(section === "home" || section === "history" ? section : "shop");
+      setHistoryDetailId(section === "history" && id ? id : null);
+    };
+    restore();
+    window.addEventListener("popstate", restore);
+    window.addEventListener("hashchange", restore);
+    return () => { window.removeEventListener("popstate", restore); window.removeEventListener("hashchange", restore); };
+  }, []);
   const [shopViewMode, setShopViewMode] = useState<ProductViewMode>("category");
   const [activeListId, setActiveListId] = useState("");
-  const [historyDetail, setHistoryDetail] = useState<ShoppingList | null>(null);
+  const [historyDetailId, setHistoryDetailId] = useState<string | null>(null);
+  const historyDetail = state.lists.find((list) => list.id === historyDetailId) ?? null;
+  const setHistoryDetail = (list: ShoppingList | null) => {
+    setHistoryDetailId(list?.id ?? null);
+    if (list) { updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
+  };
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
@@ -974,11 +1000,9 @@ export default function RestokApp() {
   const alphabeticalItems = sortByName(filteredItems, "asc");
   const resolved = activeList ? listResolved(activeList) : 0;
   const pending = activeList ? listPending(activeList) : 0;
-  const withoutPrice = activeList ? purchasedWithoutPrice(activeList) : 0;
   const showPendingItems = () => {
     setQuery("");
     setFilter("pending");
-    setMobileFiltersOpen(true);
     purchaseResultsRef.current?.scrollIntoView?.({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   };
   const activeHouseholdId = activeHousehold?.id;
@@ -1235,14 +1259,15 @@ export default function RestokApp() {
     const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "C";
     if (!hydrated) return <main className="grid min-h-dvh place-items-center bg-canvas px-5 text-sm text-muted" role="status">Carregando seus dados…</main>;
     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
-  return <div className="min-h-dvh bg-canvas text-ink">
-    <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
-      <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
-      <main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
+  return <div className="restok-app min-h-dvh bg-canvas text-ink">
+    <div className="mx-auto flex min-h-dvh max-w-[1200px]">
+      <aside data-app-sidebar className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></aside>
+      <main data-app-main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
         <header data-app-header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 pt-[env(safe-area-inset-top)] backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? "Conta conectada"}</span></span><ActionMenu
           label={`Perfil de ${profileLabel}`}
           triggerClassName="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           items={[
+            { label: "Editar meu nome", icon: <Pencil size={16} />, onSelect: () => setProfileEditorOpen(true) },
             { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
             { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
           ]}
@@ -1250,8 +1275,8 @@ export default function RestokApp() {
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div data-purchase-content={screen === "shop" ? "true" : undefined} className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
-          {historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
-            <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="hidden text-sm font-semibold text-primary sm:block">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
+          {historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
+            <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
                 label="Menu da compra"
                 triggerClassName="grid h-11 w-11 place-items-center rounded-[10px] border border-line bg-surface text-muted transition hover:border-primary/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 items={[
@@ -1262,7 +1287,7 @@ export default function RestokApp() {
                 ]}
               ><Menu size={19} /></ActionMenu></div>
             <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
-            <div data-purchase-filters className="space-y-2.5"><div className="flex gap-2"><label className="relative block min-w-0 flex-1"><Search size={18} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar na lista" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" className="field-input h-12 pl-10" /></label><button data-mobile-filter-toggle type="button" aria-expanded={mobileFiltersOpen} aria-controls="purchase-status-options" onClick={() => setMobileFiltersOpen((open) => !open)} className="hidden min-h-11 shrink-0 items-center gap-1.5 rounded-[10px] border border-line bg-surface px-3 text-xs font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><ListFilter size={16} />Filtros<span className="sr-only">: {filter === "all" ? "Todos" : statusLabel(filter)}</span></button></div><div id="purchase-status-options" data-filter-options data-expanded={mobileFiltersOpen} role="group" aria-label="Filtros da lista" className="purchase-filter-scroll -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => { setFilter(value); setMobileFiltersOpen(true); }} className={cn("min-h-11 shrink-0 rounded-full border px-3.5 text-xs font-semibold transition", filter === value ? "border-primary bg-primary text-white" : "border-line bg-surface text-muted hover:border-primary/30 hover:text-ink")}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
+            <div data-purchase-filters><label className="purchase-search"><Search size={18} aria-hidden="true" /><input aria-label="Buscar na lista" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na lista" /></label><div id="purchase-status-options" data-filter-options role="group" aria-label="Filtros da lista">{(["all", "pending", "purchased", "already_have"] as Filter[]).map((value) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{value === "all" ? "Todos" : statusLabel(value)}</button>)}</div></div>
             <div ref={purchaseResultsRef} data-purchase-results>
               {filteredItems.length ? <><div data-purchase-viewmode className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : activeList.items.length === 0 ? <EmptyState icon={<ShoppingBasket size={23} />} title="Sua lista ainda está vazia" description="Adicione itens para acompanhar a compra." action={<Button onClick={() => setAddItemOpen(true)}><Plus size={17} />Adicionar item</Button>} /> : <EmptyState icon={<Search size={23} />} title={query.trim() ? "Nenhum item encontrado" : filter === "all" ? "Nenhum item encontrado" : `Nenhum item em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}`} description={query.trim() ? `Nada corresponde a “${query.trim()}”${filter !== "all" ? ` em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}` : ""}.` : "Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>{query.trim() ? "Limpar busca e filtros" : "Limpar filtro"}</Button>} />}
             </div>
@@ -1271,7 +1296,8 @@ export default function RestokApp() {
       </main>
     </div>
     {!keyboardOpen ? <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div> : null}
-    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div data-purchase-footer className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-sticky border-t border-line bg-surface/95 px-4 py-3 backdrop-blur sm:bottom-5 sm:left-auto sm:right-8 sm:w-[300px] sm:rounded-[14px] sm:border sm:shadow-[0_4px_8px_oklch(0.18_0.02_145_/_0.12)]"><div className="flex items-center justify-between gap-4"><div className="min-w-0"><p aria-live="polite" className="text-sm font-semibold text-ink">{pending} pendentes</p>{withoutPrice > 0 ? <p className="mt-0.5 truncate text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado" : "comprados"} sem preço</p> : null}</div><div className="min-w-0 text-right"><p className="text-[11px] font-medium text-muted">Total registrado</p><p className="text-sm font-semibold text-ink">{formatBRL(listTotal(activeList))}</p></div></div><div className="mt-2.5 flex items-center gap-2"><button type="button" onClick={() => pending === 0 ? setFinishOpen(true) : showPendingItems()} className="min-h-11 min-w-0 flex-1 rounded-[10px] bg-primary px-3 text-sm font-semibold text-white transition hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{pending === 0 ? "Finalizar compra" : "Ver pendentes"}</button><button type="button" aria-label="Adicionar item à compra" title="Adicionar item" onClick={() => setAddItemOpen(true)} className="grid h-11 w-11 shrink-0 place-items-center rounded-[10px] border border-line bg-canvas text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Plus size={20} /></button></div></div> : null}
+    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div data-purchase-footer role="region" aria-label="Ações da compra e total registrado"><button type="button" aria-label={pending === 0 ? "Finalizar compra" : "Ver pendentes"} onClick={() => pending === 0 ? setFinishOpen(true) : showPendingItems()}><p>{pending === 0 ? "Finalizar compra" : `${pending} pendentes`}</p><small>{formatBRL(listTotal(activeList))}</small></button><button type="button" aria-label="Adicionar item à compra" className="purchase-add" onClick={() => setAddItemOpen(true)}><Plus size={18} />Adicionar item</button></div> : null}
+    {profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToast("Nome atualizado."); }} /> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
     {newPurchaseOpen ? <NewPurchaseSheet products={state.products} activeList={activeList} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}

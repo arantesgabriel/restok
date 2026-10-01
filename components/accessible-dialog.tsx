@@ -24,12 +24,15 @@ export function AccessibleDialog({
     const previouslyFocused = document.activeElement instanceof HTMLElement
       ? document.activeElement
       : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     dialog.showModal();
     const initialFocus = dialog.querySelector<HTMLElement>("[data-initial-focus]")
       ?? dialog.querySelector<HTMLElement>("[data-dialog-initial-focus]");
     initialFocus?.focus({ preventScroll: true });
 
     return () => {
+      document.body.style.overflow = previousOverflow;
       if (dialog.open) dialog.close();
       const returnTarget = previouslyFocused?.isConnected
         ? previouslyFocused
@@ -48,6 +51,9 @@ export function AccessibleDialog({
       data-state="open"
       aria-modal="true"
       aria-labelledby={titleId}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); onCloseRef.current(); }
+      }}
       onCancel={(event) => {
         event.preventDefault();
         onCloseRef.current();

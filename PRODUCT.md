@@ -72,7 +72,6 @@ Em **Histórico**, ficam as compras concluídas, com nome, data, quantidade de i
 
 Quando Supabase está configurado, a aplicação oferece criação de conta e entrada com email e senha, solicitação de redefinição de senha e sessão autenticada. Na seção Casa, é possível criar e copiar um link de convite. Uma pessoa que abre o convite autenticada pode participar da casa. Alterações nos itens da lista ativa podem ser recebidas em tempo real por outra pessoa conectada à mesma lista.
 
-Sem credenciais do Supabase, `/app` funciona em modo de demonstração no navegador: usa dados de exemplo e guarda alterações no `localStorage` daquele navegador. Esse modo permite explorar o fluxo sem criar uma conta, mas não sincroniza a lista entre pessoas ou dispositivos.
 
 ## Ciclo principal
 
@@ -115,7 +114,8 @@ Para que a descrição do logo e do produto permaneça fiel ao aplicativo de hoj
 - Preços são informados pelas pessoas. **Não há leitura de código de barras, catálogo de preços de lojas, comparação entre supermercados, cupons ou compra e entrega pelo aplicativo.**
 - O orçamento é definido pela pessoa para cada lista. O produto soma os itens marcados como comprados que têm preço; **não é conta bancária, divisão de despesas ou previsão financeira.**
 - A referência de preço vem do histórico da própria casa para produtos recorrentes com registro anterior. **Não é pesquisa de preço de mercado.**
-- A colaboração entre dispositivos depende da configuração do Supabase e de uma sessão autenticada. O modo local de demonstração persiste apenas no navegador e não é uma experiência offline sincronizada.
 - A aplicação atual é web responsiva; o código não caracteriza um aplicativo nativo para iOS ou Android.
-- Textos como “Casa Gabriel & Brunna”, iniciais “GB” e valores vistos em prévias são conteúdo fixo ou demonstrativo da interface, não o nome, público ou identidade oficial do produto.
-- A vitrine de login é uma apresentação estática. Elementos demonstrativos nela, como resumo de economia e gráfico de compras, não correspondem a telas de análise disponíveis no aplicativo autenticado.
+
+A interface principal exige uma sessão Supabase. Casas novas começam sem produtos e compras fictícios. O cache autenticado continua separado por pessoa e casa.
+
+Pessoas da mesma casa podem consultar os nomes de exibição umas das outras, sem acesso a emails ou demais dados privados do perfil. O menu de perfil permite editar o próprio nome. Pessoas sem nome aparecem como “Nome não informado”; alterações de acesso ficam indisponíveis até que possam ser identificadas.

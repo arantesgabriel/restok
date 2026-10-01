@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandMark } from "@/components/brand-mark";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -42,9 +43,9 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <main className="min-h-dvh bg-white">
+    <main className="min-h-dvh bg-canvas">
       <section className="login-panel mx-auto w-full max-w-2xl">
-        <Link href="/" className="login-brand">restok<span>.</span></Link>
+        <Link href="/" className="login-brand"><BrandMark /></Link>
         <div className="login-main">
           <div className="login-copy">
             <h1>Escolha uma nova senha</h1>
@@ -53,13 +54,13 @@ export default function ResetPasswordPage() {
           <form onSubmit={submit} className="login-form">
             <label className="login-field" htmlFor="new-password">
               <span>Nova senha</span>
-              <span className="login-control"><input id="new-password" type="password" required minLength={6} autoComplete="new-password" value={password} onChange={(event) => setPassword(event.target.value)} /></span>
+              <span className="login-control"><input id="new-password" type="password" required minLength={6} autoComplete="new-password" aria-invalid={Boolean(error)} aria-describedby={error ? "reset-error" : undefined} value={password} onChange={(event) => setPassword(event.target.value)} /></span>
             </label>
             <label className="login-field" htmlFor="confirm-password">
               <span>Confirme a nova senha</span>
-              <span className="login-control"><input id="confirm-password" type="password" required minLength={6} autoComplete="new-password" value={confirmation} onChange={(event) => setConfirmation(event.target.value)} /></span>
+              <span className="login-control"><input id="confirm-password" type="password" required minLength={6} autoComplete="new-password" aria-invalid={Boolean(error)} aria-describedby={error ? "reset-error" : undefined} value={confirmation} onChange={(event) => setConfirmation(event.target.value)} /></span>
             </label>
-            {error ? <p className="login-error" role="alert">{error}</p> : null}
+            {error ? <p id="reset-error" className="login-error" role="alert">{error}</p> : null}
             <button type="submit" className="login-submit" disabled={saving}>{saving ? "Salvando…" : "Atualizar senha"}</button>
             <p className="login-switch"><Link href="/login">Voltar para o login</Link></p>
           </form>

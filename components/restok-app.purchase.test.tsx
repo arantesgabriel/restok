@@ -2,7 +2,7 @@ import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { seedState } from "@/tests/fixtures/shopping";
 
@@ -88,4 +88,47 @@ describe("purchase flow", () => {
     expect(within(summary).getByText("Já tínhamos").nextElementSibling?.textContent).toBe("1");
     expect(within(summary).getByText("1 item comprado sem preço")).toBeTruthy();
   });
+  it("rejects a negative price without closing the editor or changing the total", async () => {
+    await renderApp();
+    fireEvent.click(screen.getByRole("button", { name: "Editar Leite pendente" }));
+    const dialog = await screen.findByRole("dialog", { name: "Leite pendente" });
+    fireEvent.change(within(dialog).getByLabelText(/Preço unitário/), { target: { value: "-5" } });
+    fireEvent.click(within(dialog).getByRole("button", { name: "Salvar item" }));
+    expect(within(dialog).getByRole("alert").textContent).toContain("preço válido");
+    expect(screen.getByRole("dialog", { name: "Leite pendente" })).toBeTruthy();
+  });
+
+  it("restores sections from browser navigation without leaving the app", async () => {
+    await renderApp();
+    fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
+    expect(window.location.hash).toBe("#home");
+    window.history.replaceState(window.history.state, "", "/app#history");
+    fireEvent(window, new PopStateEvent("popstate"));
+    expect(screen.getByRole("heading", { name: "Histórico" })).toBeTruthy();
+    window.history.replaceState(window.history.state, "", "/app#shop");
+    fireEvent(window, new PopStateEvent("popstate"));
+    expect(screen.getByRole("button", { name: "Editar Leite pendente" })).toBeTruthy();
+  });
+
+  it("closes the new-purchase dialog with Escape from its search input", async () => {
+    await renderApp();
+    fireEvent.click(screen.getByRole("button", { name: "Menu da compra" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Nova compra" }));
+    const search = await screen.findByRole("searchbox", { name: "Buscar produtos da casa" });
+    fireEvent.change(search, { target: { value: "Café" } });
+    fireEvent.keyDown(search, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "Nova compra" })).toBeNull());
+    expect(document.body.style.overflow).not.toBe("hidden");
+  });
+
+  it("lets the person provide an identifiable profile name", async () => {
+    await renderApp();
+    fireEvent.click(screen.getByRole("button", { name: "Perfil de Ana" }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Editar meu nome" }));
+    const dialog = await screen.findByRole("dialog", { name: "Seu nome" });
+    fireEvent.change(within(dialog).getByLabelText("Seu nome"), { target: { value: "Ana Souza" } });
+    fireEvent.click(within(dialog).getByRole("button", { name: "Salvar nome" }));
+    expect(await screen.findByRole("button", { name: "Perfil de Ana Souza" })).toBeTruthy();
+  });
+
 });

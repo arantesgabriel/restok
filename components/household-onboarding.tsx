@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { BrandMark } from "@/components/brand-mark";
 import { House, Users } from "lucide-react";
 import { acceptHouseholdInvite, createHousehold } from "@/lib/supabase/data";
 
@@ -84,8 +85,9 @@ export function HouseholdOnboarding({
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-2xl items-center px-4 py-10 sm:px-8">
-      <section className="w-full rounded-[20px] border border-line bg-surface p-5 shadow-sheet sm:p-8">
-        <div className="mb-7">
+      <section className="w-full py-5 sm:py-8">
+        <BrandMark />
+        <div className="mb-7 mt-6">
           <p className="text-sm font-semibold text-primary">{profileName || email || "Sua conta"}</p>
           <h1 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-ink">Escolha como começar</h1>
           <p className="mt-2 max-w-lg text-sm leading-6 text-muted">Crie uma casa ou entre em uma com convite. A primeira lista fica por sua conta e pode ser criada quando quiser.</p>

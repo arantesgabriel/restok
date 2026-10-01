@@ -17,6 +17,7 @@ vi.mock("@/lib/supabase/data", () => ({
   activeHouseholdStorageKey: (userId: string) => `restok-active-household:${userId}`,
   resolveRemoteContext: vi.fn(async () => context),
   loadRemoteState: vi.fn(async () => ({ ...context, state: account.state ?? seedState })),
+  persistProfileName: vi.fn(async () => true),
   loadCurrentProfile: vi.fn(async () => ({ ...context, displayName: "Ana" })),
   loadUserHouseholds: vi.fn(async () => [{ id: "test-house", name: "Casa", role: "owner", createdAt: "2026-01-01" }]),
   acceptHouseholdInvite: vi.fn(async () => null),

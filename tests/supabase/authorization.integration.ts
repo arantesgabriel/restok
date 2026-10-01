@@ -214,6 +214,17 @@ describe("tenant isolation through PostgREST", () => {
     expect(members?.[0]).toMatchObject({ user_id: fixture.userA, role: "owner", is_self: true });
   });
 
+  it("shares member names only inside the caller's household", async () => {
+    const own = await userA.rpc("get_household_member_names", { target_household: fixture.householdA });
+    expect(own.error).toBeNull();
+    expect(own.data?.some((row: { user_id: string }) => row.user_id === fixture.userA)).toBe(true);
+    expect(own.data?.some((row: { user_id: string }) => row.user_id === fixture.userB)).toBe(false);
+    const foreign = await userB.rpc("get_household_member_names", { target_household: fixture.householdA });
+    expect(foreign.error).not.toBeNull();
+    const guest = await anonymous.rpc("get_household_member_names", { target_household: fixture.householdA });
+    expect(guest.error).not.toBeNull();
+  });
+
   it("rejects cross-household product and category references but accepts snapshots", async () => {
     const tenantMove = await userA
       .from("products")
