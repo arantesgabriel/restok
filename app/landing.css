@@ -395,3 +395,11 @@
   .landing-page .landing-cta-inverse:hover { background: rgb(var(--sage)); color: rgb(var(--primary)); }
   .landing-page .landing-dock a:hover { background: rgb(var(--primary-strong)); }
 }
+
+/* Local demo controls: useful server-rendered data, enhanced after hydration. */
+.landing-demo-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.landing-product-choice { display: flex; align-items: center; gap: 12px; min-height: 56px; border-bottom: 1px solid rgb(var(--line)); cursor: pointer; }
+.landing-product-choice input { width: 20px; height: 20px; accent-color: rgb(var(--primary)); }
+.landing-demo-button { min-height: 44px; padding: 10px 16px; border: 1px solid rgb(var(--line-strong)); border-radius: 12px; background: rgb(var(--canvas)); color: rgb(var(--primary)); font-size: 14px; font-weight: 500; cursor: pointer; }
+.landing-demo-button:disabled { cursor: default; opacity: .65; }
+.landing-demo-footer { margin-top: 16px; }

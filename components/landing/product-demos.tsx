@@ -1,10 +1,9 @@
-import { Check, History, House, ShoppingBasket } from "lucide-react";
+import { DemoRow } from "./demo-row";
+import { History, House, ShoppingBasket } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import type { ReactNode } from "react";
-import type { ShoppingItem } from "@/lib/types";
-import { formatBRL, itemSubtotal, listTotal, statusLabel } from "@/lib/utils";
+import { formatBRL, listTotal } from "@/lib/utils";
 import {
-  categories,
   exampleLabel,
   historyLists,
   householdPeople,
@@ -16,20 +15,6 @@ import {
   showcaseRegistered,
   showcaseRemaining,
 } from "@/components/landing/demo-data";
-
-function DemoRow({ item }: { item: ShoppingItem }) {
-  const subtotal = itemSubtotal(item);
-  return (
-    <div className="landing-row">
-      {item.status === "purchased" ? <Check size={16} aria-hidden="true" /> : <span className="landing-mark" aria-hidden="true" />}
-      <span className="landing-row-copy">
-        <span className="landing-row-name">{item.name}</span>
-        <span className="landing-row-meta">{item.quantity} × {formatBRL(item.unitPrice ?? 0)} · {statusLabel(item.status)}</span>
-      </span>
-      <span className="landing-num">{subtotal > 0 ? formatBRL(subtotal) : "—"}</span>
-    </div>
-  );
-}
 
 function ExampleNote({ children }: { children: ReactNode }) {
   return <p className="landing-example">{children}</p>;
@@ -99,22 +84,7 @@ export function ProductShowcase() {
   );
 }
 
-export function PlanningDemo() {
-  return (
-    <div className="landing-frame">
-      <ExampleNote>{exampleLabel}. Produtos habituais da casa, sem gravar nada nesta página.</ExampleNote>
-      <p className="landing-demo-title">Tomate entra na próxima compra</p>
-      <ul className="landing-categories">
-        {categories.map((category) => (
-          <li key={category} className={category === "Alimentos" ? "is-selected" : undefined}>{category}</li>
-        ))}
-      </ul>
-      <div className="landing-rows">
-        <DemoRow item={showcaseItems[0]} />
-      </div>
-    </div>
-  );
-}
+export { PlanningDemo } from "./planning-demo";
 
 export function SharingDemo() {
   const sharedItems = [showcaseItems[2], showcaseItems[1]];
