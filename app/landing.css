@@ -281,8 +281,8 @@
   border-bottom: 1px solid rgb(var(--line));
 }
 .landing-history li:last-child { border-bottom: 0; }
-.landing-history .landing-row-meta { grid-column: 1; }
-.landing-history .landing-num { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: rgb(var(--ink)); font-weight: 500; }
+.landing-history-detail summary .landing-row-meta { grid-column: 1; }
+.landing-history-detail summary .landing-num { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: rgb(var(--ink)); font-weight: 500; }
 
 .landing-faq { padding-block: var(--landing-section); }
 .landing-faq-grid { display: grid; gap: 1.5rem; }
@@ -416,3 +416,12 @@
 .landing-demo-progress::-webkit-progress-value { background: rgb(var(--primary)); }
 .landing-demo-progress::-moz-progress-bar { background: rgb(var(--primary)); }
 .landing-invitation { margin-top: 16px; }
+.landing-history > li { display: block; }
+.landing-history-detail summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; min-height: 56px; align-content: center; column-gap: 12px; list-style: none; cursor: pointer; }
+.landing-history-detail summary::-webkit-details-marker { display: none; }
+.landing-history-detail summary .landing-row-meta { grid-column: 1; }
+.landing-history-detail summary .landing-num { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.landing-history-detail[open] summary { margin-bottom: 8px; }
+.landing-history-detail .landing-demo-items > li { padding: 0; border: 0; display: block; }
+.landing-history-detail summary::after { content: 'Ver itens +'; font-size: 13px; color: rgb(var(--primary)); grid-column: 1 / -1; padding-top: 6px; }
+.landing-history-detail[open] summary::after { content: 'Fechar itens −'; }

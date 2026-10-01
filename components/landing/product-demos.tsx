@@ -92,17 +92,22 @@ export { PurchaseDemo } from "./purchase-demo";
 export function HistoryDemo() {
   return (
     <div className="landing-frame">
-      <ExampleNote>{exampleLabel}. Compras concluídas, com data e total registrado.</ExampleNote>
+      <ExampleNote>{exampleLabel}. Compras concluídas. Abra uma compra para consultar seus itens e preços.</ExampleNote>
       <ol className="landing-history">
         {historyLists.map((list) => (
           <li key={list.id}>
-            <span className="landing-row-name">{list.name}</span>
-            <span className="landing-row-meta">{list.displayDate} · {list.items.length} itens</span>
-            <span className="landing-num">{formatBRL(listTotal(list))}</span>
+            <details className="landing-history-detail">
+              <summary>
+                <span className="landing-row-name">{list.name}</span>
+                <span className="landing-row-meta">{list.displayDate} · {list.items.length} itens</span>
+                <span className="landing-num">{formatBRL(listTotal(list))}</span>
+              </summary>
+              <ul className="landing-demo-items" aria-label={`Itens de ${list.name}`}>{list.items.map((item) => <li key={item.id}><DemoRow item={item} /></li>)}</ul>
+            </details>
           </li>
         ))}
       </ol>
-      <p className="landing-budget-note">Na compra anterior, o pão custou {formatBRL(previousBreadPrice)}.</p>
+      {previousBreadPrice !== undefined && <p className="landing-budget-note">Na Feira de sábado, o pão custou {formatBRL(previousBreadPrice)}. Na compra atual, seu preço é {formatBRL(showcaseItems[2].unitPrice!)}.</p>}
     </div>
   );
 }

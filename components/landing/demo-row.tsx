@@ -11,7 +11,7 @@ export function DemoRow({ item }: { item: ShoppingItem }) {
         <span className="landing-row-name">{item.name}</span>
         <span className="landing-row-meta">{item.quantity} × {(item.unitPrice === undefined ? "Preço não informado" : formatBRL(item.unitPrice))} · {statusLabel(item.status)}</span>
       </span>
-      <span className="landing-num">{subtotal > 0 ? formatBRL(subtotal) : "—"}</span>
+      <span className="landing-num">{item.status === "purchased" && item.unitPrice !== undefined ? formatBRL(subtotal) : "—"}</span>
     </div>
   );
 }
