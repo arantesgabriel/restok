@@ -6,7 +6,6 @@ import { formatBRL, listTotal } from "@/lib/utils";
 import {
   exampleLabel,
   historyLists,
-  householdPeople,
   previousBreadPrice,
   showcaseBudget,
   showcaseItems,
@@ -86,25 +85,7 @@ export function ProductShowcase() {
 
 export { PlanningDemo } from "./planning-demo";
 
-export function SharingDemo() {
-  const sharedItems = [showcaseItems[2], showcaseItems[1]];
-  return (
-    <div className="landing-frame">
-      <ExampleNote>{exampleLabel}. Duas pessoas da casa veem a mesma lista quando há conexão.</ExampleNote>
-      <ul className="landing-people">
-        {householdPeople.map((person) => (
-          <li key={person.initial}>
-            <span aria-hidden="true">{person.initial}</span>
-            <span>{person.role}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="landing-rows">
-        {sharedItems.map((item) => <DemoRow key={item.id} item={item} />)}
-      </div>
-    </div>
-  );
-}
+export { SharingDemo } from "./sharing-demo";
 
 export function PurchaseDemo() {
   return (
