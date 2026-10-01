@@ -1,0 +1,412 @@
+[
+  {
+    "ctaBottom": 555.84375,
+    "h1Scroll": 273,
+    "h1Width": 273,
+    "scrollWidth": 305,
+    "stages": [
+      {
+        "columns": "273px",
+        "copyX": 16,
+        "copyY": 1545.125,
+        "demoX": 16,
+        "demoY": 1837.09375,
+        "id": "planejar"
+      },
+      {
+        "columns": "273px",
+        "copyX": 16,
+        "copyY": 2232.7109375,
+        "demoX": 16,
+        "demoY": 2550.2734375,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "273px",
+        "copyX": 16,
+        "copyY": 3017.78125,
+        "demoX": 16,
+        "demoY": 3335.34375,
+        "id": "comprar"
+      },
+      {
+        "columns": "273px",
+        "copyX": 16,
+        "copyY": 3957.390625,
+        "demoX": 16,
+        "demoY": 4249.359375,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 320
+  },
+  {
+    "ctaBottom": 555.84375,
+    "h1Scroll": 313,
+    "h1Width": 313,
+    "scrollWidth": 345,
+    "stages": [
+      {
+        "columns": "313px",
+        "copyX": 16,
+        "copyY": 1483.140625,
+        "demoX": 16,
+        "demoY": 1775.109375,
+        "id": "planejar"
+      },
+      {
+        "columns": "313px",
+        "copyX": 16,
+        "copyY": 2151.8828125,
+        "demoX": 16,
+        "demoY": 2443.8515625,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "313px",
+        "copyX": 16,
+        "copyY": 2874.3203125,
+        "demoX": 16,
+        "demoY": 3166.2890625,
+        "id": "comprar"
+      },
+      {
+        "columns": "313px",
+        "copyX": 16,
+        "copyY": 3751.9453125,
+        "demoX": 16,
+        "demoY": 4043.9140625,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 360
+  },
+  {
+    "ctaBottom": 482.40625,
+    "h1Scroll": 328,
+    "h1Width": 328,
+    "scrollWidth": 360,
+    "stages": [
+      {
+        "columns": "328px",
+        "copyX": 16,
+        "copyY": 1409.703125,
+        "demoX": 16,
+        "demoY": 1701.671875,
+        "id": "planejar"
+      },
+      {
+        "columns": "328px",
+        "copyX": 16,
+        "copyY": 2078.4453125,
+        "demoX": 16,
+        "demoY": 2370.4140625,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "328px",
+        "copyX": 16,
+        "copyY": 2800.8828125,
+        "demoX": 16,
+        "demoY": 3092.8515625,
+        "id": "comprar"
+      },
+      {
+        "columns": "328px",
+        "copyX": 16,
+        "copyY": 3678.5078125,
+        "demoX": 16,
+        "demoY": 3944.8828125,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 375
+  },
+  {
+    "ctaBottom": 456.8125,
+    "h1Scroll": 343,
+    "h1Width": 343,
+    "scrollWidth": 375,
+    "stages": [
+      {
+        "columns": "343px",
+        "copyX": 16,
+        "copyY": 1384.109375,
+        "demoX": 16,
+        "demoY": 1676.078125,
+        "id": "planejar"
+      },
+      {
+        "columns": "343px",
+        "copyX": 16,
+        "copyY": 2052.8515625,
+        "demoX": 16,
+        "demoY": 2344.8203125,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "343px",
+        "copyX": 16,
+        "copyY": 2775.2890625,
+        "demoX": 16,
+        "demoY": 3038.4609375,
+        "id": "comprar"
+      },
+      {
+        "columns": "343px",
+        "copyX": 16,
+        "copyY": 3605.2734375,
+        "demoX": 16,
+        "demoY": 3871.6484375,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 390
+  },
+  {
+    "ctaBottom": 456.8125,
+    "h1Scroll": 365,
+    "h1Width": 365,
+    "scrollWidth": 397,
+    "stages": [
+      {
+        "columns": "365px",
+        "copyX": 16,
+        "copyY": 1384.109375,
+        "demoX": 16,
+        "demoY": 1650.484375,
+        "id": "planejar"
+      },
+      {
+        "columns": "365px",
+        "copyX": 16,
+        "copyY": 1975.6640625,
+        "demoX": 16,
+        "demoY": 2267.6328125,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "365px",
+        "copyX": 16,
+        "copyY": 2698.1015625,
+        "demoX": 16,
+        "demoY": 2961.2734375,
+        "id": "comprar"
+      },
+      {
+        "columns": "365px",
+        "copyX": 16,
+        "copyY": 3528.0859375,
+        "demoX": 16,
+        "demoY": 3794.4609375,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 412
+  },
+  {
+    "ctaBottom": 456.8125,
+    "h1Scroll": 374,
+    "h1Width": 374,
+    "scrollWidth": 415,
+    "stages": [
+      {
+        "columns": "383px",
+        "copyX": 16,
+        "copyY": 1384.109375,
+        "demoX": 16,
+        "demoY": 1650.484375,
+        "id": "planejar"
+      },
+      {
+        "columns": "383px",
+        "copyX": 16,
+        "copyY": 1975.6640625,
+        "demoX": 16,
+        "demoY": 2267.6328125,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "383px",
+        "copyX": 16,
+        "copyY": 2698.1015625,
+        "demoX": 16,
+        "demoY": 2961.2734375,
+        "id": "comprar"
+      },
+      {
+        "columns": "383px",
+        "copyX": 16,
+        "copyY": 3528.0859375,
+        "demoX": 16,
+        "demoY": 3794.4609375,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 430
+  },
+  {
+    "ctaBottom": 381.40625,
+    "h1Scroll": 406,
+    "h1Width": 405.5,
+    "scrollWidth": 753,
+    "stages": [
+      {
+        "columns": "705px",
+        "copyX": 24,
+        "copyY": 1121.828125,
+        "demoX": 24,
+        "demoY": 1359.40625,
+        "id": "planejar"
+      },
+      {
+        "columns": "705px",
+        "copyX": 24,
+        "copyY": 1673.7421875,
+        "demoX": 24,
+        "demoY": 1911.3203125,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "705px",
+        "copyX": 24,
+        "copyY": 2274.9453125,
+        "demoX": 24,
+        "demoY": 2512.5234375,
+        "id": "comprar"
+      },
+      {
+        "columns": "705px",
+        "copyX": 24,
+        "copyY": 3049.6484375,
+        "demoX": 24,
+        "demoY": 3287.2265625,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 768
+  },
+  {
+    "ctaBottom": 475.15625,
+    "h1Scroll": 541,
+    "h1Width": 540.671875,
+    "scrollWidth": 1009,
+    "stages": [
+      {
+        "columns": "389.25px 475.75px",
+        "copyX": 40,
+        "copyY": 1226.6640625,
+        "demoX": 493.25,
+        "demoY": 1242.8671875,
+        "id": "planejar"
+      },
+      {
+        "columns": "475.75px 389.25px",
+        "copyX": 579.75,
+        "copyY": 1644.0859375,
+        "demoX": 40,
+        "demoY": 1648.4453125,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "389.25px 475.75px",
+        "copyX": 40,
+        "copyY": 2169.4921875,
+        "demoX": 493.25,
+        "demoY": 2087.1015625,
+        "id": "comprar"
+      },
+      {
+        "columns": "475.75px 389.25px",
+        "copyX": 579.75,
+        "copyY": 2729.3671875,
+        "demoX": 40,
+        "demoY": 2694.8984375,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 1024
+  },
+  {
+    "ctaBottom": 501.703125,
+    "h1Scroll": 676,
+    "h1Width": 675.8359375,
+    "scrollWidth": 1265,
+    "stages": [
+      {
+        "columns": "475.195px 580.805px",
+        "copyX": 72.5,
+        "copyY": 1282.296875,
+        "demoX": 611.6953125,
+        "demoY": 1316.5234375,
+        "id": "planejar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "copyX": 717.296875,
+        "copyY": 1757.890625,
+        "demoX": 72.5,
+        "demoY": 1767.4765625,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "475.195px 580.805px",
+        "copyX": 72.5,
+        "copyY": 2320.0703125,
+        "demoX": 611.6953125,
+        "demoY": 2233.484375,
+        "id": "comprar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "copyX": 717.296875,
+        "copyY": 2908.1171875,
+        "demoX": 72.5,
+        "demoY": 2882.25,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "ctaBottom": 507.234375,
+    "h1Scroll": 704,
+    "h1Width": 704,
+    "scrollWidth": 1425,
+    "stages": [
+      {
+        "columns": "475.195px 580.805px",
+        "copyX": 152.5,
+        "copyY": 1300.8125,
+        "demoX": 691.6953125,
+        "demoY": 1335.2265625,
+        "id": "planejar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "copyX": 797.296875,
+        "copyY": 1802.375,
+        "demoX": 152.5,
+        "demoY": 1812.1484375,
+        "id": "compartilhar"
+      },
+      {
+        "columns": "475.195px 580.805px",
+        "copyX": 152.5,
+        "copyY": 2390.3359375,
+        "demoX": 691.6953125,
+        "demoY": 2303.9375,
+        "id": "comprar"
+      },
+      {
+        "columns": "580.797px 475.195px",
+        "copyX": 797.296875,
+        "copyY": 3003.9765625,
+        "demoX": 152.5,
+        "demoY": 2978.296875,
+        "id": "acompanhar"
+      }
+    ],
+    "width": 1440
+  }
+]

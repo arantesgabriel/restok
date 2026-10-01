@@ -331,12 +331,12 @@ Cada fase entrega um incremento revisável. Atualizar os checkboxes e registrar 
 
 **Dependência:** fase 0. **Arquivos:** `app/page.tsx`, novo `app/landing.css`, componentes base em `components/landing/`; remoção seletiva de `.public-*` em `app/ui.css`.
 
-- [ ] Criar o shell semântico: header, main, seções com headings/IDs e footer.
-- [ ] Aplicar paleta, Geist, escala de espaços e container definidos.
-- [ ] Construir versão mobile em uma coluna e desktop com alternância de etapas.
-- [ ] Reutilizar `BrandMark`; configurar estilos promocionais apenas no escopo da landing.
-- [ ] Preservar âncoras antigas e implementar CTAs com destinos válidos.
-- [ ] Separar seletores de hover compartilhados antes de retirar CSS legado.
+- [x] Criar o shell semântico: header, main, seções com headings/IDs e footer.
+- [x] Aplicar paleta, Geist, escala de espaços e container definidos.
+- [x] Construir versão mobile em uma coluna e desktop com alternância de etapas.
+- [x] Reutilizar `BrandMark`; configurar estilos promocionais apenas no escopo da landing.
+- [x] Preservar âncoras antigas e implementar CTAs com destinos válidos.
+- [x] Separar seletores de hover compartilhados antes de retirar CSS legado.
 
 **Aceite:** página completa e legível sem JavaScript, navegação por hashes funcional, sem vazamento de CSS para login/app. Ainda não é necessário animar.
 
@@ -493,10 +493,42 @@ Preencher ao implementar; não representa trabalho já realizado.
 | Fase | Status | Arquivos/decisões relevantes | Verificação e evidência |
 | --- | --- | --- | --- |
 | 0 — Baseline | Pendente | — | — |
-| 1 — Fundação | Pendente | — | — |
+| 1 — Fundação | Concluída em 01/10/2026 | `app/page.tsx`, `app/landing.css`, `components/landing/*`. CSS `.public-*` removido de `app/ui.css`; hover de `.login-submit` e `.purchase-add` mantido. Menu mobile é `<details>` nativo, sem ilha client. Demos estáticas usam `listTotal`/`itemSubtotal`. `#para-casa` fica fora do grid para não ocupar coluna. | `npm test`: 64 testes. Browser em 320, 390×844 e 1280: sem overflow, H1 íntegro, CTAs na primeira tela de 844px, dock 2×2, etapas alternadas, hash `#como-funciona`, FAQ abre sem JS. `/login` sem classes da landing; botão continua verde com raio de 8px. Motion, dock sticky e interação das demos ficam para as fases seguintes. |
 | 2 — Hero/showcase | Pendente | — | — |
 | 3 — Jornada | Pendente | — | — |
 | 4 — Navegação | Pendente | — | — |
 | 5 — Motion | Pendente | — | — |
 | 6 — Fechamento/SEO | Pendente | — | — |
 | 7 — Validação | Pendente | — | — |
+
+## 14. Validação independente da fase 1 — 01/10/2026
+
+**Resultado:** os seis itens de implementação da fase 1 estão atendidos, sem defeitos técnicos bloqueantes encontrados no escopo da fundação estática. A aprovação para iniciar a fase 2 ainda depende do responsável pelo produto. Nenhuma implementação da fase 2 foi realizada nesta revisão; foram acrescentados apenas este registro e evidências.
+
+### Padrões
+
+Nenhum achado acionável. A composição permanece no servidor, reutiliza `BrandMark`, Geist e os tokens existentes. Os seletores novos são `.landing-page`/`.landing-*`; a remoção de `.public-*` preserva os hovers de `.login-submit` e `.purchase-add`. Não houve alteração das regras operacionais ou de autenticação.
+
+### Aderência ao plano
+
+Shell semântico, um H1, headings/IDs das etapas, mobile com texto antes do painel, alternância desktop, destinos `/login` e hashes antigos estão presentes. O menu e o FAQ usam disclosure nativo e funcionam sem execução de scripts. Há bases estáticas de showcase, demos e fechamento, a serem refinadas nas fases correspondentes; elas não representam conclusão antecipada dessas fases.
+
+**Ressalva de processo:** a fase 0 permanece pendente no checklist e no registro de execução, embora seja dependência explícita da fase 1. As verificações atuais não substituem uma baseline anterior à implementação. Falta documentar ou recuperar a evidência histórica disponível e registrar expressamente o que não puder ser recuperado; não é possível concluir comparação de bundle/performance ou regressão visual histórica a partir desta revisão.
+
+### Verificações executadas
+
+| Verificação | Resultado |
+| --- | --- |
+| Estado revisado | Alterações locais sobre `HEAD` `2370f33fc9e42b6c956173045645010bb455d34f`: `app/page.tsx`, `app/ui.css`, `app/landing.css`, `app/page.test.tsx` e `components/landing/`. Documentos/capturas anteriores preservados. |
+| Lint e typecheck | `npm run lint` e `npm run typecheck` aprovados. |
+| Testes | `npm test`: 18 arquivos e 64 testes aprovados. |
+| Build | `npm run build` aprovado. `/` estática: 187 B de tamanho de rota e 111 kB de First Load JS; 103 kB compartilhados. São números do build atual, sem delta histórico ou medição de Core Web Vitals. Aviso do build sobre plugin Next no ESLint e avisos de cache webpack registrados na execução, sem falha dos checks. |
+| Layout | Codex In-app Browser, build de produção local em `127.0.0.1:3115`; larguras 320, 360, 375, 390, 412, 430, 768, 1024, 1280 e 1440 com altura 844. Nenhum overflow horizontal do documento; H1 sem transbordar; textos antes das demos no mobile e etapas alternadas a partir de 1024. Inspeção adicional em 320×568 e captura desktop em 1280×900. |
+| Sem scripts | Proxy local temporário em `127.0.0.1:3116`, mesmo build, com cabeçalho `Content-Security-Policy: script-src 'none'`. Conteúdo e estilos visíveis; menu abre/fecha com Enter; FAQ abre; links de hash funcionam. Esse teste bloqueia scripts da página, sem alterar preferências globais do navegador. |
+| Destinos e âncoras | Todos os hashes do HTML têm alvo existente e não há IDs duplicados. Exercitados `#funcionalidades`, `#como-funciona` e acesso direto a `#para-casa`; o alias chega à seção Compartilhar com offset de aproximadamente 16px. CTAs de entrada apontam para `/login`, sem `/app` ou `/signup`. |
+| Isolamento | Navegação da landing para `/login`: nenhuma classe `landing-*`, fonte Geist, botão verde `rgb(23, 76, 60)` e raio 8px preservados. `/reset-password` também sem classes da landing, com Geist. CSS operacional preservado pela comparação do diff; telas autenticadas não foram exercitadas no navegador nesta revisão. |
+| Console normal | Nenhum erro ou warning retornado pelo capturador do In-app Browser na visita normal ao build. |
+
+**Evidências atuais:** [mobile 390×844](../audit/landing-foundation-validation-2026-10-01/landing-390.png), [desktop 1280×900, página inteira](../audit/landing-foundation-validation-2026-10-01/landing-1280.png), [âncora sem scripts](../audit/landing-foundation-validation-2026-10-01/nojs-anchor-390.png) e [medições de layout](../audit/landing-foundation-validation-2026-10-01/layout-measurements.json).
+
+**Limites:** não houve ensaio em aparelhos Safari/iOS ou Chrome/Android, leitor de tela, zoom 200%, sessão autenticada ou medição de LCP/CLS/INP. Dock sticky/ativo, enhancement do menu, interações/reset das demos e motion continuam nas fases previstas. Total: zero achados técnicos de padrões; uma ressalva de processo na aderência ao plano (fase 0 sem baseline registrada).

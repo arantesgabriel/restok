@@ -1,21 +1,4 @@
 /* Shared Restok UI: approved brand, compact operational layouts, and accessible controls. */
-.public-page { max-width:1200px; margin:auto; padding:0 24px; }
-.public-nav,.public-footer { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:24px 0; }
-.public-nav nav { display:flex; gap:24px; }
-.public-nav a,.public-link { min-height:44px; display:inline-flex; align-items:center; gap:8px; color:rgb(var(--primary)); font-size:14px; }
-.public-hero { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:80px 0; }
-.public-hero h1 { max-width:16ch; font-size:clamp(32px,4.5vw,48px); font-weight:600; letter-spacing:-.03em; line-height:1.15; }
-.public-hero p,.public-house p { max-width:55ch; margin:24px 0; font-size:16px; line-height:1.65; color:rgb(var(--muted)); }
-.public-primary { display:inline-flex; min-height:44px; align-items:center; justify-content:center; gap:12px; border-radius:8px; padding:8px 20px; background:rgb(var(--primary)); color:rgb(var(--canvas)); font-size:15px; font-weight:500; }
-.public-cycle { padding:32px; background:rgb(var(--sage)); border-radius:12px; }
-.public-cycle h2,.public-house h2 { font-size:24px; font-weight:600; line-height:1.3; }
-.public-cycle li { display:flex; gap:16px; padding:20px 0; border-bottom:1px solid rgb(var(--line)); }
-.public-cycle li:last-child { border:0; padding-bottom:0; }
-.public-cycle svg { flex-shrink:0; color:rgb(var(--primary)); }
-.public-cycle h3 { font-weight:500; font-size:16px; }
-.public-cycle p { margin:6px 0 0; font-size:14px; }
-.public-house { padding:48px 0 64px; border-top:1px solid rgb(var(--line)); }
-.public-footer { border-top:1px solid rgb(var(--line)); color:rgb(var(--muted)); font-size:13px; flex-wrap:wrap; }
 .login-page { min-height:100dvh; }
 .login-panel { min-height:100dvh; display:flex; flex-direction:column; width:min(100%,480px); margin:auto; padding:calc(24px + env(safe-area-inset-top)) 24px calc(24px + env(safe-area-inset-bottom)); }
 .login-brand { display:inline-flex; align-items:center; width:fit-content; min-height:44px; }
@@ -71,7 +54,6 @@
 .restok-app nav button { font-size:13px; font-weight:500; }
 .restok-app [data-shopping-row] { gap:8px; min-height:76px; padding:8px 0; }
 .restok-app [data-shopping-row] > button { min-height:44px; }
-@media (max-width:639px) { .public-nav nav { display:none; } .public-hero { grid-template-columns:1fr; padding:40px 0; gap:32px; } .public-cycle { padding:24px; } }
 @media (min-width:640px) { .restok-app [data-app-header] { min-height:72px; } .restok-app [data-purchase-content] { padding:24px; } .restok-app [data-purchase-title] h1 { font-size:28px; } [data-purchase-footer] { left:224px; right:24px; bottom:16px; border:1px solid rgb(var(--line)); border-radius:12px; } }
 @media (min-width:1200px) { [data-purchase-footer] { left:calc((100% - 1200px)/2 + 224px); right:calc((100% - 1200px)/2 + 24px); } }
 @media (prefers-reduced-motion:reduce) { .login-spinner { animation:none; } }
@@ -92,7 +74,7 @@
 [data-budget-over=true] .budget-progress span { background:rgb(var(--warning)); }
 @media (max-width:430px) { .purchase-budget[data-wide-values] .budget-values { grid-template-columns:minmax(0,1fr); gap:4px; } .purchase-budget[data-wide-values] .budget-values > div:last-child { display:flex; align-items:baseline; justify-content:space-between; gap:12px; } }
 @media (max-width:639px) and (max-height:620px) { .restok-app [data-purchase-viewmode] { display:none; } .restok-app [data-purchase-content] > .space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top:8px; } .restok-app [data-category-section] > div > button { min-height:44px; } }
-@media (hover:hover) and (pointer:fine) { .public-primary:hover,.login-submit:not(:disabled):hover,.purchase-add:hover { background:rgb(var(--primary-strong)); } }
+@media (hover:hover) and (pointer:fine) { .login-submit:not(:disabled):hover,.purchase-add:hover { background:rgb(var(--primary-strong)); } }
 @media (max-width:639px) and (max-height:620px) {
   .restok-app [data-purchase-title] h1 { font-size:20px; }
   .restok-app [data-resolved-count] { display:none; }
