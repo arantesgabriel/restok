@@ -2,6 +2,8 @@
 
 Proposta de 30/09/2026, entregue para revisão. Não autoriza a migração geral das telas.
 
+**Registro histórico:** a rota `/visual-system` e seus componentes foram removidos em 01/10/2026 após a integração na interface principal, autorizada pelo usuário. A [validação e implementação final](../../audit/implementation-2026-10-01/IMPLEMENTACAO.md) registra o estado atual. Os caminhos, links de prévia e resultados abaixo descrevem a entrega original e já não representam arquivos ativos.
+
 ## Escopo e acesso
 
 Prévia interativa em [localhost:3000/visual-system](http://localhost:3000/visual-system). As três provas são **compra em andamento, sheet de item e Produtos da casa**. Usam os 44 produtos iniciais do seed e as funções existentes de total, status e agrupamento.
