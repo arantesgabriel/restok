@@ -344,12 +344,12 @@ Cada fase entrega um incremento revisável. Atualizar os checkboxes e registrar 
 
 **Dependência:** fase 1. **Arquivos:** hero, showcase, `demo-data.ts`, `landing.css`, assets em `public/landing/` quando necessários.
 
-- [ ] Implementar hero centralizado com H1 fluido, apoio e duas ações.
-- [ ] Criar showcase fiel à linguagem do app, com lista, total e navegação ilustrativa Compra/Histórico/Casa.
-- [ ] Preparar uma composição compacta para mobile em vez de reduzir proporcionalmente a desktop.
-- [ ] Inserir “Exemplo ilustrativo” e aplicar os cálculos coerentes definidos.
-- [ ] Adicionar folhas/legendas com moderação, assets dimensionados e sem interferir na leitura.
-- [ ] Reservar proporções de imagens e molduras para evitar mudanças de layout.
+- [x] Implementar hero centralizado com H1 fluido, apoio e duas ações.
+- [x] Criar showcase fiel à linguagem do app, com lista, total e navegação ilustrativa Compra/Histórico/Casa.
+- [x] Preparar uma composição compacta para mobile em vez de reduzir proporcionalmente a desktop.
+- [x] Inserir “Exemplo ilustrativo” e aplicar os cálculos coerentes definidos.
+- [x] Adicionar folhas/legendas com moderação, assets dimensionados e sem interferir na leitura.
+- [x] Reservar proporções de imagens e molduras para evitar mudanças de layout.
 
 **Aceite:** identidade reconhecível, hero legível em 320px, CTA acessível na primeira tela em uma altura mobile típica, começo do produto visível logo depois. Não exigir a moldura desktop inteira acima da dobra.
 
@@ -494,7 +494,7 @@ Preencher ao implementar; não representa trabalho já realizado.
 | --- | --- | --- | --- |
 | 0 — Baseline | Pendente | — | — |
 | 1 — Fundação | Concluída em 01/10/2026 | `app/page.tsx`, `app/landing.css`, `components/landing/*`. CSS `.public-*` removido de `app/ui.css`; hover de `.login-submit` e `.purchase-add` mantido. Menu mobile é `<details>` nativo, sem ilha client. Demos estáticas usam `listTotal`/`itemSubtotal`. `#para-casa` fica fora do grid para não ocupar coluna. | `npm test`: 64 testes. Browser em 320, 390×844 e 1280: sem overflow, H1 íntegro, CTAs na primeira tela de 844px, dock 2×2, etapas alternadas, hash `#como-funciona`, FAQ abre sem JS. `/login` sem classes da landing; botão continua verde com raio de 8px. Motion, dock sticky e interação das demos ficam para as fases seguintes. |
-| 2 — Hero/showcase | Pendente | — | — |
+| 2 — Hero/showcase | Concluída em 01/10/2026, após autorização do usuário | `landing-hero.tsx`, `product-demos.tsx`, `landing.css`, `public/landing/pantry-leaves.svg`. Hero em dois grupos de verbos, moldura de navegador/side navigation desktop e lista/resumo/navegação inferior mobile. Exemplos continuam no servidor e usam os dados/cálculos existentes. | Lint, typecheck, 64 testes e build aprovados; 10 larguras sem overflow; CTAs cabem em 320×568; fallback sem scripts validado. Baseline da fase 1 preservada antes das alterações; capturas refeitas em cópia isolada. Detalhes no registro da fase 2 abaixo. |
 | 3 — Jornada | Pendente | — | — |
 | 4 — Navegação | Pendente | — | — |
 | 5 — Motion | Pendente | — | — |
@@ -532,3 +532,34 @@ Shell semântico, um H1, headings/IDs das etapas, mobile com texto antes do pain
 **Evidências atuais:** [mobile 390×844](../audit/landing-foundation-validation-2026-10-01/landing-390.png), [desktop 1280×900, página inteira](../audit/landing-foundation-validation-2026-10-01/landing-1280.png), [âncora sem scripts](../audit/landing-foundation-validation-2026-10-01/nojs-anchor-390.png) e [medições de layout](../audit/landing-foundation-validation-2026-10-01/layout-measurements.json).
 
 **Limites:** não houve ensaio em aparelhos Safari/iOS ou Chrome/Android, leitor de tela, zoom 200%, sessão autenticada ou medição de LCP/CLS/INP. Dock sticky/ativo, enhancement do menu, interações/reset das demos e motion continuam nas fases previstas. Total: zero achados técnicos de padrões; uma ressalva de processo na aderência ao plano (fase 0 sem baseline registrada).
+
+## 15. Execução e validação da fase 2 — 01/10/2026
+
+**Autorização:** o usuário solicitou prosseguir para a fase 2 após a validação da fase 1 e ciência da ressalva de baseline. A fase 3 permanece pendente.
+
+### Implementação
+
+- Hero centralizado com dois grupos de verbos no H1, escala fluida, apoio e CTAs existentes. O eyebrow agora mantém 14px, sem herdar a escala/margem do parágrafo de apoio. O título pode ocupar quatro linhas em 320px para preservar palavras e legibilidade.
+- Showcase em DOM/CSS com moldura de navegador no desktop, marca oficial, navegação ilustrativa **Compra / Histórico / Casa**, filtros ilustrativos, quatro itens e resumo. No mobile, a moldura de navegador e o logo lateral ficam ocultos; a lista permanece em tamanho legível, com resumo compacto e navegação ilustrativa inferior.
+- Os controles ilustrativos são listas de texto/ícones, sem links falsos, botões inertes ou tab stops. A identificação “Exemplo ilustrativo” acompanha a figura. As interações locais das demos pertencem à fase 3.
+- Dados de `demo-data.ts` e cálculos existentes preservados: Pão R$ 6,50 + Banana R$ 5,90 = **R$ 12,40**, 2 de 4 comprados, orçamento **R$ 80,00**, disponível **R$ 67,60**. Tomate e Leite continuam pendentes e não somam.
+- Dois ramos discretos nas bordas do hero, ocultos abaixo de 1024px, com `aria-hidden`, alt vazio e sem captura de ponteiro. Asset vetorial original criado para a landing: `public/landing/pantry-leaves.svg`, 180×320, **897 bytes**, aplicado com `next/image`, dimensões e `sizes` explícitos. Sem dependências novas. O DOM do showcase é renderizado no servidor; não há conteúdo aguardando carregamento de screenshot ou hidratação.
+- Nenhuma alteração em autenticação, regras de compras, aplicativo autenticado ou estilos globais. Nenhum motion, dock sticky/ativo ou interação da fase 3 foi antecipado.
+
+### Verificação
+
+| Caso | Resultado |
+| --- | --- |
+| Baseline desta fase | Antes de editar, foram preservados os arquivos alterados da fase 1 e feitas medições em 320×844, 390×844, 768×844 e 1280×900. As capturas iniciais apresentaram recortes do compositor e foram substituídas por capturas completas da mesma interface, reconstruída com as fontes preservadas em cópia isolada, sem `.env`, servida em `127.0.0.1:3117`. As evidências permitem comparar a fase 2 com a fase 1; não reconstituem a baseline histórica ausente da fase 0. Screenshots JPEG registram a área de conteúdo capturada pelo In-app Browser; dimensões de viewport estão nas medições. |
+| Checks | `npm run lint`, `npm run typecheck`, `npm test` (18 arquivos, 64 testes), `npm run build` e `git diff --check` aprovados. Não foram acrescentados testes que apenas espelhem markup/CSS; os contratos de destino existentes continuam cobertos. |
+| Responsividade | Codex In-app Browser, produção local em `127.0.0.1:3115`, larguras 320, 360, 375, 390, 412, 430, 768, 1024, 1280 e 1440. Sem overflow horizontal; H1 e valores íntegros; nenhuma imagem quebrada ou hash sem destino. Chrome da moldura e decoração aparecem apenas no desktop. |
+| Primeira tela | Em 320×568, ambas as ações do hero cabem: final do grupo de CTAs em y≈523px. Em 390×844, CTAs terminam em y≈424px e o produto começa em y≈456px, comparados a 457/489px na fase 1. |
+| Desktop | Em 1280px, CTAs terminam em y≈435px e o showcase começa em y≈475px, comparados a 502/558px na fase 1. Navegação lateral e resumo lado a lado com a lista, sem reduzir a interface proporcionalmente. |
+| Sem scripts | Mesmo build através do proxy temporário `127.0.0.1:3116`, com `Content-Security-Policy: script-src 'none'`. Os quatro itens, preços, total, saldo e navegação ilustrativa continuam visíveis e legíveis. |
+| Contraste dos tokens usados | Texto muted sobre canvas **6,03:1**, muted sobre sage **5,57:1**, primary sobre canvas **9,40:1** e primary sobre sage **8,69:1**; canvas sobre primary **9,40:1**. Cálculo sRGB dos tokens opacos, sem alegar auditoria completa de todos os estados. |
+| Bundle/assets | `/` continua estática, 187 B de tamanho de rota e **111 kB de First Load JS**, sem aumento nos números reportados frente à fase 1. O novo asset tem 897 bytes. Não confundir tamanho do arquivo com medição de transferência, nem números do build com Core Web Vitals. |
+| Console | Nenhum erro/warning retornado pelo capturador na visita normal. O aviso já observado do build sobre plugin Next no ESLint permanece sem impedir os checks. |
+
+**Evidências:** [antes em 390px](../audit/landing-phase-2-2026-10-01/before-390.jpg), [depois em 390px](../audit/landing-phase-2-2026-10-01/after-390.jpg), [desktop 1280×900](../audit/landing-phase-2-2026-10-01/after-1280.jpg), [showcase desktop completo](../audit/landing-phase-2-2026-10-01/showcase-1280.jpg), [mobile 320×568](../audit/landing-phase-2-2026-10-01/after-320x568.jpg), [resumo mobile sem scripts](../audit/landing-phase-2-2026-10-01/nojs-showcase-390.jpg), [medições anteriores](../audit/landing-phase-2-2026-10-01/before-measurements.json) e [medições finais](../audit/landing-phase-2-2026-10-01/after-measurements.json). A pasta também contém pares antes/depois em 320 e 768px.
+
+**Limites:** não foram medidos LCP/CLS/INP ou desempenho em aparelhos reais; dimensões reservadas e conteúdo SSR são medidas preventivas, não prova de CLS zero. Validação completa de acessibilidade, zoom, motion, regressão autenticada e performance permanece nas fases previstas. Trabalho anterior mantido no checkout; sem commit, merge ou deploy nesta etapa.
