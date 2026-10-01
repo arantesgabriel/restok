@@ -87,21 +87,7 @@ export { PlanningDemo } from "./planning-demo";
 
 export { SharingDemo } from "./sharing-demo";
 
-export function PurchaseDemo() {
-  return (
-    <div className="landing-frame">
-      <ExampleNote>{exampleLabel}. O total soma só itens comprados com preço.</ExampleNote>
-      <div className="landing-budget">
-        <p><span>Total registrado</span><strong className="landing-num">{formatBRL(showcaseRegistered)}</strong></p>
-        <p><span>Orçamento</span><b className="landing-num">{formatBRL(showcaseBudget)}</b></p>
-      </div>
-      <p className="landing-budget-note">{formatBRL(showcaseRemaining)} ainda disponíveis · {showcasePurchasedCount} de {showcaseItems.length} comprados. Itens pendentes e “Já temos” não entram no total.</p>
-      <div className="landing-rows">
-        {showcaseItems.map((item) => <DemoRow key={item.id} item={item} />)}
-      </div>
-    </div>
-  );
-}
+export { PurchaseDemo } from "./purchase-demo";
 
 export function HistoryDemo() {
   return (
