@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Check, Eye, EyeOff, LockKeyhole, Mail, ShoppingBasket, UserRound } from "lucide-react";
-import { demoStory } from "@/components/login-showcase/showcase-data";
+import { Check, Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -129,10 +129,7 @@ export function LoginForm() {
 
   return (
     <main className="login-panel">
-      <Link href="/" className="login-brand">
-        <span className="login-mark" aria-hidden="true"><ShoppingBasket size={16} /></span>
-        restok<span>.</span>
-      </Link>
+      <Link href="/" className="login-brand"><BrandMark /></Link>
 
       <div className="login-main">
         {accountCreated ? (
@@ -202,22 +199,10 @@ export function LoginForm() {
                   {isSignUp ? "Entrar" : "Criar conta"}
                 </button>
               </p>
-              <div className="login-divider"><span />ou<span /></div>
-              <Link href="/app?demo=1" className="login-demo">Experimentar com dados de exemplo</Link>
             </form>
           </>
         )}
       </div>
-
-      <p className="login-mobile-story">
-        <span className="login-sr">Planeje, compre e acompanhe.</span>
-        {demoStory.map((step, index) => (
-          <span key={step.id} aria-hidden="true">
-            {index > 0 ? <span className="login-mobile-story-dot">·</span> : null}
-            {step.label}
-          </span>
-        ))}
-      </p>
 
       <footer className="login-foot">© 2026 RESTOK</footer>
     </main>

@@ -1,5 +1,4 @@
 export const LEGACY_REMOTE_STATE_KEY = "restok-state-v2";
-export const DEMO_STATE_KEY = "restok-demo-state-v1";
 
 export function remoteStateStoragePrefix(userId: string) {
   return `restok-state-v3:${encodeURIComponent(userId)}:`;

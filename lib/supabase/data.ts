@@ -1,6 +1,5 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { seedProducts } from "@/lib/seed";
 import type { CategoryName, HouseholdInvite, HouseholdMember, HouseholdRole, HouseholdSummary, Product, RestokState, ShoppingItem, ShoppingList } from "@/lib/types";
 import { orderedShoppingItems } from "@/lib/utils";
 
@@ -134,13 +133,7 @@ export async function loadRemoteState(existingContext?: RemoteContext): Promise<
     .eq("household_id", context.householdId)
     .order("created_at");
   if (productsError) return null;
-  let products = foundProducts;
-  if (!products?.length) {
-    const rows = seedProducts.map((product) => ({ household_id: context.householdId, category_id: categoryIds[product.category] ?? null, name: product.name, default_quantity: product.defaultQuantity, active: true }));
-    const { data: seeded, error: seedError } = await context.client.from("products").insert(rows).select("id,name,default_quantity,active,category_id");
-    if (seedError) return null;
-    products = seeded ?? [];
-  }
+  const products = foundProducts ?? [];
   const categoryById = Object.fromEntries(Object.entries(categoryIds).map(([name, id]) => [id, name])) as Record<string, CategoryName>;
   const { data: foundLists, error: listsError } = await context.client.from("shopping_lists").select("id,name,budget,status,started_at,finished_at").eq("household_id", context.householdId).order("started_at", { ascending: false });
   if (listsError) return null;

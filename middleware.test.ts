@@ -15,7 +15,7 @@ vi.mock("@/lib/supabase/config", () => ({
 
 import { middleware } from "@/middleware";
 
-describe("middleware demo isolation", () => {
+describe("middleware authentication", () => {
   beforeEach(() => {
     remote.getUser.mockReset();
     remote.createServerClient.mockReset();
@@ -23,11 +23,11 @@ describe("middleware demo isolation", () => {
     remote.createServerClient.mockReturnValue({ auth: { getUser: remote.getUser } });
   });
 
-  it("does not create a Supabase client for the explicit demo route", async () => {
+  it("validates the session even when a legacy query flag is supplied", async () => {
     await middleware(new NextRequest("http://localhost/app?demo=1"));
 
-    expect(remote.createServerClient).not.toHaveBeenCalled();
-    expect(remote.getUser).not.toHaveBeenCalled();
+    expect(remote.createServerClient).toHaveBeenCalledOnce();
+    expect(remote.getUser).toHaveBeenCalledOnce();
   });
 
   it("continues to validate sessions on the connected app route", async () => {

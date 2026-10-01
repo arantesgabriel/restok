@@ -294,13 +294,9 @@ describe("login form", () => {
     setItem.mockRestore();
   });
 
-  it("offers the demo account and the mobile story on the form", () => {
+  it("does not offer unauthenticated sample data", () => {
     render(<LoginForm />);
-    expect(screen.getByRole("link", { name: "Experimentar com dados de exemplo" }).getAttribute("href")).toBe("/app?demo=1");
-    expect(screen.getByText("Planeje, compre e acompanhe.")).toBeTruthy();
-    expect(screen.getByText("Planeje")).toBeTruthy();
-    expect(screen.getByText("Compre")).toBeTruthy();
-    expect(screen.getByText("Acompanhe")).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "Experimentar com dados de exemplo" })).toBeNull();
   });
 
   it.each([
@@ -363,6 +359,6 @@ describe("login form", () => {
     const html = renderToString(createElement(LoginPage));
     expect(html).toContain("login-page");
     expect(html).toContain("Entre na sua conta");
-    expect(html).toContain("Experimentar com dados de exemplo");
+    expect(html).not.toContain("Experimentar com dados de exemplo");
   });
 });

@@ -5,15 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "oklch(var(--ink) / <alpha-value>)",
-        canvas: "oklch(var(--canvas) / <alpha-value>)",
-        surface: "oklch(var(--surface) / <alpha-value>)",
-        line: "oklch(var(--line) / <alpha-value>)",
-        primary: "oklch(var(--primary) / <alpha-value>)",
-        "primary-strong": "oklch(var(--primary-strong) / <alpha-value>)",
-        sage: "oklch(var(--sage) / <alpha-value>)",
-        terracotta: "oklch(var(--terracotta) / <alpha-value>)",
-        muted: "oklch(var(--muted) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        canvas: "rgb(var(--canvas) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        "primary-strong": "rgb(var(--primary-strong) / <alpha-value>)",
+        sage: "rgb(var(--sage) / <alpha-value>)",
+        terracotta: "rgb(var(--terracotta) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
       },
       fontWeight: {
         normal: "400",
@@ -24,7 +24,7 @@ const config: Config = {
         black: "600",
       },
       boxShadow: {
-        sheet: "0 -8px 32px oklch(0.18 0.02 145 / 0.12)",
+        sheet: "0 -2px 8px rgb(23 76 60 / 0.12)",
       },
       transitionDuration: {
         fast: "var(--motion-fast)",

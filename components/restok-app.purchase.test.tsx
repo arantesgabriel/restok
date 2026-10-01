@@ -1,24 +1,16 @@
+import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { seedState } from "@/lib/seed";
-import { DEMO_STATE_KEY } from "@/lib/supabase/cache";
+import { seedState } from "@/tests/fixtures/shopping";
 
-vi.mock("@/lib/supabase/config", () => ({
-  isSupabaseConfigured: false,
-  supabaseUrl: "",
-  supabaseAnonKey: "",
-}));
 
-vi.mock("@/lib/supabase/realtime", () => ({
-  subscribeToShoppingList: () => () => {},
-}));
 
-function prepareDemoState() {
+function prepareAccountState() {
   const activeList = seedState.lists[0];
-  const demoState = {
+  const accountState = {
     ...seedState,
     lists: [
       {
@@ -32,19 +24,19 @@ function prepareDemoState() {
       ...seedState.lists.slice(1),
     ],
   };
-  localStorage.setItem(DEMO_STATE_KEY, JSON.stringify(demoState));
+  setAccountFixture(accountState);
 }
 
 async function renderApp() {
   const { default: RestokApp } = await import("@/components/restok-app");
   render(<RestokApp />);
-  await screen.findByRole("button", { name: "Perfil de Demonstração" });
+  await screen.findByRole("button", { name: "Perfil de Ana" });
 }
 
 describe("purchase flow", () => {
   beforeEach(() => {
     localStorage.clear();
-    prepareDemoState();
+    prepareAccountState();
   });
 
   afterEach(() => {

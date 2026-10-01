@@ -1,22 +1,16 @@
+import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@/lib/supabase/config", () => ({
-  isSupabaseConfigured: false,
-  supabaseUrl: "",
-  supabaseAnonKey: "",
-}));
 
-vi.mock("@/lib/supabase/realtime", () => ({
-  subscribeToShoppingList: () => () => {},
-}));
 
 describe("recurring products", () => {
   beforeEach(() => {
     localStorage.clear();
+    setAccountFixture();
   });
 
   afterEach(() => {
@@ -28,7 +22,7 @@ describe("recurring products", () => {
   it("restores an inactive product to the next purchase selection", async () => {
     const { default: RestokApp } = await import("@/components/restok-app");
     render(<RestokApp />);
-    await screen.findByRole("button", { name: "Perfil de Demonstração" });
+    await screen.findByRole("button", { name: "Perfil de Ana" });
 
     fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
     const deactivate = screen.getByRole("button", { name: "Desativar Café" });

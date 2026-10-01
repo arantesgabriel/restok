@@ -1,20 +1,12 @@
+import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { seedState } from "@/lib/seed";
-import { DEMO_STATE_KEY } from "@/lib/supabase/cache";
+import { seedState } from "@/tests/fixtures/shopping";
 
-vi.mock("@/lib/supabase/config", () => ({
-  isSupabaseConfigured: false,
-  supabaseUrl: "",
-  supabaseAnonKey: "",
-}));
 
-vi.mock("@/lib/supabase/realtime", () => ({
-  subscribeToShoppingList: () => () => {},
-}));
 
 function prepareHistoryState() {
   const recentPurchase = {
@@ -42,10 +34,10 @@ function prepareHistoryState() {
       { id: "previous-onion", productId: "product-3", name: "Cebola", category: "Alimentos" as const, quantity: 1, unitPrice: 3.96, status: "purchased" as const, sortOrder: 0 },
     ],
   };
-  localStorage.setItem(DEMO_STATE_KEY, JSON.stringify({
+  setAccountFixture({
     ...seedState,
     lists: [seedState.lists[0], recentPurchase, previousPurchase],
-  }));
+  });
 }
 
 describe("purchase history", () => {
@@ -63,7 +55,7 @@ describe("purchase history", () => {
   it("shows true item statuses, registered totals, missing prices, and prior unit-price comparison", async () => {
     const { default: RestokApp } = await import("@/components/restok-app");
     render(<RestokApp />);
-    await screen.findByRole("button", { name: "Perfil de Demonstração" });
+    await screen.findByRole("button", { name: "Perfil de Ana" });
 
     fireEvent.click(screen.getAllByRole("button", { name: "Histórico" })[0]);
     const recent = screen.getByRole("button", { name: /Compra recente/ });

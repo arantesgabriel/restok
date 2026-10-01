@@ -29,12 +29,12 @@ import {
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AccessibleDialog } from "@/components/accessible-dialog";
 import { ActionMenu } from "@/components/action-menu";
-import { seedState } from "@/lib/seed";
+import { BrandMark } from "@/components/brand-mark";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
 import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
 import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
-import { clearRemoteStateCaches, DEMO_STATE_KEY, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
+import { clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
@@ -90,7 +90,7 @@ function Button({
       disabled={disabled}
       className={cn(
         "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold transition duration-fast ease-restok focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:cursor-not-allowed disabled:opacity-50",
-        variant === "primary" && "bg-primary text-white shadow-[0_3px_0_oklch(0.31_0.08_152)] hover:-translate-y-px hover:bg-primary-strong active:translate-y-px",
+        variant === "primary" && "bg-primary text-white hover:bg-primary-strong active:translate-y-px",
         variant === "secondary" && "border border-line bg-surface text-ink hover:border-primary/40 hover:bg-sage/50",
         variant === "quiet" && "text-muted hover:bg-sage/60 hover:text-ink",
         variant === "danger" && "border border-terracotta/30 bg-terracotta/10 text-terracotta hover:bg-terracotta/15",
@@ -155,7 +155,7 @@ function Sheet({
       <section
         data-dialog-motion
         className={cn(
-          "relative max-h-[92dvh] w-full overflow-y-auto rounded-t-[22px] border border-line bg-canvas px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-sheet sm:max-h-[90vh] sm:rounded-[18px] sm:px-7 sm:pb-7",
+          "relative max-h-[92dvh] w-full overflow-y-auto rounded-t-[16px] bg-canvas px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-sheet sm:max-h-[90vh] sm:rounded-[16px] sm:px-7 sm:pb-7",
           wide ? "max-w-2xl" : "max-w-lg",
         )}
       >
@@ -190,7 +190,7 @@ function QuantityStepper({
         inputMode="numeric"
         value={quantity}
         onChange={(event) => onChange(Math.max(1, Number(event.target.value.replace(/\D/g, "")) || 1))}
-        className="h-10 w-9 rounded-sm bg-transparent text-center text-sm font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="h-11 w-11 rounded-sm bg-transparent text-center text-sm font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       />
       <button type="button" aria-label="Aumentar quantidade" className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-sage hover:text-ink" onClick={() => onChange(quantity + 1)}><Plus size={16} /></button>
     </div>
@@ -226,9 +226,6 @@ function AppNavigation({ screen, onChange }: { screen: AppScreen; onChange: (scr
   );
 }
 
-function BrandMark({ compact = false }: { compact?: boolean }) {
-  return <span className={cn("font-semibold tracking-[-0.04em] text-ink", compact ? "text-lg" : "text-[22px]")}>restok<span className="text-primary">.</span></span>;
-}
 
 function purchasedWithoutPrice(list: ShoppingList) {
   return list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
@@ -693,9 +690,8 @@ function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; o
 }
 
 export default function RestokApp() {
-  const [state, setState] = useState<RestokState>(seedState);
+  const [state, setState] = useState<RestokState>({ products: [], lists: [] });
   const [hydrated, setHydrated] = useState(false);
-  const [isDemoMode, setIsDemoMode] = useState(() => !isSupabaseConfigured || (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("demo") === "1"));
   const [storageKey, setStorageKey] = useState<string | null>(null);
   const [syncWarning, setSyncWarning] = useState<string | null>(null);
   const [households, setHouseholds] = useState<HouseholdSummary[]>([]);
@@ -710,7 +706,7 @@ export default function RestokApp() {
   const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
   const [screen, setScreen] = useState<AppScreen>("shop");
   const [shopViewMode, setShopViewMode] = useState<ProductViewMode>("category");
-  const [activeListId, setActiveListId] = useState("list-active");
+  const [activeListId, setActiveListId] = useState("");
   const [historyDetail, setHistoryDetail] = useState<ShoppingList | null>(null);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
@@ -800,10 +796,7 @@ export default function RestokApp() {
   }, []);
 
   useEffect(() => {
-    // Wait until boot has selected the local demo or connected account before
-    // subscribing to auth events. This avoids a SIGNED_OUT event racing a
-    // configured /app?demo=1 visit during hydration.
-    if (!hydrated || isDemoMode) return;
+    if (!hydrated) return;
     const client = getSupabaseBrowserClient();
     if (!client) return;
 
@@ -837,43 +830,20 @@ export default function RestokApp() {
     });
 
     return () => subscription.unsubscribe();
-  }, [hydrated, isDemoMode]);
+  }, [hydrated]);
 
   useEffect(() => {
     let cancelled = false;
     const boot = async () => {
       const params = new URLSearchParams(window.location.search);
-      const demoMode = !isSupabaseConfigured || params.get("demo") === "1";
-      setIsDemoMode(demoMode);
       const invite = params.get("invite");
-      const acceptedHouseholdId = invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured && !demoMode ? await acceptHouseholdInvite(invite) : null;
-      const inviteFailed = Boolean(invite && isSupabaseConfigured && !demoMode && !acceptedHouseholdId);
+      const acceptedHouseholdId = invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
+      const inviteFailed = Boolean(invite && isSupabaseConfigured && !acceptedHouseholdId);
       if (invite || params.has("flow")) {
         const inviteUrl = new URL(window.location.href);
         inviteUrl.searchParams.delete("invite");
         inviteUrl.searchParams.delete("flow");
         window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
-      }
-
-      if (demoMode) {
-        try {
-          const stored = window.localStorage.getItem(DEMO_STATE_KEY);
-          if (stored) setState(JSON.parse(stored) as RestokState);
-        } catch { /* demo mode can safely fall back to the seed */ }
-        if (!cancelled) {
-          activeStorageKeyRef.current = DEMO_STATE_KEY;
-          setStorageKey(DEMO_STATE_KEY);
-          const demoHousehold = { id: "demo-household", name: "Casa de demonstração", role: "owner" as const, createdAt: "" };
-          setHouseholds([demoHousehold]);
-          setActiveHousehold(demoHousehold);
-          setProfileName(null);
-          setProfileEmail(null);
-          setOnboarding(false);
-          setSyncWarning(null);
-          setHydrated(true);
-          if (invite) setToast("Convites só funcionam quando a conta está conectada ao servidor.");
-        }
-        return;
       }
 
       const context = await resolveRemoteContext(acceptedHouseholdId);
@@ -1024,7 +994,7 @@ export default function RestokApp() {
     ]);
 
     const previous = writeChainsRef.current.get(key) ?? Promise.resolve({ ok: true, synced: true } as const);
-    const task = previous.then(() => isDemoMode || !isSupabaseConfigured ? ({ ok: true, synced: false } as const) : window.navigator.onLine ? write() : ({ ok: false, message: "Sem conexão com a internet." } as const)).catch(() => ({ ok: false, message: "Não foi possível sincronizar esta alteração." } as const));
+    const task = previous.then(() => !isSupabaseConfigured ? ({ ok: false, message: "O servidor está indisponível." } as const) : window.navigator.onLine ? write() : ({ ok: false, message: "Sem conexão com a internet." } as const)).catch(() => ({ ok: false, message: "Não foi possível sincronizar esta alteração." } as const));
     writeChainsRef.current.set(key, task);
     void task.then((result) => {
       if (writeVersionsRef.current.get(key) !== token) return;
@@ -1043,7 +1013,7 @@ export default function RestokApp() {
   };
 
   useEffect(() => {
-    if (isDemoMode || !isSupabaseConfigured || !activeHouseholdId) {
+    if (!isSupabaseConfigured || !activeHouseholdId) {
       setRealtimeStatus("disconnected");
       return;
     }
@@ -1055,10 +1025,10 @@ export default function RestokApp() {
         if (status === "connected" || status === "reconnecting") requestRemoteRevalidation();
       },
     });
-  }, [activeHouseholdId, isDemoMode, realtimeListId, requestRemoteRevalidation]);
+  }, [activeHouseholdId, realtimeListId, requestRemoteRevalidation]);
 
   useEffect(() => {
-    if (isDemoMode || !isSupabaseConfigured || !isOnline || !activeHouseholdId || writeOperations.length || !needsRevalidationRef.current || revalidationInFlightRef.current) return;
+    if (!isSupabaseConfigured || !isOnline || !activeHouseholdId || writeOperations.length || !needsRevalidationRef.current || revalidationInFlightRef.current) return;
     needsRevalidationRef.current = false;
     revalidationInFlightRef.current = true;
     let cancelled = false;
@@ -1090,7 +1060,7 @@ export default function RestokApp() {
       needsRevalidationRef.current = true;
       if (retryTimer !== undefined) window.clearTimeout(retryTimer);
     };
-  }, [activeHouseholdId, isDemoMode, isOnline, revalidationVersion, writeOperations.length]);
+  }, [activeHouseholdId, isOnline, revalidationVersion, writeOperations.length]);
 
   const updateActiveItems = (updater: (items: ShoppingItem[]) => ShoppingItem[]) => {
     if (!activeList) return null;
@@ -1167,7 +1137,7 @@ export default function RestokApp() {
     runRemoteWrite(`product:${updated.id}`, updated.active ? "Produto ativado" : "Produto desativado", () => persistProduct(updated, activeHouseholdId));
   };
   const activateHousehold = async (householdId: string) => {
-    if (isDemoMode || !isSupabaseConfigured) return householdId === "demo-household";
+    if (!isSupabaseConfigured) return false;
     const context = await resolveRemoteContext(householdId).catch(() => null);
     if (!context || context.householdId !== householdId) {
       setToast("Você não tem acesso a essa casa.");
@@ -1208,7 +1178,7 @@ export default function RestokApp() {
     return true;
   };
   const refreshMemberships = async () => {
-    if (isDemoMode || !isSupabaseConfigured) return;
+    if (!isSupabaseConfigured) return;
     const availableHouseholds = await loadUserHouseholds().catch(() => null);
     if (!availableHouseholds) {
       setToast("Não foi possível atualizar a lista de casas.");
@@ -1239,14 +1209,6 @@ export default function RestokApp() {
     setOnboarding(true);
   };
   const signOut = async () => {
-    if (isDemoMode || !isSupabaseConfigured) {
-      window.localStorage.removeItem(DEMO_STATE_KEY);
-      setState(seedState);
-      setActiveListId("list-active");
-      setToast("Dados locais da demonstração apagados");
-      return;
-    }
-
     const client = getSupabaseBrowserClient();
     if (!client) return;
     try {
@@ -1269,24 +1231,24 @@ export default function RestokApp() {
   };
 
     const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
-    const profileLabel = profileName || profileEmail || (isDemoMode ? "Demonstração" : "Conta");
-    const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "D";
+    const profileLabel = profileName || profileEmail || "Conta";
+    const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "C";
     if (!hydrated) return <main className="grid min-h-dvh place-items-center bg-canvas px-5 text-sm text-muted" role="status">Carregando seus dados…</main>;
     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
   return <div className="min-h-dvh bg-canvas text-ink">
     <div className="mx-auto flex min-h-dvh max-w-7xl sm:px-5 lg:px-8">
       <aside className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><p className="mt-1 truncate text-xs text-muted">{activeHousehold?.name ?? "Casa"}</p></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /><div className="mt-auto pt-10"><div className="rounded-[14px] bg-sage p-4"><Sparkles size={18} className="text-primary" /><p className="mt-3 text-sm font-semibold text-ink">Tudo no lugar</p><p className="mt-1 text-xs leading-5 text-muted">Uma compra de cada vez, sem planilha.</p></div></div></aside>
       <main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
-        <header data-app-header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 pt-[env(safe-area-inset-top)] backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? (isDemoMode ? "Modo demonstração" : "Conta conectada")}</span></span><ActionMenu
+        <header data-app-header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 pt-[env(safe-area-inset-top)] backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? "Conta conectada"}</span></span><ActionMenu
           label={`Perfil de ${profileLabel}`}
           triggerClassName="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           items={[
             { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
-            { label: isDemoMode ? "Limpar dados locais" : "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
+            { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
           ]}
         >{profileInitials}</ActionMenu></div></header>
         {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
-        {isSupabaseConfigured && !isDemoMode && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
+        {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <div role="status" aria-live="polite" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><div><p className="font-semibold text-ink">{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p className="mt-1 text-xs">{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p className="mt-1 text-xs font-medium">{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>{writeOperations.some((operation) => operation.status === "failed") ? <button type="button" onClick={() => writeOperations.filter((operation) => operation.status === "failed").forEach((operation) => operation.retry())} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button> : null}</div> : null}
         <div data-purchase-content={screen === "shop" ? "true" : undefined} className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
           {historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => setHistoryDetail(null)} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
             <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="hidden text-sm font-semibold text-primary sm:block">Dentro do mercado</p><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
@@ -1317,7 +1279,7 @@ export default function RestokApp() {
     {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => requestSheetClose(() => setBudgetEditor(null))} onSave={saveBudget} /> : null}
     {completeList ? <CompleteSheet list={completeList} onClose={() => requestSheetClose(() => setCompleteList(null))} onHistory={() => requestSheetClose(() => { setCompleteList(null); setScreen("history"); })} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
-    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured && !isDemoMode} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
+    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
     {toast && !keyboardOpen ? <ToastMessage key={toast} message={toast} onDismiss={() => setToast(null)} /> : null}
   </div>;
 }

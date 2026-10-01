@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { clearRemoteStateCaches, DEMO_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
+import { clearRemoteStateCaches, remoteStateStorageKey } from "@/lib/supabase/cache";
 
 describe("remote state cache scope", () => {
   it("separates users that share a browser", () => {
@@ -14,9 +14,6 @@ describe("remote state cache scope", () => {
     );
   });
 
-  it("keeps anonymous demo data outside authenticated tenant caches", () => {
-    expect(DEMO_STATE_KEY).not.toBe(remoteStateStorageKey("user-a", "household-1"));
-  });
 
   it("clears every household cache for one user and preserves other users", () => {
     const entries = new Map([

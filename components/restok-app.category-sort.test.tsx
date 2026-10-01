@@ -1,19 +1,12 @@
+import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { afterEach, describe, expect, it } from "vitest";
 import { categoryNameSortKey } from "@/lib/utils";
 
-vi.mock("@/lib/supabase/config", () => ({
-  isSupabaseConfigured: false,
-  supabaseUrl: "",
-  supabaseAnonKey: "",
-}));
 
-vi.mock("@/lib/supabase/realtime", () => ({
-  subscribeToShoppingList: () => () => {},
-}));
 
 const namesIn = (category: string) => {
   const control = screen.getByRole("button", { name: new RegExp(`^${category} em ordem`) });
@@ -29,9 +22,10 @@ describe("house category order", () => {
   });
 
   it("lets each category keep its own alphabetical direction", async () => {
+    setAccountFixture();
     const { default: RestokApp } = await import("@/components/restok-app");
     const view = render(<RestokApp />);
-    await screen.findByRole("button", { name: "Perfil de Demonstração" });
+    await screen.findByRole("button", { name: "Perfil de Ana" });
 
     const alimentos = () => namesIn("Alimentos");
     const higiene = () => namesIn("Higiene");
@@ -40,10 +34,10 @@ describe("house category order", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Alimentos em ordem A–Z. Alternar ordem alfabética" }));
 
-    expect(screen.getByRole("button", { name: "Alimentos em ordem Z–A. Alternar ordem alfabética" })).toBeTruthy();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Alimentos em ordem Z–A. Alternar ordem alfabética" })).toBeTruthy());
     expect(alimentos().indexOf("Óleo")).toBeLessThan(alimentos().indexOf("Água com gás 1.5L"));
     expect(higiene().indexOf("Bucha de Pia")).toBeLessThan(higiene().indexOf("Shampoo"));
-    expect(JSON.parse(localStorage.getItem(categoryNameSortKey("demo-household")) ?? "{}")).toEqual({ Alimentos: "desc" });
+    expect(JSON.parse(localStorage.getItem(categoryNameSortKey("test-house")) ?? "{}")).toEqual({ Alimentos: "desc" });
 
     fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
@@ -64,9 +58,9 @@ describe("house category order", () => {
 
     view.unmount();
     render(<RestokApp />);
-    await screen.findByRole("button", { name: "Perfil de Demonstração" });
+    await screen.findByRole("button", { name: "Perfil de Ana" });
     fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
-    expect(screen.getByRole("button", { name: "Alimentos em ordem Z–A. Alternar ordem alfabética" })).toBeTruthy();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Alimentos em ordem Z–A. Alternar ordem alfabética" })).toBeTruthy());
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
     expect(namesIn("Higiene").indexOf("Bucha de Pia")).toBeLessThan(namesIn("Higiene").indexOf("Shampoo"));
   });
