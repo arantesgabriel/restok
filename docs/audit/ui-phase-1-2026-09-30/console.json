@@ -1,0 +1,14 @@
+[
+  {
+    "level": "warn",
+    "message": "Detected `scroll-behavior: smooth` on the `<html>` element. In a future version, Next.js will no longer automatically disable smooth scrolling during route transitions. To prepare for this change, add `data-scroll-behavior=\"smooth\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior",
+    "timestamp": "2026-09-30T19:01:18.034Z",
+    "url": "webpack-internal:///(app-pages-browser)/./node_modules/next/dist/shared/lib/utils/warn-once.js"
+  },
+  {
+    "level": "warn",
+    "message": "Detected `scroll-behavior: smooth` on the `<html>` element. In a future version, Next.js will no longer automatically disable smooth scrolling during route transitions. To prepare for this change, add `data-scroll-behavior=\"smooth\"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior",
+    "timestamp": "2026-09-30T19:03:54.550Z",
+    "url": "webpack-internal:///(app-pages-browser)/../../../Users/aidcrusadergabrielarantes/Documents/Fontes/restok/node_modules/next/dist/shared/lib/utils/warn-once.js"
+  }
+]

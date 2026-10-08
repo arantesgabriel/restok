@@ -1,0 +1,35 @@
+[
+  {
+    "case": "main-brand",
+    "result": {
+      "brandImages": [],
+      "font": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "nav": [
+        "Compra",
+        "Histórico",
+        "Casa",
+        "Compra",
+        "Histórico",
+        "Casa"
+      ],
+      "primary": "0.43 0.105 151"
+    }
+  },
+  {
+    "case": "main-menu-escape",
+    "result": {
+      "expanded": "false",
+      "focus": "Menu da compra"
+    }
+  },
+  {
+    "case": "main-new-purchase",
+    "result": {
+      "cta": "Encerrar atual e começar ",
+      "search": "Buscar produtos da casa",
+      "warning": [
+        "Começar esta compra vai encerrar “Compras de Setembro” e movê-la para o histórico. Ainda há 44 itens pendentes."
+      ]
+    }
+  }
+]

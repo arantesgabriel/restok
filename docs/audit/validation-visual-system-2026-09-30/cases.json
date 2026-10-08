@@ -1,0 +1,144 @@
+[
+  {
+    "case": "initial-focus",
+    "result": {
+      "inputMode": "decimal",
+      "locked": "hidden",
+      "priceValue": "3,96",
+      "tag": "INPUT"
+    }
+  },
+  {
+    "case": "escape-focus",
+    "result": {
+      "name": "Editar item Cebola",
+      "overflow": ""
+    }
+  },
+  {
+    "case": "review-menu-escape",
+    "result": {
+      "focus": "Opções da prévia",
+      "open": true
+    }
+  },
+  {
+    "case": "reduced-motion",
+    "result": {
+      "enabled": "true",
+      "fast": "0ms"
+    }
+  },
+  {
+    "case": "reduced-sheet",
+    "result": {
+      "backdrop": "1e-05s",
+      "sheet": "1e-05s"
+    }
+  },
+  {
+    "case": "quantity-focus",
+    "result": {
+      "dimensions": {
+        "bottom": 488.5,
+        "height": 44,
+        "left": 69,
+        "right": 113,
+        "top": 444.5,
+        "width": 44,
+        "x": 69,
+        "y": 444.5
+      },
+      "outline": "rgb(23, 76, 60) none 2px"
+    }
+  },
+  {
+    "case": "quantity-times-price",
+    "result": {
+      "budget": "Total registradoR$ 27,00DisponívelR$ 773,00Meta de R$ 800,00",
+      "focus": "Editar item Cebola",
+      "metaColor": "rgb(82, 100, 91)",
+      "row": "Cebola6 un. · Comprado · R$ 27,00",
+      "rowOpacity": "1"
+    }
+  },
+  {
+    "case": "already-have-excluded",
+    "result": {
+      "budget": "Total registradoR$ 0,00DisponívelR$ 800,00Meta de R$ 800,00",
+      "meta": "6 un. · Já temos"
+    }
+  },
+  {
+    "case": "purchased-optional-price",
+    "result": {
+      "budget": "Total registradoR$ 0,00DisponívelR$ 800,00Meta de R$ 800,00 · 1 comprado sem preço",
+      "meta": "Café1 un. · Comprado · sem preço"
+    }
+  },
+  {
+    "case": "query-and-filter-empty",
+    "result": {
+      "copy": "Nenhum item nesta seleçãoSem resultados para “nãoexiste” com este filtro.Ver todos os itens",
+      "pressed": [
+        [
+          "Todos",
+          "false"
+        ],
+        [
+          "Pendente",
+          "false"
+        ],
+        [
+          "Comprado",
+          "true"
+        ],
+        [
+          "Já temos",
+          "false"
+        ]
+      ],
+      "searchName": "Buscar na lista"
+    }
+  },
+  {
+    "case": "negative-price",
+    "result": {
+      "alert": "Use um preço como 12,50.",
+      "focus": "decimal",
+      "invalid": "true"
+    }
+  },
+  {
+    "case": "quantity-keyboard-outline",
+    "result": {
+      "name": "Quantidade",
+      "outline": "rgb(23, 76, 60) solid 2px"
+    }
+  },
+  {
+    "case": "large-values",
+    "result": {
+      "budget": "Total registradoR$ 246.913,56Acima da metaR$ 246.113,56Meta de R$ 800,00 · 1 comprado sem preço",
+      "budgetClient": 288,
+      "budgetWidth": 288,
+      "clientWidth": 305,
+      "dockClient": 305,
+      "dockWidth": 305,
+      "scrollWidth": 320,
+      "width": 320
+    }
+  },
+  {
+    "case": "home-order-and-product",
+    "result": {
+      "cafe": "Café3 un. por compra · Alimentos",
+      "first": "Água com Gás (fardo)",
+      "pressed": "A–Z"
+    }
+  },
+  {
+    "case": "catalog-independent",
+    "result": "Café\n1 un. · Comprado · sem preço"
+  }
+]
