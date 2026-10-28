@@ -15,7 +15,6 @@ import {
   ListFilter,
   LogOut,
   Menu,
-  Minus,
   PackagePlus,
   Pencil,
   Plus,
@@ -26,6 +25,10 @@ import {
   X,
 } from "lucide-react";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { MoneyField } from "@/components/ui/money-field";
+import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
+import { moneyInput, parseMoney } from "@/lib/money";
+import { isValidQuantity } from "@/lib/quantity";
 import { AccessibleDialog } from "@/components/accessible-dialog";
 import { ActionMenu } from "@/components/action-menu";
 import { BrandMark } from "@/components/brand-mark";
@@ -171,30 +174,6 @@ function Sheet({
   );
 }
 
-function QuantityStepper({
-  quantity,
-  onChange,
-  compact = false,
-}: {
-  quantity: number;
-  onChange: (quantity: number) => void;
-  compact?: boolean;
-}) {
-  return (
-    <div className={cn("inline-flex items-center gap-1 rounded-[10px] border border-line bg-canvas p-0.5", compact && "gap-0")}>
-      <button type="button" aria-label="Diminuir quantidade" className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-sage hover:text-ink" onClick={() => onChange(Math.max(1, quantity - 1))}><Minus size={16} /></button>
-      <input
-        aria-label="Quantidade"
-        inputMode="numeric"
-        value={quantity}
-        onChange={(event) => onChange(Math.max(1, Number(event.target.value.replace(/\D/g, "")) || 1))}
-        className="h-11 w-11 rounded-sm bg-transparent text-center text-sm font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-      />
-      <button type="button" aria-label="Aumentar quantidade" className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-sage hover:text-ink" onClick={() => onChange(quantity + 1)}><Plus size={16} /></button>
-    </div>
-  );
-}
-
 function AppNavigation({ screen, onChange }: { screen: AppScreen; onChange: (screen: AppScreen) => void }) {
   const items: Array<{ id: AppScreen; label: string; icon: React.ReactNode }> = [
     { id: "shop", label: "Compra", icon: <ShoppingBasket size={19} /> },
@@ -232,12 +211,12 @@ function purchasedWithoutPrice(list: ShoppingList) {
 function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => void }) {
   const total = listTotal(list);
   const withoutPrice = purchasedWithoutPrice(list);
-  const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : 0;
+  const percentage = list.budget > 0 ? Math.min((total / list.budget) * 100, 100) : total > 0 ? 100 : 0;
   const over = total - list.budget;
   return <section data-budget-summary data-budget-over={over > 0 ? "true" : "false"} data-wide-values={Math.max(total, Math.abs(over)) >= 100000 || undefined} className="purchase-budget" aria-label="Resumo do orçamento">
     <div className="budget-values"><div><span>Total registrado</span><strong>{formatBRL(total)}</strong></div><div><span>{over > 0 ? "Acima da meta" : "Disponível"}</span><b>{formatBRL(Math.abs(over))}</b></div></div>
     <div className="budget-meta"><span>Meta de {formatBRL(list.budget)}{withoutPrice > 0 ? <span className="block">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</span> : null}</span><button type="button" onClick={onEdit} aria-label="Editar meta da compra"><Pencil size={14} />Editar</button></div>
-    <div className="budget-progress" role="progressbar" aria-label="Uso do orçamento" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage}><span style={{ transform: `scaleX(${percentage / 100})` }} /></div>
+    <div className="budget-progress" role="progressbar" aria-label="Uso do orçamento" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage} aria-valuetext={`${formatBRL(total)} de ${formatBRL(list.budget)}${over > 0 ? `; excedente de ${formatBRL(over)}` : ""}`}><span style={{ transform: `scaleX(${percentage / 100})` }} /></div>
   </section>;
 }
 
@@ -247,7 +226,8 @@ function StatusBadge({ status }: { status: ItemStatus }) {
 
 function PreviousPrice({ item, lists }: { item: ShoppingItem; lists: ShoppingList[] }) {
   const previous = latestPriceFor(item.productId, lists);
-  if (!previous || item.unitPrice === undefined) return null;
+  if (previous === undefined || item.unitPrice === undefined) return null;
+  if (previous === 0) return <span className="text-xs text-muted">Anterior {formatBRL(0)} · {formatBRL(Math.abs(item.unitPrice))} {item.unitPrice > 0 ? "a mais por unidade" : "igual ao anterior"}</span>;
   const variation = (item.unitPrice - previous) / previous;
   if (Math.abs(variation) < 0.001) return <span className="text-xs text-muted">igual ao anterior</span>;
   return <span className={cn("inline-flex items-center gap-0.5 text-xs font-semibold", variation > 0 ? "text-terracotta" : "text-primary")}>
@@ -286,7 +266,7 @@ function ShoppingItemRow({
         </span>
       </button>
       <div className="flex shrink-0 items-center gap-1.5">
-        {subtotal > 0 ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
+        {item.status === "purchased" && item.unitPrice !== undefined ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
         {item.status === "pending" ? <><button type="button" aria-label={`Marcar ${item.name} como comprado`} title="Comprar" onClick={onPurchased} className="grid h-11 w-11 place-items-center rounded-[10px] text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Check size={18} strokeWidth={2.5} /></button><button type="button" aria-label={`Marcar ${item.name} como já temos`} title="Já temos" onClick={onAlreadyHave} className="grid h-11 w-11 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><House size={17} /></button></> : <button type="button" aria-label={`Desfazer situação de ${item.name}`} title="Desfazer" onClick={onUndo} className="grid h-11 w-11 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Undo2 size={17} /></button>}
 
       </div>
@@ -344,33 +324,32 @@ function ItemEditorSheet({
   onSave: (item: ShoppingItem) => void;
 }) {
   const [quantity, setQuantity] = useState(item.quantity);
-  const [price, setPrice] = useState(item.unitPrice?.toString().replace(".", ",") ?? "");
+  const [price, setPrice] = useState(moneyInput(item.unitPrice));
   const [name, setName] = useState(item.name);
   const [category, setCategory] = useState<CategoryName>(item.category);
   const [status, setStatus] = useState<ItemStatus>(item.status);
   const [error, setError] = useState("");
   const previous = latestPriceFor(item.productId, lists);
-  const numericPrice = Number(price.trim().replace(",", "."));
+  const parsedPrice = parseMoney(price);
+  const numericPrice = parsedPrice.ok ? parsedPrice.value : undefined;
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!Number.isFinite(numericPrice) || numericPrice < 0) { setError("Informe um preço válido, igual ou maior que zero."); return; }
+    if (!parsedPrice.ok) { setError("Informe um preço válido, igual ou maior que zero, com até duas casas decimais."); return; }
+    if (!isValidQuantity(quantity)) return;
     if (!onClose()) return;
     const nextStatus = statusAfterPrice(status, numericPrice);
-    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" && Number.isFinite(numericPrice) && numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: nextStatus });
+    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" ? numericPrice : undefined, status: nextStatus });
   };
 
   return <Sheet title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose}>
     <form onSubmit={submit} className="space-y-5">
-      {error ? <p id="item-price-error" role="alert" className="text-sm text-terracotta">{error}</p> : null}
-      <div className="flex items-center justify-between gap-4 rounded-[12px] bg-sage/65 p-3">
+      {error && !error.startsWith("Informe um preço") ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
+      <div className="flex flex-col items-stretch justify-between gap-4 rounded-[12px] bg-sage/65 p-3">
         <div><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Quantidade</p><p className="mt-1 text-xs text-muted">Ajuste antes de salvar</p></div>
         <QuantityStepper quantity={quantity} onChange={setQuantity} />
       </div>
-      <label className="field-label">Preço unitário
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus aria-invalid={Boolean(error)} aria-describedby={error ? "item-price-error" : undefined} inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10 text-lg font-semibold" /></div>
-        {previous ? <span className="mt-2 block text-xs text-muted">Anterior {formatBRL(previous)} {numericPrice > 0 ? <span className={numericPrice > previous ? "text-terracotta" : "text-primary"}>· {numericPrice === previous ? "mesmo preço" : numericPrice > previous ? "mais caro" : "mais barato"}</span> : null}</span> : <span className="mt-2 block text-xs text-muted">Ao informar um preço, o item vira comprado.</span>}
-      </label>
+      <MoneyField label="Preço unitário" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} initialFocus error={error.startsWith("Informe um preço") ? error : undefined} hint={previous !== undefined ? `Anterior ${formatBRL(previous)} por unidade. Ao informar um preço, o item vira comprado.` : "Ao informar um preço, inclusive zero, o item vira comprado."} />
       <fieldset>
         <legend className="field-label">Situação</legend>
         <div className="mt-2 grid grid-cols-3 gap-2">
@@ -384,7 +363,7 @@ function ItemEditorSheet({
           <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
         </div>
       </details>
-      <Button type="submit" className="w-full">{numericPrice > 0 && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>
+      <Button type="submit" className="w-full">{numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>
     </form>
   </Sheet>;
 }
@@ -402,23 +381,25 @@ function AddItemSheet({
   const [category, setCategory] = useState<CategoryName>("Outros");
   const [addToHome, setAddToHome] = useState(false);
   const [error, setError] = useState("");
-  const numericPrice = Number(price.trim().replace(",", "."));
+  const parsedPrice = parseMoney(price);
+  const numericPrice = parsedPrice.ok ? parsedPrice.value : undefined;
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!name.trim()) { setError("Informe o nome do produto."); return; }
-    if (!Number.isFinite(numericPrice) || numericPrice < 0) { setError("Informe um preço válido, igual ou maior que zero."); return; }
+    if (!parsedPrice.ok) { setError("Informe um preço válido, igual ou maior que zero, com até duas casas decimais."); return; }
+    if (!isValidQuantity(quantity)) return;
     if (!onClose()) return;
-    onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice > 0 ? Number(numericPrice.toFixed(2)) : undefined, status: numericPrice > 0 ? "purchased" : "pending" }, addToHome);
+    onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice, status: numericPrice !== undefined ? "purchased" : "pending" }, addToHome);
   };
   return <Sheet title="Adicionar item" description="Inclua aquele produto que não estava na lista." onClose={onClose}>
     <form onSubmit={submit} className="space-y-4">
-      {error ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
+      {error && !error.startsWith("Informe um preço") ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
       <label className="field-label">Nome do produto<input data-initial-focus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural" className="field-input mt-2" /></label>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <label className="field-label">Quantidade<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
         <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
       </div>
-      <label className="field-label">Preço unitário <span className="font-normal text-muted">(opcional)</span><div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={price} onChange={(event) => setPrice(event.target.value)} placeholder="0,00" className="field-input pl-10" /></div></label>
+      <MoneyField label="Preço unitário (opcional)" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} error={error.startsWith("Informe um preço") ? error : undefined} hint="Vazio deixa o item pendente. Zero é um preço conhecido." />
       <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-[10px] border border-line bg-surface px-3 text-sm text-ink"><input type="checkbox" checked={addToHome} onChange={(event) => setAddToHome(event.target.checked)} className="checkbox" /><span><span className="block font-semibold">Adicionar aos produtos da casa</span><span className="block text-xs text-muted">Fica disponível na próxima compra.</span></span></label>
       <Button type="submit" className="w-full"><Plus size={17} />Adicionar à compra</Button>
     </form>
@@ -448,10 +429,9 @@ function NewPurchaseSheet({
   const toggle = (id: string) => setSelected((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   return <Sheet title="Nova compra" description="Comece com os produtos que costumam fazer parte da casa." onClose={onClose} wide>
     <div className="space-y-5">
-      {error ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
       <div className="grid gap-3 sm:grid-cols-[1fr_180px]">
         <label className="field-label">Nome<input data-initial-focus value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" /></label>
-        <label className="field-label">Orçamento<div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10" /></div></label>
+        <MoneyField label="Orçamento" value={budget} onValueChange={(value) => { setBudget(value); setError(""); }} required error={error || undefined} />
       </div>
       {activeList ? <p role="status" className="rounded-[10px] border border-terracotta/25 bg-terracotta/5 px-3 py-2.5 text-sm leading-5 text-ink">Começar esta compra vai encerrar “{activeList.name}” e movê-la para o histórico. {listPending(activeList) > 0 ? `Ainda há ${listPending(activeList)} itens pendentes.` : "Todos os itens atuais foram resolvidos."}</p> : null}
       <label className="relative block"><Search size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" /><input aria-label="Buscar produtos da casa" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar produtos da casa" className="field-input h-11 pl-10" /></label>
@@ -459,29 +439,24 @@ function NewPurchaseSheet({
       <div className="rounded-[12px] border border-line bg-surface px-3">
         {visibleProducts.length ? visibleProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary"><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{product.name}</span><span className="shrink-0 text-xs text-muted">{product.defaultQuantity} un.</span></label>) : <p className="py-6 text-center text-sm text-muted">{activeProducts.length ? "Nenhum produto corresponde à busca." : "Adicione produtos da casa para preparar uma compra mais rápido."}</p>}
       </div>
-      <Button className="w-full" onClick={() => { const value = Number(budget.trim().replace(",", ".")); if (!Number.isFinite(value) || value < 0) { setError("Informe um orçamento válido, igual ou maior que zero."); return; } if (onClose()) onCreate(name.trim() || "Nova compra", value, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>
+      <Button className="w-full" onClick={() => { const parsed = parseMoney(budget); if (!parsed.ok || parsed.value === undefined) { setError("Informe um orçamento válido, igual ou maior que zero."); return; } if (onClose()) onCreate(name.trim() || "Nova compra", parsed.value, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>
     </div>
   </Sheet>;
 }
 
 function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => boolean; onSave: (budget: number) => void }) {
-  const [budget, setBudget] = useState(list.budget.toFixed(2).replace(".", ","));
-  const numericBudget = Number(budget.trim().replace(",", "."));
-
+  const [budget, setBudget] = useState(moneyInput(list.budget));
+  const [error, setError] = useState("");
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Number.isFinite(numericBudget) && numericBudget > 0) {
-      if (!onClose()) return;
-      onSave(Number(numericBudget.toFixed(2)));
-    }
+    const parsed = parseMoney(budget);
+    if (!parsed.ok || parsed.value === undefined) { setError("Informe um orçamento válido, igual ou maior que zero."); return; }
+    if (onClose()) onSave(parsed.value);
   };
-
   return <Sheet title="Meta da compra" description="Ajuste o limite para esta ida ao mercado." onClose={onClose}>
-    <form onSubmit={submit} className="space-y-5">
-      <label className="field-label">Orçamento da compra
-        <div className="relative mt-2"><span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-sm font-semibold text-muted">R$</span><input data-initial-focus required inputMode="decimal" value={budget} onChange={(event) => setBudget(event.target.value)} className="field-input pl-10 text-lg font-semibold" placeholder="0,00" /></div>
-      </label>
-      <Button type="submit" className="w-full" disabled={!Number.isFinite(numericBudget) || numericBudget <= 0}>Salvar meta <Check size={17} /></Button>
+    <form onSubmit={submit} noValidate className="space-y-5">
+      <MoneyField label="Orçamento da compra" value={budget} onValueChange={(value) => { setBudget(value); setError(""); }} required initialFocus error={error || undefined} />
+      <Button type="submit" className="w-full">Salvar meta <Check size={17} /></Button>
     </form>
   </Sheet>;
 }
@@ -663,7 +638,7 @@ function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; o
   const [category, setCategory] = useState<CategoryName>(product?.category ?? "Alimentos");
   const [quantity, setQuantity] = useState(product?.defaultQuantity ?? 1);
   return <Sheet title={product ? "Editar produto" : "Novo produto da casa"} description="Mantenha a lista recorrente leve e útil." onClose={onClose}>
-    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim() && onClose()) onSave({ name: name.trim(), category, defaultQuantity: Math.max(1, quantity) }, product?.id); }}>
+    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim() && isValidQuantity(quantity) && onClose()) onSave({ name: name.trim(), category, defaultQuantity: quantity }, product?.id); }}>
       <label className="field-label">Nome<input data-initial-focus required value={name} onChange={(event) => setName(event.target.value)} className="field-input mt-2" placeholder="Ex.: Café" /></label>
       <label className="field-label">Categoria<select value={category} onChange={(event) => setCategory(event.target.value as CategoryName)} className="field-input mt-2">{categoryOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
       <label className="field-label">Quantidade padrão<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>

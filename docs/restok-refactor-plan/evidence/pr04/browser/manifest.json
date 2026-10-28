@@ -1,0 +1,156 @@
+{
+  "kind": "E2E-FIXTURE via Codex internal tab",
+  "scenario": "invalid BRL, previous zero, quantity999999",
+  "captures": [
+    {
+      "file": "320-640-error.jpg",
+      "targetCss": {
+        "width": 320,
+        "height": 640
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 151,
+            "value": "999999",
+            "width": 151
+          },
+          {
+            "contentWidth": 213,
+            "value": "1.23,45",
+            "width": 213
+          }
+        ],
+        "height": 640,
+        "overflow": false,
+        "width": 320
+      }
+    },
+    {
+      "file": "390-844-error.jpg",
+      "targetCss": {
+        "width": 390,
+        "height": 844
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 236,
+            "value": "999999",
+            "width": 236
+          },
+          {
+            "contentWidth": 298,
+            "value": "1.23,45",
+            "width": 298
+          }
+        ],
+        "height": 844,
+        "overflow": false,
+        "width": 389
+      }
+    },
+    {
+      "file": "768-1024-error.jpg",
+      "targetCss": {
+        "width": 768,
+        "height": 1024
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 262,
+            "value": "999999",
+            "width": 262
+          },
+          {
+            "contentWidth": 404,
+            "value": "1.23,45",
+            "width": 404
+          }
+        ],
+        "height": 1024,
+        "overflow": false,
+        "width": 767
+      }
+    },
+    {
+      "file": "1024-768-error.jpg",
+      "targetCss": {
+        "width": 1024,
+        "height": 768
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 262,
+            "value": "999999",
+            "width": 262
+          },
+          {
+            "contentWidth": 404,
+            "value": "1.23,45",
+            "width": 404
+          }
+        ],
+        "height": 767,
+        "overflow": false,
+        "width": 1024
+      }
+    },
+    {
+      "file": "1280-800-error.jpg",
+      "targetCss": {
+        "width": 1280,
+        "height": 800
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 262,
+            "value": "999999",
+            "width": 262
+          },
+          {
+            "contentWidth": 404,
+            "value": "1.23,45",
+            "width": 404
+          }
+        ],
+        "height": 800,
+        "overflow": false,
+        "width": 1279
+      }
+    },
+    {
+      "file": "1440-900-error.jpg",
+      "targetCss": {
+        "width": 1440,
+        "height": 900
+      },
+      "metrics": {
+        "dpr": 0.9900000095367432,
+        "fields": [
+          {
+            "contentWidth": 262,
+            "value": "999999",
+            "width": 262
+          },
+          {
+            "contentWidth": 404,
+            "value": "1.23,45",
+            "width": 404
+          }
+        ],
+        "height": 900,
+        "overflow": false,
+        "width": 1440
+      }
+    }
+  ]
+}

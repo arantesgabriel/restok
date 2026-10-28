@@ -83,3 +83,12 @@
 - Retomada autorizada com uso exclusivo do navegador interno. Sem novo controle de desktop/aplicativos. Foco por teclado e largura CSS320 confirmados e capturados na aba interna. O zoom atual do usuário foi preservado; override de viewport será restaurado ao fim.
 - Evidências19 PNGs e6 vídeos do harness, mais capturas internas JPG. Seis quadros iniciais com seeks verificados40ms. Os6 PNGs de foco são evidência estática: frames finais não foram gravados de forma confiável e não receberam seek. A falha de correspondência não foi ocultada nem o limiar reduzido.
 - PR03 concluído para fundações; PR04 pode iniciar. PR05 aguarda gates do PR04. Blocos3–5 não autorizados.
+
+## PR04: contrato monetário e quantidade
+
+- Concluído após os gates do PR03. Parser compartilhado distingue vazio/undefined de zero, aceita pt-BR e decimal sem agrupamento, rejeita negativos, formato inválido e valores fora de numeric(12,2). Não altera dados históricos ou schema.
+- MoneyField e QuantityField usados nos sheets existentes; quantidade inteira positiva, sem teto arbitrário de layout (até a precisão inteira segura do JavaScript). Entrada inválida persiste visível e impede gravação/fechamento. Preço anterior zero usa diferença absoluta, sem divisão por zero; Já temos continua excluído do total.
+- Gates novos: **133/133 testes em27 arquivos**, lint, typecheck e build Webpack aprovados.38 casos adicionais ao checkpoint PR03, incluindo criar/editar orçamento0, avulso0, inválido sem write, quantidade fracionária e fórmulas3×5/3×6.
+- Navegador exclusivamente interno: fixture money, erro BRL, quantidade999999 em6 dimensões (as métricas reais estão no manifesto; arredondamento do zoom produz diferença de1px em alguns alvos), subtotal3×1234,50=3703,50, preço conhecido0 e quantidade fracionária rejeitada.9 JPGs em evidence/pr04/browser. Sem vídeo novo deste PR; capturas estáticas e asserts DOM não são apresentados como filmagem.
+- Primeiras execuções tiveram falha no seletor do teste novo e um timeout isolado sob carga; corrigido o seletor para a ação acessível existente. Suíte completa final passou sem relaxar timeout/asserts. next-env e demais alterações preexistentes conferidos por hash após build.
+- PR05 pode iniciar. Blocos3–5 continuam não autorizados. Sem nova gravação remota, instalação, migration, seed ou reset.
