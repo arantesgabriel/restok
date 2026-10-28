@@ -23,6 +23,9 @@ anon key; the suite does not use a service-role key. The A/B/C accounts must be
 provisioned in the local Supabase Auth instance before execution. Apply the
 repository migrations to that instance before running the suite.
 
-The workspace currently has no Supabase CLI config, so the disposable local
-project must be initialized before this command can run. Do not point these
-fixture-creating tests at a hosted or production project.
+The workspace contains `supabase/config.toml`. A running disposable local stack,
+its schema, and confirmed test accounts still need to be verified before this
+command can run. Migrations, seed/reset, and fixture writes each require current
+authorization; this README does not grant it. Do not point these fixture-creating
+tests at a hosted or production project. The separate visual fixture harness in
+`tests/e2e/` uses no backend and does not certify authorization or realtime.

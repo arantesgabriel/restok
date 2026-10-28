@@ -1,0 +1,372 @@
+{
+  "unit": "PR01",
+  "status": "local gates passed",
+  "head": "7c3ed3bc821adbf01966aee354eb1702ffc1cbed",
+  "branch": "codex/restok-raiz-eucalipto-bloco-1",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "c3022f0ec95d4d314b2bcb0091b6b9a807f21e4f32b6ff761e1e4c30234ffd2b"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "06bfd2d3e1805bab7acdf50ea3376ea50a720b3bd8584c88e725502edc6244d4"
+    },
+    {
+      "path": "tests/supabase/README.md",
+      "sha256": "8a73b5b5e62640f1583c24abe44f9c4373d57e55dfb7b2d5b4f21a3b6cd67d17"
+    },
+    {
+      "path": "tests/e2e/capture.mjs",
+      "sha256": "0ed0b59ea0afb0b858e395f846c348178c0ef27a8b9af45f5bb9f70b5b6917be"
+    },
+    {
+      "path": "tests/e2e/client-fixture.ts",
+      "sha256": "e6d24037ddafc2ceae2886b5330b0346775a741508142d06ddbe20933e711f26"
+    },
+    {
+      "path": "tests/e2e/data-fixture.ts",
+      "sha256": "b3e17b0057f6f0248c47db3e4cc53c717853e15982fc8501476acfaf2847575d"
+    },
+    {
+      "path": "tests/e2e/entry.tsx",
+      "sha256": "9bdda3cc706478cc2dcd64860d0e4324b37767062141e374d8987cb76c5bf4ae"
+    },
+    {
+      "path": "tests/e2e/fixtures.ts",
+      "sha256": "6470c4f661cecedb326eb964c085c746a7199b8cb3b95cc01a95333dda388a2d"
+    },
+    {
+      "path": "tests/e2e/index.html",
+      "sha256": "d9f190f6c420d07de492e4d5f94b6f37d799b3d4027e1f862d5e90e7459f383a"
+    },
+    {
+      "path": "tests/e2e/link-fixture.tsx",
+      "sha256": "8e57f024d6511c292b3bcf3a931afcb1636c060631db78cb45a5046c67525f38"
+    },
+    {
+      "path": "tests/e2e/next-fixture.tsx",
+      "sha256": "b8d5c64ae1f29e7cdfac5a16938ba0340602878e92e84a3c933dfbe3ef51c811"
+    },
+    {
+      "path": "tests/e2e/README.md",
+      "sha256": "93de2ffb0c7960a339c7cca89e94f9565477a0ee2a51da3efbb17ae5df0f3581"
+    },
+    {
+      "path": "tests/e2e/serve.mjs",
+      "sha256": "7d76de3892810db2f68e7bbf886e28cfc3dcfde55c37a634ff2b12a296a1a3d6"
+    },
+    {
+      "path": "tests/e2e/verify-media.py",
+      "sha256": "7b1ed36c9b1dfa748b513d05c0f8e8185698eb6ce4c06945640a18a73484bf55"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-editor.png",
+      "sha256": "1d2b1d000e2145b5a0bd87b8929a1c27750a093f61d4b8e49cdb366238184d92"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-empty.png",
+      "sha256": "85217e956db9f6f7beab185a6da457d40ae337e99caaf9b238dbece5eb50205a"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-error.png",
+      "sha256": "1b7d8d721033a3326de796d9b209a889e55aabc91f9e7a6351201d00997fcc00"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-history-detail.png",
+      "sha256": "c02b1d73440009752881293dd8f194985addd026a32d7e26cb07133da9461aa2"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-history.png",
+      "sha256": "57c7ccff9912b675f345d26decf8cb689721b1476af98adc29326c85e50ff1b2"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-home.png",
+      "sha256": "c89b77f635eaee51aa5232f83ff609ef235a8f0bf63512f3d2fc0250a6b43414"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-journey.webm",
+      "sha256": "37154991e42283c51ebeeeb32725388b2ab7bccbe18e2a790f0735bb9c8c8f62"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-landing.png",
+      "sha256": "0a982064139a66738bb75b2101de8268c7e378d4df952270314b53c97a547a37"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-login.png",
+      "sha256": "e5150e02a10f3f13206eba3596442a29affe056f3ca0cdc898905434f0e1d4ec"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-people.png",
+      "sha256": "33a3d7192e3fa9bb695f4f6aa0520e2335cb2fad0bcb28d4c44364e5e1a79294"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-reset-password.png",
+      "sha256": "3b1400136ee352a860fdcb87905056dd1b11841fdfa50560689b344b91387a98"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1024-768-shop.png",
+      "sha256": "ccdb36b620b6b059a7b270a6ee27a6d1ae4892976cfaf1a0bc6683436d03ab0a"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-editor.png",
+      "sha256": "852d07102b1bd7373658759c60157eeddb6e90c1d99093a31fb81d5d0f51228c"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-empty.png",
+      "sha256": "e2f5c9cc32747121d9180274e20deb4ec351ee216f43d9095565501beb4ccd03"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-error.png",
+      "sha256": "c0d7ce472d54a22b4ab7a890df61ced8900c83308da6c87c2e077e6b018b5a00"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-history-detail.png",
+      "sha256": "d069cb95ea898fd3840f27a62cb5dc77f6e8606647449bb7eaaf0f08614d824d"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-history.png",
+      "sha256": "544c27f0864750c7c338e380cce8a4625e0f209b35e09d44a4f25724b1c208cb"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-home.png",
+      "sha256": "7201b10f391aa8d7427595822e4c84990e202fcda88c5ac7430708a0ad7682c8"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-journey.webm",
+      "sha256": "69e3bfbc992726a6268c115b963953cefa62b2e3b10a09d2f71f65d9877752ce"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-landing.png",
+      "sha256": "716623779fb31de08090fdcc0ddcfdb1a234e79598c23bea059609e507af9f00"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-login.png",
+      "sha256": "352e7f4d23ea1bfc4b74bd81b13af726f23efcbea1bd1ff133dffac94d5cd228"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-people.png",
+      "sha256": "4ff9adbe757481714f7c70744b6983336e565e8c421172f9fdd121fe276fab38"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-reset-password.png",
+      "sha256": "b2daf3a7fa1fbfa62416ff618a1967e0dcc26d00e27ba38aef53076729a4a758"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1280-800-shop.png",
+      "sha256": "cd11306273123df6b7bf763bf9c568803ae04407129bb61068fde21054903e55"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-editor.png",
+      "sha256": "d2e2d11a83366729e646a068caab2b6cc61ccd722f76798194f32a201fe2f8fa"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-empty.png",
+      "sha256": "7aabaf0b46a30a3cf195acdd2fcbca9604fc092bb0c92aedbc67ed874b07e2e8"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-error.png",
+      "sha256": "d1e95d0a4398a25e3a34fda1bfaa2f0930ba4f77cf0ef6515045c476e68da134"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-history-detail.png",
+      "sha256": "0719dd409a705ae7f64a14b48a8c9ef0be243950df2176eaef2ef7d2746059a8"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-history.png",
+      "sha256": "f5828faae5327e267166f154a9d0273496c19504b12ff1545b69e046774bc707"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-home.png",
+      "sha256": "6cdea2ffd0dd980504921cb585de1abd4e4a25ef8f31655846449ff2f5e8a90c"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-journey.webm",
+      "sha256": "f8f38d914d51127f38b6a6ba9431a09ca31aaa9b2ed5c303eda595673b1b9d5a"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-landing.png",
+      "sha256": "ecbf7c125babe917e0e4e3e52e628e628490b5ef95e6a7e2ffc6959a3615a088"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-login.png",
+      "sha256": "e241fec9070f2f90392c1eafef7c766f6c5331b838518e51e56a2c7933a1548c"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-people.png",
+      "sha256": "1c70974d7e5f6877d9674535268ce598fa9dc1833041f001348de886ef347042"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-reset-password.png",
+      "sha256": "c5aff7ad24b091a352ea1e37df2b41f2595172bb293116e7372e81653beec8dc"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/1440-900-shop.png",
+      "sha256": "32e91454849575be622d08dde8d9838da5955885ac77a36bbebd9c9c9a7a532f"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-editor.png",
+      "sha256": "54d333fe48777fc42afb007cf6c6301314824992ec7aa09d9aafe2c489976881"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-empty.png",
+      "sha256": "b5520c18372d59a87740d43d65d6e06b5f03e44927cee6667e2d508479d7109e"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-error.png",
+      "sha256": "0f9908a3963e44937f8193b7a89e7fbec19e4801d895f9cb99dc5d3a540ce9c5"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-history-detail.png",
+      "sha256": "aa47247d9b2ffc268183a2ce46de286cb584c6be41ba45d145060c83cc7ff58d"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-history.png",
+      "sha256": "3683507e5e5ca23bc2e7d5b467ab187be9745b04a51bfe95c618236b53528e6a"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-home.png",
+      "sha256": "9deb297279e9deb018ac0cffa5da6c5c82efcbab795a8ad4408e93a0bc38f791"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-journey.webm",
+      "sha256": "4a6ebef0ff127f44264e3a1f8de43cdef573092079c7ac9d4466ccbfe0177f6b"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-landing.png",
+      "sha256": "42f1a27df4e1e93735c29017dbd4a14d4a87c62626a90d457bca6796fb3bebd9"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-login.png",
+      "sha256": "8ba51ce8b7d87cbb3ebe5d6d536f9d9db343377a2ada013d912448b5c1fc4c65"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-people.png",
+      "sha256": "444e11f86274f3231a2159bb8282d5f701fb1a48bc124639957bd9dc35e4a497"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-reset-password.png",
+      "sha256": "2886f8c15be14aecfa986e8a70d3ea730b8fbba0cd4748052493293eee9cec65"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/320-640-shop.png",
+      "sha256": "3ca8dbee1827b14665f9c8ae242793caf86ad4e5915caf5782b871bfead1d9fd"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-editor.png",
+      "sha256": "c4d7ed3f5acd4e335d67ac1b103588ff97de59b61d87307cef45d1a5068fb003"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-empty.png",
+      "sha256": "70918673959b4f5aa3b70d9e7abe0f12c21038c807e40c1d2f851c8c2c26f9c3"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-error.png",
+      "sha256": "d3e5e08cc3143113a8b5ea1f0148692f1e997698f5f33cee4ad54b40f252858b"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-history-detail.png",
+      "sha256": "d8564e302d9e4fe2d700645eadf958421e30dec9984cc41c651b9f838ced15b0"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-history.png",
+      "sha256": "8ce03c874b8aedeef50a3e4e9543d478d47eed418df34169eb752bac3f3696e8"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-home.png",
+      "sha256": "da071add4facd5099fc185328b8f86f3c1954ef2f0fbddae1601ede7feb99623"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-journey.webm",
+      "sha256": "fa14ea7886637f086462776eb55098ba184489b7f190c88a7a7dcad1d6955fed"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-landing.png",
+      "sha256": "a43c3982a7258f1d939e77cc6d58d9fad6cdb70cad282badbd558ac3cab2a00f"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-login.png",
+      "sha256": "f462a9568865bd39852c651993c4e978605f158299068e84fee4e437653bdc34"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-people.png",
+      "sha256": "c711af9d53bb73dcb7f845baf8625b43436e42509d480ff97beb7a2f3aa01ee1"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-reset-password.png",
+      "sha256": "20e51d75d8e8b296ad395b90bf4a39ecb2cc7a52212f5d260241879b0605e46d"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/390-844-shop.png",
+      "sha256": "fc95535e1e838b54c70f9a981197de0e8d4a757c3eb41c2d2a425a399c3f39ab"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-editor.png",
+      "sha256": "20c6f7a0b9319959a37b442529d5407157ff10b61b91f70f3d0c5abc58f11d30"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-empty.png",
+      "sha256": "9e660d8d24f353d3c80674e4d6ae16178cb6209eb967a38fcfae147b990f4423"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-error.png",
+      "sha256": "902c5cc21b168d7c6c26149d4a83b0d572273fa2b83d6d61b38a7f71278f9db9"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-history-detail.png",
+      "sha256": "900d8c0371d8a1f755db06676d1c2692b61b84fee1fabdadc554d84fe698d05e"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-history.png",
+      "sha256": "ef97109999ae5bea5f60ef192b6d214d0c598664fddf306c0b5878fb2be92768"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-home.png",
+      "sha256": "75a30c769cc37aab627b7358037cd85c87b84261ddbe870aeb30242f21e491a4"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-journey.webm",
+      "sha256": "a488dd170f4c091e4cea3d1807f26c81efa4909473204126870ecf32872bf3aa"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-landing.png",
+      "sha256": "f25b7b7dd5d0c87d5a73d58a1edb7d8a793338107563d2c14325ac025fd998e6"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-login.png",
+      "sha256": "752a304c557d9f17b4ce04861d706b5fd2721a6599d6a442f9b85fdbe4a6b541"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-people.png",
+      "sha256": "123380bcd8bfa1ea7a6e4e8d0019dc140411a8207501628cc4ae540cd0be041b"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-reset-password.png",
+      "sha256": "a19af08b13df35781b6c17ca3df5e25c7b0aa303b6f18dcabcc0cb2497d506c1"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/768-1024-shop.png",
+      "sha256": "294fda3aafc8808c0facd3c3450adfaf74ee148a20b90383467527ebf245a406"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr01/baseline/manifest.json",
+      "sha256": "8878777f191b5bdf660a0df7da839fe0caafcd6428d31ce4a13a271acfbff09c"
+    }
+  ],
+  "checks": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "tests": "69/69; 22 files; 10.64s; maxWorkers=4",
+    "build": "npm run build, webpack; pass escalated"
+  },
+  "preserved": [
+    "next-env.d.ts",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "supabase/seed.sql"
+  ],
+  "deferred": "Integrated UI-013 before/after belongs to PR02; no integration certified by fixture harness"
+}

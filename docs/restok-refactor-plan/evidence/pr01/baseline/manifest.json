@@ -1,0 +1,2696 @@
+{
+  "kind": "E2E-FIXTURE",
+  "capturedAt": "2026-10-28T14:52:34.220Z",
+  "commit": "7c3ed3bc821adbf01966aee354eb1702ffc1cbed",
+  "diffSha256": "f98d7b38b92694f21f028ed94e64d874dd4c25a7e3f09537ac51e0b7dd24e1ba",
+  "engine": "156.0.8078.4",
+  "zoom": 1,
+  "dpr": 1,
+  "reducedMotion": "no-preference emulated",
+  "captures": [
+    {
+      "id": "shop",
+      "file": "320-640-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 905,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": {
+          "x": 16,
+          "y": 494.09375,
+          "width": 288,
+          "height": 76,
+          "top": 494.09375,
+          "right": 304,
+          "bottom": 570.09375,
+          "left": 16
+        },
+        "dock": {
+          "x": 0,
+          "y": 512,
+          "width": 320,
+          "height": 64,
+          "top": 512,
+          "right": 320,
+          "bottom": 576,
+          "left": 0
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 2.48,
+        "frame": 62,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.538,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "320-640-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 2248,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": {
+          "x": 16,
+          "y": 494.09375,
+          "width": 288,
+          "height": 76,
+          "top": 494.09375,
+          "right": 304,
+          "bottom": 570.09375,
+          "left": 16
+        },
+        "dock": {
+          "x": 0,
+          "y": 512,
+          "width": 320,
+          "height": 64,
+          "top": 512,
+          "right": 320,
+          "bottom": 576,
+          "left": 0
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 2.12,
+        "frame": 53,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.468,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "320-640-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 3002,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 2.72,
+        "frame": 68,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.61,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "320-640-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 3500,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 3.36,
+        "frame": 84,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.238,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "320-640-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 4251,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 3.96,
+        "frame": 99,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.989,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "320-640-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 4692,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 4.24,
+        "frame": 106,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.491,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "320-640-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 5305,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 5.08,
+        "frame": 127,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.918,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "320-640-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 5921,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 56,
+          "top": 0,
+          "right": 320,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 5.48,
+        "frame": 137,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.284,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "320-640-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 6533,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 6.08,
+        "frame": 152,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.221,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "320-640-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 7134,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 6.76,
+        "frame": 169,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.232,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "320-640-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "scriptElapsedMs": 7765,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 65,
+          "top": 0,
+          "right": 320,
+          "bottom": 65,
+          "left": 0
+        },
+        "documentWidth": 320
+      },
+      "mediaSeek": {
+        "seconds": 7.32,
+        "frame": 183,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 3.072,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "320-640-journey.webm"
+    },
+    {
+      "id": "shop",
+      "file": "390-844-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 767,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": {
+          "x": 16,
+          "y": 494.09375,
+          "width": 358,
+          "height": 76,
+          "top": 494.09375,
+          "right": 374,
+          "bottom": 570.09375,
+          "left": 16
+        },
+        "dock": {
+          "x": 0,
+          "y": 716,
+          "width": 390,
+          "height": 64,
+          "top": 716,
+          "right": 390,
+          "bottom": 780,
+          "left": 0
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 0.32,
+        "frame": 8,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.267,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "390-844-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 1248,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": {
+          "x": 16,
+          "y": 494.09375,
+          "width": 358,
+          "height": 76,
+          "top": 494.09375,
+          "right": 374,
+          "bottom": 570.09375,
+          "left": 16
+        },
+        "dock": {
+          "x": 0,
+          "y": 716,
+          "width": 390,
+          "height": 64,
+          "top": 716,
+          "right": 390,
+          "bottom": 780,
+          "left": 0
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 0.96,
+        "frame": 24,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.407,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "390-844-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 2029,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 1.96,
+        "frame": 49,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.297,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "390-844-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 2479,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 2.36,
+        "frame": 59,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.029,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "390-844-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 3214,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 3.0,
+        "frame": 75,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.568,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "390-844-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 3658,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 3.16,
+        "frame": 79,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.064,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "390-844-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 4244,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 3.76,
+        "frame": 94,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.445,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "390-844-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 4833,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 4.48,
+        "frame": 112,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.737,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "390-844-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 5396,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 4.92,
+        "frame": 123,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.627,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "390-844-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 5978,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 5.56,
+        "frame": 139,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.668,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "390-844-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scriptElapsedMs": 6619,
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 65,
+          "top": 0,
+          "right": 390,
+          "bottom": 65,
+          "left": 0
+        },
+        "documentWidth": 390
+      },
+      "mediaSeek": {
+        "seconds": 6.16,
+        "frame": 154,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.468,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "390-844-journey.webm"
+    },
+    {
+      "id": "shop",
+      "file": "768-1024-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 986,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": {
+          "x": 224,
+          "y": 532.09375,
+          "width": 520,
+          "height": 76,
+          "top": 532.09375,
+          "right": 744,
+          "bottom": 608.09375,
+          "left": 224
+        },
+        "dock": {
+          "x": 224,
+          "y": 944,
+          "width": 520,
+          "height": 64,
+          "top": 944,
+          "right": 744,
+          "bottom": 1008,
+          "left": 224
+        },
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 0.48,
+        "frame": 12,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.761,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "768-1024-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 1505,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": {
+          "x": 224,
+          "y": 532.09375,
+          "width": 520,
+          "height": 76,
+          "top": 532.09375,
+          "right": 744,
+          "bottom": 608.09375,
+          "left": 224
+        },
+        "dock": {
+          "x": 224,
+          "y": 944,
+          "width": 520,
+          "height": 64,
+          "top": 944,
+          "right": 744,
+          "bottom": 1008,
+          "left": 224
+        },
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 1.36,
+        "frame": 34,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.039,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "768-1024-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 2299,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 2.96,
+        "frame": 74,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.187,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "768-1024-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 2796,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 2.56,
+        "frame": 64,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.077,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "768-1024-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 3563,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 3.44,
+        "frame": 86,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.303,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "768-1024-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 4013,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 3.56,
+        "frame": 89,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.57,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "768-1024-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 4631,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 4.36,
+        "frame": 109,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.451,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "768-1024-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 5257,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 568,
+          "height": 72,
+          "top": 0,
+          "right": 768,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 5.16,
+        "frame": 129,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.577,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "768-1024-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 5865,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 5.68,
+        "frame": 142,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.397,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "768-1024-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 6455,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 6.12,
+        "frame": 153,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.449,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "768-1024-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "scriptElapsedMs": 7164,
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 65,
+          "top": 0,
+          "right": 768,
+          "bottom": 65,
+          "left": 0
+        },
+        "documentWidth": 768
+      },
+      "mediaSeek": {
+        "seconds": 6.72,
+        "frame": 168,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.092,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "768-1024-journey.webm"
+    },
+    {
+      "id": "shop",
+      "file": "1024-768-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 918,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": {
+          "x": 224,
+          "y": 497.09375,
+          "width": 776,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1000,
+          "bottom": 573.09375,
+          "left": 224
+        },
+        "dock": {
+          "x": 224,
+          "y": 688,
+          "width": 776,
+          "height": 64,
+          "top": 688,
+          "right": 1000,
+          "bottom": 752,
+          "left": 224
+        },
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 0.72,
+        "frame": 18,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.67,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "1024-768-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 1433,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": {
+          "x": 224,
+          "y": 497.09375,
+          "width": 776,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1000,
+          "bottom": 573.09375,
+          "left": 224
+        },
+        "dock": {
+          "x": 224,
+          "y": 688,
+          "width": 776,
+          "height": 64,
+          "top": 688,
+          "right": 1000,
+          "bottom": 752,
+          "left": 224
+        },
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 1.16,
+        "frame": 29,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.09,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "1024-768-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 2218,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 2.2,
+        "frame": 55,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.012,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "1024-768-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 2728,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 2.48,
+        "frame": 62,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.014,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "1024-768-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 3511,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 3.24,
+        "frame": 81,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.323,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "1024-768-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 3970,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 3.52,
+        "frame": 88,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.484,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "1024-768-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 4645,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 4.16,
+        "frame": 104,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.461,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "1024-768-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 5351,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 200,
+          "y": 0,
+          "width": 824,
+          "height": 72,
+          "top": 0,
+          "right": 1024,
+          "bottom": 72,
+          "left": 200
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 5.24,
+        "frame": 131,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.592,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "1024-768-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 6008,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 5.72,
+        "frame": 143,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.596,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "1024-768-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 6591,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 6.24,
+        "frame": 156,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.51,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "1024-768-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "scriptElapsedMs": 7346,
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 73,
+          "top": 0,
+          "right": 1024,
+          "bottom": 73,
+          "left": 0
+        },
+        "documentWidth": 1024
+      },
+      "mediaSeek": {
+        "seconds": 6.92,
+        "frame": 173,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.095,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1024-768-journey.webm"
+    },
+    {
+      "id": "shop",
+      "file": "1280-800-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 1086,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": {
+          "x": 264,
+          "y": 497.09375,
+          "width": 952,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1216,
+          "bottom": 573.09375,
+          "left": 264
+        },
+        "dock": {
+          "x": 264,
+          "y": 720,
+          "width": 952,
+          "height": 64,
+          "top": 720,
+          "right": 1216,
+          "bottom": 784,
+          "left": 264
+        },
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 0.64,
+        "frame": 16,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.619,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "1280-800-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 1635,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": {
+          "x": 264,
+          "y": 497.09375,
+          "width": 952,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1216,
+          "bottom": 573.09375,
+          "left": 264
+        },
+        "dock": {
+          "x": 264,
+          "y": 720,
+          "width": 952,
+          "height": 64,
+          "top": 720,
+          "right": 1216,
+          "bottom": 784,
+          "left": 264
+        },
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 1.28,
+        "frame": 32,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.226,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "1280-800-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 2526,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 2.44,
+        "frame": 61,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.244,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "1280-800-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 3017,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 2.76,
+        "frame": 69,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.04,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "1280-800-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 3796,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 3.44,
+        "frame": 86,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.345,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "1280-800-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 4263,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 4.0,
+        "frame": 100,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.502,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "1280-800-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 4950,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 4.76,
+        "frame": 119,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.384,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "1280-800-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 5611,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 240,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1240,
+          "bottom": 72,
+          "left": 240
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 5.44,
+        "frame": 136,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.387,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "1280-800-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 6276,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 6.2,
+        "frame": 155,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.548,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "1280-800-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 7062,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 6.56,
+        "frame": 164,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.477,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "1280-800-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "scriptElapsedMs": 7874,
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 73,
+          "top": 0,
+          "right": 1280,
+          "bottom": 73,
+          "left": 0
+        },
+        "documentWidth": 1280
+      },
+      "mediaSeek": {
+        "seconds": 8.04,
+        "frame": 201,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.246,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1280-800-journey.webm"
+    },
+    {
+      "id": "shop",
+      "file": "1440-900-shop.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 988,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": {
+          "x": 344,
+          "y": 497.09375,
+          "width": 952,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1296,
+          "bottom": 573.09375,
+          "left": 344
+        },
+        "dock": {
+          "x": 344,
+          "y": 820,
+          "width": 952,
+          "height": 64,
+          "top": 820,
+          "right": 1296,
+          "bottom": 884,
+          "left": 344
+        },
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 0.48,
+        "frame": 12,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.493,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "editor",
+      "file": "1440-900-editor.png",
+      "route": "/app",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 1544,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": {
+          "x": 344,
+          "y": 497.09375,
+          "width": 952,
+          "height": 76,
+          "top": 497.09375,
+          "right": 1296,
+          "bottom": 573.09375,
+          "left": 344
+        },
+        "dock": {
+          "x": 344,
+          "y": 820,
+          "width": 952,
+          "height": 64,
+          "top": 820,
+          "right": 1296,
+          "bottom": 884,
+          "left": 344
+        },
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 1.16,
+        "frame": 29,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.921,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "home",
+      "file": "1440-900-home.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 2337,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 3.04,
+        "frame": 76,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.991,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "people",
+      "file": "1440-900-people.png",
+      "route": "/app#home",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 2874,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 2.76,
+        "frame": 69,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.832,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "history",
+      "file": "1440-900-history.png",
+      "route": "/app#history",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 3663,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 3.28,
+        "frame": 82,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.19,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "history-detail",
+      "file": "1440-900-history-detail.png",
+      "route": "/app#history/list-august",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 4147,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 4.0,
+        "frame": 100,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.394,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "empty",
+      "file": "1440-900-empty.png",
+      "route": "/app?scenario=empty",
+      "fixture": "empty",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 4790,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 4.56,
+        "frame": 114,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.353,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "error",
+      "file": "1440-900-error.png",
+      "route": "/app?scenario=error",
+      "fixture": "error",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 5423,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 320,
+          "y": 0,
+          "width": 1000,
+          "height": 72,
+          "top": 0,
+          "right": 1320,
+          "bottom": 72,
+          "left": 320
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 5.08,
+        "frame": 127,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.391,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "login",
+      "file": "1440-900-login.png",
+      "route": "/login",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 6079,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 5.68,
+        "frame": 142,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.476,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "reset-password",
+      "file": "1440-900-reset-password.png",
+      "route": "/reset-password",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 6681,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": null,
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 6.24,
+        "frame": 156,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.402,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    },
+    {
+      "id": "landing",
+      "file": "1440-900-landing.png",
+      "route": "/",
+      "fixture": "long-33",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scriptElapsedMs": 7370,
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "row": null,
+        "dock": null,
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 73,
+          "top": 0,
+          "right": 1440,
+          "bottom": 73,
+          "left": 0
+        },
+        "documentWidth": 1440
+      },
+      "mediaSeek": {
+        "seconds": 7.72,
+        "frame": 193,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.016,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      },
+      "video": "1440-900-journey.webm"
+    }
+  ],
+  "blockedRequests": [],
+  "errors": []
+}
