@@ -15,9 +15,9 @@ parser.add_argument("--ffmpeg", required=True)
 args = parser.parse_args()
 manifest_path = args.directory / "manifest.json"
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-videos = sorted({capture["video"] for capture in manifest["captures"]})
+videos = sorted({capture["video"] for capture in manifest["captures"] if capture.get("video")})
 for video in videos:
-    captures = [capture for capture in manifest["captures"] if capture["video"] == video]
+    captures = [capture for capture in manifest["captures"] if capture.get("video") == video]
     width = 80
     height = round(captures[0]["viewport"]["height"] * width / captures[0]["viewport"]["width"])
     with tempfile.TemporaryDirectory(prefix="restok-media-") as temporary:

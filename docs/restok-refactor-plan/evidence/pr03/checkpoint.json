@@ -1,0 +1,86 @@
+{
+  "unit": "PR03",
+  "status": "foundation gates passed",
+  "files": [
+    {
+      "path": "DESIGN.md",
+      "sha256": "a2deb0103d5de6bda29fe9404c0040be85c51a815f503aebd992e9678ebf25b7"
+    },
+    {
+      "path": "tailwind.raiz.config.ts",
+      "sha256": "e1b65edf9e3f92e1ddeee76d9676162d3a2a6269caadd26df1dd44c71f959415"
+    },
+    {
+      "path": "docs/design/RESTOK_DESIGN_SYSTEM_V1.md",
+      "sha256": "1616f6a02f1ed687f95180613745d0bfed1db9f2c8158585e58eb89feae8701e"
+    },
+    {
+      "path": "components/ui/theme.tsx",
+      "sha256": "f96c5f4983e2d1a11200ba2146bdb55b9ec6492f1ae07f5c00e333c4e617d4df"
+    },
+    {
+      "path": "tests/e2e/runtime.mjs",
+      "sha256": "33c9c37dd6a3222259dd01328d1ef3d72addaff16cbf11a29bb60a4eb79c7bed"
+    },
+    {
+      "path": "tests/e2e/capture-foundations.mjs",
+      "sha256": "d24e7536c7352ff3a7e0f7cdde510e692730d5aec3109b64ff1856198bd49b71"
+    },
+    {
+      "path": "tests/e2e/foundations.tsx",
+      "sha256": "f9d081c5b55f5eaa88bd0aa02496cc369f7b9f4d7013e37e102040d2df2ce2fe"
+    },
+    {
+      "path": "tests/e2e/foundations.css",
+      "sha256": "aa96fe359d3045239370a09658d833417d2ded1182a45ce00f4eb76df7bd029d"
+    },
+    {
+      "path": "tests/e2e/foundations.html",
+      "sha256": "ee8afe860698d9262c216a2dc400436c3a181e7c44f1fa58bb508c54c5751079"
+    },
+    {
+      "path": "tests/e2e/verify-media.py",
+      "sha256": "0e77f2c441eaa22eceff6dff5c165cf7bc421382be2fe51cb12ecac249a3d990"
+    },
+    {
+      "path": "tests/styles/tokens.test.ts",
+      "sha256": "bd4f45327b281a2311f5eb883ae9a676b939e70f3666e8461f739dfce2d48bf3"
+    },
+    {
+      "path": "styles/base.css",
+      "sha256": "be202b9878a5ff32cb23ab683e65ed836b399ad1bcb7421bed83499479c0e091"
+    },
+    {
+      "path": "styles/motion.css",
+      "sha256": "95d323a25d7492b36893666c59c276b71f7c782de3f8d4ae72cab16ea0279313"
+    },
+    {
+      "path": "styles/tokens.css",
+      "sha256": "98332252a87e4c7cc5e07616724d03bac2d3b0c46399af5c44294226dd3ac9f2"
+    },
+    {
+      "path": "public/fonts/manrope/manrope-latin-ext-variable.woff2",
+      "sha256": "2f7335119075b2079f1d882530bbc18728461612bf90743203d73a74a48f4d9b"
+    },
+    {
+      "path": "public/fonts/manrope/manrope-latin-variable.woff2",
+      "sha256": "8c2def024c1bf31aacf3624ae3c4d701269b4ec3dc765c04830839f0d36b2d9e"
+    },
+    {
+      "path": "public/fonts/manrope/OFL.txt",
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    {
+      "path": "public/fonts/manrope/README.md",
+      "sha256": "d8e12e705aea41380b1f28cc357fe5729929629b72dfcd08e4e4158009f4d2dd"
+    }
+  ],
+  "checks": {
+    "tests": "95/95 in25 files",
+    "lint": "pass",
+    "typecheck": "pass",
+    "build": "pass webpack",
+    "browser": "six viewports and fallback; native zoom observed200/400; internal browser keyboard focus and CSS320 confirmed"
+  },
+  "limits": "No hardware, reader, or final brand asset certification. Focus PNGs are static-only; video seeks certified only for initial frames."
+}

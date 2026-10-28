@@ -1,0 +1,17 @@
+{
+  "method": "Observed via native menu of Codex internal tab during prior turn, before user stopped desktop control",
+  "zoom200": {
+    "cssWidth": 438,
+    "cssHeight": 395,
+    "dpr": 2.200000047683716,
+    "overflow": false
+  },
+  "zoom400": {
+    "cssWidth": 219,
+    "cssHeight": 197,
+    "dpr": 4.400000095367432,
+    "overflow": false
+  },
+  "media": "Screenshots displayed in conversation tool outputs, not saved as local files; attempted export failed",
+  "continuation": "User now restricts UI control to internal browser; no desktop access. Current zoom not overwritten."
+}
