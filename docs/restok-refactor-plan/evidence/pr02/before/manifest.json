@@ -1,0 +1,88 @@
+{
+  "kind": "INTEGRADO-RESTOK-DEV",
+  "stage": "before",
+  "engine": "156.0.8078.4",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "zoom": 1,
+  "dpr": 1,
+  "motion": "no-preference (browser default before, explicit emulation after)",
+  "captures": [
+    {
+      "id": "account-1-selected",
+      "file": "account-1-selected.png",
+      "video": "account-1.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 6.64,
+        "frame": 166,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.144,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-1-reload",
+      "file": "account-1-reload.png",
+      "video": "account-1.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 6.64,
+        "frame": 166,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 3.372,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-2-selected",
+      "file": "account-2-selected.png",
+      "video": "account-2.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 7.28,
+        "frame": 182,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.284,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-2-reload",
+      "file": "account-2-reload.png",
+      "video": "account-2.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 7.28,
+        "frame": 182,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 3.024,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    }
+  ],
+  "result": "result.json",
+  "provenanceNote": "Media manifest assembled during final review from recorded PNG/WebM names; seek is measured by verify-media.py. Before was PR01 production artifact; after PR02 production artifact. No sessions or invitation tokens stored."
+}

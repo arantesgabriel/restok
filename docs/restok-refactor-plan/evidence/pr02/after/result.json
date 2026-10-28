@@ -1,0 +1,108 @@
+{
+  "kind": "INTEGRADO-RESTOK-DEV",
+  "frontend": "http://127.0.0.1:3001",
+  "buildLabel": "PR02 production candidate",
+  "capturedAt": "2026-10-28T15:08:12.308Z",
+  "engine": "156.0.8078.4",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "accounts": [
+    {
+      "account": 1,
+      "memberships": 3,
+      "roles": [
+        "owner",
+        "owner",
+        "owner"
+      ]
+    },
+    {
+      "account": 2,
+      "memberships": 3,
+      "roles": [
+        "member",
+        "member",
+        "owner"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "account": 1,
+      "selectedSecond": true,
+      "preservedAfterReload": true,
+      "beforeFile": "account-1-selected.png",
+      "afterFile": "account-1-reload.png",
+      "scenarios": [
+        {
+          "id": "malformed-invite",
+          "passed": true
+        },
+        {
+          "id": "invalid-invite",
+          "passed": true
+        },
+        {
+          "id": "valid-and-used-invite",
+          "passed": true,
+          "newMemberships": 0,
+          "createdAndConsumedInvites": 1
+        },
+        {
+          "id": "snapshot-failure-with-cache",
+          "passed": true
+        },
+        {
+          "id": "unauthorized-saved-id",
+          "passed": true,
+          "membershipRevokedInDatabase": false
+        },
+        {
+          "id": "storage-getter-denied",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "account": 2,
+      "selectedSecond": true,
+      "preservedAfterReload": true,
+      "beforeFile": "account-2-selected.png",
+      "afterFile": "account-2-reload.png",
+      "scenarios": [
+        {
+          "id": "malformed-invite",
+          "passed": true
+        },
+        {
+          "id": "invalid-invite",
+          "passed": true
+        },
+        {
+          "id": "valid-and-used-invite",
+          "passed": true,
+          "newMemberships": 0,
+          "createdAndConsumedInvites": 1
+        },
+        {
+          "id": "snapshot-failure-with-cache",
+          "passed": true
+        },
+        {
+          "id": "unauthorized-saved-id",
+          "passed": true,
+          "membershipRevokedInDatabase": false
+        },
+        {
+          "id": "storage-getter-denied",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "commit": "7c3ed3bc821adbf01966aee354eb1702ffc1cbed",
+  "sourceEvidenceSha256": "4f3e802d63553c0d7b93f661fac417ce100b18c15299edeb84fdf850355ebcba"
+}

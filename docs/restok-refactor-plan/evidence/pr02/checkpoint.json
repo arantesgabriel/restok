@@ -1,0 +1,117 @@
+{
+  "unit": "PR02",
+  "status": "local and authorized integration gates passed",
+  "head": "7c3ed3bc821adbf01966aee354eb1702ffc1cbed",
+  "files": [
+    {
+      "path": "components/restok-app.tsx",
+      "sha256": "59ded7e9e57801fafab82d7bfb878081c1c6ff5371444fbc3926eb8564ec6d2c"
+    },
+    {
+      "path": "lib/supabase/cache.ts",
+      "sha256": "0de2f35c9d240c1492670bcb33a85adc428a7a0b06d9ac7681c5dddae41836e1"
+    },
+    {
+      "path": "lib/supabase/cache.test.ts",
+      "sha256": "fdc126bf5093e8527d9844e3163212abcb376a3f54e96be0c443c906dcda0d8f"
+    },
+    {
+      "path": "components/restok-app.household-context.test.tsx",
+      "sha256": "aa590766c2148137eabbbe12d8bc290303b00d477eb85d9cd1c3defc2a88af24"
+    },
+    {
+      "path": "lib/supabase/data.household-context.test.ts",
+      "sha256": "3efec66bda27fcabe8bf50870d6b194cb48205998ab2b444801919cffe79674c"
+    },
+    {
+      "path": "tests/e2e/dev-context.mjs",
+      "sha256": "e5288f562c42805f08702c5101122a9b89f543872eae189e94970463404e62f3"
+    },
+    {
+      "path": "tests/e2e/DEV-CONTEXT.md",
+      "sha256": "5d316422777576668999300db54a035282d10e7f8ef5661a2a947a0082a26d48"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-1-reload.png",
+      "sha256": "9f69086a7d0649ad111f426c7806773a5d2a8f00fea71be0be2b1c763387f7e1"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-1-selected.png",
+      "sha256": "ae5bac029994f57bf439ee767ecdca9e73e4eef5fa95fd5cc8de16aff53cd6df"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-1.webm",
+      "sha256": "a8d0f1675b6452cc9ad906030bbc550e76eea3def13246fa185772d5950569db"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-2-reload.png",
+      "sha256": "b6dabf2ede87f2226054d9d0ab1ffc2c9c9ce7828205ac8edbafddd7420e32d0"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-2-selected.png",
+      "sha256": "52e33c12df2464509d454d4ada8bba848ac242c32f098b0b93bdfa4f85c89007"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/account-2.webm",
+      "sha256": "06545a75d37768a138721095d68e78e24623ce89c209e9e5b7d7fc1036759997"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/manifest.json",
+      "sha256": "8a2118bbd828c60f9ee3f02b582a1cd8ce9ee1601ea81e98881b2205f68ad701"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/before/result.json",
+      "sha256": "ed0903a9d9b5ed97ce208040881976184ec7977d9d66a219e6cff1b9f2b5496a"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-1-accepted-invite.png",
+      "sha256": "8e2f07679f46f4f130f3cdcf566fabc380500af453f2f6aafe12f4e95f54263b"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-1-reload.png",
+      "sha256": "1d34daf45d82f12bb2ae0af10df29005e9f8b1c76337878bc458794a7e1793f4"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-1-selected.png",
+      "sha256": "903420ec9ed1a27d74de65f2c6f1f4a63674ba2000e3245331b460342b01a85f"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-1.webm",
+      "sha256": "2af8840a6eceaf24c38fb6ccc6e922165adc4e96efa49abd1279ce43a75c7aa3"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-2-accepted-invite.png",
+      "sha256": "a4af36da7b7e6dcf07b00b79519734887ae1a029bcf831443a7d1891579c1bfd"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-2-reload.png",
+      "sha256": "f0c2aec91a026511adef8ebd3e9a07d761e71ab19f0e56c7f57e2b1314587c33"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-2-selected.png",
+      "sha256": "f0c2aec91a026511adef8ebd3e9a07d761e71ab19f0e56c7f57e2b1314587c33"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/account-2.webm",
+      "sha256": "a8ebbe1484b87c53bab888a98b528795713aac7879e30a3e3f9ba2b3c14d8f0d"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/manifest.json",
+      "sha256": "6a50d50a24c3c71367411b5bae706092490fc00854f9528428a3d9d633977228"
+    },
+    {
+      "path": "docs/restok-refactor-plan/evidence/pr02/after/result.json",
+      "sha256": "52c868c6f54f053de8d9fcfb86b3e29f059d940d023570c19af548c65169b826"
+    }
+  ],
+  "checks": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "test": "94/94, 24 files, 13.28s; 25 added to original 69",
+    "build": "npm run build; pass escalated",
+    "integration": "two seed accounts; selected second house retained; six additional scenarios each; no page errors"
+  },
+  "limitations": "hardware, complete RLS suite, realtime concurrency and mailbox not certified; invalid membership simulated without database revoke; session switch covered locally"
+}

@@ -33,7 +33,7 @@ import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
 import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
 import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, persistProfileName, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
-import { clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
+import { browserStorage, clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
@@ -606,13 +606,13 @@ function useCategoryNameSort(householdId: string | undefined) {
       setCategorySort({});
       return;
     }
-    setCategorySort(readCategoryNameSorts(window.localStorage.getItem(categoryNameSortKey(householdId))));
+    setCategorySort(readCategoryNameSorts(browserStorage.getItem(categoryNameSortKey(householdId))));
   }, [householdId]);
 
   const toggleCategorySort = (category: CategoryName) => {
     setCategorySort((current) => {
       const next = { ...current, [category]: (current[category] ?? "asc") === "asc" ? "desc" : "asc" } as Partial<Record<CategoryName, NameSortDirection>>;
-      if (householdId) window.localStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
+      if (householdId) browserStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
       return next;
     });
   };
@@ -828,8 +828,8 @@ export default function RestokApp() {
 
     const { data: { subscription } } = client.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_OUT") {
-        if (activeUserIdRef.current) clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
-        window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+        if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+        browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
         activeUserIdRef.current = null;
         activeStorageKeyRef.current = null;
         setStorageKey(null);
@@ -848,9 +848,17 @@ export default function RestokApp() {
 
       const nextUserId = session?.user.id;
       if (event === "SIGNED_IN" && nextUserId && activeUserIdRef.current && nextUserId !== activeUserIdRef.current) {
-        clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
+        clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
         activeUserIdRef.current = null;
         activeStorageKeyRef.current = null;
+        setStorageKey(null);
+        setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
+        setProfileName(null);
+        setProfileEmail(null);
+        setHouseholdManagerOpen(false);
+        setHydrated(false);
         window.location.reload();
       }
     });
@@ -872,7 +880,7 @@ export default function RestokApp() {
         window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
       }
 
-      const context = await resolveRemoteContext(acceptedHouseholdId);
+      const context = await resolveRemoteContext(acceptedHouseholdId ?? undefined);
       if (cancelled) return;
       if (!context) {
         const [availableHouseholds, identity] = await Promise.all([loadUserHouseholds(), loadCurrentProfile()]);
@@ -906,15 +914,15 @@ export default function RestokApp() {
       setProfileName(context.profileName);
       setProfileEmail(context.email);
       setOnboarding(false);
-      const previouslySelectedHouseholdId = window.localStorage.getItem(activeHouseholdStorageKey(context.userId));
+      const previouslySelectedHouseholdId = browserStorage.getItem(activeHouseholdStorageKey(context.userId));
       const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
       activeStorageKeyRef.current = scopedKey;
       setStorageKey(scopedKey);
-      window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+      browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
 
       let cached: RestokState | null = null;
       try {
-        const stored = window.localStorage.getItem(scopedKey);
+        const stored = browserStorage.getItem(scopedKey);
         if (stored) {
           cached = JSON.parse(stored) as RestokState;
           setState(cached);
@@ -932,9 +940,9 @@ export default function RestokApp() {
         createdAt: new Date().toISOString(),
       };
       if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId && availableHouseholds && !availableHouseholds.some((household) => household.id === previouslySelectedHouseholdId)) {
-        window.localStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
+        browserStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
       }
-      window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+      browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
       setHouseholds(availableHouseholds ?? [activeSummary]);
       setActiveHousehold(activeSummary);
       if (remote && remote.userId === context.userId && remote.householdId === context.householdId) {
@@ -950,6 +958,7 @@ export default function RestokApp() {
       setHydrated(true);
       if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
       else if (acceptedHouseholdId) setToast("Convite aceito. Esta casa está selecionada.");
+      else if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId) setToast(`A casa selecionada não está mais disponível. Mostrando ${context.householdName}.`);
     };
     void boot().catch(() => {
       if (cancelled) return;
@@ -965,7 +974,7 @@ export default function RestokApp() {
   }, []);
 
   useEffect(() => {
-    if (hydrated && storageKey) window.localStorage.setItem(storageKey, JSON.stringify(state));
+    if (hydrated && storageKey) browserStorage.setItem(storageKey, JSON.stringify(state));
   }, [state, hydrated, storageKey]);
 
   useEffect(() => { writeOperationsRef.current = writeOperations; }, [writeOperations]);
@@ -1180,7 +1189,7 @@ export default function RestokApp() {
       role: context.role,
       createdAt: new Date().toISOString(),
     };
-    window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+    browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
     activeUserIdRef.current = context.userId;
     const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
     activeStorageKeyRef.current = scopedKey;
@@ -1214,14 +1223,14 @@ export default function RestokApp() {
       return;
     }
     if (activeHousehold && activeUserIdRef.current) {
-      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
     }
     if (availableHouseholds.length) {
       await activateHousehold(availableHouseholds[0].id);
       return;
     }
     if (activeHousehold && activeUserIdRef.current) {
-      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
     }
     const identity = await loadCurrentProfile().catch(() => null);
     setProfileName(identity?.displayName ?? null);
@@ -1246,8 +1255,8 @@ export default function RestokApp() {
       return;
     }
 
-    if (activeUserIdRef.current) clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
-    window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+    if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+    browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
     activeUserIdRef.current = null;
     activeStorageKeyRef.current = null;
     setStorageKey(null);

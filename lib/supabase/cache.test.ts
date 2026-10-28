@@ -1,5 +1,18 @@
-import { describe, expect, it } from "vitest";
-import { clearRemoteStateCaches, remoteStateStorageKey } from "@/lib/supabase/cache";
+import { describe, expect, it, vi } from "vitest";
+import { browserStorage, clearRemoteStateCaches, remoteStateStorageKey } from "@/lib/supabase/cache";
+
+it("treats denied storage methods and quota failure as optional persistence", () => {
+  const denied = () => { throw new Error("denied or quota exceeded"); };
+  vi.stubGlobal("window", { localStorage: { get length() { return denied(); }, key: denied, getItem: denied, setItem: denied, removeItem: denied } });
+  try {
+    expect(browserStorage.getItem("key")).toBeNull();
+    expect(browserStorage.key(0)).toBeNull();
+    expect(browserStorage.length).toBe(0);
+    expect(() => browserStorage.setItem("key", "value")).not.toThrow();
+    expect(() => browserStorage.removeItem("key")).not.toThrow();
+    expect(() => clearRemoteStateCaches(browserStorage, "person")).not.toThrow();
+  } finally { vi.unstubAllGlobals(); }
+});
 
 describe("remote state cache scope", () => {
   it("separates users that share a browser", () => {

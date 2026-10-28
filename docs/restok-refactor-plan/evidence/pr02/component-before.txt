@@ -1,0 +1,775 @@
+npm notice run restok@0.1.0 npx
+npm notice run vitest run components/restok-app.household-context.test.tsx --reporter=dot
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 C:/Fontes/restok
+
+xxx·x··xx·x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > restores the second authorized household after a fresh mount without an invite
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Editar Somente casa b"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "":
+  <aside
+    class="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:bloc...
+
+  --------------------------------------------------
+  img:
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-[41px] w-[124px] object-...
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-9 w-[108px] object-conta...
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="mt-1 truncate text-xs text-muted"
+  />
+
+  Name "":
+  <p
+    class="truncate text-sm font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="mt-1 text-xs"
+  />
+
+  Name "":
+  <p
+    class="text-sm font-semibold text-primary"
+  />
+
+  Name "":
+  <p
+    class="mt-2 max-w-md text-sm leading-6 text-muted"
+  />
+
+  Name "":
+  <p
+    class="text-xs font-medium text-white/75"
+  />
+
+  Name "":
+  <p
+    class="mt-0.5 truncate text-base font-semibold"
+  />
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  --------------------------------------------------
+  button:
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  Name "Perfil de Teste":
+  <button
+    aria-controls="_r_0_"
+    aria-expanded="false"...
+
+  Name "Casas e pessoas":
+  <button
+    aria-label="Casas e pessoas"
+    class="grid h-...
+
+  Name "Nova":
+  <button
+    class="inline-flex min-h-11 items-center justify-center gap-2 rou...
+
+  Name "Categoria":
+  <button
+    aria-pressed="true"
+    class="min-h-11 rounded...
+
+  Name "A–Z":
+  <button
+    aria-pressed="false"
+    class="min-h-11 rounde...
+
+  Name "Adicionar":
+  <button
+    class="min-h-11 rounded-md px-2 text-sm font-semibold text-primar...
+
+  Name "Alimentos em ordem A–Z. Alternar ordem alfabética":
+  <button
+    aria-label="Alimentos em ordem A–Z. Alternar ordem alfabética"[3...
+
+  Name "Editar Somente casa a":
+  <button
+    aria-label="Editar Somente casa a"
+    class="g...
+
+  Name "Desativar Somente casa a":
+  <button
+    class="min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold fo...
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  <main
+    class="min-w-0 flex-1 pb-24 sm:pb-8"
+    data-app-main...
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="sticky top-0 z-sticky flex min-h-[68px] items-center justi...
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  <div
+    aria-live="polite"
+    class="mx-4 mt-4 flex flex-...
+
+  --------------------------------------------------
+  heading:
+
+  Name "Produtos da casa":
+  <h1
+    class="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink"
+  />
+
+  Name "Itens recorrentes 1":
+  <h2
+    class="text-sm font-semibold text-ink"
+    data-products-heading="true"
+    tabindex="-1"
+  />
+
+  Name "Alimentos":
+  <h3
+    class="text-xs font-bold uppercase tracking-[0.12em] text-muted"
+  />
+
+  --------------------------------------------------
+  group:
+
+  Name "Ordenar produtos":
+  <div
+    aria-label="Ordenar produtos"
+    class="flex roun...
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="restok-app min-h-d...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ components/restok-app.household-context.test.tsx:43:19
+     41|     localStorage.setItem(preference(), "b");
+     42|     await open(); await home();
+     43|     expect(screen.getByRole("button", { name: "Editar Somente casa b" …
+       |                   ^
+     44|     expect(remote.resolve).toHaveBeenCalledWith(undefined);
+     45|     expect(localStorage.getItem(preference())).toBe("b");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > keeps preference for invalid/failed invitation malformed and removes it from URL
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Editar Somente casa b"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "":
+  <aside
+    class="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:bloc...
+
+  --------------------------------------------------
+  img:
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-[41px] w-[124px] object-...
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-9 w-[108px] object-conta...
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="mt-1 truncate text-xs text-muted"
+  />
+
+  Name "":
+  <p
+    class="truncate text-sm font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="mt-1 text-xs"
+  />
+
+  Name "":
+  <p
+    class="text-sm font-semibold text-primary"
+  />
+
+  Name "":
+  <p
+    class="mt-2 max-w-md text-sm leading-6 text-muted"
+  />
+
+  Name "":
+  <p
+    class="text-xs font-medium text-white/75"
+  />
+
+  Name "":
+  <p
+    class="mt-0.5 truncate text-base font-semibold"
+  />
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  --------------------------------------------------
+  button:
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  Name "Perfil de Teste":
+  <button
+    aria-controls="_r_1_"
+    aria-expanded="false"...
+
+  Name "Casas e pessoas":
+  <button
+    aria-label="Casas e pessoas"
+    class="grid h-...
+
+  Name "Nova":
+  <button
+    class="inline-flex min-h-11 items-center justify-center gap-2 rou...
+
+  Name "Categoria":
+  <button
+    aria-pressed="true"
+    class="min-h-11 rounded...
+
+  Name "A–Z":
+  <button
+    aria-pressed="false"
+    class="min-h-11 rounde...
+
+  Name "Adicionar":
+  <button
+    class="min-h-11 rounded-md px-2 text-sm font-semibold text-primar...
+
+  Name "Alimentos em ordem A–Z. Alternar ordem alfabética":
+  <button
+    aria-label="Alimentos em ordem A–Z. Alternar ordem alfabética"[3...
+
+  Name "Editar Somente casa a":
+  <button
+    aria-label="Editar Somente casa a"
+    class="g...
+
+  Name "Desativar Somente casa a":
+  <button
+    class="min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold fo...
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  <main
+    class="min-w-0 flex-1 pb-24 sm:pb-8"
+    data-app-main...
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="sticky top-0 z-sticky flex min-h-[68px] items-center justi...
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  <div
+    aria-live="polite"
+    class="mx-4 mt-4 flex flex-...
+
+  Name "":
+  <div
+    class="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1...
+
+  --------------------------------------------------
+  heading:
+
+  Name "Produtos da casa":
+  <h1
+    class="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink"
+  />
+
+  Name "Itens recorrentes 1":
+  <h2
+    class="text-sm font-semibold text-ink"
+    data-products-heading="true"
+    tabindex="-1"
+  />
+
+  Name "Alimentos":
+  <h3
+    class="text-xs font-bold uppercase tracking-[0.12em] text-muted"
+  />
+
+  --------------------------------------------------
+  group:
+
+  Name "Ordenar produtos":
+  <div
+    aria-label="Ordenar produtos"
+    class="flex roun...
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="restok-app min-h-d...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ components/restok-app.household-context.test.tsx:54:19
+     52|     window.history.replaceState(null, "", `/app?invite=${invite}&flow=…
+     53|     await open();
+     54|     expect(screen.getByRole("button", { name: "Editar Somente casa b" …
+       |                   ^
+     55|     expect(screen.getByText(/Este convite é inválido/)).toBeTruthy();
+     56|     expect(window.location.search).toBe("");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > keeps preference for invalid/failed invitation aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa and removes it from URL
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Editar Somente casa b"
+
+Here are the accessible roles:
+
+  complementary:
+
+  Name "":
+  <aside
+    class="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:bloc...
+
+  --------------------------------------------------
+  img:
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-[41px] w-[124px] object-...
+
+  Name "Restok":
+  <img
+    alt="Restok"
+    class="h-9 w-[108px] object-conta...
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="mt-1 truncate text-xs text-muted"
+  />
+
+  Name "":
+  <p
+    class="truncate text-sm font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="font-semibold text-ink"
+  />
+
+  Name "":
+  <p
+    class="mt-1 text-xs"
+  />
+
+  Name "":
+  <p
+    class="text-sm font-semibold text-primary"
+  />
+
+  Name "":
+  <p
+    class="mt-2 max-w-md text-sm leading-6 text-muted"
+  />
+
+  Name "":
+  <p
+    class="text-xs font-medium text-white/75"
+  />
+
+  Name "":
+  <p
+    class="mt-0.5 truncate text-base font-semibold"
+  />
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  Name "Navegação principal":
+  <nav
+    aria-label="Navegação principal"
+    class="fixed ...
+
+  --------------------------------------------------
+  button:
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  Name "Perfil de Teste":
+  <button
+    aria-controls="_r_2_"
+    aria-expanded="false"...
+
+  Name "Casas e pessoas":
+  <button
+    aria-label="Casas e pessoas"
+    class="grid h-...
+
+  Name "Nova":
+  <button
+    class="inline-flex min-h-11 items-center justify-center gap-2 rou...
+
+  Name "Categoria":
+  <button
+    aria-pressed="true"
+    class="min-h-11 rounded...
+
+  Name "A–Z":
+  <button
+    aria-pressed="false"
+    class="min-h-11 rounde...
+
+  Name "Adicionar":
+  <button
+    class="min-h-11 rounded-md px-2 text-sm font-semibold text-primar...
+
+  Name "Alimentos em ordem A–Z. Alternar ordem alfabética":
+  <button
+    aria-label="Alimentos em ordem A–Z. Alternar ordem alfabética"[3...
+
+  Name "Editar Somente casa a":
+  <button
+    aria-label="Editar Somente casa a"
+    class="g...
+
+  Name "Desativar Somente casa a":
+  <button
+    class="min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold fo...
+
+  Name "Compra":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Histórico":
+  <button
+    class="flex min-h-12 min-w-20 flex-col items-center justify-cente...
+
+  Name "Casa":
+  <button
+    aria-current="page"
+    class="flex min-h-12 mi...
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  <main
+    class="min-w-0 flex-1 pb-24 sm:pb-8"
+    data-app-main...
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  <header
+    class="sticky top-0 z-sticky flex min-h-[68px] items-center justi...
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  <div
+    aria-live="polite"
+    class="mx-4 mt-4 flex flex-...
+
+  Name "":
+  <div
+    class="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] left-1...
+
+  --------------------------------------------------
+  heading:
+
+  Name "Produtos da casa":
+  <h1
+    class="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink"
+  />
+
+  Name "Itens recorrentes 1":
+  <h2
+    class="text-sm font-semibold text-ink"
+    data-products-heading="true"
+    tabindex="-1"
+  />
+
+  Name "Alimentos":
+  <h3
+    class="text-xs font-bold uppercase tracking-[0.12em] text-muted"
+  />
+
+  --------------------------------------------------
+  group:
+
+  Name "Ordenar produtos":
+  <div
+    aria-label="Ordenar produtos"
+    class="flex roun...
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="restok-app min-h-d...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ components/restok-app.household-context.test.tsx:54:19
+     52|     window.history.replaceState(null, "", `/app?invite=${invite}&flow=…
+     53|     await open();
+     54|     expect(screen.getByRole("button", { name: "Editar Somente casa b" …
+       |                   ^
+     55|     expect(screen.getByText(/Este convite é inválido/)).toBeTruthy();
+     56|     expect(window.location.search).toBe("");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > explains a revoked preference and removes only that user's invalid household cache
+TestingLibraryElementError: Unable to find an element with the text: /A casa selecionada não está mais disponível/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="restok-app min-h-d...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ components/restok-app.household-context.test.tsx:75:19
+     73|     localStorage.setItem(remoteStateStorageKey("someone-else", "revoke…
+     74|     await open();
+     75|     expect(screen.getByText(/A casa selecionada não está mais disponív…
+       |                   ^
+     76|     expect(localStorage.getItem(remoteStateStorageKey(user, "revoked")…
+     77|     expect(localStorage.getItem(remoteStateStorageKey("someone-else", …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > keeps the selected tenant on snapshot failure (authorized cache false)
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > keeps the selected tenant on snapshot failure (authorized cache true)
+AssertionError: expected 'a' to be 'b' // Object.is equality
+
+Expected: "b"
+Received: "a"
+
+ ❯ components/restok-app.household-context.test.tsx:104:48
+    102|     remote.snapshot.mockResolvedValue(null);
+    103|     await open(); await home();
+    104|     expect(localStorage.getItem(preference())).toBe("b");
+       |                                                ^
+    105|     expect(screen.queryByRole("button", { name: "Editar Somente casa a…
+    106|     if (cached) expect(screen.getByRole("button", { name: "Editar Some…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  components/restok-app.household-context.test.tsx > household boot and activation > immediately hides old data when auth changes to another account
+AssertionError: expected <button …(4)>…(1)</button> to be null
+
+- Expected:
+null
+
++ Received:
+<button
+  aria-label="Editar Somente casa a"
+  class="grid h-11 w-11 shrink-0 place-items-center rounded-[10px] transition duration-fast ease-restok focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-muted hover:bg-sage hover:text-ink"
+  title="Editar Somente casa a"
+  type="button"
+>
+  <svg
+    class="lucide lucide-pencil"
+    fill="none"
+    height="16"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    width="16"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+    />
+    <path
+      d="m15 5 4 4"
+    />
+  </svg>
+</button>
+
+ ❯ components/restok-app.household-context.test.tsx:126:77
+    124|     remote.authChange?.("SIGNED_IN", { user: { id: "person-two" } });
+    125|     await waitFor(() => expect(reload).toHaveBeenCalledOnce());
+    126|     expect(screen.queryByRole("button", { name: "Editar Somente casa a…
+       |                                                                             ^
+    127|     expect(localStorage.getItem(remoteStateStorageKey(user, "a"))).toB…
+    128|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 4 passed (11)
+   Start at  12:01:08
+   Duration  2.63s (environment 40%, tests 29%, import 26%, transform 4%, worker 1%)
+
