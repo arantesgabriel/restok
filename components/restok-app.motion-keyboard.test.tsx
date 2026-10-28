@@ -42,13 +42,13 @@ describe("mobile keyboard and reduced-motion behavior", () => {
     search.focus();
     await waitFor(() => {
       expect(navigationCount()).toBe(1);
-      expect(document.querySelector("[data-purchase-footer]")).toBeNull();
+      expect(screen.queryByRole("region", { name: "Ações da compra e total registrado" })).toBeNull();
     });
 
     viewportHeight = 768;
     act(() => visualViewport.dispatchEvent(new Event("resize")));
     await waitFor(() => expect(navigationCount()).toBe(2));
-    expect(document.querySelector("[data-purchase-footer]")).toBeTruthy();
+    expect(screen.queryByRole("region", { name: "Ações da compra e total registrado" })).toBeTruthy();
   });
 
   it("closes a sheet without the exit delay when reduced motion is enabled", async () => {

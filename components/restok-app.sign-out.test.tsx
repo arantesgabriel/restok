@@ -1,7 +1,7 @@
 /**
  * @vitest-environment happy-dom
  */
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
 
@@ -91,13 +91,13 @@ describe("account sign out", () => {
   it("stays on the account when sign out fails or the network drops", async () => {
     signOut.mockResolvedValueOnce({ error: { message: "nope" } });
     fireEvent.click(await openAccountMenu());
-    expect(await screen.findByText("Não foi possível encerrar a sessão. Tente novamente.")).toBeTruthy();
+    await waitFor(()=>expect(screen.getAllByRole("status").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
     expect(replace).not.toHaveBeenCalled();
 
     cleanup();
     signOut.mockRejectedValueOnce(new Error("offline"));
     fireEvent.click(await openAccountMenu());
-    expect(await screen.findByText("Não foi possível encerrar a sessão. Tente novamente.")).toBeTruthy();
+    await waitFor(()=>expect(screen.getAllByRole("status").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
     expect(replace).not.toHaveBeenCalled();
   });
 });

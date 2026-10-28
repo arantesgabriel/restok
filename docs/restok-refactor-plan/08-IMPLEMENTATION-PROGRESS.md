@@ -10,6 +10,9 @@
 - Respostas explícitas do usuário nesta execução: usar contas do `seed.sql` e frontend `http://localhost:3000`; confirmou `restok-dev` em `gweynnnjcqafkhpynmrx.supabase.co` ao pedido de autorização para gravações de perfil/categorias durante carga e criação/aceitação de convites do gate. Não autoriza reset, migrations, execução do seed ou criação arbitrária de dados.
 - Em mensagem subsequente, usuário autorizou explicitamente iniciar o próximo bloco, **Bloco2, PRs03–05**, e efetuar commits seguindo o padrão anterior, somente das alterações do agente. Commits locais autorizados; push/PR remoto/merge/deploy continuam não autorizados.
 - Blocos3–5 permanecem pendentes de aprovação explícita.
+- Mensagem explícita posterior do usuário: “inicie o proximo bloco”, com aplicação local disponível. **Bloco3, PRs06–11, autorizado.** Essa autorização não foi registrada como dispensa automática dos gates de evidência abertos do Bloco2. Decisão sobre adiamento de vídeo/leitor solicitada; PR06 aguarda essa decisão ou fechamento dos gates. Blocos4–5 permanecem não autorizados.
+- Resposta explícita seguinte: “Sim, adiar essas evidências e iniciar o Bloco 3”. **Vídeo com seek e leitor real dos PRs04–05 adiados formalmente para o PR12**, sem registrá-los como realizados/aprovados. Bloco3 liberado, PR06 em andamento. Demais gates e limites permanecem; Blocos4–5 não autorizados.
+- Autorização explícita para gates integrados dos PRs07/10: usar contas fictícias do seed no restok-dev para criar casas de teste isoladas e, somente nelas, criar/editar/concluir compras, cadastrar produtos, criar/aceitar/revogar convites e testar papéis/remoção/saída de membros fictícios. Não autoriza migrations, seed/reset ou alterações em casas preexistentes.
 
 ## Estado
 
@@ -18,11 +21,14 @@
 | Bloco 1 | Concluído; Bloco2 autorizado posteriormente | PR01 e PR02 separados, gates aplicáveis satisfeitos |
 | PR 01 | Concluído localmente | Checks e baseline de fixtures aprovados; checkpoint separado |
 | PR 02 | Concluído localmente e no gate integrado autorizado | UI-013 vermelho antes e verde depois em duas sessões |
-| Bloco 2 (03–05) | Implementação local pronta; aceite integral pendente | Evidência manual da fase2 ainda aberta; não avançar ao Bloco3 |
+| Bloco 2 (03–05) | Implementado; evidências específicas adiadas por autorização explícita | Vídeo/reader dos PR04–05 vinculados ao PR12; avanço ao Bloco3 autorizado |
 | PR03 | Concluído localmente | Checkpoint próprio, fundações isoladas |
 | PR04 | Implementado e commitado; gate de evidência reaberto | Gates funcionais verdes; falta vídeo novo e leitor real da fase2 |
 | PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
-| Bloco 3 (06–11) | Não autorizado | Telas core, pessoas e auth |
+| Bloco 3 (06–11) | Autorizado, em andamento | PR06 primeiro; PR07–11 pendentes dos gates sequenciais |
+| PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
+| PR07 | Em andamento | Sheets e gates integrados isolados autorizados; implementação/validação pendentes |
+| PR08–11 | Pendentes | Dependem dos gates sequenciais anteriores |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
@@ -109,3 +115,14 @@
 - Restrição explícita mantida: somente navegador interno; nenhum controle de desktop/aplicativos desde essa instrução. Preferência de reduced motion coberta em teste e CSS; não alterada no SO. Zoom nativo200/400 observado no PR03 não equivale a nova prova dessa fase.
 - Trabalho revisável preservado em commit próprio do PR05, somente arquivos do agente. Blocos3–5 seguem não autorizados. Sem push/PR remoto/merge/deploy, instalação ou gravação nova em banco. Alterações preexistentes novamente conferidas por hashes.
 - Relatório completo de arquivos, evidências, limites, rollback e próximo bloco: 10-BLOCK-2-REPORT.md. Para fechar o bloco falta realizar ou decidir explicitamente sobre as evidências manuais pendentes; nenhum gate não verificado foi aprovado.
+
+## PR06: shell e Compra
+
+- Intenção: lista no centro do uso, casa identificável e total à direita; Raiz & Eucalipto aprovada. Extraídos shell, hook de busca/filtro, toolbar, categoria, linha e dock. Persistência/fila/guards permanecem no controlador, sem nova dependência ou gravação remota.
+- UI-001: primeira linha320×640 termina431,03 antes do dock500,25, duas linhas completas. Com aviso e feedback simultâneos termina492,20, ainda antes do dock. UI-005:1280×800 passa de2 para4 linhas completas. Seis dimensões exatas sem overflow, scrollY0, em final-geometry.json, que prevalece sobre medições intermediárias.
+- Novos checks:149/149 testes em29 arquivos (quatro casos adicionais ao PR05); lint/typecheck/build Webpack e diff-check aprovados. Asserts antigos migrados para regiões/announcements acessíveis; nenhum timeout relaxado.
+- Aba interna existente: filtros/busca/limpar, A–Z, categoria/ordem, recolher/abrir, navegação/hash e skip link; skeleton com espera real da fixture, erro/retry, fim da lista acessível pelo editor/Escape. Stress extremo mede layout, não precisão monetária além da aritmética segura de Number. Sem teste físico de safe area/teclado móvel.
+- Vídeo novo:61 aquisições reais contínuas (~4,4s), mediana66ms, máximo141ms. Container25fps mantém o último quadro adquirido, sem interpolar estados. Cinco seeks40ms verificados (MAE<=3). Não constitui medição de latência160ms. JPEGs originais preservados, referências e seeks PNG.
+- Antes: snapshot de fonte34846f0 conferido contra Git normalizando CRLF, somente no harness; não é segundo build de produção. Fixtures sem backend. Hashes preexistentes conferidos, descontando somente build-script autorizado do PR01.
+- Evidências novas em evidence/pr06. Vídeo/reader04–05 continuam vinculados ao PR12 por aprovação explícita. Legado restante: sheets/Produtos/Histórico/Casas/Auth e globais, nos respectivos PRs; nenhuma retirada global antecipada.
+- Rollback: reverter somente commit06 antes dos dependentes, sem banco. PR07 iniciado após este checkpoint. Relatório incremental11-BLOCK-3-REPORT.md.

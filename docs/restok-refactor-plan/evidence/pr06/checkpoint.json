@@ -1,0 +1,52 @@
+{
+  "unit": "PR06",
+  "status": "completed locally",
+  "base": "34846f0",
+  "sourceFiles": [
+    "components/app/app-shell.module.css",
+    "components/app/app-shell.tsx",
+    "components/restok-app.household-context.test.tsx",
+    "components/restok-app.motion-keyboard.test.tsx",
+    "components/restok-app.sign-out.test.tsx",
+    "components/restok-app.tsx",
+    "components/shopping/budget-summary.tsx",
+    "components/shopping/category-section.tsx",
+    "components/shopping/item-row.tsx",
+    "components/shopping/shopping-controls.module.css",
+    "components/shopping/shopping-dock.tsx",
+    "components/shopping/shopping-toolbar.tsx",
+    "components/shopping/shopping-view.test.tsx",
+    "components/shopping/shopping-view.tsx",
+    "components/shopping/shopping.module.css",
+    "components/shopping/use-shopping-view.ts",
+    "components/ui/controls.module.css",
+    "components/ui/feedback.module.css",
+    "components/ui/primitives.test.tsx",
+    "components/ui/toast.tsx",
+    "docs/restok-refactor-plan/08-IMPLEMENTATION-PROGRESS.md",
+    "docs/restok-refactor-plan/11-BLOCK-3-REPORT.md",
+    "tests/e2e/before-pr06.tsx",
+    "tests/e2e/client-fixture.ts",
+    "tests/e2e/data-fixture.ts",
+    "tests/e2e/encode-internal-recording.py",
+    "tests/e2e/entry.tsx",
+    "tests/e2e/fixtures.ts"
+  ],
+  "checks": {
+    "tests": 149,
+    "testFiles": 29,
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed webpack",
+    "diffCheck": "passed"
+  },
+  "geometry": "final-geometry.json",
+  "media": "media-checks.json",
+  "remoteWrites": 0,
+  "beforeSourceSha256": "4cc2cb0d01c5c324f04200b99db3f6a76cb8aed3cdffa0c030661837ca463ad4",
+  "limitations": [
+    "No physical mobile safe area/keyboard test",
+    "Fixtures are not Supabase integration",
+    "PR04/05 video and real reader explicitly deferred to PR12"
+  ]
+}

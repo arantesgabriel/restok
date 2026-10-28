@@ -2,8 +2,8 @@
 export const isSupabaseConfigured = true;
 export const supabaseUrl = "http://127.0.0.1:4173";
 export const supabaseAnonKey = "fixture-only";
-export const subscribeToShoppingList = (_listId: string | undefined, _householdId: string, callbacks: { onStatus: (status: "connected") => void }) => {
-  callbacks.onStatus("connected");
+export const subscribeToShoppingList = (_listId: string | undefined, _householdId: string, callbacks: { onStatus: (status: "connected" | "reconnecting") => void }) => {
+  callbacks.onStatus(new URLSearchParams(window.location.search).get("scenario") === "notice" ? "reconnecting" : "connected");
   return () => {};
 };
 export const getSupabaseBrowserClient = () => ({

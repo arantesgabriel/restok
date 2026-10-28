@@ -1,28 +1,22 @@
 "use client";
 
 import {
-  ArrowDown,
   ArrowDownAZ,
   ArrowDownZA,
   ArrowLeft,
-  ArrowUp,
   Check,
-  CheckCircle2,
   ChevronDown,
   ChevronRight,
   House,
   ListFilter,
   LogOut,
-  Menu,
   PackagePlus,
   Pencil,
   Plus,
-  Search,
   ShoppingBasket,
-  Undo2,
   Users,
 } from "lucide-react";
-import { FormEvent, useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState, useLayoutEffect } from "react";
 import { MoneyField } from "@/components/ui/money-field";
 import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
 import { moneyInput, parseMoney } from "@/lib/money";
@@ -40,13 +34,12 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Toast as ToastMessage } from "@/components/ui/toast";
 import { SyncStatus } from "@/components/ui/sync-status";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BudgetSummary } from "@/components/shopping/budget-summary";
+import { ShoppingView } from "@/components/shopping/shopping-view";
+import { ShoppingDock } from "@/components/shopping/shopping-dock";
+import { useShoppingView } from "@/components/shopping/use-shopping-view";
+import { AppShell } from "@/components/app/app-shell";
 import { StatusToggle, StatusBadge } from "@/components/shopping/status-toggle";
-import { AlreadyHave } from "@/components/shopping/already-have";
-import { Navigation } from "@/components/app/navigation";
-import { HouseSwitcher } from "@/components/app/house-switcher";
 import { ActionMenu } from "@/components/ui/action-menu";
-import { BrandMark } from "@/components/brand-mark";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
 import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
@@ -59,7 +52,6 @@ import {
   categoryNameSortKey,
   cn,
   formatBRL,
-  formatPercent,
   groupItems,
   nextSortOrder,
   itemSubtotal,
@@ -73,112 +65,16 @@ import {
   sortByName,
   statusAfterPrice,
   shortDate,
-  statusLabel,
   makeId,
 } from "@/lib/utils";
 
 type AppScreen = "shop" | "history" | "home";
-type Filter = "all" | "pending" | "purchased" | "already_have";
 type ProductViewMode = "category" | "alphabetical";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
 const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
 
-function AppNavigation({ screen, onChange }: { screen: AppScreen; onChange: (screen: AppScreen) => void }) {
- return <div className="fixed inset-x-0 bottom-0 z-sticky border-t border-line bg-canvas pb-[env(safe-area-inset-bottom)] sm:static sm:border-0 sm:p-0"><Navigation screen={screen} onChange={onChange}/></div>;
-}
-
-function purchasedWithoutPrice(list: ShoppingList) {
-  return list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
-}
-
-function PreviousPrice({ item, lists }: { item: ShoppingItem; lists: ShoppingList[] }) {
-  const previous = latestPriceFor(item.productId, lists);
-  if (previous === undefined || item.unitPrice === undefined) return null;
-  if (previous === 0) return <span className="text-xs text-muted">Anterior {formatBRL(0)} · {formatBRL(Math.abs(item.unitPrice))} {item.unitPrice > 0 ? "a mais por unidade" : "igual ao anterior"}</span>;
-  const variation = (item.unitPrice - previous) / previous;
-  if (Math.abs(variation) < 0.001) return <span className="text-xs text-muted">igual ao anterior</span>;
-  return <span className={cn("inline-flex items-center gap-0.5 text-xs font-semibold", variation > 0 ? "text-terracotta" : "text-primary")}>
-    {variation > 0 ? <ArrowUp size={13} /> : <ArrowDown size={13} />}{formatPercent(Math.abs(variation))}
-  </span>;
-}
-
-function ShoppingItemRow({
-  item,
-  lists,
-  onEdit,
-  onPurchased,
-  onAlreadyHave,
-  onUndo,
-}: {
-  item: ShoppingItem;
-  lists: ShoppingList[];
-  onEdit: () => void;
-  onPurchased: () => void;
-  onAlreadyHave: () => void;
-  onUndo: () => void;
-}) {
-  const subtotal = itemSubtotal(item);
-  return (
-    <article data-shopping-row className="group flex min-h-[78px] items-center gap-3 border-b border-line/80 py-3 transition">
-      <button type="button" className="flex min-w-0 flex-1 items-center gap-3 text-left" onClick={onEdit} aria-label={`Editar ${item.name}`} aria-describedby={`item-meta-${item.id}`}>
-        <span className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-[11px] border text-sm font-semibold", item.status === "purchased" ? "border-primary/30 bg-sage text-primary" : item.status === "already_have" ? "border-line bg-canvas text-muted" : "border-line bg-canvas text-muted group-hover:border-primary/30 group-hover:bg-sage/40")}>
-          {item.status === "purchased" ? <Check size={18} strokeWidth={2.5} /> : item.status === "already_have" ? <House size={17} /> : <ShoppingBasket size={18} />}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className={cn("block break-words text-[15px] font-medium text-ink", item.status !== "pending" && "text-muted font-normal")}>{item.name}</span>
-          <span id={`item-meta-${item.id}`} className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-muted">
-            <span>{item.quantity} un.</span>
-            {item.status === "purchased" && item.unitPrice !== undefined ? <><span>·</span><span>{formatBRL(item.unitPrice)} un.</span><PreviousPrice item={item} lists={lists} /></> : <StatusBadge status={item.status} />}
-          </span>
-        </span>
-      </button>
-      <div className="flex shrink-0 items-center gap-1.5">
-        {item.status === "purchased" && item.unitPrice !== undefined ? <span className="hidden text-right text-sm font-semibold text-ink sm:block">{formatBRL(subtotal)}</span> : null}
-        {item.status === "pending" ? <><button type="button" aria-label={`Marcar ${item.name} como comprado`} title="Comprar" onClick={onPurchased} className="grid h-11 w-11 place-items-center rounded-[10px] text-primary transition hover:bg-sage focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Check size={18} strokeWidth={2.5} /></button><AlreadyHave name={item.name} onSelect={onAlreadyHave}/></> : <button type="button" aria-label={`Desfazer situação de ${item.name}`} title="Desfazer" onClick={onUndo} className="grid h-11 w-11 place-items-center rounded-[10px] text-muted transition hover:bg-sage hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"><Undo2 size={17} /></button>}
-
-      </div>
-    </article>
-  );
-}
-
-function CategorySection({
-  category,
-  direction,
-  items,
-  lists,
-  onToggleSort,
-  onEdit,
-  onPurchased,
-  onAlreadyHave,
-  onUndo,
-}: {
-  category: CategoryName;
-  direction: NameSortDirection;
-  items: ShoppingItem[];
-  lists: ShoppingList[];
-  onToggleSort: () => void;
-  onEdit: (item: ShoppingItem) => void;
-  onPurchased: (item: ShoppingItem) => void;
-  onAlreadyHave: (item: ShoppingItem) => void;
-  onUndo: (item: ShoppingItem) => void;
-}) {
-  const [open, setOpen] = useState(true);
-  const resolved = items.filter((item) => item.status !== "pending").length;
-  return (
-    <section data-category-section className="border-t border-line pt-3">
-      <div className="flex items-center gap-2">
-        <button type="button" className="flex min-h-12 min-w-0 flex-1 items-center gap-3 text-left" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
-          <span className="text-lg font-semibold text-primary"><ShoppingBasket size={18} /></span>
-          <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-ink">{category}</span><span className="block text-xs text-muted">{resolved} de {items.length} resolvidos</span></span>
-          {open ? <ChevronDown size={18} className="text-muted" /> : <ChevronRight size={18} className="text-muted" />}
-        </button>
-        <CategoryNameSortButton category={category} direction={direction} onToggle={onToggleSort} />
-      </div>
-      {open ? <div className="divide-y-0">{items.map((item) => <ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={() => onEdit(item)} onPurchased={() => onPurchased(item)} onAlreadyHave={() => onAlreadyHave(item)} onUndo={() => onUndo(item)} />)}</div> : null}
-    </section>
-  );
-}
+function purchasedWithoutPrice(list: ShoppingList) { return list.items.filter(item=>item.status === "purchased" && item.unitPrice === undefined).length; }
 
 function ItemEditorSheet({
   item,
@@ -540,7 +436,6 @@ export default function RestokApp() {
     window.addEventListener("hashchange", restore);
     return () => { window.removeEventListener("popstate", restore); window.removeEventListener("hashchange", restore); };
   }, []);
-  const [shopViewMode, setShopViewMode] = useState<ProductViewMode>("category");
   const [activeListId, setActiveListId] = useState("");
   const [historyDetailId, setHistoryDetailId] = useState<string | null>(null);
   const historyDetail = state.lists.find((list) => list.id === historyDetailId) ?? null;
@@ -548,8 +443,6 @@ export default function RestokApp() {
     setHistoryDetailId(list?.id ?? null);
     if (list) { updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
   };
-  const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<Filter>("all");
   const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
@@ -796,13 +689,8 @@ export default function RestokApp() {
   }, [requestRemoteRevalidation]);
 
   const activeList = state.lists.find((list) => list.id === activeListId && list.status === "active") ?? state.lists.find((list) => list.status === "active") ?? null;
-  const filteredItems = useMemo(() => {
-    if (!activeList) return [];
-    const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
-    return activeList.items.filter((item) => (!normalizedQuery || item.name.toLocaleLowerCase("pt-BR").includes(normalizedQuery)) && (filter === "all" || item.status === filter));
-  }, [activeList, filter, query]);
-  const groups = groupItems(filteredItems);
-  const alphabeticalItems = sortByName(filteredItems, "asc");
+  const shoppingView = useShoppingView(activeList);
+  const { setQuery, setFilter } = shoppingView;
   const resolved = activeList ? listResolved(activeList) : 0;
   const pending = activeList ? listPending(activeList) : 0;
   const showPendingItems = () => {
@@ -1059,50 +947,26 @@ export default function RestokApp() {
     window.location.replace("/login");
   };
 
-    const title = screen === "shop" ? activeList?.name ?? "Modo mercado" : screen === "history" ? "Histórico" : "Produtos da casa";
     const profileLabel = profileName || profileEmail || "Conta";
     const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "C";
     if (!hydrated) return <main className="mx-auto max-w-lg px-5"><Skeleton label="Carregando seus dados…" rows={4}/></main>;
     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
-  return <div className="restok-app min-h-dvh bg-canvas text-ink">
-    <div className="mx-auto flex min-h-dvh max-w-[1200px]">
-      <aside data-app-sidebar className="hidden w-60 shrink-0 border-r border-line px-4 py-6 sm:block"><div className="mb-10 px-3"><BrandMark /><HouseSwitcher name={activeHousehold?.name ?? "Casa"} onOpen={()=>setHouseholdManagerOpen(true)}/></div><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></aside>
-      <main data-app-main data-dialog-return-focus tabIndex={-1} className={cn("min-w-0 flex-1", screen === "shop" && activeList && !historyDetail ? "pb-[calc(15rem+env(safe-area-inset-bottom))]" : "pb-24", "sm:pb-8")}>
-        <header data-app-header className="sticky top-0 z-sticky flex min-h-[68px] items-center justify-between border-b border-line bg-canvas/95 px-4 pt-[env(safe-area-inset-top)] backdrop-blur sm:px-8"><div className="sm:hidden"><BrandMark compact /></div><div className="hidden min-w-0 sm:block"><p className="truncate text-sm font-semibold text-ink">{title}</p>{screen === "shop" && activeList ? <p className="mt-0.5 text-xs text-muted">{resolved} de {activeList.items.length} resolvidos</p> : null}</div><div className="flex items-center gap-2"><span className="hidden max-w-40 text-right sm:block"><span className="block truncate text-xs font-semibold text-ink">{profileLabel}</span><span className="block truncate text-[11px] text-muted">{profileEmail ?? "Conta conectada"}</span></span><ActionMenu
+  return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={()=>setHouseholdManagerOpen(true)} keyboardOpen={keyboardOpen}
+    noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
+    feedback={toast && !keyboardOpen ? <ToastMessage inline key={toast} message={toast} onDismiss={()=>setToast(null)}/> : null}
+    profile={<ActionMenu
           label={`Perfil de ${profileLabel}`}
-          triggerClassName="grid h-11 w-11 place-items-center rounded-full bg-primary text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+
           items={[
             { label: "Editar meu nome", icon: <Pencil size={16} />, onSelect: () => setProfileEditorOpen(true) },
             { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
             { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
           ]}
-        >{profileInitials}</ActionMenu></div></header>
-        {syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
-        {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <SyncStatus state={snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "error" : "pending"} message={<div><p>{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p>{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p>{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>} onRetry={writeOperations.some(operation=>operation.status === "failed") ? ()=>writeOperations.filter(operation=>operation.status === "failed").forEach(operation=>operation.retry()) : undefined}/> : null}
-        <div data-purchase-content={screen === "shop" ? "true" : undefined} className="mx-auto max-w-5xl px-4 py-6 sm:px-8 sm:py-10">
-          {historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <div className="space-y-5">
-            <div data-purchase-title className="flex items-start justify-between gap-3"><div className="min-w-0"><h1 className="mt-1 break-words text-[25px] font-semibold leading-tight tracking-[-0.03em] text-ink sm:text-[30px]">{activeList.name}</h1><p data-resolved-count className="mt-1 text-sm text-muted">{resolved} de {activeList.items.length} resolvidos</p></div><ActionMenu
-                label="Menu da compra"
-                triggerClassName="grid h-11 w-11 place-items-center rounded-[10px] border border-line bg-surface text-muted transition hover:border-primary/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                items={[
-                  { label: "Nova compra", icon: <Plus size={16} />, onSelect: () => setNewPurchaseOpen(true) },
-                  { label: "Finalizar compra", icon: <CheckCircle2 size={16} />, onSelect: () => setFinishOpen(true) },
-                  { label: "Agrupar por categoria", icon: <ListFilter size={16} />, onSelect: () => setShopViewMode("category") },
-                  { label: "Ordenar por nome A–Z", icon: <ArrowDownAZ size={16} />, onSelect: () => setShopViewMode("alphabetical") },
-                ]}
-              ><Menu size={19} /></ActionMenu></div>
-            <BudgetSummary list={activeList} onEdit={() => setBudgetEditor(activeList)} />
-            <div data-purchase-filters><SearchField label="Buscar na lista" value={query} onValueChange={setQuery}/><OptionGroup label="Filtros da lista" value={filter} onChange={setFilter} options={(["all","pending","purchased","already_have"] as Filter[]).map(value=>({value,label:value === "all" ? "Todos" : statusLabel(value)}))}/></div>
-            <div ref={purchaseResultsRef} data-purchase-results>
-              {filteredItems.length ? <><div data-purchase-viewmode className="flex justify-end"><ViewModeToggle mode={shopViewMode} onChange={setShopViewMode} label="Ordenar itens da compra" /></div>{shopViewMode === "category" ? <div className="space-y-5">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <CategorySection key={category} category={category} direction={categorySort[category] ?? "asc"} items={sortByName(groups[category] ?? [], categorySort[category] ?? "asc")} lists={state.lists} onToggleSort={() => toggleCategorySort(category)} onEdit={setEditorItem} onPurchased={(item) => setItemStatus(item, "purchased")} onAlreadyHave={(item) => setItemStatus(item, "already_have")} onUndo={(item) => setItemStatus(item, "pending")} /> : null)}</div> : <div className="divide-y divide-line border-y border-line">{alphabeticalItems.map((item) => <ShoppingItemRow key={item.id} item={item} lists={state.lists} onEdit={() => setEditorItem(item)} onPurchased={() => setItemStatus(item, "purchased")} onAlreadyHave={() => setItemStatus(item, "already_have")} onUndo={() => setItemStatus(item, "pending")} />)}</div>}</> : activeList.items.length === 0 ? <EmptyState icon={<ShoppingBasket size={23} />} title="Sua lista ainda está vazia" description="Adicione itens para acompanhar a compra." action={<Button onClick={() => setAddItemOpen(true)}><Plus size={17} />Adicionar item</Button>} /> : <EmptyState icon={<Search size={23} />} title={query.trim() ? "Nenhum item encontrado" : filter === "all" ? "Nenhum item encontrado" : `Nenhum item em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}`} description={query.trim() ? `Nada corresponde a “${query.trim()}”${filter !== "all" ? ` em ${statusLabel(filter).toLocaleLowerCase("pt-BR")}` : ""}.` : "Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={() => { setQuery(""); setFilter("all"); }}>{query.trim() ? "Limpar busca e filtros" : "Limpar filtro"}</Button>} />}
-            </div>
-          </div> : <EmptyState icon={<ShoppingBasket size={23} />} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={() => setNewPurchaseOpen(true)}><Plus size={17} />Nova compra</Button>} />}
-        </div>
-      </main>
-    </div>
-    {!keyboardOpen ? <div className="sm:hidden"><AppNavigation screen={screen} onChange={(next) => { setScreen(next); setHistoryDetail(null); }} /></div> : null}
-    {!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <div data-purchase-footer role="region" aria-label="Ações da compra e total registrado"><button type="button" aria-label={pending === 0 ? "Finalizar compra" : "Ver pendentes"} onClick={() => pending === 0 ? setFinishOpen(true) : showPendingItems()}><p>{pending === 0 ? "Finalizar compra" : `${pending} pendentes`}</p><small>{formatBRL(listTotal(activeList))}</small></button><button type="button" aria-label="Adicionar item à compra" className="purchase-add" onClick={() => setAddItemOpen(true)}><Plus size={18} />Adicionar item</button></div> : null}
-    {profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToast("Nome atualizado."); }} /> : null}
+        >{profileInitials}</ActionMenu>}
+    notices={<>{syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
+        {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <SyncStatus state={snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "error" : "pending"} message={<div><p>{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p>{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p>{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>} onRetry={writeOperations.some(operation=>operation.status === "failed") ? ()=>writeOperations.filter(operation=>operation.status === "failed").forEach(operation=>operation.retry()) : undefined}/> : null}</>}
+    dock={!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <ShoppingDock pending={pending} total={listTotal(activeList)} resolved={resolved} count={activeList.items.length} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} onAdd={()=>setAddItemOpen(true)}/> : undefined}
+    overlays={<>{profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToast("Nome atualizado."); }} /> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
     {newPurchaseOpen ? <NewPurchaseSheet products={state.products} activeList={activeList} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
@@ -1111,6 +975,6 @@ export default function RestokApp() {
     {completeList ? <CompleteSheet list={completeList} onClose={() => requestSheetClose(() => setCompleteList(null))} onHistory={() => requestSheetClose(() => { setCompleteList(null); setScreen("history"); })} /> : null}
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
-    {toast && !keyboardOpen ? <ToastMessage key={toast} message={toast} onDismiss={() => setToast(null)} /> : null}
-  </div>;
+</>}
+  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
 }

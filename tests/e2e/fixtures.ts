@@ -13,5 +13,8 @@ export function evidenceState(scenario: string): RestokState {
     state.lists[0] = { ...state.lists[0], budget: 0, items: [{ ...item, unitPrice: 5 }, { ...item, id: "fixture-unpriced", name: "Item sem preço", unitPrice: undefined }] };
     state.lists[1].items = [{ ...item, unitPrice: 0 }];
   }
+  if (scenario === "stress") {
+    state.lists[0].items[0] = {...state.lists[0].items[0],name:"Produto com um nome completo muito longo para verificar leitura e quebra em celulares",quantity:999999,unitPrice:9999999999.99,status:"purchased"};
+  }
   return state;
 }

@@ -1,0 +1,74 @@
+[
+  {
+    "completeRows": 2,
+    "dockTop": 500.25250244140625,
+    "first": {
+      "bottom": 431.0290298461914,
+      "top": 367.0296630859375
+    },
+    "height": 640,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "completeRows": 5,
+    "dockTop": 721.0858154296875,
+    "first": {
+      "bottom": 431.0290298461914,
+      "top": 367.0296630859375
+    },
+    "height": 844,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 390
+  },
+  {
+    "completeRows": 6,
+    "dockTop": 943.876220703125,
+    "first": {
+      "bottom": 528.0618286132812,
+      "top": 456.0763549804687
+    },
+    "height": 1024,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 768
+  },
+  {
+    "completeRows": 3,
+    "dockTop": 688.3206787109375,
+    "first": {
+      "bottom": 499.2581787109375,
+      "top": 427.272705078125
+    },
+    "height": 768,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 1024
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "scrollY": 0,
+    "first": {
+      "bottom": 499.2581787109375,
+      "top": 427.272705078125
+    },
+    "dockTop": 719.6337890625,
+    "completeRows": 4,
+    "overflow": false
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "scrollY": 0,
+    "first": {
+      "bottom": 499.2581787109375,
+      "top": 427.272705078125
+    },
+    "dockTop": 819.6337890625,
+    "completeRows": 5,
+    "overflow": false
+  }
+]

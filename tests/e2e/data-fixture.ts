@@ -4,12 +4,15 @@ import { evidenceState } from "./fixtures";
 
 const scenario = new URLSearchParams(window.location.search).get("scenario") ?? "long";
 const state = evidenceState(scenario);
+let releaseLoad: (() => void) | undefined;
+const loadGate = scenario === "loading" ? new Promise<void>(resolve => { releaseLoad = resolve; }) : Promise.resolve();
+export const releaseEvidenceLoad = () => releaseLoad?.();
 const context = { userId: "fixture-person", householdId: "fixture-house", householdName: "Casa ilustrativa", profileName: "Pessoa de teste", email: null, role: "owner", client: {} } as RemoteContext;
 export const activeHouseholdStorageKey = (userId: string) => `restok-active-household:${userId}`;
 export const resolveRemoteContext = async () => context;
 export const loadCurrentProfile = async () => ({ userId: context.userId, email: null, displayName: context.profileName });
 export const loadUserHouseholds = async () => [{ id: context.householdId, name: context.householdName, role: context.role, createdAt: "2026-01-01" }];
-export const loadRemoteState = async () => scenario === "error" ? null : ({ ...context, state: structuredClone(state) });
+export const loadRemoteState = async () => { await loadGate; return scenario === "error" ? null : ({ ...context, state: structuredClone(state) }); };
 export const persistProfileName = async () => true;
 export const persistProduct = async (product: Product) => {
   state.products = [...state.products.filter((row) => row.id !== product.id), product];

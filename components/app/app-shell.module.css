@@ -1,0 +1,25 @@
+.shell { min-height:100dvh; background:var(--color-canvas); }
+.frame { display:flex; max-width:80rem; min-height:100dvh; margin:auto; }
+.sidebar { display:none; }
+.main { flex:1; min-width:0; padding-bottom:calc(5rem + env(safe-area-inset-bottom)); }
+.main[data-has-dock=true] { padding-bottom:calc(8.5rem + env(safe-area-inset-bottom)); }
+.header { position:sticky; top:0; z-index:var(--z-dropdown); display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); min-height:3.25rem; padding:.25rem .75rem; padding-top:calc(.25rem + env(safe-area-inset-top)); border-bottom:1px solid var(--color-line); background:var(--color-canvas); }
+.mobileHouse { flex:1; min-width:0; }
+.mobileHouse button { padding:.5rem; font-size:var(--text-sm); }
+.mobileHouse small { display:none; }
+.pageContext { display:none; }
+.accountActions { display:flex; align-items:center; gap:var(--space-2); }
+.content { max-width:65rem; margin:auto; padding:var(--space-2) var(--space-3) var(--space-6); }
+.notices { padding-inline:var(--space-3); }
+.notices:empty { display:none; }
+.notices > summary { min-height:var(--touch-target); padding:.5rem 0; font-size:var(--text-xs); color:var(--color-info); cursor:pointer; }
+.navigation { position:fixed; inset-inline:0; bottom:0; z-index:var(--z-dock); height:calc(3.75rem + env(safe-area-inset-bottom)); padding:.25rem .5rem env(safe-area-inset-bottom); background:var(--color-canvas); border-top:1px solid var(--color-line); }
+.dock { position:fixed; inset-inline:0; bottom:calc(3.75rem + env(safe-area-inset-bottom)); z-index:var(--z-dock); background:var(--color-surface); border-top:1px solid var(--color-line); padding:.5rem .75rem; }
+.dockActions { display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); }
+.dockActions button { min-height:var(--touch-target); }
+.pending.pending { flex:1; min-width:0; justify-content:flex-start; padding:.25rem; text-align:start; }
+.pending span { display:block; font-size:var(--text-sm); }
+.pending small { display:block; font-size:var(--text-xs); font-weight:400; }
+.skip { position:fixed; top:var(--space-2); left:var(--space-2); z-index:var(--z-toast); padding:var(--space-3); background:var(--color-surface); color:var(--color-action); transform:translateY(-200%); }
+.skip:focus { transform:none; }
+@media(min-width:640px) { .sidebar { display:flex; flex-direction:column; gap:var(--space-6); width:14.5rem; flex-shrink:0; position:sticky; top:0; height:100dvh; overflow:auto; padding:var(--space-6) var(--space-4); border-right:1px solid var(--color-line); background:var(--color-surface-soft); } .mobileHouse { display:none; } .pageContext { display:block; font-size:var(--text-sm); color:var(--color-muted); } .header { min-height:4rem; padding:var(--space-2) var(--space-6); } .content { padding:var(--space-6); } .main,.main[data-has-dock=true] { padding-bottom:7rem; } .navigation { display:none; } .dock { left:calc(max(0px, (100vw - 80rem)/2) + 14.5rem + 1.5rem); right:calc(max(0px, (100vw - 80rem)/2) + 1.5rem); bottom:var(--space-4); border:1px solid var(--color-line-strong); border-radius:var(--radius-panel); padding:var(--space-2) var(--space-4); } .notices { padding-inline:var(--space-6); } }
