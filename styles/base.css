@@ -16,6 +16,7 @@
   unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 .restok-theme {
+  box-sizing: border-box;
   color-scheme: light;
   color: var(--color-ink);
   font: 400 var(--text-body)/var(--leading-body) var(--font-body);
@@ -26,7 +27,8 @@
 }
 .restok-theme :where(*, *::before, *::after) { box-sizing: border-box; }
 .restok-theme :where(button, input, select, textarea) { font: inherit; }
-.restok-theme :where(button, a, input, select, textarea, summary):focus-visible {
+.restok-theme :where(button, a, input, select, textarea, summary):focus-visible,
+.restok-theme:where(button, a, input, select, textarea, summary):focus-visible {
   outline: 2px solid var(--color-action);
   outline-offset: 3px;
 }

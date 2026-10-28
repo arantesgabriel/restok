@@ -15,10 +15,13 @@
 
 | Unidade | Estado | Gate |
 |---|---|---|
-| Bloco 1 | Concluído; aguardando decisão do usuário | PR01 e PR02 separados, gates aplicáveis satisfeitos |
+| Bloco 1 | Concluído; Bloco2 autorizado posteriormente | PR01 e PR02 separados, gates aplicáveis satisfeitos |
 | PR 01 | Concluído localmente | Checks e baseline de fixtures aprovados; checkpoint separado |
 | PR 02 | Concluído localmente e no gate integrado autorizado | UI-013 vermelho antes e verde depois em duas sessões |
-| Bloco 2 (03–05) | Autorizado, em andamento | PR03 primeiro, depois gates e PR04/05 sequenciais |
+| Bloco 2 (03–05) | Implementação local pronta; aceite integral pendente | Evidência manual da fase2 ainda aberta; não avançar ao Bloco3 |
+| PR03 | Concluído localmente | Checkpoint próprio, fundações isoladas |
+| PR04 | Implementado e commitado; gate de evidência reaberto | Gates funcionais verdes; falta vídeo novo e leitor real da fase2 |
+| PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
 | Bloco 3 (06–11) | Não autorizado | Telas core, pessoas e auth |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
@@ -92,3 +95,17 @@
 - Navegador exclusivamente interno: fixture money, erro BRL, quantidade999999 em6 dimensões (as métricas reais estão no manifesto; arredondamento do zoom produz diferença de1px em alguns alvos), subtotal3×1234,50=3703,50, preço conhecido0 e quantidade fracionária rejeitada.9 JPGs em evidence/pr04/browser. Sem vídeo novo deste PR; capturas estáticas e asserts DOM não são apresentados como filmagem.
 - Primeiras execuções tiveram falha no seletor do teste novo e um timeout isolado sob carga; corrigido o seletor para a ação acessível existente. Suíte completa final passou sem relaxar timeout/asserts. next-env e demais alterações preexistentes conferidos por hash após build.
 - PR05 pode iniciar. Blocos3–5 continuam não autorizados. Sem nova gravação remota, instalação, migration, seed ou reset.
+
+## PR05: componentes e revisão final da fase2
+
+- Componentes novos em components/ui, shopping e app: botões, campos/select/busca/checkbox, filtros/tabs/listas, status/Já temos, orçamento, sheet, menu, feedback, skeleton, navegação e acionador de casas. Consumidores locais do monólito migrados por primitivo; composição das telas, permissões e legado global continuam nos PRs06–13.
+- Sheet usa header/body/footer, body rolável e ação de Nova compra no footer. Menu em portal fora de clipping, dentro do dialog quando aninhado; Escape fecha apenas o menu. AccessibleDialog contém Tab/Shift+Tab e devolve foco. Fechamento lê token de saída e limpa timeout na desmontagem; gravações continuam acionadas imediatamente pelo controlador.
+- Toast persistente por padrão, dispensável; somente confirmação explicitamente transitória expira. Erros de sincronização mantêm retry; skeleton depende do carregamento real. Preview identifica toda simulação e não adiciona bypass à rota autenticada.
+- Gates novos: **145/145 testes em28 arquivos** (12 casos novos de primitivos), lint, typecheck, build Webpack e diff-check aprovados. Nenhum timeout/assert relaxado; uma execução intermediária teve timeout do teste antigo de categoria sob carga, e as duas suítes finais posteriores passaram (144 e145 casos).
+- Aba interna existente: seis larguras sem overflow e nenhum botão medido abaixo de44px; seis amostras com100 itens e uma com33; footer estável/visível, Tab/Shift+Tab contidos, Escape e retorno corretos. Métricas reais e tolerância de1px de arredondamento em evidence/pr05/browser. Inspeção visual da captura final320 confirma título e footer completos. Menu e sequência erro→retry→espera→resposta simulada→sucesso também exercitados.
+- Corrigidos durante a inspeção: Tab escapava ao chrome do navegador; seletor do preview atingia footer/section do sheet; box-sizing do root afetava medidas de overlays. Capturas intermediárias de recuperação em aba temporária tinham enquadramento inconsistente e foram substituídas pelas capturas finais da aba existente; não são usadas como prova de aceite.
+- Após interrupções, o servidor de fixtures precisou ser retomado. A última tentativa adicional de abrir o consumidor /app falhou por conexão e a página de erro interna bloqueou nova navegação pelo mecanismo disponível. Não contar essa tentativa como smoke aprovado. Os testes de componente exercitam os consumidores; browser QA final registrado é do preview isolado.
+- **Correção de status do gate:** o PR05 foi iniciado após os checks e critérios funcionais do PR04; a revisão final identificou que o gate de evidência da fase2 não estava integralmente fechado. A seção06 pede vídeo com seek e a fase2 pede leitor manual. Não houve vídeo novo nos PRs04/05, nem execução com leitor real. AX/DOM, imagens estáticas e mock de reduced motion não substituem essas provas. O aceite integral de PR04/05 fica aberto, sem autorização implícita para dispensá-lo ou avançar.
+- Restrição explícita mantida: somente navegador interno; nenhum controle de desktop/aplicativos desde essa instrução. Preferência de reduced motion coberta em teste e CSS; não alterada no SO. Zoom nativo200/400 observado no PR03 não equivale a nova prova dessa fase.
+- Trabalho revisável preservado em commit próprio do PR05, somente arquivos do agente. Blocos3–5 seguem não autorizados. Sem push/PR remoto/merge/deploy, instalação ou gravação nova em banco. Alterações preexistentes novamente conferidas por hashes.
+- Relatório completo de arquivos, evidências, limites, rollback e próximo bloco: 10-BLOCK-2-REPORT.md. Para fechar o bloco falta realizar ou decidir explicitamente sobre as evidências manuais pendentes; nenhum gate não verificado foi aprovado.

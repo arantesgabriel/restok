@@ -53,6 +53,19 @@ export function AccessibleDialog({
       aria-labelledby={titleId}
       onKeyDown={(event) => {
         if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); onCloseRef.current(); }
+        if (event.key === "Tab") {
+          const focusable = Array.from(event.currentTarget.querySelectorAll<HTMLElement>(
+            'button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])',
+          )).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0 && !element.closest("[hidden], [inert]"));
+          const first = focusable[0];
+          const last = focusable.at(-1);
+          if (!first) { event.preventDefault(); return; }
+          if (event.shiftKey && (document.activeElement === first || !focusable.includes(document.activeElement as HTMLElement))) {
+            event.preventDefault(); last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault(); first.focus();
+          }
+        }
       }}
       onCancel={(event) => {
         event.preventDefault();

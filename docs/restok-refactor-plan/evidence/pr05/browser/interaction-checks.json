@@ -1,0 +1,22 @@
+{
+  "menu": {
+    "focus": "Última ação",
+    "rect": {
+      "bottom": 491.87181091308594,
+      "left": 7.986110687255859,
+      "right": 279.97158432006836,
+      "top": 349.9052734375
+    },
+    "viewport": {
+      "height": 640,
+      "width": 320
+    },
+    "returned": "Menu de exemplo",
+    "tabAfter": {
+      "menuPresent": false,
+      "tag": "INPUT"
+    }
+  },
+  "feedback": "error -> explicit retry -> pending with skeleton -> explicitly simulated response -> success",
+  "reducedMotion": "unit and CSS coverage; no OS preference changed; not a native reader check"
+}
