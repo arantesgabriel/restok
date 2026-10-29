@@ -160,3 +160,8 @@
 - Gate visual bloqueado: ferramenta CUA não inicializa por caminho local ausente. Reset e tentativa da URL3001 também falharam antes do acesso à aba. Usuário informou aba interna aberta; nenhuma captura/vídeo novo08 ou medição de layout foi realizada. Preview de fixture catalog preparado4173; abertura no Codex ficou queued, sem inspeção aprovada.
 - Adiamento autorizado04–05/07 não abrange08. PR08 pronto para revisão de implementação, com aceite visual pendente. Unidade local separada e somente arquivos do agente; sem push/PR remoto/merge/deploy ou escrita remota.
 - Estratégia mais recente exige parar aqui para conferência e autorização. PR09 não iniciado. Relatório completo de arquivos/checks/limites/rollback/próximo escopo:12-PR08-REPORT.md.
+
+## Handoff solicitado, 29/10/2026
+
+- Usuário solicitou um Markdown para iniciar o PR09 em outro chat. Criado HANDOFF-PR09.md com checkout, preservação, commits, checks herdados, bloqueio do navegador, escopo09 e ponto de parada antes10.
+- Solicitação documental atendida sem implementar PR09. A pendência visual08 permanece aberta, sem aprovação ou adiamento inferido do pedido de handoff. O novo chat deve registrar a instrução efetivamente enviada pelo usuário e tratar esse gate explicitamente.
