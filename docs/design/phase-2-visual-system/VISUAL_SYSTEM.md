@@ -1,3 +1,5 @@
+> **HISTÓRICO — orientação substituída em 29/10/2026.** Norma vigente: DESIGN.md e docs/design/RESTOK_DESIGN_SYSTEM_V1.md na raiz. Preservado como evidência, sem autoridade normativa.
+
 # Restok — Visual System · Fase 2
 
 Proposta de 30/09/2026, entregue para revisão. Não autoriza a migração geral das telas.

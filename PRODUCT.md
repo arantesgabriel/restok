@@ -95,16 +95,9 @@ O nome **RESTOK** remete a *restock* — repor o que a casa precisa. A marca dev
 
 O tom adequado é **prático, próximo, confiável e sereno**. A identidade precisa parecer útil no corredor do mercado e familiar no cotidiano da casa. Pode equilibrar a clareza de uma ferramenta com o calor de uma rotina compartilhada; não deve parecer um sistema corporativo de estoque ou um produto financeiro.
 
-O logo precisa funcionar como assinatura ao lado do nome e como símbolo pequeno em ícone de aplicativo, favicon e interface móvel. Deve continuar legível em tamanhos reduzidos e em versões monocromáticas. A interface atual escreve o nome em minúsculas como **restok.** e usa verde profundo, tons de sálvia e fundos claros. Essas são referências da identidade visual existente; o logo pode refiná-las sem depender de detalhes que desapareçam quando reduzidos.
+A assinatura aprovada é **restok.**, incluindo o ponto. Raiz & Eucalipto usa Manrope local licenciada e os papéis semânticos do [Design System v1](docs/design/RESTOK_DESIGN_SYSTEM_V1.md).
 
-Territórios de significado que podem inspirar a exploração visual:
-
-- reposição e continuidade;
-- casa e cuidado cotidiano;
-- lista, organização e conclusão;
-- colaboração entre pessoas que compartilham a compra.
-
-Esses territórios orientam o conceito, sem exigir um desenho literal de cesta, carrinho, casa ou caixa de seleção. O símbolo deve ser simples, distintivo e reconhecível sem reproduzir apenas um ícone genérico de supermercado.
+O PNG atual é transitório. O master vetorial aprovado permanece pendente; não redesenhar nem vetorizar automaticamente a marca. Guias anteriores são históricos.
 
 ## Limites e estado atual
 

@@ -24,7 +24,8 @@ anteriores existem somente em tests/e2e/legacy, carregados nas rotas históricas
 CSS Modules site/demos, com os mesmos papéis e primitivos do app. Lista ilustrativa
 no hero, navegação por etapas e exemplos locais; sem moldura de navegador, folhas
 decorativas, depoimentos ou números inventados. O CSS público anterior é histórico,
-sem import no produto. Retirada total de assets/normas e gates transversais no PR15.
+sem import no produto. PR15 retira assets sem consumidores de public e encerra a autoridade das normas
+anteriores. O relatório19 registra os gates de release ainda abertos.
 
 ```design-tokens
 brand #213F1D; action #2D5A27; highlight #B4D3A7; info #4F7566;

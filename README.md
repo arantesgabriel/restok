@@ -61,3 +61,9 @@ npm run typecheck
 npm test
 npm run build
 ```
+
+## Design e aprovação
+
+Norma ativa: [Raiz & Eucalipto](DESIGN.md) e [Design System v1](docs/design/RESTOK_DESIGN_SYSTEM_V1.md). Planos anteriores são históricos.
+
+O candidato local `restok-raiz-eucalipto-rc.1` é identificado pelo commit do PR15, sem alterar package.json. O [pacote de aprovação](docs/restok-refactor-plan/19-PR15-REPORT.md) registra cobertura, exclusões, gates e rollback. Implementação local não autoriza publicação.

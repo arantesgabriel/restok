@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, PR15:** usuário pediu “inicie o pr15”. Autoriza a limpeza final e pacote local, sem push, publicação ou dispensa dos gates.
+
 - **29/10/2026, PR14:** usuário pediu “inicie pr 14”. Autoriza somente a reconstrução pública e demos como unidade local; PR15 não autorizado. Navegador recuperado, mas3001 passou a servir outro projeto. Usuário indicou explicitamente **usar3000**, onde o Restok já estava ativo. Nenhum processo do usuário foi interrompido ou servidor extra iniciado.
 
 - **29/10/2026, PR12–13:** usuário confirmou troca de senha, novo login e cadastro reais do PR11 e pediu “Implemente o PR 12 e 13”. Autoriza ambas as unidades locais, em sequência e commits separados; não autoriza PR14/15, push/merge/deploy ou banco. Confirmação de auth é relato do usuário; gates de reader/zoom/hardware e evidências adiadas não são dispensados implicitamente.
@@ -48,9 +50,9 @@
 | Bloco 4 (12–13) | Autorizado e implementado localmente; aceite transversal pendente |Navegador recuperado no14; capturas14 não encerram mídia adiada04–05/07 nem reader/zoom/hardware12–13 |
 | PR12 | Implementado em302f851 | Lifecycle, reduced e anúncios; sem nova evidência visual/hardware |
 | PR13 | Implementado para revisão local |Base global nova, Tailwind semântico e legado isolado do produto; build/auditoria de CSS aprovados |
-| Bloco 5 (14–15) | Somente PR14 autorizado e implementado localmente |PR15 não autorizado; gates transversais permanecem explícitos |
+| Bloco 5 (14–15) | PR14 e PR15 implementados localmente | Gates de release pendentes no relatório19 |
 | PR14 | Implementado e validado localmente para revisão |228 testes/39 arquivos; lint/typecheck/build; navegador3000, seis larguras, estados e vídeo com seek |
-| PR15 | Não autorizado nem iniciado |Limpeza final, QA de conjunto e pacote de aprovação |
+| PR15 | Concluído localmente; candidato rc.1 | Limpeza final, 228 testes e pacote de aprovação19 |
 
 ## Inspeção inicial e preservação
 
@@ -249,3 +251,10 @@
 - Antes/depois nas seis dimensões CSS exatas; CTA dentro da primeira dobra, zero overflow normal/extremo. Estados de seleção, convite local/duas vistas,0/sem preço/erro, histórico/FAQ/teclado e fim da página registrados. Smoke CTA→login320/1280 sem submit. PNG final é conversão explícita de JPEG. Canvas do vídeo375×812 difere do viewportCSS390×844 por captura; originais não redimensionados e geometria registrada separadamente.
 - Vídeo novo120 aquisições/~5,2s, mediana39ms/máximo42ms;25fps sem interpolação; cinco seeks40ms MAE≤1,001. Não mede timing de motion ou Realtime real. Grafo público+5170 bytes gzip; todos os JS/CSS emitidos+1514 gzip, sem dependências novas; medição por manifestos, não rede/CWV.
 - Relatório18-PR14-REPORT.md e evidence/pr14. Leitor/zoom/hardware/engines/JS-off manual e evidências adiadas anteriores continuam pendentes, sem dispensa inferida. Rollback visual da unidade14, preservando banco/IDs e estado13. **Parar antes15.**
+
+## PR15: limpeza e candidato local, 29/10/2026
+
+- Usuário autorizou PR15 após o commit14 d94c9aa. Fonte Geist/licença e folhas arquivadas fora de public, com conteúdo original preservado; CSS do harness usa URL relativa. Logo transitório, Manrope licenciada, brand e evidências históricos mantidos.
+- Normas anteriores explicitamente históricas; PRODUCT/README/DESIGN apontam a norma atual e o pacote19. Candidato restok-raiz-eucalipto-rc.1 identificado pelo commit15, sem alterar package.json.
+- 228/228 em39 arquivos, lint, TypeScript sem incremental, build Webpack e diff-check aprovados. Fontes visuais ativos inalterados; capturas e vídeo14 referenciados como herdados, sem inventar nova execução visual/integrada15.
+- Implementação01–15 encerrada localmente. Release pendente de gates explícitos no relatório19: master de marca, evidências adiadas, reader/zoom/hardware/engines/JS-off/concorrência/CWV e revisão humana. Sem push, deploy, tag ou dispensa inferida. Rollback por commit, preservando dados e segurança.

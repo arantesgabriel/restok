@@ -1,3 +1,5 @@
+> **HISTÓRICO — orientação substituída em 29/10/2026.** Norma vigente: DESIGN.md e docs/design/RESTOK_DESIGN_SYSTEM_V1.md na raiz. Preservado como evidência, sem autoridade normativa.
+
 # Restok — plano de refatoração da landing page
 
 **Data:** 01/10/2026. **Rota:** `/`. **Entrega deste documento:** orientação de implementação; nenhuma alteração de interface foi executada nesta etapa.
