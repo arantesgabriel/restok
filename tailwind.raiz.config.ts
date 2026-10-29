@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// Isolated new vocabulary; legacy config remains owned by PR13 until consumers migrate.
+// Shared semantic vocabulary for the application and the isolated foundations preview.
 const roles = ["brand", "action", "highlight", "info", "canvas", "surface", "ink", "muted", "line", "line-strong", "surface-soft", "surface-brand", "surface-info", "danger", "surface-danger", "warning", "surface-warning"];
 const config: Config = {
   content: ["./components/ui/**/*.{ts,tsx}", "./components/shopping/**/*.{ts,tsx}"],

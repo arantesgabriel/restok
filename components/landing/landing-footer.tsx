@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark } from "@/components/ui/brand-mark";
 
 const footerLinks = [
   { href: "#como-funciona", label: "Como funciona" },

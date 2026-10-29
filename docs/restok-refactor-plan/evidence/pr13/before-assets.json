@@ -1,0 +1,436 @@
+{
+  "method": "Unique JS/CSS references in each emitted client-reference manifest; dependency graph, not observed first-load requests. Gzip per file. Fonts served from public measured separately.",
+  "buildId": "TSE5fyDdIZjSV1bqY7W2D",
+  "perRoute": {
+    "/": {
+      "files": [
+        {
+          "path": ".next/static/chunks/168-a6c154493c0e153a.js",
+          "rawBytes": 16008,
+          "gzipBytes": 6020
+        },
+        {
+          "path": ".next/static/chunks/500-8af45f63ef5e66a0.js",
+          "rawBytes": 6893,
+          "gzipBytes": 3106
+        },
+        {
+          "path": ".next/static/chunks/app/layout-4c698d6aea767bca.js",
+          "rawBytes": 251,
+          "gzipBytes": 182
+        },
+        {
+          "path": ".next/static/chunks/app/page-65387e128824fa47.js",
+          "rawBytes": 12257,
+          "gzipBytes": 4091
+        },
+        {
+          "path": ".next/static/css/303009a0b52c0f08.css",
+          "rawBytes": 17747,
+          "gzipBytes": 3714
+        },
+        {
+          "path": ".next/static/css/8a482a871d395547.css",
+          "rawBytes": 205,
+          "gzipBytes": 138
+        },
+        {
+          "path": ".next/static/css/e5dd958640632a7f.css",
+          "rawBytes": 19060,
+          "gzipBytes": 4909
+        }
+      ],
+      "rawBytes": 72421,
+      "gzipBytes": 22160
+    },
+    "/app": {
+      "files": [
+        {
+          "path": ".next/static/chunks/168-a6c154493c0e153a.js",
+          "rawBytes": 16008,
+          "gzipBytes": 6020
+        },
+        {
+          "path": ".next/static/chunks/44-f3a7d51726d116ac.js",
+          "rawBytes": 187510,
+          "gzipBytes": 53085
+        },
+        {
+          "path": ".next/static/chunks/44530001-a627156e45a47319.js",
+          "rawBytes": 64199,
+          "gzipBytes": 13998
+        },
+        {
+          "path": ".next/static/chunks/500-8af45f63ef5e66a0.js",
+          "rawBytes": 6893,
+          "gzipBytes": 3106
+        },
+        {
+          "path": ".next/static/chunks/app/app/page-dc4cf9bd02d18d4e.js",
+          "rawBytes": 104653,
+          "gzipBytes": 31728
+        },
+        {
+          "path": ".next/static/chunks/app/layout-4c698d6aea767bca.js",
+          "rawBytes": 251,
+          "gzipBytes": 182
+        },
+        {
+          "path": ".next/static/chunks/app/page-65387e128824fa47.js",
+          "rawBytes": 12257,
+          "gzipBytes": 4091
+        },
+        {
+          "path": ".next/static/css/11404d0e16c68629.css",
+          "rawBytes": 6646,
+          "gzipBytes": 1714
+        },
+        {
+          "path": ".next/static/css/303009a0b52c0f08.css",
+          "rawBytes": 17747,
+          "gzipBytes": 3714
+        },
+        {
+          "path": ".next/static/css/8a482a871d395547.css",
+          "rawBytes": 205,
+          "gzipBytes": 138
+        },
+        {
+          "path": ".next/static/css/c073d8b55db34b02.css",
+          "rawBytes": 18075,
+          "gzipBytes": 3729
+        },
+        {
+          "path": ".next/static/css/db1ad9b622af1691.css",
+          "rawBytes": 20020,
+          "gzipBytes": 4513
+        },
+        {
+          "path": ".next/static/css/e5dd958640632a7f.css",
+          "rawBytes": 19060,
+          "gzipBytes": 4909
+        }
+      ],
+      "rawBytes": 473524,
+      "gzipBytes": 130927
+    },
+    "/login": {
+      "files": [
+        {
+          "path": ".next/static/chunks/168-a6c154493c0e153a.js",
+          "rawBytes": 16008,
+          "gzipBytes": 6020
+        },
+        {
+          "path": ".next/static/chunks/44-f3a7d51726d116ac.js",
+          "rawBytes": 187510,
+          "gzipBytes": 53085
+        },
+        {
+          "path": ".next/static/chunks/44530001-a627156e45a47319.js",
+          "rawBytes": 64199,
+          "gzipBytes": 13998
+        },
+        {
+          "path": ".next/static/chunks/500-8af45f63ef5e66a0.js",
+          "rawBytes": 6893,
+          "gzipBytes": 3106
+        },
+        {
+          "path": ".next/static/chunks/app/layout-4c698d6aea767bca.js",
+          "rawBytes": 251,
+          "gzipBytes": 182
+        },
+        {
+          "path": ".next/static/chunks/app/login/page-ca9b4a56f30c519a.js",
+          "rawBytes": 15964,
+          "gzipBytes": 6329
+        },
+        {
+          "path": ".next/static/chunks/app/page-65387e128824fa47.js",
+          "rawBytes": 12257,
+          "gzipBytes": 4091
+        },
+        {
+          "path": ".next/static/css/303009a0b52c0f08.css",
+          "rawBytes": 17747,
+          "gzipBytes": 3714
+        },
+        {
+          "path": ".next/static/css/8a482a871d395547.css",
+          "rawBytes": 205,
+          "gzipBytes": 138
+        },
+        {
+          "path": ".next/static/css/c073d8b55db34b02.css",
+          "rawBytes": 18075,
+          "gzipBytes": 3729
+        },
+        {
+          "path": ".next/static/css/db1ad9b622af1691.css",
+          "rawBytes": 20020,
+          "gzipBytes": 4513
+        },
+        {
+          "path": ".next/static/css/e5dd958640632a7f.css",
+          "rawBytes": 19060,
+          "gzipBytes": 4909
+        }
+      ],
+      "rawBytes": 378189,
+      "gzipBytes": 103814
+    },
+    "/reset-password": {
+      "files": [
+        {
+          "path": ".next/static/chunks/168-a6c154493c0e153a.js",
+          "rawBytes": 16008,
+          "gzipBytes": 6020
+        },
+        {
+          "path": ".next/static/chunks/44-f3a7d51726d116ac.js",
+          "rawBytes": 187510,
+          "gzipBytes": 53085
+        },
+        {
+          "path": ".next/static/chunks/44530001-a627156e45a47319.js",
+          "rawBytes": 64199,
+          "gzipBytes": 13998
+        },
+        {
+          "path": ".next/static/chunks/500-8af45f63ef5e66a0.js",
+          "rawBytes": 6893,
+          "gzipBytes": 3106
+        },
+        {
+          "path": ".next/static/chunks/app/layout-4c698d6aea767bca.js",
+          "rawBytes": 251,
+          "gzipBytes": 182
+        },
+        {
+          "path": ".next/static/chunks/app/page-65387e128824fa47.js",
+          "rawBytes": 12257,
+          "gzipBytes": 4091
+        },
+        {
+          "path": ".next/static/chunks/app/reset-password/page-2e7e84f995335108.js",
+          "rawBytes": 10476,
+          "gzipBytes": 4527
+        },
+        {
+          "path": ".next/static/css/303009a0b52c0f08.css",
+          "rawBytes": 17747,
+          "gzipBytes": 3714
+        },
+        {
+          "path": ".next/static/css/8a482a871d395547.css",
+          "rawBytes": 205,
+          "gzipBytes": 138
+        },
+        {
+          "path": ".next/static/css/c073d8b55db34b02.css",
+          "rawBytes": 18075,
+          "gzipBytes": 3729
+        },
+        {
+          "path": ".next/static/css/db1ad9b622af1691.css",
+          "rawBytes": 20020,
+          "gzipBytes": 4513
+        },
+        {
+          "path": ".next/static/css/e5dd958640632a7f.css",
+          "rawBytes": 19060,
+          "gzipBytes": 4909
+        }
+      ],
+      "rawBytes": 372701,
+      "gzipBytes": 102012
+    }
+  },
+  "allEmitted": {
+    "files": [
+      {
+        "path": ".next/static/TSE5fyDdIZjSV1bqY7W2D/_buildManifest.js",
+        "rawBytes": 595,
+        "gzipBytes": 265
+      },
+      {
+        "path": ".next/static/TSE5fyDdIZjSV1bqY7W2D/_ssgManifest.js",
+        "rawBytes": 80,
+        "gzipBytes": 64
+      },
+      {
+        "path": ".next/static/chunks/168-a6c154493c0e153a.js",
+        "rawBytes": 16008,
+        "gzipBytes": 6020
+      },
+      {
+        "path": ".next/static/chunks/44-f3a7d51726d116ac.js",
+        "rawBytes": 187510,
+        "gzipBytes": 53085
+      },
+      {
+        "path": ".next/static/chunks/44530001-a627156e45a47319.js",
+        "rawBytes": 64199,
+        "gzipBytes": 13998
+      },
+      {
+        "path": ".next/static/chunks/4bd1b696-c7408084347438ae.js",
+        "rawBytes": 203721,
+        "gzipBytes": 64057
+      },
+      {
+        "path": ".next/static/chunks/500-8af45f63ef5e66a0.js",
+        "rawBytes": 6893,
+        "gzipBytes": 3106
+      },
+      {
+        "path": ".next/static/chunks/794-216401842b802bd7.js",
+        "rawBytes": 242566,
+        "gzipBytes": 67415
+      },
+      {
+        "path": ".next/static/chunks/899.5ce6b3cbad015b59.js",
+        "rawBytes": 4752,
+        "gzipBytes": 1995
+      },
+      {
+        "path": ".next/static/chunks/966.1775eb621d8d3e09.js",
+        "rawBytes": 753,
+        "gzipBytes": 419
+      },
+      {
+        "path": ".next/static/chunks/app/_global-error/page-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/app/_not-found/page-1b6f4d41331c3d1e.js",
+        "rawBytes": 2667,
+        "gzipBytes": 994
+      },
+      {
+        "path": ".next/static/chunks/app/app/page-dc4cf9bd02d18d4e.js",
+        "rawBytes": 104653,
+        "gzipBytes": 31728
+      },
+      {
+        "path": ".next/static/chunks/app/auth/callback/route-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/app/layout-4c698d6aea767bca.js",
+        "rawBytes": 251,
+        "gzipBytes": 182
+      },
+      {
+        "path": ".next/static/chunks/app/login/page-ca9b4a56f30c519a.js",
+        "rawBytes": 15964,
+        "gzipBytes": 6329
+      },
+      {
+        "path": ".next/static/chunks/app/page-65387e128824fa47.js",
+        "rawBytes": 12257,
+        "gzipBytes": 4091
+      },
+      {
+        "path": ".next/static/chunks/app/reset-password/page-2e7e84f995335108.js",
+        "rawBytes": 10476,
+        "gzipBytes": 4527
+      },
+      {
+        "path": ".next/static/chunks/framework-6860ebc283a60d07.js",
+        "rawBytes": 189664,
+        "gzipBytes": 59811
+      },
+      {
+        "path": ".next/static/chunks/main-8283b444cd6b85dd.js",
+        "rawBytes": 132314,
+        "gzipBytes": 38954
+      },
+      {
+        "path": ".next/static/chunks/main-app-c763101fcbd8aa27.js",
+        "rawBytes": 513,
+        "gzipBytes": 222
+      },
+      {
+        "path": ".next/static/chunks/next/dist/client/components/builtin/app-error-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/next/dist/client/components/builtin/forbidden-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/next/dist/client/components/builtin/global-error-d5b3dad6ec5d5501.js",
+        "rawBytes": 179,
+        "gzipBytes": 160
+      },
+      {
+        "path": ".next/static/chunks/next/dist/client/components/builtin/not-found-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/next/dist/client/components/builtin/unauthorized-939b369ba41fc5a1.js",
+        "rawBytes": 150,
+        "gzipBytes": 137
+      },
+      {
+        "path": ".next/static/chunks/polyfills-42372ed130431b0a.js",
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      },
+      {
+        "path": ".next/static/chunks/webpack-683118429be97db6.js",
+        "rawBytes": 3454,
+        "gzipBytes": 1781
+      },
+      {
+        "path": ".next/static/css/11404d0e16c68629.css",
+        "rawBytes": 6646,
+        "gzipBytes": 1714
+      },
+      {
+        "path": ".next/static/css/303009a0b52c0f08.css",
+        "rawBytes": 17747,
+        "gzipBytes": 3714
+      },
+      {
+        "path": ".next/static/css/8a482a871d395547.css",
+        "rawBytes": 205,
+        "gzipBytes": 138
+      },
+      {
+        "path": ".next/static/css/c073d8b55db34b02.css",
+        "rawBytes": 18075,
+        "gzipBytes": 3729
+      },
+      {
+        "path": ".next/static/css/db1ad9b622af1691.css",
+        "rawBytes": 20020,
+        "gzipBytes": 4513
+      },
+      {
+        "path": ".next/static/css/e5dd958640632a7f.css",
+        "rawBytes": 19060,
+        "gzipBytes": 4909
+      }
+    ],
+    "rawBytes": 1394716,
+    "gzipBytes": 418369
+  },
+  "fonts": [
+    {
+      "path": "public\\fonts\\manrope\\manrope-latin-ext-variable.woff2",
+      "bytes": 15160
+    },
+    {
+      "path": "public\\fonts\\manrope\\manrope-latin-variable.woff2",
+      "bytes": 24532
+    }
+  ]
+}

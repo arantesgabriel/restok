@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark } from "@/components/ui/brand-mark";
 
 const sections = [
   { href: "#funcionalidades", label: "Funcionalidades" },

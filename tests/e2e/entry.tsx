@@ -9,9 +9,13 @@ import LandingPage from "../../app/page";
 import LoginPage from "../../app/login/page";
 import ResetPasswordPage from "../../app/reset-password/page";
 import "../../app/globals.css";
-import "../../app/ui.css";
 
 const surface = window.location.pathname;
+document.documentElement.classList.add("restok-theme");
+if(surface.startsWith("/before-")) {
+  await import("./legacy/globals.css");
+  await import("./legacy/ui.css");
+}
 const content = surface === "/" ? <LandingPage /> : surface === "/login" ? <LoginPage /> : surface === "/reset-password" ? <ResetPasswordPage /> : surface === "/before-pr08" ? <BeforePr08 /> : surface === "/before-pr07" ? <BeforePr07 /> : surface === "/before-pr06" ? <BeforePr06 /> : <RestokApp />;
 function Harness() {
   const [pending,setPending] = useState(new URLSearchParams(window.location.search).get("scenario") === "loading");

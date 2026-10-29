@@ -1,5 +1,7 @@
 # PR11: Conta, autenticação e perfil
 
+**Atualização29/10/2026:** usuário confirmou troca de senha, novo login e cadastro reais antes de autorizar PR12–13. A entrega do reset foi demonstrada por imagem fornecida. O registro de gate aberto abaixo descreve a execução anterior; os fluxos foram posteriormente confirmados pelo usuário, sem escolha/submissão de credencial pelo agente. Não equivale a nova observação automatizada ou aprovação global de acessibilidade.
+
 29/10/2026 · America/Sao_Paulo · Unidade local sobre `9678210`. Autorização específica: “implemente o pr11”. Sem push, PR remoto, merge, deploy, migration ou alteração de dependências. PR12 não iniciado nem autorizado.
 
 ## Resultado

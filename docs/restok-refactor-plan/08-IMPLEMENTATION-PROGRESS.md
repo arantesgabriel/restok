@@ -36,14 +36,16 @@
 | PR03 | Concluído localmente | Checkpoint próprio, fundações isoladas |
 | PR04 | Implementado e commitado; gate de evidência reaberto | Gates funcionais verdes; falta vídeo novo e leitor real da fase2 |
 | PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
-| Bloco 3 (06–11) | Estratégia substituída por execução PR a PR | Limite vigente PR10, autorizado especificamente; parar antes11 |
+| Bloco 3 (06–11) | Implementado em unidades locais | Fluxos reais de email11 confirmados pelo usuário na autorização12–13 |
 | PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
 | PR07 | Concluído localmente com adiamento explícito de evidências | Checks/integração aprovados; vídeo/capturas restantes vinculados ao PR12 |
 | PR08 | Implementado; gate visual fechado na retomada | Commit ca8a1b7; evidências novas/QA em eb34201; release/hardware continuam próprios |
 | PR09 | Implementado e validado localmente |175 testes; lint/typecheck/build; navegador interno3001, vídeo/seek e seis dimensões finais; revisão humana pendente |
 | PR10 | Implementado e validado localmente; revisão humana pendente |192 testes/35 arquivos; lint/typecheck/build; seis larguras, vídeo/seek e integração isolada; limites no relatório14 |
-| PR11 | Implementado e validado localmente; gate de email aberto |210 testes/36 arquivos, lint/typecheck/build; sessão real e seis dimensões; recuperação solicitada, entrega/link ainda não verificados |
-| Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
+| PR11 | Implementado; fluxos reais confirmados pelo usuário |210 testes/36 arquivos; recuperação, troca/novo login e cadastro relatados pelo usuário; não observação do agente |
+| Bloco 4 (12–13) | Autorizado e implementado localmente; aceite visual pendente |223 testes/38 arquivos e checks; navegador bloqueado, gates de mídia/reader/zoom continuam abertos |
+| PR12 | Implementado em302f851 | Lifecycle, reduced e anúncios; sem nova evidência visual/hardware |
+| PR13 | Implementado para revisão local |Base global nova, Tailwind semântico e legado isolado do produto; build/auditoria de CSS aprovados |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
 ## Inspeção inicial e preservação
@@ -223,3 +225,13 @@
 - Usuário forneceu caixa controlada e autorizou consulta somente à chegada da recuperação no Gmail, e uso do link/código quando chegar. Um pedido de recuperação recebeu resposta genérica; buscas restritas, incluindo pastas, ainda sem resultado. Não comprova entrega nem existência da conta. Nenhum email não relacionado aberto e nenhum token/credencial armazenado. Usuário precisa escolher/submeter nova senha se houver link, conforme regra do navegador.
 - **Gate integrado de email aberto:** entrega/link válido/uso/reuso/expiração natural e cadastro/confirmar mailbox não verificados. Ramos correspondentes cobertos em COMPONENT, sem dispensa inferida. Leitor real/zoom nativo/hardware/engines/release não declarados aprovados. Vídeo novo120 quadros reais/~4,7s, sem interpolação; cinco seeks40ms MAE≤1,251 aprovados.
 - Relatório15-PR11-REPORT.md e evidence/pr11 registram cobertura, rollback e limites. Unidade local pronta para revisão, aceite integrado de email pendente. **PR12 não autorizado nem iniciado.**
+
+## PR12–13: motion, acessibilidade e retirada, 29/10/2026
+
+- Usuário confirmou troca de senha, novo login e cadastro do11 e autorizou12–13. Registrado relato do usuário, sem atribuir execução observada ao agente ou alterar credenciais. PR14/15 não autorizados.
+- PR12 commit302f851: ciclo de saída por término/cancelamento da animação correta, preferência reduced e fallback; cleanup de unmount e rejeição de diálogo obsoleto. Não confundir animationcancel da entrada com fim da saída. Aviso transitório pausa em foco/hover/aba oculta, persistente não expira, anúncio permanece durante teclado. Dados imediatos, sem biblioteca nova.
+- PR13: base global nova no layout com Manrope/tema, reset estrutural e Tailwind semântico; removidos ui.css e menu antigo sem consumidores. Landing usa papéis novos diretamente, preservando composição para14. CSS/config históricos só em tests/e2e/legacy, carregados para /before-* no harness; nenhum import no produto.
+- Checks de conjunto: **223/223 em38 arquivos**, lint, typecheck sem incremental, build Webpack e diff-check aprovados. CSS emitido sem paleta antiga, Geist, login-panel/restok-app. Sem alterações de lib/auth/middleware/supabase. Hashes de arquivos preexistentes preservados após restaurar next-env.
+- Medição por manifestos do build atual: assets JS/CSS emitidos1394716→1380083 bytes raw; gzip418369→414737. Grafo /app reduz3630 bytes gzip; / público cresce883 ao receber base nova. Não é transferência observada de primeiro acesso nem performance de campo. before/after-assets.json e helper reproduzível em evidence/pr13 e tests/e2e.
+- **Gates abertos:** navegador falha antes da página por criação do ambiente de segurança (0x800700E1); nenhum screenshot/vídeo novo12–13, seis dimensões, reader real, zoom nativo ou hardware. Evidências adiadas04–05/07 continuam abertas, sem dispensa inferida. Código pronto para revisão local não é aceite visual/release. Não houve browser externo/desktop ou desativação de proteção. Reports16–17 distinguem cobertura automatizada e lacunas.
+- Rollback separado por unidade, preservando banco/IDs/arquivos do usuário; não sobrepor globals antigos isoladamente ao novo layout. **Parar antes14.**

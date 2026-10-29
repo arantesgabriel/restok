@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import "./ui.css";
 
 export const metadata: Metadata = {
   title: "restok — a lista que vai ao mercado com você",
@@ -11,9 +10,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#FAFAF7",
+  themeColor: "#F7FAF5",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR" data-scroll-behavior="smooth"><body>{children}</body></html>;
+  return <html lang="pt-BR" className="restok-theme" data-scroll-behavior="smooth"><body>{children}</body></html>;
 }

@@ -1,0 +1,22 @@
+/* Global structural reset. Visual roles come only from styles/tokens.css. */
+*, *::before, *::after { box-sizing:border-box; border-width:0; border-style:solid; border-color:var(--color-line); }
+html { min-width:0; background:var(--color-canvas); -webkit-text-size-adjust:100%; }
+body { margin:0; min-width:0; background:var(--color-canvas); color:var(--color-ink); font:inherit; -webkit-font-smoothing:antialiased; }
+:where(h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd) { margin:0; }
+:where(h1,h2,h3,h4,h5,h6) { font-size:inherit; font-weight:inherit; }
+:where(ul,ol) { list-style:none; margin:0; padding:0; }
+:where(button,input,select,textarea) { font:inherit; color:inherit; margin:0; }
+:where(button) { border:0; padding:0; background:transparent; cursor:pointer; }
+:where(button:disabled) { cursor:not-allowed; }
+:where(a) { color:inherit; text-decoration:none; }
+:where(img,svg,video,canvas) { display:block; vertical-align:middle; }
+:where(img,video) { max-width:100%; height:auto; }
+:where(table) { border-collapse:collapse; text-indent:0; }
+:where(hr) { height:0; border-top-width:1px; }
+:where(input::placeholder,textarea::placeholder) { color:var(--color-muted); opacity:1; }
+[hidden] { display:none; }
+@media(prefers-reduced-motion:no-preference) { html { scroll-behavior:smooth; } }
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after { scroll-behavior:auto; animation-duration:0s; animation-delay:0s; transition-duration:0s; transition-delay:0s; }
+}

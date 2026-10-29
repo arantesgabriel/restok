@@ -1,6 +1,6 @@
 import { DemoRow } from "./demo-row";
 import { History, House, ShoppingBasket } from "lucide-react";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark } from "@/components/ui/brand-mark";
 import type { ReactNode } from "react";
 import { formatBRL, listTotal } from "@/lib/utils";
 import {

@@ -17,10 +17,12 @@ transitório; master vetorial permanece um gate de marca final.
 - `components/ui/theme.tsx`: fronteira explícita dos novos consumidores.
 - Preview `/foundations.html` no harness local4173, fora das rotas/auth de produção.
 
-Não importar globals/ui antigos no preview novo. O config Tailwind antigo e seus
-consumidores permanecem temporariamente sob responsabilidade do PR13. A integração
-gradual migra consumidores por PR; não cria aliases entre paletas. A retirada
-global continua fora do Bloco2. Não reconstruir telas/landing antes dos seus PRs.
+PR13: app/layout.tsx ativa a fronteira restok-theme; globals.css importa apenas
+base/motion/reset novos e utilitários Tailwind semânticos. CSS e configuração
+anteriores existem somente em tests/e2e/legacy, carregados nas rotas históricas
+/before-*. Não há aliases entre paletas. A landing usa os papéis novos, mantendo
+sua composição anterior para reconstrução no PR14. Aceite visual permanece sujeito
+ao navegador e aos gates de acessibilidade; retirada total de assets/normas no PR15.
 
 ```design-tokens
 brand #213F1D; action #2D5A27; highlight #B4D3A7; info #4F7566;
