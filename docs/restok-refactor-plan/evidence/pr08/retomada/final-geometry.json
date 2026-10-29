@@ -1,0 +1,56 @@
+[
+  {
+    "clientWidth": 305,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 640,
+    "scrollWidth": 305,
+    "scrollY": 2,
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 844,
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 1024,
+    "scrollWidth": 753,
+    "scrollY": 0,
+    "width": 768
+  },
+  {
+    "clientWidth": 1009,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 768,
+    "scrollWidth": 1009,
+    "scrollY": 0,
+    "width": 1024
+  },
+  {
+    "clientWidth": 1265,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 800,
+    "scrollWidth": 1265,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "clientWidth": 1425,
+    "dpr": 1,
+    "font": "\"Restok Manrope\", system-ui, sans-serif",
+    "height": 900,
+    "scrollWidth": 1425,
+    "scrollY": 0,
+    "width": 1440
+  }
+]

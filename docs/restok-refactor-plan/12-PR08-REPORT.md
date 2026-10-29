@@ -1,5 +1,7 @@
 # PR08 — catálogo e busca local
 
+> **Retomada29/10/2026:** gate visual fechado para avanço local ao PR09, conforme seção final. O texto original abaixo conserva o estado da entrega ca8a1b7; o bloqueio do navegador foi resolvido nesta retomada.
+
 29/10/2026 · Unidade local de implementação e revisão. Estratégia vigente: executar PR por PR e parar no PR08 para conferência e autorização explícita. PR09 não iniciado.
 
 ## Resultado implementado
@@ -38,3 +40,18 @@ Riscos ainda não verificados: encaixe e ordem visual em320/390/768/1024/1280/14
 Reverter somente o commit local do PR08 como unidade, depois de revisar alterações posteriores. Isso restaura composição e consumidores anteriores sem apagar produtos, itens, snapshots ou preferências de ordenação. Não há rollback de banco. Não reverter commits anteriores nem alterações preexistentes do usuário.
 
 Próximo escopo proposto: PR09, Histórico e detalhe, preservando cronologia, contagens, BRL, preço desconhecido e comparação unitária anterior à compra. **Não autorizado a iniciar na estratégia vigente.** Antes do avanço: conferir PR08, fechar o gate visual ou decidir explicitamente seu tratamento, e receber autorização específica do usuário para PR09.
+
+## Retomada autorizada do gate visual
+
+Usuário autorizou somente PR09, exigiu concluir primeiro o QA08, confirmou porta3001 e autorizou casa fictícia isolada com produtos. Casa criada: `QA PR08 visual 2026-10-29`, ID `619c5f67-0d98-467b-90c1-8a7dbd283d3f`. Cinco produtos fictícios; nomes longos, quantidade999999; Sabão desativado, editado para quantidade3 e reativado. Catálogo confirmado após reload. Sem novas compras, convites/papéis, migrations ou alteração de casa preexistente.
+
+Autorização adicional restrita:4173 somente para comparação anterior sem backend. Fixture `catalog-pr08-compare` reproduz esses cinco produtos no snapshot anterior d9b51b2. Casa/perfil ilustrativos diferentes, IDs próprios, nenhum acesso remoto. Testes posteriores ficaram na aplicação real3001.
+
+Evidências novas em `evidence/pr08/retomada`:
+
+- Seis dimensões de catálogo/editor, primeira dobra, nomes longos, estado inativo, busca vazia e reload. `final-geometry.json`, `before-geometry.json` e `editor-geometry.json`: sem overflow horizontal, quantidade legível, footer do editor alcançável nas seis dimensões. DPR1 no app e~0,90 na fixture; zoom preservado. Arredondamento de1px no antes768/1024. Dimensões raster da API diferem das métricas CSS, registradas separadamente; sem alegação pixel-perfect. Capturas `*-full*` e intermediárias são diagnósticas, não prova de encaixe, pois a API full-page altera enquadramento. Preferir viewport `*-final-top`, `320-stable-long`, `*-before-top`, `*-before-long`, `320-native-before` e editor.
+- Escape devolveu foco a Editar; limpar busca ao campo; desativar à seção de inativos; salvar inativo ao botão Editar com nome novo; reativar ao botão Desativar do mesmo produto. Busca/ordenação/editor/Escape filmados no navegador interno.
+- `interaction.webm`:85 aquisições contínuas reais/~4,5s, mediana31ms/máximo80ms, container25fps com retenção do último quadro, sem interpolação. Cinco seeks40ms, MAE<1,32, aprovados em `media-checks.json`. Sem alegação de timing de motion ou hardware. JPEGs originais preservados; PNGs são conversões sem nova aquisição.
+- Reexecução nova de risco:6/6 testes em4 arquivos de produtos/busca/ordem/snapshots/seleção seguinte aprovados. Suite160/160/lint/typecheck/build acima continua evidência herdada da implementação08, não reexecução desta retomada.
+
+Inspeção focal de antes/depois320/1440, editor320 e inativo390: nome longo hoje usa a largura da linha e ações embaixo no mobile; antes era comprimido ao lado dos controles. Nenhum defeito novo demonstrado que exija mudança de código08. Gate08 encerrado para avanço local autorizado ao PR09; não equivale a aceite global de release, reader, hardware ou performance de campo. PR10 continua não autorizado. Dados da casa de QA preservados para rastreabilidade; rollback de UI não os apaga.

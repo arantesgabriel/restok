@@ -3,6 +3,18 @@ import type { RestokState } from "../../lib/types";
 
 // Browser-only fixtures. No credentials, network client or production route.
 export function evidenceState(scenario: string): RestokState {
+  // Mirrors only the five fictitious products created with explicit permission
+  // for the PR08 gate. The previous UI runs without any backend/session.
+  if (scenario === "catalog-pr08-compare") return {
+    lists: [],
+    products: [
+      { id: "qa08-a", name: "Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A", category: "Alimentos", defaultQuantity: 999999, active: true },
+      { id: "qa08-rice", name: "Arroz QA PR08", category: "Alimentos", defaultQuantity: 1, active: true },
+      { id: "qa08-water", name: "Água QA PR08", category: "Bebidas", defaultQuantity: 1, active: true },
+      { id: "qa08-soap", name: "Sabão editado QA PR08", category: "Limpeza", defaultQuantity: 3, active: true },
+      { id: "qa08-b", name: "Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B", category: "Higiene", defaultQuantity: 1, active: true },
+    ],
+  };
   const state = structuredClone(seedState);
   state.products = state.products.slice(0, 33);
   state.lists = state.lists.map((list) => ({ ...list, items: list.items.slice(0, 33) }));

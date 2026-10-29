@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, retomada PR09:** usuário pediu “de acordo com o arquivo abaixo, inicie apenas o PR 09”. Autoriza somente essa unidade local, subordinada ao tratamento do gate08. Em resposta à pergunta, escolheu **concluir o QA visual do PR08 antes do PR09**, sem adiamento. Determinou usar o app já ativo na porta **3001** e autorizou criar **uma casa fictícia isolada e produtos de teste somente nela**. Não amplia autorização para compras, convites, papéis, migrations/seed/reset ou casas preexistentes.
+
 - **29/10/2026, estratégia vigente:** usuário determinou execução PR por PR, finalizar somente até o PR08 e solicitar sua conferência e autorização antes de prosseguir. Autorizações anteriores por bloco ficam subordinadas a esse novo limite. PR09 não pode iniciar sem nova mensagem explícita.
 
 - Mensagem explícita do usuário nesta execução: direção Raiz & Eucalipto e roadmap aprovados como orientação. **Somente Bloco 1, PRs 01–02, autorizado.**
@@ -165,3 +167,18 @@
 
 - Usuário solicitou um Markdown para iniciar o PR09 em outro chat. Criado HANDOFF-PR09.md com checkout, preservação, commits, checks herdados, bloqueio do navegador, escopo09 e ponto de parada antes10.
 - Solicitação documental atendida sem implementar PR09. A pendência visual08 permanece aberta, sem aprovação ou adiamento inferido do pedido de handoff. O novo chat deve registrar a instrução efetivamente enviada pelo usuário e tratar esse gate explicitamente.
+
+## Retomada: gate visual PR08 antes do PR09
+
+- Navegador interno recuperado. Harness4173 inicialmente inacessível sob sandbox; servidor do agente reiniciado fora do sandbox, HTTP200 confirmado e fixture aberta. Usuário determinou em seguida usar somente3001. Nenhum browser externo/desktop controlado. Servidor3001 do usuário preservado.
+- Sessão aberta3001 estava na Casa de Gabriel com catálogo vazio. Após autorização específica, criada **QA PR08 visual 2026-10-29**, ID `619c5f67-0d98-467b-90c1-8a7dbd283d3f`. Cinco produtos fictícios, incluindo nomes longos e quantidade999999; um desativado, editado para quantidade3 e reativado. Dados confirmados após reload. Nenhuma compra criada e nenhum dado de casa preexistente editado.
+- Capturas novas reais em `evidence/pr08/retomada`: catálogo e editor nas seis dimensões, busca vazia, nome longo/foco, inativo e reload. `final-geometry.json` prevalece sobre capturas/medidas intermediárias; seis viewports CSS exatos, DPR1, scrollWidth=clientWidth. Capturas full-page intermediárias apresentaram enquadramento inconsistente; arquivos `*-final-*` são as referências finais. Escape retorna ao botão Editar, limpar busca ao campo e reativar ao controle Desativar do mesmo produto.
+- Vídeo novo de aquisições sequenciais contínuas:85 JPEGs reais, ~4,5s, mediana31ms/máximo80ms. Container25fps sem interpolação; cinco seeks de40ms com MAE<1,32 aprovados. Não é medição de latência de motion nem prova de hardware/leitor. Originais e manifesto preservados.
+- **Comparação anterior ainda pendente:**3001 executa somente a composição atual. Solicitada decisão entre autorização restrita de4173 para comparação anterior sem backend ou aceitação explícita da baseline herdada com cenários diferentes. PR09 ainda não implementado; a solicitação não equivale a resposta.
+
+### Fechamento do gate08 nesta retomada
+
+- Usuário autorizou explicitamente4173 **somente para a comparação anterior sem backend**. Cenário `catalog-pr08-compare` replica os cinco produtos fictícios criados3001 (nomes, categorias, quantidades e ausência de compra ativa), com IDs locais próprios. Capturadas versão anterior e nomes longos nas seis dimensões, sem gravação remota pelo harness. Contexto/fonte anterior:d9b51b2, `before-pr08.tsx` já preservado no PR08; a casa/perfil ilustrativos diferem da sessão real.
+- Zoom de cada aba preservado:3001 DPR1,4173 DPR~0,90. Override ajustado para medir CSS320/390/768/1024/1280/1440, com arredondamento de1px em768 e altura1024. Métricas em `before-geometry.json`; imagens são JPEGs originais e conversões PNG explicitamente identificadas. Capturas full-page deformam o enquadramento neste backend e **não são prova de encaixe**; usar `*-final-top`, `320-stable-long`, `*-before-top`, `*-before-long` e editor.
+- Reexecução nova: **6/6 testes em4 arquivos** de catálogo, busca, snapshots/seleção seguinte e ordenação aprovados. Não se reatribui a esta rodada a suíte anterior160/160. Gate visual08 fechado para avanço local após inspeção focal320/1440/editor/inativo, vídeo com seek e seis dimensões; hardware/leitor/zoom nativo/release permanecem conforme06. Nenhum defeito novo demonstrado que exija alterar código08.
+- PR09 liberado pela autorização original específica, sem avanço ao PR10. Próximo registro passa a documentar exclusivamente Histórico e detalhe.

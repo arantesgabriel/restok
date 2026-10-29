@@ -1,0 +1,457 @@
+{
+  "method": "Continuous sequential acquisitions from Codex internal browser on localhost:3001; UI actions between captures; timestamped real JPEGs; no interpolation or motion-latency claim",
+  "sourceDirectory": "docs/restok-refactor-plan/evidence/pr08/retomada/frames",
+  "frames": [
+    {
+      "file": "000.jpg",
+      "startMs": 0,
+      "endMs": 40
+    },
+    {
+      "file": "001.jpg",
+      "startMs": 41,
+      "endMs": 80
+    },
+    {
+      "file": "002.jpg",
+      "startMs": 81,
+      "endMs": 120
+    },
+    {
+      "file": "003.jpg",
+      "startMs": 121,
+      "endMs": 147
+    },
+    {
+      "file": "004.jpg",
+      "startMs": 149,
+      "endMs": 188
+    },
+    {
+      "file": "005.jpg",
+      "startMs": 189,
+      "endMs": 213
+    },
+    {
+      "file": "006.jpg",
+      "startMs": 214,
+      "endMs": 254
+    },
+    {
+      "file": "007.jpg",
+      "startMs": 255,
+      "endMs": 279
+    },
+    {
+      "file": "008.jpg",
+      "startMs": 281,
+      "endMs": 310
+    },
+    {
+      "file": "009.jpg",
+      "startMs": 311,
+      "endMs": 348
+    },
+    {
+      "file": "010.jpg",
+      "startMs": 349,
+      "endMs": 383
+    },
+    {
+      "file": "011.jpg",
+      "startMs": 384,
+      "endMs": 414
+    },
+    {
+      "file": "012.jpg",
+      "startMs": 488,
+      "endMs": 523
+    },
+    {
+      "file": "013.jpg",
+      "startMs": 524,
+      "endMs": 554
+    },
+    {
+      "file": "014.jpg",
+      "startMs": 555,
+      "endMs": 588
+    },
+    {
+      "file": "015.jpg",
+      "startMs": 589,
+      "endMs": 614
+    },
+    {
+      "file": "016.jpg",
+      "startMs": 615,
+      "endMs": 645
+    },
+    {
+      "file": "017.jpg",
+      "startMs": 646,
+      "endMs": 678
+    },
+    {
+      "file": "018.jpg",
+      "startMs": 679,
+      "endMs": 719
+    },
+    {
+      "file": "019.jpg",
+      "startMs": 720,
+      "endMs": 747
+    },
+    {
+      "file": "020.jpg",
+      "startMs": 748,
+      "endMs": 787
+    },
+    {
+      "file": "021.jpg",
+      "startMs": 788,
+      "endMs": 815
+    },
+    {
+      "file": "022.jpg",
+      "startMs": 816,
+      "endMs": 854
+    },
+    {
+      "file": "023.jpg",
+      "startMs": 855,
+      "endMs": 881
+    },
+    {
+      "file": "024.jpg",
+      "startMs": 882,
+      "endMs": 924
+    },
+    {
+      "file": "025.jpg",
+      "startMs": 1283,
+      "endMs": 1321
+    },
+    {
+      "file": "026.jpg",
+      "startMs": 1322,
+      "endMs": 1348
+    },
+    {
+      "file": "027.jpg",
+      "startMs": 1349,
+      "endMs": 1374
+    },
+    {
+      "file": "028.jpg",
+      "startMs": 1375,
+      "endMs": 1401
+    },
+    {
+      "file": "029.jpg",
+      "startMs": 1403,
+      "endMs": 1428
+    },
+    {
+      "file": "030.jpg",
+      "startMs": 1429,
+      "endMs": 1484
+    },
+    {
+      "file": "031.jpg",
+      "startMs": 1509,
+      "endMs": 1589
+    },
+    {
+      "file": "032.jpg",
+      "startMs": 1591,
+      "endMs": 1648
+    },
+    {
+      "file": "033.jpg",
+      "startMs": 1650,
+      "endMs": 1701
+    },
+    {
+      "file": "034.jpg",
+      "startMs": 1704,
+      "endMs": 1762
+    },
+    {
+      "file": "035.jpg",
+      "startMs": 1766,
+      "endMs": 1827
+    },
+    {
+      "file": "036.jpg",
+      "startMs": 1829,
+      "endMs": 1868
+    },
+    {
+      "file": "037.jpg",
+      "startMs": 2211,
+      "endMs": 2248
+    },
+    {
+      "file": "038.jpg",
+      "startMs": 2249,
+      "endMs": 2282
+    },
+    {
+      "file": "039.jpg",
+      "startMs": 2283,
+      "endMs": 2312
+    },
+    {
+      "file": "040.jpg",
+      "startMs": 2313,
+      "endMs": 2348
+    },
+    {
+      "file": "041.jpg",
+      "startMs": 2350,
+      "endMs": 2375
+    },
+    {
+      "file": "042.jpg",
+      "startMs": 2377,
+      "endMs": 2401
+    },
+    {
+      "file": "043.jpg",
+      "startMs": 2403,
+      "endMs": 2426
+    },
+    {
+      "file": "044.jpg",
+      "startMs": 2427,
+      "endMs": 2454
+    },
+    {
+      "file": "045.jpg",
+      "startMs": 2455,
+      "endMs": 2482
+    },
+    {
+      "file": "046.jpg",
+      "startMs": 2484,
+      "endMs": 2522
+    },
+    {
+      "file": "047.jpg",
+      "startMs": 2523,
+      "endMs": 2550
+    },
+    {
+      "file": "048.jpg",
+      "startMs": 2551,
+      "endMs": 2587
+    },
+    {
+      "file": "049.jpg",
+      "startMs": 2937,
+      "endMs": 2974
+    },
+    {
+      "file": "050.jpg",
+      "startMs": 2975,
+      "endMs": 3000
+    },
+    {
+      "file": "051.jpg",
+      "startMs": 3002,
+      "endMs": 3041
+    },
+    {
+      "file": "052.jpg",
+      "startMs": 3042,
+      "endMs": 3081
+    },
+    {
+      "file": "053.jpg",
+      "startMs": 3082,
+      "endMs": 3118
+    },
+    {
+      "file": "054.jpg",
+      "startMs": 3120,
+      "endMs": 3149
+    },
+    {
+      "file": "055.jpg",
+      "startMs": 3150,
+      "endMs": 3190
+    },
+    {
+      "file": "056.jpg",
+      "startMs": 3191,
+      "endMs": 3227
+    },
+    {
+      "file": "057.jpg",
+      "startMs": 3254,
+      "endMs": 3279
+    },
+    {
+      "file": "058.jpg",
+      "startMs": 3280,
+      "endMs": 3305
+    },
+    {
+      "file": "059.jpg",
+      "startMs": 3306,
+      "endMs": 3335
+    },
+    {
+      "file": "060.jpg",
+      "startMs": 3657,
+      "endMs": 3682
+    },
+    {
+      "file": "061.jpg",
+      "startMs": 3683,
+      "endMs": 3715
+    },
+    {
+      "file": "062.jpg",
+      "startMs": 3716,
+      "endMs": 3761
+    },
+    {
+      "file": "063.jpg",
+      "startMs": 3763,
+      "endMs": 3803
+    },
+    {
+      "file": "064.jpg",
+      "startMs": 3804,
+      "endMs": 3827
+    },
+    {
+      "file": "065.jpg",
+      "startMs": 3828,
+      "endMs": 3857
+    },
+    {
+      "file": "066.jpg",
+      "startMs": 3858,
+      "endMs": 3885
+    },
+    {
+      "file": "067.jpg",
+      "startMs": 3886,
+      "endMs": 3912
+    },
+    {
+      "file": "068.jpg",
+      "startMs": 3913,
+      "endMs": 3937
+    },
+    {
+      "file": "069.jpg",
+      "startMs": 3938,
+      "endMs": 3969
+    },
+    {
+      "file": "070.jpg",
+      "startMs": 3970,
+      "endMs": 4000
+    },
+    {
+      "file": "071.jpg",
+      "startMs": 4001,
+      "endMs": 4027
+    },
+    {
+      "file": "072.jpg",
+      "startMs": 4028,
+      "endMs": 4054
+    },
+    {
+      "file": "073.jpg",
+      "startMs": 4109,
+      "endMs": 4140
+    },
+    {
+      "file": "074.jpg",
+      "startMs": 4141,
+      "endMs": 4166
+    },
+    {
+      "file": "075.jpg",
+      "startMs": 4167,
+      "endMs": 4202
+    },
+    {
+      "file": "076.jpg",
+      "startMs": 4203,
+      "endMs": 4242
+    },
+    {
+      "file": "077.jpg",
+      "startMs": 4243,
+      "endMs": 4283
+    },
+    {
+      "file": "078.jpg",
+      "startMs": 4284,
+      "endMs": 4321
+    },
+    {
+      "file": "079.jpg",
+      "startMs": 4323,
+      "endMs": 4353
+    },
+    {
+      "file": "080.jpg",
+      "startMs": 4354,
+      "endMs": 4382
+    },
+    {
+      "file": "081.jpg",
+      "startMs": 4383,
+      "endMs": 4415
+    },
+    {
+      "file": "082.jpg",
+      "startMs": 4417,
+      "endMs": 4443
+    },
+    {
+      "file": "083.jpg",
+      "startMs": 4444,
+      "endMs": 4474
+    },
+    {
+      "file": "084.jpg",
+      "startMs": 4475,
+      "endMs": 4496
+    }
+  ],
+  "actions": [
+    {
+      "atMs": 434,
+      "action": "buscar Arroz"
+    },
+    {
+      "atMs": 1219,
+      "action": "limpar"
+    },
+    {
+      "atMs": 2153,
+      "action": "ordem A–Z"
+    },
+    {
+      "atMs": 2863,
+      "action": "categoria"
+    },
+    {
+      "atMs": 3615,
+      "action": "editar"
+    },
+    {
+      "atMs": 4074,
+      "action": "Escape"
+    }
+  ]
+}

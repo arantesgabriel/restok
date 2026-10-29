@@ -1,0 +1,63 @@
+{
+  "video": "interaction.webm",
+  "method": "Continuous sequential acquisitions from Codex internal browser on localhost:3001; UI actions between captures; timestamped real JPEGs; no interpolation or motion-latency claim",
+  "sourceFrames": 85,
+  "encodedFrames": 113,
+  "containerFps": 25,
+  "clockOriginMs": 40,
+  "acquisitionMedianMs": 31,
+  "acquisitionMaxMs": 80,
+  "noInterpolation": true,
+  "canvasSize": [
+    390,
+    844
+  ],
+  "padding": "right/bottom only where CUA cropped scrollbar; original UI pixels never resized",
+  "checks": [
+    {
+      "timeSeconds": 0.6,
+      "precisionMs": 40,
+      "sourceIndex": 15,
+      "reference": "reference-015.png",
+      "decoded": "seek-015.png",
+      "mae": 1.3189938024061247,
+      "passed": true
+    },
+    {
+      "timeSeconds": 1.0,
+      "precisionMs": 40,
+      "sourceIndex": 24,
+      "reference": "reference-025.png",
+      "decoded": "seek-025.png",
+      "mae": 1.199359987037712,
+      "passed": true
+    },
+    {
+      "timeSeconds": 2.4,
+      "precisionMs": 40,
+      "sourceIndex": 43,
+      "reference": "reference-060.png",
+      "decoded": "seek-060.png",
+      "mae": 1.2830062381010248,
+      "passed": true
+    },
+    {
+      "timeSeconds": 3.2,
+      "precisionMs": 40,
+      "sourceIndex": 56,
+      "reference": "reference-080.png",
+      "decoded": "seek-080.png",
+      "mae": 1.2687456961153643,
+      "passed": true
+    },
+    {
+      "timeSeconds": 4.0,
+      "precisionMs": 40,
+      "sourceIndex": 71,
+      "reference": "reference-100.png",
+      "decoded": "seek-100.png",
+      "mae": 1.29223984283226,
+      "passed": true
+    }
+  ]
+}
