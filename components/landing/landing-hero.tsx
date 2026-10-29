@@ -1,25 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-
+import { ProductShowcase } from "./product-demos";
+import { SiteLink } from "./site-link";
+import styles from "./site.module.css";
 export function LandingHero() {
-  return (
-    <section className="landing-hero">
-      <div className="landing-hero-leaves landing-hero-leaves-left" aria-hidden="true">
-        <Image src="/landing/pantry-leaves.svg" alt="" width={180} height={320} sizes="160px" />
-      </div>
-      <div className="landing-hero-leaves landing-hero-leaves-right" aria-hidden="true">
-        <Image src="/landing/pantry-leaves.svg" alt="" width={180} height={320} sizes="160px" />
-      </div>
-      <div className="landing-wrap">
-        <p className="landing-eyebrow">Compras de casa sem complicação</p>
-        <h1><span>Planeje. Compartilhe.</span>{" "}<span>Compre. Acompanhe.</span></h1>
-        <p className="landing-hero-description">Organize a próxima compra, compartilhe a lista com quem mora com você e acompanhe os valores registrados no mercado.</p>
-        <div className="landing-hero-actions">
-          <Link href="/login" className="landing-cta">Começar agora<ArrowRight size={18} aria-hidden="true" /></Link>
-          <a href="#como-funciona" className="landing-cta landing-cta-secondary">Ver como funciona<ArrowRight size={18} aria-hidden="true" /></a>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className={styles.hero} aria-labelledby="hero-title"><div className={styles.container}><div className={styles.heroLayout}>
+    <div className={styles.heroCopy}><h1 id="hero-title">A lista da casa.<br/><span>Do plano ao mercado.</span></h1>
+      <p className={styles.heroDescription}>Planeje o que falta, divida a lista por convite e acompanhe o total enquanto compra.</p>
+      <div className={styles.heroActions}><SiteLink href="/login">Começar agora<ArrowRight size={18} aria-hidden="true"/></SiteLink><a href="#como-funciona" className={styles.textLink}>Ver como funciona<ArrowRight size={16} aria-hidden="true"/></a></div>
+    </div><ProductShowcase/>
+  </div></div></section>;
 }

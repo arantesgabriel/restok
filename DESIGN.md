@@ -20,9 +20,11 @@ transitório; master vetorial permanece um gate de marca final.
 PR13: app/layout.tsx ativa a fronteira restok-theme; globals.css importa apenas
 base/motion/reset novos e utilitários Tailwind semânticos. CSS e configuração
 anteriores existem somente em tests/e2e/legacy, carregados nas rotas históricas
-/before-*. Não há aliases entre paletas. A landing usa os papéis novos, mantendo
-sua composição anterior para reconstrução no PR14. Aceite visual permanece sujeito
-ao navegador e aos gates de acessibilidade; retirada total de assets/normas no PR15.
+/before-*. Não há aliases entre paletas. PR14 reconstrói a landing e as demos em
+CSS Modules site/demos, com os mesmos papéis e primitivos do app. Lista ilustrativa
+no hero, navegação por etapas e exemplos locais; sem moldura de navegador, folhas
+decorativas, depoimentos ou números inventados. O CSS público anterior é histórico,
+sem import no produto. Retirada total de assets/normas e gates transversais no PR15.
 
 ```design-tokens
 brand #213F1D; action #2D5A27; highlight #B4D3A7; info #4F7566;

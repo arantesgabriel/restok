@@ -1,5 +1,7 @@
 # PR13: retirada da cascata legada e integração pública mínima
 
+**Atualização durante PR14:** navegador interno voltou a responder e o usuário indicou Restok3000. A landing reconstruída recebeu capturas novas e um smoke de login320/1280, sem submissão. Isso não reclassifica como realizados os ensaios de core, leitor/zoom/hardware e evidências adiadas que não foram executados no PR12–13.
+
 29/10/2026 · America/Sao_Paulo. Autorizado com PR12. Base302f851; unidade local separada. Sem PR14/15, push, merge, deploy, dependências novas ou banco.
 
 ## Implementação

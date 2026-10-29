@@ -33,4 +33,19 @@ describe("landing page destinations", () => {
     expect(markup).toContain("12,40");
     expect(markup.match(/<h1[\s>]/g)).toHaveLength(1);
   });
+  it("keeps every local anchor resolvable and native disclosure content available in SSR",()=>{
+    const markup=renderToStaticMarkup(createElement(LandingPage));
+    const doc=new DOMParser().parseFromString(markup,"text/html");
+    const ids=[...doc.querySelectorAll("[id]")].map(node=>node.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for(const anchor of doc.querySelectorAll('a[href^="#"]'))expect(ids).toContain(anchor.getAttribute("href")!.slice(1));
+    expect(doc.querySelectorAll('section#duvidas details')).toHaveLength(5);
+    expect(doc.querySelectorAll('#demo-acompanhar details')).toHaveLength(3);
+    expect(doc.querySelectorAll('summary > div')).toHaveLength(0);
+    expect(doc.querySelector('#demo-planejar fieldset')?.hasAttribute("disabled")).toBe(true);
+    expect(doc.querySelectorAll('noscript').length).toBeGreaterThanOrEqual(3);
+    expect(markup).toContain("Cada pessoa com sua conta");
+    expect(markup).not.toContain("pantry-leaves");
+    expect(markup).not.toContain("landing-browser");
+  });
 });

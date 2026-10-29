@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, PR14:** usuário pediu “inicie pr 14”. Autoriza somente a reconstrução pública e demos como unidade local; PR15 não autorizado. Navegador recuperado, mas3001 passou a servir outro projeto. Usuário indicou explicitamente **usar3000**, onde o Restok já estava ativo. Nenhum processo do usuário foi interrompido ou servidor extra iniciado.
+
 - **29/10/2026, PR12–13:** usuário confirmou troca de senha, novo login e cadastro reais do PR11 e pediu “Implemente o PR 12 e 13”. Autoriza ambas as unidades locais, em sequência e commits separados; não autoriza PR14/15, push/merge/deploy ou banco. Confirmação de auth é relato do usuário; gates de reader/zoom/hardware e evidências adiadas não são dispensados implicitamente.
 
 - **29/10/2026, PR11:** usuário determinou “implemente o pr11”. Escopo local de conta/auth/perfil, mantendo a parada antes12. Informou uma caixa controlada para o gate de recuperação; após um pedido pelo formulário, autorizou consultar somente a chegada dessa mensagem no Gmail já aberto e usar seu link/código quando chegar. Isso não autoriza ler outros emails, alterar configurações de autenticação ou escolher/submeter senha em seu lugar. Nenhuma credencial foi alterada pelo agente.
@@ -43,10 +45,12 @@
 | PR09 | Implementado e validado localmente |175 testes; lint/typecheck/build; navegador interno3001, vídeo/seek e seis dimensões finais; revisão humana pendente |
 | PR10 | Implementado e validado localmente; revisão humana pendente |192 testes/35 arquivos; lint/typecheck/build; seis larguras, vídeo/seek e integração isolada; limites no relatório14 |
 | PR11 | Implementado; fluxos reais confirmados pelo usuário |210 testes/36 arquivos; recuperação, troca/novo login e cadastro relatados pelo usuário; não observação do agente |
-| Bloco 4 (12–13) | Autorizado e implementado localmente; aceite visual pendente |223 testes/38 arquivos e checks; navegador bloqueado, gates de mídia/reader/zoom continuam abertos |
+| Bloco 4 (12–13) | Autorizado e implementado localmente; aceite transversal pendente |Navegador recuperado no14; capturas14 não encerram mídia adiada04–05/07 nem reader/zoom/hardware12–13 |
 | PR12 | Implementado em302f851 | Lifecycle, reduced e anúncios; sem nova evidência visual/hardware |
 | PR13 | Implementado para revisão local |Base global nova, Tailwind semântico e legado isolado do produto; build/auditoria de CSS aprovados |
-| Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
+| Bloco 5 (14–15) | Somente PR14 autorizado e implementado localmente |PR15 não autorizado; gates transversais permanecem explícitos |
+| PR14 | Implementado e validado localmente para revisão |228 testes/39 arquivos; lint/typecheck/build; navegador3000, seis larguras, estados e vídeo com seek |
+| PR15 | Não autorizado nem iniciado |Limpeza final, QA de conjunto e pacote de aprovação |
 
 ## Inspeção inicial e preservação
 
@@ -235,3 +239,13 @@
 - Medição por manifestos do build atual: assets JS/CSS emitidos1394716→1380083 bytes raw; gzip418369→414737. Grafo /app reduz3630 bytes gzip; / público cresce883 ao receber base nova. Não é transferência observada de primeiro acesso nem performance de campo. before/after-assets.json e helper reproduzível em evidence/pr13 e tests/e2e.
 - **Gates abertos:** navegador falha antes da página por criação do ambiente de segurança (0x800700E1); nenhum screenshot/vídeo novo12–13, seis dimensões, reader real, zoom nativo ou hardware. Evidências adiadas04–05/07 continuam abertas, sem dispensa inferida. Código pronto para revisão local não é aceite visual/release. Não houve browser externo/desktop ou desativação de proteção. Reports16–17 distinguem cobertura automatizada e lacunas.
 - Rollback separado por unidade, preservando banco/IDs/arquivos do usuário; não sobrepor globals antigos isoladamente ao novo layout. **Parar antes14.**
+
+## PR14: landing e demos, 29/10/2026
+
+- Autorizado especificamente; usuário indicou3000 após3001 abrir outro projeto. Navegador interno recuperado, Restok3000 existente preservado; nenhum processo/servidor iniciado ou encerrado. PR15 não autorizado.
+- Reconstruídos página, hero, header/menu, etapas, FAQ/footer e demos com CSS Modules novos; removido app/landing.css do produto, cópia só histórica. Sem folhas/fake browser/dados comerciais inventados. Tokens, Manrope e primitivos reais do app. Preços/categorias/dados ilustrativos e modelos preservados; nenhum SDK de dados ou gravação nas demos.
+- MoneyField/parser BRL compartilhados;0 conhecido, preço ausente/total parcial, erro conserva valor válido e reset limpa draft/erro. Excedente positivo com texto. Ajuste medido320 dá linha própria a valores extremos; totalR$10.000.000.012,39 cabe em uma linha com20px. Menu Escape/âncora e skip/main; summary válido e teclado nativo.
+- **228/228 testes em39 arquivos**; recorte final13/13 em7, lint/typecheck/build Webpack/diff-check aprovados. HTML emitido comprova conteúdo SSR e disclosures/controles desabilitados/noscript; não equivale a sessão browser JS-off. CSS emitido sem landing-* ou paleta antiga. Guardas/lib/auth/supabase intactos; hashes preexistentes preservados após restaurar next-env.
+- Antes/depois nas seis dimensões CSS exatas; CTA dentro da primeira dobra, zero overflow normal/extremo. Estados de seleção, convite local/duas vistas,0/sem preço/erro, histórico/FAQ/teclado e fim da página registrados. Smoke CTA→login320/1280 sem submit. PNG final é conversão explícita de JPEG. Canvas do vídeo375×812 difere do viewportCSS390×844 por captura; originais não redimensionados e geometria registrada separadamente.
+- Vídeo novo120 aquisições/~5,2s, mediana39ms/máximo42ms;25fps sem interpolação; cinco seeks40ms MAE≤1,001. Não mede timing de motion ou Realtime real. Grafo público+5170 bytes gzip; todos os JS/CSS emitidos+1514 gzip, sem dependências novas; medição por manifestos, não rede/CWV.
+- Relatório18-PR14-REPORT.md e evidence/pr14. Leitor/zoom/hardware/engines/JS-off manual e evidências adiadas anteriores continuam pendentes, sem dispensa inferida. Rollback visual da unidade14, preservando banco/IDs e estado13. **Parar antes15.**

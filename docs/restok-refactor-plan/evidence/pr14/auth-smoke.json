@@ -1,0 +1,16 @@
+{
+  "destination": "/login",
+  "submitted": false,
+  "measurements": [
+    {
+      "height": 640,
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "height": 800,
+      "overflow": false,
+      "width": 1280
+    }
+  ]
+}

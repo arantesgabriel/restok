@@ -6,7 +6,7 @@ import tailwindcss from "tailwindcss";
 import config from "../../tailwind.config";
 const read=(path:string)=>readFileSync(new URL(`../../${path}`,import.meta.url),"utf8");
 it("resolves all public-page CSS variables from the shared tokens or local layout roles",()=>{
-  const css=read("app/landing.css");
+  const css=read("components/landing/site.module.css")+read("components/landing/demos.module.css");
   const definitions=new Set(Array.from((read("styles/tokens.css")+css).matchAll(/--([\w-]+)\s*:/g),match=>match[1]));
   const references=Array.from(css.matchAll(/var\(--([\w-]+)/g),match=>match[1]);
   expect(references.filter(name=>!definitions.has(name))).toEqual([]);

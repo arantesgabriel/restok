@@ -1,0 +1,13 @@
+{
+  "source": ".next/server/app/index.html",
+  "method": "Emitted production HTML inspection, not a browser session with JS disabled",
+  "singleH1": true,
+  "illustrativeLabel": true,
+  "priceVisible": true,
+  "faqPresent": true,
+  "historyPresent": true,
+  "anchorsResolved": true,
+  "disabledFieldsets": 5,
+  "nativeDetails": 13,
+  "noscriptBlocks": 3
+}
