@@ -1,0 +1,12 @@
+import { notFound, redirect } from "next/navigation";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
+import OnboardingPreview from "@/tests/e2e/pr10-onboarding-preview";
+export default async function Preview({searchParams}:{searchParams:Promise<{error?:string}>}) {
+  if(process.env.NODE_ENV !== "development") notFound();
+  const supabase=await getSupabaseServerClient();
+  if(!supabase) redirect("/login");
+  const {data:{user}}=await supabase.auth.getUser();
+  if(!user) redirect("/login");
+  const params=await searchParams;
+  return <OnboardingPreview failed={params.error === "1"}/>;
+}

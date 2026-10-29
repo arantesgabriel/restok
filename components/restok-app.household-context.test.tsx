@@ -1,5 +1,6 @@
 /** @vitest-environment happy-dom */
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { StrictMode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { RemoteContext } from "@/lib/supabase/data";
 import type { RestokState } from "@/lib/types";
@@ -38,6 +39,17 @@ beforeEach(() => {
 afterEach(() => { cleanup(); vi.restoreAllMocks(); localStorage.clear(); });
 
 describe("household boot and activation", () => {
+  it("consumes a one-use invite once when StrictMode restarts boot", async () => {
+    localStorage.setItem(preference(), "a");
+    remote.invite.mockResolvedValueOnce("b").mockResolvedValue(null);
+    window.history.replaceState(null, "", `/app?invite=${"b".repeat(36)}#home`);
+    render(<StrictMode><RestokApp /></StrictMode>);
+    await screen.findByRole("button", { name: "Editar Somente casa b" });
+    expect(remote.invite).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem(preference())).toBe("b");
+    expect(window.location.search).toBe("");
+    expect(screen.getAllByRole("status").some(node => /Convite aceito/.test(node.textContent ?? ""))).toBe(true);
+  });
   it("restores the second authorized household after a fresh mount without an invite", async () => {
     localStorage.setItem(preference(), "b");
     await open(); await home();

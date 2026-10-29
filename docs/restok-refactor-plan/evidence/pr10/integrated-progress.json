@@ -1,0 +1,20 @@
+{
+  "houseId": "8c4535dd-e835-4194-ae27-837342404983",
+  "houseCreated": true,
+  "inviteCreated": 4,
+  "guestJoinedThreeTimes": true,
+  "usedInviteRejected": true,
+  "rolePromotionAndDemotion": true,
+  "ownershipTransferredAndReturned": true,
+  "guestRemoved": true,
+  "guestLeftTwice": true,
+  "unusedInviteRevoked": true,
+  "activeInvitesRemaining": 0,
+  "profilesRestored": true,
+  "ownerVerifiedAfterFreshLogin": true,
+  "guestVerifiedAfterFreshLogin": true,
+  "keyboardEscapeReturnFocus": "Casas e pessoas trigger",
+  "inviteBootBug": "StrictMode consumed invite twice; regression test failed before correction and passed after. New real invitation accepted and selected correct house after correction.",
+  "sourceComparison": "Before: six widths, one owner and original name. After: six widths, two names80/prefix79 equal. Old80 comparison attempt not completed. Final production imports restored; no temporary route retained.",
+  "onboardingVisual": "Authenticated read-only composition on3001; six widths; no submissions. This is not a zero-membership integrated session."
+}

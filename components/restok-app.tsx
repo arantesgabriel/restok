@@ -5,8 +5,8 @@ import { HistoryDetail } from "@/components/history/history-detail";
 import { ProductsHome } from "@/components/products/products-home";
 import { ProductEditorSheet } from "@/components/products/product-editor-sheet";
 import { AppShell } from "@/components/app/app-shell";
-import { HouseholdManager } from "@/components/household-manager";
-import { HouseholdOnboarding } from "@/components/household-onboarding";
+import { HouseholdManager } from "@/components/households/household-manager";
+import { HouseholdOnboarding } from "@/components/households/household-onboarding";
 import { AddItemSheet } from "@/components/shopping/add-item-sheet";
 import { BudgetEditorSheet } from "@/components/shopping/budget-editor-sheet";
 import { CompleteSheet } from "@/components/shopping/complete-sheet";
@@ -156,6 +156,7 @@ export default function RestokApp() {
   const [snapshotFailed, setSnapshotFailed] = useState(false);
   const [revalidationVersion, setRevalidationVersion] = useState(0);
   const activeUserIdRef = useRef<string | null>(null);
+  const invitationBootRef = useRef<{ token: string; result: Promise<string | null> } | null>(null);
   const activeStorageKeyRef = useRef<string | null>(null);
   const writeOperationsRef = useRef<WriteOperation[]>([]);
   const writeChainsRef = useRef(new Map<string, Promise<RemoteWriteResult>>());
@@ -258,7 +259,11 @@ export default function RestokApp() {
     const boot = async () => {
       const params = new URLSearchParams(window.location.search);
       const invite = params.get("invite");
-      const acceptedHouseholdId = invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
+      // Reuse the pending result when React restarts this effect: invitations are single use.
+      if (invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured && invitationBootRef.current?.token !== invite) {
+        invitationBootRef.current = { token: invite, result: acceptHouseholdInvite(invite) };
+      }
+      const acceptedHouseholdId = invite && invitationBootRef.current?.token === invite ? await invitationBootRef.current.result : null;
       const inviteFailed = Boolean(invite && isSupabaseConfigured && !acceptedHouseholdId);
       if (invite || params.has("flow")) {
         const inviteUrl = new URL(window.location.href);

@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, PR10:** após entrega09, usuário determinou “inicie o pr10” e depois “prossiga de onde parou”. Autoriza somente Casas e pessoas/onboarding, com commit local separado e parada antes11. Autorizou explicitamente alterar temporariamente e restaurar os nomes das contas fictícias. Após rejeição automática de um convite por falta de autorização explícita nesta conversa, confirmou o gate integrado: criar/aceitar/reutilizar/revogar convites, promover/rebaixar, transferir propriedade, remover e sair **somente** com contas fictícias na casa `QA PR10 Casas e pessoas 2026-10-29`, ID `8c4535dd-e835-4194-ae27-837342404983`. Rejeição resolvida por essa autorização, sem contorno. Migrations/seed/reset, push/PR remoto/merge/deploy e alterações de acesso em casas preexistentes continuam não autorizados.
+
 - **29/10/2026, retomada PR09:** usuário pediu “de acordo com o arquivo abaixo, inicie apenas o PR 09”. Autoriza somente essa unidade local, subordinada ao tratamento do gate08. Em resposta à pergunta, escolheu **concluir o QA visual do PR08 antes do PR09**, sem adiamento. Determinou usar o app já ativo na porta **3001** e autorizou criar **uma casa fictícia isolada e produtos de teste somente nela**. Não amplia autorização para compras, convites, papéis, migrations/seed/reset ou casas preexistentes.
 - **Autorização adicional posterior09:** usuário autorizou criar e concluir até quatro compras fictícias somente na casa isolada `QA PR08 visual 2026-10-29`, para nomes longos, preço0, ausência de preço, quantidades e totais grandes. Também autorizou4173 restritamente para comparação anterior sem backend do gate08. Não autoriza PR10 nem novas alterações fora dessas casas/cenários.
 
@@ -30,12 +32,13 @@
 | PR03 | Concluído localmente | Checkpoint próprio, fundações isoladas |
 | PR04 | Implementado e commitado; gate de evidência reaberto | Gates funcionais verdes; falta vídeo novo e leitor real da fase2 |
 | PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
-| Bloco 3 (06–11) | Estratégia substituída por execução PR a PR | Limite vigente PR08; PR09 exige conferência e nova autorização |
+| Bloco 3 (06–11) | Estratégia substituída por execução PR a PR | Limite vigente PR10, autorizado especificamente; parar antes11 |
 | PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
 | PR07 | Concluído localmente com adiamento explícito de evidências | Checks/integração aprovados; vídeo/capturas restantes vinculados ao PR12 |
 | PR08 | Implementado; gate visual fechado na retomada | Commit ca8a1b7; evidências novas/QA em eb34201; release/hardware continuam próprios |
 | PR09 | Implementado e validado localmente |175 testes; lint/typecheck/build; navegador interno3001, vídeo/seek e seis dimensões finais; revisão humana pendente |
-| PR10–11 | Pendentes de autorização específica | Não iniciar automaticamente; usuário exige conferência PR a PR |
+| PR10 | Implementado e validado localmente; revisão humana pendente |192 testes/35 arquivos; lint/typecheck/build; seis larguras, vídeo/seek e integração isolada; limites no relatório14 |
+| PR11 | Pendente de autorização específica | Não iniciar automaticamente; usuário exige conferência PR a PR |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
@@ -195,3 +198,13 @@
 - Vídeo novo:100 aquisições sequenciais reais/~4,5s, mediana30ms/máximo48ms, container25fps sem interpolação. Cinco seeks40ms com MAE≤1,441 aprovados. Browser back/forward e retorno explícito confirmados por DOM/foco; zero/preço ausente, compra vazia, três estados e último item capturados. Originais JPEG preservados; PNGs são conversões sem nova aquisição. Instabilidades de acesso/viewport superadas com nova aba interna; não houve uso de desktop/browser externo.
 - Riscos/limites: antes limitado a uma dimensão real;100 compras apenas COMPONENT, integração visual usa três concluídas; novo empty de zero compras coberto em componente, screenshot vazio é anterior. Hardware, leitor real, zoom nativo, matriz de engines, concorrência e performance de campo continuam conforme06/PR12. Sem aceite global de acessibilidade/release. Alterações preexistentes novamente conferidas por SHA256; next-env restaurado somente após equivalência exata ao hash pré-buildB8B3…1000.
 - Relatório próprio: `13-PR09-REPORT.md`. Rollback reverte somente composição/consumidores09 como unidade, preservando registros e IDs. Encerrada a implementação autorizada; **não iniciar PR10 sem conferência e autorização específica**.
+
+## PR10: Casas e pessoas e onboarding, 29/10/2026
+
+- Autorização específica registrada acima. Reconstruídos manager/onboarding em components/households com tokens e primitivos existentes, identidade80 íntegra antes das ações, confirmações em sheet e retorno de foco. Papéis owner/admin/member e último owner preservados; falha mantém casa/erro e retry da criação reutiliza ID. Reexports nas entradas antigas; harnesses históricos preservam fontes anteriores, sem consumidor do produto apontando para tests.
+- Gate integrado revelou aceite duplo de convite no boot sob StrictMode: primeira execução consumia o token e era cancelada; segunda mostrava inválido e não priorizava a casa. Regressão reproduzida antes da correção e aprovada após compartilhar o resultado por token/montagem. Novo convite real aceito com mensagem correta e casa selecionada. Sem alteração de RPC/RLS/schema.
+- Checks novos finais: **192/192 testes em35 arquivos**,17 adicionais desde09; lint, typecheck sem incremental, build Webpack e diff-check aprovados. Slop-lint sem erro; faixa lateral sinaliza erro real. Arquivos preexistentes package/lock/tsconfig/next-env/seed com SHA256 preservados; next-env restaurado após build com igualdade exata.
+- Somente casa QA PR10 ID8c4535dd-e835-4194-ae27-837342404983: quatro convites (três usados/um revogado/zero ativos), promoção/rebaixamento, propriedade ida/volta, remoção e duas saídas voluntárias confirmadas. Duas contas fictícias; ambos os nomes temporários restaurados e confirmados em nova sessão. Conta inicial proprietária; participante sem vínculo QA ao final. Nenhuma membership de casa preexistente alterada. Rejeição automática inicial resolvida por autorização explícita do usuário, sem contorno.
+- Navegador interno3001: seis larguras CSS exatas para manager com nomes80/prefixo79 igual e para composição de onboarding, sem overflow. Antes disponível em seis larguras com uma pessoa/nome original; tentativa de antes80 não concluiu e import final foi restaurado. Onboarding foi composição autenticada somente leitura na mesma porta, sem submissão; rota temporária removida. Não representa sessão integrada sem memberships.
+- Vídeo novo120 aquisições sequenciais/~4,7s de cancelamento/confirmar revogação,25fps sem interpolação; cinco seeks40ms MAE≤1,517. Tokens ocultados antes de capturar. Escape/retorno ao seletor observado após fechamento. Inspeção visual focal320/1440 e confirmação390. Expirado/limite10/transporte/onboarding sem memberships cobertos em componente; leitor real, zoom nativo, hardware/engines/concorrência e release não declarados aprovados.
+- Relatório14-PR10-REPORT.md e evidence/pr10 registram cobertura, dados e limites. Rollback somente da unidade visual/boot e consumidores, preservando banco/IDs e arquivos do usuário. **Parar para conferência; PR11 exige autorização específica.**

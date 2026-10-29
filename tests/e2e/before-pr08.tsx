@@ -1,8 +1,8 @@
 "use client";
 
 import { AppShell } from "@/components/app/app-shell";
-import { HouseholdManager } from "@/components/household-manager";
-import { HouseholdOnboarding } from "@/components/household-onboarding";
+import { HouseholdManager } from "./before-pr10-manager";
+import { HouseholdOnboarding } from "./before-pr10-onboarding";
 import { AddItemSheet } from "@/components/shopping/add-item-sheet";
 import { BudgetEditorSheet } from "@/components/shopping/budget-editor-sheet";
 import { CompleteSheet } from "@/components/shopping/complete-sheet";
