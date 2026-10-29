@@ -633,7 +633,7 @@ export default function RestokApp() {
     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
   return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={()=>setHouseholdManagerOpen(true)} keyboardOpen={keyboardOpen}
     noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
-    feedback={toast && !keyboardOpen ? <ToastMessage inline key={toast} message={toast} onDismiss={()=>setToast(null)}/> : null}
+    feedback={toast ? <ToastMessage inline visuallyHidden={keyboardOpen} message={toast} onDismiss={()=>setToast(null)}/> : null}
     profile={<ActionMenu
           label={`Perfil de ${profileLabel}`}
 

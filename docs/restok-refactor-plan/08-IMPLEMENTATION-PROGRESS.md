@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, PR12–13:** usuário confirmou troca de senha, novo login e cadastro reais do PR11 e pediu “Implemente o PR 12 e 13”. Autoriza ambas as unidades locais, em sequência e commits separados; não autoriza PR14/15, push/merge/deploy ou banco. Confirmação de auth é relato do usuário; gates de reader/zoom/hardware e evidências adiadas não são dispensados implicitamente.
+
 - **29/10/2026, PR11:** usuário determinou “implemente o pr11”. Escopo local de conta/auth/perfil, mantendo a parada antes12. Informou uma caixa controlada para o gate de recuperação; após um pedido pelo formulário, autorizou consultar somente a chegada dessa mensagem no Gmail já aberto e usar seu link/código quando chegar. Isso não autoriza ler outros emails, alterar configurações de autenticação ou escolher/submeter senha em seu lugar. Nenhuma credencial foi alterada pelo agente.
 
 - **29/10/2026, PR10:** após entrega09, usuário determinou “inicie o pr10” e depois “prossiga de onde parou”. Autoriza somente Casas e pessoas/onboarding, com commit local separado e parada antes11. Autorizou explicitamente alterar temporariamente e restaurar os nomes das contas fictícias. Após rejeição automática de um convite por falta de autorização explícita nesta conversa, confirmou o gate integrado: criar/aceitar/reutilizar/revogar convites, promover/rebaixar, transferir propriedade, remover e sair **somente** com contas fictícias na casa `QA PR10 Casas e pessoas 2026-10-29`, ID `8c4535dd-e835-4194-ae27-837342404983`. Rejeição resolvida por essa autorização, sem contorno. Migrations/seed/reset, push/PR remoto/merge/deploy e alterações de acesso em casas preexistentes continuam não autorizados.
