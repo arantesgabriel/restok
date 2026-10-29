@@ -1,0 +1,12 @@
+[
+  {
+    "equalNormalized": true,
+    "source": "app/login/login-form.tsx",
+    "copy": "tests/e2e/before-pr11-login.tsx"
+  },
+  {
+    "equalNormalized": true,
+    "source": "app/reset-password/page.tsx",
+    "copy": "tests/e2e/before-pr11-reset.tsx"
+  }
+]

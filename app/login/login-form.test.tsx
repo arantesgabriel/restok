@@ -174,7 +174,7 @@ describe("login form", () => {
     fillCredentials();
     fireEvent.click(screen.getByRole("button", { name: "Criar conta" }));
 
-    expect(await screen.findByRole("heading", { name: "Quase lá." })).toBe(document.activeElement);
+    expect(await screen.findByRole("heading", { name: "Confira seu email" })).toBe(document.activeElement);
     expect(screen.getByText("Conta criada. Confirme seu email para continuar.")).toBeTruthy();
     expect(auth.signUp).toHaveBeenCalledWith({
       email: "casa@example.com",
@@ -213,7 +213,7 @@ describe("login form", () => {
     await waitFor(() => expect(screen.getByRole("alert").textContent).toBe(
       "Não foi possível criar a conta. Confira os dados ou tente entrar se já possui uma conta.",
     ));
-    expect(screen.getByRole("heading", { name: "Crie a conta da casa" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Crie sua conta" })).toBeTruthy();
   });
 
   it("asks for an email before sending a reset link", () => {
@@ -316,12 +316,12 @@ describe("login form", () => {
     fillCredentials();
     fireEvent.click(screen.getByRole("button", { name: "Entrar" }));
     await waitFor(() => expect(screen.getByRole("alert").textContent).toBe(
-      "Configure o Supabase para entrar com email e senha.",
+      "A autenticação está indisponível no momento. Tente novamente mais tarde.",
     ));
 
     fireEvent.change(emailInput(), { target: { value: "casa@example.com" } });
     fireEvent.click(screen.getByRole("button", { name: "Esqueceu a senha?" }));
-    expect(screen.getByRole("alert").textContent).toBe("Configure o Supabase para redefinir a senha.");
+    expect(screen.getByRole("alert").textContent).toBe("A autenticação está indisponível no momento. Tente novamente mais tarde.");
   });
 
   it("clears an auth error when switching between login and signup", async () => {
@@ -332,7 +332,7 @@ describe("login form", () => {
     await screen.findByRole("alert");
     fireEvent.click(screen.getByRole("button", { name: "Criar conta" }));
     expect(screen.queryByRole("alert")).toBeNull();
-    expect(screen.getByRole("heading", { name: "Crie a conta da casa" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Crie sua conta" })).toBeTruthy();
   });
 
   it("hydrates without the remembered email and restores it on the client", async () => {
@@ -357,8 +357,70 @@ describe("login form", () => {
 
   it("server-renders the login page without throwing", () => {
     const html = renderToString(createElement(LoginPage));
-    expect(html).toContain("login-page");
+    expect(html).toContain("Cada pessoa tem sua conta");
     expect(html).toContain("Entre na sua conta");
     expect(html).not.toContain("Experimentar com dados de exemplo");
+  });
+
+  it("describes individual accounts and reveals only the existing password field", () => {
+    render(<LoginForm />);
+    expect(document.body.textContent).not.toMatch(/email da casa|conta da casa|vocês se chamam/);
+    fillCredentials();
+    const toggle=screen.getByRole("button",{name:"Mostrar senha"});
+    expect(toggle.getAttribute("aria-controls")).toBe("password");
+    fireEvent.click(toggle);
+    expect(passwordInput().type).toBe("text");
+    expect(passwordInput().value).toBe("segredo");
+    fireEvent.click(screen.getByRole("button",{name:"Ocultar senha"}));
+    expect(passwordInput().type).toBe("password");
+  });
+
+  it("locks login, mode switching and recovery together during an auth request", async () => {
+    auth.signInWithPassword.mockImplementation(()=>new Promise(()=>{}));
+    render(<LoginForm />);fillCredentials();
+    const form=screen.getByRole("form",{name:"Entre na sua conta"});
+    fireEvent.submit(form);fireEvent.submit(form);
+    fireEvent.click(screen.getByRole("button",{name:"Criar conta"}));
+    fireEvent.click(screen.getByRole("button",{name:"Esqueceu a senha?"}));
+    expect(auth.signInWithPassword).toHaveBeenCalledTimes(1);
+    expect(auth.resetPasswordForEmail).not.toHaveBeenCalled();
+    expect(screen.getByRole("heading",{name:"Entre na sua conta"})).toBeTruthy();
+  });
+
+  it("does not sign in or switch mode while a recovery request is pending", () => {
+    auth.resetPasswordForEmail.mockImplementation(()=>new Promise(()=>{}));
+    render(<LoginForm />);fillCredentials();
+    fireEvent.click(screen.getByRole("button",{name:"Esqueceu a senha?"}));
+    fireEvent.submit(screen.getByRole("form",{name:"Entre na sua conta"}));
+    fireEvent.click(screen.getByRole("button",{name:"Criar conta"}));
+    expect(auth.signInWithPassword).not.toHaveBeenCalled();
+    expect(auth.resetPasswordForEmail).toHaveBeenCalledTimes(1);
+  });
+
+  it("requires a nonblank name and caps signup names at80", () => {
+    render(<LoginForm />);
+    fireEvent.click(screen.getByRole("button",{name:"Criar conta"}));
+    fireEvent.change(screen.getByLabelText("Seu nome"),{target:{value:"   "}});
+    fillCredentials();fireEvent.submit(screen.getByRole("form",{name:"Crie sua conta"}));
+    expect(screen.getByRole("alert").textContent).toContain("até 80");
+    expect((screen.getByLabelText("Seu nome") as HTMLInputElement).maxLength).toBe(80);
+    expect(auth.signUp).not.toHaveBeenCalled();
+  });
+
+  it("rejects a missing login session even without an SDK error", async () => {
+    auth.signInWithPassword.mockResolvedValue({data:{session:null},error:null});
+    render(<LoginForm />);fillCredentials();
+    fireEvent.click(screen.getByRole("button",{name:"Entrar"}));
+    const alert=await screen.findByRole("alert");
+    expect(alert.textContent).toBe(credentialError);
+    expect(document.activeElement).toBe(alert);
+    expect(push).not.toHaveBeenCalled();
+  });
+
+  it("rejects a malformed recovery email before contacting the service", () => {
+    render(<LoginForm />);fillCredentials("invalido");
+    fireEvent.click(screen.getByRole("button",{name:"Esqueceu a senha?"}));
+    expect(screen.getByRole("alert").textContent).toContain("email válido");
+    expect(auth.resetPasswordForEmail).not.toHaveBeenCalled();
   });
 });

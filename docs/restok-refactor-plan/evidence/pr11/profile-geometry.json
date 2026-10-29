@@ -1,0 +1,59 @@
+{
+  "measurements": [
+    {
+      "footer": {
+        "bottom": 640,
+        "top": 563
+      },
+      "height": 640,
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "footer": {
+        "bottom": 844,
+        "top": 767
+      },
+      "height": 844,
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "footer": {
+        "bottom": 684,
+        "top": 591
+      },
+      "height": 1024,
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "footer": {
+        "bottom": 556,
+        "top": 463
+      },
+      "height": 768,
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "footer": {
+        "bottom": 572,
+        "top": 479
+      },
+      "height": 800,
+      "overflow": false,
+      "width": 1280
+    },
+    {
+      "footer": {
+        "bottom": 622,
+        "top": 529
+      },
+      "height": 900,
+      "overflow": false,
+      "width": 1440
+    }
+  ],
+  "remoteNameChanged": false
+}

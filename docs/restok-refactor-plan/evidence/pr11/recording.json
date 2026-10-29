@@ -1,0 +1,624 @@
+{
+  "method": "Sequential internal-browser captures; actual local form interactions; no auth request or interpolated image",
+  "sourceDirectory": "docs/restok-refactor-plan/evidence/pr11/frames",
+  "frames": [
+    {
+      "file": "frame-0000.jpg",
+      "startMs": 0,
+      "endMs": 36
+    },
+    {
+      "file": "frame-0001.jpg",
+      "startMs": 36,
+      "endMs": 63
+    },
+    {
+      "file": "frame-0002.jpg",
+      "startMs": 63,
+      "endMs": 89
+    },
+    {
+      "file": "frame-0003.jpg",
+      "startMs": 89,
+      "endMs": 115
+    },
+    {
+      "file": "frame-0004.jpg",
+      "startMs": 115,
+      "endMs": 156
+    },
+    {
+      "file": "frame-0005.jpg",
+      "startMs": 156,
+      "endMs": 179
+    },
+    {
+      "file": "frame-0006.jpg",
+      "startMs": 179,
+      "endMs": 208
+    },
+    {
+      "file": "frame-0007.jpg",
+      "startMs": 208,
+      "endMs": 244
+    },
+    {
+      "file": "frame-0008.jpg",
+      "startMs": 244,
+      "endMs": 263
+    },
+    {
+      "file": "frame-0009.jpg",
+      "startMs": 263,
+      "endMs": 289
+    },
+    {
+      "file": "frame-0010.jpg",
+      "startMs": 289,
+      "endMs": 315
+    },
+    {
+      "file": "frame-0011.jpg",
+      "startMs": 315,
+      "endMs": 355
+    },
+    {
+      "file": "frame-0012.jpg",
+      "startMs": 355,
+      "endMs": 382
+    },
+    {
+      "file": "frame-0013.jpg",
+      "startMs": 382,
+      "endMs": 408
+    },
+    {
+      "file": "frame-0014.jpg",
+      "startMs": 408,
+      "endMs": 448
+    },
+    {
+      "file": "frame-0015.jpg",
+      "startMs": 729,
+      "endMs": 752
+    },
+    {
+      "file": "frame-0016.jpg",
+      "startMs": 752,
+      "endMs": 783
+    },
+    {
+      "file": "frame-0017.jpg",
+      "startMs": 783,
+      "endMs": 822
+    },
+    {
+      "file": "frame-0018.jpg",
+      "startMs": 822,
+      "endMs": 849
+    },
+    {
+      "file": "frame-0019.jpg",
+      "startMs": 849,
+      "endMs": 879
+    },
+    {
+      "file": "frame-0020.jpg",
+      "startMs": 879,
+      "endMs": 911
+    },
+    {
+      "file": "frame-0021.jpg",
+      "startMs": 911,
+      "endMs": 931
+    },
+    {
+      "file": "frame-0022.jpg",
+      "startMs": 931,
+      "endMs": 956
+    },
+    {
+      "file": "frame-0023.jpg",
+      "startMs": 956,
+      "endMs": 982
+    },
+    {
+      "file": "frame-0024.jpg",
+      "startMs": 982,
+      "endMs": 1022
+    },
+    {
+      "file": "frame-0025.jpg",
+      "startMs": 1022,
+      "endMs": 1048
+    },
+    {
+      "file": "frame-0026.jpg",
+      "startMs": 1048,
+      "endMs": 1089
+    },
+    {
+      "file": "frame-0027.jpg",
+      "startMs": 1089,
+      "endMs": 1116
+    },
+    {
+      "file": "frame-0028.jpg",
+      "startMs": 1116,
+      "endMs": 1157
+    },
+    {
+      "file": "frame-0029.jpg",
+      "startMs": 1157,
+      "endMs": 1182
+    },
+    {
+      "file": "frame-0030.jpg",
+      "startMs": 1182,
+      "endMs": 1223
+    },
+    {
+      "file": "frame-0031.jpg",
+      "startMs": 1223,
+      "endMs": 1243
+    },
+    {
+      "file": "frame-0032.jpg",
+      "startMs": 1243,
+      "endMs": 1263
+    },
+    {
+      "file": "frame-0033.jpg",
+      "startMs": 1263,
+      "endMs": 1286
+    },
+    {
+      "file": "frame-0034.jpg",
+      "startMs": 1286,
+      "endMs": 1315
+    },
+    {
+      "file": "frame-0035.jpg",
+      "startMs": 1315,
+      "endMs": 1356
+    },
+    {
+      "file": "frame-0036.jpg",
+      "startMs": 1356,
+      "endMs": 1377
+    },
+    {
+      "file": "frame-0037.jpg",
+      "startMs": 1377,
+      "endMs": 1397
+    },
+    {
+      "file": "frame-0038.jpg",
+      "startMs": 1397,
+      "endMs": 1422
+    },
+    {
+      "file": "frame-0039.jpg",
+      "startMs": 1422,
+      "endMs": 1444
+    },
+    {
+      "file": "frame-0040.jpg",
+      "startMs": 1444,
+      "endMs": 1464
+    },
+    {
+      "file": "frame-0041.jpg",
+      "startMs": 1464,
+      "endMs": 1489
+    },
+    {
+      "file": "frame-0042.jpg",
+      "startMs": 1489,
+      "endMs": 1511
+    },
+    {
+      "file": "frame-0043.jpg",
+      "startMs": 1511,
+      "endMs": 1537
+    },
+    {
+      "file": "frame-0044.jpg",
+      "startMs": 1537,
+      "endMs": 1557
+    },
+    {
+      "file": "frame-0045.jpg",
+      "startMs": 1828,
+      "endMs": 1849
+    },
+    {
+      "file": "frame-0046.jpg",
+      "startMs": 1849,
+      "endMs": 1889
+    },
+    {
+      "file": "frame-0047.jpg",
+      "startMs": 1889,
+      "endMs": 1914
+    },
+    {
+      "file": "frame-0048.jpg",
+      "startMs": 1914,
+      "endMs": 1942
+    },
+    {
+      "file": "frame-0049.jpg",
+      "startMs": 1942,
+      "endMs": 1974
+    },
+    {
+      "file": "frame-0050.jpg",
+      "startMs": 1974,
+      "endMs": 1995
+    },
+    {
+      "file": "frame-0051.jpg",
+      "startMs": 1995,
+      "endMs": 2023
+    },
+    {
+      "file": "frame-0052.jpg",
+      "startMs": 2023,
+      "endMs": 2048
+    },
+    {
+      "file": "frame-0053.jpg",
+      "startMs": 2048,
+      "endMs": 2089
+    },
+    {
+      "file": "frame-0054.jpg",
+      "startMs": 2089,
+      "endMs": 2112
+    },
+    {
+      "file": "frame-0055.jpg",
+      "startMs": 2112,
+      "endMs": 2131
+    },
+    {
+      "file": "frame-0056.jpg",
+      "startMs": 2131,
+      "endMs": 2156
+    },
+    {
+      "file": "frame-0057.jpg",
+      "startMs": 2156,
+      "endMs": 2180
+    },
+    {
+      "file": "frame-0058.jpg",
+      "startMs": 2180,
+      "endMs": 2223
+    },
+    {
+      "file": "frame-0059.jpg",
+      "startMs": 2223,
+      "endMs": 2249
+    },
+    {
+      "file": "frame-0060.jpg",
+      "startMs": 2249,
+      "endMs": 2290
+    },
+    {
+      "file": "frame-0061.jpg",
+      "startMs": 2290,
+      "endMs": 2315
+    },
+    {
+      "file": "frame-0062.jpg",
+      "startMs": 2315,
+      "endMs": 2349
+    },
+    {
+      "file": "frame-0063.jpg",
+      "startMs": 2349,
+      "endMs": 2383
+    },
+    {
+      "file": "frame-0064.jpg",
+      "startMs": 2383,
+      "endMs": 2423
+    },
+    {
+      "file": "frame-0065.jpg",
+      "startMs": 2423,
+      "endMs": 2449
+    },
+    {
+      "file": "frame-0066.jpg",
+      "startMs": 2449,
+      "endMs": 2489
+    },
+    {
+      "file": "frame-0067.jpg",
+      "startMs": 2489,
+      "endMs": 2516
+    },
+    {
+      "file": "frame-0068.jpg",
+      "startMs": 2516,
+      "endMs": 2557
+    },
+    {
+      "file": "frame-0069.jpg",
+      "startMs": 2557,
+      "endMs": 2582
+    },
+    {
+      "file": "frame-0070.jpg",
+      "startMs": 2855,
+      "endMs": 2890
+    },
+    {
+      "file": "frame-0071.jpg",
+      "startMs": 2890,
+      "endMs": 2916
+    },
+    {
+      "file": "frame-0072.jpg",
+      "startMs": 2916,
+      "endMs": 2959
+    },
+    {
+      "file": "frame-0073.jpg",
+      "startMs": 2959,
+      "endMs": 2983
+    },
+    {
+      "file": "frame-0074.jpg",
+      "startMs": 2983,
+      "endMs": 3020
+    },
+    {
+      "file": "frame-0075.jpg",
+      "startMs": 3020,
+      "endMs": 3045
+    },
+    {
+      "file": "frame-0076.jpg",
+      "startMs": 3045,
+      "endMs": 3065
+    },
+    {
+      "file": "frame-0077.jpg",
+      "startMs": 3065,
+      "endMs": 3089
+    },
+    {
+      "file": "frame-0078.jpg",
+      "startMs": 3089,
+      "endMs": 3116
+    },
+    {
+      "file": "frame-0079.jpg",
+      "startMs": 3116,
+      "endMs": 3157
+    },
+    {
+      "file": "frame-0080.jpg",
+      "startMs": 3157,
+      "endMs": 3183
+    },
+    {
+      "file": "frame-0081.jpg",
+      "startMs": 3183,
+      "endMs": 3220
+    },
+    {
+      "file": "frame-0082.jpg",
+      "startMs": 3220,
+      "endMs": 3250
+    },
+    {
+      "file": "frame-0083.jpg",
+      "startMs": 3250,
+      "endMs": 3290
+    },
+    {
+      "file": "frame-0084.jpg",
+      "startMs": 3290,
+      "endMs": 3316
+    },
+    {
+      "file": "frame-0085.jpg",
+      "startMs": 3316,
+      "endMs": 3356
+    },
+    {
+      "file": "frame-0086.jpg",
+      "startMs": 3356,
+      "endMs": 3382
+    },
+    {
+      "file": "frame-0087.jpg",
+      "startMs": 3382,
+      "endMs": 3422
+    },
+    {
+      "file": "frame-0088.jpg",
+      "startMs": 3422,
+      "endMs": 3450
+    },
+    {
+      "file": "frame-0089.jpg",
+      "startMs": 3450,
+      "endMs": 3476
+    },
+    {
+      "file": "frame-0090.jpg",
+      "startMs": 3476,
+      "endMs": 3503
+    },
+    {
+      "file": "frame-0091.jpg",
+      "startMs": 3503,
+      "endMs": 3526
+    },
+    {
+      "file": "frame-0092.jpg",
+      "startMs": 3526,
+      "endMs": 3556
+    },
+    {
+      "file": "frame-0093.jpg",
+      "startMs": 3556,
+      "endMs": 3583
+    },
+    {
+      "file": "frame-0094.jpg",
+      "startMs": 3583,
+      "endMs": 3624
+    },
+    {
+      "file": "frame-0095.jpg",
+      "startMs": 3898,
+      "endMs": 3919
+    },
+    {
+      "file": "frame-0096.jpg",
+      "startMs": 3919,
+      "endMs": 3952
+    },
+    {
+      "file": "frame-0097.jpg",
+      "startMs": 3952,
+      "endMs": 3998
+    },
+    {
+      "file": "frame-0098.jpg",
+      "startMs": 3998,
+      "endMs": 4022
+    },
+    {
+      "file": "frame-0099.jpg",
+      "startMs": 4022,
+      "endMs": 4049
+    },
+    {
+      "file": "frame-0100.jpg",
+      "startMs": 4049,
+      "endMs": 4089
+    },
+    {
+      "file": "frame-0101.jpg",
+      "startMs": 4089,
+      "endMs": 4116
+    },
+    {
+      "file": "frame-0102.jpg",
+      "startMs": 4116,
+      "endMs": 4157
+    },
+    {
+      "file": "frame-0103.jpg",
+      "startMs": 4157,
+      "endMs": 4196
+    },
+    {
+      "file": "frame-0104.jpg",
+      "startMs": 4196,
+      "endMs": 4222
+    },
+    {
+      "file": "frame-0105.jpg",
+      "startMs": 4222,
+      "endMs": 4249
+    },
+    {
+      "file": "frame-0106.jpg",
+      "startMs": 4249,
+      "endMs": 4289
+    },
+    {
+      "file": "frame-0107.jpg",
+      "startMs": 4289,
+      "endMs": 4316
+    },
+    {
+      "file": "frame-0108.jpg",
+      "startMs": 4316,
+      "endMs": 4352
+    },
+    {
+      "file": "frame-0109.jpg",
+      "startMs": 4352,
+      "endMs": 4382
+    },
+    {
+      "file": "frame-0110.jpg",
+      "startMs": 4382,
+      "endMs": 4424
+    },
+    {
+      "file": "frame-0111.jpg",
+      "startMs": 4424,
+      "endMs": 4449
+    },
+    {
+      "file": "frame-0112.jpg",
+      "startMs": 4449,
+      "endMs": 4490
+    },
+    {
+      "file": "frame-0113.jpg",
+      "startMs": 4490,
+      "endMs": 4516
+    },
+    {
+      "file": "frame-0114.jpg",
+      "startMs": 4516,
+      "endMs": 4556
+    },
+    {
+      "file": "frame-0115.jpg",
+      "startMs": 4556,
+      "endMs": 4580
+    },
+    {
+      "file": "frame-0116.jpg",
+      "startMs": 4580,
+      "endMs": 4609
+    },
+    {
+      "file": "frame-0117.jpg",
+      "startMs": 4609,
+      "endMs": 4644
+    },
+    {
+      "file": "frame-0118.jpg",
+      "startMs": 4644,
+      "endMs": 4664
+    },
+    {
+      "file": "frame-0119.jpg",
+      "startMs": 4664,
+      "endMs": 4690
+    }
+  ],
+  "actions": [
+    {
+      "atMs": 448,
+      "action": "abrir cadastro"
+    },
+    {
+      "atMs": 1557,
+      "action": "voltar ao login"
+    },
+    {
+      "atMs": 2582,
+      "action": "validar email malformado localmente"
+    },
+    {
+      "atMs": 3624,
+      "action": "abrir cadastro e limpar erro"
+    }
+  ]
+}

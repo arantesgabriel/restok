@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark } from "@/components/ui/brand-mark";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { RestokTheme } from "@/components/ui/theme";

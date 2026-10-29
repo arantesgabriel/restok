@@ -1,0 +1,32 @@
+[
+  {
+    "height": 640,
+    "overflow": false,
+    "width": 320
+  },
+  {
+    "height": 844,
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "height": 1024,
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "height": 768,
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "height": 800,
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "overflow": false,
+    "width": 1440
+  }
+]

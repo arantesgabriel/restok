@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { RestokTheme } from "@/components/ui/theme";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandMark } from "@/components/ui/brand-mark";
 import { HouseSwitcher } from "./house-switcher";
 import { Navigation, type AppScreen } from "./navigation";
 import styles from "./app-shell.module.css";

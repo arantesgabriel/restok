@@ -19,8 +19,7 @@ import { useShoppingView } from "@/components/shopping/use-shopping-view";
 import { ActionMenu } from "@/components/ui/action-menu";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Field } from "@/components/ui/field";
-import { Sheet } from "@/components/ui/sheet";
+import { ProfileEditorSheet } from "@/components/auth/profile-editor-sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SyncStatus } from "@/components/ui/sync-status";
 import { Toast as ToastMessage } from "@/components/ui/toast";
@@ -28,7 +27,7 @@ import { useDialogClose } from "@/components/ui/use-dialog-close";
 import { browserStorage,clearRemoteStateCaches,LEGACY_REMOTE_STATE_KEY,remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,persistProfileName,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
+import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
 import { subscribeToShoppingList,type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
 import { type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
 import {
@@ -75,29 +74,6 @@ function useCategoryNameSort(householdId: string | undefined) {
   };
 
   return { categorySort, toggleCategorySort };
-}
-
-function ProfileEditorSheet({ name, onClose, onSaved }: { name: string; onClose: () => boolean; onSaved: (name: string) => void }) {
-  const [value, setValue] = useState(name);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  return <Sheet title="Seu nome" description="Este nome identifica você para as pessoas da sua casa." onClose={onClose}>
-    <form className="space-y-4" onSubmit={async (event) => {
-      event.preventDefault();
-      if (busy) return;
-      if (!value.trim()) { setError("Informe seu nome."); return; }
-      setBusy(true); setError("");
-      try {
-        if (!await persistProfileName(value)) { setError("Não foi possível salvar seu nome. Tente novamente."); return; }
-        onSaved(value.trim()); onClose();
-      } catch { setError("Não foi possível salvar seu nome. Tente novamente."); }
-      finally { setBusy(false); }
-    }}>
-      <Field label="Seu nome" initialFocus required maxLength={80} autoComplete="name" value={value} onChange={(event) => setValue(event.target.value)} aria-invalid={Boolean(error)} aria-describedby={error ? "profile-name-error" : undefined}  />
-      {error ? <p id="profile-name-error" role="alert" className="text-sm text-terracotta">{error}</p> : null}
-      <Button type="submit" disabled={busy} className="w-full">{busy ? "Salvando…" : "Salvar nome"}</Button>
-    </form>
-  </Sheet>;
 }
 
 export default function RestokApp() {
