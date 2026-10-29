@@ -1,0 +1,40 @@
+{
+  "unit": "PR08",
+  "date": "2026-10-29",
+  "base": "d9b51b2",
+  "status": "implementation ready; visual acceptance blocked; awaiting user review",
+  "sourceFiles": [
+    "components/restok-app.tsx",
+    "components/restok-app.product-edit.test.tsx",
+    "components/products/product-editor-sheet.tsx",
+    "components/products/product-row.tsx",
+    "components/products/products-home.test.tsx",
+    "components/products/products-home.tsx",
+    "components/products/products.module.css",
+    "components/products/use-product-view.ts",
+    "tests/e2e/before-pr08.tsx",
+    "tests/e2e/entry.tsx",
+    "tests/e2e/fixtures.ts",
+    "docs/restok-refactor-plan/08-IMPLEMENTATION-PROGRESS.md",
+    "docs/restok-refactor-plan/11-BLOCK-3-REPORT.md",
+    "docs/restok-refactor-plan/12-PR08-REPORT.md"
+  ],
+  "checks": {
+    "tests": 160,
+    "testFiles": 33,
+    "newTests": 4,
+    "lint": "passed",
+    "typecheck": "passed on rerun; first run missing generated dev types",
+    "build": "passed webpack",
+    "diffCheck": "passed"
+  },
+  "controllerComparison": "saveProduct and toggleProduct unchanged against d9b51b2",
+  "beforeSourceSha256": "3fb258e2e10d257790e06025580f62c5094ed4262196d1b106545b9656e01c39",
+  "screenshots": [],
+  "videos": [],
+  "browserBlocker": "CUA initialization fails to write kernel assets: local path not found; no page accessed",
+  "deferredEvidenceAuthorized": false,
+  "remoteWrites": 0,
+  "newDependencies": 0,
+  "nextUnit": "PR09; requires explicit user review/authorization and decision on remaining PR08 gates"
+}

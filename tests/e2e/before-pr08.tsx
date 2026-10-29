@@ -1,0 +1,809 @@
+"use client";
+
+import { AppShell } from "@/components/app/app-shell";
+import { HouseholdManager } from "@/components/household-manager";
+import { HouseholdOnboarding } from "@/components/household-onboarding";
+import { AddItemSheet } from "@/components/shopping/add-item-sheet";
+import { BudgetEditorSheet } from "@/components/shopping/budget-editor-sheet";
+import { CompleteSheet } from "@/components/shopping/complete-sheet";
+import { ConfirmFinishSheet } from "@/components/shopping/confirm-finish-sheet";
+import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
+import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
+import { ShoppingDock } from "@/components/shopping/shopping-dock";
+import { ShoppingView } from "@/components/shopping/shopping-view";
+import { StatusBadge } from "@/components/shopping/status-toggle";
+import { useShoppingView } from "@/components/shopping/use-shopping-view";
+import { ActionMenu } from "@/components/ui/action-menu";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Field } from "@/components/ui/field";
+import { IconButton } from "@/components/ui/icon-button";
+import { OptionGroup } from "@/components/ui/option-group";
+import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
+import { Select } from "@/components/ui/select";
+import { Sheet } from "@/components/ui/sheet";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SyncStatus } from "@/components/ui/sync-status";
+import { Toast as ToastMessage } from "@/components/ui/toast";
+import { useDialogClose } from "@/components/ui/use-dialog-close";
+import { isValidQuantity } from "@/lib/quantity";
+import { browserStorage,clearRemoteStateCaches,LEGACY_REMOTE_STATE_KEY,remoteStateStorageKey } from "@/lib/supabase/cache";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,persistProfileName,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
+import { subscribeToShoppingList,type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
+import { CATEGORY_ORDER,type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
+import {
+categoryNameSortKey,
+cn,
+formatBRL,
+groupItems,
+itemSubtotal,
+latestPriceFor,
+listPending,
+listResolved,
+listTotal,
+makeId,
+monthLabel,
+nextSortOrder,
+readCategoryNameSorts,
+shortDate,
+sortByName,
+type NameSortDirection
+} from "@/lib/utils";
+import {
+ArrowDownAZ,
+ArrowDownZA,
+ArrowLeft,
+Check,
+ChevronDown,
+ChevronRight,
+House,
+ListFilter,
+LogOut,
+PackagePlus,
+Pencil,
+Plus,
+ShoppingBasket,
+Users,
+} from "lucide-react";
+import { useCallback,useEffect,useLayoutEffect,useRef,useState } from "react";
+
+type AppScreen = "shop" | "history" | "home";
+type ProductViewMode = "category" | "alphabetical";
+type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
+
+const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
+
+
+function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
+  const completed = lists.filter((list) => list.status === "completed").sort((left, right) =>
+    +new Date(right.finishedAt ?? right.startedAt) - +new Date(left.finishedAt ?? left.startedAt),
+  );
+  return <div className="space-y-6"><div><p className="text-sm font-semibold text-primary">O que já passou pelo caixa</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Histórico</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Preços anteriores ficam aqui para a próxima compra começar com contexto.</p></div>
+    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => {
+      const purchased = list.items.filter((item) => item.status === "purchased").length;
+      const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
+      const pending = list.items.filter((item) => item.status === "pending").length;
+      const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
+      return <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[108px] w-full items-center gap-3 py-3 text-left transition hover:bg-sage/35 sm:gap-4">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><ShoppingBasket size={20} /></span>
+        <span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span><span className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted"><span>{purchased} comprados</span><span>{alreadyHave} já tínhamos</span><span>{pending} pendentes</span></span>{withoutPrice ? <span className="mt-1 block text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado sem preço" : "comprados sem preço"}</span> : null}</span>
+        <span className="shrink-0 text-right"><span className="block text-[11px] text-muted">Total registrado</span><span className="mt-0.5 block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span></span><ChevronRight size={17} className="shrink-0 text-muted" />
+      </button>;
+    })}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
+  </div>;
+}
+
+function previousHistoryPrice(item: ShoppingItem, list: ShoppingList, lists: ShoppingList[]) {
+  if (!item.productId) return undefined;
+  const listDate = +new Date(list.finishedAt ?? list.startedAt);
+  const earlierLists = lists.filter((candidate) => candidate.status === "completed"
+    && candidate.id !== list.id
+    && +new Date(candidate.finishedAt ?? candidate.startedAt) < listDate);
+  return latestPriceFor(item.productId, earlierLists);
+}
+
+function HistoryPriceComparison({ item, previousPrice }: { item: ShoppingItem; previousPrice?: number }) {
+  if (item.status !== "purchased" || item.unitPrice === undefined || previousPrice === undefined) return null;
+  const difference = item.unitPrice - previousPrice;
+  if (Math.abs(difference) < 0.005) return <span className="text-xs text-muted">Mesmo preço que a compra anterior ({formatBRL(previousPrice)}/un.)</span>;
+  return <span className={cn("text-xs font-medium", difference > 0 ? "text-terracotta" : "text-primary")}>
+    {formatBRL(Math.abs(difference))} {difference > 0 ? "a mais" : "a menos"} por unidade que a compra anterior ({formatBRL(previousPrice)}/un.)
+  </span>;
+}
+
+function HistoryDetail({ list, lists, onBack }: { list: ShoppingList; lists: ShoppingList[]; onBack: () => void }) {
+  const groups = groupItems(list.items);
+  const purchased = list.items.filter((item) => item.status === "purchased").length;
+  const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
+  const pending = list.items.filter((item) => item.status === "pending").length;
+  const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
+  return <div className="space-y-6">
+    <button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button>
+    <div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 break-words text-[28px] font-semibold tracking-[-0.03em] text-ink">{list.name}</h1><p className="mt-2 text-sm text-muted">{list.items.length} itens nesta compra</p>
+      <dl className="mt-4 grid grid-cols-3 gap-2 text-center text-xs"><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Comprados</dt><dd className="mt-1 text-base font-semibold text-ink">{purchased}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Já tínhamos</dt><dd className="mt-1 text-base font-semibold text-ink">{alreadyHave}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Pendentes</dt><dd className="mt-1 text-base font-semibold text-ink">{pending}</dd></div></dl>
+      <div className="mt-4"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p><p className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p>{withoutPrice ? <p className="mt-1 text-sm text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}</div>
+    </div>
+    <div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-semibold text-ink">{category}</h2>{groups[category]?.map((item) => {
+      const previousPrice = previousHistoryPrice(item, list, lists);
+      return <div key={item.id} className="flex items-start gap-3 py-3">
+        <span className="min-w-0 flex-1"><span className="block break-words text-sm font-medium text-ink">{item.name}<span className="ml-2 text-xs font-normal text-muted">× {item.quantity}</span></span><span className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1"><StatusBadge status={item.status} />{item.status === "purchased" ? <HistoryPriceComparison item={item} previousPrice={previousPrice} /> : null}</span></span>
+        {item.status === "purchased" ? <span className="w-[92px] shrink-0 text-right text-sm font-semibold text-ink">{item.unitPrice !== undefined ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice !== undefined ? `${formatBRL(item.unitPrice)} / un.` : "sem preço"}</span></span> : null}
+      </div>;
+    })}</section> : null)}</div>
+  </div>;
+}
+
+function useCategoryNameSort(householdId: string | undefined) {
+  const [categorySort, setCategorySort] = useState<Partial<Record<CategoryName, NameSortDirection>>>({});
+
+  useLayoutEffect(() => {
+    if (!householdId) {
+      setCategorySort({});
+      return;
+    }
+    setCategorySort(readCategoryNameSorts(browserStorage.getItem(categoryNameSortKey(householdId))));
+  }, [householdId]);
+
+  const toggleCategorySort = (category: CategoryName) => {
+    setCategorySort((current) => {
+      const next = { ...current, [category]: (current[category] ?? "asc") === "asc" ? "desc" : "asc" } as Partial<Record<CategoryName, NameSortDirection>>;
+      if (householdId) browserStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
+      return next;
+    });
+  };
+
+  return { categorySort, toggleCategorySort };
+}
+
+function CategoryNameSortButton({ category, direction, onToggle }: { category: CategoryName; direction: NameSortDirection; onToggle: () => void }) {
+  const label = direction === "desc" ? "Z–A" : "A–Z";
+  return <button type="button" onClick={onToggle} aria-pressed={direction === "desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} className="inline-flex min-h-11 items-center gap-1 rounded-[7px] px-2 text-xs font-semibold text-muted transition hover:bg-sage hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{direction === "desc" ? <ArrowDownZA size={15} /> : <ArrowDownAZ size={15} />}{label}</button>;
+}
+
+function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
+  const action = product.active ? "Desativar" : "Ativar";
+  return <div className="flex min-h-[68px] items-center gap-3"><span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm", product.active ? "bg-sage text-primary" : "bg-surface text-muted")}><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" data-product-toggle-id={product.id} onClick={onToggle} className={cn("min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", product.active ? "text-muted hover:text-terracotta" : "text-primary hover:bg-sage")}>{action}<span className="sr-only"> {product.name}</span></button></div>;
+}
+
+function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
+  return <OptionGroup label={label} value={mode} onChange={onChange} options={[{value:"category",label:"Categoria"},{value:"alphabetical",label:"A–Z"}]}/>;
+}
+
+function ProductsHome({ products, lists, householdName, categorySort, onToggleCategorySort, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; categorySort: Partial<Record<CategoryName, NameSortDirection>>; onToggleCategorySort: (category: CategoryName) => void; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
+  const [viewMode, setViewMode] = useState<ProductViewMode>("category");
+  const active = products.filter((product) => product.active);
+  const inactive = sortByName(products.filter((product) => !product.active), "asc");
+  const sorted = sortByName(active, "asc");
+  const grouped = CATEGORY_ORDER.map((category) => {
+    const direction = categorySort[category] ?? "asc";
+    return { category, direction, products: sortByName(active.filter((product) => product.category === category), direction) };
+  }).filter((section) => section.products.length);
+
+  return <div className="space-y-7">
+    <div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
+    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
+    <div>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 data-products-heading tabIndex={-1} className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><ViewModeToggle mode={viewMode} onChange={setViewMode} label="Ordenar produtos" /><button type="button" className="min-h-11 rounded-md px-2 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>
+      {active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><div className="mb-2 flex items-center justify-between gap-3"><h3 className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><CategoryNameSortButton category={section.category} direction={section.direction} onToggle={() => onToggleCategorySort(section.category)} /></div><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description={inactive.length ? "Todos os produtos recorrentes estão inativos. Reative um item ou adicione um novo." : "Adicione os itens que não podem faltar em casa."} action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}
+    </div>
+    {inactive.length ? <details open={!active.length} className="border-t border-line pt-3">
+      <summary data-inactive-products-summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-md text-sm font-semibold text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden"><span>Produtos inativos <span className="ml-1 font-normal">{inactive.length}</span></span><ChevronDown size={17} className="shrink-0 transition-transform open:rotate-180" /></summary>
+      <div className="mt-2 divide-y divide-line border-y border-line">{inactive.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div>
+    </details> : null}
+  </div>;
+}
+
+function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; onClose: () => boolean; onSave: (product: Omit<Product, "id" | "active">, id?: string) => void }) {
+  const [name, setName] = useState(product?.name ?? "");
+  const [category, setCategory] = useState<CategoryName>(product?.category ?? "Alimentos");
+  const [quantity, setQuantity] = useState(product?.defaultQuantity ?? 1);
+  return <Sheet title={product ? "Editar produto" : "Novo produto da casa"} description="Mantenha a lista recorrente leve e útil." onClose={onClose}>
+    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim() && isValidQuantity(quantity) && onClose()) onSave({ name: name.trim(), category, defaultQuantity: quantity }, product?.id); }}>
+      <Field label="Nome" initialFocus required value={name} onChange={(event) => setName(event.target.value)}  placeholder="Ex.: Café" />
+      <Select label="Categoria" value={category} onChange={(event) => setCategory(event.target.value as CategoryName)}>{categoryOptions.map((option) => <option key={option}>{option}</option>)}</Select>
+      <label className="field-label">Quantidade padrão<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
+      <Button type="submit" className="w-full">Salvar produto <Check size={17} /></Button>
+    </form>
+  </Sheet>;
+}
+
+function ProfileEditorSheet({ name, onClose, onSaved }: { name: string; onClose: () => boolean; onSaved: (name: string) => void }) {
+  const [value, setValue] = useState(name);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  return <Sheet title="Seu nome" description="Este nome identifica você para as pessoas da sua casa." onClose={onClose}>
+    <form className="space-y-4" onSubmit={async (event) => {
+      event.preventDefault();
+      if (busy) return;
+      if (!value.trim()) { setError("Informe seu nome."); return; }
+      setBusy(true); setError("");
+      try {
+        if (!await persistProfileName(value)) { setError("Não foi possível salvar seu nome. Tente novamente."); return; }
+        onSaved(value.trim()); onClose();
+      } catch { setError("Não foi possível salvar seu nome. Tente novamente."); }
+      finally { setBusy(false); }
+    }}>
+      <Field label="Seu nome" initialFocus required maxLength={80} autoComplete="name" value={value} onChange={(event) => setValue(event.target.value)} aria-invalid={Boolean(error)} aria-describedby={error ? "profile-name-error" : undefined}  />
+      {error ? <p id="profile-name-error" role="alert" className="text-sm text-terracotta">{error}</p> : null}
+      <Button type="submit" disabled={busy} className="w-full">{busy ? "Salvando…" : "Salvar nome"}</Button>
+    </form>
+  </Sheet>;
+}
+
+export default function RestokApp() {
+  const [state, setState] = useState<RestokState>({ products: [], lists: [] });
+  const [hydrated, setHydrated] = useState(false);
+  const [storageKey, setStorageKey] = useState<string | null>(null);
+  const [syncWarning, setSyncWarning] = useState<string | null>(null);
+  const [households, setHouseholds] = useState<HouseholdSummary[]>([]);
+  const [activeHousehold, setActiveHousehold] = useState<HouseholdSummary | null>(null);
+  const { categorySort, toggleCategorySort } = useCategoryNameSort(activeHousehold?.id);
+  const [profileName, setProfileName] = useState<string | null>(null);
+  const [profileEditorOpen, setProfileEditorOpen] = useState(false);
+  const [profileEmail, setProfileEmail] = useState<string | null>(null);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [onboarding, setOnboarding] = useState(false);
+  const [onboardingInvite, setOnboardingInvite] = useState("");
+  const [onboardingInviteFailed, setOnboardingInviteFailed] = useState(false);
+  const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
+  const [screen, updateScreen] = useState<AppScreen>("shop");
+  const setScreen = (next: AppScreen) => {
+    if (window.location.hash !== `#${next}`) window.history.pushState(window.history.state, "", `#${next}`);
+    updateScreen(next);
+  };
+  useEffect(() => {
+    const restore = () => {
+      const [section, id] = window.location.hash.slice(1).split("/");
+      updateScreen(section === "home" || section === "history" ? section : "shop");
+      setHistoryDetailId(section === "history" && id ? id : null);
+    };
+    restore();
+    window.addEventListener("popstate", restore);
+    window.addEventListener("hashchange", restore);
+    return () => { window.removeEventListener("popstate", restore); window.removeEventListener("hashchange", restore); };
+  }, []);
+  const [activeListId, setActiveListId] = useState("");
+  const [historyDetailId, setHistoryDetailId] = useState<string | null>(null);
+  const historyDetail = state.lists.find((list) => list.id === historyDetailId) ?? null;
+  const setHistoryDetail = (list: ShoppingList | null) => {
+    setHistoryDetailId(list?.id ?? null);
+    if (list) { updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
+  };
+  const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
+  const [addItemOpen, setAddItemOpen] = useState(false);
+  const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
+  const [finishOpen, setFinishOpen] = useState(false);
+  const [budgetEditor, setBudgetEditor] = useState<ShoppingList | null>(null);
+  const [completeList, setCompleteList] = useState<ShoppingList | null>(null);
+  const [finishResult, setFinishResult] = useState<ShoppingList | null>(null);
+  const [productEditor, setProductEditor] = useState<Product | "new" | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
+  const [writeOperations, setWriteOperations] = useState<WriteOperation[]>([]);
+  const [realtimeStatus, setRealtimeStatus] = useState<RealtimeConnectionStatus>("connecting");
+  const [isOnline, setIsOnline] = useState(true);
+  const [snapshotFailed, setSnapshotFailed] = useState(false);
+  const [revalidationVersion, setRevalidationVersion] = useState(0);
+  const activeUserIdRef = useRef<string | null>(null);
+  const activeStorageKeyRef = useRef<string | null>(null);
+  const writeOperationsRef = useRef<WriteOperation[]>([]);
+  const writeChainsRef = useRef(new Map<string, Promise<RemoteWriteResult>>());
+  const writeVersionsRef = useRef(new Map<string, string>());
+  const needsRevalidationRef = useRef(false);
+  const revalidationInFlightRef = useRef(false);
+  const revalidationRetryDelayRef = useRef(2000);
+  const revalidationDebounceRef = useRef<number | undefined>(undefined);
+  const purchaseResultsRef = useRef<HTMLDivElement>(null);
+
+  const requestRemoteRevalidation = useCallback(() => {
+    needsRevalidationRef.current = true;
+    if (revalidationInFlightRef.current) return;
+    if (revalidationDebounceRef.current !== undefined) window.clearTimeout(revalidationDebounceRef.current);
+    revalidationDebounceRef.current = window.setTimeout(() => {
+      revalidationDebounceRef.current = undefined;
+      setRevalidationVersion((version) => version + 1);
+    }, 120);
+  }, []);
+
+  const requestSheetClose = useDialogClose();
+
+  useEffect(() => {
+    if (finishOpen || !finishResult) return;
+    setCompleteList(finishResult);
+    setFinishResult(null);
+  }, [finishOpen, finishResult]);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const updateKeyboardState = () => {
+      const focused = document.activeElement;
+      const editing = focused instanceof HTMLElement && focused.matches("input, textarea, select, [contenteditable='true']");
+      setKeyboardOpen(Boolean(editing && window.innerHeight - viewport.height - viewport.offsetTop > 140));
+    };
+    const updateAfterFocus = () => window.requestAnimationFrame(updateKeyboardState);
+    viewport.addEventListener("resize", updateKeyboardState);
+    viewport.addEventListener("scroll", updateKeyboardState);
+    window.addEventListener("resize", updateKeyboardState);
+    document.addEventListener("focusin", updateKeyboardState);
+    document.addEventListener("focusout", updateAfterFocus);
+    updateKeyboardState();
+    return () => {
+      viewport.removeEventListener("resize", updateKeyboardState);
+      viewport.removeEventListener("scroll", updateKeyboardState);
+      window.removeEventListener("resize", updateKeyboardState);
+      document.removeEventListener("focusin", updateKeyboardState);
+      document.removeEventListener("focusout", updateAfterFocus);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const client = getSupabaseBrowserClient();
+    if (!client) return;
+
+    const { data: { subscription } } = client.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+        browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+        activeUserIdRef.current = null;
+        activeStorageKeyRef.current = null;
+        setStorageKey(null);
+        setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
+        setProfileName(null);
+        setProfileEmail(null);
+        setOnboarding(false);
+        setHouseholdManagerOpen(false);
+        setHydrated(false);
+        setSyncWarning(null);
+        window.location.assign("/login");
+        return;
+      }
+
+      const nextUserId = session?.user.id;
+      if (event === "SIGNED_IN" && nextUserId && activeUserIdRef.current && nextUserId !== activeUserIdRef.current) {
+        clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+        activeUserIdRef.current = null;
+        activeStorageKeyRef.current = null;
+        setStorageKey(null);
+        setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
+        setProfileName(null);
+        setProfileEmail(null);
+        setHouseholdManagerOpen(false);
+        setHydrated(false);
+        window.location.reload();
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [hydrated]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const boot = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const invite = params.get("invite");
+      const acceptedHouseholdId = invite && /^[a-f0-9]{36}$/i.test(invite) && isSupabaseConfigured ? await acceptHouseholdInvite(invite) : null;
+      const inviteFailed = Boolean(invite && isSupabaseConfigured && !acceptedHouseholdId);
+      if (invite || params.has("flow")) {
+        const inviteUrl = new URL(window.location.href);
+        inviteUrl.searchParams.delete("invite");
+        inviteUrl.searchParams.delete("flow");
+        window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
+      }
+
+      const context = await resolveRemoteContext(acceptedHouseholdId ?? undefined);
+      if (cancelled) return;
+      if (!context) {
+        const [availableHouseholds, identity] = await Promise.all([loadUserHouseholds(), loadCurrentProfile()]);
+        if (cancelled) return;
+        if (identity && availableHouseholds?.length === 0) {
+          setState({ products: [], lists: [] });
+          setHouseholds([]);
+          setActiveHousehold(null);
+          setProfileName(identity.displayName);
+          setProfileEmail(identity.email);
+          setOnboardingInvite(inviteFailed ? invite ?? "" : "");
+          setOnboardingInviteFailed(inviteFailed);
+          setOnboarding(true);
+          setStorageKey(null);
+          setSyncWarning(null);
+          setHydrated(true);
+          return;
+        }
+        setState({ products: [], lists: [] });
+        setHouseholds([]);
+        setActiveHousehold(null);
+        setOnboarding(false);
+        setStorageKey(null);
+        setSyncWarning("Não foi possível validar sua sessão e carregar os dados da casa. Entre novamente.");
+        setHydrated(true);
+        if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
+        return;
+      }
+
+      activeUserIdRef.current = context.userId;
+      setProfileName(context.profileName);
+      setProfileEmail(context.email);
+      setOnboarding(false);
+      const previouslySelectedHouseholdId = browserStorage.getItem(activeHouseholdStorageKey(context.userId));
+      const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
+      activeStorageKeyRef.current = scopedKey;
+      setStorageKey(scopedKey);
+      browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+
+      let cached: RestokState | null = null;
+      try {
+        const stored = browserStorage.getItem(scopedKey);
+        if (stored) {
+          cached = JSON.parse(stored) as RestokState;
+          setState(cached);
+          setActiveListId(cached.lists.find((list) => list.status === "active")?.id ?? "");
+        }
+      } catch { /* invalid scoped cache is ignored and replaced by remote state */ }
+
+      const remote = await loadRemoteState(context).catch(() => null);
+      const availableHouseholds = await loadUserHouseholds();
+      if (cancelled) return;
+      const activeSummary = availableHouseholds?.find((household) => household.id === context.householdId) ?? {
+        id: context.householdId,
+        name: context.householdName,
+        role: context.role,
+        createdAt: new Date().toISOString(),
+      };
+      if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId && availableHouseholds && !availableHouseholds.some((household) => household.id === previouslySelectedHouseholdId)) {
+        browserStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
+      }
+      browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+      setHouseholds(availableHouseholds ?? [activeSummary]);
+      setActiveHousehold(activeSummary);
+      if (remote && remote.userId === context.userId && remote.householdId === context.householdId) {
+        setState(remote.state);
+        setActiveListId(remote.state.lists.find((list) => list.status === "active")?.id ?? "");
+        setSyncWarning(null);
+      } else if (cached) {
+        setSyncWarning("Sem conexão com o servidor. Exibindo o cache salvo desta casa.");
+      } else {
+        setState({ products: [], lists: [] });
+        setSyncWarning("Não foi possível carregar os dados da casa. Verifique a conexão e tente novamente.");
+      }
+      setHydrated(true);
+      if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
+      else if (acceptedHouseholdId) setToast("Convite aceito. Esta casa está selecionada.");
+      else if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId) setToast(`A casa selecionada não está mais disponível. Mostrando ${context.householdName}.`);
+    };
+    void boot().catch(() => {
+      if (cancelled) return;
+      setState({ products: [], lists: [] });
+      setHouseholds([]);
+      setActiveHousehold(null);
+      setStorageKey(null);
+      setOnboarding(false);
+      setSyncWarning("Não foi possível carregar os dados da casa. Verifique sua conexão e tente novamente.");
+      setHydrated(true);
+    });
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (hydrated && storageKey) browserStorage.setItem(storageKey, JSON.stringify(state));
+  }, [state, hydrated, storageKey]);
+
+  useEffect(() => { writeOperationsRef.current = writeOperations; }, [writeOperations]);
+
+  useEffect(() => {
+    setIsOnline(window.navigator.onLine);
+    const onOffline = () => setIsOnline(false);
+    const onOnline = () => {
+      setIsOnline(true);
+      window.setTimeout(() => {
+        for (const operation of writeOperationsRef.current) {
+          if (operation.status === "failed") operation.retry();
+        }
+        requestRemoteRevalidation();
+      }, 400);
+    };
+    window.addEventListener("offline", onOffline);
+    window.addEventListener("online", onOnline);
+    return () => {
+      window.removeEventListener("offline", onOffline);
+      window.removeEventListener("online", onOnline);
+    };
+  }, [requestRemoteRevalidation]);
+
+  const activeList = state.lists.find((list) => list.id === activeListId && list.status === "active") ?? state.lists.find((list) => list.status === "active") ?? null;
+  const shoppingView = useShoppingView(activeList);
+  const { setQuery, setFilter } = shoppingView;
+  const resolved = activeList ? listResolved(activeList) : 0;
+  const pending = activeList ? listPending(activeList) : 0;
+  const showPendingItems = () => {
+    setQuery("");
+    setFilter("pending");
+    purchaseResultsRef.current?.scrollIntoView?.({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  };
+  const activeHouseholdId = activeHousehold?.id;
+  const realtimeListId = activeList?.id;
+
+  const runRemoteWrite = (key: string, label: string, write: () => Promise<RemoteWriteResult>, onSuccess?: () => void) => {
+    const token = makeId("write");
+    writeVersionsRef.current.set(key, token);
+    const retry = () => runRemoteWrite(key, label, write, onSuccess);
+    setWriteOperations((current) => [
+      ...current.filter((operation) => operation.key !== key),
+      { key, token, label, status: "pending", retry },
+    ]);
+
+    const previous = writeChainsRef.current.get(key) ?? Promise.resolve({ ok: true, synced: true } as const);
+    const task = previous.then(() => !isSupabaseConfigured ? ({ ok: false, message: "O servidor está indisponível." } as const) : window.navigator.onLine ? write() : ({ ok: false, message: "Sem conexão com a internet." } as const)).catch(() => ({ ok: false, message: "Não foi possível sincronizar esta alteração." } as const));
+    writeChainsRef.current.set(key, task);
+    void task.then((result) => {
+      if (writeVersionsRef.current.get(key) !== token) return;
+      writeChainsRef.current.delete(key);
+      if (result.ok && result.synced) {
+        writeVersionsRef.current.delete(key);
+        setWriteOperations((current) => current.filter((operation) => operation.token !== token));
+        setToast(label);
+        onSuccess?.();
+        requestRemoteRevalidation();
+      } else {
+        setWriteOperations((current) => current.map((operation) => operation.token === token ? { ...operation, status: "failed" } : operation));
+        const message = result.ok ? "O servidor ainda não confirmou esta alteração." : result.message;
+        setToast(`${message} A alteração ficou neste aparelho; tente novamente.`);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (!isSupabaseConfigured || !activeHouseholdId) {
+      setRealtimeStatus("disconnected");
+      return;
+    }
+    return subscribeToShoppingList(realtimeListId, activeHouseholdId, {
+      onItemChange: requestRemoteRevalidation,
+      onDomainChange: requestRemoteRevalidation,
+      onStatus: (status) => {
+        setRealtimeStatus(status);
+        if (status === "connected" || status === "reconnecting") requestRemoteRevalidation();
+      },
+    });
+  }, [activeHouseholdId, realtimeListId, requestRemoteRevalidation]);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured || !isOnline || !activeHouseholdId || writeOperations.length || !needsRevalidationRef.current || revalidationInFlightRef.current) return;
+    needsRevalidationRef.current = false;
+    revalidationInFlightRef.current = true;
+    let cancelled = false;
+    let retryTimer: number | undefined;
+    const refresh = async () => {
+      const context = await resolveRemoteContext(activeHouseholdId).catch(() => null);
+      const remote = context ? await loadRemoteState(context).catch(() => null) : null;
+      if (cancelled) return;
+      if (!remote || remote.householdId !== activeHouseholdId) {
+        needsRevalidationRef.current = true;
+        setSnapshotFailed(true);
+        if (window.navigator.onLine) {
+          const delay = revalidationRetryDelayRef.current;
+          revalidationRetryDelayRef.current = Math.min(delay * 2, 30000);
+          retryTimer = window.setTimeout(() => setRevalidationVersion((version) => version + 1), delay);
+        }
+      } else {
+        setSnapshotFailed(false);
+        revalidationRetryDelayRef.current = 2000;
+        setState((current) => JSON.stringify(current) === JSON.stringify(remote.state) ? current : remote.state);
+      }
+      revalidationInFlightRef.current = false;
+      if (needsRevalidationRef.current && remote) setRevalidationVersion((version) => version + 1);
+    };
+    void refresh();
+    return () => {
+      cancelled = true;
+      revalidationInFlightRef.current = false;
+      needsRevalidationRef.current = true;
+      if (retryTimer !== undefined) window.clearTimeout(retryTimer);
+    };
+  }, [activeHouseholdId, isOnline, revalidationVersion, writeOperations.length]);
+
+  const updateActiveItems = (updater: (items: ShoppingItem[]) => ShoppingItem[]) => {
+    if (!activeList) return null;
+    const updated = { ...activeList, items: updater(activeList.items) };
+    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? updated : list) }));
+    return updated;
+  };
+
+  const persistUpdatedList = (list: ShoppingList, label: string) => {
+    runRemoteWrite(`list:${list.id}`, label, () => persistList(list, activeHouseholdId));
+  };
+
+  const saveItem = (item: ShoppingItem) => {
+    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? item : current));
+    if (updated) persistUpdatedList(updated, item.status === "purchased" ? "Item adicionado ao carrinho" : "Item atualizado");
+  };
+
+  const setItemStatus = (item: ShoppingItem, status: ItemStatus) => {
+    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status, unitPrice: status === "purchased" ? current.unitPrice : undefined } : current));
+    if (updated) persistUpdatedList(updated, status === "already_have" ? "Marcado como já temos" : status === "purchased" ? "Adicionado ao carrinho" : "Situação desfeita");
+  };
+  const addItem = (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => {
+    const productId = addToHome ? makeId("product") : undefined;
+    const newItem = { ...item, id: makeId("item"), sortOrder: nextSortOrder(activeList?.items ?? []), ...(productId ? { productId } : {}) };
+    const updated = updateActiveItems((items) => [...items, newItem]);
+    if (!updated) return;
+    const newProduct = addToHome && productId ? { id: productId, name: item.name, category: item.category, defaultQuantity: item.quantity, active: true } : null;
+    if (newProduct) setState((current) => ({ ...current, products: [...current.products, newProduct] }));
+    runRemoteWrite(`list:${updated.id}`, "Item adicionado à compra", async () => {
+      if (newProduct) {
+        const productResult = await persistProduct(newProduct, activeHouseholdId);
+        if (!productResult.ok) return productResult;
+      }
+      return persistList(updated, activeHouseholdId);
+    });
+  };
+  const createPurchase = (name: string, budget: number, selectedIds: string[]) => {
+    const items: ShoppingItem[] = state.products.filter((product) => selectedIds.includes(product.id)).map((product, index) => ({ id: makeId("item"), productId: product.id, name: product.name, category: product.category, quantity: product.defaultQuantity, status: "pending", sortOrder: index }));
+    const list: ShoppingList = { id: makeId("list"), name, budget, status: "active", startedAt: new Date().toISOString(), items };
+    const completedAt = new Date().toISOString();
+    setState((current) => ({ ...current, lists: [list, ...current.lists.map((currentList): ShoppingList => currentList.status === "active" ? { ...currentList, status: "completed", finishedAt: completedAt } : currentList)] }));
+    setActiveListId(list.id); setScreen("shop"); setQuery(""); setFilter("all");
+    runRemoteWrite(`list:${list.id}`, "Nova compra pronta", () => createShoppingListWithItems(list, activeHouseholdId));
+  };
+  const finishPurchase = () => {
+    if (!activeList) return;
+    const finished = { ...activeList, status: "completed" as const, finishedAt: new Date().toISOString() };
+    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? finished : list) }));
+    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistList(finished, activeHouseholdId), () => setFinishResult(finished));
+  };
+  const saveBudget = (budget: number) => {
+    if (!budgetEditor) return;
+    const updated = { ...budgetEditor, budget };
+    setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === updated.id ? updated : list) }));
+    persistUpdatedList(updated, "Meta da compra atualizada");
+  };
+  const saveProduct = (product: Omit<Product, "id" | "active">, id?: string) => {
+    const savedProduct: Product = id ? { ...state.products.find((item) => item.id === id)!, ...product, id, active: state.products.find((item) => item.id === id)?.active ?? true } : { ...product, id: makeId("product"), active: true };
+    setState((current) => ({ ...current, products: id ? current.products.map((item) => item.id === id ? savedProduct : item) : [...current.products, savedProduct] }));
+    runRemoteWrite(`product:${savedProduct.id}`, id ? "Produto atualizado" : "Produto adicionado à casa", () => persistProduct(savedProduct, activeHouseholdId));
+  };
+  const toggleProduct = (id: string) => {
+    const product = state.products.find((item) => item.id === id);
+    if (!product) return;
+    const focusedToggle = document.activeElement instanceof HTMLElement && document.activeElement.dataset.productToggleId === id;
+    const updated = { ...product, active: !product.active };
+    setState((current) => ({ ...current, products: current.products.map((item) => item.id === id ? updated : item) }));
+    if (focusedToggle) window.requestAnimationFrame(() => {
+      const productToggles = [...document.querySelectorAll<HTMLButtonElement>("[data-product-toggle-id]")];
+      const nextToggle = productToggles.find((button) => button.dataset.productToggleId === id);
+      const destination = updated.active ? nextToggle : document.querySelector<HTMLElement>("[data-inactive-products-summary]");
+      (destination ?? document.querySelector<HTMLElement>("[data-products-heading]"))?.focus();
+    });
+    runRemoteWrite(`product:${updated.id}`, updated.active ? "Produto ativado" : "Produto desativado", () => persistProduct(updated, activeHouseholdId));
+  };
+  const activateHousehold = async (householdId: string) => {
+    if (!isSupabaseConfigured) return false;
+    const context = await resolveRemoteContext(householdId).catch(() => null);
+    if (!context || context.householdId !== householdId) {
+      setToast("Você não tem acesso a essa casa.");
+      return false;
+    }
+    const remote = await loadRemoteState(context).catch(() => null);
+    if (!remote || remote.householdId !== householdId || remote.userId !== context.userId) {
+      setToast("Não foi possível carregar essa casa. A casa atual continua selecionada.");
+      return false;
+    }
+
+    const availableHouseholds = await loadUserHouseholds().catch(() => null);
+    const summary = availableHouseholds?.find((household) => household.id === householdId) ?? {
+      id: context.householdId,
+      name: context.householdName,
+      role: context.role,
+      createdAt: new Date().toISOString(),
+    };
+    browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+    activeUserIdRef.current = context.userId;
+    const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
+    activeStorageKeyRef.current = scopedKey;
+    setStorageKey(scopedKey);
+    setHouseholds(availableHouseholds ?? [summary]);
+    setActiveHousehold(summary);
+    setProfileName(context.profileName);
+    setProfileEmail(context.email);
+    setState(remote.state);
+    setActiveListId(remote.state.lists.find((list) => list.status === "active")?.id ?? "");
+    setHistoryDetail(null);
+    setQuery("");
+    setFilter("all");
+    setSyncWarning(null);
+    setHydrated(true);
+    setOnboarding(false);
+    setOnboardingInvite("");
+    setOnboardingInviteFailed(false);
+    return true;
+  };
+  const refreshMemberships = async () => {
+    if (!isSupabaseConfigured) return;
+    const availableHouseholds = await loadUserHouseholds().catch(() => null);
+    if (!availableHouseholds) {
+      setToast("Não foi possível atualizar a lista de casas.");
+      return;
+    }
+    setHouseholds(availableHouseholds);
+    if (activeHousehold && availableHouseholds.some((household) => household.id === activeHousehold.id)) {
+      setActiveHousehold(availableHouseholds.find((household) => household.id === activeHousehold.id)!);
+      return;
+    }
+    if (activeHousehold && activeUserIdRef.current) {
+      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+    }
+    if (availableHouseholds.length) {
+      await activateHousehold(availableHouseholds[0].id);
+      return;
+    }
+    if (activeHousehold && activeUserIdRef.current) {
+      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+    }
+    const identity = await loadCurrentProfile().catch(() => null);
+    setProfileName(identity?.displayName ?? null);
+    setProfileEmail(identity?.email ?? null);
+    setActiveHousehold(null);
+    setState({ products: [], lists: [] });
+    setActiveListId("");
+    setStorageKey(null);
+    setOnboarding(true);
+  };
+  const signOut = async () => {
+    const client = getSupabaseBrowserClient();
+    if (!client) return;
+    try {
+      const { error } = await client.auth.signOut();
+      if (error) {
+        setToast("Não foi possível encerrar a sessão. Tente novamente.");
+        return;
+      }
+    } catch {
+      setToast("Não foi possível encerrar a sessão. Tente novamente.");
+      return;
+    }
+
+    if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+    browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+    activeUserIdRef.current = null;
+    activeStorageKeyRef.current = null;
+    setStorageKey(null);
+    window.location.replace("/login");
+  };
+
+    const profileLabel = profileName || profileEmail || "Conta";
+    const profileInitials = profileName?.trim().split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("pt-BR") || profileEmail?.[0]?.toLocaleUpperCase("pt-BR") || "C";
+    if (!hydrated) return <main className="mx-auto max-w-lg px-5"><Skeleton label="Carregando seus dados…" rows={4}/></main>;
+    if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
+  return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={()=>setHouseholdManagerOpen(true)} keyboardOpen={keyboardOpen}
+    noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
+    feedback={toast && !keyboardOpen ? <ToastMessage inline key={toast} message={toast} onDismiss={()=>setToast(null)}/> : null}
+    profile={<ActionMenu
+          label={`Perfil de ${profileLabel}`}
+
+          items={[
+            { label: "Editar meu nome", icon: <Pencil size={16} />, onSelect: () => setProfileEditorOpen(true) },
+            { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
+            { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
+          ]}
+        >{profileInitials}</ActionMenu>}
+    notices={<>{syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-primary">Ir para login</button></div></div> : null}
+        {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <SyncStatus state={snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "error" : "pending"} message={<div><p>{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p>{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p>{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>} onRetry={writeOperations.some(operation=>operation.status === "failed") ? ()=>writeOperations.filter(operation=>operation.status === "failed").forEach(operation=>operation.retry()) : undefined}/> : null}</>}
+    dock={!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <ShoppingDock pending={pending} total={listTotal(activeList)} resolved={resolved} count={activeList.items.length} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} onAdd={()=>setAddItemOpen(true)}/> : undefined}
+    overlays={<>{profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToast("Nome atualizado."); }} /> : null}
+    {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
+    {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
+    {newPurchaseOpen ? <NewPurchaseSheet products={state.products} activeList={activeList} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
+    {finishOpen ? <ConfirmFinishSheet pending={pending} onClose={() => requestSheetClose(() => setFinishOpen(false))} onConfirm={finishPurchase} /> : null}
+    {budgetEditor ? <BudgetEditorSheet list={budgetEditor} onClose={() => requestSheetClose(() => setBudgetEditor(null))} onSave={saveBudget} /> : null}
+    {completeList ? <CompleteSheet list={completeList} onClose={() => requestSheetClose(() => setCompleteList(null))} onHistory={() => requestSheetClose(() => { setCompleteList(null); setScreen("history"); })} /> : null}
+    {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
+    {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
+</>}
+  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
+}

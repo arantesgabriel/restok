@@ -4,6 +4,8 @@
 
 ## Autorizações
 
+- **29/10/2026, estratégia vigente:** usuário determinou execução PR por PR, finalizar somente até o PR08 e solicitar sua conferência e autorização antes de prosseguir. Autorizações anteriores por bloco ficam subordinadas a esse novo limite. PR09 não pode iniciar sem nova mensagem explícita.
+
 - Mensagem explícita do usuário nesta execução: direção Raiz & Eucalipto e roadmap aprovados como orientação. **Somente Bloco 1, PRs 01–02, autorizado.**
 - PR significa unidade local de implementação, validação e revisão. Push, PR remoto, merge e deploy não autorizados.
 - Migrations e seed/reset não autorizados. Autorizações históricas não são reaplicáveis.
@@ -25,11 +27,11 @@
 | PR03 | Concluído localmente | Checkpoint próprio, fundações isoladas |
 | PR04 | Implementado e commitado; gate de evidência reaberto | Gates funcionais verdes; falta vídeo novo e leitor real da fase2 |
 | PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
-| Bloco 3 (06–11) | Autorizado, em andamento | PR06 primeiro; PR07–11 pendentes dos gates sequenciais |
+| Bloco 3 (06–11) | Estratégia substituída por execução PR a PR | Limite vigente PR08; PR09 exige conferência e nova autorização |
 | PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
 | PR07 | Concluído localmente com adiamento explícito de evidências | Checks/integração aprovados; vídeo/capturas restantes vinculados ao PR12 |
-| PR08 | Em andamento | Catálogo/busca/ordenação; após checkpoint07 e adiamento autorizado |
-| PR09–11 | Pendentes | Dependem dos gates sequenciais anteriores |
+| PR08 | Implementado; gate visual bloqueado |160 testes/checks verdes; aguarda navegador e conferência, sem adiamento autorizado08 |
+| PR09–11 | Pendentes de autorização específica | Não iniciar automaticamente; usuário exige conferência PR a PR |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
@@ -150,3 +152,11 @@
 
 - Usuário respondeu: “Adiar formalmente essas evidências do PR07 para o PR12 e prosseguir no Bloco 3”. Vídeo com seek e capturas restantes de confirmação/conclusão07 ficam vinculados ao PR12. Não realizados nem aprovados como evidência; decisão de adiamento libera avanço ao PR08, sem dispensar os gates dos demais PRs. Blocos4–5 continuam não autorizados.
 - PR07 concluído como unidade local com checks/integração e ressalva acima; commit seletivo somente dos arquivos do agente. PR08 iniciado sequencialmente.
+
+## PR08: catálogo, 29/10/2026
+
+- ProductsHome/ProductRow/ProductEditor extraídos e recompostos em components/products com estilos próprios por tokens. Hook de busca local/mode/grupos; callbacks de persistência e preferência independente por categoria preservados. Ativos/inativos pesquisáveis, limpar devolve foco; nenhuma semântica de estoque adicionada.
+- 160/160 testes em33 arquivos, quatro casos adicionais. Lint, typecheck, build Webpack e diff-check aprovados. Falha inicial de typecheck por tipos gerados indisponíveis não foi ocultada; reexecução/build passaram sem mudar tsconfig. Alterações preexistentes verificadas por hash após build.
+- Gate visual bloqueado: ferramenta CUA não inicializa por caminho local ausente. Reset e tentativa da URL3001 também falharam antes do acesso à aba. Usuário informou aba interna aberta; nenhuma captura/vídeo novo08 ou medição de layout foi realizada. Preview de fixture catalog preparado4173; abertura no Codex ficou queued, sem inspeção aprovada.
+- Adiamento autorizado04–05/07 não abrange08. PR08 pronto para revisão de implementação, com aceite visual pendente. Unidade local separada e somente arquivos do agente; sem push/PR remoto/merge/deploy ou escrita remota.
+- Estratégia mais recente exige parar aqui para conferência e autorização. PR09 não iniciado. Relatório completo de arquivos/checks/limites/rollback/próximo escopo:12-PR08-REPORT.md.

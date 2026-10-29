@@ -11,6 +11,12 @@ export function evidenceState(scenario: string): RestokState {
   if (scenario === "collection100") {
     state.products = Array.from({length:100},(_,index)=>({...state.products[index%33],id:`collection-${index}`,name:`${state.products[index%33].name} · ${index+1}`}));
   }
+  if (scenario === "catalog") {
+    const prefix="Produto recorrente com nome longo para conferir leitura completa no catálogo ";
+    state.products[0]={...state.products[0],name:prefix.padEnd(79,"A")+"A",defaultQuantity:999999};
+    state.products[1]={...state.products[1],name:prefix.padEnd(79,"A")+"B"};
+    state.products[2]={...state.products[2],active:false};
+  }
   if (scenario === "money") {
     const item = { ...state.lists[0].items[2], quantity: 3, status: "purchased" as const };
     state.lists[0] = { ...state.lists[0], budget: 0, items: [{ ...item, unitPrice: 5 }, { ...item, id: "fixture-unpriced", name: "Item sem preço", unitPrice: undefined }] };

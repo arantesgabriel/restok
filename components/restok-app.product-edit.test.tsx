@@ -1,0 +1,35 @@
+/** @vitest-environment happy-dom */
+import { setAccountFixture } from "@/tests/support/account";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
+import { persistProduct, persistList, createShoppingListWithItems } from "@/lib/supabase/data";
+import { seedState } from "@/tests/fixtures/shopping";
+import RestokApp from "./restok-app";
+beforeEach(()=>{localStorage.clear();vi.clearAllMocks();const coffee=seedState.products.find(product=>product.name==="Café")!;setAccountFixture({...seedState,products:[{...coffee,active:false}]});});
+afterEach(()=>{cleanup();localStorage.clear();});
+it("edits inactive catalog metadata, preserves purchase snapshots and selects the reactivated defaults",async()=>{
+  render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
+  fireEvent.click(screen.getAllByRole("button",{name:"Casa"})[0]);
+  fireEvent.click(screen.getByRole("button",{name:"Editar Café"}));
+  const dialog=await screen.findByRole("dialog",{name:"Editar produto"});
+  fireEvent.change(within(dialog).getByLabelText("Nome"),{target:{value:"Café moído QA"}});
+  fireEvent.change(within(dialog).getByLabelText("Quantidade"),{target:{value:"3"}});
+  fireEvent.change(within(dialog).getByLabelText("Categoria"),{target:{value:"Bebidas"}});
+  fireEvent.click(within(dialog).getByRole("button",{name:/Salvar produto/}));
+  await waitFor(()=>expect(persistProduct).toHaveBeenCalledTimes(1));
+  expect(vi.mocked(persistProduct).mock.calls[0][0]).toMatchObject({name:"Café moído QA",defaultQuantity:3,category:"Bebidas",active:false});
+  expect(persistList).not.toHaveBeenCalled();
+  await waitFor(()=>expect(screen.queryByRole("dialog")).toBeNull());
+  fireEvent.click(screen.getByRole("button",{name:"Ativar Café moído QA"}));
+  await waitFor(()=>expect(persistProduct).toHaveBeenCalledTimes(2));
+  fireEvent.click(screen.getAllByRole("button",{name:"Compra"})[0]);
+  expect(screen.getByRole("button",{name:"Editar Café"})).toBeTruthy();
+  fireEvent.click(screen.getByRole("button",{name:"Menu da compra"}));
+  fireEvent.click(screen.getByRole("menuitem",{name:"Nova compra"}));
+  const next=await screen.findByRole("dialog",{name:"Nova compra"});
+  expect((within(next).getByRole("checkbox",{name:/Café moído QA 3 un/}) as HTMLInputElement).checked).toBe(true);
+  fireEvent.click(within(next).getByRole("button",{name:/Encerrar atual e começar/}));
+  await waitFor(()=>expect(createShoppingListWithItems).toHaveBeenCalledTimes(1));
+  expect(vi.mocked(createShoppingListWithItems).mock.calls[0][0].items[0].unitPrice).toBeUndefined();
+  expect(vi.mocked(createShoppingListWithItems).mock.calls[0][0].items).toEqual([expect.objectContaining({name:"Café moído QA",quantity:3,category:"Bebidas",status:"pending"})]);
+});

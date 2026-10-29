@@ -1,5 +1,7 @@
 "use client";
 
+import { ProductsHome } from "@/components/products/products-home";
+import { ProductEditorSheet } from "@/components/products/product-editor-sheet";
 import { AppShell } from "@/components/app/app-shell";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
@@ -17,16 +19,11 @@ import { ActionMenu } from "@/components/ui/action-menu";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Field } from "@/components/ui/field";
-import { IconButton } from "@/components/ui/icon-button";
-import { OptionGroup } from "@/components/ui/option-group";
-import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
-import { Select } from "@/components/ui/select";
 import { Sheet } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SyncStatus } from "@/components/ui/sync-status";
 import { Toast as ToastMessage } from "@/components/ui/toast";
 import { useDialogClose } from "@/components/ui/use-dialog-close";
-import { isValidQuantity } from "@/lib/quantity";
 import { browserStorage,clearRemoteStateCaches,LEGACY_REMOTE_STATE_KEY,remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -48,32 +45,23 @@ monthLabel,
 nextSortOrder,
 readCategoryNameSorts,
 shortDate,
-sortByName,
 type NameSortDirection
 } from "@/lib/utils";
 import {
-ArrowDownAZ,
-ArrowDownZA,
 ArrowLeft,
-Check,
-ChevronDown,
 ChevronRight,
 House,
 ListFilter,
 LogOut,
-PackagePlus,
 Pencil,
 Plus,
 ShoppingBasket,
-Users,
 } from "lucide-react";
 import { useCallback,useEffect,useLayoutEffect,useRef,useState } from "react";
 
 type AppScreen = "shop" | "history" | "home";
-type ProductViewMode = "category" | "alphabetical";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
-const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
 
 
 function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
@@ -155,58 +143,6 @@ function useCategoryNameSort(householdId: string | undefined) {
   };
 
   return { categorySort, toggleCategorySort };
-}
-
-function CategoryNameSortButton({ category, direction, onToggle }: { category: CategoryName; direction: NameSortDirection; onToggle: () => void }) {
-  const label = direction === "desc" ? "Z–A" : "A–Z";
-  return <button type="button" onClick={onToggle} aria-pressed={direction === "desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} className="inline-flex min-h-11 items-center gap-1 rounded-[7px] px-2 text-xs font-semibold text-muted transition hover:bg-sage hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">{direction === "desc" ? <ArrowDownZA size={15} /> : <ArrowDownAZ size={15} />}{label}</button>;
-}
-
-function ProductRow({ product, onToggle, onEdit }: { product: Product; onToggle: () => void; onEdit: () => void }) {
-  const action = product.active ? "Desativar" : "Ativar";
-  return <div className="flex min-h-[68px] items-center gap-3"><span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm", product.active ? "bg-sage text-primary" : "bg-surface text-muted")}><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{product.name}</span><span className="mt-1 block text-xs text-muted">{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></span><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={16} /></IconButton><button type="button" data-product-toggle-id={product.id} onClick={onToggle} className={cn("min-h-11 shrink-0 rounded-md px-2 text-xs font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", product.active ? "text-muted hover:text-terracotta" : "text-primary hover:bg-sage")}>{action}<span className="sr-only"> {product.name}</span></button></div>;
-}
-
-function ViewModeToggle({ mode, onChange, label }: { mode: ProductViewMode; onChange: (mode: ProductViewMode) => void; label: string }) {
-  return <OptionGroup label={label} value={mode} onChange={onChange} options={[{value:"category",label:"Categoria"},{value:"alphabetical",label:"A–Z"}]}/>;
-}
-
-function ProductsHome({ products, lists, householdName, categorySort, onToggleCategorySort, onNewPurchase, onAddProduct, onToggleProduct, onEditProduct, onManageHousehold }: { products: Product[]; lists: ShoppingList[]; householdName: string; categorySort: Partial<Record<CategoryName, NameSortDirection>>; onToggleCategorySort: (category: CategoryName) => void; onNewPurchase: () => void; onAddProduct: () => void; onToggleProduct: (id: string) => void; onEditProduct: (product: Product) => void; onManageHousehold: () => void }) {
-  const [viewMode, setViewMode] = useState<ProductViewMode>("category");
-  const active = products.filter((product) => product.active);
-  const inactive = sortByName(products.filter((product) => !product.active), "asc");
-  const sorted = sortByName(active, "asc");
-  const grouped = CATEGORY_ORDER.map((category) => {
-    const direction = categorySort[category] ?? "asc";
-    return { category, direction, products: sortByName(active.filter((product) => product.category === category), direction) };
-  }).filter((section) => section.products.length);
-
-  return <div className="space-y-7">
-    <div className="flex items-start justify-between gap-4"><div><p className="text-sm font-semibold text-primary">{householdName}</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Produtos da casa</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Sua próxima compra já sabe por onde começar.</p></div><IconButton label="Casas e pessoas" variant="bordered" onClick={onManageHousehold}><Users size={18} /></IconButton></div>
-    <section className="flex items-center gap-4 rounded-[14px] bg-primary p-4 text-white"><span className="grid h-11 w-11 place-items-center rounded-[11px] bg-white/15"><ShoppingBasket size={21} /></span><div className="min-w-0 flex-1"><p className="text-xs font-medium text-white/75">Compra em andamento</p><p className="mt-0.5 truncate text-base font-semibold">{lists.find((list) => list.status === "active")?.name ?? "Nenhuma compra aberta"}</p></div><Button variant="secondary" className="border-white/20 bg-white/10 px-3 text-white hover:bg-white/20" onClick={onNewPurchase}>Nova</Button></section>
-    <div>
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3"><h2 data-products-heading tabIndex={-1} className="text-sm font-semibold text-ink">Itens recorrentes <span className="ml-1 font-normal text-muted">{active.length}</span></h2><div className="flex items-center gap-2"><ViewModeToggle mode={viewMode} onChange={setViewMode} label="Ordenar produtos" /><button type="button" className="min-h-11 rounded-md px-2 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={onAddProduct}><Plus size={15} className="mr-1 inline" />Adicionar</button></div></div>
-      {active.length ? viewMode === "category" ? <div className="space-y-5">{grouped.map((section) => <section key={section.category}><div className="mb-2 flex items-center justify-between gap-3"><h3 className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{section.category}</h3><CategoryNameSortButton category={section.category} direction={section.direction} onToggle={() => onToggleCategorySort(section.category)} /></div><div className="divide-y divide-line border-y border-line">{section.products.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div></section>)}</div> : <div className="divide-y divide-line border-y border-line">{sorted.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div> : <EmptyState icon={<PackagePlus size={23} />} title="Sua lista está vazia" description={inactive.length ? "Todos os produtos recorrentes estão inativos. Reative um item ou adicione um novo." : "Adicione os itens que não podem faltar em casa."} action={<Button onClick={onAddProduct}><Plus size={17} />Adicionar item</Button>} />}
-    </div>
-    {inactive.length ? <details open={!active.length} className="border-t border-line pt-3">
-      <summary data-inactive-products-summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-md text-sm font-semibold text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden"><span>Produtos inativos <span className="ml-1 font-normal">{inactive.length}</span></span><ChevronDown size={17} className="shrink-0 transition-transform open:rotate-180" /></summary>
-      <div className="mt-2 divide-y divide-line border-y border-line">{inactive.map((product) => <ProductRow key={product.id} product={product} onEdit={() => onEditProduct(product)} onToggle={() => onToggleProduct(product.id)} />)}</div>
-    </details> : null}
-  </div>;
-}
-
-function ProductEditorSheet({ product, onClose, onSave }: { product?: Product; onClose: () => boolean; onSave: (product: Omit<Product, "id" | "active">, id?: string) => void }) {
-  const [name, setName] = useState(product?.name ?? "");
-  const [category, setCategory] = useState<CategoryName>(product?.category ?? "Alimentos");
-  const [quantity, setQuantity] = useState(product?.defaultQuantity ?? 1);
-  return <Sheet title={product ? "Editar produto" : "Novo produto da casa"} description="Mantenha a lista recorrente leve e útil." onClose={onClose}>
-    <form className="space-y-4" onSubmit={(event) => { event.preventDefault(); if (name.trim() && isValidQuantity(quantity) && onClose()) onSave({ name: name.trim(), category, defaultQuantity: quantity }, product?.id); }}>
-      <Field label="Nome" initialFocus required value={name} onChange={(event) => setName(event.target.value)}  placeholder="Ex.: Café" />
-      <Select label="Categoria" value={category} onChange={(event) => setCategory(event.target.value as CategoryName)}>{categoryOptions.map((option) => <option key={option}>{option}</option>)}</Select>
-      <label className="field-label">Quantidade padrão<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
-      <Button type="submit" className="w-full">Salvar produto <Check size={17} /></Button>
-    </form>
-  </Sheet>;
 }
 
 function ProfileEditorSheet({ name, onClose, onSaved }: { name: string; onClose: () => boolean; onSaved: (name: string) => void }) {

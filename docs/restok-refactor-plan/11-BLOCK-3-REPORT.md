@@ -1,5 +1,7 @@
 # Bloco 3 — relatório incremental
 
+**Atualização29/10/2026:** execução por blocos substituída pelo usuário por PR a PR, com limite atual PR08 e conferência/autorização antes de PR09. Este documento conserva o histórico; situação detalhada08 em12-PR08-REPORT.md. Implementação08/checks prontos, gate visual bloqueado pela inicialização da ferramenta do navegador; sem adiamento autorizado08.
+
 28/10/2026. Bloco06–11 autorizado. PR06 e PR07 concluídos localmente; PR07 com evidências adiadas explicitamente ao PR12. PR08 em andamento, PR09–11 pendentes. Este relatório não declara o bloco concluído. Commits locais autorizados, sem push, PR remoto, merge ou deploy.
 
 ## PR06 — shell e Compra
