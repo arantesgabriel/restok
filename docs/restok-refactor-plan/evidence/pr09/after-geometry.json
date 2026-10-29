@@ -1,0 +1,426 @@
+[
+  {
+    "clientWidth": 305,
+    "controls": [
+      {
+        "height": 61.1875,
+        "name": "Casa ativaQA PR08 visual 2026-10-29",
+        "width": 220.703125
+      },
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 640,
+    "scrollWidth": 305,
+    "view": "detail",
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "controls": [
+      {
+        "height": 44,
+        "name": "Casa ativaQA PR08 visual 2026-10-29",
+        "width": 290.703125
+      },
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 844,
+    "scrollWidth": 375,
+    "view": "detail",
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "controls": [
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 1024,
+    "scrollWidth": 753,
+    "view": "detail",
+    "width": 768
+  },
+  {
+    "clientWidth": 1009,
+    "controls": [
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 768,
+    "scrollWidth": 1009,
+    "view": "detail",
+    "width": 1024
+  },
+  {
+    "clientWidth": 1265,
+    "controls": [
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 800,
+    "scrollWidth": 1265,
+    "view": "detail",
+    "width": 1280
+  },
+  {
+    "clientWidth": 1425,
+    "controls": [
+      {
+        "height": 44,
+        "name": "GT",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Voltar ao histórico",
+        "width": 180.921875
+      }
+    ],
+    "dpr": 1,
+    "height": 900,
+    "scrollWidth": 1425,
+    "view": "detail",
+    "width": 1440
+  },
+  {
+    "clientWidth": 305,
+    "dpr": 1,
+    "height": 640,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 436.78125,
+          "height": 234,
+          "left": 12,
+          "right": 293,
+          "top": 202.78125,
+          "width": 281,
+          "x": 12,
+          "y": 202.78125
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 597.78125,
+          "height": 161,
+          "left": 12,
+          "right": 293,
+          "top": 436.78125,
+          "width": 281,
+          "x": 12,
+          "y": 436.78125
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 758.78125,
+          "height": 161,
+          "left": 12,
+          "right": 293,
+          "top": 597.78125,
+          "width": 281,
+          "x": 12,
+          "y": 597.78125
+        }
+      }
+    ],
+    "scrollWidth": 305,
+    "view": "history",
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "dpr": 1,
+    "height": 844,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 420.59375,
+          "height": 234,
+          "left": 12,
+          "right": 363,
+          "top": 186.59375,
+          "width": 351,
+          "x": 12,
+          "y": 186.59375
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 581.59375,
+          "height": 161,
+          "left": 12,
+          "right": 363,
+          "top": 420.59375,
+          "width": 351,
+          "x": 12,
+          "y": 420.59375
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 742.59375,
+          "height": 161,
+          "left": 12,
+          "right": 363,
+          "top": 581.59375,
+          "width": 351,
+          "x": 12,
+          "y": 581.59375
+        }
+      }
+    ],
+    "scrollWidth": 375,
+    "view": "history",
+    "width": 390
+  },
+  {
+    "clientWidth": 768,
+    "dpr": 1,
+    "height": 1024,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 418.59375,
+          "height": 223,
+          "left": 256,
+          "right": 744,
+          "top": 195.59375,
+          "width": 488,
+          "x": 256,
+          "y": 195.59375
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 544.59375,
+          "height": 126,
+          "left": 256,
+          "right": 744,
+          "top": 418.59375,
+          "width": 488,
+          "x": 256,
+          "y": 418.59375
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 670.59375,
+          "height": 126,
+          "left": 256,
+          "right": 744,
+          "top": 544.59375,
+          "width": 488,
+          "x": 256,
+          "y": 544.59375
+        }
+      }
+    ],
+    "scrollWidth": 768,
+    "view": "history",
+    "width": 768
+  },
+  {
+    "clientWidth": 1024,
+    "dpr": 1,
+    "height": 768,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 348.59375,
+          "height": 153,
+          "left": 256,
+          "right": 1000,
+          "top": 195.59375,
+          "width": 744,
+          "x": 256,
+          "y": 195.59375
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 452.59375,
+          "height": 104,
+          "left": 256,
+          "right": 1000,
+          "top": 348.59375,
+          "width": 744,
+          "x": 256,
+          "y": 348.59375
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 556.59375,
+          "height": 104,
+          "left": 256,
+          "right": 1000,
+          "top": 452.59375,
+          "width": 744,
+          "x": 256,
+          "y": 452.59375
+        }
+      }
+    ],
+    "scrollWidth": 1024,
+    "view": "history",
+    "width": 1024
+  },
+  {
+    "clientWidth": 1280,
+    "dpr": 1,
+    "height": 800,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 324.59375,
+          "height": 129,
+          "left": 260,
+          "right": 1252,
+          "top": 195.59375,
+          "width": 992,
+          "x": 260,
+          "y": 195.59375
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 428.59375,
+          "height": 104,
+          "left": 260,
+          "right": 1252,
+          "top": 324.59375,
+          "width": 992,
+          "x": 260,
+          "y": 324.59375
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 532.59375,
+          "height": 104,
+          "left": 260,
+          "right": 1252,
+          "top": 428.59375,
+          "width": 992,
+          "x": 260,
+          "y": 428.59375
+        }
+      }
+    ],
+    "scrollWidth": 1280,
+    "view": "history",
+    "width": 1280
+  },
+  {
+    "clientWidth": 1440,
+    "dpr": 1,
+    "height": 900,
+    "records": [
+      {
+        "name": "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico29 de out. · 5 itens3 comprados1 já tínhamos1 pendente1 comprado sem preçoTotal registradoR$ 1.234.566.655.447,11",
+        "rect": {
+          "bottom": 324.59375,
+          "height": 129,
+          "left": 340,
+          "right": 1332,
+          "top": 195.59375,
+          "width": 992,
+          "x": 340,
+          "y": 195.59375
+        }
+      },
+      {
+        "name": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 428.59375,
+          "height": 104,
+          "left": 340,
+          "right": 1332,
+          "top": 324.59375,
+          "width": 992,
+          "x": 340,
+          "y": 324.59375
+        }
+      },
+      {
+        "name": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+        "rect": {
+          "bottom": 532.59375,
+          "height": 104,
+          "left": 340,
+          "right": 1332,
+          "top": 428.59375,
+          "width": 992,
+          "x": 340,
+          "y": 428.59375
+        }
+      }
+    ],
+    "scrollWidth": 1440,
+    "view": "history",
+    "width": 1440
+  }
+]

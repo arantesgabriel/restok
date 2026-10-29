@@ -2,7 +2,7 @@ import { setAccountFixture } from "@/tests/support/account";
 /**
  * @vitest-environment happy-dom
  */
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { seedState } from "@/tests/fixtures/shopping";
 
@@ -61,7 +61,7 @@ describe("purchase history", () => {
     const recent = screen.getByRole("button", { name: /Compra recente/ });
     expect(within(recent).getByText("2 comprados")).toBeTruthy();
     expect(within(recent).getByText("1 já tínhamos")).toBeTruthy();
-    expect(within(recent).getByText("1 pendentes")).toBeTruthy();
+    expect(within(recent).getByText("1 pendente")).toBeTruthy();
     expect(within(recent).getByText("1 comprado sem preço")).toBeTruthy();
     expect(within(recent).getByText("Total registrado")).toBeTruthy();
 
@@ -73,5 +73,52 @@ describe("purchase history", () => {
     expect(screen.getByText("Já temos")).toBeTruthy();
     expect(screen.getByText("Pendente")).toBeTruthy();
     expect(screen.getByText("R$ 0,54 a mais por unidade que a compra anterior (R$ 3,96/un.)")).toBeTruthy();
+  });
+
+  it("restores the detail hash, focuses its heading and returns to the selected purchase through browser navigation", async () => {
+    window.history.replaceState(null, "", "/app#history/history-recent");
+    const { default: RestokApp } = await import("@/components/restok-app");
+    render(<RestokApp/>);
+    const heading = await screen.findByRole("heading", {name:"Compra recente"});
+    expect(document.activeElement).toBe(heading);
+    fireEvent.click(screen.getByRole("button", {name:"Voltar ao histórico"}));
+    expect(window.location.hash).toBe("#history");
+    expect(document.activeElement).toBe(screen.getByRole("button", {name:/Compra recente/}));
+    window.history.replaceState(null, "", "/app#history/history-previous");
+    fireEvent.popState(window);
+    await screen.findByRole("heading", {name:"Compra anterior"});
+    window.history.replaceState(null, "", "/app#history");
+    fireEvent(window, new Event("hashchange"));
+    await waitFor(()=>expect(document.activeElement).toBe(screen.getByRole("button", {name:/Compra anterior/})));
+  });
+
+  it("does not expose an active purchase as historical detail through a forged hash", async () => {
+    window.history.replaceState(null, "", `/app#history/${seedState.lists[0].id}`);
+    const { default: RestokApp } = await import("@/components/restok-app");
+    render(<RestokApp/>);
+    await screen.findByRole("button", {name:/Compra recente/});
+    expect(screen.queryByRole("heading", {name:seedState.lists[0].name})).toBeNull();
+    expect(screen.getByRole("heading", {name:"Histórico"})).toBeTruthy();
+  });
+
+  it("keeps completed snapshots after editing and deactivating the recurring product", async () => {
+    const { default: RestokApp } = await import("@/components/restok-app");
+    render(<RestokApp/>);
+    await screen.findByRole("button", {name:"Perfil de Ana"});
+    fireEvent.click(screen.getAllByRole("button", {name:"Casa"})[0]);
+    fireEvent.click(screen.getByRole("button", {name:"Editar Cebola"}));
+    const dialog = await screen.findByRole("dialog", {name:"Editar produto"});
+    fireEvent.change(within(dialog).getByLabelText("Nome"), {target:{value:"Catálogo atualizado"}});
+    fireEvent.change(within(dialog).getByLabelText("Categoria"), {target:{value:"Bebidas"}});
+    fireEvent.change(within(dialog).getByLabelText("Quantidade"), {target:{value:"999"}});
+    fireEvent.click(within(dialog).getByRole("button", {name:"Salvar produto"}));
+    await waitFor(()=>expect(screen.queryByRole("dialog")).toBeNull());
+    fireEvent.click(screen.getByRole("button", {name:"Desativar Catálogo atualizado"}));
+    fireEvent.click(screen.getAllByRole("button", {name:"Histórico"})[0]);
+    fireEvent.click(screen.getByRole("button", {name:/Compra recente/}));
+    expect(screen.getByRole("heading", {name:"Cebola"})).toBeTruthy();
+    expect(within(screen.getByRole("heading", {name:"Cebola"}).closest("li")!).getByText("Quantidade: 2")).toBeTruthy();
+    expect(screen.getByText("R$ 4,50 / un.")).toBeTruthy();
+    expect(screen.queryByText("Catálogo atualizado")).toBeNull();
   });
 });

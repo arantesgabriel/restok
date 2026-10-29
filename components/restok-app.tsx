@@ -1,5 +1,7 @@
 "use client";
 
+import { HistoryView } from "@/components/history/history-view";
+import { HistoryDetail } from "@/components/history/history-detail";
 import { ProductsHome } from "@/components/products/products-home";
 import { ProductEditorSheet } from "@/components/products/product-editor-sheet";
 import { AppShell } from "@/components/app/app-shell";
@@ -13,7 +15,6 @@ import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
 import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
 import { ShoppingDock } from "@/components/shopping/shopping-dock";
 import { ShoppingView } from "@/components/shopping/shopping-view";
-import { StatusBadge } from "@/components/shopping/status-toggle";
 import { useShoppingView } from "@/components/shopping/use-shopping-view";
 import { ActionMenu } from "@/components/ui/action-menu";
 import { Button } from "@/components/ui/button";
@@ -29,29 +30,19 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,persistProfileName,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
 import { subscribeToShoppingList,type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
-import { CATEGORY_ORDER,type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
+import { type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
 import {
 categoryNameSortKey,
-cn,
-formatBRL,
-groupItems,
-itemSubtotal,
-latestPriceFor,
 listPending,
 listResolved,
 listTotal,
 makeId,
-monthLabel,
 nextSortOrder,
 readCategoryNameSorts,
-shortDate,
 type NameSortDirection
 } from "@/lib/utils";
 import {
-ArrowLeft,
-ChevronRight,
 House,
-ListFilter,
 LogOut,
 Pencil,
 Plus,
@@ -63,65 +54,6 @@ type AppScreen = "shop" | "history" | "home";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
 
-
-function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
-  const completed = lists.filter((list) => list.status === "completed").sort((left, right) =>
-    +new Date(right.finishedAt ?? right.startedAt) - +new Date(left.finishedAt ?? left.startedAt),
-  );
-  return <div className="space-y-6"><div><p className="text-sm font-semibold text-primary">O que já passou pelo caixa</p><h1 className="mt-1 text-[28px] font-semibold tracking-[-0.03em] text-ink">Histórico</h1><p className="mt-2 max-w-md text-sm leading-6 text-muted">Preços anteriores ficam aqui para a próxima compra começar com contexto.</p></div>
-    {completed.length ? <div className="divide-y divide-line border-y border-line">{completed.map((list) => {
-      const purchased = list.items.filter((item) => item.status === "purchased").length;
-      const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
-      const pending = list.items.filter((item) => item.status === "pending").length;
-      const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
-      return <button type="button" key={list.id} onClick={() => onOpen(list)} className="flex min-h-[108px] w-full items-center gap-3 py-3 text-left transition hover:bg-sage/35 sm:gap-4">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[11px] bg-sage text-primary"><ShoppingBasket size={20} /></span>
-        <span className="min-w-0 flex-1"><span className="block break-words text-[15px] font-medium text-ink">{list.name}</span><span className="mt-1 block text-xs text-muted">{shortDate(list.finishedAt ?? list.startedAt)} · {list.items.length} itens</span><span className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted"><span>{purchased} comprados</span><span>{alreadyHave} já tínhamos</span><span>{pending} pendentes</span></span>{withoutPrice ? <span className="mt-1 block text-xs text-muted">{withoutPrice} {withoutPrice === 1 ? "comprado sem preço" : "comprados sem preço"}</span> : null}</span>
-        <span className="shrink-0 text-right"><span className="block text-[11px] text-muted">Total registrado</span><span className="mt-0.5 block text-sm font-semibold text-ink">{formatBRL(listTotal(list))}</span></span><ChevronRight size={17} className="shrink-0 text-muted" />
-      </button>;
-    })}</div> : <EmptyState icon={<ListFilter size={24} />} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais." />}
-  </div>;
-}
-
-function previousHistoryPrice(item: ShoppingItem, list: ShoppingList, lists: ShoppingList[]) {
-  if (!item.productId) return undefined;
-  const listDate = +new Date(list.finishedAt ?? list.startedAt);
-  const earlierLists = lists.filter((candidate) => candidate.status === "completed"
-    && candidate.id !== list.id
-    && +new Date(candidate.finishedAt ?? candidate.startedAt) < listDate);
-  return latestPriceFor(item.productId, earlierLists);
-}
-
-function HistoryPriceComparison({ item, previousPrice }: { item: ShoppingItem; previousPrice?: number }) {
-  if (item.status !== "purchased" || item.unitPrice === undefined || previousPrice === undefined) return null;
-  const difference = item.unitPrice - previousPrice;
-  if (Math.abs(difference) < 0.005) return <span className="text-xs text-muted">Mesmo preço que a compra anterior ({formatBRL(previousPrice)}/un.)</span>;
-  return <span className={cn("text-xs font-medium", difference > 0 ? "text-terracotta" : "text-primary")}>
-    {formatBRL(Math.abs(difference))} {difference > 0 ? "a mais" : "a menos"} por unidade que a compra anterior ({formatBRL(previousPrice)}/un.)
-  </span>;
-}
-
-function HistoryDetail({ list, lists, onBack }: { list: ShoppingList; lists: ShoppingList[]; onBack: () => void }) {
-  const groups = groupItems(list.items);
-  const purchased = list.items.filter((item) => item.status === "purchased").length;
-  const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
-  const pending = list.items.filter((item) => item.status === "pending").length;
-  const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
-  return <div className="space-y-6">
-    <button type="button" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-muted hover:text-ink" onClick={onBack}><ArrowLeft size={17} />Voltar ao histórico</button>
-    <div><p className="text-sm font-semibold text-primary">{monthLabel(list.finishedAt ?? list.startedAt)}</p><h1 className="mt-1 break-words text-[28px] font-semibold tracking-[-0.03em] text-ink">{list.name}</h1><p className="mt-2 text-sm text-muted">{list.items.length} itens nesta compra</p>
-      <dl className="mt-4 grid grid-cols-3 gap-2 text-center text-xs"><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Comprados</dt><dd className="mt-1 text-base font-semibold text-ink">{purchased}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Já tínhamos</dt><dd className="mt-1 text-base font-semibold text-ink">{alreadyHave}</dd></div><div className="rounded-[10px] bg-sage px-2 py-3"><dt className="text-muted">Pendentes</dt><dd className="mt-1 text-base font-semibold text-ink">{pending}</dd></div></dl>
-      <div className="mt-4"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p><p className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p>{withoutPrice ? <p className="mt-1 text-sm text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}</div>
-    </div>
-    <div className="divide-y divide-line border-y border-line">{CATEGORY_ORDER.map((category) => groups[category]?.length ? <section key={category} className="py-4"><h2 className="mb-2 text-sm font-semibold text-ink">{category}</h2>{groups[category]?.map((item) => {
-      const previousPrice = previousHistoryPrice(item, list, lists);
-      return <div key={item.id} className="flex items-start gap-3 py-3">
-        <span className="min-w-0 flex-1"><span className="block break-words text-sm font-medium text-ink">{item.name}<span className="ml-2 text-xs font-normal text-muted">× {item.quantity}</span></span><span className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1"><StatusBadge status={item.status} />{item.status === "purchased" ? <HistoryPriceComparison item={item} previousPrice={previousPrice} /> : null}</span></span>
-        {item.status === "purchased" ? <span className="w-[92px] shrink-0 text-right text-sm font-semibold text-ink">{item.unitPrice !== undefined ? formatBRL(itemSubtotal(item)) : "—"}<span className="block text-[11px] font-normal text-muted">{item.unitPrice !== undefined ? `${formatBRL(item.unitPrice)} / un.` : "sem preço"}</span></span> : null}
-      </div>;
-    })}</section> : null)}</div>
-  </div>;
-}
 
 function useCategoryNameSort(householdId: string | undefined) {
   const [categorySort, setCategorySort] = useState<Partial<Record<CategoryName, NameSortDirection>>>({});
@@ -185,6 +117,7 @@ export default function RestokApp() {
   const [onboardingInviteFailed, setOnboardingInviteFailed] = useState(false);
   const [householdManagerOpen, setHouseholdManagerOpen] = useState(false);
   const [screen, updateScreen] = useState<AppScreen>("shop");
+  const [historyReturnId, setHistoryReturnId] = useState<string | null>(null);
   const setScreen = (next: AppScreen) => {
     if (window.location.hash !== `#${next}`) window.history.pushState(window.history.state, "", `#${next}`);
     updateScreen(next);
@@ -194,6 +127,7 @@ export default function RestokApp() {
       const [section, id] = window.location.hash.slice(1).split("/");
       updateScreen(section === "home" || section === "history" ? section : "shop");
       setHistoryDetailId(section === "history" && id ? id : null);
+      if (section === "history" && id) setHistoryReturnId(id);
     };
     restore();
     window.addEventListener("popstate", restore);
@@ -202,10 +136,10 @@ export default function RestokApp() {
   }, []);
   const [activeListId, setActiveListId] = useState("");
   const [historyDetailId, setHistoryDetailId] = useState<string | null>(null);
-  const historyDetail = state.lists.find((list) => list.id === historyDetailId) ?? null;
+  const historyDetail = state.lists.find((list) => list.id === historyDetailId && list.status === "completed") ?? null;
   const setHistoryDetail = (list: ShoppingList | null) => {
     setHistoryDetailId(list?.id ?? null);
-    if (list) { updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
+    if (list) { setHistoryReturnId(list.id); updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
   };
   const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
@@ -741,5 +675,5 @@ export default function RestokApp() {
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
 </>}
-  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
+  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
 }

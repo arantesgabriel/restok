@@ -5,8 +5,9 @@
 ## Autorizações
 
 - **29/10/2026, retomada PR09:** usuário pediu “de acordo com o arquivo abaixo, inicie apenas o PR 09”. Autoriza somente essa unidade local, subordinada ao tratamento do gate08. Em resposta à pergunta, escolheu **concluir o QA visual do PR08 antes do PR09**, sem adiamento. Determinou usar o app já ativo na porta **3001** e autorizou criar **uma casa fictícia isolada e produtos de teste somente nela**. Não amplia autorização para compras, convites, papéis, migrations/seed/reset ou casas preexistentes.
+- **Autorização adicional posterior09:** usuário autorizou criar e concluir até quatro compras fictícias somente na casa isolada `QA PR08 visual 2026-10-29`, para nomes longos, preço0, ausência de preço, quantidades e totais grandes. Também autorizou4173 restritamente para comparação anterior sem backend do gate08. Não autoriza PR10 nem novas alterações fora dessas casas/cenários.
 
-- **29/10/2026, estratégia vigente:** usuário determinou execução PR por PR, finalizar somente até o PR08 e solicitar sua conferência e autorização antes de prosseguir. Autorizações anteriores por bloco ficam subordinadas a esse novo limite. PR09 não pode iniciar sem nova mensagem explícita.
+- **29/10/2026, limite histórico anterior à retomada:** usuário determinou execução PR por PR, finalizar somente até o PR08 e solicitar sua conferência e autorização antes de prosseguir. Autorizações anteriores por bloco ficam subordinadas a esse limite, depois ampliado exclusivamente ao PR09 pela mensagem registrada acima.
 
 - Mensagem explícita do usuário nesta execução: direção Raiz & Eucalipto e roadmap aprovados como orientação. **Somente Bloco 1, PRs 01–02, autorizado.**
 - PR significa unidade local de implementação, validação e revisão. Push, PR remoto, merge e deploy não autorizados.
@@ -32,8 +33,9 @@
 | Bloco 3 (06–11) | Estratégia substituída por execução PR a PR | Limite vigente PR08; PR09 exige conferência e nova autorização |
 | PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
 | PR07 | Concluído localmente com adiamento explícito de evidências | Checks/integração aprovados; vídeo/capturas restantes vinculados ao PR12 |
-| PR08 | Implementado; gate visual bloqueado |160 testes/checks verdes; aguarda navegador e conferência, sem adiamento autorizado08 |
-| PR09–11 | Pendentes de autorização específica | Não iniciar automaticamente; usuário exige conferência PR a PR |
+| PR08 | Implementado; gate visual fechado na retomada | Commit ca8a1b7; evidências novas/QA em eb34201; release/hardware continuam próprios |
+| PR09 | Implementado e validado localmente |175 testes; lint/typecheck/build; navegador interno3001, vídeo/seek e seis dimensões finais; revisão humana pendente |
+| PR10–11 | Pendentes de autorização específica | Não iniciar automaticamente; usuário exige conferência PR a PR |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
@@ -182,3 +184,14 @@
 - Zoom de cada aba preservado:3001 DPR1,4173 DPR~0,90. Override ajustado para medir CSS320/390/768/1024/1280/1440, com arredondamento de1px em768 e altura1024. Métricas em `before-geometry.json`; imagens são JPEGs originais e conversões PNG explicitamente identificadas. Capturas full-page deformam o enquadramento neste backend e **não são prova de encaixe**; usar `*-final-top`, `320-stable-long`, `*-before-top`, `*-before-long` e editor.
 - Reexecução nova: **6/6 testes em4 arquivos** de catálogo, busca, snapshots/seleção seguinte e ordenação aprovados. Não se reatribui a esta rodada a suíte anterior160/160. Gate visual08 fechado para avanço local após inspeção focal320/1440/editor/inativo, vídeo com seek e seis dimensões; hardware/leitor/zoom nativo/release permanecem conforme06. Nenhum defeito novo demonstrado que exija alterar código08.
 - PR09 liberado pela autorização original específica, sem avanço ao PR10. Próximo registro passa a documentar exclusivamente Histórico e detalhe.
+
+## PR09: Histórico e detalhe, 29/10/2026
+
+- Intenção: leitura dos registros da casa, lista cronológica com agrupamento mensal somente apresentacional, direção Raiz & Eucalipto V3/M2/D7. Tokens/primitivos e fonte Manrope existentes; sem motion decorativo. Extraídos `history-view`, `history-detail`, `history-price-comparison`, `history-model` e CSS Module para `components/history`. Snapshot usa dados da compra, nunca metadados correntes do catálogo.
+- Mantidos hashes e controladores de navegação; retorno foca a compra aberta, detalhe foca seu título. Hash de compra ativa não exibe detalhe histórico. Contagens dos três estados, preço desconhecido explícito e0 conhecido; comparação absoluta unitária com compra concluída estritamente anterior, sem divisão por0. `latestPriceFor` compartilhado não foi alterado. Persistência/fila/snapshots/SQL intactos.
+- Novos checks: **175/175 testes em34 arquivos**,15 casos adicionais; lint, typecheck sem incremental, build Webpack final e diff-check aprovados. Recorte de histórico16/16 em2 arquivos. Testes de catálogo/desativação garantem snapshots concluídos;100 compras cobertas em componente. Falhas intermediárias dos testes novos foram seletor duplicado, espaço não separável BRL e evento inexistente; tipo `exact` inválido no Testing Library removido, sem relaxar assertions/timeout.
+- Quatro compras fictícias autorizadas criadas exclusivamente na casa isolada: três concluídas (vazia, referência0 e casos extremos) e uma ativa vazia. Dados registrados em `evidence/pr09/integrated-house.json`. Total da compra principal R$1.234.566.655.447,11,3 comprados/1 já tínhamos/1 pendente/1 comprado sem preço. Reload e hash direto confirmaram os dados no backend. Nenhuma gravação adicional em casa preexistente.
+- Evidências novas3001: antes/detalhe/lista em892×790 reais; nomes nominais320…1440 dos arquivos anteriores são pedidos de override que a aba antiga ignorou, **não seis testes válidos do antes**. Nova aba interna recuperou override; depois medido exatamente em320×640,390×844,768×1024,1024×768,1280×800 e1440×900, DPR1, zero overflow. Comparação adicional do depois892×790. Último item mobile bottom536,34 antes da navegação em580. Não houve nova execução do harness4173 para09.
+- Vídeo novo:100 aquisições sequenciais reais/~4,5s, mediana30ms/máximo48ms, container25fps sem interpolação. Cinco seeks40ms com MAE≤1,441 aprovados. Browser back/forward e retorno explícito confirmados por DOM/foco; zero/preço ausente, compra vazia, três estados e último item capturados. Originais JPEG preservados; PNGs são conversões sem nova aquisição. Instabilidades de acesso/viewport superadas com nova aba interna; não houve uso de desktop/browser externo.
+- Riscos/limites: antes limitado a uma dimensão real;100 compras apenas COMPONENT, integração visual usa três concluídas; novo empty de zero compras coberto em componente, screenshot vazio é anterior. Hardware, leitor real, zoom nativo, matriz de engines, concorrência e performance de campo continuam conforme06/PR12. Sem aceite global de acessibilidade/release. Alterações preexistentes novamente conferidas por SHA256; next-env restaurado somente após equivalência exata ao hash pré-buildB8B3…1000.
+- Relatório próprio: `13-PR09-REPORT.md`. Rollback reverte somente composição/consumidores09 como unidade, preservando registros e IDs. Encerrada a implementação autorizada; **não iniciar PR10 sem conferência e autorização específica**.
