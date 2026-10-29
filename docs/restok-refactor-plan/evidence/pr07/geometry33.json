@@ -1,0 +1,74 @@
+[
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 640.4039993286133,
+      "top": 563.43115234375
+    },
+    "height": 640,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 320
+  },
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 844.4444046020508,
+      "top": 767.4715576171875
+    },
+    "height": 844,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 390
+  },
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 973.027114868164,
+      "top": 880.0504760742188
+    },
+    "height": 1024,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 768
+  },
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 730.2398834228516,
+      "top": 637.2632446289062
+    },
+    "height": 768,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 1024
+  },
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 759.9904937744141,
+      "top": 667.0138549804688
+    },
+    "height": 800,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 1280
+  },
+  {
+    "bodyScrollable": true,
+    "count": 33,
+    "footer": {
+      "bottom": 854.9873199462891,
+      "top": 762.0106811523438
+    },
+    "height": 900,
+    "overflow": false,
+    "panelOverflow": false,
+    "width": 1440
+  }
+]

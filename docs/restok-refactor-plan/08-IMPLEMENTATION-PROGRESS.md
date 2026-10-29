@@ -27,8 +27,9 @@
 | PR05 | Implementado; revisão local pronta, aceite pendente | Checks/teclado/geometria verdes; falta vídeo novo e leitor real |
 | Bloco 3 (06–11) | Autorizado, em andamento | PR06 primeiro; PR07–11 pendentes dos gates sequenciais |
 | PR06 | Concluído localmente | UI-001/UI-005, checks e mídia novos; sem alteração de fila ou banco |
-| PR07 | Em andamento | Sheets e gates integrados isolados autorizados; implementação/validação pendentes |
-| PR08–11 | Pendentes | Dependem dos gates sequenciais anteriores |
+| PR07 | Concluído localmente com adiamento explícito de evidências | Checks/integração aprovados; vídeo/capturas restantes vinculados ao PR12 |
+| PR08 | Em andamento | Catálogo/busca/ordenação; após checkpoint07 e adiamento autorizado |
+| PR09–11 | Pendentes | Dependem dos gates sequenciais anteriores |
 | Bloco 4 (12–13) | Não autorizado | Motion, acessibilidade e legado global |
 | Bloco 5 (14–15) | Não autorizado | Landing e limpeza final |
 
@@ -126,3 +127,26 @@
 - Antes: snapshot de fonte34846f0 conferido contra Git normalizando CRLF, somente no harness; não é segundo build de produção. Fixtures sem backend. Hashes preexistentes conferidos, descontando somente build-script autorizado do PR01.
 - Evidências novas em evidence/pr06. Vídeo/reader04–05 continuam vinculados ao PR12 por aprovação explícita. Legado restante: sheets/Produtos/Histórico/Casas/Auth e globais, nos respectivos PRs; nenhuma retirada global antecipada.
 - Rollback: reverter somente commit06 antes dos dependentes, sem banco. PR07 iniciado após este checkpoint. Relatório incremental11-BLOCK-3-REPORT.md.
+
+## PR07: implementação e gates em andamento
+
+- Extraídos seis sheets para components/shopping com CSS próprio por tokens e hook de seleção. Ações dos formulários de item/avulso/orçamento e resumo no footer. Nomes de produtos quebram linhas; seleção de resultados preserva itens fora da busca. Sem nova dependência, schema ou mudança de domínio de catálogo.
+- Corrigido sucesso sem confirmação: runRemoteWrite só remove pendência e chama callback de sucesso se ok E synced. Resposta apenas local mantém retry/erro persistente. Retry reutiliza os mesmos registros/IDs. Contagem da confirmação permanece estável durante saída após atualização otimista.
+- Checks novos:156/156 testes em31 arquivos, sete adicionais ao PR06. Cobrem0/resultados/33/100, resposta atrasada, falha, synced=false, retry dos mesmos IDs e ordem produto→item vinculado. Lint e typecheck aprovados. Build Webpack final e diff-check aprovados após o último ajuste da confirmação.
+- Aba interna: comparação antes/depois de Nova compra e coleções33/100 nas seis dimensões, sem overflow. Footer abaixo do limite em desktop; no mobile arredondamento de0,41/0,44px, dentro da tolerância1px. Fim de100 atingido por teclado e confirmado por DOM (scroll5430,30); captura desse estado falhou e não foi registrada como evidência visual.
+- Integração autorizada realizada somente na nova casa identificada em evidence/pr07/integrated-house.json: criada compra com orçamento0; avulso de quantidade3/preço0 incluído no catálogo; editado para5, total15 após reload; adicionado um pendente; conclusão confirmada com1 comprado/1 pendente/total15; segunda compra seleciona produto recorrente; terceira vazia arquiva a segunda após aviso. Histórico e catálogo relidos após reload e após logout/login (nova sessão sem cache anterior). Algumas respostas ultrapassaram o prazo inicial do seletor; foi observada confirmação posterior, sem declarar timeout como sucesso.
+- Captura do navegador interno passou a falhar; depois navegação local atingiu timeout. Servidor inicial estava isolado, encerrado e substituído por servidor temporário acessível em127.0.0.1:3001 (sem mexer em processo do usuário). Nova aba exclusivamente interna recuperou interação/DOM, mas não imagens. Solicitação ao usuário para tornar a aba interna visível; sem pedido de nova autorização de banco.
+- **PR07 não concluído:** vídeo obrigatório com seek e estados visuais restantes pendentes. Sem avanço ao PR08 e sem commit de aceite07. Nenhuma captura/vídeo integrado foi produzido neste PR até este registro; arquivos .txt são DOM. PR06 commit528cd76 separado; PR08–11 continuam pendentes.
+
+### Retomada do gate visual07
+
+- Usuário confirmou explicitamente que a aba interna estava visível. Recuperadas capturas reais de catálogo/histórico/detalhe da casa isolada, sem novas gravações remotas nesta retomada. Registro anterior de ausência de imagens integradas passa a ser histórico; não houve vídeo integrado.
+- Capturados fim de100 em320 com último produto focado (bottom546,42 antes do footer563,43), editor em seis dimensões sem overflow, preço negativo sem gravação, avulso/stress cancelado e orçamento0/erro em320/390/1280. Inspecionadas visualmente detalhe integrado e editor inválido320. Cobertura/combinações não amostradas em evidence/pr07/coverage.json. Quatro PNGs são conversões sem perda dos JPEGs capturados; originais preservados.
+- Tentativas de gravação falharam. A primeira interrompeu a conexão de automação; a segunda, com erro tratado, adquiriu apenas1 frame e não gerou vídeo. recording-failed.json documenta falha, não evidência aprovada. Fluxo simulado ainda mostrou erro persistente, retry pendente sem resumo precoce e resumo somente após resposta controlada; essa observação DOM não substitui filmagem.
+- Após a falha, também falharam captura individual, API alternativa e nova navegação de fixture. Nenhum controle de desktop/navegador externo usado. Vídeo e imagens restantes de confirmação/conclusão continuam pendentes. Solicitada decisão explícita entre manter gate aberto ou adiar evidências07 ao PR12; **sem resposta/aprovação de adiamento07 até este registro**. Adiamento anterior04–05 não foi ampliado implicitamente. PR08 não iniciado.
+
+
+## Decisão explícita: evidências07 e avanço
+
+- Usuário respondeu: “Adiar formalmente essas evidências do PR07 para o PR12 e prosseguir no Bloco 3”. Vídeo com seek e capturas restantes de confirmação/conclusão07 ficam vinculados ao PR12. Não realizados nem aprovados como evidência; decisão de adiamento libera avanço ao PR08, sem dispensar os gates dos demais PRs. Blocos4–5 continuam não autorizados.
+- PR07 concluído como unidade local com checks/integração e ressalva acima; commit seletivo somente dos arquivos do agente. PR08 iniciado sequencialmente.

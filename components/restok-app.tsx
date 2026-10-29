@@ -1,72 +1,73 @@
 "use client";
 
-import {
-  ArrowDownAZ,
-  ArrowDownZA,
-  ArrowLeft,
-  Check,
-  ChevronDown,
-  ChevronRight,
-  House,
-  ListFilter,
-  LogOut,
-  PackagePlus,
-  Pencil,
-  Plus,
-  ShoppingBasket,
-  Users,
-} from "lucide-react";
-import { FormEvent, useCallback, useEffect, useRef, useState, useLayoutEffect } from "react";
-import { MoneyField } from "@/components/ui/money-field";
-import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
-import { moneyInput, parseMoney } from "@/lib/money";
-import { isValidQuantity } from "@/lib/quantity";
-import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/ui/icon-button";
-import { Sheet } from "@/components/ui/sheet";
-import { useDialogClose } from "@/components/ui/use-dialog-close";
-import { Field } from "@/components/ui/field";
-import { Select } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { SearchField } from "@/components/ui/search-field";
-import { OptionGroup } from "@/components/ui/option-group";
-import { EmptyState } from "@/components/ui/empty-state";
-import { Toast as ToastMessage } from "@/components/ui/toast";
-import { SyncStatus } from "@/components/ui/sync-status";
-import { Skeleton } from "@/components/ui/skeleton";
-import { ShoppingView } from "@/components/shopping/shopping-view";
-import { ShoppingDock } from "@/components/shopping/shopping-dock";
-import { useShoppingView } from "@/components/shopping/use-shopping-view";
 import { AppShell } from "@/components/app/app-shell";
-import { StatusToggle, StatusBadge } from "@/components/shopping/status-toggle";
-import { ActionMenu } from "@/components/ui/action-menu";
 import { HouseholdManager } from "@/components/household-manager";
 import { HouseholdOnboarding } from "@/components/household-onboarding";
-import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
-import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, persistProfileName, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
-import { browserStorage, clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
+import { AddItemSheet } from "@/components/shopping/add-item-sheet";
+import { BudgetEditorSheet } from "@/components/shopping/budget-editor-sheet";
+import { CompleteSheet } from "@/components/shopping/complete-sheet";
+import { ConfirmFinishSheet } from "@/components/shopping/confirm-finish-sheet";
+import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
+import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
+import { ShoppingDock } from "@/components/shopping/shopping-dock";
+import { ShoppingView } from "@/components/shopping/shopping-view";
+import { StatusBadge } from "@/components/shopping/status-toggle";
+import { useShoppingView } from "@/components/shopping/use-shopping-view";
+import { ActionMenu } from "@/components/ui/action-menu";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Field } from "@/components/ui/field";
+import { IconButton } from "@/components/ui/icon-button";
+import { OptionGroup } from "@/components/ui/option-group";
+import { QuantityField as QuantityStepper } from "@/components/ui/quantity-field";
+import { Select } from "@/components/ui/select";
+import { Sheet } from "@/components/ui/sheet";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SyncStatus } from "@/components/ui/sync-status";
+import { Toast as ToastMessage } from "@/components/ui/toast";
+import { useDialogClose } from "@/components/ui/use-dialog-close";
+import { isValidQuantity } from "@/lib/quantity";
+import { browserStorage,clearRemoteStateCaches,LEGACY_REMOTE_STATE_KEY,remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
+import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,persistProfileName,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
+import { subscribeToShoppingList,type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
+import { CATEGORY_ORDER,type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
 import {
-  categoryNameSortKey,
-  cn,
-  formatBRL,
-  groupItems,
-  nextSortOrder,
-  itemSubtotal,
-  latestPriceFor,
-  listPending,
-  listResolved,
-  listTotal,
-  monthLabel,
-  type NameSortDirection,
-  readCategoryNameSorts,
-  sortByName,
-  statusAfterPrice,
-  shortDate,
-  makeId,
+categoryNameSortKey,
+cn,
+formatBRL,
+groupItems,
+itemSubtotal,
+latestPriceFor,
+listPending,
+listResolved,
+listTotal,
+makeId,
+monthLabel,
+nextSortOrder,
+readCategoryNameSorts,
+shortDate,
+sortByName,
+type NameSortDirection
 } from "@/lib/utils";
+import {
+ArrowDownAZ,
+ArrowDownZA,
+ArrowLeft,
+Check,
+ChevronDown,
+ChevronRight,
+House,
+ListFilter,
+LogOut,
+PackagePlus,
+Pencil,
+Plus,
+ShoppingBasket,
+Users,
+} from "lucide-react";
+import { useCallback,useEffect,useLayoutEffect,useRef,useState } from "react";
 
 type AppScreen = "shop" | "history" | "home";
 type ProductViewMode = "category" | "alphabetical";
@@ -74,179 +75,6 @@ type WriteOperation = { key: string; token: string; label: string; status: "pend
 
 const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
 
-function purchasedWithoutPrice(list: ShoppingList) { return list.items.filter(item=>item.status === "purchased" && item.unitPrice === undefined).length; }
-
-function ItemEditorSheet({
-  item,
-  lists,
-  onClose,
-  onSave,
-}: {
-  item: ShoppingItem;
-  lists: ShoppingList[];
-  onClose: () => boolean;
-  onSave: (item: ShoppingItem) => void;
-}) {
-  const [quantity, setQuantity] = useState(item.quantity);
-  const [price, setPrice] = useState(moneyInput(item.unitPrice));
-  const [name, setName] = useState(item.name);
-  const [category, setCategory] = useState<CategoryName>(item.category);
-  const [status, setStatus] = useState<ItemStatus>(item.status);
-  const [error, setError] = useState("");
-  const previous = latestPriceFor(item.productId, lists);
-  const parsedPrice = parseMoney(price);
-  const numericPrice = parsedPrice.ok ? parsedPrice.value : undefined;
-
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!parsedPrice.ok) { setError("Informe um preço válido, igual ou maior que zero, com até duas casas decimais."); return; }
-    if (!isValidQuantity(quantity)) return;
-    if (!onClose()) return;
-    const nextStatus = statusAfterPrice(status, numericPrice);
-    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" ? numericPrice : undefined, status: nextStatus });
-  };
-
-  return <Sheet title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose}>
-    <form onSubmit={submit} className="space-y-5">
-      {error && !error.startsWith("Informe um preço") ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
-      <div className="flex flex-col items-stretch justify-between gap-4 rounded-[12px] bg-sage/65 p-3">
-        <div><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Quantidade</p><p className="mt-1 text-xs text-muted">Ajuste antes de salvar</p></div>
-        <QuantityStepper quantity={quantity} onChange={setQuantity} />
-      </div>
-      <MoneyField label="Preço unitário" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} initialFocus error={error.startsWith("Informe um preço") ? error : undefined} hint={previous !== undefined ? `Anterior ${formatBRL(previous)} por unidade. Ao informar um preço, o item vira comprado.` : "Ao informar um preço, inclusive zero, o item vira comprado."} />
-      <StatusToggle value={status} onChange={(value) => { setStatus(value); if(value !== "purchased") setPrice(""); }}/>
-      <details className="group rounded-[12px] border border-line bg-surface px-4">
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between text-sm font-semibold text-ink"><span>Mais detalhes</span><ChevronDown size={16} className="text-muted transition group-open:rotate-180" /></summary>
-        <div className="space-y-4 border-t border-line pb-4 pt-4">
-          <Field label="Nome" value={name} onChange={(event) => setName(event.target.value)}  />
-          <Select label="Categoria" value={category} onChange={(event) => setCategory(event.target.value as CategoryName)}>{categoryOptions.map((option) => <option key={option}>{option}</option>)}</Select>
-        </div>
-      </details>
-      <Button type="submit" className="w-full">{numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>
-    </form>
-  </Sheet>;
-}
-
-function AddItemSheet({
-  onClose,
-  onAdd,
-}: {
-  onClose: () => boolean;
-  onAdd: (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => void;
-}) {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState<CategoryName>("Outros");
-  const [addToHome, setAddToHome] = useState(false);
-  const [error, setError] = useState("");
-  const parsedPrice = parseMoney(price);
-  const numericPrice = parsedPrice.ok ? parsedPrice.value : undefined;
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!name.trim()) { setError("Informe o nome do produto."); return; }
-    if (!parsedPrice.ok) { setError("Informe um preço válido, igual ou maior que zero, com até duas casas decimais."); return; }
-    if (!isValidQuantity(quantity)) return;
-    if (!onClose()) return;
-    onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice, status: numericPrice !== undefined ? "purchased" : "pending" }, addToHome);
-  };
-  return <Sheet title="Adicionar item" description="Inclua aquele produto que não estava na lista." onClose={onClose}>
-    <form onSubmit={submit} className="space-y-4">
-      {error && !error.startsWith("Informe um preço") ? <p role="alert" className="text-sm text-terracotta">{error}</p> : null}
-      <Field label="Nome do produto" initialFocus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural"  />
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <label className="field-label">Quantidade<div className="mt-2"><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
-        <Select label="Categoria" value={category} onChange={(event) => setCategory(event.target.value as CategoryName)}>{categoryOptions.map((option) => <option key={option}>{option}</option>)}</Select>
-      </div>
-      <MoneyField label="Preço unitário (opcional)" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} error={error.startsWith("Informe um preço") ? error : undefined} hint="Vazio deixa o item pendente. Zero é um preço conhecido." />
-      <Checkbox checked={addToHome} onChange={(event) => setAddToHome(event.target.checked)}>Adicionar aos produtos da casa<span className="block text-xs">Fica disponível na próxima compra.</span></Checkbox>
-      <Button type="submit" className="w-full"><Plus size={17} />Adicionar à compra</Button>
-    </form>
-  </Sheet>;
-}
-
-function NewPurchaseSheet({
-  products,
-  activeList,
-  onClose,
-  onCreate,
-}: {
-  products: Product[];
-  activeList: ShoppingList | null;
-  onClose: () => boolean;
-  onCreate: (name: string, budget: number, selectedIds: string[]) => void;
-}) {
-  const [name, setName] = useState(`Compras de ${new Intl.DateTimeFormat("pt-BR", { month: "long" }).format(new Date())}`);
-  const [budget, setBudget] = useState("800");
-  const [error, setError] = useState("");
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState(() => new Set(products.filter((product) => product.active).map((product) => product.id)));
-  const activeProducts = products.filter((product) => product.active);
-  const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
-  const visibleProducts = activeProducts.filter((product) => product.name.toLocaleLowerCase("pt-BR").includes(normalizedQuery));
-  const allVisibleSelected = visibleProducts.length > 0 && visibleProducts.every((product) => selected.has(product.id));
-  const toggle = (id: string) => setSelected((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
-  return <Sheet title="Nova compra" description="Comece com os produtos que costumam fazer parte da casa." onClose={onClose} wide footer={<Button className="w-full" onClick={() => { const parsed = parseMoney(budget); if (!parsed.ok || parsed.value === undefined) { setError("Informe um orçamento válido, igual ou maior que zero."); return; } if (onClose()) onCreate(name.trim() || "Nova compra", parsed.value, [...selected]); }}>{activeList ? "Encerrar atual e começar" : "Começar compra"} <ArrowLeft className="rotate-180" size={17} /></Button>}>
-    <div className="space-y-5">
-      <div className="grid gap-3 sm:grid-cols-[1fr_180px]">
-        <Field label="Nome" initialFocus value={name} onChange={(event) => setName(event.target.value)}  />
-        <MoneyField label="Orçamento" value={budget} onValueChange={(value) => { setBudget(value); setError(""); }} required error={error || undefined} />
-      </div>
-      {activeList ? <p role="status" className="rounded-[10px] border border-terracotta/25 bg-terracotta/5 px-3 py-2.5 text-sm leading-5 text-ink">Começar esta compra vai encerrar “{activeList.name}” e movê-la para o histórico. {listPending(activeList) > 0 ? `Ainda há ${listPending(activeList)} itens pendentes.` : "Todos os itens atuais foram resolvidos."}</p> : null}
-      <SearchField label="Buscar produtos da casa" value={query} onValueChange={setQuery} />
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3"><div><p className="text-sm font-semibold text-ink">Produtos da casa</p><p role="status" aria-live="polite" className="mt-1 text-xs text-muted">{selected.size} de {activeProducts.length} selecionados</p></div><button type="button" className="min-h-11 rounded-md px-2 text-xs font-semibold text-primary hover:bg-sage" onClick={() => setSelected((current) => { const next = new Set(current); for (const product of visibleProducts) { if (allVisibleSelected) next.delete(product.id); else next.add(product.id); } return next; })}>{allVisibleSelected ? "Desmarcar resultados" : normalizedQuery ? "Selecionar resultados" : "Selecionar todos"}</button></div>
-      <div className="rounded-[12px] border border-line bg-surface px-3">
-        {visibleProducts.length ? visibleProducts.map((product) => <label key={product.id} className="flex min-h-12 cursor-pointer items-center gap-3 border-b border-line/70 last:border-0"><input type="checkbox" checked={selected.has(product.id)} onChange={() => toggle(product.id)} className="checkbox" /><span className="grid h-8 w-8 place-items-center rounded-lg bg-sage text-sm text-primary"><ShoppingBasket size={18} /></span><span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{product.name}</span><span className="shrink-0 text-xs text-muted">{product.defaultQuantity} un.</span></label>) : <p className="py-6 text-center text-sm text-muted">{activeProducts.length ? "Nenhum produto corresponde à busca." : "Adicione produtos da casa para preparar uma compra mais rápido."}</p>}
-      </div>
-
-    </div>
-  </Sheet>;
-}
-
-function BudgetEditorSheet({ list, onClose, onSave }: { list: ShoppingList; onClose: () => boolean; onSave: (budget: number) => void }) {
-  const [budget, setBudget] = useState(moneyInput(list.budget));
-  const [error, setError] = useState("");
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const parsed = parseMoney(budget);
-    if (!parsed.ok || parsed.value === undefined) { setError("Informe um orçamento válido, igual ou maior que zero."); return; }
-    if (onClose()) onSave(parsed.value);
-  };
-  return <Sheet title="Meta da compra" description="Ajuste o limite para esta ida ao mercado." onClose={onClose}>
-    <form onSubmit={submit} noValidate className="space-y-5">
-      <MoneyField label="Orçamento da compra" value={budget} onValueChange={(value) => { setBudget(value); setError(""); }} required initialFocus error={error || undefined} />
-      <Button type="submit" className="w-full">Salvar meta <Check size={17} /></Button>
-    </form>
-  </Sheet>;
-}
-
-function CompleteSheet({ list, onClose, onHistory }: { list: ShoppingList; onClose: () => boolean; onHistory: () => void }) {
-  const purchased = list.items.filter((item) => item.status === "purchased").length;
-  const alreadyHave = list.items.filter((item) => item.status === "already_have").length;
-  const pending = list.items.filter((item) => item.status === "pending").length;
-  const withoutPrice = purchasedWithoutPrice(list);
-  return <Sheet title="Compra finalizada" description={pending > 0 ? "Você pode consultar os itens pendentes pelo histórico." : "A lista foi guardada no histórico."} onClose={onClose}>
-    <div className="space-y-5">
-      <div className="rounded-[14px] bg-sage p-5">
-        <dl className="grid grid-cols-3 gap-2 text-center text-xs">
-          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Comprados</dt><dd className="mt-1 text-base font-semibold text-ink">{purchased}</dd></div>
-          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Já tínhamos</dt><dd className="mt-1 text-base font-semibold text-ink">{alreadyHave}</dd></div>
-          <div className="rounded-[10px] bg-surface/75 px-2 py-3"><dt className="text-muted">Pendentes</dt><dd className="mt-1 text-base font-semibold text-ink">{pending}</dd></div>
-        </dl>
-        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-muted">Total registrado</p>
-        <p className="mt-1 text-3xl font-semibold tracking-[-0.03em] text-ink">{formatBRL(listTotal(list))}</p>
-        {withoutPrice > 0 ? <p className="mt-1 text-sm text-muted">{withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}</p> : null}
-      </div>
-      <Button className="w-full" onClick={onHistory}>Ver histórico</Button>
-    </div>
-  </Sheet>;
-}
-
-function ConfirmFinishSheet({ onClose, onConfirm, pending }: { onClose: () => boolean; onConfirm: () => void; pending: number }) {
-  return <Sheet title="Finalizar compra?" description={pending > 0 ? `Ainda existem ${pending} itens pendentes. Você poderá consultar tudo no histórico depois.` : "Todos os itens foram resolvidos."} onClose={onClose}>
-    <div className="space-y-3"><Button className="w-full" onClick={() => { if (onClose()) onConfirm(); }}>Finalizar e salvar</Button><Button variant="secondary" className="w-full" onClick={onClose}>Continuar comprando</Button></div>
-  </Sheet>;
-}
 
 function HistoryView({ lists, onOpen }: { lists: ShoppingList[]; onOpen: (list: ShoppingList) => void }) {
   const completed = lists.filter((list) => list.status === "completed").sort((left, right) =>
@@ -716,15 +544,16 @@ export default function RestokApp() {
     void task.then((result) => {
       if (writeVersionsRef.current.get(key) !== token) return;
       writeChainsRef.current.delete(key);
-      if (result.ok) {
+      if (result.ok && result.synced) {
         writeVersionsRef.current.delete(key);
         setWriteOperations((current) => current.filter((operation) => operation.token !== token));
-        setToast(result.synced ? label : "Salvo neste aparelho");
+        setToast(label);
         onSuccess?.();
-        if (result.synced) requestRemoteRevalidation();
+        requestRemoteRevalidation();
       } else {
         setWriteOperations((current) => current.map((operation) => operation.token === token ? { ...operation, status: "failed" } : operation));
-        setToast(`${result.message} A alteração ficou neste aparelho; tente novamente.`);
+        const message = result.ok ? "O servidor ainda não confirmou esta alteração." : result.message;
+        setToast(`${message} A alteração ficou neste aparelho; tente novamente.`);
       }
     });
   };

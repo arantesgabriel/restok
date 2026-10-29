@@ -7,6 +7,9 @@ const state = evidenceState(scenario);
 let releaseLoad: (() => void) | undefined;
 const loadGate = scenario === "loading" ? new Promise<void>(resolve => { releaseLoad = resolve; }) : Promise.resolve();
 export const releaseEvidenceLoad = () => releaseLoad?.();
+let writeAttempt = 0;
+let releaseWrite: (() => void) | undefined;
+export const releaseEvidenceWrite = () => releaseWrite?.();
 const context = { userId: "fixture-person", householdId: "fixture-house", householdName: "Casa ilustrativa", profileName: "Pessoa de teste", email: null, role: "owner", client: {} } as RemoteContext;
 export const activeHouseholdStorageKey = (userId: string) => `restok-active-household:${userId}`;
 export const resolveRemoteContext = async () => context;
@@ -16,15 +19,19 @@ export const loadRemoteState = async () => { await loadGate; return scenario ===
 export const persistProfileName = async () => true;
 export const persistProduct = async (product: Product) => {
   state.products = [...state.products.filter((row) => row.id !== product.id), product];
-  return { ok: true, synced: false } as const;
+  return { ok: true, synced: true } as const; // Fixture response only; no backend.
 };
 export const persistList = async (list: ShoppingList) => {
+  if (scenario === "retry") {
+    if (++writeAttempt === 1) return {ok:false,message:"Falha simulada da fixture."} as const;
+    await new Promise<void>(resolve => {releaseWrite=resolve;});
+  }
   state.lists = state.lists.map((row) => row.id === list.id ? list : row);
-  return { ok: true, synced: false } as const;
+  return { ok: true, synced: true } as const; // Fixture response only; no backend.
 };
 export const createShoppingListWithItems = async (list: ShoppingList) => {
   state.lists = [list, ...state.lists.map((row) => ({ ...row, status: "completed" as const }))];
-  return { ok: true, synced: false } as const;
+  return { ok: true, synced: true } as const; // Fixture response only; no backend.
 };
 export const loadHouseholdMembers = async () => [
   { userId: context.userId, displayName: "Pessoa de teste", role: "owner", isSelf: true, joinedAt: "2026-01-01" },

@@ -1,0 +1,79 @@
+- alert
+- link "Ir para o conteúdo":
+  - /url: "#restok-main"
+- complementary:
+  - img "Restok"
+  - 'button "Casas e pessoas: QA Bloco3 PR07 2026-10-28T22-01-24"':
+    - generic: Casa ativa
+    - text: QA Bloco3 PR07 2026-10-28T22-01-24
+  - navigation "Navegação principal":
+    - button "Compra":
+      - text: Compra
+    - button "Histórico":
+      - text: Histórico
+    - button "Casa":
+      - text: Casa
+- main:
+  - generic: Compra
+  - 'generic "Aviso: Nova compra pronta"':
+    - status: Nova compra pronta
+  - button "Perfil de Gabriel Teste": GT
+  - heading "QA PR07 segunda" [level=1]
+  - paragraph: 0 de 1 resolvidos
+  - button "Menu da compra":
+  - region "Resumo do orçamento":
+    - generic: Total registrado
+    - strong: R$ 0,00
+    - generic: Disponível
+    - generic: R$ 800,00
+    - generic: Meta de R$ 800,00
+    - button "Editar meta da compra":
+    - progressbar "Uso do orçamento"
+  - searchbox "Buscar na lista"
+  - group "Ordenar itens da compra":
+    - button "Categoria" [pressed]:
+    - button "A–Z":
+  - group "Filtros da lista":
+    - button "Todos" [pressed]
+    - button "Pendente"
+    - button "Comprado"
+    - button "Já temos"
+  - button "Outros 0 de 1 resolvidos" [expanded]:
+    - text: Outros
+    - generic: 0 de 1 resolvidos
+  - button "Outros em ordem A–Z. Alternar ordem alfabética":
+    - generic: A–Z
+  - article:
+    - button "Editar QA PR07 recorrente":
+      - generic: QA PR07 recorrente
+      - generic: 3 un.
+      - text: Pendente
+    - button "Marcar QA PR07 recorrente como comprado":
+    - button "Marcar QA PR07 recorrente como já temos":
+- region "Ações da compra e total registrado":
+  - button "Ver pendentes":
+    - generic: 1 pendentes
+    - generic: R$ 0,00 · 0/1 resolvidos
+  - button "Adicionar item à compra":
+    - text: Adicionar item
+- dialog "Nova compra":
+  - heading "Nova compra" [level=2]
+  - paragraph: Comece com os produtos que costumam fazer parte da casa.
+  - button "Fechar":
+  - generic: Nome
+  - textbox "Nome": QA PR07 terceira vazia
+  - generic: Orçamento
+  - generic: R$
+  - textbox "Orçamento":
+    - /placeholder: 0,00
+    - text: "800"
+  - status: Começar esta compra vai encerrar “QA PR07 segunda” e movê-la para o histórico. Ainda há 1 itens pendentes.
+  - searchbox "Buscar produtos da casa"
+  - paragraph: Produtos da casa
+  - status: 0 de 1 selecionados
+  - button "Selecionar todos" [active]
+  - checkbox "QA PR07 recorrente 3 un."
+  - generic: QA PR07 recorrente
+  - generic: 3 un.
+  - button "Encerrar atual e começar":
+    - text: Encerrar atual e começar

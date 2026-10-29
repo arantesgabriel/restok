@@ -1,0 +1,37 @@
+- alert
+- link "Ir para o conteúdo":
+  - /url: "#restok-main"
+- complementary:
+  - img "Restok"
+  - 'button "Casas e pessoas: QA Bloco3 PR07 2026-10-28T22-01-24"':
+    - generic: Casa ativa
+    - text: QA Bloco3 PR07 2026-10-28T22-01-24
+  - navigation "Navegação principal":
+    - button "Compra":
+      - text: Compra
+    - button "Histórico":
+      - text: Histórico
+    - button "Casa":
+      - text: Casa
+- main:
+  - generic: Compra
+  - 'generic "Aviso: Compra salva no histórico"':
+    - status: Compra salva no histórico
+  - button "Perfil de Gabriel Teste": GT
+  - heading "Sua próxima compra começa aqui" [level=2]
+  - paragraph: Crie uma compra a partir dos produtos da casa.
+  - button "Nova compra":
+    - text: Nova compra
+- dialog "Compra finalizada":
+  - heading "Compra finalizada" [active] [level=2]
+  - paragraph: Você pode consultar os itens pendentes pelo histórico.
+  - button "Fechar":
+  - term: Comprados
+  - definition: "1"
+  - term: Já tínhamos
+  - definition: "0"
+  - term: Pendentes
+  - definition: "1"
+  - paragraph: Total registrado
+  - paragraph: R$ 15,00
+  - button "Ver histórico"

@@ -1,0 +1,77 @@
+{
+  "unit": "PR07",
+  "status": "completed locally; remaining visual evidence explicitly deferred by user to PR12",
+  "base": "528cd76",
+  "checks": {
+    "tests": 156,
+    "testFiles": 31,
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed final webpack",
+    "diffCheck": "passed"
+  },
+  "integrated": {
+    "target": "restok-dev",
+    "houseManifest": "integrated-house.json",
+    "newHouses": 1,
+    "shoppingLists": 3,
+    "catalogProducts": 1,
+    "firstListItems": 2,
+    "secondListItems": 1,
+    "thirdListItems": 0,
+    "evidenceType": "DOM, reload, fresh session and new static screenshots; no integrated video",
+    "freshSession": "sign-out/sign-in; third active list, two completed lists, one product reread"
+  },
+  "pending": [
+    "Mandatory video with verified seeks",
+    "Remaining visual states/screenshots"
+  ],
+  "noAdvanceToPR08": false,
+  "beforeSourceSha256": "cd2a931169e6caf1ce74dfd801be850f0941e7cc5ae1263053b2552c8f95ba1a",
+  "sourceFiles": [
+    "components/restok-app.tsx",
+    "components/restok-app.write-confirmation.test.tsx",
+    "components/shopping/item-editor-sheet.tsx",
+    "components/shopping/add-item-sheet.tsx",
+    "components/shopping/new-purchase-sheet.tsx",
+    "components/shopping/budget-editor-sheet.tsx",
+    "components/shopping/confirm-finish-sheet.tsx",
+    "components/shopping/complete-sheet.tsx",
+    "components/shopping/purchase-sheets.module.css",
+    "components/shopping/use-purchase-selection.ts",
+    "components/shopping/purchase-sheets.test.tsx",
+    "tests/e2e/before-pr07.tsx",
+    "tests/e2e/data-fixture.ts",
+    "tests/e2e/entry.tsx",
+    "tests/e2e/fixtures.ts",
+    "docs/restok-refactor-plan/08-IMPLEMENTATION-PROGRESS.md",
+    "docs/restok-refactor-plan/11-BLOCK-3-REPORT.md"
+  ],
+  "visualRecovery": {
+    "userConfirmedVisible": true,
+    "newImages": [
+      "integrated-fresh-session-catalog.jpg",
+      "integrated-history.jpg",
+      "integrated-first-detail.jpg",
+      "collection100-end.jpg",
+      "editor-320.jpg",
+      "editor-390.jpg",
+      "editor-768.jpg",
+      "editor-1024.jpg",
+      "editor-1280.jpg",
+      "editor-1440.jpg",
+      "editor-invalid.jpg",
+      "add-320.jpg",
+      "add-390.jpg",
+      "add-1280.jpg",
+      "budget-320.jpg",
+      "budget-390.jpg",
+      "budget-1280.jpg",
+      "budget-invalid.jpg"
+    ],
+    "pngCopies": "4 lossless format conversions of captured JPEG pixels; originals retained",
+    "video": "failed; one frame only, recording-failed.json is not acceptance evidence",
+    "pendingDecision": "User explicitly authorized deferral of PR07 remaining evidence to PR12 and continuation of Block3"
+  },
+  "deferredTo": "PR12"
+}

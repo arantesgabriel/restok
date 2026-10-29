@@ -1,0 +1,50 @@
+[
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 640.4039993286133,
+    "height": 640,
+    "overflow": false,
+    "width": 320
+  },
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 844.4444046020508,
+    "height": 844,
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 973.027114868164,
+    "height": 1024,
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 730.2398834228516,
+    "height": 768,
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 759.9904937744141,
+    "height": 800,
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "bodyScrollable": true,
+    "count": 100,
+    "footerBottom": 854.9873199462891,
+    "height": 900,
+    "overflow": false,
+    "width": 1440
+  }
+]
