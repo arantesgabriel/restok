@@ -13,6 +13,13 @@ import { useDialogClose } from "./use-dialog-close";
 import { Toast } from "./toast";
 import { SyncStatus } from "./sync-status";
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();});
+it("opens the last menu entry with ArrowUp and the first with ArrowDown",()=>{
+  render(<ActionMenu label="Ações por teclado" items={[{label:"Primeira",onSelect:vi.fn()},{label:"Última",onSelect:vi.fn()}]}>Abrir</ActionMenu>);
+  const trigger=screen.getByRole("button",{name:"Ações por teclado"});trigger.focus();
+  fireEvent.keyDown(trigger,{key:"ArrowUp"});expect(document.activeElement).toBe(screen.getByRole("menuitem",{name:"Última"}));
+  fireEvent.keyDown(document.activeElement!,{key:"Escape"});
+  fireEvent.keyDown(trigger,{key:"ArrowDown"});expect(document.activeElement).toBe(screen.getByRole("menuitem",{name:"Primeira"}));
+});
 it("distinguishes compact results from first-use empty states",()=>{const clear=vi.fn();render(<><EmptyState variant="compact" icon={<span/>} title="Nenhum resultado" description="Ajuste a busca." action={<Button variant="secondary" onClick={clear}>Limpar busca</Button>}/><EmptyState variant="first-use" icon={<span/>} title="Primeira compra" description="Crie uma lista para começar."/></>);expect(screen.getByRole("heading",{name:"Nenhum resultado"}).closest("[data-empty-state]")?.getAttribute("data-variant")).toBe("compact");expect(screen.getByRole("heading",{name:"Primeira compra"}).closest("[data-empty-state]")?.getAttribute("data-variant")).toBe("first-use");fireEvent.click(screen.getByRole("button",{name:"Limpar busca"}));expect(clear).toHaveBeenCalledOnce();});
 it("retains the action name while busy and prevents duplicate submission",()=>{const click=vi.fn();render(<Button busy onClick={click}>Salvar compra</Button>);const button=screen.getByRole("button",{name:"Salvar compra"});fireEvent.click(button);expect(click).not.toHaveBeenCalled();expect(button.getAttribute("aria-busy")).toBe("true");expect((button as HTMLButtonElement).disabled).toBe(true);});
 it("associates the input with both its hint and persistent error",()=>{render(<Field label="Nome" hint="Até 80 caracteres" error="Informe o nome"/>);const input=screen.getByRole("textbox",{name:"Nome"});expect(input.getAttribute("aria-invalid")).toBe("true");const ids=input.getAttribute("aria-describedby")!.split(" ");expect(ids.map(id=>document.getElementById(id)?.textContent)).toEqual(["Até 80 caracteres","Informe o nome"]);expect(screen.getByRole("alert").textContent).toBe("Informe o nome");});

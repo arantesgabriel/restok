@@ -4,7 +4,8 @@ import nextPlugin from "@next/eslint-plugin-next";
 
 export default tseslint.config(
   {
-    ignores: [".next/**", "node_modules/**", "coverage/**", "next-env.d.ts"],
+    // Immutable demonstration sources are reference material, not production code.
+    ignores: [".next/**", "node_modules/**", "coverage/**", "next-env.d.ts", "docs/restok-demo-v6-handoff/**"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,

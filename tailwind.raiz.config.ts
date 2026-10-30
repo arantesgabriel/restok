@@ -9,6 +9,13 @@ const config: Config = {
     colors: Object.fromEntries(roles.map((role) => [role, `rgb(var(--color-${role}-rgb) / <alpha-value>)`])),
     fontFamily: { sans: ["Restok Manrope", "system-ui", "sans-serif"] },
     borderRadius: { control: "var(--radius-control)", panel: "var(--radius-panel)", budget: "var(--radius-budget)" },
+    fontSize: {
+      body: ["var(--text-body)", { lineHeight: "var(--leading-body)" }],
+      title: ["var(--text-title)", { lineHeight: "var(--leading-title)" }],
+      heading: ["var(--text-heading)", { lineHeight: "var(--leading-title)" }],
+      value: ["var(--text-value)", { lineHeight: "var(--leading-title)" }],
+    },
+    spacing: { gutter: "var(--layout-gutter)", touch: "var(--touch-target)" },
   } },
   plugins: [],
 };

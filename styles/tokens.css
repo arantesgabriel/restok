@@ -1,4 +1,4 @@
-/* Raiz & Eucalipto. Scoped until the global migration in PR13. */
+/* Raiz & Eucalipto v6. Shared by the application and isolated previews. */
 .restok-theme {
   --green-900: 33 63 29;
   --green-700: 45 90 39;
@@ -51,6 +51,9 @@
   --color-surface-danger: rgb(var(--color-surface-danger-rgb));
   --color-warning: rgb(var(--color-warning-rgb));
   --color-surface-warning: rgb(var(--color-surface-warning-rgb));
+  --color-on-brand: var(--color-surface);
+  --color-on-action: var(--color-surface);
+  --color-focus: var(--color-action);
   --space-1: .25rem;
   --space-2: .5rem;
   --space-3: .75rem;
@@ -70,7 +73,22 @@
   --text-value: 2rem;
   --leading-body: 1.5;
   --leading-title: 1.2;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --tracking-heading: -.02em;
+  --border-width: 1px;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --icon-small: 1rem;
+  --icon-default: 1.25rem;
+  --icon-status: 1.5rem;
+  --icon-stroke: 1.75;
   --touch-target: 2.75rem;
+  /* Consumption by the app shell is reserved for Phase 2. */
+  --layout-gutter: var(--space-3);
   --z-dropdown: 20;
   --z-dock: 30;
   --z-dialog: 40;
