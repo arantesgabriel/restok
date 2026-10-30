@@ -21,6 +21,11 @@ vi.mock("@/lib/supabase/data", () => ({
   loadCurrentProfile: vi.fn(async () => ({ ...context, displayName: "Ana" })),
   loadUserHouseholds: vi.fn(async () => [{ id: "test-house", name: "Casa", role: "owner", createdAt: "2026-01-01" }]),
   acceptHouseholdInvite: vi.fn(async () => null),
+  deleteShoppingItem: vi.fn(async (itemId:string,listId:string) => {
+    const state=account.state ?? seedState;
+    account.state={...state,lists:state.lists.map(list=>list.id===listId ? {...list,items:list.items.filter(item=>item.id!==itemId)} : list)};
+    return {ok:true,synced:true};
+  }),
   persistList: vi.fn(async (list: ShoppingList) => {
     const state = account.state ?? seedState;
     account.state = { ...state, lists: state.lists.map((row) => row.id === list.id ? list : row) };

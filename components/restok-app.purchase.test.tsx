@@ -48,13 +48,13 @@ describe("purchase flow", () => {
   it("shows registered totals, missing prices, and takes the footer action to pending items", async () => {
     await renderApp();
 
-    expect(screen.getAllByText("Total registrado").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Gasto até agora").length).toBeGreaterThan(0);
     expect(screen.getByText("1 item comprado sem preço")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Ver pendentes" })).toBeTruthy();
 
     fireEvent.click(screen.getByRole("button", { name: "Ver pendentes" }));
 
-    expect(screen.getByRole("button", { name: "Pendente", pressed: true })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Pendentes", pressed: true })).toBeTruthy();
     expect(screen.getByRole("button", { name: "Editar Leite pendente" })).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Editar Café comprado" })).toBeNull();
   });
@@ -104,7 +104,7 @@ describe("purchase flow", () => {
     expect(window.location.hash).toBe("#home");
     window.history.replaceState(window.history.state, "", "/app#history");
     fireEvent(window, new PopStateEvent("popstate"));
-    expect(screen.getByRole("heading", { name: "Histórico" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Compras anteriores" })).toBeTruthy();
     window.history.replaceState(window.history.state, "", "/app#shop");
     fireEvent(window, new PopStateEvent("popstate"));
     expect(screen.getByRole("button", { name: "Editar Leite pendente" })).toBeTruthy();

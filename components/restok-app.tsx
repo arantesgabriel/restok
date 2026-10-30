@@ -4,6 +4,7 @@ import { HistoryView } from "@/components/history/history-view";
 import { HistoryDetail } from "@/components/history/history-detail";
 import { ProductsHome } from "@/components/products/products-home";
 import { ProductEditorSheet } from "@/components/products/product-editor-sheet";
+import { ReferenceContext } from "@/components/app/reference-context";
 import { AppShell } from "@/components/app/app-shell";
 import shellStyles from "@/components/app/app-shell.module.css";
 import { HouseholdManager } from "@/components/households/household-manager";
@@ -16,18 +17,21 @@ import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
 import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
 import { ShoppingDock } from "@/components/shopping/shopping-dock";
 import { ShoppingView } from "@/components/shopping/shopping-view";
+import { PurchaseContext } from "@/components/shopping/purchase-context";
 import { useShoppingView } from "@/components/shopping/use-shopping-view";
 import { ActionMenu } from "@/components/ui/action-menu";
+import { Sheet } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ProfileEditorSheet } from "@/components/auth/profile-editor-sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SyncStatus } from "@/components/ui/sync-status";
+import { Toast } from "@/components/ui/toast";
 import { useDialogClose } from "@/components/ui/use-dialog-close";
 import { browserStorage,clearRemoteStateCaches,LEGACY_REMOTE_STATE_KEY,remoteStateStorageKey } from "@/lib/supabase/cache";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
+import { acceptHouseholdInvite,activeHouseholdStorageKey,createShoppingListWithItems,loadCurrentProfile,loadRemoteState,loadUserHouseholds,persistList,persistProduct,deleteShoppingItem,resolveRemoteContext,type RemoteWriteResult } from "@/lib/supabase/data";
 import { subscribeToShoppingList,type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
 import { type CategoryName,type HouseholdSummary,type ItemStatus,type Product,type RestokState,type ShoppingItem,type ShoppingList } from "@/lib/types";
 import {
@@ -49,7 +53,7 @@ ShoppingBasket,
 } from "lucide-react";
 import { useCallback,useEffect,useLayoutEffect,useRef,useState } from "react";
 
-type AppScreen = "shop" | "history" | "home";
+type AppScreen = "shop" | "history" | "home" | "people";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
 
@@ -101,7 +105,7 @@ export default function RestokApp() {
   useEffect(() => {
     const restore = () => {
       const [section, id] = window.location.hash.slice(1).split("/");
-      updateScreen(section === "home" || section === "history" ? section : "shop");
+      updateScreen(section === "home" || section === "history" || section === "people" ? section : "shop");
       setHistoryDetailId(section === "history" && id ? id : null);
       if (section === "history" && id) setHistoryReturnId(id);
     };
@@ -117,6 +121,8 @@ export default function RestokApp() {
     setHistoryDetailId(list?.id ?? null);
     if (list) { setHistoryReturnId(list.id); updateScreen("history"); window.history.pushState(window.history.state, "", `#history/${list.id}`); }
   };
+  const pendingItemDeletions = useRef(new Map<string, Set<string>>());
+  const [deleteItem, setDeleteItem] = useState<ShoppingItem | null>(null);
   const [editorItem, setEditorItem] = useState<ShoppingItem | null>(null);
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [newPurchaseOpen, setNewPurchaseOpen] = useState(false);
@@ -469,8 +475,19 @@ export default function RestokApp() {
     return updated;
   };
 
+  const persistListChanges = async (list: ShoppingList, householdId: string | undefined) => {
+    const key = `${householdId}:${list.id}`;
+    const deletions = pendingItemDeletions.current.get(key);
+    for (const id of [...deletions ?? []]) {
+      if (!householdId) return {ok:false as const,message:"Casa indisponível."};
+      const result = await deleteShoppingItem(id, list.id, householdId);
+      if (!result.ok || !result.synced) return result;
+      deletions?.delete(id);
+    }
+    return persistList(list, householdId);
+  };
   const persistUpdatedList = (list: ShoppingList, label: string) => {
-    runRemoteWrite(`list:${list.id}`, label, () => persistList(list, activeHouseholdId));
+    runRemoteWrite(`list:${list.id}`, label, () => persistListChanges(list, activeHouseholdId));
   };
 
   const saveItem = (item: ShoppingItem) => {
@@ -481,6 +498,18 @@ export default function RestokApp() {
   const setItemStatus = (item: ShoppingItem, status: ItemStatus) => {
     const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status } : current));
     if (updated) persistUpdatedList(updated, status === "already_have" ? "Marcado como já temos" : status === "purchased" ? "Adicionado ao carrinho" : "Situação desfeita");
+  };
+  const confirmDeleteItem = () => {
+    if (!deleteItem || !activeList || !activeHouseholdId || !activeList.items.some(item=>item.id===deleteItem.id)) {setDeleteItem(null);return;}
+    const item = deleteItem, listId = activeList.id, householdId = activeHouseholdId;
+    updateActiveItems(items => items.filter(current=>current.id!==item.id));
+    setDeleteItem(null);
+    const key = `${householdId}:${listId}`;
+    const deletions = pendingItemDeletions.current.get(key) ?? new Set<string>();
+    deletions.add(item.id); pendingItemDeletions.current.set(key, deletions);
+    const updated = {...activeList,items:activeList.items.filter(current=>current.id!==item.id)};
+    runRemoteWrite(`list:${listId}`, "Item excluído da compra", () => persistListChanges(updated, householdId));
+    window.requestAnimationFrame(()=>purchaseResultsRef.current?.querySelector<HTMLButtonElement>("button")?.focus());
   };
   const addItem = (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => {
     const productId = addToHome ? makeId("product") : undefined;
@@ -494,7 +523,7 @@ export default function RestokApp() {
         const productResult = await persistProduct(newProduct, activeHouseholdId);
         if (!productResult.ok) return productResult;
       }
-      return persistList(updated, activeHouseholdId);
+      return persistListChanges(updated, activeHouseholdId);
     });
   };
   const createPurchase = (name: string, budget: number, selectedIds: string[]) => {
@@ -509,7 +538,7 @@ export default function RestokApp() {
     if (!activeList) return;
     const finished = { ...activeList, status: "completed" as const, finishedAt: new Date().toISOString() };
     setState((current) => ({ ...current, lists: current.lists.map((list) => list.id === activeList.id ? finished : list) }));
-    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistList(finished, activeHouseholdId), () => setFinishResult(finished));
+    runRemoteWrite(`list:${finished.id}`, "Compra salva no histórico", () => persistListChanges(finished, activeHouseholdId), () => setFinishResult(finished));
   };
   const saveBudget = (budget: number) => {
     if (!budgetEditor) return;
@@ -635,8 +664,13 @@ export default function RestokApp() {
     if (!hydrated) return <main className="mx-auto max-w-lg px-5"><Skeleton label="Carregando seus dados…" rows={4}/></main>;
     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
   return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} keyboardOpen={keyboardOpen}
+    accountInitials={profileInitials} onProfileOpen={()=>setProfileEditorOpen(true)}
+    houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={() => setHouseholdManagerOpen(true)}
+    context={<>{screen === "shop" && !historyDetail && activeList && activeList.items.length > 0 ? <PurchaseContext list={activeList} onFinish={()=>setFinishOpen(true)} onFilter={filter=>{shoppingView.setQuery("");shoppingView.setFilter(filter);purchaseResultsRef.current?.scrollIntoView?.({behavior:"auto",block:"start"});}}/> : null}<ReferenceContext screen={screen} products={state.products} lists={state.lists} house={activeHousehold} onHouseOpen={()=>setHouseholdManagerOpen(true)}/></>}
+    contextLayout="desktop-only"
+    noticeUrgent={Boolean(syncWarning || snapshotFailed || writeOperations.some(operation => operation.status === "failed"))}
     noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
-    feedback={toast ? <p role={toastError ? "alert" : "status"} className={toastError ? shellStyles.feedbackError : "sr-only"}>{toast}</p> : null}
+    feedback={toast && toastError ? <p role="alert" className={shellStyles.feedbackError}>{toast}</p> : null}
     profile={<ActionMenu
           triggerClassName={shellStyles.profileTrigger}
           label={`Perfil de ${profileLabel}`}
@@ -646,11 +680,13 @@ export default function RestokApp() {
             { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
             { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
           ]}
-        ><span aria-hidden="true" className={shellStyles.avatar}>{profileInitials}</span><span className={shellStyles.profileCaption}>Minha conta</span></ActionMenu>}
+        ><span aria-hidden="true" className={shellStyles.avatar}>{profileInitials}</span><span className={shellStyles.profileCaption}>{profileName || "Minha conta"}<small className={shellStyles.accountCaption}>Conta individual</small></span></ActionMenu>}
     notices={<>{syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-action">Ir para login</button></div></div> : null}
         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <SyncStatus state={snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "error" : "pending"} message={<div><p>{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p>{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p>{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>} onRetry={writeOperations.some(operation=>operation.status === "failed") ? ()=>writeOperations.filter(operation=>operation.status === "failed").forEach(operation=>operation.retry()) : undefined}/> : null}</>}
-    dock={!keyboardOpen && screen === "shop" && activeList && activeList.items.length > 0 && !historyDetail ? <ShoppingDock pending={pending} total={listTotal(activeList)} resolved={resolved} count={activeList.items.length} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} onAdd={()=>setAddItemOpen(true)}/> : undefined}
-    overlays={<>{profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToastError(false); setToast("Nome atualizado."); }} /> : null}
+    dock={!keyboardOpen && screen === "shop" && activeList && activeList.items.length > 0 && !historyDetail ? <ShoppingDock pending={pending} total={listTotal(activeList)} resolved={resolved} count={activeList.items.length} purchased={activeList.items.filter(item=>item.status==="purchased").length} owned={activeList.items.filter(item=>item.status==="already_have").length} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} onAdd={()=>setAddItemOpen(true)}/> : !keyboardOpen && screen === "home" ? <div className={shellStyles.dockActions}><div><strong>{state.products.filter(product=>product.active).length} produtos</strong><small className={shellStyles.accountCaption}>catálogo recorrente</small></div><Button onClick={()=>setProductEditor("new")}><Plus size={17}/>Novo produto</Button></div> : undefined}
+    overlays={<>{toast && !toastError ? <Toast message={toast} onDismiss={() => setToast(null)} transient visuallyHidden={keyboardOpen}/> : null}
+    {profileEditorOpen ? <ProfileEditorSheet name={profileName ?? ""} onClose={() => requestSheetClose(() => setProfileEditorOpen(false))} onSaved={(name) => { setProfileName(name); setToastError(false); setToast("Nome atualizado."); }} /> : null}
+    {deleteItem ? <Sheet title="Excluir item da compra?" description={deleteItem.name} onClose={()=>setDeleteItem(null)} footer={<><Button variant="secondary" onClick={()=>setDeleteItem(null)}>Cancelar</Button><Button variant="danger" onClick={confirmDeleteItem}>Excluir item</Button></>}><p>A exclusão afeta apenas esta compra. O produto continua no catálogo da casa.</p></Sheet> : null}
     {editorItem ? <ItemEditorSheet item={editorItem} lists={state.lists} onClose={() => requestSheetClose(() => setEditorItem(null))} onSave={saveItem} /> : null}
     {addItemOpen ? <AddItemSheet onClose={() => requestSheetClose(() => setAddItemOpen(false))} onAdd={addItem} /> : null}
     {newPurchaseOpen ? <NewPurchaseSheet products={state.products} activeList={activeList} onClose={() => requestSheetClose(() => setNewPurchaseOpen(false))} onCreate={createPurchase} /> : null}
@@ -660,5 +696,5 @@ export default function RestokApp() {
     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
 </>}
-  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} pending={pending} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onPending={showPendingItems} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState variant="first-use" icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
+  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "people" && activeHousehold ? <HouseholdManager inline key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={()=>setScreen("shop")} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast}/> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onAddToPurchase={product=>{if(!activeList){setNewPurchaseOpen(true);return;}if(activeList.items.some(item=>item.status==="pending" && (item.productId===product.id || item.name===product.name))){setToastError(false);setToast("Este produto já está pendente na compra");return;}addItem({productId:product.id,name:product.name,category:product.category,quantity:product.defaultQuantity,status:"pending"},false);}} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} pending={pending} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onPending={showPendingItems} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")} onDelete={setDeleteItem}/> : <EmptyState variant="first-use" icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
 }

@@ -1,12 +1,11 @@
-import { Pencil } from "lucide-react";
+import { Plus, Power } from "lucide-react";
 import { IconButton } from "@/components/ui/icon-button";
-import { Button } from "@/components/ui/button";
 import type { Product } from "@/lib/types";
 import styles from "./products.module.css";
 
-export function ProductRow({product,onToggle,onEdit}:{product:Product;onToggle:()=>void;onEdit:()=>void}) {
+export function ProductRow({product,onToggle,onEdit,onAdd}:{product:Product;onToggle:()=>void;onEdit:()=>void;onAdd?:()=>void}) {
   return <article className={styles.row} data-product-row>
-    <div className={styles.identity}><p className={styles.name}>{product.name}</p><p className={styles.meta}>{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</p></div>
-    <div className={styles.rowActions}><IconButton label={`Editar ${product.name}`} onClick={onEdit}><Pencil size={17}/></IconButton><Button variant="secondary" data-product-toggle-id={product.id} aria-label={`${product.active ? "Desativar" : "Ativar"} ${product.name}`} onClick={onToggle}>{product.active ? "Desativar" : "Ativar"}</Button></div>
+    <button type="button" aria-label={`Editar ${product.name}`} onClick={onEdit} className={styles.identity}><span className={styles.name}>{product.name}</span><span className={styles.meta}>{product.active ? product.category : `Inativo · ${product.category}`} · {product.defaultQuantity} un.</span></button>
+    <div className={styles.rowActions}><IconButton label={`${product.active ? "Desativar" : "Ativar"} ${product.name}`} variant="bordered" data-product-toggle-id={product.id} onClick={onToggle}><Power size={16}/></IconButton>{product.active && onAdd ? <IconButton className={styles.addToPurchase} label={`Adicionar ${product.name} à compra`} onClick={onAdd}><Plus size={18}/></IconButton> : null}</div>
   </article>;
 }

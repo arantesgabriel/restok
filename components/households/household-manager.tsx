@@ -1,5 +1,6 @@
 "use client";
 import { useLayoutEffect, useRef, useState } from "react";
+import { House } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Select } from "@/components/ui/select";
@@ -24,8 +25,9 @@ function ConfirmationView({action,houseName,busy,onConfirm,onCancel}:{action:Con
   </section>;
 }
 
-export function HouseholdManager(props:ManagerProps) {
+export function HouseholdManager(props:ManagerProps & {inline?:boolean}) {
   const view=useHouseholdManager(props);
+  const [switchOpen,setSwitchOpen]=useState(!props.inline);
   const [createOpen,setCreateOpen]=useState(false);
   const [newName,setNewName]=useState("");
   const [confirmation,setConfirmation]=useState<Confirmation | null>(null);
@@ -41,17 +43,18 @@ export function HouseholdManager(props:ManagerProps) {
     if(ok){cancel();if(action.kind==="leave")props.onClose();}
   };
   const close=()=>{if(confirmation){if(!view.busy)cancel();}else props.onClose();};
-  return <Sheet title="Casas e pessoas" description="Escolha sua casa e gerencie o acesso das pessoas." onClose={close} wide>
+  const content = <>
+    {props.inline ? <header className={styles.pageHeading}><h1>Pessoas da casa</h1><p>Cada pessoa tem uma conta. As compras são compartilhadas.</p></header> : null}
     <div className={styles.manager}>
       {view.error ? <p className={styles.error} role="alert">{view.error}</p> : null}
       {confirmation ? <ConfirmationView action={confirmation} houseName={props.activeHousehold.name} busy={view.busy} onCancel={cancel} onConfirm={()=>void confirm()}/> : null}
       <div className={styles.manager} hidden={Boolean(confirmation)} inert={Boolean(confirmation)}>
-        <section className={styles.section} aria-label="Casa ativa"><div className={styles.sectionHeading}><h3>Casa ativa</h3>{props.enabled ? <Button variant="quiet" disabled={view.busy || Boolean(view.pendingHouseholdId)} onClick={()=>setCreateOpen(!createOpen)}>{createOpen ? "Cancelar" : "Nova casa"}</Button> : null}</div>
+        <section className={styles.section} aria-label="Casa ativa">{props.inline ? <div className={styles.activeHouseCard}><House size={24}/><div><p className={styles.name}>{props.activeHousehold.name}</p><p className={styles.meta}>{view.loading ? "Carregando pessoas…" : view.loadError ? "Participantes indisponíveis" : `${view.members.length} participantes`} · {roleLabel(props.activeHousehold.role)}</p></div><Button variant="secondary" onClick={()=>setSwitchOpen(!switchOpen)} aria-expanded={switchOpen}>Trocar casa</Button></div> : null}<div hidden={!switchOpen}><div className={styles.sectionHeading}><h3>Casa ativa</h3>{props.enabled ? <Button variant="quiet" disabled={view.busy || Boolean(view.pendingHouseholdId)} onClick={()=>setCreateOpen(!createOpen)}>{createOpen ? "Cancelar" : "Nova casa"}</Button> : null}</div>
           <p className={styles.name}>{props.activeHousehold.name}</p><Select label="Selecionar casa" value={props.activeHousehold.id} disabled={!props.enabled || view.busy} onChange={event=>void view.select(event.target.value)}>{props.households.map(house=><option key={house.id} value={house.id}>{house.name} · {roleLabel(house.role)}</option>)}</Select>
           {createOpen && props.enabled ? <form className={styles.form} onSubmit={event=>{event.preventDefault();if(newName.trim())void view.create(newName);}}><Field label="Nome da nova casa" required maxLength={80} value={newName} disabled={view.busy || Boolean(view.pendingHouseholdId)} onChange={event=>setNewName(event.target.value)}/><Button type="submit" busy={view.busy} disabled={!newName.trim() || Boolean(view.pendingHouseholdId)}>Criar casa</Button></form> : null}
           {view.pendingHouseholdId ? <Button busy={view.busy} onClick={()=>void view.retryCreated()}>Tentar carregar a casa</Button> : null}
           {!props.enabled ? <p className={styles.meta}>Conecte sua conta para gerenciar casas, pessoas e convites.</p> : null}
-        </section>
+        </div></section>
         <section className={styles.section} aria-label="Pessoas da casa"><div className={styles.sectionHeading}><h3 ref={people} tabIndex={-1}>Pessoas <span>{view.members.length}</span></h3>{view.canInvite && props.enabled ? <Button disabled={view.busy || view.loading || view.loadError} onClick={()=>void view.makeInvite()}>Criar convite</Button> : null}</div>
           {view.createdLink ? <div className={styles.linkPanel}><Field label="Link do convite" readOnly value={view.createdLink} onFocus={event=>event.currentTarget.select()}/><div className={styles.actions}><Button variant="secondary" onClick={()=>void view.copyInvite()}>Copiar</Button><Button variant="quiet" onClick={()=>view.setCreatedLink("")}>Ocultar link</Button></div><p className={styles.meta}>O link fica visível apenas nesta tela.</p></div> : null}
           {!props.enabled ? <p className={styles.meta}>Conecte sua conta para carregar pessoas e convites.</p> : view.loading ? <p role="status" className={styles.meta}>Carregando pessoas…</p> : view.loadError ? <div role="alert" className={styles.error}><p>Não foi possível carregar as pessoas e convites.</p><Button variant="secondary" onClick={()=>void view.refresh()}>Tentar novamente</Button></div> : view.members.length ? <ul className={styles.members}>{view.members.map(member=><MemberRow key={member.userId} member={member} role={props.activeHousehold.role} enabled={props.enabled} busy={view.busy} onAction={ask}/>)}</ul> : <p className={styles.meta}>Nenhuma pessoa encontrada nesta casa.</p>}
@@ -61,5 +64,6 @@ export function HouseholdManager(props:ManagerProps) {
         {view.canInvite && props.enabled ? <section className={styles.section} aria-label="Convites recentes"><h3>Convites recentes</h3>{view.loading ? <p className={styles.meta}>Carregando convites…</p> : view.loadError ? <p className={styles.meta}>Convites indisponíveis até recarregar as pessoas.</p> : view.invites.length ? <ul className={styles.invites}>{view.invites.map(invite=>{const status=inviteStatus(invite);return <li key={invite.id}><div><p className={styles.name}>{status}</p><p className={styles.meta}>Criado em {formatDate(invite.createdAt)} · vence em {formatDate(invite.expiresAt)}</p></div>{status==="Ativo" ? <Button variant="quiet" disabled={view.busy} onClick={event=>ask({kind:"revoke",id:invite.id,createdAt:invite.createdAt},event.currentTarget)}>Revogar</Button> : null}</li>;})}</ul> : <p className={styles.meta}>Nenhum convite encontrado.</p>}<p className={styles.meta}>Os convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.</p></section> : null}
       </div>
     </div>
-  </Sheet>;
+  </>;
+  return props.inline ? content : <Sheet title="Casas e pessoas" description="Escolha sua casa e gerencie o acesso das pessoas." onClose={close} wide>{content}</Sheet>;
 }

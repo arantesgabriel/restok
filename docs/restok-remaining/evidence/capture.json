@@ -1,0 +1,174 @@
+{
+  "errors": [],
+  "screens": [
+    {
+      "width": 320,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 320,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 320,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 320,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 768,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 768,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 768,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 768,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1024,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 1024,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1024,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 1024,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1280,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 1280,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1280,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 1280,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1920,
+      "screen": "shop",
+      "title": "Compra da semana",
+      "overflow": 0
+    },
+    {
+      "width": 1920,
+      "screen": "home",
+      "title": "Produtos da casa",
+      "overflow": 0
+    },
+    {
+      "width": 1920,
+      "screen": "history",
+      "title": "Compras anteriores",
+      "overflow": 0
+    },
+    {
+      "width": 1920,
+      "screen": "people",
+      "title": "Pessoas da casa",
+      "overflow": 0
+    }
+  ],
+  "reference": []
+}

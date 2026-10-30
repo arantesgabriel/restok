@@ -1,4 +1,4 @@
-import { Check, Circle, CircleCheck, House } from "lucide-react";
+import { Check, Circle, House } from "lucide-react";
 import type { ItemStatus } from "@/lib/types";
 import { statusLabel } from "@/lib/utils";
 import { IconButton } from "@/components/ui/icon-button";
@@ -31,17 +31,17 @@ export function ShoppingStatusButton({
   onPurchased: () => void;
   onUndo: () => void;
 }) {
-  const Icon = status === "pending" ? Circle : status === "purchased" ? CircleCheck : House;
-  const label = status === "pending" ? `Marcar ${name} como comprado` : `Desfazer situação de ${name}`;
+  const Icon = status === "already_have" ? House : Check;
+  const label = status === "purchased" ? `Desfazer situação de ${name}` : `Marcar ${name} como comprado`;
 
   return (
     <IconButton
       className={shoppingStyles.statusButton}
       label={label}
-      aria-pressed={status !== "pending"}
-      onClick={status === "pending" ? onPurchased : onUndo}
+      aria-pressed={status === "purchased"}
+      onClick={status === "purchased" ? onUndo : onPurchased}
     >
-      <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
+      <span className={shoppingStyles.statusMark}><Icon size={15} strokeWidth={1.75} aria-hidden="true" /></span>
     </IconButton>
   );
 }

@@ -77,7 +77,7 @@ import {
   makeId,
 } from "@/lib/utils";
 
-type AppScreen = "shop" | "history" | "home";
+type AppScreen = "shop" | "history" | "home" | "people";
 type Filter = "all" | "pending" | "purchased" | "already_have";
 type ProductViewMode = "category" | "alphabetical";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };

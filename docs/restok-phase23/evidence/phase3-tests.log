@@ -1,0 +1,18 @@
+npm notice run restok@0.1.0 test
+npm notice run vitest run --maxWorkers=1 --reporter=dot
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 C:/Fontes/restok
+
+····················································································································································································································································
+
+ Test Files  41 passed (41)
+      Tests  244 passed (244)
+   Start at  08:50:24
+   Duration  64.29s (environment 44%, tests 32%, import 23%, worker 1%, transform 1%)
+
+    Isolate  41 workers spawned · ~775ms startup each (spawn + environment, per file)
+             at least ~31.00s faster with isolate: false — reuses workers across files instead of one per file
+

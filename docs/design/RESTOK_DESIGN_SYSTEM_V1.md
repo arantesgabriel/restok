@@ -2,7 +2,19 @@
 
 **Status:** direção visual escolhida em28/10/2026. PR03 implementa fundações isoladas; os consumidores migram nos PRs seguintes. Este documento não certifica aceite de telas ainda não reconstruídas.
 
+**Atualização de 30/10/2026, Fase 1:** reconciliação com o pacote v6 implementada
+para revisão. [Mapeamento de tokens](../restok-phase1/TOKEN-MAPPING.md) e
+[evidências/limitações](../restok-phase1/REPORT.md). Foco de teclado: action,
+2px e offset3, inclusive nos wrappers monetários/quantidade, mantendo borda de erro.
+Gutters12/16/24 são tokens preparados; o shell será ajustado somente na Fase 2.
+
 **Missão:** tornar a rotina de compras domésticas rápida, clara e confiável. O celular usado no mercado é o cenário prioritário; o desktop precisa usar a largura adicional sem ampliar a interface mobile.
+
+**Fases2 e3, 30/10/2026:** [relatório atual](../restok-phase23/REPORT.md).
+Sidebar228px desde1024, header mobile52px; gutter12/16/24 compartilhado. Campos16px
+também no desktop, labels14px, borda lineStrong e alvos44px. Orçamento padding16px
+mobile/24px desktop e progresso6px. Componentes e shell implementados para revisão,
+sem certificar reconstrução/aceite das telas do core.
 
 **Referência visual:** [prévia navegável consolidada](https://restok-casa-contemporanea-rodada25.lemonypark35.chatgpt.site/). Ela usa dados fictícios e não reproduz todas as funcionalidades de produção.
 

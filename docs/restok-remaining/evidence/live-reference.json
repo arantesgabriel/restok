@@ -1,0 +1,30 @@
+{
+  "url": "https://restok-casa-contemporanea-rodada25.lemonypark35.chatgpt.site/",
+  "version": 6,
+  "observations": [
+    {
+      "view": "compra",
+      "title": [
+        "Compra da semana"
+      ]
+    },
+    {
+      "view": "casa",
+      "title": [
+        "Produtos da casa"
+      ]
+    },
+    {
+      "view": "historico",
+      "title": [
+        "Compras anteriores"
+      ]
+    },
+    {
+      "view": "pessoas",
+      "title": [
+        "Pessoas da casa"
+      ]
+    }
+  ]
+}

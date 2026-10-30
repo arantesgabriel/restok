@@ -1,0 +1,67 @@
+/* Restok | Raiz & Eucalipto, consolidated visual reference.
+   Legacy aliases are isolated to this demonstration; the real app must start
+   from clean semantic tokens in the new Design System v1. */
+
+body[data-palette="eucalipto"]{
+  --color-bg:#F7FAF5;
+  --color-surface:#FFFFFF;
+  --color-fg:#18251A;
+  --color-muted:#526452;
+  --color-subtle:#647768;
+  --color-border:#E1E9DE;
+  --color-wash:#F0F5ED;
+  --color-accent:#2D5A27;
+  --color-green-dark:#213F1D;
+  --color-green-wash:#E8F2E3;
+  --color-border-strong:#C9D9C5;
+  --color-info:#4F7566;
+  --color-blue:var(--color-info); /* Legacy component alias, semantic intent is information. */
+  --color-blue-wash:#EAF2ED;
+  --color-panel:#F4F7F1;
+  --color-placeholder:#BAC8B8;
+  --color-brand-dot:#6DA74C;
+  --color-highlight:#B4D3A7;
+  --color-highlight-strong:#8FB787;
+  /* Compatibility aliases only; forbidden in future production design tokens. */
+  --color-lime:#B4D3A7;
+  --color-lime-strong:#8FB787;
+}
+.r27-note-tag{background:var(--color-green-wash);color:var(--color-accent)}
+.r2-swatch{border-color:var(--color-border-strong)}
+
+/* Protect the budget panel as the sole strong color block in the shopping view. */
+.app.a .budget,.app.a:not(.desktop) .budget{
+  background:var(--color-green-dark);
+  border:0;
+  box-shadow:none;
+}
+.app.a .budget-number{color:var(--color-surface)}
+.app.a .budget-available b{color:var(--color-lime)}
+.app.a .progress{background:var(--color-accent)}
+.app.a .progress i{background:var(--color-lime)}
+.app.a .r25-text-action{color:var(--color-lime)}
+
+/* Secondary information uses eucalyptus, not a standalone corporate-blue accent. */
+.app.a .r2-history-total small,
+.app.a .r2-back{
+  color:var(--color-info)!important;
+}
+.app.a .r2-detail-hero{
+  background:var(--color-blue-wash);
+  border-color:var(--color-border);
+}
+.app.a .r2-member-card:nth-child(even) .r2-member-avatar{
+  background:var(--color-blue-wash);
+  color:var(--color-info);
+}
+.app.a .r2-primary:focus-visible,
+.app.a .r2-outline:focus-visible,
+.app.a .r2-cat-button:focus-visible{
+  outline-color:var(--color-info);
+}
+
+/* A little warmth should not make every row or control look like a decorative card. */
+.app.a .r2-statrow{border-bottom-color:var(--color-border)}
+.app.a .r2-chip.active{background:var(--color-green-wash);color:var(--color-green-dark)}
+.app.a .r2-aside-card{box-shadow:none}
+.app.a .r2-catalog-list,.app.a .items,.app.a .r2-history-list{background:var(--color-surface)}

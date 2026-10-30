@@ -351,6 +351,19 @@ export async function persistList(list: ShoppingList, preferredHouseholdId?: str
   return persistShoppingListWithItems(list, preferredHouseholdId, false);
 }
 
+/** Delete only from the selected active list, under the authenticated household RLS. */
+export async function deleteShoppingItem(itemId: string, listId: string, householdId: string): Promise<RemoteWriteResult> {
+  if (!isSupabaseConfigured) return localWriteResult;
+  try {
+    const context = await resolveRemoteContext(householdId);
+    if (!context || context.householdId !== householdId) return failedWriteResult;
+    const {data:list,error:listError} = await context.client.from("shopping_lists").select("id").eq("id",listId).eq("household_id",householdId).eq("status","active").maybeSingle();
+    if (listError || !list) return failedWriteResult;
+    const {error} = await context.client.from("shopping_list_items").delete().eq("id",itemId).eq("shopping_list_id",listId);
+    return error ? failedWriteResult : syncedWriteResult;
+  } catch { return failedWriteResult; }
+}
+
 export async function createShoppingListWithItems(list: ShoppingList, preferredHouseholdId?: string): Promise<RemoteWriteResult> {
   return persistShoppingListWithItems(list, preferredHouseholdId, true);
 }

@@ -123,7 +123,7 @@ describe("household boot and activation", () => {
   it("does not activate a new household when its snapshot fails", async () => {
     await open(); await home();
     remote.snapshot.mockResolvedValue(null);
-    fireEvent.click(screen.getByRole("button", { name: "Casas e pessoas" }));
+    fireEvent.click(screen.getByRole("button", { name: "Casas e pessoas: Casa A" }));
     fireEvent.change(screen.getByRole("combobox"), { target: { value: "b" } });
     await waitFor(()=>expect(screen.getAllByRole("alert").some(node=>/A casa atual continua selecionada/.test(node.textContent ?? ""))).toBe(true));
     expect(localStorage.getItem(preference())).toBe("a");

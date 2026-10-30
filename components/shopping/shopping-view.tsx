@@ -29,6 +29,7 @@ type ShoppingViewProps = {
   onPurchased: (item: ShoppingItem) => void;
   onAlreadyHave: (item: ShoppingItem) => void;
   onUndo: (item: ShoppingItem) => void;
+  onDelete?: (item: ShoppingItem) => void;
 };
 
 export function ShoppingView({
@@ -48,12 +49,17 @@ export function ShoppingView({
   onPurchased,
   onAlreadyHave,
   onUndo,
+  onDelete,
 }: ShoppingViewProps) {
   const clear = () => {
     view.setQuery("");
     view.setFilter("all");
   };
   const pendingCount = pending ?? list.items.filter((item) => item.status === "pending").length;
+  const purchasedCount = list.items.filter(item => item.status === "purchased").length;
+  const started = new Date(list.startedAt);
+  const formattedDate = Number.isNaN(started.getTime()) ? null : new Intl.DateTimeFormat("pt-BR",{weekday:"long",day:"numeric",month:"long"}).format(started).replace("-feira","");
+  const dateLabel = formattedDate ? formattedDate[0].toLocaleUpperCase("pt-BR") + formattedDate.slice(1) : null;
   const showPending = () => {
     if (onPending) {
       onPending();
@@ -65,10 +71,13 @@ export function ShoppingView({
   };
 
   return (
-    <div className={styles.view} data-empty-purchase={list.items.length === 0 ? "true" : undefined}>
+    <div data-shopping-view className={styles.view} data-empty-purchase={list.items.length === 0 ? "true" : undefined}>
       <div className={styles.heading}>
         <div>
-          <h1>{list.name}</h1>
+          <h1 data-purchase-title>{list.name}</h1>
+          <p className={styles.headingMeta}>{purchasedCount} de {list.items.length} comprados{dateLabel ? <> · <time dateTime={list.startedAt}>{dateLabel}</time></> : null}</p>
+        </div>
+        <div className={styles.headingActions}>
           <Button
             variant="quiet"
             data-resolved-count
@@ -76,9 +85,7 @@ export function ShoppingView({
             disabled={pendingCount === 0}
             aria-label={pendingCount ? `Ver ${pendingCount} ${pendingCount === 1 ? "pendente" : "pendentes"}` : "Nenhum item pendente"}
             onClick={showPending}
-          >{listResolved(list)} de {list.items.length} resolvidos</Button>
-        </div>
-        <div className={styles.headingActions}>
+          >{pendingCount} {pendingCount === 1 ? "pendente" : "pendentes"}<span className={styles.sr}> · {listResolved(list)} de {list.items.length} resolvidos</span></Button>
           <ActionMenu
             label="Menu da compra"
             triggerClassName={styles.purchaseMenu}
@@ -103,6 +110,7 @@ export function ShoppingView({
       <BudgetSummary list={list} onEdit={onBudget} />
       <ShoppingToolbar view={view} />
       <div ref={resultsRef} data-purchase-results>
+        <div className={styles.listHeading}><h2>Produtos <span aria-live="polite">· {view.filteredItems.length} {view.filteredItems.length === 1 ? "item" : "itens"}</span></h2><span>{view.shopViewMode === "category" ? "Por categoria" : view.shopViewMode === "alphabetical" ? "A–Z" : "Ordem da compra"}</span></div>
         {view.filteredItems.length ? (
           view.shopViewMode === "category" ? (
             <div className={styles.groups}>
@@ -118,12 +126,13 @@ export function ShoppingView({
                   onPurchased={onPurchased}
                   onAlreadyHave={onAlreadyHave}
                   onUndo={onUndo}
+                  onDelete={onDelete}
                 />
               ) : null)}
             </div>
           ) : (
-            <div className={`${styles.collection} ${styles.alphabetical}`}>
-              {view.alphabeticalItems.map((item) => (
+            <div data-purchase-list className={`${styles.rowsSurface} ${styles.alphabetical}`}>
+              {(view.shopViewMode === "list" ? view.orderedItems : view.alphabeticalItems).map((item) => (
                 <ShoppingItemRow
                   key={item.id}
                   item={item}
@@ -132,6 +141,7 @@ export function ShoppingView({
                   onPurchased={() => onPurchased(item)}
                   onAlreadyHave={() => onAlreadyHave(item)}
                   onUndo={() => onUndo(item)}
+                  onDelete={onDelete ? () => onDelete(item) : undefined}
                 />
               ))}
             </div>
@@ -166,6 +176,7 @@ export function ShoppingView({
           />
         )}
       </div>
+      {list.items.length > 0 ? <p className={styles.bottomHint}>Toque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.</p> : null}
     </div>
   );
 }

@@ -26,11 +26,11 @@ export function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: ()
     >
       <div className={styles.values}>
         <div className={styles.total}>
-          <span>Total registrado</span>
+          <span>Gasto até agora</span>
           <strong>{totalLabel}</strong>
         </div>
         <div className={styles.balance}>
-          <span>{overBudget ? "Acima da meta" : "Disponível"}</span>
+          <span>{overBudget ? "Acima da meta" : "Ainda disponíveis"}</span>
           <b>{available}</b>
         </div>
       </div>
@@ -47,7 +47,7 @@ export function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: ()
       </div>
       <div className={styles.meta}>
         <span className={styles.target}>
-          Meta de {formatBRL(list.budget)}
+          Meta desta compra: <b>{formatBRL(list.budget)}</b>
           {withoutPrice ? (
             <small>
               {withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}

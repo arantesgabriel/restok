@@ -1,0 +1,30 @@
+{
+  "provenance": {
+    "type": "transcribed_original_default",
+    "source": "original/dist/r2.js",
+    "note": "house defaults to home unless localStorage has campo selected"
+  },
+  "state": {
+    "view": "compra",
+    "device": "390",
+    "palette": "eucalipto",
+    "motion": "standard",
+    "house": "home",
+    "purchaseFilter": "all",
+    "productCategory": "Todos",
+    "q": "",
+    "historyDetail": null,
+    "historyMonth": "Todos",
+    "houseMenu": false,
+    "modal": null,
+    "modalMeta": null,
+    "error": "",
+    "invite": null,
+    "lastChanged": null,
+    "lastAdded": null,
+    "filterChanged": false
+  },
+  "localStorage": {
+    "restok-r25-active-house": "home"
+  }
+}

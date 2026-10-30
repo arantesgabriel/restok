@@ -1,0 +1,128 @@
+/* Restok | Identidade em uso 2.7
+   Evolving brand colors from #213F1D / #2D5A27 and a Nexa-adjacent type system.
+   Nexa is not bundled: it requires a properly licensed webfont file.
+   Manrope is the actual web-safe, OFL-rendered face in this preview. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+body[data-palette="raiz"]{
+  --color-bg:#F7FAF5;--color-surface:#FFFFFF;--color-fg:#18251A;
+  --color-muted:#526452;--color-subtle:#647768;--color-border:#E1E9DE;
+  --color-wash:#F0F5ED;--color-accent:#2D5A27;--color-green-dark:#213F1D;
+  --color-lime:#C8EA8A;--color-lime-strong:#97C869;
+  --color-green-wash:#E8F2E3;--color-border-strong:#C9D9C5;
+  --color-blue:#4C7EA2;--color-blue-wash:#EDF4F8;
+  --color-panel:#F4F7F1;--color-placeholder:#BAC8B8;
+  --color-brand-dot:#6DA74C;
+}
+body[data-palette="folha"]{
+  --color-bg:#F9FBF5;--color-surface:#FFFFFF;--color-fg:#192318;
+  --color-muted:#546450;--color-subtle:#6B7D63;--color-border:#E2EADC;
+  --color-wash:#F1F6E9;--color-accent:#34752C;--color-green-dark:#1A3716;
+  --color-lime:#D4ED74;--color-lime-strong:#A9D75C;
+  --color-green-wash:#EAF4DF;--color-border-strong:#C9DCC0;
+  --color-blue:#516FA5;--color-blue-wash:#EDF2F9;
+  --color-panel:#F5F8EF;--color-placeholder:#B9CBB2;
+  --color-brand-dot:#82BE3E;
+}
+body[data-palette="salvia"]{
+  --color-bg:#F7FAF8;--color-surface:#FFFFFF;--color-fg:#1A2924;
+  --color-muted:#51675F;--color-subtle:#698079;--color-border:#DEE9E4;
+  --color-wash:#EFF5F1;--color-accent:#327861;--color-green-dark:#1D4439;
+  --color-lime:#AEE0C0;--color-lime-strong:#77C8A1;
+  --color-green-wash:#E7F3EC;--color-border-strong:#C7DAD2;
+  --color-blue:#3C7EAF;--color-blue-wash:#E9F2FA;
+  --color-panel:#F3F8F5;--color-placeholder:#B4C7BD;
+  --color-brand-dot:#57AF80;
+}
+
+/* A single family creates rhythm. Brand's official wordmark remains a distinct asset. */
+body,.brand,.hero h1,.note h3,.r2-note h3,.r25-focus-toggle{
+  font-family:"Nexa","Manrope","Geist",Arial,sans-serif;
+}
+.app.a,.app.a button,.app.a input,.app.a select,
+.app.a .logo,.app.a .mobile-logo,.app.a .r2-view-head h2,
+.app.a .budget-number,.app.a .budget-available b,.app.a .r2-stat b,
+.app.a .r2-detail-hero b,.app.a .r2-sheet-head h3{
+  font-family:"Nexa","Manrope","Geist",Arial,sans-serif;
+}
+.hero h1{font-size:clamp(25px,2.7vw,37px);font-weight:800;letter-spacing:-.048em}
+.brand{font-weight:800;letter-spacing:-.045em}
+.brand-mark,.top .brand-mark{border-radius:9px;background:var(--color-green-dark);color:var(--color-surface);font-weight:800}
+.brand-mark .r27-brand-dot{color:var(--color-lime);margin-left:-1px;font-size:18px}
+.r27-brand-dot{color:var(--color-brand-dot);letter-spacing:-.08em}
+.r25-brand-slash{color:var(--color-border-strong)}
+.r2-navbtn.active{border-color:var(--color-accent);color:var(--color-green-dark)}
+.r2-statusline:before{background:var(--color-brand-dot)}
+.r25-focus-toggle{background:var(--color-green-dark);border-color:var(--color-green-dark)}
+.r25-focus-toggle:hover{background:var(--color-accent)}
+.r2-bubble{background:var(--color-green-wash);color:var(--color-accent)}
+.r2-problem{background:var(--color-green-wash);color:var(--color-accent)}
+.note h3,.r2-note h3{font-weight:800;letter-spacing:-.045em}
+.r2-note .note p{line-height:1.55}
+
+/* Deliberately small palette lab, not a set of marketing cards. */
+.r27-identity-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-bottom:1px solid var(--color-border);padding:10px 0}
+.r27-palette-switch{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.r27-palette-switch>span{color:var(--color-subtle);font-size:11px;font-weight:700;margin-right:6px}
+.r27-palette-switch button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-muted);border-radius:8px;padding:8px 11px;font-size:11px;font-weight:700;min-height:38px;transition:background .15s,border-color .15s,transform .15s}
+.r27-palette-switch button:hover{background:var(--color-wash);border-color:var(--color-border-strong)}
+.r27-palette-switch button:active{transform:scale(.98)}
+.r27-palette-switch button.active{background:var(--color-green-wash);border-color:var(--color-accent);color:var(--color-green-dark)}
+.r27-palette-switch button i{width:14px;height:14px;border:1px solid var(--color-border-strong);border-radius:9999px;display:block;flex:none}
+.r27-font-caption{font-size:11px;font-weight:500;color:var(--color-subtle)}
+.r27-note-tag{display:inline-block;vertical-align:middle;margin-left:4px;font:600 10px "Manrope",sans-serif;color:var(--color-accent);background:var(--color-green-wash);padding:4px 6px;border-radius:4px;letter-spacing:0}
+.r27-type-disclaimer{padding-top:8px;border-top:1px solid var(--color-border)}
+.r2-toolrow{margin:10px 0 12px}
+.r25-focus .r27-identity-toolbar{display:none!important}
+
+/* Restok screens: make the brand recognizable without sacrificing utility. */
+.app.a{font-weight:500;letter-spacing:-.009em}
+.app.a .logo,.app.a .mobile-logo{font-weight:800;font-size:26px;letter-spacing:-.075em}
+.app.a .r2-view-head h2{font-weight:800;letter-spacing:-.053em;font-size:33px}
+.app.a .r2-view-head p{font-size:12px;color:var(--color-muted);font-weight:500}
+.app.a .nav-link{font-weight:600}
+.app.a .nav-link.active{background:var(--color-green-wash);color:var(--color-green-dark)!important}
+.app.a .nav-link.active .icon{color:var(--color-accent)}
+.app.a .house-icon{background:var(--color-green-wash);color:var(--color-accent)}
+.app.a .avatar{background:var(--color-green-wash);color:var(--color-green-dark)}
+.app.a .r2-primary{background:var(--color-accent);border-color:var(--color-accent);border-radius:8px;font-weight:700;letter-spacing:-.015em}
+.app.a .r2-primary:hover{background:var(--color-green-dark)}
+.app.a .r2-primary:focus-visible{outline-color:var(--color-blue)}
+.app.a .budget,.app.a:not(.desktop) .budget{background:var(--color-green-dark);border-radius:18px;box-shadow:none}
+.app.a .budget-number{font-size:34px;font-weight:800;letter-spacing:-.048em}
+.app.a .budget-available b{color:var(--color-lime);font-size:18px;font-weight:800;letter-spacing:-.03em}
+.app.a .budget-label{color:var(--color-green-wash);font-weight:500}
+.app.a .budget-foot b{font-weight:700}
+.app.a .progress{background:var(--color-accent)}
+.app.a .progress i{background:var(--color-lime)}
+.app.a .r25-text-action{color:var(--color-lime);font-weight:700}
+.app.a .r2-view-head .r2-inline-actions{padding-top:3px}
+.app.a .r2-tag{background:var(--color-green-wash);color:var(--color-accent)}
+.app.a .r2-chip.active{background:var(--color-green-wash);border-color:var(--color-border-strong);color:var(--color-accent)}
+.app.a .r2-cat-button{background:var(--color-accent);border-color:var(--color-accent)}
+.app.a .r2-catalog-row{border-color:var(--color-border)}
+.app.a .r2-catalog-meta{color:var(--color-subtle)}
+.app.a .r2-history-icon{background:var(--color-green-wash);color:var(--color-accent)}
+.app.a .r2-statrow{border:0;border-bottom:1px solid var(--color-border);border-radius:0;background:transparent}
+.app.a .r2-stat{padding:11px 12px 13px;border-right:1px solid var(--color-border)}
+.app.a .r2-stat:first-child{padding-left:0}
+.app.a .r2-stat b{font-weight:800;color:var(--color-green-dark)}
+.app.a .r2-history-total small{color:var(--color-blue)}
+.app.a .r2-detail-hero{background:var(--color-blue-wash)}
+.app.a .r2-people-house{background:var(--color-green-dark)}
+.app.a .r2-people-house .r2-house-icon{background:var(--color-lime)}
+.app.a .r2-member-avatar{background:var(--color-green-wash);color:var(--color-accent)}
+.app.a .r2-member-card:nth-child(even) .r2-member-avatar{background:var(--color-blue-wash);color:var(--color-blue)}
+.app.a .r2-aside-card{border-color:var(--color-border);box-shadow:none}
+.app.a .r2-accent-card{background:var(--color-wash)}
+.app.a:not(.desktop) .r2-view-head h2{font-size:25px}
+.app.a:not(.desktop) .budget-number{font-size:27px}
+.app.a:not(.desktop) .budget-available b{font-size:16px}
+.app.a:not(.desktop) .bottomnav button.active{background:var(--color-green-wash);color:var(--color-green-dark);font-weight:800}
+.app.a.compact .r2-view-head h2{font-size:22px}
+.app.a.compact .budget-number{font-size:23px}
+.app.a.compact .budget-available b{font-size:13px}
+
+@media(max-width:780px){.r27-identity-toolbar{align-items:flex-start}.r27-font-caption{width:100%}}
+@media(max-width:440px){.r27-palette-switch{width:100%;gap:4px}.r27-palette-switch button{flex:1;justify-content:center;padding:8px 6px}.r27-palette-switch>span{width:100%;margin-bottom:4px}.r27-font-caption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.r27-palette-switch button{transition:none!important}}

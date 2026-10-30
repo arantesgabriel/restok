@@ -1,8 +1,18 @@
 import { seedState } from "../fixtures/shopping";
 import type { RestokState } from "../../lib/types";
+import demoSeed from "../../docs/restok-demo-v6-handoff/fixtures/demo-seed.json";
 
 // Browser-only fixtures. No credentials, network client or production route.
 export function evidenceState(scenario: string): RestokState {
+  if (scenario === "demo-v6") {
+    // Test-only adapter. The real category vocabulary and missing-price semantics
+    // remain intact; no demo data is imported by production sources.
+    const category = (name: string) => name === "Limpeza" ? "Limpeza" as const : "Alimentos" as const;
+    return {
+      products: demoSeed.houses.home.catalog.map(product => ({ id:String(product.id),name:product.name,category:category(product.cat),defaultQuantity:product.qty,active:product.active })),
+      lists: [{ id:"demo-v6",name:"Compra da semana",budget:demoSeed.houses.home.budget,status:"active",startedAt:"2026-10-28T12:00:00.000Z",items:demoSeed.houses.home.items.map((item,index) => ({ id:String(item.id),productId:String(item.id),name:item.name,category:category(item.cat),quantity:item.qty,unitPrice:item.price ?? undefined,status:item.state === "done" ? "purchased" as const : item.state === "have" ? "already_have" as const : "pending" as const,sortOrder:index })) }],
+    };
+  }
   // Mirrors only the five fictitious products created with explicit permission
   // for the PR08 gate. The previous UI runs without any backend/session.
   if (scenario === "catalog-pr08-compare") return {

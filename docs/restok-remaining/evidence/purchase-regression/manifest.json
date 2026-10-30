@@ -1,0 +1,5154 @@
+{
+  "at": "2026-10-30T13:40:07.010Z",
+  "referenceCommit": "f0214b71d9497caa62ccaa3b804579f7cd757959",
+  "kind": "Real components, isolated local data adapter; no backend",
+  "checks": [
+    {
+      "name": "320: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "320: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 12,
+          "y": 63,
+          "width": 244,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 12,
+          "y": 115,
+          "width": 296,
+          "height": 103.09375,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "10px",
+            "12px",
+            "10px",
+            "12px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 24,
+          "y": 138.796875,
+          "width": 182.515625,
+          "height": 25.296875,
+          "font": "23px",
+          "weight": "800",
+          "lineHeight": "25.3px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 24,
+          "y": 171.09375,
+          "width": 272,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 12,
+          "y": 360.09375,
+          "width": 296,
+          "height": 813,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 13,
+          "y": 361.09375,
+          "width": 294,
+          "height": 57,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "4px",
+            "8px",
+            "4px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 73,
+          "y": 372.390625,
+          "width": 74.90625,
+          "height": 15.390625,
+          "font": "11px",
+          "weight": "700",
+          "lineHeight": "15.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "320: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 12,
+        "y": 360.09375,
+        "width": 296,
+        "height": 813,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "320: first complete row before dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "top": 361.09375,
+          "bottom": 418.09375,
+          "height": 57
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320: names/order equal original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: budget amount equals original code",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "expected": "R$ 50,68"
+      }
+    },
+    {
+      "name": "320: budget brand/radius equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 12,
+          "y": 115,
+          "width": 296,
+          "height": 103.09375,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "10px",
+            "12px",
+            "10px",
+            "12px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "reference": {
+          "x": 12,
+          "y": 109.53125,
+          "width": 296,
+          "height": 102.375,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "10px",
+            "12px",
+            "10px",
+            "12px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        }
+      }
+    },
+    {
+      "name": "320: amount type size equals source",
+      "pass": true,
+      "actual": {
+        "actual": "23px",
+        "reference": "23px"
+      }
+    },
+    {
+      "name": "320: title type equals source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 12,
+          "y": 63,
+          "width": 244,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 12,
+          "y": 58,
+          "width": 193.703125,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "320: title leading/tracking equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 12,
+          "y": 63,
+          "width": 244,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 12,
+          "y": 58,
+          "width": 193.703125,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "320: row type and height equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 13,
+          "y": 361.09375,
+          "width": 294,
+          "height": 57,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "4px",
+            "8px",
+            "4px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "reference": {
+          "x": 13,
+          "y": 328.59375,
+          "width": 294,
+          "height": 57,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "6px",
+            "7px",
+            "6px",
+            "7px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        }
+      }
+    },
+    {
+      "name": "320/todo: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "320/done: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ]
+      }
+    },
+    {
+      "name": "320/have: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Sabão em pó"
+        ],
+        "reference": [
+          "Sabão em pó"
+        ]
+      }
+    },
+    {
+      "name": "320/all: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "320: search equals demo",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: category search equals original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: empty search in both",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "320/Marcar Café em pó como já temos: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "already_have",
+        "sourceState": "already_have"
+      }
+    },
+    {
+      "name": "320/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "320/Desfazer situação de Café em pó: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "pending",
+        "sourceState": "pending"
+      }
+    },
+    {
+      "name": "320: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/empty-list: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: one empty add action",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/empty-list: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 0,00Ainda disponíveisR$ 800,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320/list100: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/list100: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 196,23Ainda disponíveisR$ 603,77Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320: all100 rows retained",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/list100: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 13,
+          "y": 358.0625,
+          "width": 294,
+          "height": 87.78125
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320/money: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/money: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 15,00Meta desta compra: R$ 0,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320/money: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 13,
+          "y": 389.046875,
+          "width": 294,
+          "height": 57
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320/money-equal: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/money-equal: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Ainda disponíveisR$ 0,00Meta desta compra: R$ 15,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320/money-equal: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 13,
+          "y": 373.4375,
+          "width": 294,
+          "height": 72.390625
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320/money-over: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/money-over: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 5,00Meta desta compra: R$ 10,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320/money-over: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 13,
+          "y": 373.4375,
+          "width": 294,
+          "height": 72.390625
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320/stress: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/stress: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "320/stress: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 13,
+          "y": 373.890625,
+          "width": 294,
+          "height": 72.390625
+        },
+        "dock": {
+          "x": 0,
+          "y": 531,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320: failure is actionable",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: confirmation only after fixture release",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: new100 footer reachable",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 563,
+        "width": 320,
+        "height": 77
+      }
+    },
+    {
+      "name": "320: real loading replaced after response",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "390: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 16,
+          "y": 69,
+          "width": 306,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 16,
+          "y": 124.140625,
+          "width": 358,
+          "height": 118.6875,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "16px",
+            "14px",
+            "16px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 32,
+          "y": 153.140625,
+          "width": 228.34375,
+          "height": 29.6875,
+          "font": "27px",
+          "weight": "800",
+          "lineHeight": "29.7px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 32,
+          "y": 190.828125,
+          "width": 326,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 16,
+          "y": 384.828125,
+          "width": 358,
+          "height": 883,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 17,
+          "y": 385.828125,
+          "width": 356,
+          "height": 62,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 77,
+          "y": 398.921875,
+          "width": 78.75,
+          "height": 16.796875,
+          "font": "12px",
+          "weight": "700",
+          "lineHeight": "16.8px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "390: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 384.828125,
+        "width": 358,
+        "height": 883,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "390: first complete row before dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "top": 385.828125,
+          "bottom": 447.828125,
+          "height": 62
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390: names/order equal original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: budget amount equals original code",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "expected": "R$ 50,68"
+      }
+    },
+    {
+      "name": "390: budget brand/radius equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 16,
+          "y": 124.140625,
+          "width": 358,
+          "height": 118.6875,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "16px",
+            "14px",
+            "16px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "reference": {
+          "x": 16,
+          "y": 132.140625,
+          "width": 358,
+          "height": 118.890625,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "15px",
+            "13px",
+            "15px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        }
+      }
+    },
+    {
+      "name": "390: amount type size equals source",
+      "pass": true,
+      "actual": {
+        "actual": "27px",
+        "reference": "27px"
+      }
+    },
+    {
+      "name": "390: title type equals source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 16,
+          "y": 69,
+          "width": 306,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 16,
+          "y": 72,
+          "width": 213.578125,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "390: title leading/tracking equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 16,
+          "y": 69,
+          "width": 306,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 16,
+          "y": 72,
+          "width": 213.578125,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "390: row type and height equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 17,
+          "y": 385.828125,
+          "width": 356,
+          "height": 62,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "reference": {
+          "x": 17,
+          "y": 380.0625,
+          "width": 356,
+          "height": 62,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(244, 247, 241)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "7px",
+            "9px",
+            "7px",
+            "9px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        }
+      }
+    },
+    {
+      "name": "390/todo: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "390/done: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ]
+      }
+    },
+    {
+      "name": "390/have: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Sabão em pó"
+        ],
+        "reference": [
+          "Sabão em pó"
+        ]
+      }
+    },
+    {
+      "name": "390/all: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "390: search equals demo",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: category search equals original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: empty search in both",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "390/Marcar Café em pó como já temos: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "already_have",
+        "sourceState": "already_have"
+      }
+    },
+    {
+      "name": "390/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "390/Desfazer situação de Café em pó: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "pending",
+        "sourceState": "pending"
+      }
+    },
+    {
+      "name": "390: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/empty-list: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: one empty add action",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/empty-list: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 0,00Ainda disponíveisR$ 800,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390/list100: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/list100: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 196,23Ainda disponíveisR$ 603,77Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390: all100 rows retained",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/list100: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 17,
+          "y": 582.859375,
+          "width": 356,
+          "height": 66.796875
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390/money: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/money: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 15,00Meta desta compra: R$ 0,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390/money: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 17,
+          "y": 504.375,
+          "width": 356,
+          "height": 62
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390/money-equal: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/money-equal: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Ainda disponíveisR$ 0,00Meta desta compra: R$ 15,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390/money-equal: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 17,
+          "y": 484.578125,
+          "width": 356,
+          "height": 66.796875
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390/money-over: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/money-over: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 5,00Meta desta compra: R$ 10,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390/money-over: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 17,
+          "y": 484.578125,
+          "width": 356,
+          "height": 66.796875
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390/stress: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/stress: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "390/stress: last row above dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 17,
+          "y": 582.96875,
+          "width": 356,
+          "height": 66.796875
+        },
+        "dock": {
+          "x": 0,
+          "y": 735,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390: failure is actionable",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: confirmation only after fixture release",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: new100 footer reachable",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 767,
+        "width": 390,
+        "height": 77
+      }
+    },
+    {
+      "name": "390: real loading replaced after response",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "768: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 16,
+          "y": 69,
+          "width": 684,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 16,
+          "y": 132.140625,
+          "width": 736,
+          "height": 118.6875,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "16px",
+            "14px",
+            "16px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 32,
+          "y": 161.140625,
+          "width": 606.34375,
+          "height": 29.6875,
+          "font": "27px",
+          "weight": "800",
+          "lineHeight": "29.7px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 32,
+          "y": 198.828125,
+          "width": 704,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 16,
+          "y": 412.828125,
+          "width": 736,
+          "height": 911,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 17,
+          "y": 413.828125,
+          "width": 734,
+          "height": 64,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 77,
+          "y": 427.234375,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "768: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 412.828125,
+        "width": 736,
+        "height": 911,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "768: first complete row before dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "top": 413.828125,
+          "bottom": 477.828125,
+          "height": 64
+        },
+        "dock": {
+          "x": 0,
+          "y": 915,
+          "width": 768,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "768: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "1024: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 252,
+          "y": 90,
+          "width": 319.703125,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 252,
+          "y": 165.09375,
+          "width": 748,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 276,
+          "y": 206.484375,
+          "width": 586.015625,
+          "height": 37.390625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "37.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 276,
+          "y": 251.875,
+          "width": 700,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 252,
+          "y": 475.875,
+          "width": 748,
+          "height": 953,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 253,
+          "y": 476.875,
+          "width": 702,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 313,
+          "y": 491.78125,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1024: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 252,
+        "y": 475.875,
+        "width": 748,
+        "height": 953,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "1024: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "1280: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 252,
+          "y": 90,
+          "width": 500.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 252,
+          "y": 165.09375,
+          "width": 716,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 276,
+          "y": 206.484375,
+          "width": 554.015625,
+          "height": 37.390625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "37.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 276,
+          "y": 251.875,
+          "width": 668,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 252,
+          "y": 475.875,
+          "width": 716,
+          "height": 953,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 253,
+          "y": 476.875,
+          "width": 670,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 313,
+          "y": 491.78125,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1280: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 252,
+        "y": 475.875,
+        "width": 716,
+        "height": 953,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "1280: at least4 full rows",
+      "pass": true,
+      "actual": [
+        {
+          "top": 476.875,
+          "bottom": 543.875,
+          "height": 67
+        },
+        {
+          "top": 544.875,
+          "bottom": 611.875,
+          "height": 67
+        },
+        {
+          "top": 612.875,
+          "bottom": 679.875,
+          "height": 67
+        },
+        {
+          "top": 680.875,
+          "bottom": 747.875,
+          "height": 67
+        },
+        {
+          "top": 748.875,
+          "bottom": 815.875,
+          "height": 67
+        },
+        {
+          "top": 816.875,
+          "bottom": 883.875,
+          "height": 67
+        },
+        {
+          "top": 884.875,
+          "bottom": 951.875,
+          "height": 67
+        },
+        {
+          "top": 952.875,
+          "bottom": 1019.875,
+          "height": 67
+        },
+        {
+          "top": 1020.875,
+          "bottom": 1087.875,
+          "height": 67
+        },
+        {
+          "top": 1088.875,
+          "bottom": 1155.875,
+          "height": 67
+        },
+        {
+          "top": 1156.875,
+          "bottom": 1223.875,
+          "height": 67
+        },
+        {
+          "top": 1224.875,
+          "bottom": 1291.875,
+          "height": 67
+        },
+        {
+          "top": 1292.875,
+          "bottom": 1359.875,
+          "height": 67
+        },
+        {
+          "top": 1360.875,
+          "bottom": 1427.875,
+          "height": 67
+        }
+      ]
+    },
+    {
+      "name": "1280: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "1440: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 252,
+          "y": 90,
+          "width": 660.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 252,
+          "y": 165.09375,
+          "width": 876,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 276,
+          "y": 206.484375,
+          "width": 714.015625,
+          "height": 37.390625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "37.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 276,
+          "y": 251.875,
+          "width": 828,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 252,
+          "y": 475.875,
+          "width": 876,
+          "height": 953,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 253,
+          "y": 476.875,
+          "width": 830,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 313,
+          "y": 491.78125,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1440: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 252,
+        "y": 475.875,
+        "width": 876,
+        "height": 953,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "1440: at least4 full rows",
+      "pass": true,
+      "actual": [
+        {
+          "top": 476.875,
+          "bottom": 543.875,
+          "height": 67
+        },
+        {
+          "top": 544.875,
+          "bottom": 611.875,
+          "height": 67
+        },
+        {
+          "top": 612.875,
+          "bottom": 679.875,
+          "height": 67
+        },
+        {
+          "top": 680.875,
+          "bottom": 747.875,
+          "height": 67
+        },
+        {
+          "top": 748.875,
+          "bottom": 815.875,
+          "height": 67
+        },
+        {
+          "top": 816.875,
+          "bottom": 883.875,
+          "height": 67
+        },
+        {
+          "top": 884.875,
+          "bottom": 951.875,
+          "height": 67
+        },
+        {
+          "top": 952.875,
+          "bottom": 1019.875,
+          "height": 67
+        },
+        {
+          "top": 1020.875,
+          "bottom": 1087.875,
+          "height": 67
+        },
+        {
+          "top": 1088.875,
+          "bottom": 1155.875,
+          "height": 67
+        },
+        {
+          "top": 1156.875,
+          "bottom": 1223.875,
+          "height": 67
+        },
+        {
+          "top": 1224.875,
+          "bottom": 1291.875,
+          "height": 67
+        },
+        {
+          "top": 1292.875,
+          "bottom": 1359.875,
+          "height": 67
+        },
+        {
+          "top": 1360.875,
+          "bottom": 1427.875,
+          "height": 67
+        }
+      ]
+    },
+    {
+      "name": "1440: names/order equal original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: budget amount equals original code",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "expected": "R$ 50,68"
+      }
+    },
+    {
+      "name": "1440: budget brand/radius equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 252,
+          "y": 165.09375,
+          "width": 876,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "reference": {
+          "x": 266,
+          "y": 166.09375,
+          "width": 850,
+          "height": 145.140625,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "19px",
+            "21px",
+            "16px",
+            "21px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        }
+      }
+    },
+    {
+      "name": "1440: amount type size equals source",
+      "pass": true,
+      "actual": {
+        "actual": "34px",
+        "reference": "34px"
+      }
+    },
+    {
+      "name": "1440: title type equals source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 252,
+          "y": 90,
+          "width": 660.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 266,
+          "y": 90,
+          "width": 281.03125,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "1440: title leading/tracking equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 252,
+          "y": 90,
+          "width": 660.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "reference": {
+          "x": 266,
+          "y": 90,
+          "width": 281.03125,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        }
+      }
+    },
+    {
+      "name": "1440: row type and height equal source",
+      "pass": true,
+      "actual": {
+        "actual": {
+          "x": 253,
+          "y": 476.875,
+          "width": 830,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "reference": {
+          "x": 267,
+          "y": 463.609375,
+          "width": 848,
+          "height": 67,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "12px",
+            "8px",
+            "12px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        }
+      }
+    },
+    {
+      "name": "1440: summary counts equal original code",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "9",
+          "4",
+          "1",
+          "3"
+        ],
+        "reference": [
+          "9",
+          "4",
+          "1",
+          "3"
+        ]
+      }
+    },
+    {
+      "name": "1440/todo: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1440/done: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma"
+        ]
+      }
+    },
+    {
+      "name": "1440/have: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Sabão em pó"
+        ],
+        "reference": [
+          "Sabão em pó"
+        ]
+      }
+    },
+    {
+      "name": "1440/all: filter equals demo",
+      "pass": true,
+      "actual": {
+        "actual": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ],
+        "reference": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1440: search equals demo",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: category search equals original code",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: empty search in both",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "1440/Marcar Café em pó como já temos: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "already_have",
+        "sourceState": "already_have"
+      }
+    },
+    {
+      "name": "1440/Marcar Café em pó como comprado: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 96,48",
+        "reference": "R$ 96,48",
+        "localState": "purchased",
+        "sourceState": "purchased"
+      }
+    },
+    {
+      "name": "1440/Desfazer situação de Café em pó: same total/state transition",
+      "pass": true,
+      "actual": {
+        "actual": "R$ 50,68",
+        "reference": "R$ 50,68",
+        "localState": "pending",
+        "sourceState": "pending"
+      }
+    },
+    {
+      "name": "1440: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/empty-list: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: one empty add action",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/empty-list: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 0,00Ainda disponíveisR$ 800,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440/list100: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/list100: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 196,23Ainda disponíveisR$ 603,77Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440: all100 rows retained",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/money: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/money: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 15,00Meta desta compra: R$ 0,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440/money-equal: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/money-equal: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Ainda disponíveisR$ 0,00Meta desta compra: R$ 15,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440/money-over: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/money-over: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 5,00Meta desta compra: R$ 10,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440/stress: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/stress: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1440: failure is actionable",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: confirmation only after fixture release",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: new100 footer reachable",
+      "pass": true,
+      "actual": {
+        "x": 368,
+        "y": 762,
+        "width": 704,
+        "height": 93
+      }
+    },
+    {
+      "name": "1440: real loading replaced after response",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: original names/order",
+      "pass": true,
+      "actual": [
+        "Arroz integral",
+        "Café em pó",
+        "Leite integral",
+        "Banana prata",
+        "Ovos caipiras",
+        "Detergente neutro",
+        "Pão de forma",
+        "Queijo minas",
+        "Tomate italiano",
+        "Manteiga sem sal",
+        "Macarrão penne",
+        "Sabão em pó",
+        "Maçã gala",
+        "Azeite extravirgem"
+      ]
+    },
+    {
+      "name": "1920: canonical palette",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 410,
+          "y": 90,
+          "width": 824.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 410,
+          "y": 165.09375,
+          "width": 1040,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 434,
+          "y": 206.484375,
+          "width": 878.015625,
+          "height": 37.390625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "37.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 434,
+          "y": 251.875,
+          "width": 992,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 410,
+          "y": 475.875,
+          "width": 1040,
+          "height": 953,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 411,
+          "y": 476.875,
+          "width": 994,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 471,
+          "y": 491.78125,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      }
+    },
+    {
+      "name": "1920: one collection, thin border, radius12",
+      "pass": true,
+      "actual": {
+        "x": 410,
+        "y": 475.875,
+        "width": 1040,
+        "height": 953,
+        "font": "16px",
+        "weight": "400",
+        "lineHeight": "24px",
+        "tracking": "normal",
+        "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+        "color": "rgb(24, 37, 26)",
+        "background": "rgb(255, 255, 255)",
+        "border": "1px",
+        "borderColor": "rgb(225, 233, 222)",
+        "radius": "12px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+      }
+    },
+    {
+      "name": "1920: at least4 full rows",
+      "pass": true,
+      "actual": [
+        {
+          "top": 476.875,
+          "bottom": 543.875,
+          "height": 67
+        },
+        {
+          "top": 544.875,
+          "bottom": 611.875,
+          "height": 67
+        },
+        {
+          "top": 612.875,
+          "bottom": 679.875,
+          "height": 67
+        },
+        {
+          "top": 680.875,
+          "bottom": 747.875,
+          "height": 67
+        },
+        {
+          "top": 748.875,
+          "bottom": 815.875,
+          "height": 67
+        },
+        {
+          "top": 816.875,
+          "bottom": 883.875,
+          "height": 67
+        },
+        {
+          "top": 884.875,
+          "bottom": 951.875,
+          "height": 67
+        },
+        {
+          "top": 952.875,
+          "bottom": 1019.875,
+          "height": 67
+        },
+        {
+          "top": 1020.875,
+          "bottom": 1087.875,
+          "height": 67
+        },
+        {
+          "top": 1088.875,
+          "bottom": 1155.875,
+          "height": 67
+        },
+        {
+          "top": 1156.875,
+          "bottom": 1223.875,
+          "height": 67
+        },
+        {
+          "top": 1224.875,
+          "bottom": 1291.875,
+          "height": 67
+        },
+        {
+          "top": 1292.875,
+          "bottom": 1359.875,
+          "height": 67
+        },
+        {
+          "top": 1360.875,
+          "bottom": 1427.875,
+          "height": 67
+        }
+      ]
+    },
+    {
+      "name": "1920: zero budget retains registered total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: add uses real handler",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: quantity2 times4.50 plus baseline",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/empty-list: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: one empty add action",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/empty-list: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 0,00Ainda disponíveisR$ 800,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920/list100: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/list100: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 196,23Ainda disponíveisR$ 603,77Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920: all100 rows retained",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/money: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/money: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 15,00Meta desta compra: R$ 0,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920/money-equal: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/money-equal: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Ainda disponíveisR$ 0,00Meta desta compra: R$ 15,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920/money-over: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/money-over: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 15,00Acima da metaR$ 5,00Meta desta compra: R$ 10,001 item comprado sem preçoEditar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920/stress: no overflow",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/stress: financial digits fit",
+      "pass": true,
+      "actual": {
+        "text": "Gasto até agoraR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta desta compra: R$ 800,00Editar meta",
+        "clipped": false
+      }
+    },
+    {
+      "name": "1920: failure is actionable",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: confirmation only after fixture release",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: new100 footer reachable",
+      "pass": true,
+      "actual": {
+        "x": 608,
+        "y": 933,
+        "width": 704,
+        "height": 93
+      }
+    },
+    {
+      "name": "1920: real loading replaced after response",
+      "pass": true,
+      "actual": null
+    }
+  ],
+  "comparisons": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 12,
+          "y": 63,
+          "width": 244,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 12,
+          "y": 115,
+          "width": 296,
+          "height": 103.09375,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "10px",
+            "12px",
+            "10px",
+            "12px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 24,
+          "y": 138.796875,
+          "width": 182.515625,
+          "height": 25.296875,
+          "font": "23px",
+          "weight": "800",
+          "lineHeight": "25.3px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 24,
+          "y": 171.09375,
+          "width": 272,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 12,
+          "y": 360.09375,
+          "width": 296,
+          "height": 813,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 13,
+          "y": 361.09375,
+          "width": 294,
+          "height": 57,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "4px",
+            "8px",
+            "4px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 73,
+          "y": 372.390625,
+          "width": 74.90625,
+          "height": 15.390625,
+          "font": "11px",
+          "weight": "700",
+          "lineHeight": "15.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "reference": {
+        "overflow": 7,
+        "title": {
+          "x": 12,
+          "y": 58,
+          "width": 193.703125,
+          "height": 23.53125,
+          "font": "22px",
+          "weight": "800",
+          "lineHeight": "23.54px",
+          "tracking": "-1.232px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 12,
+          "y": 109.53125,
+          "width": 296,
+          "height": 102.375,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "10px",
+            "12px",
+            "10px",
+            "12px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        },
+        "amount": {
+          "x": 24,
+          "y": 141.421875,
+          "width": 90.234375,
+          "height": 25.984375,
+          "font": "23px",
+          "weight": "800",
+          "lineHeight": "25.99px",
+          "tracking": "-1.104px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 24,
+          "y": 174.40625,
+          "width": 272,
+          "height": 4,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "9999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 12,
+          "y": 327.59375,
+          "width": 296,
+          "height": 802.84375,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90Café em pó2 pacotes · 500 gR$ 45,80R$ 22,90 / un.Leite integral6 unidades · 1 LR$ 31,74R$ 5,29 / un.Banana prata1 cachoSem preçoOvos caipiras1 dúzia · CompradoR$ 16,50Detergente neutro2 unidades · 500 ml · CompradoR$ 5,78R$ 2,89 / un.Pão de forma1 unidade · CompradoR$ 9,50Queijo minas1 pacote · 400 gR$ 23,40Tomate italiano1 kgSem preçoManteiga sem sal1 pote · 200 gR$ 13,90Macarrão penne2 pacotes · 500 gR$ 11,50R$ 5,75 / un.Sabão em pó1 pacote · 1 kg · Já temosSem preçoMaçã gala1 kgR$ 9,80Azeite extravirgem1 garrafa · 500 mlR$ 37,90"
+        },
+        "row": {
+          "x": 13,
+          "y": 328.59375,
+          "width": 294,
+          "height": 57,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "6px",
+            "7px",
+            "6px",
+            "7px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 63,
+          "y": 340.171875,
+          "width": 151.015625,
+          "height": 14.84375,
+          "font": "11px",
+          "weight": "700",
+          "lineHeight": "14.85px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(100, 119, 104)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(100, 119, 104)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "referenceFont": "Same licensed Manrope injected locally; no source file changed; laboratory scale removed"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 16,
+          "y": 69,
+          "width": 306,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 16,
+          "y": 124.140625,
+          "width": 358,
+          "height": 118.6875,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "16px",
+            "14px",
+            "16px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 32,
+          "y": 153.140625,
+          "width": 228.34375,
+          "height": 29.6875,
+          "font": "27px",
+          "weight": "800",
+          "lineHeight": "29.7px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 32,
+          "y": 190.828125,
+          "width": 326,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 16,
+          "y": 384.828125,
+          "width": 358,
+          "height": 883,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 17,
+          "y": 385.828125,
+          "width": 356,
+          "height": 62,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 77,
+          "y": 398.921875,
+          "width": 78.75,
+          "height": 16.796875,
+          "font": "12px",
+          "weight": "700",
+          "lineHeight": "16.8px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "reference": {
+        "overflow": 0,
+        "title": {
+          "x": 16,
+          "y": 72,
+          "width": 213.578125,
+          "height": 26.75,
+          "font": "25px",
+          "weight": "800",
+          "lineHeight": "26.75px",
+          "tracking": "-1.4px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 16,
+          "y": 132.140625,
+          "width": 358,
+          "height": 118.890625,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "14px",
+            "15px",
+            "13px",
+            "15px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        },
+        "amount": {
+          "x": 31,
+          "y": 168.03125,
+          "width": 105.921875,
+          "height": 30.5,
+          "font": "27px",
+          "weight": "800",
+          "lineHeight": "30.51px",
+          "tracking": "-1.296px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 31,
+          "y": 208.53125,
+          "width": 328,
+          "height": 4,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "9999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 16,
+          "y": 379.0625,
+          "width": 358,
+          "height": 870,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90Café em pó2 pacotes · 500 gR$ 45,80R$ 22,90 / un.Leite integral6 unidades · 1 LR$ 31,74R$ 5,29 / un.Banana prata1 cachoSem preçoOvos caipiras1 dúzia · CompradoR$ 16,50Detergente neutro2 unidades · 500 ml · CompradoR$ 5,78R$ 2,89 / un.Pão de forma1 unidade · CompradoR$ 9,50Queijo minas1 pacote · 400 gR$ 23,40Tomate italiano1 kgSem preçoManteiga sem sal1 pote · 200 gR$ 13,90Macarrão penne2 pacotes · 500 gR$ 11,50R$ 5,75 / un.Sabão em pó1 pacote · 1 kg · Já temosSem preçoMaçã gala1 kgR$ 9,80Azeite extravirgem1 garrafa · 500 mlR$ 37,90"
+        },
+        "row": {
+          "x": 17,
+          "y": 380.0625,
+          "width": 356,
+          "height": 62,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(244, 247, 241)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "7px",
+            "9px",
+            "7px",
+            "9px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 69,
+          "y": 393.46875,
+          "width": 204.75,
+          "height": 16.1875,
+          "font": "12px",
+          "weight": "700",
+          "lineHeight": "16.2px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(100, 119, 104)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(100, 119, 104)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "referenceFont": "Same licensed Manrope injected locally; no source file changed; laboratory scale removed"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actual": {
+        "overflow": 0,
+        "title": {
+          "x": 252,
+          "y": 90,
+          "width": 660.015625,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 252,
+          "y": 165.09375,
+          "width": 876,
+          "height": 148.78125,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "18px",
+          "padding": [
+            "24px",
+            "24px",
+            "24px",
+            "24px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta"
+        },
+        "amount": {
+          "x": 276,
+          "y": 206.484375,
+          "width": 714.015625,
+          "height": 37.390625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "37.4px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 276,
+          "y": 251.875,
+          "width": 828,
+          "height": 6,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 252,
+          "y": 475.875,
+          "width": 876,
+          "height": 953,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "ExcluirArroz integral1 un.CompradoR$ 18,90ExcluirCafé em pó2 un.PendenteR$ 45,80R$ 22,90 / un.ExcluirLeite integral6 un.PendenteR$ 31,74R$ 5,29 / un.ExcluirBanana prata1 un.PendenteSem preçoExcluirOvos caipiras1 un.CompradoR$ 16,50ExcluirDetergente neutro2 un.CompradoR$ 5,78R$ 2,89 / un.ExcluirPão de forma1 un.CompradoR$ 9,50ExcluirQueijo minas1 un.PendenteR$ 23,40ExcluirTomate italiano1 un.PendenteSem preçoExcluirManteiga sem sal1 un.PendenteR$ 13,90ExcluirMacarrão penne2 un.PendenteR$ 11,50R$ 5,75 / un.ExcluirSabão em pó1 un.Já temosSem preçoExcluirMaçã gala1 un.PendenteR$ 9,80ExcluirAzeite extravirgem1 un.PendenteR$ 37,90"
+        },
+        "row": {
+          "x": 253,
+          "y": 476.875,
+          "width": 830,
+          "height": 67,
+          "font": "16px",
+          "weight": "400",
+          "lineHeight": "24px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "8px",
+            "8px",
+            "8px"
+          ],
+          "text": "Arroz integral1 un.CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 313,
+          "y": 491.78125,
+          "width": 85.3125,
+          "height": 18.1875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "18.2px",
+          "tracking": "normal",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "color": "rgb(82, 100, 82)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "reference": {
+        "overflow": 0,
+        "title": {
+          "x": 266,
+          "y": 90,
+          "width": 281.03125,
+          "height": 35.296875,
+          "font": "33px",
+          "weight": "800",
+          "lineHeight": "35.31px",
+          "tracking": "-1.749px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(24, 37, 26)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Compra da semana"
+        },
+        "budget": {
+          "x": 266,
+          "y": 166.09375,
+          "width": 850,
+          "height": 145.140625,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(33, 63, 29)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "18px",
+          "padding": [
+            "19px",
+            "21px",
+            "16px",
+            "21px"
+          ],
+          "text": "Gasto até agoraR$ 50,68Ainda disponíveisR$ 129,32Meta desta compra: R$ 180,00Editar meta "
+        },
+        "amount": {
+          "x": 287,
+          "y": 206.984375,
+          "width": 133.390625,
+          "height": 38.40625,
+          "font": "34px",
+          "weight": "800",
+          "lineHeight": "38.42px",
+          "tracking": "-1.632px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "R$ 50,68"
+        },
+        "progress": {
+          "x": 287,
+          "y": 260.390625,
+          "width": 808,
+          "height": 5,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(45, 90, 39)",
+          "border": "0px",
+          "borderColor": "rgb(255, 255, 255)",
+          "radius": "9999px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": ""
+        },
+        "list": {
+          "x": 266,
+          "y": 462.609375,
+          "width": 850,
+          "height": 940,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgb(255, 255, 255)",
+          "border": "1px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "12px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90Café em pó2 pacotes · 500 gR$ 45,80R$ 22,90 / un.Leite integral6 unidades · 1 LR$ 31,74R$ 5,29 / un.Banana prata1 cachoSem preçoOvos caipiras1 dúzia · CompradoR$ 16,50Detergente neutro2 unidades · 500 ml · CompradoR$ 5,78R$ 2,89 / un.Pão de forma1 unidade · CompradoR$ 9,50Queijo minas1 pacote · 400 gR$ 23,40Tomate italiano1 kgSem preçoManteiga sem sal1 pote · 200 gR$ 13,90Macarrão penne2 pacotes · 500 gR$ 11,50R$ 5,75 / un.Sabão em pó1 pacote · 1 kg · Já temosSem preçoMaçã gala1 kgR$ 9,80Azeite extravirgem1 garrafa · 500 mlR$ 37,90"
+        },
+        "row": {
+          "x": 267,
+          "y": 463.609375,
+          "width": 848,
+          "height": 67,
+          "font": "14px",
+          "weight": "500",
+          "lineHeight": "18.9px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(24, 37, 26)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(225, 233, 222)",
+          "radius": "0px",
+          "padding": [
+            "8px",
+            "12px",
+            "8px",
+            "12px"
+          ],
+          "text": "Arroz integral1 pacote · 1 kg · CompradoR$ 18,90"
+        },
+        "name": {
+          "x": 328,
+          "y": 478.078125,
+          "width": 673.46875,
+          "height": 17.546875,
+          "font": "13px",
+          "weight": "700",
+          "lineHeight": "17.55px",
+          "tracking": "-0.126px",
+          "fontFamily": "Nexa, Manrope, Geist, Arial, sans-serif",
+          "color": "rgb(100, 119, 104)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "0px",
+          "borderColor": "rgb(100, 119, 104)",
+          "radius": "0px",
+          "padding": [
+            "0px",
+            "0px",
+            "0px",
+            "0px"
+          ],
+          "text": "Arroz integral"
+        },
+        "names": [
+          "Arroz integral",
+          "Café em pó",
+          "Leite integral",
+          "Banana prata",
+          "Ovos caipiras",
+          "Detergente neutro",
+          "Pão de forma",
+          "Queijo minas",
+          "Tomate italiano",
+          "Manteiga sem sal",
+          "Macarrão penne",
+          "Sabão em pó",
+          "Maçã gala",
+          "Azeite extravirgem"
+        ]
+      },
+      "referenceFont": "Same licensed Manrope injected locally; no source file changed; laboratory scale removed"
+    }
+  ],
+  "errors": [],
+  "captures": [
+    "320-640-compra.png",
+    "320-640-search.png",
+    "320-640-empty-search.png",
+    "320-640-budget-zero.png",
+    "320-640-finish-warning.png",
+    "320-640-add.png",
+    "320-640-edit.png",
+    "320-640-complete.png",
+    "320-640-empty-list.png",
+    "320-640-list100.png",
+    "320-640-money.png",
+    "320-640-money-equal.png",
+    "320-640-money-over.png",
+    "320-640-stress.png",
+    "320-640-retry.png",
+    "320-640-new100.png",
+    "320-640-loading.png",
+    "390-844-compra.png",
+    "390-844-search.png",
+    "390-844-empty-search.png",
+    "390-844-budget-zero.png",
+    "390-844-finish-warning.png",
+    "390-844-add.png",
+    "390-844-edit.png",
+    "390-844-complete.png",
+    "390-844-empty-list.png",
+    "390-844-list100.png",
+    "390-844-money.png",
+    "390-844-money-equal.png",
+    "390-844-money-over.png",
+    "390-844-stress.png",
+    "390-844-retry.png",
+    "390-844-new100.png",
+    "390-844-loading.png",
+    "768-1024-compra.png",
+    "768-1024-budget-zero.png",
+    "768-1024-finish-warning.png",
+    "768-1024-add.png",
+    "768-1024-edit.png",
+    "768-1024-complete.png",
+    "1024-768-compra.png",
+    "1024-768-budget-zero.png",
+    "1024-768-finish-warning.png",
+    "1024-768-add.png",
+    "1024-768-edit.png",
+    "1024-768-complete.png",
+    "1280-800-compra.png",
+    "1280-800-budget-zero.png",
+    "1280-800-finish-warning.png",
+    "1280-800-add.png",
+    "1280-800-edit.png",
+    "1280-800-complete.png",
+    "1440-900-compra.png",
+    "1440-900-search.png",
+    "1440-900-empty-search.png",
+    "1440-900-budget-zero.png",
+    "1440-900-finish-warning.png",
+    "1440-900-add.png",
+    "1440-900-edit.png",
+    "1440-900-complete.png",
+    "1440-900-empty-list.png",
+    "1440-900-list100.png",
+    "1440-900-money.png",
+    "1440-900-money-equal.png",
+    "1440-900-money-over.png",
+    "1440-900-stress.png",
+    "1440-900-retry.png",
+    "1440-900-new100.png",
+    "1440-900-loading.png",
+    "1920-1080-compra.png",
+    "1920-1080-budget-zero.png",
+    "1920-1080-finish-warning.png",
+    "1920-1080-add.png",
+    "1920-1080-edit.png",
+    "1920-1080-complete.png",
+    "1920-1080-empty-list.png",
+    "1920-1080-list100.png",
+    "1920-1080-money.png",
+    "1920-1080-money-equal.png",
+    "1920-1080-money-over.png",
+    "1920-1080-stress.png",
+    "1920-1080-retry.png",
+    "1920-1080-new100.png",
+    "1920-1080-loading.png"
+  ],
+  "engine": "156.0.4314.50",
+  "sources": [
+    {
+      "file": "components/shopping/shopping-view.tsx",
+      "sha256": "27814b5ff822ac525fd2845ee313fe85bfeeb8a053f689a5115ce5ac09ecb9a6"
+    },
+    {
+      "file": "components/shopping/shopping-toolbar.tsx",
+      "sha256": "f7bceb2ca40317974b146d5d687145fcea4568a04ec8bfcb560d6f8fbe184e8d"
+    },
+    {
+      "file": "components/shopping/use-shopping-view.ts",
+      "sha256": "82edfd91a016e38370e1ac5cac1cd1d530d07c60d573a31d5f82e01263cf9d73"
+    },
+    {
+      "file": "components/shopping/item-row.tsx",
+      "sha256": "2ed9d9f69fcc13f0ea9172556d902ff4e7a8cb75a637df59ef23d0a06da6d342"
+    },
+    {
+      "file": "components/shopping/status-toggle.tsx",
+      "sha256": "ccd742809fd174b9eb2c1d1bf6a950c11f401af13d4d997ad70b5e05ea8d7074"
+    },
+    {
+      "file": "components/shopping/already-have.tsx",
+      "sha256": "beb99e89f08edbf195b545dfdf241f7ceea937730bf1d3fcb0f4d19053c1abd5"
+    },
+    {
+      "file": "components/shopping/budget-summary.tsx",
+      "sha256": "ae4625107f1fbe6a9f027fb4953d4d6967dccc3ef923f72749f239970e774e9c"
+    },
+    {
+      "file": "components/shopping/purchase-context.tsx",
+      "sha256": "3743884e4b4493416179b20dad0913f3b7c50a92842f76760193c6d9421a8970"
+    },
+    {
+      "file": "components/shopping/shopping.module.css",
+      "sha256": "f647b13caa456c0b965b4518d9581fce385f0ce9b3e359f38cd25794ff3bb205"
+    },
+    {
+      "file": "components/shopping/shopping-controls.module.css",
+      "sha256": "92767cc43c70222307df3cab84fe147cf0c54e691ec357bb95ec13855c312861"
+    },
+    {
+      "file": "components/shopping/shopping-dock.tsx",
+      "sha256": "06e846e9300ee7bd9469db1f38b4c8b33b69d995bb7aaa698a88160cac9900a8"
+    },
+    {
+      "file": "components/restok-app.tsx",
+      "sha256": "c06a5167f4a0d87be96821cad872868397746505c03476a6a7b3633e4481ca6a"
+    }
+  ],
+  "referenceSources": [
+    {
+      "file": "index.html",
+      "sha256": "0d046670ffacc077edc6ec32efaa229d209e98e3d0ebb65fab3e27a729b2409c"
+    },
+    {
+      "file": "r2.js",
+      "sha256": "e743eb78c30f081b872850b9d787dbdf72ea3630c82740690c9a7fa23f31673b"
+    },
+    {
+      "file": "r2.css",
+      "sha256": "d87de131a5f876994daf81adbdff522a9bad796a6cc9573126e316c6fc2791f3"
+    },
+    {
+      "file": "r26.css",
+      "sha256": "46b85766d3793cd3e9755f4fbb9be3225e946b9530f390ab0905053cef57ee6c"
+    },
+    {
+      "file": "r27.css",
+      "sha256": "8ce88e37f1eab0f1cb5df1464a32608b2a7dc2337a4677270e570db4a613da2f"
+    },
+    {
+      "file": "r28.css",
+      "sha256": "92a7e3a521ca9b23c200b85f8a0db81b26ad1a7607fcf45725035d9c7da9f7c9"
+    },
+    {
+      "file": "r3.css",
+      "sha256": "b78fb752e40706e4839904bcfd3890f2e7c7c0200a9b242bcba45b5de4c7216e"
+    },
+    {
+      "file": "r4-consolidated.css",
+      "sha256": "54bb624849a12099c5c3729655d005e9541efcba89345d2c8030154cb01046ef"
+    }
+  ],
+  "outsideScope": [
+    {
+      "file": "components/app/app-shell.tsx",
+      "unchanged": false
+    },
+    {
+      "file": "components/app/app-shell.module.css",
+      "unchanged": false
+    },
+    {
+      "file": "components/app/navigation.module.css",
+      "unchanged": false
+    },
+    {
+      "file": "components/ui/controls.module.css",
+      "unchanged": true
+    },
+    {
+      "file": "components/ui/numeric-fields.module.css",
+      "unchanged": true
+    },
+    {
+      "file": "components/ui/feedback.module.css",
+      "unchanged": true
+    },
+    {
+      "file": "components/ui/overlay.module.css",
+      "unchanged": true
+    },
+    {
+      "file": "components/ui/search-field.tsx",
+      "unchanged": true
+    },
+    {
+      "file": "components/ui/action-menu.tsx",
+      "unchanged": true
+    },
+    {
+      "file": "components/products/product-row.tsx",
+      "unchanged": false
+    },
+    {
+      "file": "components/products/products.module.css",
+      "unchanged": false
+    }
+  ]
+}

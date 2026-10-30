@@ -1,0 +1,8 @@
+/* Content gutters from DS v1, not the demonstration laboratory breakpoints.
+   These tokens do not change shell layout until its own approved phase. */
+@media (min-width: 390px) {
+  .restok-theme { --layout-gutter: var(--space-4); }
+}
+@media (min-width: 1024px) {
+  .restok-theme { --layout-gutter: var(--space-6); }
+}

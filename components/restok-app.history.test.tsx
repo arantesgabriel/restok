@@ -98,7 +98,7 @@ describe("purchase history", () => {
     render(<RestokApp/>);
     await screen.findByRole("button", {name:/Compra recente/});
     expect(screen.queryByRole("heading", {name:seedState.lists[0].name})).toBeNull();
-    expect(screen.getByRole("heading", {name:"Histórico"})).toBeTruthy();
+    expect(screen.getByRole("heading", {name:"Compras anteriores"})).toBeTruthy();
   });
 
   it("keeps completed snapshots after editing and deactivating the recurring product", async () => {

@@ -1,0 +1,95 @@
+{
+  "note": "Inventory for later scoped migration; literals are not automatically defects. Historical CSS under tests remains isolated.",
+  "files": [
+    {
+      "file": "components\\app\\app-shell.module.css",
+      "hardcodedFontWeights": 3,
+      "hardcodedBorders": 3,
+      "hardcodedSpacing": 3
+    },
+    {
+      "file": "components\\app\\navigation.module.css",
+      "hardcodedFontWeights": 3,
+      "hardcodedBorders": 0,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\auth\\auth.module.css",
+      "hardcodedFontWeights": 1,
+      "hardcodedBorders": 2,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\history\\history.module.css",
+      "hardcodedFontWeights": 6,
+      "hardcodedBorders": 3,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\households\\households.module.css",
+      "hardcodedFontWeights": 5,
+      "hardcodedBorders": 6,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\landing\\demos.module.css",
+      "hardcodedFontWeights": 8,
+      "hardcodedBorders": 10,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\landing\\site.module.css",
+      "hardcodedFontWeights": 8,
+      "hardcodedBorders": 7,
+      "hardcodedSpacing": 3
+    },
+    {
+      "file": "components\\products\\products.module.css",
+      "hardcodedFontWeights": 8,
+      "hardcodedBorders": 2,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\shopping\\purchase-sheets.module.css",
+      "hardcodedFontWeights": 5,
+      "hardcodedBorders": 1,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\shopping\\shopping-controls.module.css",
+      "hardcodedFontWeights": 4,
+      "hardcodedBorders": 0,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\shopping\\shopping.module.css",
+      "hardcodedFontWeights": 11,
+      "hardcodedBorders": 4,
+      "hardcodedSpacing": 3
+    },
+    {
+      "file": "components\\ui\\controls.module.css",
+      "hardcodedFontWeights": 1,
+      "hardcodedBorders": 6,
+      "hardcodedSpacing": 5
+    },
+    {
+      "file": "components\\ui\\feedback.module.css",
+      "hardcodedFontWeights": 2,
+      "hardcodedBorders": 3,
+      "hardcodedSpacing": 1
+    },
+    {
+      "file": "components\\ui\\numeric-fields.module.css",
+      "hardcodedFontWeights": 5,
+      "hardcodedBorders": 2,
+      "hardcodedSpacing": 0
+    },
+    {
+      "file": "components\\ui\\overlay.module.css",
+      "hardcodedFontWeights": 2,
+      "hardcodedBorders": 1,
+      "hardcodedSpacing": 2
+    }
+  ]
+}

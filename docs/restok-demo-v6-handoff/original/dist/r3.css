@@ -1,0 +1,100 @@
+/* Restok · Round 3 | Quiet motion, usable feedback, deliberate density.
+   Extend Raiz & Trigo tokens without adding another visual direction. */
+
+:root{
+  --r3-ease-out:cubic-bezier(.16,1,.3,1);
+  --r3-ease-standard:cubic-bezier(.2,.8,.2,1);
+  --r3-quick:160ms;
+  --r3-content:180ms;
+  --r3-sheet:260ms;
+  --r3-budget:360ms;
+}
+
+.r3-motion-toggle{
+  display:inline-flex;align-items:center;gap:7px;
+  min-height:38px;padding:7px 10px;border:1px solid var(--color-border);
+  border-radius:8px;background:var(--color-surface);color:var(--color-muted);
+  font-size:11px;font-weight:700;white-space:nowrap;
+  transition:color var(--r3-quick),background var(--r3-quick),border-color var(--r3-quick);
+}
+.r3-motion-toggle:hover,.r3-motion-toggle[aria-pressed="true"]{
+  background:var(--color-wash);border-color:var(--color-border);color:var(--color-green-dark);
+}
+.r3-motion-toggle:focus-visible{outline:2px solid var(--color-info);outline-offset:2px}
+
+/* Keep the spending card dominant; use shape and numerical rhythm, not additional cards. */
+.app.a .budget{isolation:isolate}
+.app.a .budget-number,.app.a .budget-available b{font-variant-numeric:tabular-nums lining-nums}
+.app.a .budget.r3-over-budget .budget-available b{color:var(--color-lime)}
+.app.a .progress{overflow:hidden;position:relative}
+.app.a .progress i{will-change:width;transition:none}
+.app.a .r25-text-action{transition:opacity var(--r3-quick),transform var(--r3-quick)}
+.app.a .r25-text-action:hover{opacity:.83;transform:translateX(2px)}
+
+/* Interaction cues stay within the touched element, not the whole page. */
+.app.a .item{transition:background var(--r3-quick),border-color var(--r3-quick)}
+.app.a .item:focus-within{background:var(--color-wash)}
+.app.a .checkbtn{min-height:44px}
+.app.a .checkbtn:focus-visible,.app.a .havebtn:focus-visible{
+  outline:2px solid var(--color-info);outline-offset:-3px;border-radius:8px;
+}
+.app.a .checkbox{transition:background var(--r3-quick),border-color var(--r3-quick),transform var(--r3-quick)}
+.app.a .item.r3-added{animation:r3-row-added 320ms var(--r3-ease-out) both}
+.app.a.r3-filter-change .items,
+.app.a.r3-filter-change .r2-catalog-list,
+.app.a.r3-filter-change .r2-history-month{animation:r3-filter-enter var(--r3-content) var(--r3-ease-out) both}
+.app.a .r2-chip:active,.app.a .filter:active,.app.a .r2-cat-button:active,
+.app.a .r2-outline:active,.app.a .r2-icon-button:active{transform:scale(.98)}
+
+/* Practical empty states: one relevant recovery action, no illustration. */
+.app.a .r3-empty{padding:24px 19px}
+.app.a .r3-empty .icon{color:var(--color-info)}
+.app.a .r3-empty h4{margin:10px 0 5px}
+.app.a .r3-empty p{margin-bottom:14px}
+.app.a .r3-empty .r2-outline{min-height:38px;padding:8px 12px}
+
+/* Layers have one entrance language across desktop dialog and mobile sheet. */
+.app.a .r2-sheet{animation:r3-sheet-enter var(--r3-sheet) var(--r3-ease-out) both}
+.app.a .r2-toast{animation:r3-toast-enter var(--r3-content) var(--r3-ease-out) both}
+.app.a.route-change .r2-route{animation:r3-route-enter var(--r3-content) var(--r3-ease-out) both}
+.app.a .r2-overlay{background:rgba(18,36,24,.46)}
+
+.r3-motion-note h3{font-size:15px}
+.r3-motion-note p{border-top:1px solid var(--color-border);padding-top:11px;margin-top:12px}
+
+@keyframes r3-row-added{
+  from{opacity:.45;transform:translateY(5px);background:var(--color-green-wash)}
+  to{opacity:1;transform:translateY(0);background:transparent}
+}
+@keyframes r3-filter-enter{
+  from{opacity:.62;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes r3-route-enter{
+  from{opacity:.55;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes r3-sheet-enter{
+  from{opacity:.72;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes r3-toast-enter{
+  from{opacity:0;transform:translateY(-4px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:700px){
+  .r3-motion-toggle{padding:7px 8px}
+  .r27-identity-toolbar{align-items:flex-start}
+  .app.a .r3-empty{padding:18px 14px}
+}
+
+body[data-motion="reduced"] .app.a *,
+body[data-motion="reduced"] .app.a *::before,
+body[data-motion="reduced"] .app.a *::after{
+  animation:none!important;transition:none!important;scroll-behavior:auto!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .app.a *,.app.a *::before,.app.a *::after,
+  .r3-motion-toggle{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
