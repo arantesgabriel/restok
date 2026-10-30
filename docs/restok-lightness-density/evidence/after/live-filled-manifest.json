@@ -1,0 +1,44 @@
+[
+  {
+    "height": 640,
+    "overflow": 0,
+    "rows": 1,
+    "width": 320
+  },
+  {
+    "height": 844,
+    "overflow": 0,
+    "rows": 1,
+    "width": 390
+  },
+  {
+    "height": 1024,
+    "overflow": 0,
+    "rows": 1,
+    "width": 768
+  },
+  {
+    "height": 768,
+    "overflow": 0,
+    "rows": 1,
+    "width": 992
+  },
+  {
+    "height": 800,
+    "overflow": 0,
+    "rows": 1,
+    "width": 1280
+  },
+  {
+    "height": 900,
+    "overflow": 0,
+    "rows": 1,
+    "width": 1440
+  },
+  {
+    "height": 1080,
+    "overflow": 0,
+    "rows": 1,
+    "width": 1920
+  }
+]

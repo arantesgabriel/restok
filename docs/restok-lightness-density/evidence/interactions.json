@@ -1,0 +1,106 @@
+[
+  {
+    "name": "320: budget Escape restores focus",
+    "pass": true
+  },
+  {
+    "name": "320: search clears",
+    "pass": true
+  },
+  {
+    "name": "320: sort changes presentation",
+    "pass": true
+  },
+  {
+    "name": "320: last row clears dock",
+    "pass": true,
+    "value": {
+      "bottom": 682.703125,
+      "dockTop": 703.8125,
+      "progressDuration": "0s"
+    }
+  },
+  {
+    "name": "320: reduced motion",
+    "pass": true,
+    "value": "0s"
+  },
+  {
+    "name": "390: budget Escape restores focus",
+    "pass": true
+  },
+  {
+    "name": "390: search clears",
+    "pass": true
+  },
+  {
+    "name": "390: sort changes presentation",
+    "pass": true
+  },
+  {
+    "name": "390: last row clears dock",
+    "pass": true,
+    "value": {
+      "bottom": 683.484375,
+      "dockTop": 720.609375,
+      "progressDuration": "0s"
+    }
+  },
+  {
+    "name": "390: reduced motion",
+    "pass": true,
+    "value": "0s"
+  },
+  {
+    "name": "992: budget Escape restores focus",
+    "pass": true
+  },
+  {
+    "name": "992: search clears",
+    "pass": true
+  },
+  {
+    "name": "992: sort changes presentation",
+    "pass": true
+  },
+  {
+    "name": "992: last row clears dock",
+    "pass": true,
+    "value": {
+      "bottom": 794.90625,
+      "dockTop": null,
+      "progressDuration": "0s"
+    }
+  },
+  {
+    "name": "992: reduced motion",
+    "pass": true,
+    "value": "0s"
+  },
+  {
+    "name": "1920: budget Escape restores focus",
+    "pass": true
+  },
+  {
+    "name": "1920: search clears",
+    "pass": true
+  },
+  {
+    "name": "1920: sort changes presentation",
+    "pass": true
+  },
+  {
+    "name": "1920: last row clears dock",
+    "pass": true,
+    "value": {
+      "bottom": 1030.90625,
+      "dockTop": null,
+      "progressDuration": "0s"
+    }
+  },
+  {
+    "name": "1920: reduced motion",
+    "pass": true,
+    "value": "0s"
+  }
+]

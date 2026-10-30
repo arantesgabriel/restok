@@ -41,3 +41,11 @@ font Manrope400/500/600/700/800; type12/14/16/20/24/32;
 campos monetários e componentes. Corpo16px em inputs; contorno de controles usa
 info com contraste suficiente, `line` apenas para divisão. Sem sombra em linhas.
 Fonte Nexa somente com licença/arquivos fornecidos. Nenhuma fonte é buscada no build.
+
+## Rodada4 · Lightness & Density (30/10/2026)
+
+Shell: sidebar176px desde768px e224px desde1200px; contexto272px só desde1440px e com dados úteis. Workspace1376px, conteúdo1040px máximo. Mobile bottom nav60px com indicador2px, ações separadas. Compra vazia mantém um CTA de adicionar e finalização no menu. Card financeiro133px mobile/145px desktop em valores normais, sem limitar altura de valores extremos. Radius18px, controles8px e progresso5px preservam o handoff. Evidências e limitações: docs/restok-lightness-density/06-FINAL-REPORT.md. Implementação submetida à aprovação visual, sem declarar aceite do usuário.
+
+### Correção de direção da Rodada4 (30/10/2026)
+
+A entrega anterior da Rodada4 não recebeu aprovação visual. Nova instrução do usuário substitui a decisão de header global desktop: a região global é uma sidebar desde768px, com marca/casa no topo, navegação no meio e avisos/perfil no rodapé. No mobile, a mesma instância forma o header52px (texto+chevron, avatar32px em alvo44px). Compra usa sidebar + workspace de1040px, sem resumo redundante à direita. Finalização fica no header contextual desktop; menu/dock mantêm acesso mobile. Linhas e categorias sem enquadramento, status circular sem fundo quadrado; títulos600, navegação500, dinheiro principal700. Card133/145px preservado. Evidências: docs/restok-lightness-density/direction-correction/REPORT.md. Aguardando avaliação visual, sem presumir aprovação.

@@ -1,0 +1,541 @@
+--- a/components/app/app-shell.module.css
++++ b/components/app/app-shell.module.css
+@@ -11,7 +11,41 @@
+   margin-inline: auto;
+ }
+ 
+-.sidebar { display: none; }
++/* A single global region: mobile header, desktop sidebar. No duplicated controls. */
++.sidebar {
++  position:sticky;
++  top:0;
++  z-index:var(--z-dropdown);
++  display:flex;
++  align-items:center;
++  justify-content:space-between;
++  gap:var(--space-2);
++  min-height:3.25rem;
++  padding:var(--space-1) var(--shell-gutter);
++  padding-top:calc(var(--space-1) + env(safe-area-inset-top));
++  background:var(--color-canvas);
++}
++.frame { flex-direction:column; }
++.globalTop { flex:1; min-width:0; }
++.globalTop > img { display:none; }
++.globalTop > button { width:auto; max-width:100%; padding-inline:0; font-weight:500; }
++.sidebarNavigation { display:none; }
++.globalFooter,.accountActions { display:flex; align-items:center; gap:var(--space-2); }
++.profileTrigger.profileTrigger { width:var(--touch-target); padding:var(--space-1); border:0; background:transparent; color:var(--color-muted); font-weight:500; }
++.avatar { display:inline-grid; place-items:center; flex:0 0 2rem; width:2rem; height:2rem; border-radius:50%; background:var(--color-surface-brand); color:var(--color-action); }
++.profileCaption { display:none; }
++/* Inline confirmations remain directly available, with no permanent outlined control. */
++.globalFooter .accountActions details > summary { border:0; background:transparent; }
++.notices { min-width:0; }
++.notices > summary { display:flex; align-items:center; min-height:var(--touch-target); padding:var(--space-1); font-size:var(--text-xs); font-weight:500; color:var(--color-info); cursor:pointer; list-style:none; }
++.notices > summary::-webkit-details-marker { display:none; }
++.noticeTitle { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
++.noticeContent { position:absolute; top:100%; right:var(--shell-gutter); width:min(22rem,calc(100vw - 32px)); max-height:65dvh; overflow:auto; padding:var(--space-3); border:1px solid var(--color-line); border-radius:var(--radius-panel); background:var(--color-surface); box-shadow:var(--shadow-overlay); }
++.noticeContent > div { margin:0; padding:var(--space-2); border:0; border-radius:0; background:transparent; }
++.noticeContent p { overflow-wrap:anywhere; }
++.noticeContent button { max-width:100%; }
++.accountActions details { position:static; }
++.globalFooter .accountActions details > div { top:calc(100% + var(--space-2)); right:var(--shell-gutter); width:min(22rem,calc(100vw - 32px)); }
+ 
+ .main {
+   flex: 1;
+@@ -23,48 +57,18 @@
+   padding-bottom: calc(8.5rem + env(safe-area-inset-bottom));
+ }
+ 
+-.header {
+-  position: sticky;
+-  top: 0;
+-  z-index: var(--z-dropdown);
+-  display: flex;
+-  align-items: center;
+-  justify-content: space-between;
+-  gap: var(--space-2);
+-  min-height: 3.25rem;
+-  padding: .25rem var(--shell-gutter);
+-  padding-top: calc(.25rem + env(safe-area-inset-top));
+-  border-bottom: 1px solid var(--color-line);
+-  background: var(--color-canvas);
+-}
+-
+-.mobileHouse { flex: 1; min-width: 0; }
+-.mobileHouse button { width:auto; max-width:100%; padding:.5rem 0; font-size:var(--text-sm); }
+-.mobileHouse small { display: none; }
+-.pageContext { display: none; }
+-.accountActions { display: flex; align-items: center; gap: var(--space-2); }
+-
+-.notices { padding-inline: var(--shell-gutter); }
+-.notices:empty { display: none; }
+-.notices > summary {
+-  min-height: var(--touch-target);
+-  padding: .5rem 0;
+-  font-size: var(--text-xs);
+-  color: var(--color-info);
+-  cursor: pointer;
+-}
+-
+ .workspace {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr);
+   gap: var(--space-8);
+-  width: min(100%, 86rem);
++  width: min(100%, 69rem);
+   margin-inline: auto;
+   min-width: 0;
+   padding-inline: var(--shell-gutter);
+ }
+ 
+ .workspace[data-context-layout="desktop-only"] [data-app-context] { display: none; }
++.context { min-width:0; }
+ 
+ .content {
+   width: min(100%, 65rem);
+@@ -126,55 +130,27 @@
+   .shell { --shell-gutter: var(--space-6); }
+ }
+ 
+-@media (min-width: 768px) {
+-  .sidebar {
+-    position: sticky;
+-    top: 0;
+-    display: flex;
+-    flex: 0 0 11rem;
+-    flex-direction: column;
+-    gap: var(--space-4);
+-    height: 100dvh;
+-    overflow: auto;
+-    padding: var(--space-4) var(--space-3);
+-    border-right: 1px solid var(--color-line);
+-    background: var(--color-surface-soft);
+-  }
+-
+-  .mobileHouse { display: none; }
+-  .pageContext { display: block; font-size: var(--text-sm); color: var(--color-muted); }
+-  .header { min-height: 3.25rem; padding-block: var(--space-1); }
+-  .content { padding-block: var(--space-6); }
+-  .context { padding-block: var(--space-6); }
+-  .main, .main[data-has-dock="true"] { padding-bottom: var(--space-6); }
+-  .navigation { display: none; }
+-  .dock { display: none; }
+-
+-
++@media (min-width:768px) {
++  .frame { flex-direction:row; }
++  .sidebar { flex:0 0 11rem; flex-direction:column; align-items:stretch; justify-content:flex-start; gap:var(--space-6); height:100dvh; overflow:auto; padding:var(--space-6) var(--space-3) var(--space-4); border-right:1px solid var(--color-line); background:var(--color-surface-soft); }
++  .globalTop { display:grid; flex:none; gap:var(--space-4); }
++  .globalTop > img { display:block; width:108px; height:36px; margin-inline:var(--space-2); }
++  .globalTop > button { width:100%; padding:var(--space-2); }
++  .sidebarNavigation { display:block; }
++  .globalFooter { display:grid; align-items:stretch; gap:var(--space-2); margin-top:auto; }
++  .noticeTitle { position:static; width:auto; height:auto; overflow:visible; clip-path:none; overflow-wrap:anywhere; }
++  .mobileNoticeLabel { display:none; }
++  .noticeContent { position:static; width:100%; max-height:45dvh; padding:var(--space-2) 0; border:0; border-radius:0; background:transparent; box-shadow:none; }
++  .accountActions { position:relative; flex-wrap:wrap; }
++  .profileTrigger.profileTrigger { width:100%; justify-content:flex-start; }
++  .profileCaption { display:inline; }
++  .accountActions details { position:static; }
++  .globalFooter .accountActions details > div { top:auto; bottom:calc(100% + var(--space-2)); right:auto; left:0; width:100%; max-height:50dvh; overflow:auto; }
++  .content { padding-block:var(--space-8); }
++  .workspace[data-context-layout="desktop-only"] [data-app-context] { display:block; }
++  .main,.main[data-has-dock="true"] { padding-bottom:var(--space-6); }
++  .navigation,.dock { display:none; }
+ }
+-
+-@media (min-width: 1200px) {
++@media(min-width:1200px) {
+   .sidebar { flex-basis:14rem; padding-inline:var(--space-4); }
+ }
+-
+-@media (min-width: 1440px) {
+-  .workspace[data-has-context="true"] {
+-    grid-template-columns: minmax(0, 1fr) 17rem;
+-  }
+-
+-  .context {
+-    display: block;
+-    position: sticky;
+-    top: calc(3.25rem + var(--space-6));
+-    align-self: start;
+-    max-height: calc(100dvh - 7rem);
+-    overflow: auto;
+-    padding-block: 0;
+-  }
+-
+-  .workspace[data-context-layout="desktop-only"] [data-app-context] { display: block; }
+-}
+-
+-
+-.accountActions > button:last-child { width:var(--touch-target); padding:var(--space-1); border:0; background:var(--color-surface-brand); color:var(--color-action); border-radius:50%; }
+-@media(min-width:768px) { .sidebar > img { width:108px; height:36px; margin-inline:var(--space-2); } }
+--- a/components/app/app-shell.tsx
++++ b/components/app/app-shell.tsx
+@@ -54,9 +54,28 @@
+       </a>
+       <div className={styles.frame}>
+         <aside data-app-sidebar className={styles.sidebar}>
+-          <BrandMark />
+-          <HouseSwitcher name={houseName} onOpen={onHouseOpen} />
+-          <Navigation screen={screen} onChange={onChange} />
++          <div className={styles.globalTop}>
++            <BrandMark />
++            <HouseSwitcher name={houseName} onOpen={onHouseOpen} />
++          </div>
++          <div className={styles.sidebarNavigation}>
++            <Navigation screen={screen} onChange={onChange} />
++          </div>
++          <div data-global-controls className={styles.globalFooter}>
++            {noticeTitle ? (
++              <details className={styles.notices}>
++                <summary aria-label={noticeTitle}>
++                  <span className={styles.mobileNoticeLabel}>Avisos</span>
++                  <span role="status" className={styles.noticeTitle}>{noticeTitle}</span>
++                </summary>
++                <div className={styles.noticeContent}>{notices}</div>
++              </details>
++            ) : null}
++            <div className={styles.accountActions}>
++              {feedback}
++              {profile}
++            </div>
++          </div>
+         </aside>
+         <main
+           id="restok-main"
+@@ -66,26 +85,6 @@
+           tabIndex={-1}
+           className={styles.main}
+         >
+-          <header data-app-header className={styles.header}>
+-            <div className={styles.mobileHouse}>
+-              <HouseSwitcher name={houseName} onOpen={onHouseOpen} />
+-            </div>
+-            <span className={styles.pageContext}>
+-              {houseName}
+-            </span>
+-            <div className={styles.accountActions}>
+-              {feedback}
+-              {profile}
+-            </div>
+-          </header>
+-          {noticeTitle ? (
+-            <details className={styles.notices}>
+-              <summary>
+-                <span role="status">{noticeTitle}</span>
+-              </summary>
+-              {notices}
+-            </details>
+-          ) : null}
+           <div
+             className={styles.workspace}
+             data-has-context={hasContext ? "true" : undefined}
+--- a/components/app/house-switcher.tsx
++++ b/components/app/house-switcher.tsx
+@@ -1,4 +1,4 @@
+-import { ChevronDown, House } from "lucide-react";
++import { ChevronDown } from "lucide-react";
+ import { Button } from "@/components/ui/button";
+ import styles from "./navigation.module.css";
+-export function HouseSwitcher({name,onOpen,disabled=false}:{name:string;onOpen:()=>void;disabled?:boolean}) {return <Button variant="quiet" className={styles.switcher} onClick={onOpen} disabled={disabled} aria-label={`Casas e pessoas: ${name}`}><House size={18}/><span className={styles.identity}>{name}</span><ChevronDown size={18}/></Button>;}
++export function HouseSwitcher({name,onOpen,disabled=false}:{name:string;onOpen:()=>void;disabled?:boolean}) {return <Button variant="quiet" className={styles.switcher} onClick={onOpen} disabled={disabled} aria-label={`Casas e pessoas: ${name}`}><span className={styles.identity}>{name}</span><ChevronDown size={16} strokeWidth={1.75}/></Button>;}
+--- a/components/app/navigation.module.css
++++ b/components/app/navigation.module.css
+@@ -2,7 +2,7 @@
+ .item.item { position:relative; flex-direction:column; gap:var(--space-1); flex:1; min-height:3.25rem; padding:var(--space-1); min-width:0; font-size:var(--text-xs); font-weight:500; color:var(--color-muted); background:transparent; }
+ .item[aria-current=page] { color:var(--color-action); background:transparent; }
+ .item[aria-current=page]::before { content:""; position:absolute; top:0; width:1rem; height:2px; background:var(--color-action); border-radius:var(--radius-control); }
+-.switcher.switcher { width:100%; min-width:0; justify-content:space-between; gap:var(--space-2); padding:var(--space-2); text-align:start; color:var(--color-ink); background:transparent; }
++.switcher.switcher { width:100%; min-width:0; justify-content:space-between; gap:var(--space-2); padding:var(--space-2); font-weight:500; text-align:start; color:var(--color-ink); background:transparent; }
+ .identity { flex:1; min-width:0; overflow-wrap:anywhere; }
+ @media(min-width:768px) {
+   .nav { flex-direction:column; }
+--- a/components/restok-app.tsx
++++ b/components/restok-app.tsx
+@@ -5,6 +5,7 @@
+ import { ProductsHome } from "@/components/products/products-home";
+ import { ProductEditorSheet } from "@/components/products/product-editor-sheet";
+ import { AppShell } from "@/components/app/app-shell";
++import shellStyles from "@/components/app/app-shell.module.css";
+ import { HouseholdManager } from "@/components/households/household-manager";
+ import { HouseholdOnboarding } from "@/components/households/household-onboarding";
+ import { AddItemSheet } from "@/components/shopping/add-item-sheet";
+@@ -14,7 +15,6 @@
+ import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
+ import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
+ import { ShoppingDock } from "@/components/shopping/shopping-dock";
+-import { ShoppingContext } from "@/components/shopping/shopping-context";
+ import { ShoppingView } from "@/components/shopping/shopping-view";
+ import { useShoppingView } from "@/components/shopping/use-shopping-view";
+ import { ActionMenu } from "@/components/ui/action-menu";
+@@ -633,11 +633,10 @@
+     if (!hydrated) return <main className="mx-auto max-w-lg px-5"><Skeleton label="Carregando seus dados…" rows={4}/></main>;
+     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
+   return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={()=>setHouseholdManagerOpen(true)} keyboardOpen={keyboardOpen}
+-    context={!keyboardOpen && screen === "shop" && activeList && activeList.items.length > 0 && !historyDetail ? <ShoppingContext list={activeList} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} /> : undefined}
+-    contextLayout="desktop-only"
+     noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
+     feedback={toast ? <ToastMessage inline visuallyHidden={keyboardOpen} message={toast} onDismiss={()=>setToast(null)}/> : null}
+     profile={<ActionMenu
++          triggerClassName={shellStyles.profileTrigger}
+           label={`Perfil de ${profileLabel}`}
+ 
+           items={[
+@@ -645,7 +644,7 @@
+             { label: "Casas e pessoas", icon: <House size={16} />, onSelect: () => setHouseholdManagerOpen(true) },
+             { label: "Sair da conta", icon: <LogOut size={16} />, onSelect: () => { void signOut(); } },
+           ]}
+-        >{profileInitials}</ActionMenu>}
++        ><span aria-hidden="true" className={shellStyles.avatar}>{profileInitials}</span><span className={shellStyles.profileCaption}>Minha conta</span></ActionMenu>}
+     notices={<>{syncWarning ? <div role="status" className="mx-4 mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-muted sm:mx-8"><span>{syncWarning}</span><div className="flex gap-2"><button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-lg border border-line bg-canvas px-3 text-xs font-semibold text-ink">Tentar novamente</button><button type="button" onClick={() => window.location.assign("/login")} className="min-h-11 rounded-lg px-3 text-xs font-semibold text-action">Ir para login</button></div></div> : null}
+         {isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? <SyncStatus state={snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "error" : "pending"} message={<div><p>{!isOnline ? "Sem conexão com a internet" : writeOperations.some((operation) => operation.status === "failed") ? "Há alterações sem sincronizar" : writeOperations.length ? "Sincronizando alterações…" : snapshotFailed ? "Não foi possível atualizar a lista" : "Reconectando atualizações em tempo real…"}</p><p>{!isOnline ? "As alterações ficam neste aparelho. Mantenha o app aberto para tentar novamente ao voltar a conexão." : writeOperations.some((operation) => operation.status === "failed") ? "Você pode tentar enviar as alterações novamente agora." : writeOperations.length ? `${writeOperations.length} alteração(ões) em envio.` : snapshotFailed ? "Vamos tentar carregar os dados novamente." : "A lista será atualizada quando a conexão voltar."}</p>{writeOperations.length ? <p>{writeOperations.map((operation) => operation.label).join(" · ")}</p> : null}</div>} onRetry={writeOperations.some(operation=>operation.status === "failed") ? ()=>writeOperations.filter(operation=>operation.status === "failed").forEach(operation=>operation.retry()) : undefined}/> : null}</>}
+     dock={!keyboardOpen && screen === "shop" && activeList && activeList.items.length > 0 && !historyDetail ? <ShoppingDock pending={pending} total={listTotal(activeList)} resolved={resolved} count={activeList.items.length} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} onAdd={()=>setAddItemOpen(true)}/> : undefined}
+--- a/components/shopping/shopping-controls.module.css
++++ b/components/shopping/shopping-controls.module.css
+@@ -16,13 +16,13 @@
+ .total > span,.balance > span { display:block; font-size:var(--text-xs); line-height:1.2; }
+ .total strong { display:block; margin-top:0; font-size:var(--text-value); font-weight:700; line-height:1.05; font-variant-numeric:tabular-nums; white-space:nowrap; }
+ .balance { text-align:end; }
+-.balance > b { display:block; margin-top:var(--space-1); color:var(--color-highlight); font-size:1.25rem; font-weight:600; line-height:1.4; font-variant-numeric:tabular-nums; white-space:nowrap; }
++.balance > b { display:block; margin-top:var(--space-1); color:var(--color-highlight); font-size:1.25rem; font-weight:500; line-height:1.4; font-variant-numeric:tabular-nums; white-space:nowrap; }
+ .progress { height:5px; margin-top:var(--space-2); overflow:hidden; border-radius:999px; background:var(--color-action); }
+ .progress > span { transition:transform var(--duration-state) var(--ease-feedback); display:block; width:100%; height:100%; transform-origin:left; background:var(--color-highlight); }
+ .meta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-2); margin-top:var(--space-2); font-size:var(--text-xs); }
+ .target { min-width:0; line-height:1.5; }
+ .target small { display:block; color:var(--color-highlight); font-size:var(--text-xs); }
+-.editBudget.editBudget { min-height:var(--touch-target); padding:.25rem .5rem; border-color:transparent; background:transparent; color:var(--color-surface); white-space:nowrap; }
++.editBudget.editBudget { font-weight:500; min-height:var(--touch-target); padding:.25rem .5rem; border-color:transparent; background:transparent; color:var(--color-surface); white-space:nowrap; }
+ @media(hover:hover) and (pointer:fine) { .editBudget.editBudget:hover { border-color:var(--color-highlight); background:var(--color-highlight); color:var(--color-brand); } }
+ @media(max-width:639px) {
+   .progress { margin-top:var(--space-1); }
+--- a/components/shopping/shopping-view.test.tsx
++++ b/components/shopping/shopping-view.test.tsx
+@@ -47,13 +47,12 @@
+   expect(container.querySelectorAll("[data-category-section]").length).toBeGreaterThan(0);
+   expect(persistList).not.toHaveBeenCalled();
+ });
+-it("derives desktop purchase context actions from the active list and warns before finishing",async()=>{
++it("keeps progress and finish in the purchase header without a redundant summary panel",async()=>{
+   render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
+-  const context=within(screen.getByRole("complementary",{name:"Contexto da tela"}));
+-  expect(context.getByText("Pendentes").nextElementSibling?.textContent).toBe("1");
+-  fireEvent.click(context.getByRole("button",{name:"Ver 1 pendente"}));
++  expect(screen.queryByRole("complementary",{name:"Contexto da tela"})).toBeNull();
++  fireEvent.click(screen.getByRole("button",{name:"Ver 1 pendente"}));
+   expect(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Pendente"}).getAttribute("aria-pressed")).toBe("true");
+-  fireEvent.click(context.getByRole("button",{name:"Finalizar compra"}));
++  fireEvent.click(screen.getAllByRole("button",{name:"Finalizar compra"})[0]);
+   const dialog=await screen.findByRole("dialog");
+   expect(within(dialog).getByText(/Ainda existem 1 itens pendentes/)).toBeTruthy();
+   expect(persistList).not.toHaveBeenCalled();
+@@ -80,3 +79,15 @@
+   expect(location.hash).toBe("#history");
+   expect(document.activeElement?.id).toBe("restok-main");
+ });
++
++it("mounts each global control once in the shared responsive navigation region",async()=>{
++  const {container}=render(<RestokApp/>);
++  const profile=await screen.findByRole("button",{name:"Perfil de Ana"});
++  expect(screen.getAllByRole("button",{name:"Perfil de Ana"})).toHaveLength(1);
++  expect(container.querySelectorAll('button[aria-label^="Casas e pessoas:"]')).toHaveLength(1);
++  expect(profile.closest("[data-global-controls]")?.closest("[data-app-sidebar]")).toBeTruthy();
++  expect(container.querySelector("#restok-main > header")).toBeNull();
++  fireEvent.click(profile);
++  fireEvent.click(screen.getByRole("menuitem",{name:"Editar meu nome"}));
++  expect(await screen.findByRole("dialog")).toBeTruthy();
++});
+--- a/components/shopping/shopping-view.tsx
++++ b/components/shopping/shopping-view.tsx
+@@ -1,5 +1,5 @@
+ import type { RefObject } from "react";
+-import { CheckCircle2, Menu, Plus, Search, ShoppingBasket } from "lucide-react";
++import { CheckCircle2, MoreHorizontal, Plus, Search, ShoppingBasket } from "lucide-react";
+ import { CATEGORY_ORDER, type CategoryName, type ShoppingItem, type ShoppingList } from "@/lib/types";
+ import { listResolved, sortByName, statusLabel, type NameSortDirection } from "@/lib/utils";
+ import { ActionMenu } from "@/components/ui/action-menu";
+@@ -69,28 +69,34 @@
+       <div className={styles.heading}>
+         <div>
+           <h1>{list.name}</h1>
+-          <p data-resolved-count className={styles.count}>{listResolved(list)} de {list.items.length} resolvidos</p>
++          <Button
++            variant="quiet"
++            data-resolved-count
++            className={styles.count}
++            disabled={pendingCount === 0}
++            aria-label={pendingCount ? `Ver ${pendingCount} ${pendingCount === 1 ? "pendente" : "pendentes"}` : "Nenhum item pendente"}
++            onClick={showPending}
++          >{listResolved(list)} de {list.items.length} resolvidos</Button>
+         </div>
+         <div className={styles.headingActions}>
+           <ActionMenu
+             label="Menu da compra"
++            triggerClassName={styles.purchaseMenu}
+             items={[
+               { label: "Nova compra", icon: <Plus size={16} />, onSelect: onNew },
+               { label: "Finalizar compra", icon: <CheckCircle2 size={16} />, onSelect: onFinish },
+             ]}
+           >
+-            <Menu size={19} />
++            <MoreHorizontal size={20} strokeWidth={1.75} />
+           </ActionMenu>
+           <Button data-purchase-desktop-add className={styles.desktopAdd} onClick={onAdd}><Plus size={18} />Adicionar item</Button>
+           <Button
+-            variant="secondary"
+-            data-purchase-intermediate-pending
+-            className={styles.intermediatePending}
+-            disabled={pendingCount === 0}
+-            aria-label={pendingCount ? `Ver ${pendingCount} itens pendentes` : "Nenhum item pendente"}
+-            onClick={showPending}
++            variant="quiet"
++            data-purchase-desktop-finish
++            className={styles.desktopFinish}
++            onClick={onFinish}
+           >
+-            {pendingCount ? `${pendingCount} pendentes` : "Sem pendentes"}
++            Finalizar compra
+           </Button>
+         </div>
+       </div>
+--- a/components/shopping/shopping.module.css
++++ b/components/shopping/shopping.module.css
+@@ -1,10 +1,11 @@
+ .view { display:grid; gap:var(--space-3); min-width:0; }
+ .heading { display:flex; align-items:flex-start; gap:var(--space-2); }
+ .heading > div:first-child { flex:1; min-width:0; }
+-.heading h1 { margin:0; color:var(--color-ink); font-size:var(--text-heading); font-weight:700; line-height:1.2; letter-spacing:-.02em; overflow-wrap:anywhere; }
+-.count { display:none; margin:var(--space-1) 0 0; font-size:var(--text-xs); color:var(--color-muted); }
++.heading h1 { margin:0; color:var(--color-ink); font-size:var(--text-heading); font-weight:600; line-height:1.2; letter-spacing:-.02em; overflow-wrap:anywhere; }
++.count.count { display:none; min-height:var(--touch-target); padding:0; border:0; font-size:var(--text-xs); font-weight:400; color:var(--color-muted); background:transparent; }
++.count.count:disabled { opacity:1; }
+ .headingActions { display:flex; flex:0 0 auto; align-items:center; gap:var(--space-2); }
+-.desktopAdd.desktopAdd,.intermediatePending.intermediatePending { display:none; }
++.desktopAdd.desktopAdd,.desktopFinish.desktopFinish { display:none; }
+ 
+ .toolbar { display:grid; gap:var(--space-1); }
+ .searchRow { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--space-2); }
+@@ -15,27 +16,27 @@
+ .filter[aria-pressed=true] { border-bottom-color:var(--color-action); color:var(--color-action); }
+ 
+ .groups { display:grid; gap:var(--space-3); }
+-.collection { min-width:0; border:1px solid var(--color-line); border-radius:var(--radius-panel); background:var(--color-surface); }
++.collection { min-width:0; border:0; border-radius:0; background:transparent; }
+ .alphabetical { display:grid; }
+-.categoryHeader { display:flex; align-items:center; gap:var(--space-2); padding-inline:var(--space-3); border-bottom:1px solid var(--color-line); }
+-.categoryButton { display:flex; flex:1; min-width:0; align-items:center; gap:var(--space-2); min-height:var(--touch-target); padding:0; border:0; background:transparent; text-align:start; cursor:pointer; color:var(--color-ink); font-size:var(--text-sm); font-weight:600; }
++.categoryHeader { display:flex; align-items:center; gap:var(--space-2); padding-inline:0; }
++.categoryButton { display:flex; flex:1; min-width:0; align-items:center; gap:var(--space-2); min-height:var(--touch-target); padding:0; border:0; background:transparent; text-align:start; cursor:pointer; color:var(--color-ink); font-size:var(--text-sm); font-weight:500; }
+ .categoryButton span { min-width:0; overflow-wrap:anywhere; }
+ .categoryCount { color:var(--color-muted); font-size:var(--text-xs); font-weight:400; }
+ .sort.sort { padding:.5rem; font-size:var(--text-xs); }
+ 
+-.row { display:grid; grid-template-columns:44px minmax(0,1fr) 44px auto; align-items:center; gap:var(--space-2); min-height:4rem; padding:var(--space-2) var(--space-3); border-bottom:1px solid var(--color-line); background:var(--color-surface); color:var(--color-ink); }
++.row { display:grid; grid-template-columns:44px minmax(0,1fr) 44px auto; align-items:center; gap:var(--space-2); min-height:4rem; padding:var(--space-2) 0; border-bottom:1px solid var(--color-line); background:transparent; color:var(--color-ink); }
+ .row:last-child { border-bottom:0; }
+ .row:not([data-has-price=true]) { grid-template-columns:44px minmax(0,1fr) 44px; }
+ .row[data-item-price-missing=true] { grid-template-columns:44px minmax(0,1fr) 44px auto; }
+-.statusButton.statusButton { color:var(--color-muted); }
+-.row[data-item-status=purchased] .statusButton { color:var(--color-action); background:var(--color-surface-brand); }
+-.row[data-item-status=already_have] .statusButton { color:var(--color-info); background:var(--color-surface-info); }
++.statusButton.statusButton { border-radius:50%; background:transparent; color:var(--color-muted); }
++.row[data-item-status=purchased] .statusButton { color:var(--color-action); background:transparent; }
++.row[data-item-status=already_have] .statusButton { color:var(--color-info); background:transparent; }
+ .edit { display:flex; align-items:center; min-width:0; min-height:var(--touch-target); padding:0; border:0; background:transparent; color:var(--color-ink); text-align:start; cursor:pointer; }
+ .itemText { display:block; min-width:0; }
+ .name { display:block; font-size:var(--text-sm); font-weight:500; line-height:1.4; overflow-wrap:anywhere; }
+ .metadata { display:flex; flex-wrap:wrap; align-items:center; gap:0 var(--space-2); min-width:0; margin-top:var(--space-1); color:var(--color-muted); font-size:var(--text-xs); line-height:1.5; }
+ .metadata > span { min-width:0; overflow-wrap:anywhere; }
+-.price { display:block; max-width:none; justify-self:end; color:var(--color-ink); text-align:end; font-size:var(--text-sm); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
++.price { display:block; max-width:none; justify-self:end; color:var(--color-ink); text-align:end; font-size:var(--text-sm); font-weight:500; font-variant-numeric:tabular-nums; white-space:nowrap; }
+ .rowActions { display:flex; align-items:center; justify-content:center; width:var(--touch-target); min-height:var(--touch-target); }
+ .rowActions:empty { visibility:hidden; }
+ .previous { display:block; flex-basis:100%; color:var(--color-muted); }
+@@ -53,27 +54,19 @@
+ 
+ @media(min-width:640px) {
+   .heading h1 { font-size:var(--text-heading); }
+-  .count { display:block; }
++
+   .view { gap:var(--space-4); }
+   .toolbar { max-width:none; gap:var(--space-2); }
+   .filters { max-width:30rem; }
+-  .categoryHeader { padding-inline:var(--space-4); }
++
+   .row { min-height:4rem; }
+   .name { font-size:var(--text-sm); }
+   .price { font-size:var(--text-sm); }
+ }
+ 
+ @media(min-width:768px) {
+-  .desktopAdd.desktopAdd,.intermediatePending.intermediatePending { display:inline-flex; }
++  .desktopAdd.desktopAdd,.desktopFinish.desktopFinish,.count.count { display:inline-flex; }
+   .headingActions { gap:var(--space-2); }
+-}
+-
+-@media(min-width:768px) and (max-width:1439px) {
+-  .intermediatePending.intermediatePending { padding-inline:.75rem; white-space:nowrap; }
+-}
+-
+-@media(min-width:1440px) {
+-  .intermediatePending.intermediatePending { display:none; }
+ }
+ 
+ @media(max-width:639px) {
+@@ -92,7 +85,7 @@
+ }
+ 
+ /* R4: first-use has one add action; existing menus retain all capabilities. */
+-.view[data-empty-purchase=true] .desktopAdd,.view[data-empty-purchase=true] .intermediatePending { display:none; }
++.view[data-empty-purchase=true] .desktopAdd,.view[data-empty-purchase=true] .desktopFinish { display:none; }
+ .view[data-empty-purchase=true] [data-purchase-results] { border-top:1px solid var(--color-line); }
+ .view[data-empty-purchase=true] [data-purchase-results] > div { padding:var(--space-6) 0; }
+ .view[data-empty-purchase=true] [data-purchase-results] h2 { font-size:var(--text-body); font-weight:600; }
+@@ -104,3 +97,10 @@
+   .heading { flex-wrap:wrap; }
+   .heading > div:first-child { flex-basis:16rem; }
+ }
++
++/* Correction de direction: two-region workspace; context actions stay with the title. */
++.purchaseMenu.purchaseMenu { order:3; border:0; background:transparent; padding:var(--space-2); }
++.headingActions button { font-weight:500; }
++.desktopFinish.desktopFinish { order:2; color:var(--color-muted); padding-inline:var(--space-2); }
++.toolbar input { border-color:var(--color-line); }
++.view[data-empty-purchase=true] .count { display:none; }
+--- a/components/shopping/status-toggle.tsx
++++ b/components/shopping/status-toggle.tsx
+@@ -1,4 +1,4 @@
+-import { Check, Circle, House } from "lucide-react";
++import { Check, Circle, CircleCheck, House } from "lucide-react";
+ import type { ItemStatus } from "@/lib/types";
+ import { statusLabel } from "@/lib/utils";
+ import { IconButton } from "@/components/ui/icon-button";
+@@ -31,7 +31,7 @@
+   onPurchased: () => void;
+   onUndo: () => void;
+ }) {
+-  const Icon = status === "pending" ? Circle : status === "purchased" ? Check : House;
++  const Icon = status === "pending" ? Circle : status === "purchased" ? CircleCheck : House;
+   const label = status === "pending" ? `Marcar ${name} como comprado` : `Desfazer situação de ${name}`;
+ 
+   return (
+@@ -41,7 +41,7 @@
+       aria-pressed={status !== "pending"}
+       onClick={status === "pending" ? onPurchased : onUndo}
+     >
+-      <Icon size={20} aria-hidden="true" />
++      <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
+     </IconButton>
+   );
+ }
+--- a/DESIGN.md
++++ b/DESIGN.md
+@@ -45,3 +45,7 @@
+ ## Rodada4 · Lightness & Density (30/10/2026)
+ 
+ Shell: sidebar176px desde768px e224px desde1200px; contexto272px só desde1440px e com dados úteis. Workspace1376px, conteúdo1040px máximo. Mobile bottom nav60px com indicador2px, ações separadas. Compra vazia mantém um CTA de adicionar e finalização no menu. Card financeiro133px mobile/145px desktop em valores normais, sem limitar altura de valores extremos. Radius18px, controles8px e progresso5px preservam o handoff. Evidências e limitações: docs/restok-lightness-density/06-FINAL-REPORT.md. Implementação submetida à aprovação visual, sem declarar aceite do usuário.
++
++### Correção de direção da Rodada4 (30/10/2026)
++
++A entrega anterior da Rodada4 não recebeu aprovação visual. Nova instrução do usuário substitui a decisão de header global desktop: a região global é uma sidebar desde768px, com marca/casa no topo, navegação no meio e avisos/perfil no rodapé. No mobile, a mesma instância forma o header52px (texto+chevron, avatar32px em alvo44px). Compra usa sidebar + workspace de1040px, sem resumo redundante à direita. Finalização fica no header contextual desktop; menu/dock mantêm acesso mobile. Linhas e categorias sem enquadramento, status circular sem fundo quadrado; títulos600, navegação500, dinheiro principal700. Card133/145px preservado. Evidências: docs/restok-lightness-density/direction-correction/REPORT.md. Aguardando avaliação visual, sem presumir aprovação.

@@ -1,0 +1,11 @@
+components/app/app-shell.module.css
+components/app/app-shell.tsx
+components/app/house-switcher.tsx
+components/app/navigation.module.css
+components/restok-app.tsx
+components/shopping/shopping-controls.module.css
+components/shopping/shopping-view.test.tsx
+components/shopping/shopping-view.tsx
+components/shopping/shopping.module.css
+components/shopping/status-toggle.tsx
+DESIGN.md

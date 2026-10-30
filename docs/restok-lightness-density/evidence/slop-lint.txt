@@ -1,0 +1,7 @@
+components\shopping\purchase-sheets.module.css:14  warn   side-tab-border         thick colored side stripe on a card; use it only for real status, else drop it
+    » .warning { padding:var(--space-3); border-inline-start:3px solid var(--color-warning); background:va
+components\shopping\purchase-sheets.module.css:25  info   three-col-grid          3-column grid: make sure it is not three equal feature cards
+    » .counts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-2); font-size
+
+slop-lint: 2 hits (0 error, 1 warn, 1 info) in 28 files (tokens: DESIGN.md)
+  by rule: side-tab-border=1, three-col-grid=1

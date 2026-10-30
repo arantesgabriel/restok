@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 C:/Fontes/restok
+
+··············································xx·····x·····································x················x···································································································································
+
+ Test Files  2 failed | 38 passed (40)
+      Tests  5 failed | 235 passed (240)
+   Start at  03:09:23
+   Duration  21.62s (environment 39%, tests 35%, import 23%, transform 2%, worker 1%)
+
+    Isolate  40 workers spawned · ~964ms startup each (spawn + environment, per file)
+             at least ~8.68s faster with isolate: false — reuses workers across files instead of one per file
+

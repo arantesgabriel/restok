@@ -1,0 +1,581 @@
+{
+  "kind": "Real components / isolated fixtures / no backend",
+  "timestamp": "2026-10-30T05:24:16.232Z",
+  "captures": [
+    {
+      "width": 320,
+      "height": 640,
+      "scenario": "empty-list",
+      "viewport": [
+        320,
+        640
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 12,
+        "y": 125,
+        "width": 296,
+        "height": 142.984375,
+        "bottom": 267.984375
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 499.8125,
+        "width": 320,
+        "height": 80.1875,
+        "bottom": 580
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "scenario": "long",
+      "viewport": [
+        320,
+        640
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 12,
+        "y": 125,
+        "width": 296,
+        "height": 142.984375,
+        "bottom": 267.984375
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 499.8125,
+        "width": 320,
+        "height": 80.1875,
+        "bottom": 580
+      },
+      "rows": 33,
+      "completeRows": 1,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "empty-list",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 16,
+        "y": 125,
+        "width": 358,
+        "height": 142.984375,
+        "bottom": 267.984375
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 720.609375,
+        "width": 390,
+        "height": 63.390625,
+        "bottom": 784
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scenario": "long",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 16,
+        "y": 125,
+        "width": 358,
+        "height": 142.984375,
+        "bottom": 267.984375
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 720.609375,
+        "width": 390,
+        "height": 63.390625,
+        "bottom": 784
+      },
+      "rows": 33,
+      "completeRows": 4,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scenario": "empty-list",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 24,
+        "y": 135.796875,
+        "width": 720,
+        "height": 150.984375,
+        "bottom": 286.78125
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 900.609375,
+        "width": 768,
+        "height": 63.390625,
+        "bottom": 964
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scenario": "long",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 24,
+        "y": 135.796875,
+        "width": 720,
+        "height": 150.984375,
+        "bottom": 286.78125
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 900.609375,
+        "width": 768,
+        "height": 63.390625,
+        "bottom": 964
+      },
+      "rows": 33,
+      "completeRows": 6,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 992,
+      "height": 768,
+      "scenario": "empty-list",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 24,
+        "y": 135.796875,
+        "width": 944,
+        "height": 150.984375,
+        "bottom": 286.78125
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 644.609375,
+        "width": 992,
+        "height": 63.390625,
+        "bottom": 708
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 992,
+      "height": 768,
+      "scenario": "long",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 24,
+        "y": 135.796875,
+        "width": 944,
+        "height": 150.984375,
+        "bottom": 286.78125
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "dock": {
+        "x": 0,
+        "y": 644.609375,
+        "width": 992,
+        "height": 63.390625,
+        "bottom": 708
+      },
+      "rows": 33,
+      "completeRows": 2,
+      "context": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "scenario": "empty-list",
+      "viewport": [
+        1280,
+        800
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 712,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 800,
+        "bottom": 800
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 1000,
+        "y": 88,
+        "width": 256,
+        "height": 210.1875,
+        "bottom": 298.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "scenario": "long",
+      "viewport": [
+        1280,
+        800
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 712,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 800,
+        "bottom": 800
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 33,
+      "completeRows": 4,
+      "context": {
+        "x": 1000,
+        "y": 88,
+        "width": 256,
+        "height": 262.1875,
+        "bottom": 350.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scenario": "empty-list",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 872,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 900,
+        "bottom": 900
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 1160,
+        "y": 88,
+        "width": 256,
+        "height": 210.1875,
+        "bottom": 298.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scenario": "long",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 872,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 900,
+        "bottom": 900
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 33,
+      "completeRows": 6,
+      "context": {
+        "x": 1160,
+        "y": 88,
+        "width": 256,
+        "height": 262.1875,
+        "bottom": 350.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "empty-list",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 1352,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 0,
+      "completeRows": 0,
+      "context": {
+        "x": 1640,
+        "y": 88,
+        "width": 256,
+        "height": 210.1875,
+        "bottom": 298.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scenario": "long",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "budget": {
+        "x": 256,
+        "y": 154.796875,
+        "width": 1352,
+        "height": 171.59375,
+        "bottom": 326.390625
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 232,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "dock": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "rows": 33,
+      "completeRows": 9,
+      "context": {
+        "x": 1640,
+        "y": 88,
+        "width": 256,
+        "height": 262.1875,
+        "bottom": 350.1875
+      },
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    }
+  ],
+  "errors": []
+}
