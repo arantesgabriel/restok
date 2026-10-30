@@ -22,7 +22,6 @@ it.each([{ok:false,message:"Falha de teste"},{ok:true,synced:false}] as RemoteWr
   await waitFor(()=>expect(persistList).toHaveBeenCalledTimes(1));
   expect(screen.queryByRole("dialog",{name:"Compra finalizada"})).toBeNull();
   await act(async()=>resolve(result));
-  fireEvent.click(screen.getByText("Alterações sem sincronizar · ver detalhes"));
   expect(screen.queryByRole("dialog",{name:"Compra finalizada"})).toBeNull();
   fireEvent.click(screen.getByRole("button",{name:"Tentar novamente"}));
   await screen.findByRole("dialog",{name:"Compra finalizada"});
@@ -37,8 +36,7 @@ it("retries purchase creation with the same list and item IDs",async()=>{
   const dialog=await screen.findByRole("dialog",{name:"Nova compra"});
   fireEvent.click(within(dialog).getByRole("button",{name:/Encerrar atual e começar/}));
   await waitFor(()=>expect(createShoppingListWithItems).toHaveBeenCalledTimes(1));
-  await screen.findByText("Alterações sem sincronizar · ver detalhes");
-  fireEvent.click(screen.getByText("Alterações sem sincronizar · ver detalhes"));
+  await screen.findByText("Há alterações sem sincronizar");
   fireEvent.click(screen.getByRole("button",{name:"Tentar novamente"}));
   await waitFor(()=>expect(createShoppingListWithItems).toHaveBeenCalledTimes(2));
   expect(vi.mocked(createShoppingListWithItems).mock.calls[1]).toEqual(vi.mocked(createShoppingListWithItems).mock.calls[0]);

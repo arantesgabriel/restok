@@ -46,14 +46,16 @@ describe("house category order", () => {
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
     expect(namesIn("Higiene").indexOf("Bucha de Pia")).toBeLessThan(namesIn("Higiene").indexOf("Shampoo"));
 
-    fireEvent.click(within(screen.getByRole("group", { name: "Ordenar itens da compra" })).getByRole("button", { name: "A–Z" }));
+    fireEvent.click(screen.getByRole("button", { name: /Organizar lista/ }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Ordenar por nome A–Z" }));
     expect(screen.queryByRole("button", { name: /^Alimentos em ordem/ })).toBeNull();
     const flatNames = screen.getAllByRole("button", { name: /^Editar / }).map((button) => button.getAttribute("aria-label"));
     expect(flatNames.indexOf("Editar Água com gás 1.5L")).toBeLessThan(flatNames.indexOf("Editar Óleo"));
     expect(flatNames.indexOf("Editar Bucha de Pia")).toBeLessThan(flatNames.indexOf("Editar Shampoo"));
     expect(flatNames.indexOf("Editar Bucha de Pia")).toBeLessThan(flatNames.indexOf("Editar Óleo"));
 
-    fireEvent.click(within(screen.getByRole("group", { name: "Ordenar itens da compra" })).getByRole("button", { name: "Categoria" }));
+    fireEvent.click(screen.getByRole("button", { name: /Organizar lista/ }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Agrupar por categoria" }));
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
 
     view.unmount();

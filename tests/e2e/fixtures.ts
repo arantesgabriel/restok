@@ -20,8 +20,18 @@ export function evidenceState(scenario: string): RestokState {
   state.lists = state.lists.map((list) => ({ ...list, items: list.items.slice(0, 33) }));
   state.lists[0].name = "Compra ilustrativa da casa para o mês";
   if (scenario === "empty") return { products: [], lists: [] };
+  if (scenario === "few") state.lists[0].items = state.lists[0].items.slice(0, 3);
+  if (scenario === "empty-list") state.lists[0].items = [];
   if (scenario === "collection100") {
     state.products = Array.from({length:100},(_,index)=>({...state.products[index%33],id:`collection-${index}`,name:`${state.products[index%33].name} · ${index+1}`}));
+  }
+  if (scenario === "list100") {
+    const source = state.lists[0].items;
+    state.lists[0].items = Array.from({ length: 100 }, (_, index) => {
+      const item = source[index % source.length];
+      const status = index % 9 === 0 ? "purchased" as const : index % 13 === 0 ? "already_have" as const : "pending" as const;
+      return { ...item, id: `fixture-list100-${index + 1}`, name: `${item.name} · ${String(index + 1).padStart(3, "0")}`, sortOrder: index, status };
+    });
   }
   if (scenario === "catalog") {
     const prefix="Produto recorrente com nome longo para conferir leitura completa no catálogo ";
@@ -33,6 +43,15 @@ export function evidenceState(scenario: string): RestokState {
     const item = { ...state.lists[0].items[2], quantity: 3, status: "purchased" as const };
     state.lists[0] = { ...state.lists[0], budget: 0, items: [{ ...item, unitPrice: 5 }, { ...item, id: "fixture-unpriced", name: "Item sem preço", unitPrice: undefined }] };
     state.lists[1].items = [{ ...item, unitPrice: 0 }];
+  }
+  if (scenario === "money-equal" || scenario === "money-over") {
+    const priced = { ...state.lists[0].items[2], quantity: 3, status: "purchased" as const, unitPrice: 5 };
+    const unpriced = { ...state.lists[0].items[1], id: "fixture-equal-unpriced", name: "Item comprado sem preço", status: "purchased" as const, unitPrice: undefined };
+    state.lists[0] = { ...state.lists[0], budget: scenario === "money-equal" ? 15 : 10, items: [priced, unpriced] };
+  }
+  if (scenario === "money-high") {
+    const item = { ...state.lists[0].items[2], name: "Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas", quantity: 1, status: "purchased" as const, unitPrice: 9999999.99 };
+    state.lists[0] = { ...state.lists[0], budget: 100, items: [item] };
   }
   if (scenario === "stress") {
     state.lists[0].items[0] = {...state.lists[0].items[0],name:"Produto com um nome completo muito longo para verificar leitura e quebra em celulares",quantity:999999,unitPrice:9999999999.99,status:"purchased"};
