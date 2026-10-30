@@ -1,0 +1,4 @@
+import { createServer } from 'vite';
+import path from 'node:path';
+const root=path.resolve('.'),fixture=name=>path.join(root,'tests/e2e',name);
+const server=await createServer({configFile:false,envDir:false,root:fixture(''),publicDir:path.join(root,'public'),cacheDir:path.join(root,'node_modules/.vite-restok-audit'),css:{postcss:root},resolve:{alias:[{find:'@/lib/supabase/data',replacement:path.join(root,'docs/restok-visual-refactor/evidence/audit-data-fixture.ts')},...['client','config','realtime'].map(name=>({find:`@/lib/supabase/${name}`,replacement:fixture('client-fixture.ts')})),{find:'next/image',replacement:fixture('next-fixture.tsx')},{find:'next/link',replacement:fixture('link-fixture.tsx')},{find:'next/navigation',replacement:fixture('next-fixture.tsx')},{find:'@',replacement:root}]},server:{host:'127.0.0.1',port:4174,strictPort:true,fs:{allow:[root]}}});await server.listen();server.printUrls();

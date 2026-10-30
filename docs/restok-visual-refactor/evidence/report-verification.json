@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-30T03:34:34.970Z",
+  "documents": 10,
+  "localLinksVerified": 34,
+  "sourcesVerified": 206,
+  "gallery": [
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "brokenImages": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "brokenImages": []
+    }
+  ],
+  "errors": []
+}

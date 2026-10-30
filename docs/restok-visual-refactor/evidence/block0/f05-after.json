@@ -1,0 +1,139 @@
+{
+  "kind": "F-05 cascade comparison / local fixtures only",
+  "phase": "after",
+  "at": "2026-10-30T04:00:53.538Z",
+  "commit": "e4de8bcdf91ed98d6e82731a7bff4c3f076c7043",
+  "engine": "156.0.4314.50",
+  "viewport": {
+    "width": 320,
+    "height": 640
+  },
+  "captures": [
+    {
+      "id": "vite",
+      "route": "/app?scenario=long",
+      "file": "f05-after-vite.png",
+      "computed": {
+        "documentTheme": "restok-theme",
+        "budgetClass": "restok-theme _budget_4txo1_4",
+        "budgetColor": "rgb(255, 255, 255)",
+        "labelColor": "rgb(255, 255, 255)",
+        "valueColor": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(33, 63, 29)",
+        "matchingColorRulesInStylesheetOrder": [
+          {
+            "selector": ":where(.restok-theme)",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ".restok-theme ::selection",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": "._primary_jk5mh_2._primary_jk5mh_2",
+            "color": "var(--color-surface)",
+            "important": false
+          },
+          {
+            "selector": "._budget_4txo1_4",
+            "color": "var(--color-surface)",
+            "important": false
+          },
+          {
+            "selector": "._modes_uyl5q_8 button[aria-pressed=\"true\"]",
+            "color": "var(--color-action)",
+            "important": false
+          },
+          {
+            "selector": "._categoryButton_uyl5q_15",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": "._primary_1fwr5_23",
+            "color": "var(--color-surface)",
+            "important": false
+          },
+          {
+            "selector": "._budget_ig508_31 span",
+            "color": "var(--color-muted)",
+            "important": false
+          },
+          {
+            "selector": "._budgetStatus_ig508_38",
+            "color": "var(--color-muted)",
+            "important": false
+          },
+          {
+            "selector": ":where(.restok-theme)",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ".restok-theme ::selection",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ":where(button, input, select, textarea)",
+            "color": "inherit",
+            "important": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "next",
+      "route": "/block0-probe",
+      "file": "f05-after-next.png",
+      "computed": {
+        "documentTheme": "restok-theme",
+        "budgetClass": "restok-theme shopping-controls_budget__H5_hZ",
+        "budgetColor": "rgb(255, 255, 255)",
+        "labelColor": "rgb(255, 255, 255)",
+        "valueColor": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(33, 63, 29)",
+        "matchingColorRulesInStylesheetOrder": [
+          {
+            "selector": ":where(.restok-theme)",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ".restok-theme ::selection",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ":where(button, input, select, textarea)",
+            "color": "inherit",
+            "important": false
+          },
+          {
+            "selector": ":where(.restok-theme)",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ".restok-theme ::selection",
+            "color": "var(--color-ink)",
+            "important": false
+          },
+          {
+            "selector": ".controls_primary__CXGEv.controls_primary__CXGEv",
+            "color": "var(--color-surface)",
+            "important": false
+          },
+          {
+            "selector": ".shopping-controls_budget__H5_hZ",
+            "color": "var(--color-surface)",
+            "important": false
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

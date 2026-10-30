@@ -1,0 +1,380 @@
+{
+  "kind": "CURRENT-COMPONENTS / AUDIT-FIXTURE / no backend",
+  "captures": [
+    {
+      "id": "history-many",
+      "file": "320-640-history-many.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casa ilustrativa\nPD\nHistórico\n\nCompras concluídas, com os preços e itens registrados na época.\n\noutubro de 2026\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n27 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 2\n26 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 3\n25 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 4\n24 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nsetembro de 2026\nCompra ilustrativa 5\n27 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 6\n26 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 7\n25 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 8\n24 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nagosto de 2026\nCompra ilustrativa 9\n27 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 10\n26 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 11\n25 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 12\n24 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njulho de 2026\nCompra ilustrativa 13\n27 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 14\n26 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 15\n25 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 16\n24 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njunho de 2026\nCompra ilustrativa 17\n27 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 18\n26 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 19\n25 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 20\n24 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nmaio de 2026\nCompra ilustrativa 21\n27 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 22\n26 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 23\n25 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 24\n24 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96",
+        "focused": null
+      }
+    },
+    {
+      "id": "history-long-detail",
+      "file": "320-640-history-long-detail.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casa ilustrativa\nPD\nVoltar ao histórico\n\n27 de out. · outubro de 2026\n\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n\n33 itens nesta compra\n\nTotal registrado\n\nR$ 648,96\n\nSoma dos itens comprados com preço informado.\n\nComprados\n33\nJá tínhamos\n0\nPendentes\n0\nAlimentos\nCebola\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 19,80\n\nR$ 3,96 / un.\n\nMesmo preço que a compra anterior (R$ 3,96/un.)\n\nChá mate com gás\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 13,17\n\nR$ 4,39 / un.\n\nMesmo preço que a compra anterior (R$ 4,39/un.)\n\nCreme de Leite\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 26,90\n\nR$ 2,69 / un.\n\nMesmo preço que a compra anterior (R$ 2,69/un.)\n\nFarinha de Trigo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 3,49\n\nR$ 3,49 / un.\n\nMesmo preço que a compra anterior (R$ 3,49/un.)\n\nFeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 8,99\n\nR$ 8,99 / un.\n\nMesmo preço que a compra anterior (R$ 8,99/un.)\n\nFilé de Peito de Frango\n\nQuantidade: 7\n\nComprado\n\nSubtotal\n\nR$ 111,23\n\nR$ 15,89 / un.\n\nMesmo preço que a compra anterior (R$ 15,89/un.)\n\nLeite condensado\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 17,37\n\nR$ 5,79 / un.\n\nMesmo preço que a compra anterior (R$ 5,79/un.)\n\nLeite Desnatado\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 5,19\n\nR$ 5,19 / un.\n\nMesmo preço que a compra anterior (R$ 5,19/un.)\n\nleite zero lac\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,69\n\nR$ 6,69 / un.\n\nMesmo preço que a compra anterior (R$ 6,69/un.)\n\nLimão\n\nQuantidade: 4\n\nComprado\n\nSubtotal\n\nR$ 3,20\n\nR$ 0,80 / un.\n\nMesmo preço que a compra anterior (R$ 0,80/un.)\n\nMacarrão Cbl de Anj\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 13,58\n\nR$ 6,79 / un.\n\nMesmo preço que a compra anterior (R$ 6,79/un.)\n\nMandioca 500g\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 25,96\n\nR$ 12,98 / un.\n\nMesmo preço que a compra anterior (R$ 12,98/un.)\n\nMassa de Alho\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 11,98\n\nR$ 5,99 / un.\n\nMesmo preço que a compra anterior (R$ 5,99/un.)\n\nMolho de tomate\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 9,45\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nMuçarela 600g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 22,14\n\nR$ 22,14 / un.\n\nMesmo preço que a compra anterior (R$ 22,14/un.)\n\nÓleo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,99\n\nR$ 6,99 / un.\n\nMesmo preço que a compra anterior (R$ 6,99/un.)\n\npapel filme\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,99\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nPicanha Suina\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 33,88\n\nR$ 33,88 / un.\n\nMesmo preço que a compra anterior (R$ 33,88/un.)\n\nPresunto 300g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,50\n\nR$ 9,50 / un.\n\nMesmo preço que a compra anterior (R$ 9,50/un.)\n\nRequeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 15,98\n\nR$ 15,98 / un.\n\nMesmo preço que a compra anterior (R$ 15,98/un.)\n\nSuco Clight\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 16,90\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nLeite condensado Integral\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 19,77\n\nR$ 6,59 / un.\n\nMesmo preço que a compra anterior (R$ 6,59/un.)\n\nÁgua com gás 1.5L\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 5,98\n\nR$ 2,99 / un.\n\nMesmo preço que a compra anterior (R$ 2,99/un.)\n\nBebidas\nÁgua com Gás (fardo)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 45,36\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nCoca Zero (dois fardos)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 40,56\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nEnergético Monster\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 23,97\n\nR$ 7,99 / un.\n\nMesmo preço que a compra anterior (R$ 7,99/un.)\n\nEnergético Redbull\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 29,97\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nHigiene\nBucha de Pia\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 4,69\n\nR$ 4,69 / un.\n\nMesmo preço que a compra anterior (R$ 4,69/un.)\n\nPapel Higiênico\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 33,80\n\nR$ 16,90 / un.\n\nMesmo preço que a compra anterior (R$ 16,90/un.)\n\nSabonete\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 8,94\n\nR$ 2,98 / un.\n\nMesmo preço que a compra anterior (R$ 2,98/un.)\n\nShampoo\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 29,98\n\nR$ 14,99 / un.\n\nMesmo preço que a compra anterior (R$ 14,99/un.)\n\nLimpeza\nDetergente\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 4,98\n\nR$ 2,49 / un.\n\nMesmo preço que a compra anterior (R$ 2,49/un.)\n\nPapel Toalha\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 8,58\n\nR$ 4,29 / un.\n\nMesmo preço que a compra anterior (R$ 4,29/un.)",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names",
+      "file": "320-640-people-distinct-names.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names-bottom",
+      "file": "320-640-people-distinct-names-bottom.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-transfer-confirm",
+      "file": "320-640-people-transfer-confirm.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nTransferir propriedade\n\nCasa:\nCasa ilustrativa\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nEssa pessoa será proprietária da casa. Você passará a administrador.\n\nCancelar\nConfirmar transferir propriedade",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-read-error",
+      "file": "320-640-people-read-error.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 0\nCriar convite\n\nNão foi possível carregar as pessoas e convites.\n\nTentar novamente\nConvites recentes\n\nConvites indisponíveis até recarregar as pessoas.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100",
+      "file": "320-640-new-purchase-100.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100-bottom",
+      "file": "320-640-new-purchase-100-bottom.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-confirm",
+      "file": "320-640-finish-confirm.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Finalizar compra?\n\nAinda existem 33 itens pendentes. Você poderá consultar tudo no histórico depois.\n\nFinalizar e salvar\nContinuar comprando",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-result",
+      "file": "320-640-finish-result.png",
+      "geometry": {
+        "width": 320,
+        "height": 640,
+        "overflow": 0,
+        "text": "Compra finalizada\n\nVocê pode consultar os itens pendentes pelo histórico.\n\nComprados\n0\nJá tínhamos\n0\nPendentes\n33\n\nTotal registrado\n\nR$ 0,00\n\nVer histórico",
+        "focused": null
+      }
+    },
+    {
+      "id": "history-many",
+      "file": "390-844-history-many.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casa ilustrativa\nPD\nHistórico\n\nCompras concluídas, com os preços e itens registrados na época.\n\noutubro de 2026\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n27 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 2\n26 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 3\n25 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 4\n24 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nsetembro de 2026\nCompra ilustrativa 5\n27 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 6\n26 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 7\n25 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 8\n24 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nagosto de 2026\nCompra ilustrativa 9\n27 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 10\n26 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 11\n25 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 12\n24 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njulho de 2026\nCompra ilustrativa 13\n27 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 14\n26 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 15\n25 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 16\n24 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njunho de 2026\nCompra ilustrativa 17\n27 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 18\n26 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 19\n25 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 20\n24 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nmaio de 2026\nCompra ilustrativa 21\n27 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 22\n26 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 23\n25 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 24\n24 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96",
+        "focused": null
+      }
+    },
+    {
+      "id": "history-long-detail",
+      "file": "390-844-history-long-detail.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casa ilustrativa\nPD\nVoltar ao histórico\n\n27 de out. · outubro de 2026\n\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n\n33 itens nesta compra\n\nTotal registrado\n\nR$ 648,96\n\nSoma dos itens comprados com preço informado.\n\nComprados\n33\nJá tínhamos\n0\nPendentes\n0\nAlimentos\nCebola\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 19,80\n\nR$ 3,96 / un.\n\nMesmo preço que a compra anterior (R$ 3,96/un.)\n\nChá mate com gás\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 13,17\n\nR$ 4,39 / un.\n\nMesmo preço que a compra anterior (R$ 4,39/un.)\n\nCreme de Leite\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 26,90\n\nR$ 2,69 / un.\n\nMesmo preço que a compra anterior (R$ 2,69/un.)\n\nFarinha de Trigo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 3,49\n\nR$ 3,49 / un.\n\nMesmo preço que a compra anterior (R$ 3,49/un.)\n\nFeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 8,99\n\nR$ 8,99 / un.\n\nMesmo preço que a compra anterior (R$ 8,99/un.)\n\nFilé de Peito de Frango\n\nQuantidade: 7\n\nComprado\n\nSubtotal\n\nR$ 111,23\n\nR$ 15,89 / un.\n\nMesmo preço que a compra anterior (R$ 15,89/un.)\n\nLeite condensado\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 17,37\n\nR$ 5,79 / un.\n\nMesmo preço que a compra anterior (R$ 5,79/un.)\n\nLeite Desnatado\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 5,19\n\nR$ 5,19 / un.\n\nMesmo preço que a compra anterior (R$ 5,19/un.)\n\nleite zero lac\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,69\n\nR$ 6,69 / un.\n\nMesmo preço que a compra anterior (R$ 6,69/un.)\n\nLimão\n\nQuantidade: 4\n\nComprado\n\nSubtotal\n\nR$ 3,20\n\nR$ 0,80 / un.\n\nMesmo preço que a compra anterior (R$ 0,80/un.)\n\nMacarrão Cbl de Anj\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 13,58\n\nR$ 6,79 / un.\n\nMesmo preço que a compra anterior (R$ 6,79/un.)\n\nMandioca 500g\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 25,96\n\nR$ 12,98 / un.\n\nMesmo preço que a compra anterior (R$ 12,98/un.)\n\nMassa de Alho\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 11,98\n\nR$ 5,99 / un.\n\nMesmo preço que a compra anterior (R$ 5,99/un.)\n\nMolho de tomate\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 9,45\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nMuçarela 600g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 22,14\n\nR$ 22,14 / un.\n\nMesmo preço que a compra anterior (R$ 22,14/un.)\n\nÓleo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,99\n\nR$ 6,99 / un.\n\nMesmo preço que a compra anterior (R$ 6,99/un.)\n\npapel filme\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,99\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nPicanha Suina\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 33,88\n\nR$ 33,88 / un.\n\nMesmo preço que a compra anterior (R$ 33,88/un.)\n\nPresunto 300g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,50\n\nR$ 9,50 / un.\n\nMesmo preço que a compra anterior (R$ 9,50/un.)\n\nRequeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 15,98\n\nR$ 15,98 / un.\n\nMesmo preço que a compra anterior (R$ 15,98/un.)\n\nSuco Clight\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 16,90\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nLeite condensado Integral\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 19,77\n\nR$ 6,59 / un.\n\nMesmo preço que a compra anterior (R$ 6,59/un.)\n\nÁgua com gás 1.5L\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 5,98\n\nR$ 2,99 / un.\n\nMesmo preço que a compra anterior (R$ 2,99/un.)\n\nBebidas\nÁgua com Gás (fardo)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 45,36\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nCoca Zero (dois fardos)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 40,56\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nEnergético Monster\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 23,97\n\nR$ 7,99 / un.\n\nMesmo preço que a compra anterior (R$ 7,99/un.)\n\nEnergético Redbull\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 29,97\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nHigiene\nBucha de Pia\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 4,69\n\nR$ 4,69 / un.\n\nMesmo preço que a compra anterior (R$ 4,69/un.)\n\nPapel Higiênico\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 33,80\n\nR$ 16,90 / un.\n\nMesmo preço que a compra anterior (R$ 16,90/un.)\n\nSabonete\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 8,94\n\nR$ 2,98 / un.\n\nMesmo preço que a compra anterior (R$ 2,98/un.)\n\nShampoo\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 29,98\n\nR$ 14,99 / un.\n\nMesmo preço que a compra anterior (R$ 14,99/un.)\n\nLimpeza\nDetergente\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 4,98\n\nR$ 2,49 / un.\n\nMesmo preço que a compra anterior (R$ 2,49/un.)\n\nPapel Toalha\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 8,58\n\nR$ 4,29 / un.\n\nMesmo preço que a compra anterior (R$ 4,29/un.)",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names",
+      "file": "390-844-people-distinct-names.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names-bottom",
+      "file": "390-844-people-distinct-names-bottom.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-transfer-confirm",
+      "file": "390-844-people-transfer-confirm.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nTransferir propriedade\n\nCasa:\nCasa ilustrativa\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nEssa pessoa será proprietária da casa. Você passará a administrador.\n\nCancelar\nConfirmar transferir propriedade",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-read-error",
+      "file": "390-844-people-read-error.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 0\nCriar convite\n\nNão foi possível carregar as pessoas e convites.\n\nTentar novamente\nConvites recentes\n\nConvites indisponíveis até recarregar as pessoas.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100",
+      "file": "390-844-new-purchase-100.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100-bottom",
+      "file": "390-844-new-purchase-100-bottom.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-confirm",
+      "file": "390-844-finish-confirm.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Finalizar compra?\n\nAinda existem 33 itens pendentes. Você poderá consultar tudo no histórico depois.\n\nFinalizar e salvar\nContinuar comprando",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-result",
+      "file": "390-844-finish-result.png",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "overflow": 0,
+        "text": "Compra finalizada\n\nVocê pode consultar os itens pendentes pelo histórico.\n\nComprados\n0\nJá tínhamos\n0\nPendentes\n33\n\nTotal registrado\n\nR$ 0,00\n\nVer histórico",
+        "focused": null
+      }
+    },
+    {
+      "id": "history-many",
+      "file": "1440-900-history-many.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Histórico\nPD\nHistórico\n\nCompras concluídas, com os preços e itens registrados na época.\n\noutubro de 2026\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n27 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 2\n26 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 3\n25 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 4\n24 de out. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nsetembro de 2026\nCompra ilustrativa 5\n27 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 6\n26 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 7\n25 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 8\n24 de set. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nagosto de 2026\nCompra ilustrativa 9\n27 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 10\n26 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 11\n25 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 12\n24 de ago. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njulho de 2026\nCompra ilustrativa 13\n27 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 14\n26 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 15\n25 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 16\n24 de jul. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\njunho de 2026\nCompra ilustrativa 17\n27 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 18\n26 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 19\n25 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 20\n24 de jun. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nmaio de 2026\nCompra ilustrativa 21\n27 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 22\n26 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 23\n25 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96\nCompra ilustrativa 24\n24 de mai. · 33 itens\n33 comprados\n0 já tínhamos\n0 pendentes\nTotal registrado\nR$ 648,96",
+        "focused": null
+      }
+    },
+    {
+      "id": "history-long-detail",
+      "file": "1440-900-history-long-detail.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Histórico\nPD\nVoltar ao histórico\n\n27 de out. · outubro de 2026\n\nCompra com nome longo para verificar leitura e organização do histórico em telas pequenas\n\n33 itens nesta compra\n\nTotal registrado\n\nR$ 648,96\n\nSoma dos itens comprados com preço informado.\n\nComprados\n33\nJá tínhamos\n0\nPendentes\n0\nAlimentos\nCebola\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 19,80\n\nR$ 3,96 / un.\n\nMesmo preço que a compra anterior (R$ 3,96/un.)\n\nChá mate com gás\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 13,17\n\nR$ 4,39 / un.\n\nMesmo preço que a compra anterior (R$ 4,39/un.)\n\nCreme de Leite\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 26,90\n\nR$ 2,69 / un.\n\nMesmo preço que a compra anterior (R$ 2,69/un.)\n\nFarinha de Trigo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 3,49\n\nR$ 3,49 / un.\n\nMesmo preço que a compra anterior (R$ 3,49/un.)\n\nFeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 8,99\n\nR$ 8,99 / un.\n\nMesmo preço que a compra anterior (R$ 8,99/un.)\n\nFilé de Peito de Frango\n\nQuantidade: 7\n\nComprado\n\nSubtotal\n\nR$ 111,23\n\nR$ 15,89 / un.\n\nMesmo preço que a compra anterior (R$ 15,89/un.)\n\nLeite condensado\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 17,37\n\nR$ 5,79 / un.\n\nMesmo preço que a compra anterior (R$ 5,79/un.)\n\nLeite Desnatado\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 5,19\n\nR$ 5,19 / un.\n\nMesmo preço que a compra anterior (R$ 5,19/un.)\n\nleite zero lac\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,69\n\nR$ 6,69 / un.\n\nMesmo preço que a compra anterior (R$ 6,69/un.)\n\nLimão\n\nQuantidade: 4\n\nComprado\n\nSubtotal\n\nR$ 3,20\n\nR$ 0,80 / un.\n\nMesmo preço que a compra anterior (R$ 0,80/un.)\n\nMacarrão Cbl de Anj\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 13,58\n\nR$ 6,79 / un.\n\nMesmo preço que a compra anterior (R$ 6,79/un.)\n\nMandioca 500g\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 25,96\n\nR$ 12,98 / un.\n\nMesmo preço que a compra anterior (R$ 12,98/un.)\n\nMassa de Alho\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 11,98\n\nR$ 5,99 / un.\n\nMesmo preço que a compra anterior (R$ 5,99/un.)\n\nMolho de tomate\n\nQuantidade: 5\n\nComprado\n\nSubtotal\n\nR$ 9,45\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nMuçarela 600g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 22,14\n\nR$ 22,14 / un.\n\nMesmo preço que a compra anterior (R$ 22,14/un.)\n\nÓleo\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 6,99\n\nR$ 6,99 / un.\n\nMesmo preço que a compra anterior (R$ 6,99/un.)\n\npapel filme\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,99\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nPicanha Suina\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 33,88\n\nR$ 33,88 / un.\n\nMesmo preço que a compra anterior (R$ 33,88/un.)\n\nPresunto 300g\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 9,50\n\nR$ 9,50 / un.\n\nMesmo preço que a compra anterior (R$ 9,50/un.)\n\nRequeijão\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 15,98\n\nR$ 15,98 / un.\n\nMesmo preço que a compra anterior (R$ 15,98/un.)\n\nSuco Clight\n\nQuantidade: 10\n\nComprado\n\nSubtotal\n\nR$ 16,90\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nLeite condensado Integral\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 19,77\n\nR$ 6,59 / un.\n\nMesmo preço que a compra anterior (R$ 6,59/un.)\n\nÁgua com gás 1.5L\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 5,98\n\nR$ 2,99 / un.\n\nMesmo preço que a compra anterior (R$ 2,99/un.)\n\nBebidas\nÁgua com Gás (fardo)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 45,36\n\nR$ 1,89 / un.\n\nMesmo preço que a compra anterior (R$ 1,89/un.)\n\nCoca Zero (dois fardos)\n\nQuantidade: 24\n\nComprado\n\nSubtotal\n\nR$ 40,56\n\nR$ 1,69 / un.\n\nMesmo preço que a compra anterior (R$ 1,69/un.)\n\nEnergético Monster\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 23,97\n\nR$ 7,99 / un.\n\nMesmo preço que a compra anterior (R$ 7,99/un.)\n\nEnergético Redbull\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 29,97\n\nR$ 9,99 / un.\n\nMesmo preço que a compra anterior (R$ 9,99/un.)\n\nHigiene\nBucha de Pia\n\nQuantidade: 1\n\nComprado\n\nSubtotal\n\nR$ 4,69\n\nR$ 4,69 / un.\n\nMesmo preço que a compra anterior (R$ 4,69/un.)\n\nPapel Higiênico\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 33,80\n\nR$ 16,90 / un.\n\nMesmo preço que a compra anterior (R$ 16,90/un.)\n\nSabonete\n\nQuantidade: 3\n\nComprado\n\nSubtotal\n\nR$ 8,94\n\nR$ 2,98 / un.\n\nMesmo preço que a compra anterior (R$ 2,98/un.)\n\nShampoo\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 29,98\n\nR$ 14,99 / un.\n\nMesmo preço que a compra anterior (R$ 14,99/un.)\n\nLimpeza\nDetergente\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 4,98\n\nR$ 2,49 / un.\n\nMesmo preço que a compra anterior (R$ 2,49/un.)\n\nPapel Toalha\n\nQuantidade: 2\n\nComprado\n\nSubtotal\n\nR$ 8,58\n\nR$ 4,29 / un.\n\nMesmo preço que a compra anterior (R$ 4,29/un.)",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names",
+      "file": "1440-900-people-distinct-names.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-distinct-names-bottom",
+      "file": "1440-900-people-distinct-names-bottom.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 3\nCriar convite\n\nPessoa de teste\n\nVocê · Proprietário · desde 31 de dez. de 2025\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxB\n\nMembro · desde 31 de dez. de 2025\n\nPapel\nMembro\nAdministrador\nTransferir\nRemover\nSair desta casa\n\nA última pessoa proprietária precisa transferir a propriedade antes de sair.\n\nConvites recentes\n\nNenhum convite encontrado.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-transfer-confirm",
+      "file": "1440-900-people-transfer-confirm.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nTransferir propriedade\n\nCasa:\nCasa ilustrativa\n\nParticipante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxA\n\nMembro · desde 31 de dez. de 2025\n\nEssa pessoa será proprietária da casa. Você passará a administrador.\n\nCancelar\nConfirmar transferir propriedade",
+        "focused": null
+      }
+    },
+    {
+      "id": "people-read-error",
+      "file": "1440-900-people-read-error.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Casas e pessoas\n\nEscolha sua casa e gerencie o acesso das pessoas.\n\nCasa ativa\nNova casa\n\nCasa ilustrativa\n\nSelecionar casa\nCasa ilustrativa · Proprietário\nPessoas 0\nCriar convite\n\nNão foi possível carregar as pessoas e convites.\n\nTentar novamente\nConvites recentes\n\nConvites indisponíveis até recarregar as pessoas.\n\nOs convites duram 14 dias, só podem ser usados uma vez e seus tokens não aparecem nesta lista.",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100",
+      "file": "1440-900-new-purchase-100.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "new-purchase-100-bottom",
+      "file": "1440-900-new-purchase-100-bottom.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Nova compra\n\nComece com os produtos que costumam fazer parte da casa.\n\nNome\nOrçamento\nR$\n\nComeçar esta compra vai encerrar “Compra ilustrativa da casa para o mês” e movê-la para o histórico. Ainda há 33 itens pendentes.\n\nProdutos da casa\n\n100 de 100 selecionados\n\nDesmarcar resultados\nÁgua com Gás (fardo) · 1\n24 un.\nBucha de Pia · 2\n1 un.\nCebola · 3\n5 un.\nChá mate com gás · 4\n3 un.\nCoca Zero (dois fardos) · 5\n24 un.\nCreme de Leite · 6\n10 un.\nDetergente · 7\n2 un.\nEnergético Monster · 8\n3 un.\nEnergético Redbull · 9\n3 un.\nFarinha de Trigo · 10\n1 un.\nFeijão · 11\n1 un.\nFilé de Peito de Frango · 12\n7 un.\nLeite condensado · 13\n3 un.\nLeite Desnatado · 14\n1 un.\nleite zero lac · 15\n1 un.\nLimão · 16\n4 un.\nMacarrão Cbl de Anj · 17\n2 un.\nMandioca 500g · 18\n2 un.\nMassa de Alho · 19\n2 un.\nMolho de tomate · 20\n5 un.\nMuçarela 600g · 21\n1 un.\nÓleo · 22\n1 un.\npapel filme · 23\n1 un.\nPapel Higiênico · 24\n2 un.\nPapel Toalha · 25\n2 un.\nPicanha Suina · 26\n1 un.\nPresunto 300g · 27\n1 un.\nRequeijão · 28\n1 un.\nSabonete · 29\n3 un.\nSuco Clight · 30\n10 un.\nLeite condensado Integral · 31\n3 un.\nShampoo · 32\n2 un.\nÁgua com gás 1.5L · 33\n2 un.\nÁgua com Gás (fardo) · 34\n24 un.\nBucha de Pia · 35\n1 un.\nCebola · 36\n5 un.\nChá mate com gás · 37\n3 un.\nCoca Zero (dois fardos) · 38\n24 un.\nCreme de Leite · 39\n10 un.\nDetergente · 40\n2 un.\nEnergético Monster · 41\n3 un.\nEnergético Redbull · 42\n3 un.\nFarinha de Trigo · 43\n1 un.\nFeijão · 44\n1 un.\nFilé de Peito de Frango · 45\n7 un.\nLeite condensado · 46\n3 un.\nLeite Desnatado · 47\n1 un.\nleite zero lac · 48\n1 un.\nLimão · 49\n4 un.\nMacarrão Cbl de Anj · 50\n2 un.\nMandioca 500g · 51\n2 un.\nMassa de Alho · 52\n2 un.\nMolho de tomate · 53\n5 un.\nMuçarela 600g · 54\n1 un.\nÓleo · 55\n1 un.\npapel filme · 56\n1 un.\nPapel Higiênico · 57\n2 un.\nPapel Toalha · 58\n2 un.\nPicanha Suina · 59\n1 un.\nPresunto 300g · 60\n1 un.\nRequeijão · 61\n1 un.\nSabonete · 62\n3 un.\nSuco Clight · 63\n10 un.\nLeite condensado Integral · 64\n3 un.\nShampoo · 65\n2 un.\nÁgua com gás 1.5L · 66\n2 un.\nÁgua com Gás (fardo) · 67\n24 un.\nBucha de Pia · 68\n1 un.\nCebola · 69\n5 un.\nChá mate com gás · 70\n3 un.\nCoca Zero (dois fardos) · 71\n24 un.\nCreme de Leite · 72\n10 un.\nDetergente · 73\n2 un.\nEnergético Monster · 74\n3 un.\nEnergético Redbull · 75\n3 un.\nFarinha de Trigo · 76\n1 un.\nFeijão · 77\n1 un.\nFilé de Peito de Frango · 78\n7 un.\nLeite condensado · 79\n3 un.\nLeite Desnatado · 80\n1 un.\nleite zero lac · 81\n1 un.\nLimão · 82\n4 un.\nMacarrão Cbl de Anj · 83\n2 un.\nMandioca 500g · 84\n2 un.\nMassa de Alho · 85\n2 un.\nMolho de tomate · 86\n5 un.\nMuçarela 600g · 87\n1 un.\nÓleo · 88\n1 un.\npapel filme · 89\n1 un.\nPapel Higiênico · 90\n2 un.\nPapel Toalha · 91\n2 un.\nPicanha Suina · 92\n1 un.\nPresunto 300g · 93\n1 un.\nRequeijão · 94\n1 un.\nSabonete · 95\n3 un.\nSuco Clight · 96\n10 un.\nLeite condensado Integral · 97\n3 un.\nShampoo · 98\n2 un.\nÁgua com gás 1.5L · 99\n2 un.\nÁgua com Gás (fardo) · 100\n24 un.\nEncerrar atual e começar",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-confirm",
+      "file": "1440-900-finish-confirm.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Finalizar compra?\n\nAinda existem 33 itens pendentes. Você poderá consultar tudo no histórico depois.\n\nFinalizar e salvar\nContinuar comprando",
+        "focused": null
+      }
+    },
+    {
+      "id": "finish-result",
+      "file": "1440-900-finish-result.png",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "overflow": 0,
+        "text": "Compra finalizada\n\nVocê pode consultar os itens pendentes pelo histórico.\n\nComprados\n0\nJá tínhamos\n0\nPendentes\n33\n\nTotal registrado\n\nR$ 0,00\n\nVer histórico",
+        "focused": null
+      }
+    }
+  ],
+  "checks": [
+    {
+      "width": 320,
+      "id": "history-return-focus",
+      "label": "Compra com nome longo para verificar leitura e organização do histórico em telas pequenas27 de out. · 33 itens33 comprados0 já tínhamos0 pendentesTotal registradoR$ 648,96"
+    },
+    {
+      "width": 320,
+      "id": "80-character-distinct-fixture",
+      "names": [
+        "Pessoa de testeVocê · Proprietário · desde 31 de dez. de 2025",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxAMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxBMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover"
+      ]
+    },
+    {
+      "width": 390,
+      "id": "history-return-focus",
+      "label": "Compra com nome longo para verificar leitura e organização do histórico em telas pequenas27 de out. · 33 itens33 comprados0 já tínhamos0 pendentesTotal registradoR$ 648,96"
+    },
+    {
+      "width": 390,
+      "id": "80-character-distinct-fixture",
+      "names": [
+        "Pessoa de testeVocê · Proprietário · desde 31 de dez. de 2025",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxAMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxBMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover"
+      ]
+    },
+    {
+      "width": 1440,
+      "id": "history-return-focus",
+      "label": "Compra com nome longo para verificar leitura e organização do histórico em telas pequenas27 de out. · 33 itens33 comprados0 já tínhamos0 pendentesTotal registradoR$ 648,96"
+    },
+    {
+      "width": 1440,
+      "id": "80-character-distinct-fixture",
+      "names": [
+        "Pessoa de testeVocê · Proprietário · desde 31 de dez. de 2025",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxAMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover",
+        "Participante com nome longo e prefixo compartilhado xxxxxxxxxxxxxxxxxxxxxxxxxxxBMembro · desde 31 de dez. de 2025PapelMembroAdministradorTransferirRemover"
+      ]
+    }
+  ],
+  "errors": []
+}
