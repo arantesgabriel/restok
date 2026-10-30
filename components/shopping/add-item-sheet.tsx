@@ -9,7 +9,6 @@ import { Sheet } from "@/components/ui/sheet";
 import { parseMoney } from "@/lib/money";
 import { isValidQuantity } from "@/lib/quantity";
 import { CATEGORY_ORDER,type CategoryName,type ShoppingItem } from "@/lib/types";
-import { Plus } from "lucide-react";
 import { useId,useState,type FormEvent } from "react";
 import styles from "./purchase-sheets.module.css";
 const categoryOptions: CategoryName[] = [...CATEGORY_ORDER];
@@ -37,7 +36,7 @@ export function AddItemSheet({
     if (!onClose()) return;
     onAdd({ name: name.trim(), quantity: Math.max(1, quantity), category, unitPrice: numericPrice, status: numericPrice !== undefined ? "purchased" : "pending" }, addToHome);
   };
-  return <Sheet title="Adicionar item" description="Inclua aquele produto que não estava na lista." onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}><Plus size={17} />Adicionar à compra</Button>}>
+  return <Sheet formLayout title="Adicionar item" onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}>Adicionar à compra</Button>}>
     <form id={formId} onSubmit={submit} className={styles.form}>
       {error && !error.startsWith("Informe um preço") ? <p role="alert" className={styles.error}>{error}</p> : null}
       <Field label="Nome do produto" initialFocus required value={name} onChange={(event) => setName(event.target.value)} placeholder="Ex.: Iogurte natural"  />
@@ -45,7 +44,7 @@ export function AddItemSheet({
         <label className={styles.label}>Quantidade<div className={styles.quantityControl}><QuantityStepper quantity={quantity} onChange={setQuantity} /></div></label>
         <Select label="Categoria" value={category} onChange={(event) => setCategory(event.target.value as CategoryName)}>{categoryOptions.map((option) => <option key={option}>{option}</option>)}</Select>
       </div>
-      <MoneyField label="Preço unitário (opcional)" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} error={error.startsWith("Informe um preço") ? error : undefined} hint="Vazio deixa o item pendente. Zero é um preço conhecido." />
+      <MoneyField label="Preço unitário (opcional)" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} error={error.startsWith("Informe um preço") ? error : undefined} hint="Deixe vazio se ainda não souber. Zero é um preço conhecido." />
       <Checkbox checked={addToHome} onChange={(event) => setAddToHome(event.target.checked)}>Adicionar aos produtos da casa<span className={styles.hint}>Fica disponível na próxima compra.</span></Checkbox>
 
     </form>

@@ -15,7 +15,7 @@
   src: url("/fonts/manrope/manrope-latin-ext-variable.woff2") format("woff2");
   unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
-.restok-theme {
+:where(.restok-theme) {
   box-sizing: border-box;
   color-scheme: light;
   color: var(--color-ink);
@@ -35,3 +35,10 @@
 .restok-theme :where(h1,h2,h3) { line-height: var(--leading-title); text-wrap: balance; }
 .restok-theme :where(p) { text-wrap: pretty; }
 .restok-theme ::selection { color: var(--color-ink); background: var(--color-highlight); }
+
+/* Text-entry focus: one thin edge and a soft halo, instead of two green outlines. */
+.restok-theme :where(input,select,textarea):focus-visible {
+  outline:none;
+  border-color:var(--color-info);
+  box-shadow:0 0 0 2px rgb(var(--color-info-rgb) / .13);
+}

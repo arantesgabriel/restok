@@ -30,6 +30,6 @@ export function HistoryView({ lists, onOpen, returnToId }: {
           <span className={styles.recordTotal}><span className={styles.meta}>Total registrado</span><span className={styles.money}>{formatBRL(summary.total)}</span></span><ChevronRight size={18} aria-hidden="true" className={styles.chevron}/>
         </button></li>;
       })}</ol>
-    </section>) : <EmptyState icon={<ShoppingBasket size={24}/>} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais."/>}
+    </section>) : <EmptyState variant="first-use" icon={<ShoppingBasket size={24}/>} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais."/>}
   </div>;
 }

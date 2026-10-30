@@ -25,3 +25,8 @@ it("keeps historical CSS out of every production source import",()=>{
   expect(forbidden).toEqual([]);
   expect(read("app/layout.tsx")).toContain('className="restok-theme"');
 });
+it("keeps inherited theme defaults below component color rules in the cascade",()=>{
+  const base=read("styles/base.css");
+  expect(base).toContain(":where(.restok-theme) {");
+  expect(base).toContain("color: var(--color-ink);");
+});

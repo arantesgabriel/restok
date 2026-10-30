@@ -45,7 +45,7 @@ export function ItemEditorSheet({
     onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" ? numericPrice : undefined, status: nextStatus });
   };
 
-  return <Sheet title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}>{numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>}>
+  return <Sheet formLayout title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}>{numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>}>
     <form id={formId} onSubmit={submit} className={styles.form}>
       {error && !error.startsWith("Informe um preço") ? <p role="alert" className={styles.error}>{error}</p> : null}
       <div className={styles.quantity}>

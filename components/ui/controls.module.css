@@ -1,6 +1,6 @@
 .button.button { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2); min-height:var(--touch-target); min-width:var(--touch-target); padding:.625rem 1rem; border:1px solid transparent; border-radius:var(--radius-control); font:600 var(--text-sm)/1.4 var(--font-body); cursor:pointer; transition:background-color var(--duration-feedback),border-color var(--duration-feedback),transform var(--duration-feedback); }
 .primary.primary { background:var(--color-action); color:var(--color-surface); }
-.secondary.secondary { background:var(--color-surface); color:var(--color-ink); border-color:var(--color-info); }
+.secondary.secondary { background:var(--color-surface); color:var(--color-ink); border-color:var(--color-line-strong); }
 .quiet.quiet { background:transparent; color:var(--color-action); }
 .danger.danger { background:var(--color-surface-danger); color:var(--color-danger); border-color:var(--color-danger); }
 @media(hover:hover) and (pointer:fine) { .primary:hover { background:var(--color-brand); } .secondary:hover,.quiet:hover { background:var(--color-surface-brand); } .danger:hover { background:var(--color-danger); color:var(--color-surface); } }
@@ -11,8 +11,8 @@
 .spinner { width:1rem; height:1rem; border:2px solid currentColor; border-right-color:transparent; border-radius:50%; animation:spin 800ms linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
 .field { display:grid; gap:var(--space-2); min-width:0; font-size:var(--text-sm); color:var(--color-ink); }
-.label { font-weight:600; }
-.control.control { box-sizing:border-box; width:100%; min-width:0; min-height:var(--touch-target); padding:.625rem .75rem; border:1px solid var(--color-info); border-radius:var(--radius-control); background:var(--color-surface); color:var(--color-ink); font:400 1rem/1.5 var(--font-body); }
+.label { font-weight:500; font-size:var(--text-xs); }
+.control.control { box-sizing:border-box; width:100%; min-width:0; min-height:var(--touch-target); padding:.625rem .75rem; border:1px solid var(--color-line); border-radius:var(--radius-control); background:var(--color-surface); color:var(--color-ink); font:400 1rem/1.5 var(--font-body); transition:border-color var(--duration-feedback),box-shadow var(--duration-feedback); }
 @media(hover:hover) and (pointer:fine) { .control:hover:not(:disabled) { border-color:var(--color-action); } }
 .control:disabled { background:var(--color-surface-soft); cursor:not-allowed; }
 .control[aria-invalid=true] { border-color:var(--color-danger); }
@@ -32,3 +32,5 @@
 .list { list-style:none; margin:0; padding:0; border-top:1px solid var(--color-line); }
 .row { display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-3); min-height:var(--touch-target); padding:var(--space-3) 0; border-bottom:1px solid var(--color-line); color:var(--color-ink); }
 @media(prefers-reduced-motion:reduce) { .spinner { animation:none; border-right-color:currentColor; } .button:active:not(:disabled) { transform:none; } }
+
+@media(min-width:640px) { .control.control { font-size:var(--text-sm); } }
