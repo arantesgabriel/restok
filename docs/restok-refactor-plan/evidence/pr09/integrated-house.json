@@ -1,0 +1,16 @@
+{
+  "houseId": "619c5f67-0d98-467b-90c1-8a7dbd283d3f",
+  "houseName": "QA PR08 visual 2026-10-29",
+  "createdPurchases": 4,
+  "completed": 3,
+  "active": 1,
+  "detailId": "312d37fe-064c-4309-afc8-9fcf41c7a9fd",
+  "total": 1234566655447.11,
+  "counts": {
+    "purchased": 3,
+    "alreadyHave": 1,
+    "pending": 1,
+    "unpriced": 1
+  },
+  "source": "User explicitly authorized at most four fictitious purchases in this isolated house; UI only on localhost:3001"
+}

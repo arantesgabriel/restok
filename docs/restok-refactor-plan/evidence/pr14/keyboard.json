@@ -1,0 +1,14 @@
+{
+  "menuEscape": {
+    "focus": "SUMMARY",
+    "open": false
+  },
+  "menuAnchor": {
+    "hash": "#duvidas",
+    "open": false
+  },
+  "skip": {
+    "focusId": "conteudo",
+    "hash": "#conteudo"
+  }
+}

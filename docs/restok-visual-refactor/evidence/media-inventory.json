@@ -1,0 +1,1223 @@
+{
+  "at": "2026-10-30T03:37:16.711Z",
+  "images": [
+    {
+      "file": "current/1280-800-casa-empty.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "6a7ea202faaad2851b0ed22977683cf882d465115451e9b30d2d212cfc6770a5"
+    },
+    {
+      "file": "current/1280-800-casa-filled.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "9c326d5042d786db8cb0c0ce1826362955ca44b25292a99718326ec196ed1405"
+    },
+    {
+      "file": "current/1280-800-compra-editor.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "256155a3f2e20cd5f3e769105bd1c460c21b94bac1b7a3e1f75b9d0c9702d4bd"
+    },
+    {
+      "file": "current/1280-800-compra-empty.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "2ab9de3c451a701f5bae19bfecb0e04741d150b029853024ad3bc826a91033a5"
+    },
+    {
+      "file": "current/1280-800-compra-filled.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "981113d86ae25c26ca205e66e2c880e007e063ee289f4ba138a6d07eb90f0c94"
+    },
+    {
+      "file": "current/1280-800-historico-detail.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "aadaa50aba70ad74e009f3bb6afed753ae2e668bf79a20f52cd39d8a80f36f53"
+    },
+    {
+      "file": "current/1280-800-historico-empty.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "ecbcbd4fb08d311181c4149cb344227049e61821d4c7ed0a849928f49da2eb0c"
+    },
+    {
+      "file": "current/1280-800-historico-filled.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "7a82869b40de36690f0641a03895d70c8e8113198d92e751d2821bfb43191fe9"
+    },
+    {
+      "file": "current/1280-800-pessoas-bottom.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "942b0f538b6459e485b49a9748411fdd0859ea868d695456e32baaa565f21e1f"
+    },
+    {
+      "file": "current/1280-800-pessoas-filled.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "0f2a3fc84811ec8eef2c6ee5d144914251987e24ac2c03f3ccfb07a79417022e"
+    },
+    {
+      "file": "current/1440-900-casa-empty.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "fee6e2ebfe0f0520ff91e5ee5830bc39b86288700682097a796ac979d5f39c21"
+    },
+    {
+      "file": "current/1440-900-casa-filled.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "a7fe87a4ebcf1dad16f128ecc7c2c3e675474e12fd25df51e205ade390551761"
+    },
+    {
+      "file": "current/1440-900-casa-long-names.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "bf2b1a572caf4d0ad686d52a4ee0088548bf399e57bb1740c3e40e13e3c4b6ea"
+    },
+    {
+      "file": "current/1440-900-casa-no-result.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c84fe0704a43a3e0c9892c1cac3840eae84c6ad1469503b85c1b8c35bfc3997b"
+    },
+    {
+      "file": "current/1440-900-compra-editor.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "554909552d09fd3fa37fb015488ecccdd70ca0ee84c1db79bb931695fd756e2c"
+    },
+    {
+      "file": "current/1440-900-compra-empty.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9708e4e75217d9f1b8b7f36ffc89ec3dfd5f0bfd6c7999b956137ac6ffb3fe06"
+    },
+    {
+      "file": "current/1440-900-compra-filled.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "be26e866a93cc1dc0bb77efbccdecbcfe1365b9504e318831772732bbfcd5fcc"
+    },
+    {
+      "file": "current/1440-900-compra-money.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "e8ba6129527f3b7274b20888262fce9af8cb15a5dba246b33f6499c137877ebe"
+    },
+    {
+      "file": "current/1440-900-compra-no-result.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "802129d519bd8a5c45f5fd50d405773a97f142c505966e36c35ae9c808aaefe4"
+    },
+    {
+      "file": "current/1440-900-compra-stress.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "bad3857a2111fe93df2033111650e0b92964228d0c9452c155982f372389a711"
+    },
+    {
+      "file": "current/1440-900-historico-detail.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "584dcc1056faaf27b0fb95799127d7b9e795ffce60977a924a8e202da45ffec5"
+    },
+    {
+      "file": "current/1440-900-historico-empty.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "a6e9755467c3d6f0bde2a930e50ee29ee3aa17d45412b710c7eb322cfa552176"
+    },
+    {
+      "file": "current/1440-900-historico-filled.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "117ed9ede35612b468d0f5f4d73d4b61995dc7698e66cf8c2b0031d84f3624ab"
+    },
+    {
+      "file": "current/1440-900-loading-resolved.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "be26e866a93cc1dc0bb77efbccdecbcfe1365b9504e318831772732bbfcd5fcc"
+    },
+    {
+      "file": "current/1440-900-loading.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "dcb47850fb55adb5cd9d875f5ecd0a240eda2f4bdc8dbadd4c55373c60ab64e6"
+    },
+    {
+      "file": "current/1440-900-pessoas-bottom.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "ea523e93b116dd49c774be70394f94a77d7aa0072af5690c70e97f8d6df5ffc4"
+    },
+    {
+      "file": "current/1440-900-pessoas-filled.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "0cfbf170beef113443620593d6a84a43a85e79a2053ad0165a065c19d16a7e26"
+    },
+    {
+      "file": "current/1440-900-pessoas-focus.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "3e75c2b69dd2648a86f7bf728ef3c8145153d6fac96fb8af3359aeab28eba7de"
+    },
+    {
+      "file": "current/1440-900-pessoas-reduced.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "e02d26b70b8f41be8cb56cab9949299a6d1915aed4b68fb2e3be8c6e9d81bcea"
+    },
+    {
+      "file": "current/1440-900-snapshot-error.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d11bc3921a187348c571e16a41e5b8ed510dcb1f5917bf2cbfc13384979e60fe"
+    },
+    {
+      "file": "current/1920-1080-casa-empty.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "45e3525fd0ae03e638877e6db631f743c2fa5e71aa88f06490a0f9f61d8e3d2c"
+    },
+    {
+      "file": "current/1920-1080-casa-filled.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4015bca62ba7cbd6945fdd8b60e1ef931f48b8fd917e47fb92a226afcb5d2cc2"
+    },
+    {
+      "file": "current/1920-1080-compra-editor.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f4d3dd6b37959d6e993054c2f72fb1a7e28afcd57da5976c1d5e2a380776465c"
+    },
+    {
+      "file": "current/1920-1080-compra-empty.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b8ddd2521b5519a6481578d027b249270c306edff1a7c41d902dfd9c9045d5f2"
+    },
+    {
+      "file": "current/1920-1080-compra-filled.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f52e4b1b1adf01d6c13ce36c3a095e319605e02cea1511480e989f027ea101ee"
+    },
+    {
+      "file": "current/1920-1080-historico-detail.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "7fd266ffb636037d518c94da57757c6ce85ab98a8d70d0b08cce8a5483dc1174"
+    },
+    {
+      "file": "current/1920-1080-historico-empty.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "229f9268ffd5c0560bb9f18852346bb9b9c77e76099bf9511983cf858d80bd06"
+    },
+    {
+      "file": "current/1920-1080-historico-filled.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "312c8eb05da954f1fd1251b5d2a5a4a77d8a28e3a64ca9d6331557c0e244a410"
+    },
+    {
+      "file": "current/1920-1080-pessoas-bottom.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "7e8a7c6014ed935ad07b86e71cb9fe299802719e917890f9dd811262d569032c"
+    },
+    {
+      "file": "current/1920-1080-pessoas-filled.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "a4e76a0539bcbb28f9b21e0052cb5dde18fd919f499c96cf76ba93c836a17d21"
+    },
+    {
+      "file": "current/320-640-casa-empty.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "c29451d13b524b137aa3ccc047249d320f9269d3e25b4d4150dd247a13616199"
+    },
+    {
+      "file": "current/320-640-casa-filled.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "455f13087e45e7d7cc7767d4600b45a0003b1d2f46c55e4d71996fbdb8e25d73"
+    },
+    {
+      "file": "current/320-640-casa-long-names.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "79560cfffaf21f88a7a5cb9fc08fde3068f8ba6dca72a8989bfbefc20202bd42"
+    },
+    {
+      "file": "current/320-640-casa-no-result.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "71b7f0e8188c738f16888673a124bde63a1ffc6badfde2dc92fdfae53363c75f"
+    },
+    {
+      "file": "current/320-640-compra-editor.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "41213a715b74c961a45d7261e7fe629fe40b42d2dd58d09d6972599be606a1cf"
+    },
+    {
+      "file": "current/320-640-compra-empty.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "3fa46576ec0e057a22829d156171edce5d7286987363a02a96dcf956221e7c7a"
+    },
+    {
+      "file": "current/320-640-compra-filled.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "b41fb404c5979225064fe5ffdfd217ab1b222a60c88aeba33e160fcb97962b33"
+    },
+    {
+      "file": "current/320-640-compra-money.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "d71287794b2eac740eb84807c6b21e4f6c164024a3a72ef4732aa6c1e4fd2526"
+    },
+    {
+      "file": "current/320-640-compra-no-result.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "37efd4520cf8d7c93369380f20b336886e536d928b3c91f93a53550e4dc25b4c"
+    },
+    {
+      "file": "current/320-640-compra-stress.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "d3972979ad2e7ad14456dfae281a69f256a7e2bc1b08aa269f40a844df5a5234"
+    },
+    {
+      "file": "current/320-640-historico-detail.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "27b22ca55d8919579a1b969c68f7c95ba417ce98630f3ef885e64056eefecea6"
+    },
+    {
+      "file": "current/320-640-historico-empty.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "551e5403e8f25b7fd62992ce08ad87b9176e26e857cef87c64e58df3a4144430"
+    },
+    {
+      "file": "current/320-640-historico-filled.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "f3b7429d39e45912b211c925099a1004ad5efba6922dacf185fc80adbee0f38b"
+    },
+    {
+      "file": "current/320-640-loading-resolved.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "b41fb404c5979225064fe5ffdfd217ab1b222a60c88aeba33e160fcb97962b33"
+    },
+    {
+      "file": "current/320-640-loading.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "6ea9d227fbd9ed5e6dde704866a7183b972683d737153606fd0083afceadfdde"
+    },
+    {
+      "file": "current/320-640-pessoas-bottom.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "ef186bf2bb1466cb4a9fe240e453ac564731a41d0b8b91700f670cffdb124e8b"
+    },
+    {
+      "file": "current/320-640-pessoas-filled.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "951cfb6e06097c601fac748d889057b1d19383f5b9a1c1943bd52d2ad295b251"
+    },
+    {
+      "file": "current/320-640-pessoas-focus.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "ecc024e2ebe6ba836ad7dfbd6e37cc45c0706fbb9370899fd28394d7e7ea897a"
+    },
+    {
+      "file": "current/320-640-pessoas-reduced.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "6f57c3edfa8323e9a5aed66ea87f626f0b49a699323b31bd39bc4a030b086f21"
+    },
+    {
+      "file": "current/320-640-snapshot-error.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "0898d958119ff43202c8099a77b2c1f326f1148d105276b642c98a5a11f5c728"
+    },
+    {
+      "file": "current/390-844-casa-empty.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "e749974f4360b3fd36f8ce923878e192e667812deb36ddbdc69e9933704e7612"
+    },
+    {
+      "file": "current/390-844-casa-filled.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "9422fef212a2772bad4ceee2fde7d8772b409097c333536bf5f4200f6382236b"
+    },
+    {
+      "file": "current/390-844-casa-long-names.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "e1f08235933ca0cfa0de5b8f5eff4145d9e6ec46853fc2ed14733d36bd1b3e43"
+    },
+    {
+      "file": "current/390-844-casa-no-result.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "58ace8d45044e0c5f787cc87fafc9af071d32c8fd033a0b6b35e95e3f78bee7f"
+    },
+    {
+      "file": "current/390-844-compra-editor.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d82e3883d91277821eeeea873b3272da39de7fab0a84b616a59e277fb7f8b78a"
+    },
+    {
+      "file": "current/390-844-compra-empty.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "79eeae0c648ca6afef5a59a113866e40cf6379ef34d509a714ba0f5f749aeb29"
+    },
+    {
+      "file": "current/390-844-compra-filled.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "451796c1ffc2ed6ea8b08ffec13e8b23976532cd2a1aa3fdb98b6dcc4f4b1e4b"
+    },
+    {
+      "file": "current/390-844-compra-money.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "58d91e3d772815a0c193787fce3ed6c8c808548103731a55472a860489dff699"
+    },
+    {
+      "file": "current/390-844-compra-no-result.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "39b440d95aa44bf3acacb852ccbd2b7417a26d40a1181c8b8122ad79fe7122d6"
+    },
+    {
+      "file": "current/390-844-compra-stress.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "7c183fb99805cdba050640dce0586af28c9389c55ea4d9dc674c496990a80002"
+    },
+    {
+      "file": "current/390-844-historico-detail.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a6b8e795d0611bcaef4157f33ae751b048bd9da06c80fadb1e3293b1bcefd348"
+    },
+    {
+      "file": "current/390-844-historico-empty.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "0a99dad9a9f23756e318e4f11f218bd5e0b1694a5c244daae209f85a6c1baf3b"
+    },
+    {
+      "file": "current/390-844-historico-filled.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "605bffc93d0e40109e6ded6158a4606e97a6953ee63acb670029d55ccd4012ea"
+    },
+    {
+      "file": "current/390-844-loading-resolved.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "451796c1ffc2ed6ea8b08ffec13e8b23976532cd2a1aa3fdb98b6dcc4f4b1e4b"
+    },
+    {
+      "file": "current/390-844-loading.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "cb01122eb8236aa2c43c74db2487e327d05fb4df92fb9c58846094e71ed57327"
+    },
+    {
+      "file": "current/390-844-pessoas-bottom.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d227eccb21357487b378d5b2cefdbcb292a2190463246fdff96d26c4eb3956a2"
+    },
+    {
+      "file": "current/390-844-pessoas-filled.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "8c4c34afa72c6685d4fd7dc514c55e8f63ddaf599fa266d29ad0ddbcc1dbdf40"
+    },
+    {
+      "file": "current/390-844-pessoas-focus.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "fd80cb708482e7b893b4895ac735031dd11c4a4b50ea4029a72adbfd414949fa"
+    },
+    {
+      "file": "current/390-844-pessoas-reduced.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "4a9999b6858947e63828f6ec16d59ef8e004ebe3fcf46ee66d6f4214d19637bd"
+    },
+    {
+      "file": "current/390-844-snapshot-error.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "90763aca8d3cc293afc0e553cb44a951dab382a23cc450a806d517b9f9a3baaf"
+    },
+    {
+      "file": "current/768-1024-casa-empty.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "303bc5ad9af145f718ad35ec78e97fbd0e289c0db5df8aaa98363bac7baa536d"
+    },
+    {
+      "file": "current/768-1024-casa-filled.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "ff727062bccc45175c25991180658213caf64961b7705fe19a738e3c80c21568"
+    },
+    {
+      "file": "current/768-1024-compra-editor.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "31103955dc26f78ea15c8343ddb82bf45dea1d4c50a29e0cb043a7cffb6d9842"
+    },
+    {
+      "file": "current/768-1024-compra-empty.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "18fcc29d9e1da7f192306ca8899d1adac9b1e257b1c48a9be95192451d9edaca"
+    },
+    {
+      "file": "current/768-1024-compra-filled.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "a5bbac771fbc3d578593e19b37539c834353676bd15ab5365a306fae6b80086e"
+    },
+    {
+      "file": "current/768-1024-historico-detail.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "ecbf0b538414dda765276153921a865a4e2c990d4c507217d39c50548e299263"
+    },
+    {
+      "file": "current/768-1024-historico-empty.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "80067d0b64f5fcb136e40f5d8a9bca443cd5930ff6db2dbfcc75dcd2425c7db9"
+    },
+    {
+      "file": "current/768-1024-historico-filled.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "e57239ac3e41d95d84a89c015eac8d930c6faf51bea0515d4245a55646248892"
+    },
+    {
+      "file": "current/768-1024-pessoas-bottom.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "23ed4375f187fb6148382867bdffb671b7d86434a21a59ae7989208fafdc4a6c"
+    },
+    {
+      "file": "current/768-1024-pessoas-filled.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "1fa5d6d8aaa1e389847df913ad6b93b717ea7cacc95c75a0f00edf3d4a51b03c"
+    },
+    {
+      "file": "extra/1440-900-finish-confirm.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d965b40d6afd38c904759c5c5c8a82f49346c9ab70459bf5f65ae693ed580d21"
+    },
+    {
+      "file": "extra/1440-900-finish-result.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "cd9531c666d0fb58fb684977fba00b380eb6e6bb7fee118d2b9a97f49a955ab8"
+    },
+    {
+      "file": "extra/1440-900-history-long-detail.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "42a9812cc3021e759757f588dbcb0c5e4040aad09d784cee20d0f84506c6c98d"
+    },
+    {
+      "file": "extra/1440-900-history-many.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "e9a700f367b7917344735dc0d3b0b3b13162bb5430880db614d0174970b08d58"
+    },
+    {
+      "file": "extra/1440-900-new-purchase-100-bottom.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "5609cd3bf968a32c32141d0cc3b556f2ad43cb1d1e36f37bd9fb84487d7a0252"
+    },
+    {
+      "file": "extra/1440-900-new-purchase-100.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9bd93416ca4ca7fc29c643849c906ef14929a07d1320007f175d62ceec12e81a"
+    },
+    {
+      "file": "extra/1440-900-people-distinct-names-bottom.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "36997463eecb197c98969a2edf5929aa2f6cb168b315cf49dcb1c67ebb50a317"
+    },
+    {
+      "file": "extra/1440-900-people-distinct-names.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "6068b9e260ecc4f04e9c4f9a56f3fd16dffa482d9af78fc2a3103f6c5c3ad41b"
+    },
+    {
+      "file": "extra/1440-900-people-read-error.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "174fcc6d1d75f1cf4d6f9fc7e28e63a9a0d5368383878e4291a01f20592eef75"
+    },
+    {
+      "file": "extra/1440-900-people-transfer-confirm.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "1c8953c8a9b24575297a829f5d2882fb857f7dd146c3e1318c229cd7c6b42e95"
+    },
+    {
+      "file": "extra/320-640-finish-confirm.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "8140819aa73a6a1fbc18f28f42c967c1956aec368f9473a425f3b57a9e7712ab"
+    },
+    {
+      "file": "extra/320-640-finish-result.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "f4e6ae7a732f1b64f7000fb82c7c052ddd29a631a35c982d31dee2b99aa466ff"
+    },
+    {
+      "file": "extra/320-640-history-long-detail.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "69c2ce8e0f7d92c1fd6e7021a2e0341847396bc2af42bf5b32a77dc34c7bef86"
+    },
+    {
+      "file": "extra/320-640-history-many.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "475d9d0ace57f0c39437ea523d36a2f863acdb2934a22f105a7f219ac15bfe6d"
+    },
+    {
+      "file": "extra/320-640-new-purchase-100-bottom.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "b9d624721022332edf41639880b9de2a9147ced1b054679c86146cc6241c92e8"
+    },
+    {
+      "file": "extra/320-640-new-purchase-100.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "45884c855f25505e8af413bc4d66b3b67073c7241bda5ad5c0dcf2b3c5a8a6a2"
+    },
+    {
+      "file": "extra/320-640-people-distinct-names-bottom.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "2e554a63b5ac5e8e436f76cb59fabb3c48a11aeddd8a40fafe858ea5632f32dd"
+    },
+    {
+      "file": "extra/320-640-people-distinct-names.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "d2b9f91a4072434e8e9db87736f351d7fe6507b9a8cc47dab8aa81f8fd7a5326"
+    },
+    {
+      "file": "extra/320-640-people-read-error.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "45f3b73dedb8fcc3388f2076c50d631f5045ea6b247ef33d3e348ff78b0c848b"
+    },
+    {
+      "file": "extra/320-640-people-transfer-confirm.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "5a3d797f0482ba22cf5818577d114d509e8daabe57e9e303db8874e51d4f5552"
+    },
+    {
+      "file": "extra/390-844-finish-confirm.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d7810bc7b687e7739abbd2b025d0e6f5e7cdefecb1469c1d7416f6dbdfe46f49"
+    },
+    {
+      "file": "extra/390-844-finish-result.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "5dba8278efdecbd23a7c7a5f6cf9c86ad80fdddb245800deb622ddc0bded012b"
+    },
+    {
+      "file": "extra/390-844-history-long-detail.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "be96048fdc09adadc710c77e40347682768420b6ca873617c0523c855560370c"
+    },
+    {
+      "file": "extra/390-844-history-many.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "d99c0adf447f92344a33eb34c9012879eb31475b0779353daf3b274d1b9a6071"
+    },
+    {
+      "file": "extra/390-844-new-purchase-100-bottom.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "e4c53fa1d8f0e9e03b5082c75baa6d886e2d32922832dac7661369553487d020"
+    },
+    {
+      "file": "extra/390-844-new-purchase-100.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "37cde8d946619b0db35a2218f90bddd64a82002b8fd2bf3640ff87cf92fdc359"
+    },
+    {
+      "file": "extra/390-844-people-distinct-names-bottom.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "b9b8efe29d0533b4288fda123141b07f8913af714e0d16de7c9ca9f67f0d090f"
+    },
+    {
+      "file": "extra/390-844-people-distinct-names.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "5a44fd79b8c1938894c78c5816ce7d71779d8fb50b3aa0da6b9137b76e96850e"
+    },
+    {
+      "file": "extra/390-844-people-read-error.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "6d25d706134210c98db594b9f0b5626e6243315951f9f304a4e00b202c8595b5"
+    },
+    {
+      "file": "extra/390-844-people-transfer-confirm.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "a98323504b8788ff9fb2d983fd626c5b85e10f4de6e1c2920b8af32fcf6d2930"
+    },
+    {
+      "file": "gallery-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d93d6f8ebbd3e9572997a0b7afc709e97bb3d1516fb83ff04fc8e23e709d638b"
+    },
+    {
+      "file": "gallery-390.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "db42c1e8bdbfa74668203f109b6b9ec047b6cf548fb6bafe48fda269fffe69ec"
+    },
+    {
+      "file": "local-probe.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "360c4c0dd478c90e2ce91eeaec270e0d96f281131d0ee2bb79b8050883411b7a"
+    },
+    {
+      "file": "reference/1280-800-casa-canvas.png",
+      "width": 1244,
+      "height": 778,
+      "sha256": "8f784fb6c6b03bd4b2b15655bcdf2d91fac405a2b97af1233a3159296384edd6"
+    },
+    {
+      "file": "reference/1280-800-casa.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "98ee08453f2dc432a312c202728e590f25a61c1ad5715f8cd6110599e6bb75c1"
+    },
+    {
+      "file": "reference/1280-800-compra-canvas.png",
+      "width": 1244,
+      "height": 778,
+      "sha256": "7e5b408aa0869805d60bce18e1e55d19038da186efeab417296eeb27673c1879"
+    },
+    {
+      "file": "reference/1280-800-compra.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "036fe1f165713e2df5f50cfd8fff2d6eb9ef24e87a316bb5051c7153e5c76cd4"
+    },
+    {
+      "file": "reference/1280-800-historico-canvas.png",
+      "width": 1244,
+      "height": 778,
+      "sha256": "ab81ffbcf4cbb45db3b5411634b43ab3bd5919c1be61d252ee7925227284e2ab"
+    },
+    {
+      "file": "reference/1280-800-historico.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "15b08e105e1de0f08998ca98719a97a41bde88d50e096a7c1a37658c1aa46e7e"
+    },
+    {
+      "file": "reference/1280-800-pessoas-canvas.png",
+      "width": 1244,
+      "height": 778,
+      "sha256": "1dc821076d480343e0cef5d78a652f5ee5b8282df0062393951157f45deb25f1"
+    },
+    {
+      "file": "reference/1280-800-pessoas.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "53dd9faf340eead8cd7f958a5bb61812bab89e8568bcf4016daec6f569dc4515"
+    },
+    {
+      "file": "reference/1440-900-casa-canvas.png",
+      "width": 1404,
+      "height": 878,
+      "sha256": "cb513e8a8f9cc1c76109d3178f651190c91d31678ec33149c5cbc9b463576b37"
+    },
+    {
+      "file": "reference/1440-900-casa.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "0a6bf2f436714b3903b39f2928c08375060b3a804036bc1f5dde905908dbe99d"
+    },
+    {
+      "file": "reference/1440-900-compra-canvas.png",
+      "width": 1404,
+      "height": 878,
+      "sha256": "a2d9ea5e28bfd67f7e1b99aab8462946287e318bc45f42a86e4a72cf64e549d3"
+    },
+    {
+      "file": "reference/1440-900-compra.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9314cb81f526ec8ed9b2e1ef96ec851c80201270c9ff91a9aceba490572afcfe"
+    },
+    {
+      "file": "reference/1440-900-historico-canvas.png",
+      "width": 1404,
+      "height": 878,
+      "sha256": "9389eb26c8811e2b98d619e40f86d927f5a73936485b13e6192ae68507b11080"
+    },
+    {
+      "file": "reference/1440-900-historico.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c2607e84a07fd2e56a65dd7407154dd9c4ee40ba6b84e4cfe6a90e73ad979276"
+    },
+    {
+      "file": "reference/1440-900-pessoas-canvas.png",
+      "width": 1404,
+      "height": 878,
+      "sha256": "694fbeb1ed4735c0e6db8a44b6f591c97adf50582079bee0371aa75da408a9ea"
+    },
+    {
+      "file": "reference/1440-900-pessoas.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "617a37dcbaa6f2fb031fef90499c39512665cdad01032c3bf75715a08bad655f"
+    },
+    {
+      "file": "reference/1920-1080-casa-canvas.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c17ebe732926e229bbc0b06c98a93b7fff4989e658fef44857afcdc9a88d3273"
+    },
+    {
+      "file": "reference/1920-1080-casa.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "2c58bf2d5c264efa264e9375681bf970ecc049bd7d4acfcc311f97d48f5d22f4"
+    },
+    {
+      "file": "reference/1920-1080-compra-canvas.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "ea0daeebc50d44f775ec596e657de3dd5e215ed3a2889a3030635e5c347f9738"
+    },
+    {
+      "file": "reference/1920-1080-compra.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f096edb180ab8f77edae7ef3ed2ece9ed2112c0945441c887237d5bde89c0987"
+    },
+    {
+      "file": "reference/1920-1080-historico-canvas.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "2fcb589a24cb0ac9c8d60b334fb521102648a79f8ebf695338ab539fa7ac1df9"
+    },
+    {
+      "file": "reference/1920-1080-historico.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "80fb33924a469a6b6b585787ce4fd9c8a746d1b80f606bea8d160a68e6ac2b15"
+    },
+    {
+      "file": "reference/1920-1080-pessoas-canvas.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9a1e462e6e35e17c7e4a29c288e1d2246023699176e3b5c640cc3207c81abeb2"
+    },
+    {
+      "file": "reference/1920-1080-pessoas.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "7dd3442a811085685587b2f28f5a4a2f4d2c506bf64786b7268f7e12347c570a"
+    },
+    {
+      "file": "reference/320-640-casa-canvas.png",
+      "width": 284,
+      "height": 568,
+      "sha256": "32c112cce71576e07cb1bcf8c43386cba2123ac4f424e8bbaea1a98d3b323efe"
+    },
+    {
+      "file": "reference/320-640-casa.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "867f5cf54c097d0240d1ea5475685583fd304fac2cf17e6d4633225ae3185041"
+    },
+    {
+      "file": "reference/320-640-compra-canvas.png",
+      "width": 284,
+      "height": 568,
+      "sha256": "e0e9c13577a3515f18393057025d644babe8a8c7f82e423a233c392cae25f8be"
+    },
+    {
+      "file": "reference/320-640-compra.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "016e934035953a97068d0e26b2a5bc82b7f756247f1cb78b427f06be8378009b"
+    },
+    {
+      "file": "reference/320-640-historico-canvas.png",
+      "width": 284,
+      "height": 568,
+      "sha256": "d91ad0ad04210442204e515e081918bcff648699328fa9fef41b772316917ca1"
+    },
+    {
+      "file": "reference/320-640-historico.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "368a68635f5e9b54680907423368f92fa883cb202bb3020d7ed5925ec254445e"
+    },
+    {
+      "file": "reference/320-640-pessoas-canvas.png",
+      "width": 284,
+      "height": 568,
+      "sha256": "344c8e183b2975fb13e066ff3913f135ab405939e908652617739b4fae7047a5"
+    },
+    {
+      "file": "reference/320-640-pessoas.png",
+      "width": 320,
+      "height": 640,
+      "sha256": "86760c114162ae195ab65da0bafd11768c1b26621333260ecbf5fc385b2552c4"
+    },
+    {
+      "file": "reference/390-844-casa-canvas.png",
+      "width": 354,
+      "height": 767,
+      "sha256": "ef2ff79ea3281803cd79865eaae5e0ae4374ea666fa986f02523bee7aca8f1b3"
+    },
+    {
+      "file": "reference/390-844-casa.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "51c93546b7c128436227ca58a432705ace201756bda26957f87a4fc99c883ee6"
+    },
+    {
+      "file": "reference/390-844-compra-canvas.png",
+      "width": 354,
+      "height": 767,
+      "sha256": "255d1236a39ccf7b0f791ef33750399b4f9b2fb4e93484c08d0184bc0ec60461"
+    },
+    {
+      "file": "reference/390-844-compra.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "6e7fd01b30a5dcd0515941590552153d95af379d6c645c266fc8feaf7b42c03d"
+    },
+    {
+      "file": "reference/390-844-historico-canvas.png",
+      "width": 354,
+      "height": 767,
+      "sha256": "9ce5a855b8bfa72f1c7113f83175ed62ec2ba1d519b25100605ba9da1ec5810f"
+    },
+    {
+      "file": "reference/390-844-historico.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "56f471d08080fa6fdf361cc8c07bfec0a16334852fbee021a88abc71282e25c7"
+    },
+    {
+      "file": "reference/390-844-pessoas-canvas.png",
+      "width": 354,
+      "height": 767,
+      "sha256": "d1b4ed6fd2ec59d32319a144db61623d9180d7eca783f05b8435924ad5555004"
+    },
+    {
+      "file": "reference/390-844-pessoas.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "300652ab7abb8e924e3792a9628c9792645f2da53b3090200802df428479708b"
+    },
+    {
+      "file": "reference/768-1024-casa-canvas.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "89713fd6bb7820298023c018a691f76b66b90bd7025366af1cbecf5622b03f2c"
+    },
+    {
+      "file": "reference/768-1024-casa.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "6a9f5803d51794961d925a8b35264a1c41a63bc734cdafaa6d03b2717e243f5e"
+    },
+    {
+      "file": "reference/768-1024-compra-canvas.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "719181c11f5a8d0555bdebbfa4ca9306c55bb3483c1f13c02eebb6eff0b30203"
+    },
+    {
+      "file": "reference/768-1024-compra.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "6a1759bd51c5bfff122881d2fefe4e8ba64db2de240eedd52a38236b5eae5d74"
+    },
+    {
+      "file": "reference/768-1024-historico-canvas.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "22f2fbc4f5840689addb7330d692285931d7a68284c61d389b73d705408049a4"
+    },
+    {
+      "file": "reference/768-1024-historico.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "fe8c1352f11472dc5887b733542e227c4357a6232c6f6cc96cb57acab7ee6fb0"
+    },
+    {
+      "file": "reference/768-1024-pessoas-canvas.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "5d03a04b0af29483c6da27d8da1c5cd38e5297d7e8676999da0343d180727a31"
+    },
+    {
+      "file": "reference/768-1024-pessoas.png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "4b3de7544e7c576796b93c355f8483f8d9f0c42acde60803273cb60cbb24f85f"
+    },
+    {
+      "file": "reference-focus.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9314cb81f526ec8ed9b2e1ef96ec851c80201270c9ff91a9aceba490572afcfe"
+    },
+    {
+      "file": "reference-interactions/1440-900-budget-editor.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "65cc2465c9c4cd64042941b1b36d441f5dfe85d32bce3df83640d0ecf64e2130"
+    },
+    {
+      "file": "reference-interactions/1440-900-catalog-add.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "aed2f37a986eabcd9509c5ed5b682c7d667edcc2873a8d7890598e0f81ae7516"
+    },
+    {
+      "file": "reference-interactions/1440-900-catalog-search.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "595d45f56af4ba2077514f6824d1876fd121554b0deb98b429cdb40dd1291e21"
+    },
+    {
+      "file": "reference-interactions/1440-900-history-detail.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9fe7e1fa9507221dab1af99c782cbc61c2751edf6f058c490f92cd096249c96b"
+    },
+    {
+      "file": "reference-interactions/1440-900-history-filter.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "236da7b204df79a92a0064b0696b9867dfb01847699a316e60fec087fca42c82"
+    },
+    {
+      "file": "reference-interactions/1440-900-people-invite.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "ad5414fb6b53a9cce6dd40db4088a33c1dc3818e6d8bc2db60bb1fa9d68d13e5"
+    },
+    {
+      "file": "reference-interactions/1440-900-people-transfer.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "7fafb4ab46c9fc488476596e3ba8d9808bc32ef8314b4f90825dc2d8b22e50a3"
+    },
+    {
+      "file": "reference-interactions/1440-900-purchase-add-sheet.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "cd59753ed58489b0849817f9a2b30fadc98d144d044740d8072e20fce6403bd1"
+    },
+    {
+      "file": "reference-interactions/1440-900-purchase-feedback.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "041f69e79ca0fd08d6d599bcd4e7178968a06b09cec35db30d94873f84d0150a"
+    },
+    {
+      "file": "reference-interactions/1440-900-purchase-filter.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "bb43222e59a81305550d9cf20f7c39db9ded40183ddc5e8044d8f73141798f47"
+    },
+    {
+      "file": "reference-interactions/1440-900-purchase-search-empty.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "4ab076749ffde2ad25e200b62dfed4c49c8114fad6ddaa2c6eb4321e02a0c881"
+    },
+    {
+      "file": "reference-interactions/390-844-budget-editor.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "4a042c818806f6d2b87c07eb89fda0dde58f7154626c48ffcc299659146dec2b"
+    },
+    {
+      "file": "reference-interactions/390-844-catalog-add.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "6f9231545c321b6c1d78ae1719807d757b11ec9f7247224ee41621d77c27b86f"
+    },
+    {
+      "file": "reference-interactions/390-844-catalog-search.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "ac44835ac15010090cc02cd688df06e2d6195f057619421b5f7d1138b90d25d0"
+    },
+    {
+      "file": "reference-interactions/390-844-history-detail.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "f834a9ebb4c7951992da4d4f94fdcab6648624f72a70bad1514504c6aa4ecad8"
+    },
+    {
+      "file": "reference-interactions/390-844-history-filter.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "fb8e642579a00d58a156f2b6869901b23541d1bbeaa786c42702767d11398a79"
+    },
+    {
+      "file": "reference-interactions/390-844-people-invite.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "aec70254bc4daab4901a5db69219e0a61239a722ddee7e4bafc44b4583a3271d"
+    },
+    {
+      "file": "reference-interactions/390-844-people-transfer.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "f9a38179a416eed49537155b97b1397ee3239274ae637ce8e7b323ea0a05a249"
+    },
+    {
+      "file": "reference-interactions/390-844-purchase-add-sheet.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "f43b17bb3fec586de258e3e7e699561713cc456d349727fa6eabb6fe30dcb0a4"
+    },
+    {
+      "file": "reference-interactions/390-844-purchase-feedback.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "63e7bf5e46e5620f33354c42f8ec1d0be87047359b40cdf7ef39c7093a9fe185"
+    },
+    {
+      "file": "reference-interactions/390-844-purchase-filter.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "ba6b1267a8fda01133414a1f4dc3a483f00e575f2a37555d2e198bccec30c4f7"
+    },
+    {
+      "file": "reference-interactions/390-844-purchase-search-empty.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "1950de7f1972a5ca20daa0261c4527cc116d263aa8d7b6d4f3bafa9650b67df8"
+    },
+    {
+      "file": "reference-probe.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "72a648a985e054a43cac6158d8d538c6688302c98c128fc2e6e3593c8052cf9f"
+    },
+    {
+      "file": "supplied/U01.png",
+      "width": 407,
+      "height": 842,
+      "sha256": "adaf6b914c79d428e06d21da4c9105ccc833627f4bf50cfd064c7990b4ab9b67"
+    },
+    {
+      "file": "supplied/U02.png",
+      "width": 415,
+      "height": 842,
+      "sha256": "a45cebdf00a67820a3cde1ea1a2cd7c6d027406fc68f1fbc1c82cb0c0ff3fe47"
+    },
+    {
+      "file": "supplied/U03.png",
+      "width": 407,
+      "height": 843,
+      "sha256": "64eb0deceaf5be74d4fb7b89bbaa88ad92cc3b414e9a01bac83c7afad58738ac"
+    },
+    {
+      "file": "supplied/U04.png",
+      "width": 1907,
+      "height": 908,
+      "sha256": "74ff27a65e591e265cf33dd7b3e1ecdc30ff2d8a1639005aac00e51b8ec54ab4"
+    },
+    {
+      "file": "supplied/U05.png",
+      "width": 1910,
+      "height": 905,
+      "sha256": "fe652016b6743868b438895300068b5d4373808e48b865fd723e454d3e78ced6"
+    },
+    {
+      "file": "supplied/U06.png",
+      "width": 1913,
+      "height": 912,
+      "sha256": "e71001b9e2ce1d7b1f3e86a59a61cd6c87720cd1cb05e0e44dc397ba35f9f852"
+    },
+    {
+      "file": "supplied/U07.png",
+      "width": 1914,
+      "height": 911,
+      "sha256": "4e182e5c8f2a814d09a2e7a31971378de960d7cedc106695a0f5c654eeecac45"
+    },
+    {
+      "file": "supplied/U08.png",
+      "width": 1919,
+      "height": 690,
+      "sha256": "82e80b7db4fddcf0cfbc4f92f5642376e6ef4d831f19e155f8f0b086051aea19"
+    }
+  ]
+}

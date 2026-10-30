@@ -1,0 +1,21 @@
+components\shopping\purchase-sheets.module.css:14  warn   side-tab-border         thick colored side stripe on a card; use it only for real status, else drop it
+    » .warning { padding:var(--space-3); border-inline-start:3px solid var(--color-warning); background:va
+components\shopping\purchase-sheets.module.css:25  info   three-col-grid          3-column grid: make sure it is not three equal feature cards
+    » .counts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-2); font-size
+components\shopping\shopping-view.tsx:16  info   missing-wrap            display title without text-balance / text-wrap: balance; avoid a lone last-line word
+    » return <div className={styles.view}><div className={styles.heading}><div><h1>{list.name}</h1><p data
+components\products\products-home.tsx:26  info   missing-wrap            display title without text-balance / text-wrap: balance; avoid a lone last-line word
+    » <header className={styles.heading}><div><p className={styles.house}>{householdName}</p><h1>Produtos 
+components\products\products.module.css:6  warn   side-tab-border         thick colored side stripe on a card; use it only for real status, else drop it
+    » .current { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); padd
+components\history\history-view.tsx:20  info   missing-wrap            display title without text-balance / text-wrap: balance; avoid a lone last-line word
+    » <header className={styles.heading}><h1 ref={heading} tabIndex={-1}>Histórico</h1><p>Compras concluíd
+components\history\history.module.css:18  info   three-col-grid          3-column grid: make sure it is not three equal feature cards
+    » .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-2); margin:0; 
+components\households\household-onboarding.tsx:100  info   missing-wrap            display title without text-balance / text-wrap: balance; avoid a lone last-line word
+    » <h1>Escolha como começar</h1>
+components\households\households.module.css:23  warn   side-tab-border         thick colored side stripe on a card; use it only for real status, else drop it
+    » .error { color:var(--color-danger); background:var(--color-surface-danger); border-inline-start:3px 
+
+slop-lint: 9 hits (0 error, 3 warn, 6 info) in 76 files (tokens: DESIGN.md)
+  by rule: missing-wrap=4, side-tab-border=3, three-col-grid=2

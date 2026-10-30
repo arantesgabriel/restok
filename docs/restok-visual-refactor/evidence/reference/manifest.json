@@ -1,0 +1,1011 @@
+{
+  "kind": "APPROVED-DEMO / simulated data / viewport differs from internal canvas",
+  "at": "2026-10-30T03:09:16.718Z",
+  "engine": "156.0.4314.50",
+  "captures": [
+    {
+      "id": "compra",
+      "file": "320-640-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "canvas": {
+          "width": 320,
+          "height": 640,
+          "transform": "scale(0.8875)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 284,
+            "height": 568,
+            "top": 24,
+            "right": 305,
+            "bottom": 592,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 31.649999618530273,
+          "y": 121.208984375,
+          "width": 262.70001220703125,
+          "height": 90.85780334472656,
+          "top": 121.208984375,
+          "right": 294.3500118255615,
+          "bottom": 212.06678771972656,
+          "left": 31.649999618530273
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "10px 12px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 32.537498474121094,
+          "y": 315.626953125,
+          "width": 260.92498779296875,
+          "height": 50.587493896484375,
+          "top": 315.626953125,
+          "right": 293.46248626708984,
+          "bottom": 366.2144470214844,
+          "left": 32.537498474121094
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\n9 pendentes\n4 comprados · 1 já temos\nAdicionar item\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "320-640-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "canvas": {
+          "width": 320,
+          "height": 640,
+          "transform": "scale(0.8875)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 284,
+            "height": 568,
+            "top": 24,
+            "right": 305,
+            "bottom": 592,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\n10 produtos\ncatálogo recorrente\nNovo produto\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "historico",
+      "file": "320-640-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "canvas": {
+          "width": 320,
+          "height": 640,
+          "transform": "scale(0.8875)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 284,
+            "height": 568,
+            "top": 24,
+            "right": 305,
+            "bottom": 592,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "320-640-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "canvas": {
+          "width": 320,
+          "height": 640,
+          "transform": "scale(0.8875)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 284,
+            "height": 568,
+            "top": 24,
+            "right": 305,
+            "bottom": 592,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\n2 participantes\nacesso compartilhado\nCriar convite\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "compra",
+      "file": "390-844-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(0.907692)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 354,
+            "height": 766.09228515625,
+            "top": 24,
+            "right": 375,
+            "bottom": 790.09228515625,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 35.52307891845703,
+          "y": 143.94302368164062,
+          "width": 324.953857421875,
+          "height": 107.91610717773438,
+          "top": 143.94302368164062,
+          "right": 360.47693634033203,
+          "bottom": 251.859130859375,
+          "left": 35.52307891845703
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "14px 15px 13px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 36.43077087402344,
+          "y": 368.97979736328125,
+          "width": 323.13848876953125,
+          "height": 56.276947021484375,
+          "top": 368.97979736328125,
+          "right": 359.5692596435547,
+          "bottom": 425.2567443847656,
+          "left": 36.43077087402344
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\n9 pendentes\n4 comprados · 1 já temos\nAdicionar item\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "390-844-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(0.907692)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 354,
+            "height": 766.09228515625,
+            "top": 24,
+            "right": 375,
+            "bottom": 790.09228515625,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\n10 produtos\ncatálogo recorrente\nNovo produto\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "historico",
+      "file": "390-844-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(0.907692)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 354,
+            "height": 766.09228515625,
+            "top": 24,
+            "right": 375,
+            "bottom": 790.09228515625,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "390-844-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(0.907692)",
+          "rect": {
+            "x": 21,
+            "y": 24,
+            "width": 354,
+            "height": 766.09228515625,
+            "top": 24,
+            "right": 375,
+            "bottom": 790.09228515625,
+            "left": 21
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\n2 participantes\nacesso compartilhado\nCriar convite\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "compra",
+      "file": "768-1024-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 192,
+            "y": 24,
+            "width": 390,
+            "height": 844,
+            "top": 24,
+            "right": 582,
+            "bottom": 868,
+            "left": 192
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 208,
+          "y": 156.140625,
+          "width": 358,
+          "height": 118.890625,
+          "top": 156.140625,
+          "right": 566,
+          "bottom": 275.03125,
+          "left": 208
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "14px 15px 13px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 209,
+          "y": 404.0625,
+          "width": 356,
+          "height": 62,
+          "top": 404.0625,
+          "right": 565,
+          "bottom": 466.0625,
+          "left": 209
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\n9 pendentes\n4 comprados · 1 já temos\nAdicionar item\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "768-1024-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 192,
+            "y": 24,
+            "width": 390,
+            "height": 844,
+            "top": 24,
+            "right": 582,
+            "bottom": 868,
+            "left": 192
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\n10 produtos\ncatálogo recorrente\nNovo produto\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "historico",
+      "file": "768-1024-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 192,
+            "y": 24,
+            "width": 390,
+            "height": 844,
+            "top": 24,
+            "right": 582,
+            "bottom": 868,
+            "left": 192
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "768-1024-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvas": {
+          "width": 390,
+          "height": 844,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 192,
+            "y": 24,
+            "width": 390,
+            "height": 844,
+            "top": 24,
+            "right": 582,
+            "bottom": 868,
+            "left": 192
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\n2 participantes\nacesso compartilhado\nCriar convite\nCompra\nHistórico\nCasa"
+      }
+    },
+    {
+      "id": "compra",
+      "file": "1280-800-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.863889)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1244,
+            "height": 777.5,
+            "top": 26,
+            "right": 1264,
+            "bottom": 803.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 249.79443359375,
+          "y": 169.48654174804688,
+          "width": 734.3055419921875,
+          "height": 125.3853759765625,
+          "top": 169.48654174804688,
+          "right": 984.0999755859375,
+          "bottom": 294.8719177246094,
+          "left": 249.79443359375
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "19px 21px 16px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 250.6583251953125,
+          "y": 426.5069885253906,
+          "width": 732.5777587890625,
+          "height": 57.88055419921875,
+          "top": 426.5069885253906,
+          "right": 983.236083984375,
+          "bottom": 484.3875427246094,
+          "left": 250.6583251953125
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCompra\nPrévia interativa\nGA\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nAdicionar item\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\nResumo da compra\nPendentes\n9\nComprados\n4\nJá temos\n1\nPreço desconhecido\n3\n\nO valor total usa apenas itens comprados com preço informado.\n\nContexto ativo\n\nNossa Casa · 2 participantes\n\nTrocar casa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "1280-800-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.863889)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1244,
+            "height": 777.5,
+            "top": 26,
+            "right": 1264,
+            "bottom": 803.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasa\nPrévia interativa\nGA\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nNovo produto\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\nSobre o catálogo\nProdutos recorrentes\n10\nJá temos\n3\nCategorias\n5\n\nProdutos da casa podem ser incluídos na próxima compra com um toque.\n\nBusca é uma ferramenta de rotina.\n\nNão exige rolar dezenas de linhas para encontrar um produto."
+      }
+    },
+    {
+      "id": "historico",
+      "file": "1280-800-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.863889)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1244,
+            "height": 777.5,
+            "top": 26,
+            "right": 1264,
+            "bottom": 803.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nHistórico\nPrévia interativa\nGA\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nLeitura do histórico\n\nCompras agrupadas por mês, com totais e registros por produto.\n\nCompras concluídas\n3\nComparação\nPor unidade\nInformação onde ela importa.\n\nVariações de preço aparecem no detalhe do produto, com referência da compra anterior."
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "1280-800-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.863889)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1244,
+            "height": 777.5,
+            "top": 26,
+            "right": 1264,
+            "bottom": 803.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasas e pessoas\nPrévia interativa\nGA\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\nPermissões da casa\nProprietários\n1\nParticipantes\n2\nConta ativa\nGabriel\n\nIdentidades completas e ações sensíveis em áreas separadas.\n\nCasa ativa sempre visível.\n\nEsta prévia guarda a seleção de casa no navegador. Não substitui autenticação nem RLS reais."
+      }
+    },
+    {
+      "id": "compra",
+      "file": "1440-900-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.975)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1404,
+            "height": 877.5,
+            "top": 26,
+            "right": 1424,
+            "bottom": 903.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 279.3500061035156,
+          "y": 187.94140625,
+          "width": 828.75,
+          "height": 141.51211547851562,
+          "top": 187.94140625,
+          "right": 1108.1000061035156,
+          "bottom": 329.4535217285156,
+          "left": 279.3500061035156
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "19px 21px 16px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 280.32501220703125,
+          "y": 478.0191650390625,
+          "width": 826.7999877929688,
+          "height": 65.32501220703125,
+          "top": 478.0191650390625,
+          "right": 1107.125,
+          "bottom": 543.3441772460938,
+          "left": 280.32501220703125
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCompra\nPrévia interativa\nGA\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nAdicionar item\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\nResumo da compra\nPendentes\n9\nComprados\n4\nJá temos\n1\nPreço desconhecido\n3\n\nO valor total usa apenas itens comprados com preço informado.\n\nContexto ativo\n\nNossa Casa · 2 participantes\n\nTrocar casa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "1440-900-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.975)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1404,
+            "height": 877.5,
+            "top": 26,
+            "right": 1424,
+            "bottom": 903.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasa\nPrévia interativa\nGA\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nNovo produto\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\nSobre o catálogo\nProdutos recorrentes\n10\nJá temos\n3\nCategorias\n5\n\nProdutos da casa podem ser incluídos na próxima compra com um toque.\n\nBusca é uma ferramenta de rotina.\n\nNão exige rolar dezenas de linhas para encontrar um produto."
+      }
+    },
+    {
+      "id": "historico",
+      "file": "1440-900-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.975)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1404,
+            "height": 877.5,
+            "top": 26,
+            "right": 1424,
+            "bottom": 903.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nHistórico\nPrévia interativa\nGA\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nLeitura do histórico\n\nCompras agrupadas por mês, com totais e registros por produto.\n\nCompras concluídas\n3\nComparação\nPor unidade\nInformação onde ela importa.\n\nVariações de preço aparecem no detalhe do produto, com referência da compra anterior."
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "1440-900-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(0.975)",
+          "rect": {
+            "x": 20,
+            "y": 26,
+            "width": 1404,
+            "height": 877.5,
+            "top": 26,
+            "right": 1424,
+            "bottom": 903.5,
+            "left": 20
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasas e pessoas\nPrévia interativa\nGA\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\nPermissões da casa\nProprietários\n1\nParticipantes\n2\nConta ativa\nGabriel\n\nIdentidades completas e ações sensíveis em áreas separadas.\n\nCasa ativa sempre visível.\n\nEsta prévia guarda a seleção de casa no navegador. Não substitui autenticação nem RLS reais."
+      }
+    },
+    {
+      "id": "compra",
+      "file": "1920-1080-compra.png",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 242,
+            "y": 60,
+            "width": 1440,
+            "height": 900,
+            "top": 60,
+            "right": 1682,
+            "bottom": 960,
+            "left": 242
+          }
+        },
+        "overflow": 0,
+        "budget": {
+          "x": 508,
+          "y": 226.09375,
+          "width": 850,
+          "height": 145.140625,
+          "top": 226.09375,
+          "right": 1358,
+          "bottom": 371.234375,
+          "left": 508
+        },
+        "budgetStyle": {
+          "font": "",
+          "padding": "19px 21px 16px",
+          "bg": "rgb(33, 63, 29)",
+          "border": "rgb(255, 255, 255)"
+        },
+        "firstItem": {
+          "x": 509,
+          "y": 523.609375,
+          "width": 848,
+          "height": 67,
+          "top": 523.609375,
+          "right": 1357,
+          "bottom": 590.609375,
+          "left": 509
+        },
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCompra\nPrévia interativa\nGA\nCompra da semana\n\n4 de 14 comprados · Quarta, 28 de outubro\n\nAdicionar item\nGasto até agora\nR$ 50,68\nAinda disponíveis\nR$ 129,32\nMeta desta compra: R$ 180,00\nEditar meta\nTodos\nPendentes\nComprados\nJá temos\nProdutos\n· 14 itens\nA–Z\nArroz integral\n1 pacote · 1 kg · Comprado\nR$ 18,90\nCafé em pó\n2 pacotes · 500 g\nR$ 45,80\nR$ 22,90 / un.\nLeite integral\n6 unidades · 1 L\nR$ 31,74\nR$ 5,29 / un.\nBanana prata\n1 cacho\nSem preço\nOvos caipiras\n1 dúzia · Comprado\nR$ 16,50\nDetergente neutro\n2 unidades · 500 ml · Comprado\nR$ 5,78\nR$ 2,89 / un.\nPão de forma\n1 unidade · Comprado\nR$ 9,50\nQueijo minas\n1 pacote · 400 g\nR$ 23,40\nTomate italiano\n1 kg\nSem preço\nManteiga sem sal\n1 pote · 200 g\nR$ 13,90\nMacarrão penne\n2 pacotes · 500 g\nR$ 11,50\nR$ 5,75 / un.\nSabão em pó\n1 pacote · 1 kg · Já temos\nSem preço\nMaçã gala\n1 kg\nR$ 9,80\nAzeite extravirgem\n1 garrafa · 500 ml\nR$ 37,90\nToque na marcação para atualizar a compra. O ícone de casa indica “Já temos”.\nResumo da compra\nPendentes\n9\nComprados\n4\nJá temos\n1\nPreço desconhecido\n3\n\nO valor total usa apenas itens comprados com preço informado.\n\nContexto ativo\n\nNossa Casa · 2 participantes\n\nTrocar casa"
+      }
+    },
+    {
+      "id": "casa",
+      "file": "1920-1080-casa.png",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 242,
+            "y": 60,
+            "width": 1440,
+            "height": 900,
+            "top": 60,
+            "right": 1682,
+            "bottom": 960,
+            "left": 242
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasa\nPrévia interativa\nGA\nProdutos da casa\n\n10 produtos frequentes · 3 já disponíveis\n\nNovo produto\nOrganizado para Nossa Casa\nTodos\nMercearia\nLaticínios\nHortifruti\nLimpeza\nPadaria\nProdutos da casa\n10 encontrados\nCafé em pó\nMercearia\n· 2 un. · 500 g\nArroz integral\nMercearia\n· 1 un. · 1 kg\nLeite integral\nLaticínios\n· 6 un. · 1 L\nQueijo minas\nLaticínios\n· 1 un. · 400 g\nOvos caipiras\nHortifruti\n· 1 un. · 1 dúzia\nJá temos\nBanana prata\nHortifruti\n· 1 un. · 1 cacho\nDetergente neutro\nLimpeza\n· 2 un. · 500 ml\nJá temos\nSabão em pó\nLimpeza\n· 1 un. · 1 kg\nJá temos\nPão de forma\nPadaria\n· 1 un. · 1 pacote\nAzeite extravirgem\nMercearia\n· 1 un. · 500 ml\nO catálogo organiza o que a casa costuma comprar. A compra atual continua independente.\nSobre o catálogo\nProdutos recorrentes\n10\nJá temos\n3\nCategorias\n5\n\nProdutos da casa podem ser incluídos na próxima compra com um toque.\n\nBusca é uma ferramenta de rotina.\n\nNão exige rolar dezenas de linhas para encontrar um produto."
+      }
+    },
+    {
+      "id": "historico",
+      "file": "1920-1080-historico.png",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 242,
+            "y": 60,
+            "width": 1440,
+            "height": 900,
+            "top": 60,
+            "right": 1682,
+            "bottom": 960,
+            "left": 242
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nHistórico\nPrévia interativa\nGA\nCompras anteriores\n\n3 compras concluídas · Nossa Casa\n\nCompras\n3\nÚltima compra\nR$ 193,42\nTotal registrado\nR$ 429,24\nTodos\nOutubro\nSetembro\nOutubro 2026\nCompra do início de outubro\n14 out 2026 · 19 itens\nR$ 193,42\nVer detalhes \nSetembro 2026\nCompra de setembro\n26 set 2026 · 17 itens\nR$ 181,02\nVer detalhes \nReposição rápida\n09 set 2026 · 6 itens\nR$ 54,80\nVer detalhes \nLeitura do histórico\n\nCompras agrupadas por mês, com totais e registros por produto.\n\nCompras concluídas\n3\nComparação\nPor unidade\nInformação onde ela importa.\n\nVariações de preço aparecem no detalhe do produto, com referência da compra anterior."
+      }
+    },
+    {
+      "id": "pessoas",
+      "file": "1920-1080-pessoas.png",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "canvas": {
+          "width": 1440,
+          "height": 900,
+          "transform": "scale(1)",
+          "rect": {
+            "x": 242,
+            "y": 60,
+            "width": 1440,
+            "height": 900,
+            "top": 60,
+            "right": 1682,
+            "bottom": 960,
+            "left": 242
+          }
+        },
+        "overflow": 0,
+        "budget": null,
+        "budgetStyle": null,
+        "firstItem": null,
+        "title": {
+          "font": "",
+          "padding": "0px",
+          "bg": "rgba(0, 0, 0, 0)",
+          "border": "rgb(24, 37, 26)"
+        },
+        "text": "restok.\nNossa Casa\n2 participantes\nPrincipal\nCompra\nCasa e produtos\nHistórico\nCasas e pessoas\nGA\nGabriel\nConta individual\nNossa Casa\nCasas e pessoas\nPrévia interativa\nGA\nPessoas da casa\n\nCada pessoa tem uma conta. As compras são compartilhadas.\n\nNossa Casa\nCasa ativa · 2 pessoas\nTrocar\nPessoas da casa (2)\nCriar convite\nGA\nGabriel Arantes Você\ngabriel@exemplo.com · Desde 14 de outubro\nProprietário\nSua conta\nMd\nMariana de Oliveira Carvalho\nmariana@exemplo.com · Desde 18 de outubro\nMembro\nTransferir\nRemover\nConvites e acesso\n\nUm convite dá acesso a esta casa, não à conta de outra pessoa. A propriedade pode ser transferida com confirmação.\n\nNenhum convite de demonstração criado nesta sessão.\nPermissões da casa\nProprietários\n1\nParticipantes\n2\nConta ativa\nGabriel\n\nIdentidades completas e ações sensíveis em áreas separadas.\n\nCasa ativa sempre visível.\n\nEsta prévia guarda a seleção de casa no navegador. Não substitui autenticação nem RLS reais."
+      }
+    }
+  ],
+  "interactions": [],
+  "errors": []
+}

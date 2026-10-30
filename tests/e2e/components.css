@@ -1,0 +1,11 @@
+body { margin:0; background:#F7FAF5; }
+.component-preview { max-width:72rem; margin:auto; padding:1rem; }
+.component-preview > header > p { color:var(--color-muted); font-size:var(--text-sm); }
+.component-preview h1 { font-size:2rem; font-weight:700; margin:0; }
+.component-preview > section { margin-block:2rem; }
+.component-preview h2 { font-size:1.25rem; font-weight:700; margin:0 0 1rem; }
+.component-preview .samples { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
+.component-preview .fields { display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr)); }
+.component-preview > footer { margin-top:3rem; color:var(--color-muted); font-size:.875rem; }
+.preview-sheet-list { display:grid; gap:1rem; }
+@media(min-width:640px) { .component-preview { padding:2rem; } }

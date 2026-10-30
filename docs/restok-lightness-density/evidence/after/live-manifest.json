@@ -1,0 +1,254 @@
+[
+  {
+    "screen": "Casa",
+    "requested": [
+      320,
+      640
+    ],
+    "budget": null,
+    "height": 640,
+    "overflow": 0,
+    "width": 320
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      390,
+      844
+    ],
+    "budget": null,
+    "height": 844,
+    "overflow": 0,
+    "width": 390
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      768,
+      1024
+    ],
+    "budget": null,
+    "height": 1024,
+    "overflow": 0,
+    "width": 768
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      992,
+      768
+    ],
+    "budget": null,
+    "height": 768,
+    "overflow": 0,
+    "width": 992
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      1280,
+      800
+    ],
+    "budget": null,
+    "height": 800,
+    "overflow": 0,
+    "width": 1280
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      1440,
+      900
+    ],
+    "budget": null,
+    "height": 900,
+    "overflow": 0,
+    "width": 1440
+  },
+  {
+    "screen": "Casa",
+    "requested": [
+      1920,
+      1080
+    ],
+    "budget": null,
+    "height": 1080,
+    "overflow": 0,
+    "width": 1920
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      320,
+      640
+    ],
+    "budget": null,
+    "height": 640,
+    "overflow": 0,
+    "width": 320
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      390,
+      844
+    ],
+    "budget": null,
+    "height": 844,
+    "overflow": 0,
+    "width": 390
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      768,
+      1024
+    ],
+    "budget": null,
+    "height": 1024,
+    "overflow": 0,
+    "width": 768
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      992,
+      768
+    ],
+    "budget": null,
+    "height": 768,
+    "overflow": 0,
+    "width": 992
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      1280,
+      800
+    ],
+    "budget": null,
+    "height": 800,
+    "overflow": 0,
+    "width": 1280
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      1440,
+      900
+    ],
+    "budget": null,
+    "height": 900,
+    "overflow": 0,
+    "width": 1440
+  },
+  {
+    "screen": "Histórico",
+    "requested": [
+      1920,
+      1080
+    ],
+    "budget": null,
+    "height": 1080,
+    "overflow": 0,
+    "width": 1920
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      320,
+      640
+    ],
+    "budget": {
+      "height": 132.96875,
+      "width": 282.3863525390625
+    },
+    "height": 640,
+    "overflow": 0,
+    "width": 320
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      390,
+      844
+    ],
+    "budget": {
+      "height": 132.96875,
+      "width": 358.0113525390625
+    },
+    "height": 844,
+    "overflow": 0,
+    "width": 390
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      768,
+      1024
+    ],
+    "budget": {
+      "height": 144.97158813476562,
+      "width": 544.2045288085938
+    },
+    "height": 1024,
+    "overflow": 0,
+    "width": 768
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      992,
+      768
+    ],
+    "budget": {
+      "height": 144.97158813476562,
+      "width": 767.8408813476562
+    },
+    "height": 768,
+    "overflow": 0,
+    "width": 992
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      1280,
+      800
+    ],
+    "budget": {
+      "height": 144.97158813476562,
+      "width": 1008.0255126953124
+    },
+    "height": 800,
+    "overflow": 0,
+    "width": 1280
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      1440,
+      900
+    ],
+    "budget": {
+      "height": 144.97158813476562,
+      "width": 1040
+    },
+    "height": 900,
+    "overflow": 0,
+    "width": 1440
+  },
+  {
+    "screen": "Compra",
+    "requested": [
+      1920,
+      1080
+    ],
+    "budget": {
+      "height": 144.97158813476562,
+      "width": 1040
+    },
+    "height": 1080,
+    "overflow": 0,
+    "width": 1920
+  }
+]

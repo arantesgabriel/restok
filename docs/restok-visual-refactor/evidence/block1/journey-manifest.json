@@ -1,0 +1,131 @@
+{
+  "kind": "Compra / vídeo de interação real do harness E2E-FIXTURE / sem backend",
+  "createdAt": "2026-10-30T05:10:32.191Z",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "dpr": 1,
+  "zoom": 1,
+  "engine": "156.0.4314.50",
+  "videoFile": "compra-interaction.mp4",
+  "sourceVideo": "compra-interaction-source.webm",
+  "videoBytes": 568698,
+  "route": "/app?scenario=long",
+  "fixture": "dados, Auth e persistência locais; nenhum acesso Supabase",
+  "interactions": [
+    "filtrar pendentes",
+    "editar item",
+    "marcar comprado",
+    "filtrar todos",
+    "confirmar finalização com pendentes",
+    "recibo renderizado pela resposta local simulada"
+  ],
+  "pageErrors": [],
+  "video": {
+    "duration": 8.723233,
+    "width": 390,
+    "height": 844,
+    "readyState": 4
+  },
+  "method": "HTMLVideoElement actual seeks every 0.04s; compare scaled 80px-wide decoded canvas frame with captured PNG RGB after H.264 normalization",
+  "maxRgbMeanAbsoluteError": 10,
+  "captures": [
+    {
+      "id": "initial",
+      "file": "journey-01-initial.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 0.44,
+      "sampledSeekSeconds": 0.44,
+      "frameIndex": 11,
+      "mae": 7.935789980732177,
+      "passed": true
+    },
+    {
+      "id": "filter-pending",
+      "file": "journey-02-filter-pending.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 1.4,
+      "sampledSeekSeconds": 1.4000000000000001,
+      "frameIndex": 35,
+      "mae": 7.999132947976879,
+      "passed": true
+    },
+    {
+      "id": "item-edited",
+      "file": "journey-03-item-edited.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 3.68,
+      "sampledSeekSeconds": 3.68,
+      "frameIndex": 92,
+      "mae": 8.476035645472061,
+      "passed": true
+    },
+    {
+      "id": "item-marked-in-fixture",
+      "file": "journey-04-item-marked-in-fixture.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 5.2,
+      "sampledSeekSeconds": 5.2,
+      "frameIndex": 130,
+      "mae": 8.50585260115607,
+      "passed": true
+    },
+    {
+      "id": "filter-all-after-mark",
+      "file": "journey-05-filter-all-after-mark.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 5.2,
+      "sampledSeekSeconds": 5.2,
+      "frameIndex": 130,
+      "mae": 8.50585260115607,
+      "passed": true
+    },
+    {
+      "id": "finish-confirmation-pending",
+      "file": "journey-06-finish-confirmation-pending.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 5.76,
+      "sampledSeekSeconds": 5.76,
+      "frameIndex": 144,
+      "mae": 6.8245664739884395,
+      "passed": true
+    },
+    {
+      "id": "receipt-fixture-only",
+      "file": "journey-07-receipt-fixture-only.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "seconds": 6.56,
+      "sampledSeekSeconds": 6.5600000000000005,
+      "frameIndex": 164,
+      "mae": 5.067124277456648,
+      "passed": true
+    }
+  ],
+  "normalization": {
+    "mimeType": "video/mp4;codecs=avc1.42001f",
+    "bytes": 568698,
+    "sourceDuration": 8.72
+  }
+}

@@ -1,0 +1,994 @@
+diff --git a/components/app/app-shell.module.css b/components/app/app-shell.module.css
+index f5b5f85..cc74ef1 100644
+--- a/components/app/app-shell.module.css
++++ b/components/app/app-shell.module.css
+@@ -63,6 +63,8 @@
+   padding-inline: var(--shell-gutter);
+ }
+ 
++.workspace[data-context-layout="desktop-only"] [data-app-context] { display: none; }
++
+ .content {
+   width: min(100%, 65rem);
+   min-width: 0;
+@@ -143,8 +145,9 @@
+   .header { min-height: 4rem; padding-block: var(--space-2); }
+   .content { padding-block: var(--space-6); }
+   .context { padding-block: var(--space-6); }
+-  .main, .main[data-has-dock="true"] { padding-bottom: 7rem; }
++  .main, .main[data-has-dock="true"] { padding-bottom: var(--space-6); }
+   .navigation { display: none; }
++  .dock { display: none; }
+ 
+   .dock {
+     inset-inline: auto;
+@@ -163,6 +166,7 @@
+   }
+ 
+   .context {
++    display: block;
+     position: sticky;
+     top: calc(4rem + var(--space-6));
+     align-self: start;
+@@ -170,4 +174,11 @@
+     overflow: auto;
+     padding-block: 0;
+   }
++
++  .workspace[data-context-layout="desktop-only"] [data-app-context] { display: block; }
++}
++
++@media (min-width: 1600px) {
++  .frame { max-width: none; }
++  .content { width: 100%; max-width: none; }
+ }
+diff --git a/components/app/app-shell.tsx b/components/app/app-shell.tsx
+index b0ae5fb..2e8b9a0 100644
+--- a/components/app/app-shell.tsx
++++ b/components/app/app-shell.tsx
+@@ -16,6 +16,7 @@ type AppShellProps = {
+   noticeTitle?: string;
+   children: ReactNode;
+   context?: ReactNode;
++  contextLayout?: "responsive" | "desktop-only";
+   dock?: ReactNode;
+   overlays: ReactNode;
+   keyboardOpen: boolean;
+@@ -32,6 +33,7 @@ export function AppShell({
+   noticeTitle,
+   children,
+   context,
++  contextLayout = "responsive",
+   dock,
+   overlays,
+   keyboardOpen,
+@@ -84,7 +86,11 @@ export function AppShell({
+               {notices}
+             </details>
+           ) : null}
+-          <div className={styles.workspace} data-has-context={hasContext ? "true" : undefined}>
++          <div
++            className={styles.workspace}
++            data-has-context={hasContext ? "true" : undefined}
++            data-context-layout={hasContext && contextLayout === "desktop-only" ? "desktop-only" : undefined}
++          >
+             <div data-app-work className={styles.content}>{children}</div>
+             {hasContext ? (
+               <aside data-app-context className={styles.context} aria-label="Contexto da tela">
+diff --git a/components/restok-app.category-sort.test.tsx b/components/restok-app.category-sort.test.tsx
+index bb696f2..ed3b197 100644
+--- a/components/restok-app.category-sort.test.tsx
++++ b/components/restok-app.category-sort.test.tsx
+@@ -46,14 +46,16 @@ describe("house category order", () => {
+     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
+     expect(namesIn("Higiene").indexOf("Bucha de Pia")).toBeLessThan(namesIn("Higiene").indexOf("Shampoo"));
+ 
+-    fireEvent.click(within(screen.getByRole("group", { name: "Ordenar itens da compra" })).getByRole("button", { name: "A–Z" }));
++    fireEvent.click(screen.getByRole("button", { name: /Organizar lista/ }));
++    fireEvent.click(screen.getByRole("menuitem", { name: "Ordenar por nome A–Z" }));
+     expect(screen.queryByRole("button", { name: /^Alimentos em ordem/ })).toBeNull();
+     const flatNames = screen.getAllByRole("button", { name: /^Editar / }).map((button) => button.getAttribute("aria-label"));
+     expect(flatNames.indexOf("Editar Água com gás 1.5L")).toBeLessThan(flatNames.indexOf("Editar Óleo"));
+     expect(flatNames.indexOf("Editar Bucha de Pia")).toBeLessThan(flatNames.indexOf("Editar Shampoo"));
+     expect(flatNames.indexOf("Editar Bucha de Pia")).toBeLessThan(flatNames.indexOf("Editar Óleo"));
+ 
+-    fireEvent.click(within(screen.getByRole("group", { name: "Ordenar itens da compra" })).getByRole("button", { name: "Categoria" }));
++    fireEvent.click(screen.getByRole("button", { name: /Organizar lista/ }));
++    fireEvent.click(screen.getByRole("menuitem", { name: "Agrupar por categoria" }));
+     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
+ 
+     view.unmount();
+diff --git a/components/restok-app.tsx b/components/restok-app.tsx
+index 439c3a1..8627c97 100644
+--- a/components/restok-app.tsx
++++ b/components/restok-app.tsx
+@@ -14,6 +14,7 @@ import { ConfirmFinishSheet } from "@/components/shopping/confirm-finish-sheet";
+ import { ItemEditorSheet } from "@/components/shopping/item-editor-sheet";
+ import { NewPurchaseSheet } from "@/components/shopping/new-purchase-sheet";
+ import { ShoppingDock } from "@/components/shopping/shopping-dock";
++import { ShoppingContext } from "@/components/shopping/shopping-context";
+ import { ShoppingView } from "@/components/shopping/shopping-view";
+ import { useShoppingView } from "@/components/shopping/use-shopping-view";
+ import { ActionMenu } from "@/components/ui/action-menu";
+@@ -632,6 +633,8 @@ export default function RestokApp() {
+     if (!hydrated) return <main className="mx-auto max-w-lg px-5"><Skeleton label="Carregando seus dados…" rows={4}/></main>;
+     if (onboarding) return <HouseholdOnboarding profileName={profileName} email={profileEmail} inviteToken={onboardingInvite} inviteFailed={onboardingInviteFailed} onActivate={activateHousehold} />;
+   return <AppShell screen={screen} onChange={next=>{setScreen(next);setHistoryDetail(null);}} houseName={activeHousehold?.name ?? "Casa"} onHouseOpen={()=>setHouseholdManagerOpen(true)} keyboardOpen={keyboardOpen}
++    context={!keyboardOpen && screen === "shop" && activeList && !historyDetail ? <ShoppingContext list={activeList} onPending={showPendingItems} onFinish={()=>setFinishOpen(true)} /> : undefined}
++    contextLayout="desktop-only"
+     noticeTitle={syncWarning ? "Dados da casa sem atualização · ver aviso" : isSupabaseConfigured && (!isOnline || realtimeStatus !== "connected" || snapshotFailed || writeOperations.length > 0) ? !isOnline ? "Sem conexão · ver detalhes" : snapshotFailed || writeOperations.some(operation=>operation.status === "failed") ? "Alterações sem sincronizar · ver detalhes" : "Atualizações em andamento · ver detalhes" : undefined}
+     feedback={toast ? <ToastMessage inline visuallyHidden={keyboardOpen} message={toast} onDismiss={()=>setToast(null)}/> : null}
+     profile={<ActionMenu
+@@ -656,5 +659,5 @@ export default function RestokApp() {
+     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
+     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
+ </>}
+-  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState variant="first-use" icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
++  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} pending={pending} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onPending={showPendingItems} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState variant="first-use" icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
+ }
+diff --git a/components/shopping/budget-summary.tsx b/components/shopping/budget-summary.tsx
+index ba99d9e..6bf9052 100644
+--- a/components/shopping/budget-summary.tsx
++++ b/components/shopping/budget-summary.tsx
+@@ -3,9 +3,62 @@ import type { ShoppingList } from "@/lib/types";
+ import { formatBRL, listTotal } from "@/lib/utils";
+ import { Button } from "@/components/ui/button";
+ import styles from "./shopping-controls.module.css";
+-export function BudgetSummary({list,onEdit,compact=false}:{list:ShoppingList;onEdit:()=>void;compact?:boolean}) {
+-  const total=listTotal(list), over=total-list.budget;
+-  const withoutPrice=list.items.filter(item=>item.status==="purchased"&&item.unitPrice===undefined).length;
+-  const percentage=list.budget>0?Math.min(total/list.budget*100,100):total>0?100:0;
+-  return <section data-budget-summary data-budget-over={over>0?"true":"false"} data-compact={compact||undefined} aria-label="Resumo do orçamento" className={`restok-theme ${styles.budget}`}><div className={styles.values}><div><span>Total registrado</span><strong>{formatBRL(total)}</strong></div><div><span>{over>0?"Acima da meta":"Disponível"}</span><b>{formatBRL(Math.abs(over))}</b></div></div><div className={styles.meta}><span>Meta de {formatBRL(list.budget)}{withoutPrice?<span>{withoutPrice} {withoutPrice===1?"item comprado sem preço":"itens comprados sem preço"}</span>:null}</span><Button variant="quiet" className={styles.edit} aria-label="Editar meta da compra" onClick={onEdit}><Pencil size={16}/>{compact?null:"Editar"}</Button></div><div className={styles.progress} role="progressbar" aria-label="Uso do orçamento" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percentage} aria-valuetext={`${formatBRL(total)} de ${formatBRL(list.budget)}${over>0?`; excedente de ${formatBRL(over)}`:""}`}><span style={{transform:`scaleX(${percentage/100})`}}/></div></section>;
++
++export function BudgetSummary({ list, onEdit }: { list: ShoppingList; onEdit: () => void }) {
++  const total = listTotal(list);
++  const difference = total - list.budget;
++  const overBudget = difference > 0;
++  const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
++  const percentage = list.budget > 0 ? Math.min(total / list.budget * 100, 100) : total > 0 ? 100 : 0;
++  const available = formatBRL(Math.abs(difference));
++  const totalLabel = formatBRL(total);
++
++  return (
++    <section
++      data-budget-summary
++      data-budget-over={overBudget ? "true" : "false"}
++      data-total-long={totalLabel.length > 11 ? "true" : undefined}
++      data-total-extreme={totalLabel.length > 18 ? "true" : undefined}
++      data-balance-long={available.length > 11 ? "true" : undefined}
++      data-balance-extreme={available.length > 18 ? "true" : undefined}
++      aria-label="Resumo do orçamento"
++      className={`restok-theme ${styles.budget}`}
++    >
++      <div className={styles.values}>
++        <div className={styles.total}>
++          <span>Total registrado</span>
++          <strong>{totalLabel}</strong>
++        </div>
++        <div className={styles.balance}>
++          <span>{overBudget ? "Acima da meta" : "Disponível"}</span>
++          <b>{available}</b>
++        </div>
++      </div>
++      <div
++        className={styles.progress}
++        role="progressbar"
++        aria-label="Uso do orçamento"
++        aria-valuemin={0}
++        aria-valuemax={100}
++        aria-valuenow={percentage}
++        aria-valuetext={`${totalLabel} de ${formatBRL(list.budget)}${overBudget ? `; excedente de ${formatBRL(difference)}` : ""}`}
++      >
++        <span style={{ transform: `scaleX(${percentage / 100})` }} />
++      </div>
++      <div className={styles.meta}>
++        <span className={styles.target}>
++          Meta de {formatBRL(list.budget)}
++          {withoutPrice ? (
++            <small>
++              {withoutPrice} {withoutPrice === 1 ? "item comprado sem preço" : "itens comprados sem preço"}
++            </small>
++          ) : null}
++        </span>
++        <Button variant="secondary" className={styles.editBudget} aria-label="Editar meta da compra" onClick={onEdit}>
++          <Pencil size={16} aria-hidden="true" />
++          Editar meta
++        </Button>
++      </div>
++    </section>
++  );
+ }
+diff --git a/components/shopping/category-section.tsx b/components/shopping/category-section.tsx
+index 5b31f47..bc0217e 100644
+--- a/components/shopping/category-section.tsx
++++ b/components/shopping/category-section.tsx
+@@ -8,5 +8,5 @@ import { ShoppingItemRow } from "./item-row";
+ import styles from "./shopping.module.css";
+ export function CategorySection({category,direction,items,lists,onToggleSort,onEdit,onPurchased,onAlreadyHave,onUndo}:{category:CategoryName;direction:NameSortDirection;items:ShoppingItem[];lists:ShoppingList[];onToggleSort:()=>void;onEdit:(item:ShoppingItem)=>void;onPurchased:(item:ShoppingItem)=>void;onAlreadyHave:(item:ShoppingItem)=>void;onUndo:(item:ShoppingItem)=>void}) {
+   const [open,setOpen]=useState(true); const id=useId(); const label=direction==="desc"?"Z–A":"A–Z";
+-  return <section data-category-section><div className={styles.categoryHeader}><button type="button" className={styles.categoryButton} aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}><span>{category} <span className={styles.categoryCount}>{items.filter(item=>item.status!=="pending").length} de {items.length} resolvidos</span></span>{open?<ChevronDown size={16}/>:<ChevronRight size={16}/>}</button><Button variant="quiet" className={styles.sort} aria-pressed={direction==="desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} onClick={onToggleSort}>{direction==="desc"?<ArrowDownZA size={16}/>:<ArrowDownAZ size={16}/>}<span aria-hidden="true">{label}</span></Button></div><div id={id} hidden={!open}>{items.map(item=><ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={()=>onEdit(item)} onPurchased={()=>onPurchased(item)} onAlreadyHave={()=>onAlreadyHave(item)} onUndo={()=>onUndo(item)}/>)}</div></section>;
++  return <section data-category-section aria-label={category} className={styles.collection}><div className={styles.categoryHeader}><button type="button" className={styles.categoryButton} aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}><span>{category} <span className={styles.categoryCount}>{items.filter(item=>item.status!=="pending").length} de {items.length} resolvidos</span></span>{open?<ChevronDown size={16}/>:<ChevronRight size={16}/>}</button><Button variant="quiet" className={styles.sort} aria-pressed={direction==="desc"} aria-label={`${category} em ordem ${label}. Alternar ordem alfabética`} onClick={onToggleSort}>{direction==="desc"?<ArrowDownZA size={16}/>:<ArrowDownAZ size={16}/>}<span aria-hidden="true">{label}</span></Button></div><div id={id} hidden={!open}>{items.map(item=><ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={()=>onEdit(item)} onPurchased={()=>onPurchased(item)} onAlreadyHave={()=>onAlreadyHave(item)} onUndo={()=>onUndo(item)}/>)}</div></section>;
+ }
+diff --git a/components/shopping/item-row.tsx b/components/shopping/item-row.tsx
+index 01aee86..405f274 100644
+--- a/components/shopping/item-row.tsx
++++ b/components/shopping/item-row.tsx
+@@ -1,26 +1,70 @@
+ "use client";
+-import { Check, Undo2 } from "lucide-react";
++
+ import type { ShoppingItem, ShoppingList } from "@/lib/types";
+ import { formatBRL, formatPercent, itemSubtotal, latestPriceFor } from "@/lib/utils";
+-import { IconButton } from "@/components/ui/icon-button";
+ import { AlreadyHave } from "./already-have";
+-import { StatusBadge } from "./status-toggle";
++import { ShoppingStatusButton, StatusBadge } from "./status-toggle";
+ import styles from "./shopping.module.css";
+-function PreviousPrice({item,lists}:{item:ShoppingItem;lists:ShoppingList[]}) {
+-  const previous=latestPriceFor(item.productId,lists);
+-  if(previous===undefined || item.unitPrice===undefined)return null;
+-  const difference=item.unitPrice-previous;
+-  const comparison=previous===0 ? `${formatBRL(Math.abs(difference))} ${difference>0?"a mais por unidade":"igual ao anterior"}` : Math.abs(difference)<.005 ? "igual ao anterior" : `${formatPercent(Math.abs(difference/previous))} ${difference>0?"a mais":"a menos"}`;
++
++function PreviousPrice({ item, lists }: { item: ShoppingItem; lists: ShoppingList[] }) {
++  const previous = latestPriceFor(item.productId, lists);
++  if (previous === undefined || item.unitPrice === undefined) return null;
++
++  const difference = item.unitPrice - previous;
++  const comparison = previous === 0
++    ? `${formatBRL(Math.abs(difference))} ${difference > 0 ? "a mais por unidade" : "igual ao anterior"}`
++    : Math.abs(difference) < 0.005
++      ? "igual ao anterior"
++      : `${formatPercent(Math.abs(difference / previous))} ${difference > 0 ? "a mais" : "a menos"}`;
++
+   return <span className={styles.previous}>Anterior {formatBRL(previous)} · {comparison}</span>;
+ }
+-export type ItemRowProps={item:ShoppingItem;lists:ShoppingList[];onEdit:()=>void;onPurchased:()=>void;onAlreadyHave:()=>void;onUndo:()=>void};
+-export function ShoppingItemRow({item,lists,onEdit,onPurchased,onAlreadyHave,onUndo}:ItemRowProps) {
+-  const priced=item.status==="purchased"&&item.unitPrice!==undefined;
+-  return <article data-shopping-row className={styles.row}>
+-    <button type="button" className={styles.edit} onClick={onEdit} aria-label={`Editar ${item.name}`} aria-describedby={`item-meta-${item.id}`}>
+-      <span className={styles.itemText}><span className={styles.name}>{item.name}</span><span id={`item-meta-${item.id}`} className={styles.metadata}><span>{item.quantity} un.</span>{priced?<><span>{formatBRL(item.unitPrice!)} un.</span><PreviousPrice item={item} lists={lists}/></>:<StatusBadge status={item.status}/>}</span></span>
+-      {priced?<strong data-item-total className={styles.price}>{formatBRL(itemSubtotal(item))}</strong>:item.status==="purchased"?<span className={styles.price}>Sem preço</span>:null}
+-    </button>
+-    <div className={styles.rowActions}>{item.status==="pending"?<><IconButton label={`Marcar ${item.name} como comprado`} onClick={onPurchased}><Check size={19}/></IconButton><AlreadyHave name={item.name} onSelect={onAlreadyHave}/></>:<IconButton label={`Desfazer situação de ${item.name}`} onClick={onUndo}><Undo2 size={18}/></IconButton>}</div>
+-  </article>;
++
++export type ItemRowProps = {
++  item: ShoppingItem;
++  lists: ShoppingList[];
++  onEdit: () => void;
++  onPurchased: () => void;
++  onAlreadyHave: () => void;
++  onUndo: () => void;
++};
++
++export function ShoppingItemRow({ item, lists, onEdit, onPurchased, onAlreadyHave, onUndo }: ItemRowProps) {
++  const priced = item.status === "purchased" && item.unitPrice !== undefined;
++  const total = priced ? formatBRL(itemSubtotal(item)) : null;
++
++  return (
++    <article
++      data-shopping-row
++      data-item-status={item.status}
++      data-has-price={priced ? "true" : undefined}
++      data-item-price-missing={item.status === "purchased" && item.unitPrice === undefined ? "true" : undefined}
++      data-total-long={total && total.length > 11 ? "true" : undefined}
++      data-total-extreme={total && total.length > 18 ? "true" : undefined}
++      className={styles.row}
++    >
++      <ShoppingStatusButton name={item.name} status={item.status} onPurchased={onPurchased} onUndo={onUndo} />
++      <button
++        type="button"
++        className={styles.edit}
++        onClick={onEdit}
++        aria-label={`Editar ${item.name}`}
++        aria-describedby={`item-meta-${item.id}`}
++      >
++        <span className={styles.itemText}>
++          <span className={styles.name}>{item.name}</span>
++          <span id={`item-meta-${item.id}`} className={styles.metadata}>
++            <span>{item.quantity} un.</span>
++            {priced ? <span>{formatBRL(item.unitPrice!)} un.</span> : null}
++            {item.status === "pending" ? <span className={styles.sr}>Pendente</span> : <StatusBadge status={item.status} />}
++            {priced ? <PreviousPrice item={item} lists={lists} /> : null}
++          </span>
++        </span>
++      </button>
++      <div className={styles.rowActions}>
++        {item.status === "pending" ? <AlreadyHave name={item.name} onSelect={onAlreadyHave} /> : null}
++      </div>
++      {total ? <strong data-item-total className={styles.price}>{total}</strong> : item.status === "purchased" ? <span data-item-price-missing-label className={styles.price}>Sem preço</span> : null}
++    </article>
++  );
+ }
+diff --git a/components/shopping/shopping-context.tsx b/components/shopping/shopping-context.tsx
+new file mode 100644
+index 0000000..d37688d
+--- /dev/null
++++ b/components/shopping/shopping-context.tsx
+@@ -0,0 +1,39 @@
++import type { ShoppingList } from "@/lib/types";
++import { formatBRL, listPending, listResolved, listTotal } from "@/lib/utils";
++import { Button } from "@/components/ui/button";
++import styles from "./shopping.module.css";
++
++export function ShoppingContext({
++  list,
++  onPending,
++  onFinish,
++}: {
++  list: ShoppingList;
++  onPending: () => void;
++  onFinish: () => void;
++}) {
++  const pending = listPending(list);
++  const resolved = listResolved(list);
++  const total = listTotal(list);
++  const withoutPrice = list.items.filter((item) => item.status === "purchased" && item.unitPrice === undefined).length;
++
++  return (
++    <section className={styles.contextSummary} aria-labelledby="shopping-context-title">
++      <h2 id="shopping-context-title">Resumo da compra</h2>
++      <dl className={styles.contextStats}>
++        <div><dt>Pendentes</dt><dd>{pending}</dd></div>
++        <div><dt>Resolvidos</dt><dd>{resolved} de {list.items.length}</dd></div>
++        <div><dt>Total registrado</dt><dd>{formatBRL(total)}</dd></div>
++        {withoutPrice ? <div><dt>Comprados sem preço</dt><dd>{withoutPrice}</dd></div> : null}
++      </dl>
++      <div className={styles.contextActions}>
++        {pending ? (
++          <Button variant="secondary" onClick={onPending}>
++            Ver {pending} {pending === 1 ? "pendente" : "pendentes"}
++          </Button>
++        ) : null}
++        <Button onClick={onFinish}>Finalizar compra</Button>
++      </div>
++    </section>
++  );
++}
+diff --git a/components/shopping/shopping-controls.module.css b/components/shopping/shopping-controls.module.css
+index dd6d734..7d97275 100644
+--- a/components/shopping/shopping-controls.module.css
++++ b/components/shopping/shopping-controls.module.css
+@@ -1,25 +1,39 @@
+ .badge { display:inline-flex; align-items:center; gap:var(--space-1); color:var(--color-muted); font-size:var(--text-xs); }
+ .badge[data-status=purchased] { color:var(--color-action); }
+ .badge[data-status=already_have] { color:var(--color-info); }
+-.budget { background:var(--color-brand); color:var(--color-surface); border-radius:var(--radius-budget); padding:var(--space-4); margin-block:var(--space-4); }
+-.values { display:flex; flex-wrap:wrap; gap:var(--space-4); justify-content:space-between; }
++
++.budget {
++  display:grid;
++  align-content:start;
++  margin:0;
++  padding:var(--space-4);
++  border-radius:var(--radius-budget);
++  background:var(--color-brand);
++  color:var(--color-surface);
++}
++.values { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:var(--space-4); }
+ .values > div { min-width:0; }
+-.values span { display:block; font-size:var(--text-sm); }
+-.values strong { display:block; font-size:clamp(1.5rem,5vw,2rem); font-weight:700; line-height:1.3; overflow-wrap:anywhere; }
+-.values b { display:block; color:var(--color-highlight); font-size:var(--text-title); font-weight:600; overflow-wrap:anywhere; }
+-.meta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-3); margin-top:var(--space-3); font-size:var(--text-xs); }
+-.meta span span { display:block; }
+-.edit.edit { color:var(--color-surface); background:transparent; border-color:var(--color-highlight); }
+-@media(hover:hover) and (pointer:fine) { .edit.edit:hover { color:var(--color-brand); background:var(--color-highlight); } }
+-.progress { margin-top:var(--space-3); height:.25rem; background:rgb(var(--color-surface-rgb) / .2); border-radius:var(--radius-control); overflow:hidden; }
+-.progress span { display:block; width:100%; height:100%; background:var(--color-highlight); transform-origin:left; }
+-.budget[data-compact=true] { position:relative; padding:.5rem .75rem; margin:0; }
+-.budget[data-compact=true] .values { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--space-2); }
+-.budget[data-compact=true] .values > div:last-child { text-align:right; }
+-.budget[data-compact=true] .values span { font-size:var(--text-xs); }
+-.budget[data-compact=true] .values strong { font-size:var(--text-heading); }
+-.budget[data-compact=true] .values b { font-size:var(--text-title); }
+-.budget[data-compact=true] .meta { margin-top:var(--space-1); padding-right:var(--touch-target); min-height:1.125rem; }
+-.budget[data-compact=true] .edit { position:absolute; bottom:var(--space-1); right:var(--space-2); width:var(--touch-target); padding:.5rem; border:0; }
+-.budget[data-compact=true] .progress { margin-top:var(--space-1); }
+-@media(min-width:640px) { .budget[data-compact=true] .values strong { font-size:var(--text-value); } }
++.total > span,.balance > span { display:block; font-size:var(--text-xs); line-height:1.4; }
++.total strong { display:block; margin-top:var(--space-1); font-size:1.75rem; font-weight:800; line-height:1.15; font-variant-numeric:tabular-nums; white-space:nowrap; }
++.balance { text-align:end; }
++.balance > b { display:block; margin-top:var(--space-1); color:var(--color-highlight); font-size:1.25rem; font-weight:600; line-height:1.4; font-variant-numeric:tabular-nums; white-space:nowrap; }
++.progress { height:6px; margin-top:var(--space-2); overflow:hidden; border-radius:999px; background:rgb(var(--color-surface-rgb) / .22); }
++.progress > span { display:block; width:100%; height:100%; transform-origin:left; background:var(--color-highlight); }
++.meta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-2); margin-top:var(--space-2); font-size:var(--text-xs); }
++.target { min-width:0; line-height:1.5; }
++.target small { display:block; color:var(--color-highlight); font-size:var(--text-xs); }
++.editBudget.editBudget { min-height:var(--touch-target); padding:.5rem .75rem; border-color:var(--color-highlight); background:transparent; color:var(--color-surface); white-space:nowrap; }
++@media(hover:hover) and (pointer:fine) { .editBudget.editBudget:hover { border-color:var(--color-highlight); background:var(--color-highlight); color:var(--color-brand); } }
++@media(max-width:639px) {
++  .progress,.meta { margin-top:var(--space-1); }
++  .budget[data-total-long=true] .values,.budget[data-balance-long=true] .values { grid-template-columns:minmax(0,1fr); }
++  .budget[data-total-long=true] .total strong { font-size:1.25rem; }
++  .budget[data-total-extreme=true] .total strong { font-size:1rem; }
++  .budget[data-total-long=true] .balance,.budget[data-balance-long=true] .balance { text-align:start; }
++  .budget[data-balance-long=true] .balance > b { font-size:var(--text-body); }
++  .budget[data-balance-extreme=true] .balance > b { font-size:1rem; }
++}
++@media(min-width:1024px) {
++  .budget { padding:var(--space-6); }
++  .total strong { font-size:2rem; }
++}
+diff --git a/components/shopping/shopping-presentation.test.tsx b/components/shopping/shopping-presentation.test.tsx
+new file mode 100644
+index 0000000..b30d48a
+--- /dev/null
++++ b/components/shopping/shopping-presentation.test.tsx
+@@ -0,0 +1,83 @@
++/** @vitest-environment happy-dom */
++import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
++import { afterEach, expect, it, vi } from "vitest";
++import { BudgetSummary } from "./budget-summary";
++import { ShoppingItemRow } from "./item-row";
++import { seedState } from "@/tests/fixtures/shopping";
++import { formatBRL } from "@/lib/utils";
++
++afterEach(cleanup);
++
++function purchase(budget: number) {
++  const source = seedState.lists[0].items[2];
++  return {
++    ...seedState.lists[0],
++    budget,
++    items: [
++      { ...source, id: "priced", name: "Cebola", quantity: 3, status: "purchased" as const, unitPrice: 5 },
++      { ...source, id: "unpriced", name: "Item comprado sem preço", status: "purchased" as const, unitPrice: undefined },
++    ],
++  };
++}
++
++it("orders the budget summary, keeps unknown prices out of the total, and exposes edit", () => {
++  const onEdit = vi.fn();
++  const { container } = render(<BudgetSummary list={purchase(15)} onEdit={onEdit} />);
++  const budget = container.querySelector("[data-budget-summary]");
++  const progress = screen.getByRole("progressbar", { name: "Uso do orçamento" });
++
++  expect(budget?.getAttribute("data-budget-over")).toBe("false");
++  expect(budget?.querySelector("strong")?.textContent).toBe(formatBRL(15));
++  expect(progress.getAttribute("aria-valuenow")).toBe("100");
++  expect(container.textContent).toContain("Disponível");
++  expect(container.textContent).toContain("1 item comprado sem preço");
++  fireEvent.click(screen.getByRole("button", { name: "Editar meta da compra" }));
++  expect(onEdit).toHaveBeenCalledOnce();
++});
++
++it("names the positive over-budget difference without changing its calculation", () => {
++  const { container } = render(<BudgetSummary list={purchase(10)} onEdit={vi.fn()} />);
++  const budget = container.querySelector("[data-budget-summary]");
++  const progress = screen.getByRole("progressbar", { name: "Uso do orçamento" });
++
++  expect(budget?.getAttribute("data-budget-over")).toBe("true");
++  expect(container.textContent).toContain("Acima da meta");
++  expect(progress.getAttribute("aria-valuetext")).toContain(`excedente de ${formatBRL(5)}`);
++});
++
++it("keeps status, already-have, edit, zero price, and undo actions separate", () => {
++  const item = { ...seedState.lists[0].items[2], id: "status-row", name: "Cebola", status: "pending" as const, unitPrice: undefined };
++  const onPurchased = vi.fn();
++  const onAlreadyHave = vi.fn();
++  const onUndo = vi.fn();
++  const { container, rerender } = render(
++    <ShoppingItemRow item={item} lists={[]} onEdit={vi.fn()} onPurchased={onPurchased} onAlreadyHave={onAlreadyHave} onUndo={onUndo} />,
++  );
++  let row = container.querySelector("[data-shopping-row]");
++  expect(row?.firstElementChild?.getAttribute("aria-label")).toBe("Marcar Cebola como comprado");
++  expect(row?.firstElementChild?.getAttribute("aria-pressed")).toBe("false");
++  fireEvent.click(within(row as HTMLElement).getByRole("button", { name: "Marcar Cebola como comprado" }));
++  fireEvent.click(within(row as HTMLElement).getByRole("button", { name: "Marcar Cebola como já temos" }));
++  expect(onPurchased).toHaveBeenCalledOnce();
++  expect(onAlreadyHave).toHaveBeenCalledOnce();
++
++  const purchased = { ...item, status: "purchased" as const, unitPrice: 0 };
++  rerender(<ShoppingItemRow item={purchased} lists={[]} onEdit={vi.fn()} onPurchased={onPurchased} onAlreadyHave={onAlreadyHave} onUndo={onUndo} />);
++  row = container.querySelector("[data-shopping-row]");
++  expect(row?.querySelector("[data-item-total]")?.textContent).toBe(formatBRL(0));
++  expect(row?.firstElementChild?.getAttribute("aria-pressed")).toBe("true");
++  fireEvent.click(within(row as HTMLElement).getByRole("button", { name: "Desfazer situação de Cebola" }));
++  expect(onUndo).toHaveBeenCalledOnce();
++});
++
++it("keeps a purchased item without price explicit and aligned apart from zero", () => {
++  const item = { ...seedState.lists[0].items[2], id: "unpriced-row", name: "Sem preço", status: "purchased" as const, unitPrice: undefined };
++  const { container } = render(
++    <ShoppingItemRow item={item} lists={[]} onEdit={vi.fn()} onPurchased={vi.fn()} onAlreadyHave={vi.fn()} onUndo={vi.fn()} />,
++  );
++  const row = container.querySelector("[data-shopping-row]");
++  const label = row?.querySelector("[data-item-price-missing-label]");
++  expect(row?.getAttribute("data-item-price-missing")).toBe("true");
++  expect(label?.textContent).toBe("Sem preço");
++  expect(row?.querySelector("[data-item-total]")).toBeNull();
++});
+diff --git a/components/shopping/shopping-toolbar.tsx b/components/shopping/shopping-toolbar.tsx
+index f26b8da..ed17096 100644
+--- a/components/shopping/shopping-toolbar.tsx
++++ b/components/shopping/shopping-toolbar.tsx
+@@ -1,10 +1,44 @@
+ import { ArrowDownAZ, ListFilter } from "lucide-react";
++import { ActionMenu } from "@/components/ui/action-menu";
+ import { Button } from "@/components/ui/button";
+-import { IconButton } from "@/components/ui/icon-button";
+ import { SearchField } from "@/components/ui/search-field";
+ import { statusLabel } from "@/lib/utils";
+ import type { useShoppingView } from "./use-shopping-view";
+ import styles from "./shopping.module.css";
+-export function ShoppingToolbar({view}:{view:ReturnType<typeof useShoppingView>}) {
+-  return <div className={styles.toolbar}><div className={styles.searchRow}><SearchField label="Buscar na lista" value={view.query} onValueChange={view.setQuery}/><div role="group" aria-label="Ordenar itens da compra" className={styles.modes}><IconButton label="Categoria" aria-pressed={view.shopViewMode==="category"} onClick={()=>view.setShopViewMode("category")}><ListFilter size={19}/></IconButton><IconButton label="A–Z" aria-pressed={view.shopViewMode==="alphabetical"} onClick={()=>view.setShopViewMode("alphabetical")}><ArrowDownAZ size={19}/></IconButton></div></div><div role="group" aria-label="Filtros da lista" className={styles.filters}>{(["all","pending","purchased","already_have"] as const).map(value=><Button key={value} variant="quiet" className={styles.filter} aria-pressed={view.filter===value} onClick={()=>view.setFilter(value)}>{value==="all"?"Todos":statusLabel(value)}</Button>)}</div></div>;
++
++export function ShoppingToolbar({ view }: { view: ReturnType<typeof useShoppingView> }) {
++  const modeIsCategory = view.shopViewMode === "category";
++
++  return (
++    <div className={styles.toolbar}>
++      <div className={styles.searchRow}>
++        <SearchField label="Buscar na lista" value={view.query} onValueChange={view.setQuery} />
++        <ActionMenu
++          label={`Organizar lista — atualmente ${modeIsCategory ? "por categoria" : "por nome A–Z"}`}
++          triggerClassName={styles.organize}
++          items={[
++            modeIsCategory
++              ? { label: "Ordenar por nome A–Z", icon: <ArrowDownAZ size={16} />, onSelect: () => view.setShopViewMode("alphabetical") }
++              : { label: "Agrupar por categoria", icon: <ListFilter size={16} />, onSelect: () => view.setShopViewMode("category") },
++          ]}
++        >
++          {modeIsCategory ? <ListFilter size={18} aria-hidden="true" /> : <ArrowDownAZ size={18} aria-hidden="true" />}
++          <span>Organizar</span>
++        </ActionMenu>
++      </div>
++      <div role="group" aria-label="Filtros da lista" className={styles.filters}>
++        {(["all", "pending", "purchased", "already_have"] as const).map((value) => (
++          <Button
++            key={value}
++            variant="quiet"
++            className={styles.filter}
++            aria-pressed={view.filter === value}
++            onClick={() => view.setFilter(value)}
++          >
++            {value === "all" ? "Todos" : statusLabel(value)}
++          </Button>
++        ))}
++      </div>
++    </div>
++  );
+ }
+diff --git a/components/shopping/shopping-view.test.tsx b/components/shopping/shopping-view.test.tsx
+index 48689ae..e60bd1a 100644
+--- a/components/shopping/shopping-view.test.tsx
++++ b/components/shopping/shopping-view.test.tsx
+@@ -1,6 +1,6 @@
+ /** @vitest-environment happy-dom */
+ import { setAccountFixture } from "@/tests/support/account";
+-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
++import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+ import { afterEach, beforeEach, expect, it, vi } from "vitest";
+ import RestokApp from "@/components/restok-app";
+ import { seedState } from "@/tests/fixtures/shopping";
+@@ -10,7 +10,9 @@ afterEach(()=>{cleanup();localStorage.clear();});
+ it("shows a known zero total in its row and keeps all four filters actionable",async()=>{
+   render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
+   const edit=screen.getByRole("button",{name:"Editar Café grátis"});
+-  expect(edit.querySelector("[data-item-total]")?.textContent).toMatch(/0,00/);
++  const row=edit.closest("[data-shopping-row]");
++  expect(row?.querySelector("[data-item-total]")?.textContent).toMatch(/0,00/);
++  expect(within(row as HTMLElement).getByRole("button",{name:"Desfazer situação de Café grátis"}).getAttribute("aria-pressed")).toBe("true");
+   const filters=within(screen.getByRole("group",{name:"Filtros da lista"}));
+   fireEvent.click(filters.getByRole("button",{name:"Já temos"}));
+   expect(screen.getByRole("button",{name:"Editar Arroz de casa"})).toBeTruthy();
+@@ -23,6 +25,30 @@ it("shows a known zero total in its row and keeps all four filters actionable",a
+   expect(screen.getByRole("button",{name:"Editar Café grátis"})).toBeTruthy();
+   expect(persistList).not.toHaveBeenCalled();
+ });
++it("keeps one global organization menu and retains each category direction locally",async()=>{
++  const {container}=render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
++  expect(container.querySelectorAll("[data-category-section]").length).toBeGreaterThan(0);
++  fireEvent.click(screen.getByRole("button",{name:/Organizar lista/}));
++  fireEvent.click(screen.getByRole("menuitem",{name:"Ordenar por nome A–Z"}));
++  expect(container.querySelector("[data-category-section]")).toBeNull();
++  fireEvent.click(screen.getByRole("button",{name:/Organizar lista/}));
++  fireEvent.click(screen.getByRole("menuitem",{name:"Agrupar por categoria"}));
++  expect(container.querySelectorAll("[data-category-section]").length).toBeGreaterThan(0);
++  expect(persistList).not.toHaveBeenCalled();
++});
++it("derives desktop purchase context actions from the active list and warns before finishing",async()=>{
++  render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
++  const context=within(screen.getByRole("complementary",{name:"Contexto da tela"}));
++  expect(context.getByText("Pendentes").nextElementSibling?.textContent).toBe("1");
++  fireEvent.click(context.getByRole("button",{name:"Ver 1 pendente"}));
++  expect(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Pendente"}).getAttribute("aria-pressed")).toBe("true");
++  fireEvent.click(context.getByRole("button",{name:"Finalizar compra"}));
++  const dialog=await screen.findByRole("dialog");
++  expect(within(dialog).getByText(/Ainda existem 1 itens pendentes/)).toBeTruthy();
++  expect(persistList).not.toHaveBeenCalled();
++  fireEvent.click(within(dialog).getByRole("button",{name:"Continuar comprando"}));
++  await waitFor(()=>expect(dialog.hasAttribute("open")).toBe(false));
++});
+ it("clears a search without resetting the chosen status or writing data",async()=>{
+   render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
+   fireEvent.click(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Comprado"}));
+diff --git a/components/shopping/shopping-view.tsx b/components/shopping/shopping-view.tsx
+index d972095..89c9817 100644
+--- a/components/shopping/shopping-view.tsx
++++ b/components/shopping/shopping-view.tsx
+@@ -1,5 +1,5 @@
+ import type { RefObject } from "react";
+-import { ArrowDownAZ, CheckCircle2, ListFilter, Menu, Plus, Search, ShoppingBasket } from "lucide-react";
++import { CheckCircle2, Menu, Plus, Search, ShoppingBasket } from "lucide-react";
+ import { CATEGORY_ORDER, type CategoryName, type ShoppingItem, type ShoppingList } from "@/lib/types";
+ import { listResolved, sortByName, statusLabel, type NameSortDirection } from "@/lib/utils";
+ import { ActionMenu } from "@/components/ui/action-menu";
+@@ -11,7 +11,155 @@ import { ShoppingItemRow } from "./item-row";
+ import { ShoppingToolbar } from "./shopping-toolbar";
+ import type { useShoppingView } from "./use-shopping-view";
+ import styles from "./shopping.module.css";
+-export function ShoppingView({list,lists,view,categorySort,resultsRef,onToggleSort,onNew,onFinish,onBudget,onAdd,onEdit,onPurchased,onAlreadyHave,onUndo}:{list:ShoppingList;lists:ShoppingList[];view:ReturnType<typeof useShoppingView>;categorySort:Partial<Record<CategoryName,NameSortDirection>>;resultsRef:RefObject<HTMLDivElement|null>;onToggleSort:(category:CategoryName)=>void;onNew:()=>void;onFinish:()=>void;onBudget:()=>void;onAdd:()=>void;onEdit:(item:ShoppingItem)=>void;onPurchased:(item:ShoppingItem)=>void;onAlreadyHave:(item:ShoppingItem)=>void;onUndo:(item:ShoppingItem)=>void}) {
+-  const clear=()=>{view.setQuery("");view.setFilter("all");};
+-  return <div className={styles.view}><div className={styles.heading}><div><h1>{list.name}</h1><p data-resolved-count className={styles.count}>{listResolved(list)} de {list.items.length} resolvidos</p></div><ActionMenu label="Menu da compra" items={[{label:"Nova compra",icon:<Plus size={16}/>,onSelect:onNew},{label:"Finalizar compra",icon:<CheckCircle2 size={16}/>,onSelect:onFinish},{label:"Agrupar por categoria",icon:<ListFilter size={16}/>,onSelect:()=>view.setShopViewMode("category")},{label:"Ordenar por nome A–Z",icon:<ArrowDownAZ size={16}/>,onSelect:()=>view.setShopViewMode("alphabetical")}]}><Menu size={19}/></ActionMenu></div><BudgetSummary list={list} onEdit={onBudget} compact/><ShoppingToolbar view={view}/><div ref={resultsRef} data-purchase-results>{view.filteredItems.length?view.shopViewMode==="category"?CATEGORY_ORDER.map(category=>view.groups[category]?.length?<CategorySection key={category} category={category} direction={categorySort[category]??"asc"} items={sortByName(view.groups[category]??[],categorySort[category]??"asc")} lists={lists} onToggleSort={()=>onToggleSort(category)} onEdit={onEdit} onPurchased={onPurchased} onAlreadyHave={onAlreadyHave} onUndo={onUndo}/>:null):view.alphabeticalItems.map(item=><ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={()=>onEdit(item)} onPurchased={()=>onPurchased(item)} onAlreadyHave={()=>onAlreadyHave(item)} onUndo={()=>onUndo(item)}/>):<EmptyState variant={list.items.length?"compact":"first-use"} icon={list.items.length?<Search size={24}/>:<ShoppingBasket size={24}/>} title={!list.items.length?"Sua lista ainda está vazia":view.query.trim()?"Nenhum item encontrado":view.filter==="all"?"Nenhum item encontrado":`Nenhum item em ${statusLabel(view.filter).toLocaleLowerCase("pt-BR")}`} description={!list.items.length?"Adicione itens para acompanhar a compra.":view.query.trim()?`Nada corresponde a “${view.query.trim()}”.`:"Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={list.items.length?clear:onAdd}>{list.items.length?view.query.trim()?"Limpar busca e filtros":"Limpar filtro":"Adicionar item"}</Button>}/>}</div></div>;
++
++type ShoppingViewProps = {
++  list: ShoppingList;
++  lists: ShoppingList[];
++  view: ReturnType<typeof useShoppingView>;
++  categorySort: Partial<Record<CategoryName, NameSortDirection>>;
++  pending?: number;
++  resultsRef: RefObject<HTMLDivElement | null>;
++  onToggleSort: (category: CategoryName) => void;
++  onPending?: () => void;
++  onNew: () => void;
++  onFinish: () => void;
++  onBudget: () => void;
++  onAdd: () => void;
++  onEdit: (item: ShoppingItem) => void;
++  onPurchased: (item: ShoppingItem) => void;
++  onAlreadyHave: (item: ShoppingItem) => void;
++  onUndo: (item: ShoppingItem) => void;
++};
++
++export function ShoppingView({
++  list,
++  lists,
++  view,
++  categorySort,
++  pending,
++  resultsRef,
++  onToggleSort,
++  onPending,
++  onNew,
++  onFinish,
++  onBudget,
++  onAdd,
++  onEdit,
++  onPurchased,
++  onAlreadyHave,
++  onUndo,
++}: ShoppingViewProps) {
++  const clear = () => {
++    view.setQuery("");
++    view.setFilter("all");
++  };
++  const pendingCount = pending ?? list.items.filter((item) => item.status === "pending").length;
++  const showPending = () => {
++    if (onPending) {
++      onPending();
++      return;
++    }
++    view.setQuery("");
++    view.setFilter("pending");
++    resultsRef.current?.scrollIntoView?.({ behavior: "auto", block: "start" });
++  };
++
++  return (
++    <div className={styles.view}>
++      <div className={styles.heading}>
++        <div>
++          <h1>{list.name}</h1>
++          <p data-resolved-count className={styles.count}>{listResolved(list)} de {list.items.length} resolvidos</p>
++        </div>
++        <div className={styles.headingActions}>
++          <ActionMenu
++            label="Menu da compra"
++            items={[
++              { label: "Nova compra", icon: <Plus size={16} />, onSelect: onNew },
++              { label: "Finalizar compra", icon: <CheckCircle2 size={16} />, onSelect: onFinish },
++            ]}
++          >
++            <Menu size={19} />
++          </ActionMenu>
++          <Button data-purchase-desktop-add className={styles.desktopAdd} onClick={onAdd}><Plus size={18} />Adicionar item</Button>
++          <Button
++            variant="secondary"
++            data-purchase-intermediate-pending
++            className={styles.intermediatePending}
++            disabled={pendingCount === 0}
++            aria-label={pendingCount ? `Ver ${pendingCount} itens pendentes` : "Nenhum item pendente"}
++            onClick={showPending}
++          >
++            {pendingCount ? `${pendingCount} pendentes` : "Sem pendentes"}
++          </Button>
++        </div>
++      </div>
++      <BudgetSummary list={list} onEdit={onBudget} />
++      <ShoppingToolbar view={view} />
++      <div ref={resultsRef} data-purchase-results>
++        {view.filteredItems.length ? (
++          view.shopViewMode === "category" ? (
++            <div className={styles.groups}>
++              {CATEGORY_ORDER.map((category) => view.groups[category]?.length ? (
++                <CategorySection
++                  key={category}
++                  category={category}
++                  direction={categorySort[category] ?? "asc"}
++                  items={sortByName(view.groups[category] ?? [], categorySort[category] ?? "asc")}
++                  lists={lists}
++                  onToggleSort={() => onToggleSort(category)}
++                  onEdit={onEdit}
++                  onPurchased={onPurchased}
++                  onAlreadyHave={onAlreadyHave}
++                  onUndo={onUndo}
++                />
++              ) : null)}
++            </div>
++          ) : (
++            <div className={`${styles.collection} ${styles.alphabetical}`}>
++              {view.alphabeticalItems.map((item) => (
++                <ShoppingItemRow
++                  key={item.id}
++                  item={item}
++                  lists={lists}
++                  onEdit={() => onEdit(item)}
++                  onPurchased={() => onPurchased(item)}
++                  onAlreadyHave={() => onAlreadyHave(item)}
++                  onUndo={() => onUndo(item)}
++                />
++              ))}
++            </div>
++          )
++        ) : (
++          <EmptyState
++            variant={list.items.length ? "compact" : "first-use"}
++            icon={list.items.length ? <Search size={24} /> : <ShoppingBasket size={24} />}
++            title={
++              !list.items.length
++                ? "Sua lista ainda está vazia"
++                : view.query.trim()
++                  ? "Nenhum item encontrado"
++                  : view.filter === "all"
++                    ? "Nenhum item encontrado"
++                    : `Nenhum item em ${statusLabel(view.filter).toLocaleLowerCase("pt-BR")}`
++            }
++            description={
++              !list.items.length
++                ? "Adicione itens para acompanhar a compra."
++                : view.query.trim()
++                  ? `Nada corresponde a “${view.query.trim()}”.`
++                  : "Troque a situação selecionada para ver outros itens."
++            }
++            action={(
++              <Button variant="secondary" onClick={list.items.length ? clear : onAdd}>
++                {list.items.length
++                  ? view.query.trim() ? "Limpar busca e filtros" : "Limpar filtro"
++                  : "Adicionar item"}
++              </Button>
++            )}
++          />
++        )}
++      </div>
++    </div>
++  );
+ }
+diff --git a/components/shopping/shopping.module.css b/components/shopping/shopping.module.css
+index 6df4e20..5bf172a 100644
+--- a/components/shopping/shopping.module.css
++++ b/components/shopping/shopping.module.css
+@@ -1,30 +1,92 @@
+-.view { display:grid; gap:var(--space-2); }
++.view { display:grid; gap:var(--space-3); min-width:0; }
+ .heading { display:flex; align-items:flex-start; gap:var(--space-2); }
+-.heading > div { flex:1; min-width:0; }
++.heading > div:first-child { flex:1; min-width:0; }
+ .heading h1 { margin:0; color:var(--color-ink); font-size:var(--text-title); font-weight:700; line-height:1.2; letter-spacing:-.02em; overflow-wrap:anywhere; }
+ .count { display:none; margin:var(--space-1) 0 0; font-size:var(--text-xs); color:var(--color-muted); }
++.headingActions { display:flex; flex:0 0 auto; align-items:center; gap:var(--space-2); }
++.desktopAdd.desktopAdd,.intermediatePending.intermediatePending { display:none; }
++
+ .toolbar { display:grid; gap:var(--space-1); }
+ .searchRow { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--space-2); }
+-.modes { display:flex; gap:var(--space-1); }
+-.modes button { padding:.5rem; }
+-.modes button[aria-pressed=true] { color:var(--color-action); background:var(--color-surface-brand); border-color:var(--color-action); }
++.organize.organize { gap:var(--space-2); padding-inline:.75rem; white-space:nowrap; }
++.organizeState { color:var(--color-muted); font-size:var(--text-xs); font-weight:500; }
+ .filters { display:flex; gap:var(--space-1); }
+ .filter.filter { flex:1; min-width:0; padding:.5rem .25rem; font-size:var(--text-xs); white-space:nowrap; background:transparent; color:var(--color-muted); border:0; border-radius:0; border-bottom:2px solid transparent; }
+ .filter[aria-pressed=true] { border-bottom-color:var(--color-action); color:var(--color-action); }
+-.categoryHeader { display:flex; align-items:center; gap:var(--space-2); border-bottom:1px solid var(--color-line); }
++
++.groups { display:grid; gap:var(--space-3); }
++.collection { min-width:0; border:1px solid var(--color-line); border-radius:var(--radius-panel); background:var(--color-surface); }
++.alphabetical { display:grid; }
++.categoryHeader { display:flex; align-items:center; gap:var(--space-2); padding-inline:var(--space-3); border-bottom:1px solid var(--color-line); }
+ .categoryButton { display:flex; flex:1; min-width:0; align-items:center; gap:var(--space-2); min-height:var(--touch-target); padding:0; border:0; background:transparent; text-align:start; cursor:pointer; color:var(--color-ink); font-size:var(--text-sm); font-weight:600; }
+ .categoryButton span { min-width:0; overflow-wrap:anywhere; }
+ .categoryCount { color:var(--color-muted); font-size:var(--text-xs); font-weight:400; }
+ .sort.sort { padding:.5rem; font-size:var(--text-xs); }
+-.row { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:var(--space-2); min-height:4rem; padding:var(--space-2) 0; border-bottom:1px solid var(--color-line); }
+-.edit { display:flex; align-items:center; gap:var(--space-2); min-width:0; min-height:var(--touch-target); padding:0; border:0; background:transparent; color:var(--color-ink); text-align:start; cursor:pointer; }
+-.itemText { flex:1; min-width:0; }
++
++.row { display:grid; grid-template-columns:44px minmax(0,1fr) 44px auto; align-items:center; gap:var(--space-2); min-height:4rem; padding:var(--space-2) var(--space-3); border-bottom:1px solid var(--color-line); background:var(--color-surface); color:var(--color-ink); }
++.row:last-child { border-bottom:0; }
++.row:not([data-has-price=true]) { grid-template-columns:44px minmax(0,1fr) 44px; }
++.row[data-item-price-missing=true] { grid-template-columns:44px minmax(0,1fr) 44px auto; }
++.statusButton.statusButton { color:var(--color-muted); }
++.row[data-item-status=purchased] .statusButton { color:var(--color-action); background:var(--color-surface-brand); }
++.row[data-item-status=already_have] .statusButton { color:var(--color-info); background:var(--color-surface-info); }
++.edit { display:flex; align-items:center; min-width:0; min-height:var(--touch-target); padding:0; border:0; background:transparent; color:var(--color-ink); text-align:start; cursor:pointer; }
++.itemText { display:block; min-width:0; }
+ .name { display:block; font-size:var(--text-sm); font-weight:600; line-height:1.4; overflow-wrap:anywhere; }
+-.metadata { display:flex; flex-wrap:wrap; gap:0 var(--space-2); margin-top:var(--space-1); color:var(--color-muted); font-size:var(--text-xs); line-height:1.5; }
++.metadata { display:flex; flex-wrap:wrap; align-items:center; gap:0 var(--space-2); min-width:0; margin-top:var(--space-1); color:var(--color-muted); font-size:var(--text-xs); line-height:1.5; }
+ .metadata > span { min-width:0; overflow-wrap:anywhere; }
+-.price { display:block; flex-shrink:0; max-width:50%; text-align:right; font-size:var(--text-sm); font-weight:700; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+-.rowActions { display:flex; align-items:center; }
++.price { display:block; max-width:none; justify-self:end; color:var(--color-ink); text-align:end; font-size:var(--text-sm); font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
++.rowActions { display:flex; align-items:center; justify-content:center; width:var(--touch-target); min-height:var(--touch-target); }
++.rowActions:empty { visibility:hidden; }
+ .previous { display:block; flex-basis:100%; color:var(--color-muted); }
+ .sr { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+-@media(min-width:640px) { .heading h1 { font-size:var(--text-heading); } .count { display:block; } .view { gap:var(--space-3); } .toolbar { max-width:none; } .searchRow { grid-template-columns:minmax(0,1fr) auto; } .filters { max-width:30rem; } .categoryHeader { margin-top:var(--space-2); } .row { min-height:4.5rem; } .name { font-size:var(--text-body); } .price { min-width:8rem; font-size:var(--text-body); } }
+-@media(hover:hover) and (pointer:fine) { .row:hover { background:var(--color-surface-soft); } .filter:hover { background:var(--color-surface-soft); color:var(--color-ink); } }
++
++.contextSummary { display:grid; gap:var(--space-4); }
++.contextSummary h2 { margin:0; color:var(--color-ink); font-size:var(--text-body); font-weight:700; }
++.contextStats { display:grid; margin:0; border-block:1px solid var(--color-line); }
++.contextStats > div { display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-3); padding-block:var(--space-2); border-bottom:1px solid var(--color-line); }
++.contextStats > div:last-child { border-bottom:0; }
++.contextStats dt { color:var(--color-muted); font-size:var(--text-sm); }
++.contextStats dd { margin:0; color:var(--color-ink); font-size:var(--text-sm); font-weight:600; font-variant-numeric:tabular-nums; text-align:end; }
++.contextActions { display:grid; gap:var(--space-2); }
++.contextActions > button { width:100%; }
++
++@media(min-width:640px) {
++  .heading h1 { font-size:var(--text-heading); }
++  .count { display:block; }
++  .view { gap:var(--space-4); }
++  .toolbar { max-width:none; gap:var(--space-2); }
++  .filters { max-width:30rem; }
++  .categoryHeader { padding-inline:var(--space-4); }
++  .row { min-height:4rem; }
++  .name { font-size:var(--text-body); }
++  .price { font-size:var(--text-body); }
++}
++
++@media(min-width:1024px) {
++  .desktopAdd.desktopAdd,.intermediatePending.intermediatePending { display:inline-flex; }
++  .headingActions { gap:var(--space-2); }
++}
++
++@media(min-width:1024px) and (max-width:1199px) {
++  .intermediatePending.intermediatePending { padding-inline:.75rem; white-space:nowrap; }
++}
++
++@media(min-width:1200px) {
++  .intermediatePending.intermediatePending { display:none; }
++}
++
++@media(max-width:639px) {
++  .view { gap:var(--space-2); }
++  .row[data-total-long=true] { grid-template-columns:44px minmax(0,1fr) 44px; align-items:start; }
++  .row[data-total-long=true] .statusButton { grid-column:1; grid-row:1 / span 2; margin-top:var(--space-1); }
++  .row[data-total-long=true] .edit { grid-column:2; grid-row:1; }
++  .row[data-total-long=true] .rowActions { grid-column:3; grid-row:1; }
++  .row[data-total-long=true] .price { grid-column:2 / 4; grid-row:2; justify-self:stretch; padding-top:var(--space-1); text-align:end; }
++  .row[data-total-extreme=true] .price { font-size:var(--text-xs); }
++}
++
++@media(hover:hover) and (pointer:fine) {
++  .row:hover { background:var(--color-surface-soft); }
++  .filter:hover { background:var(--color-surface-soft); color:var(--color-ink); }
++}
+diff --git a/components/shopping/status-toggle.tsx b/components/shopping/status-toggle.tsx
+index 7605779..aec04c9 100644
+--- a/components/shopping/status-toggle.tsx
++++ b/components/shopping/status-toggle.tsx
+@@ -1,7 +1,58 @@
+ import { Check, Circle, House } from "lucide-react";
+ import type { ItemStatus } from "@/lib/types";
+ import { statusLabel } from "@/lib/utils";
++import { IconButton } from "@/components/ui/icon-button";
+ import { OptionGroup } from "@/components/ui/option-group";
+ import styles from "./shopping-controls.module.css";
+-export function StatusToggle({value,onChange}:{value:ItemStatus;onChange:(value:ItemStatus)=>void}) {return <div className="restok-theme"><p>Situação</p><OptionGroup label="Situação" value={value} onChange={onChange} options={(["pending","purchased","already_have"] as const).map(value=>({value,label:statusLabel(value)}))}/></div>;}
+-export function StatusBadge({status}:{status:ItemStatus}) {const Icon=status==="purchased"?Check:status==="already_have"?House:Circle;return <span className={`restok-theme ${styles.badge}`} data-status={status}><Icon size={14} aria-hidden="true"/>{statusLabel(status)}</span>;}
++import shoppingStyles from "./shopping.module.css";
++
++export function StatusToggle({ value, onChange }: { value: ItemStatus; onChange: (value: ItemStatus) => void }) {
++  return (
++    <div className="restok-theme">
++      <p>Situação</p>
++      <OptionGroup
++        label="Situação"
++        value={value}
++        onChange={onChange}
++        options={(["pending", "purchased", "already_have"] as const).map((status) => ({ value: status, label: statusLabel(status) }))}
++      />
++    </div>
++  );
++}
++
++export function ShoppingStatusButton({
++  name,
++  status,
++  onPurchased,
++  onUndo,
++}: {
++  name: string;
++  status: ItemStatus;
++  onPurchased: () => void;
++  onUndo: () => void;
++}) {
++  const Icon = status === "pending" ? Circle : status === "purchased" ? Check : House;
++  const label = status === "pending" ? `Marcar ${name} como comprado` : `Desfazer situação de ${name}`;
++
++  return (
++    <IconButton
++      className={shoppingStyles.statusButton}
++      label={label}
++      aria-pressed={status !== "pending"}
++      onClick={status === "pending" ? onPurchased : onUndo}
++    >
++      <Icon size={20} aria-hidden="true" />
++    </IconButton>
++  );
++}
++
++export function StatusBadge({ status }: { status: ItemStatus }) {
++  const Icon = status === "purchased" ? Check : status === "already_have" ? House : Circle;
++
++  return (
++    <span className={`restok-theme ${styles.badge}`} data-status={status}>
++      <Icon size={14} aria-hidden="true" />
++      {statusLabel(status)}
++    </span>
++  );
++}
+diff --git a/tests/e2e/fixtures.ts b/tests/e2e/fixtures.ts
+index f1a2df9..88f2aa9 100644
+--- a/tests/e2e/fixtures.ts
++++ b/tests/e2e/fixtures.ts
+@@ -20,9 +20,18 @@ export function evidenceState(scenario: string): RestokState {
+   state.lists = state.lists.map((list) => ({ ...list, items: list.items.slice(0, 33) }));
+   state.lists[0].name = "Compra ilustrativa da casa para o mês";
+   if (scenario === "empty") return { products: [], lists: [] };
++  if (scenario === "empty-list") state.lists[0].items = [];
+   if (scenario === "collection100") {
+     state.products = Array.from({length:100},(_,index)=>({...state.products[index%33],id:`collection-${index}`,name:`${state.products[index%33].name} · ${index+1}`}));
+   }
++  if (scenario === "list100") {
++    const source = state.lists[0].items;
++    state.lists[0].items = Array.from({ length: 100 }, (_, index) => {
++      const item = source[index % source.length];
++      const status = index % 9 === 0 ? "purchased" as const : index % 13 === 0 ? "already_have" as const : "pending" as const;
++      return { ...item, id: `fixture-list100-${index + 1}`, name: `${item.name} · ${String(index + 1).padStart(3, "0")}`, sortOrder: index, status };
++    });
++  }
+   if (scenario === "catalog") {
+     const prefix="Produto recorrente com nome longo para conferir leitura completa no catálogo ";
+     state.products[0]={...state.products[0],name:prefix.padEnd(79,"A")+"A",defaultQuantity:999999};
+@@ -34,6 +43,15 @@ export function evidenceState(scenario: string): RestokState {
+     state.lists[0] = { ...state.lists[0], budget: 0, items: [{ ...item, unitPrice: 5 }, { ...item, id: "fixture-unpriced", name: "Item sem preço", unitPrice: undefined }] };
+     state.lists[1].items = [{ ...item, unitPrice: 0 }];
+   }
++  if (scenario === "money-equal" || scenario === "money-over") {
++    const priced = { ...state.lists[0].items[2], quantity: 3, status: "purchased" as const, unitPrice: 5 };
++    const unpriced = { ...state.lists[0].items[1], id: "fixture-equal-unpriced", name: "Item comprado sem preço", status: "purchased" as const, unitPrice: undefined };
++    state.lists[0] = { ...state.lists[0], budget: scenario === "money-equal" ? 15 : 10, items: [priced, unpriced] };
++  }
++  if (scenario === "money-high") {
++    const item = { ...state.lists[0].items[2], name: "Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas", quantity: 1, status: "purchased" as const, unitPrice: 9999999.99 };
++    state.lists[0] = { ...state.lists[0], budget: 100, items: [item] };
++  }
+   if (scenario === "stress") {
+     state.lists[0].items[0] = {...state.lists[0].items[0],name:"Produto com um nome completo muito longo para verificar leitura e quebra em celulares",quantity:999999,unitPrice:9999999999.99,status:"purchased"};
+   }

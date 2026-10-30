@@ -1,0 +1,41 @@
+{
+  "authSubset": 41,
+  "scope": "PR11 only",
+  "testFiles": 36,
+  "nextPR": "12 not authorized",
+  "emailGate": "one recovery request acknowledged generically; no delivery found yet; no credential changed",
+  "build": "passed, webpack",
+  "lint": "passed",
+  "preserved": [
+    {
+      "path": "next-env.d.ts",
+      "sha256": "B8B3A344484B959AF5E4E3FC1A1609DAC3CB9ECE0CDEB6C145BE29BC4C491000",
+      "unchanged": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "C3022F0EC95D4D314B2BCB0091B6B9A807F21E4F32B6FF761E1E4C30234FFD2B",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "88E3A55B083918AE03F5DCD803E8E41B875263113F099B31D7C143B3E239CCAF",
+      "unchanged": true
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "EEF929BF342407AB7BE6770D9ACD75C5A5A1DC133A54A6A23B961649102E7259",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/seed.sql",
+      "sha256": "F30A98D1C809F7B60F19E4F21549817B6CF0C9E231A06DE3278B5F210FCB2830",
+      "unchanged": true
+    }
+  ],
+  "base": "9678210",
+  "tests": 210,
+  "remotePR": false,
+  "diffCheck": "passed",
+  "typecheck": "passed, no incremental"
+}

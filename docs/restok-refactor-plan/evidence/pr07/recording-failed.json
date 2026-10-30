@@ -1,0 +1,32 @@
+{
+  "method": "Continuous timed screenshots of actual internal-browser UI actions; fixture transport only; no interpolated states",
+  "sourceDirectory": "node_modules/.cache/restok-pr07-recording-final",
+  "samplingDelayMs": 80,
+  "captureError": "Error: Unable to capture screenshot",
+  "frames": [
+    {
+      "file": "frame-0000.jpg",
+      "startMs": 0,
+      "endMs": 2975
+    }
+  ],
+  "events": [
+    {
+      "event": "confirm with 33 pending items",
+      "ms": 2108
+    },
+    {
+      "event": "persistent simulated failure, no completion",
+      "ms": 4100
+    },
+    {
+      "event": "retry pending, confirmation withheld",
+      "ms": 7106,
+      "noPrematureCompletion": true
+    },
+    {
+      "event": "simulated response confirmed; completion now visible",
+      "ms": 9136
+    }
+  ]
+}

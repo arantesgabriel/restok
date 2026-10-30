@@ -1,0 +1,14 @@
+/** @vitest-environment happy-dom */
+import {afterEach,beforeEach,expect,it,vi} from "vitest";
+import {waitForExit} from "./exit-lifecycle";
+let media:MediaQueryList;
+beforeEach(()=>{vi.useFakeTimers();media=Object.assign(new EventTarget(),{matches:false}) as MediaQueryList;vi.spyOn(window,"matchMedia").mockReturnValue(media);});
+afterEach(()=>{document.body.replaceChildren();vi.useRealTimers();vi.restoreAllMocks();});
+function example(){const dialog=document.createElement("dialog"),panel=document.createElement("section"),child=document.createElement("button");panel.dataset.sheetPanel="";panel.append(child);dialog.append(panel);dialog.style.setProperty("--duration-exit","160ms");document.body.append(dialog);return {dialog,panel,child};}
+it("ignores child animations and completes a panel exit only once",()=>{const {dialog,panel,child}=example(),done=vi.fn();waitForExit(dialog,done);child.dispatchEvent(new Event("animationend",{bubbles:true}));expect(done).not.toHaveBeenCalled();panel.dispatchEvent(new Event("animationend",{bubbles:true}));vi.runAllTimers();expect(done).toHaveBeenCalledTimes(1);});
+it("treats animation cancellation as a terminal event",()=>{const {dialog,panel}=example(),done=vi.fn();waitForExit(dialog,done);panel.dispatchEvent(new Event("animationcancel",{bubbles:true}));vi.runAllTimers();expect(done).toHaveBeenCalledTimes(1);});
+it("finishes immediately when reduced motion changes during exit",()=>{const {dialog}=example(),done=vi.fn();waitForExit(dialog,done);Object.assign(media,{matches:true});media.dispatchEvent(new Event("change"));expect(done).toHaveBeenCalledTimes(1);vi.runAllTimers();expect(done).toHaveBeenCalledTimes(1);});
+it("cancels listeners and timers on owner disposal",()=>{const {dialog,panel}=example(),done=vi.fn();const cancel=waitForExit(dialog,done);cancel();panel.dispatchEvent(new Event("animationend",{bubbles:true}));vi.runAllTimers();expect(done).not.toHaveBeenCalled();});
+it("does not complete an obsolete detached dialog",()=>{const {dialog}=example(),done=vi.fn();waitForExit(dialog,done);dialog.remove();vi.runAllTimers();expect(done).not.toHaveBeenCalled();});
+it("uses the configured seconds duration as fallback when no event fires",()=>{const {dialog}=example(),done=vi.fn();dialog.style.setProperty("--duration-exit",".16s");waitForExit(dialog,done);vi.advanceTimersByTime(159);expect(done).not.toHaveBeenCalled();vi.advanceTimersByTime(1);expect(done).toHaveBeenCalledOnce();});
+it("ignores cancellation of the entrance while the exit animation starts",()=>{const {dialog,panel}=example(),done=vi.fn();panel.style.animationName="exit-panel";waitForExit(dialog,done);panel.dispatchEvent(Object.assign(new Event("animationcancel",{bubbles:true}),{animationName:"enter-panel"}));expect(done).not.toHaveBeenCalled();panel.dispatchEvent(Object.assign(new Event("animationend",{bubbles:true}),{animationName:"exit-panel"}));expect(done).toHaveBeenCalledOnce();});

@@ -1,0 +1,132 @@
+import type { Product, RestokState, ShoppingItem } from "@/lib/types";
+
+const productSeed: Array<[string, Product["category"], number]> = [
+  ["Água com Gás (fardo)", "Bebidas", 24],
+  ["Bucha de Pia", "Higiene", 1],
+  ["Cebola", "Alimentos", 5],
+  ["Chá mate com gás", "Alimentos", 3],
+  ["Coca Zero (dois fardos)", "Bebidas", 24],
+  ["Creme de Leite", "Alimentos", 10],
+  ["Detergente", "Limpeza", 2],
+  ["Energético Monster", "Bebidas", 3],
+  ["Energético Redbull", "Bebidas", 3],
+  ["Farinha de Trigo", "Alimentos", 1],
+  ["Feijão", "Alimentos", 1],
+  ["Filé de Peito de Frango", "Alimentos", 7],
+  ["Leite condensado", "Alimentos", 3],
+  ["Leite Desnatado", "Alimentos", 1],
+  ["leite zero lac", "Alimentos", 1],
+  ["Limão", "Alimentos", 4],
+  ["Macarrão Cbl de Anj", "Alimentos", 2],
+  ["Mandioca 500g", "Alimentos", 2],
+  ["Massa de Alho", "Alimentos", 2],
+  ["Molho de tomate", "Alimentos", 5],
+  ["Muçarela 600g", "Alimentos", 1],
+  ["Óleo", "Alimentos", 1],
+  ["papel filme", "Alimentos", 1],
+  ["Papel Higiênico", "Higiene", 2],
+  ["Papel Toalha", "Limpeza", 2],
+  ["Picanha Suina", "Alimentos", 1],
+  ["Presunto 300g", "Alimentos", 1],
+  ["Requeijão", "Alimentos", 1],
+  ["Sabonete", "Higiene", 3],
+  ["Suco Clight", "Alimentos", 10],
+  ["Leite condensado Integral", "Alimentos", 3],
+  ["Shampoo", "Higiene", 2],
+  ["Água com gás 1.5L", "Alimentos", 2],
+  ["Ovo", "Alimentos", 1],
+  ["Sabão Liquido (Uau Vermelho Perfumes)", "Limpeza", 1],
+  ["Veja", "Limpeza", 1],
+  ["Ketchup ou 3em1", "Alimentos", 1],
+  ["Doce de Leite", "Alimentos", 1],
+  ["Chocolate Meio Amargo", "Alimentos", 1],
+  ["Café", "Alimentos", 1],
+  ["Pão de Hamburguer", "Alimentos", 1],
+  ["Cebolinha", "Alimentos", 2],
+  ["Batata", "Alimentos", 5],
+  ["Milho de pipoca", "Alimentos", 1],
+];
+
+export const seedProducts: Product[] = productSeed.map(([name, category, defaultQuantity], index) => ({
+  id: `product-${index + 1}`,
+  name,
+  category,
+  defaultQuantity,
+  active: true,
+}));
+
+const historicalPrices: Record<string, number> = {
+  "Água com Gás (fardo)": 1.89,
+  "Bucha de Pia": 4.69,
+  Cebola: 3.96,
+  "Chá mate com gás": 4.39,
+  "Coca Zero (dois fardos)": 1.69,
+  "Creme de Leite": 2.69,
+  Detergente: 2.49,
+  "Energético Monster": 7.99,
+  "Energético Redbull": 9.99,
+  "Farinha de Trigo": 3.49,
+  Feijão: 8.99,
+  "Filé de Peito de Frango": 15.89,
+  "Leite condensado": 5.79,
+  "Leite Desnatado": 5.19,
+  "leite zero lac": 6.69,
+  Limão: 0.8,
+  "Macarrão Cbl de Anj": 6.79,
+  "Mandioca 500g": 12.98,
+  "Massa de Alho": 5.99,
+  "Molho de tomate": 1.89,
+  "Muçarela 600g": 22.14,
+  Óleo: 6.99,
+  "papel filme": 9.99,
+  "Papel Higiênico": 16.9,
+  "Papel Toalha": 4.29,
+  "Picanha Suina": 33.88,
+  "Presunto 300g": 9.5,
+  Requeijão: 15.98,
+  Sabonete: 2.98,
+  "Suco Clight": 1.69,
+  "Leite condensado Integral": 6.59,
+  Shampoo: 14.99,
+  "Água com gás 1.5L": 2.99,
+};
+
+const makeItems = (statusPattern: (index: number, product: Product) => ShoppingItem["status"], withPrices: boolean) =>
+  seedProducts.map((product, index) => {
+    const price = historicalPrices[product.name];
+    return {
+      id: `item-${product.id}`,
+      productId: product.id,
+      name: product.name,
+      category: product.category,
+      quantity: product.defaultQuantity,
+      ...(withPrices && price ? { unitPrice: price } : {}),
+      status: statusPattern(index, product),
+      sortOrder: index,
+    };
+  });
+
+const activeItems = makeItems(() => "pending", true);
+
+export const seedState: RestokState = {
+  products: seedProducts,
+  lists: [
+    {
+      id: "list-active",
+      name: "Compras de Setembro",
+      budget: 800,
+      status: "active",
+      startedAt: "2026-09-01T09:30:00.000Z",
+      items: activeItems,
+    },
+    {
+      id: "list-august",
+      name: "Compras de Agosto",
+      budget: 800,
+      status: "completed",
+      startedAt: "2026-08-04T10:00:00.000Z",
+      finishedAt: "2026-08-04T11:25:00.000Z",
+      items: makeItems(() => "purchased", true),
+    },
+  ],
+};

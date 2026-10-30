@@ -1,0 +1,17 @@
+{
+  "diffCheck": "passed",
+  "testFiles": 39,
+  "build": "passed, webpack",
+  "lint": "passed",
+  "base": "a343059",
+  "visualViewports": 6,
+  "finalPublicSubset": "13/13 in7 files",
+  "typecheck": "passed, no incremental",
+  "backendWrites": false,
+  "tests": 228,
+  "port": 3000,
+  "scope": "PR14 only",
+  "nextPR": "15 not authorized",
+  "release": "pending cross-cutting gates",
+  "newBrowserEvidence": true
+}

@@ -1,0 +1,334 @@
+{
+  "method": "Continuous screenshots from Codex internal browser during actual UI actions, sampled with original acquisition times; no generated UI frames",
+  "frames": [
+    {
+      "file": "frame-0000.jpg",
+      "startMs": 0,
+      "endMs": 62
+    },
+    {
+      "file": "frame-0001.jpg",
+      "startMs": 64,
+      "endMs": 129
+    },
+    {
+      "file": "frame-0002.jpg",
+      "startMs": 130,
+      "endMs": 194
+    },
+    {
+      "file": "frame-0003.jpg",
+      "startMs": 195,
+      "endMs": 262
+    },
+    {
+      "file": "frame-0004.jpg",
+      "startMs": 263,
+      "endMs": 328
+    },
+    {
+      "file": "frame-0005.jpg",
+      "startMs": 329,
+      "endMs": 402
+    },
+    {
+      "file": "frame-0006.jpg",
+      "startMs": 403,
+      "endMs": 465
+    },
+    {
+      "file": "frame-0007.jpg",
+      "startMs": 466,
+      "endMs": 559
+    },
+    {
+      "file": "frame-0008.jpg",
+      "startMs": 560,
+      "endMs": 624
+    },
+    {
+      "file": "frame-0009.jpg",
+      "startMs": 625,
+      "endMs": 687
+    },
+    {
+      "file": "frame-0010.jpg",
+      "startMs": 688,
+      "endMs": 807
+    },
+    {
+      "file": "frame-0011.jpg",
+      "startMs": 808,
+      "endMs": 874
+    },
+    {
+      "file": "frame-0012.jpg",
+      "startMs": 875,
+      "endMs": 954
+    },
+    {
+      "file": "frame-0013.jpg",
+      "startMs": 955,
+      "endMs": 1034
+    },
+    {
+      "file": "frame-0014.jpg",
+      "startMs": 1035,
+      "endMs": 1110
+    },
+    {
+      "file": "frame-0015.jpg",
+      "startMs": 1111,
+      "endMs": 1160
+    },
+    {
+      "file": "frame-0016.jpg",
+      "startMs": 1161,
+      "endMs": 1210
+    },
+    {
+      "file": "frame-0017.jpg",
+      "startMs": 1211,
+      "endMs": 1274
+    },
+    {
+      "file": "frame-0018.jpg",
+      "startMs": 1276,
+      "endMs": 1355
+    },
+    {
+      "file": "frame-0019.jpg",
+      "startMs": 1356,
+      "endMs": 1492
+    },
+    {
+      "file": "frame-0020.jpg",
+      "startMs": 1493,
+      "endMs": 1634
+    },
+    {
+      "file": "frame-0021.jpg",
+      "startMs": 1635,
+      "endMs": 1721
+    },
+    {
+      "file": "frame-0022.jpg",
+      "startMs": 1723,
+      "endMs": 1772
+    },
+    {
+      "file": "frame-0023.jpg",
+      "startMs": 1773,
+      "endMs": 1823
+    },
+    {
+      "file": "frame-0024.jpg",
+      "startMs": 1825,
+      "endMs": 1889
+    },
+    {
+      "file": "frame-0025.jpg",
+      "startMs": 1890,
+      "endMs": 1956
+    },
+    {
+      "file": "frame-0026.jpg",
+      "startMs": 1958,
+      "endMs": 2014
+    },
+    {
+      "file": "frame-0027.jpg",
+      "startMs": 2015,
+      "endMs": 2063
+    },
+    {
+      "file": "frame-0028.jpg",
+      "startMs": 2064,
+      "endMs": 2128
+    },
+    {
+      "file": "frame-0029.jpg",
+      "startMs": 2129,
+      "endMs": 2214
+    },
+    {
+      "file": "frame-0030.jpg",
+      "startMs": 2215,
+      "endMs": 2289
+    },
+    {
+      "file": "frame-0031.jpg",
+      "startMs": 2291,
+      "endMs": 2369
+    },
+    {
+      "file": "frame-0032.jpg",
+      "startMs": 2370,
+      "endMs": 2447
+    },
+    {
+      "file": "frame-0033.jpg",
+      "startMs": 2449,
+      "endMs": 2527
+    },
+    {
+      "file": "frame-0034.jpg",
+      "startMs": 2528,
+      "endMs": 2595
+    },
+    {
+      "file": "frame-0035.jpg",
+      "startMs": 2596,
+      "endMs": 2654
+    },
+    {
+      "file": "frame-0036.jpg",
+      "startMs": 2655,
+      "endMs": 2714
+    },
+    {
+      "file": "frame-0037.jpg",
+      "startMs": 2715,
+      "endMs": 2790
+    },
+    {
+      "file": "frame-0038.jpg",
+      "startMs": 2792,
+      "endMs": 2847
+    },
+    {
+      "file": "frame-0039.jpg",
+      "startMs": 2849,
+      "endMs": 2927
+    },
+    {
+      "file": "frame-0040.jpg",
+      "startMs": 2928,
+      "endMs": 3021
+    },
+    {
+      "file": "frame-0041.jpg",
+      "startMs": 3022,
+      "endMs": 3102
+    },
+    {
+      "file": "frame-0042.jpg",
+      "startMs": 3103,
+      "endMs": 3173
+    },
+    {
+      "file": "frame-0043.jpg",
+      "startMs": 3174,
+      "endMs": 3234
+    },
+    {
+      "file": "frame-0044.jpg",
+      "startMs": 3236,
+      "endMs": 3314
+    },
+    {
+      "file": "frame-0045.jpg",
+      "startMs": 3316,
+      "endMs": 3386
+    },
+    {
+      "file": "frame-0046.jpg",
+      "startMs": 3387,
+      "endMs": 3448
+    },
+    {
+      "file": "frame-0047.jpg",
+      "startMs": 3449,
+      "endMs": 3520
+    },
+    {
+      "file": "frame-0048.jpg",
+      "startMs": 3521,
+      "endMs": 3581
+    },
+    {
+      "file": "frame-0049.jpg",
+      "startMs": 3582,
+      "endMs": 3647
+    },
+    {
+      "file": "frame-0050.jpg",
+      "startMs": 3649,
+      "endMs": 3714
+    },
+    {
+      "file": "frame-0051.jpg",
+      "startMs": 3716,
+      "endMs": 3794
+    },
+    {
+      "file": "frame-0052.jpg",
+      "startMs": 3795,
+      "endMs": 3868
+    },
+    {
+      "file": "frame-0053.jpg",
+      "startMs": 3869,
+      "endMs": 3921
+    },
+    {
+      "file": "frame-0054.jpg",
+      "startMs": 3922,
+      "endMs": 3981
+    },
+    {
+      "file": "frame-0055.jpg",
+      "startMs": 3983,
+      "endMs": 4053
+    },
+    {
+      "file": "frame-0056.jpg",
+      "startMs": 4054,
+      "endMs": 4114
+    },
+    {
+      "file": "frame-0057.jpg",
+      "startMs": 4115,
+      "endMs": 4194
+    },
+    {
+      "file": "frame-0058.jpg",
+      "startMs": 4196,
+      "endMs": 4253
+    },
+    {
+      "file": "frame-0059.jpg",
+      "startMs": 4254,
+      "endMs": 4314
+    },
+    {
+      "file": "frame-0060.jpg",
+      "startMs": 4315,
+      "endMs": 4394
+    }
+  ],
+  "events": [
+    {
+      "atMs": 428,
+      "action": "open item"
+    },
+    {
+      "atMs": 1298,
+      "action": "price 5,00 and save"
+    },
+    {
+      "atMs": 2137,
+      "action": "filter purchased"
+    },
+    {
+      "atMs": 2951,
+      "action": "search no result"
+    },
+    {
+      "atMs": 3549,
+      "action": "clear search"
+    }
+  ],
+  "durationMs": 4396,
+  "sourceDirectory": "node_modules/.cache/restok-pr06-recording"
+}

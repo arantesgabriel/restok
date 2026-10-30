@@ -1,0 +1,83 @@
+{
+  "kind": "E2E-FIXTURE via user-owned Codex internal tab, static screenshots only",
+  "captures": [
+    {
+      "file": "320-640-components.jpg",
+      "target": {
+        "width": 320,
+        "height": 640
+      },
+      "metrics": {
+        "height": 640,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 320
+      }
+    },
+    {
+      "file": "390-844-components.jpg",
+      "target": {
+        "width": 390,
+        "height": 844
+      },
+      "metrics": {
+        "height": 844,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 390
+      }
+    },
+    {
+      "file": "768-1024-components.jpg",
+      "target": {
+        "width": 768,
+        "height": 1024
+      },
+      "metrics": {
+        "height": 1024,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 768
+      }
+    },
+    {
+      "file": "1024-768-components.jpg",
+      "target": {
+        "width": 1024,
+        "height": 768
+      },
+      "metrics": {
+        "height": 768,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 1024
+      }
+    },
+    {
+      "file": "1280-800-components.jpg",
+      "target": {
+        "width": 1280,
+        "height": 800
+      },
+      "metrics": {
+        "height": 801,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 1280
+      }
+    },
+    {
+      "file": "1440-900-components.jpg",
+      "target": {
+        "width": 1440,
+        "height": 900
+      },
+      "metrics": {
+        "height": 901,
+        "overflow": false,
+        "smallButtons": [],
+        "width": 1440
+      }
+    }
+  ]
+}

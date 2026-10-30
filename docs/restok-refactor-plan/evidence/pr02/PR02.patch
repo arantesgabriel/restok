@@ -1,0 +1,594 @@
+diff --git a/components/restok-app.tsx b/components/restok-app.tsx
+--- a/components/restok-app.tsx
++++ b/components/restok-app.tsx
+@@ -33,7 +33,7 @@
+ import { HouseholdOnboarding } from "@/components/household-onboarding";
+ import { subscribeToShoppingList, type RealtimeConnectionStatus } from "@/lib/supabase/realtime";
+ import { acceptHouseholdInvite, activeHouseholdStorageKey, createShoppingListWithItems, loadCurrentProfile, loadRemoteState, loadUserHouseholds, persistList, persistProduct, persistProfileName, resolveRemoteContext, type RemoteWriteResult } from "@/lib/supabase/data";
+-import { clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
++import { browserStorage, clearRemoteStateCaches, LEGACY_REMOTE_STATE_KEY, remoteStateStorageKey } from "@/lib/supabase/cache";
+ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+ import { isSupabaseConfigured } from "@/lib/supabase/config";
+ import { CATEGORY_ORDER, type CategoryName, type HouseholdSummary, type ItemStatus, type Product, type RestokState, type ShoppingItem, type ShoppingList } from "@/lib/types";
+@@ -606,13 +606,13 @@
+       setCategorySort({});
+       return;
+     }
+-    setCategorySort(readCategoryNameSorts(window.localStorage.getItem(categoryNameSortKey(householdId))));
++    setCategorySort(readCategoryNameSorts(browserStorage.getItem(categoryNameSortKey(householdId))));
+   }, [householdId]);
+ 
+   const toggleCategorySort = (category: CategoryName) => {
+     setCategorySort((current) => {
+       const next = { ...current, [category]: (current[category] ?? "asc") === "asc" ? "desc" : "asc" } as Partial<Record<CategoryName, NameSortDirection>>;
+-      if (householdId) window.localStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
++      if (householdId) browserStorage.setItem(categoryNameSortKey(householdId), JSON.stringify(next));
+       return next;
+     });
+   };
+@@ -828,8 +828,8 @@
+ 
+     const { data: { subscription } } = client.auth.onAuthStateChange((event, session) => {
+       if (event === "SIGNED_OUT") {
+-        if (activeUserIdRef.current) clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
+-        window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
++        if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
++        browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+         activeUserIdRef.current = null;
+         activeStorageKeyRef.current = null;
+         setStorageKey(null);
+@@ -848,9 +848,17 @@
+ 
+       const nextUserId = session?.user.id;
+       if (event === "SIGNED_IN" && nextUserId && activeUserIdRef.current && nextUserId !== activeUserIdRef.current) {
+-        clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
++        clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
+         activeUserIdRef.current = null;
+         activeStorageKeyRef.current = null;
++        setStorageKey(null);
++        setState({ products: [], lists: [] });
++        setHouseholds([]);
++        setActiveHousehold(null);
++        setProfileName(null);
++        setProfileEmail(null);
++        setHouseholdManagerOpen(false);
++        setHydrated(false);
+         window.location.reload();
+       }
+     });
+@@ -872,7 +880,7 @@
+         window.history.replaceState({}, "", `${inviteUrl.pathname}${inviteUrl.search}${inviteUrl.hash}`);
+       }
+ 
+-      const context = await resolveRemoteContext(acceptedHouseholdId);
++      const context = await resolveRemoteContext(acceptedHouseholdId ?? undefined);
+       if (cancelled) return;
+       if (!context) {
+         const [availableHouseholds, identity] = await Promise.all([loadUserHouseholds(), loadCurrentProfile()]);
+@@ -906,15 +914,15 @@
+       setProfileName(context.profileName);
+       setProfileEmail(context.email);
+       setOnboarding(false);
+-      const previouslySelectedHouseholdId = window.localStorage.getItem(activeHouseholdStorageKey(context.userId));
++      const previouslySelectedHouseholdId = browserStorage.getItem(activeHouseholdStorageKey(context.userId));
+       const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
+       activeStorageKeyRef.current = scopedKey;
+       setStorageKey(scopedKey);
+-      window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
++      browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+ 
+       let cached: RestokState | null = null;
+       try {
+-        const stored = window.localStorage.getItem(scopedKey);
++        const stored = browserStorage.getItem(scopedKey);
+         if (stored) {
+           cached = JSON.parse(stored) as RestokState;
+           setState(cached);
+@@ -932,9 +940,9 @@
+         createdAt: new Date().toISOString(),
+       };
+       if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId && availableHouseholds && !availableHouseholds.some((household) => household.id === previouslySelectedHouseholdId)) {
+-        window.localStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
++        browserStorage.removeItem(remoteStateStorageKey(context.userId, previouslySelectedHouseholdId));
+       }
+-      window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
++      browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+       setHouseholds(availableHouseholds ?? [activeSummary]);
+       setActiveHousehold(activeSummary);
+       if (remote && remote.userId === context.userId && remote.householdId === context.householdId) {
+@@ -950,6 +958,7 @@
+       setHydrated(true);
+       if (inviteFailed) setToast("Este convite é inválido, expirou, já foi usado ou foi revogado.");
+       else if (acceptedHouseholdId) setToast("Convite aceito. Esta casa está selecionada.");
++      else if (previouslySelectedHouseholdId && previouslySelectedHouseholdId !== context.householdId) setToast(`A casa selecionada não está mais disponível. Mostrando ${context.householdName}.`);
+     };
+     void boot().catch(() => {
+       if (cancelled) return;
+@@ -965,7 +974,7 @@
+   }, []);
+ 
+   useEffect(() => {
+-    if (hydrated && storageKey) window.localStorage.setItem(storageKey, JSON.stringify(state));
++    if (hydrated && storageKey) browserStorage.setItem(storageKey, JSON.stringify(state));
+   }, [state, hydrated, storageKey]);
+ 
+   useEffect(() => { writeOperationsRef.current = writeOperations; }, [writeOperations]);
+@@ -1180,7 +1189,7 @@
+       role: context.role,
+       createdAt: new Date().toISOString(),
+     };
+-    window.localStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
++    browserStorage.setItem(activeHouseholdStorageKey(context.userId), context.householdId);
+     activeUserIdRef.current = context.userId;
+     const scopedKey = remoteStateStorageKey(context.userId, context.householdId);
+     activeStorageKeyRef.current = scopedKey;
+@@ -1214,14 +1223,14 @@
+       return;
+     }
+     if (activeHousehold && activeUserIdRef.current) {
+-      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
++      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+     }
+     if (availableHouseholds.length) {
+       await activateHousehold(availableHouseholds[0].id);
+       return;
+     }
+     if (activeHousehold && activeUserIdRef.current) {
+-      window.localStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
++      browserStorage.removeItem(remoteStateStorageKey(activeUserIdRef.current, activeHousehold.id));
+     }
+     const identity = await loadCurrentProfile().catch(() => null);
+     setProfileName(identity?.displayName ?? null);
+@@ -1246,8 +1255,8 @@
+       return;
+     }
+ 
+-    if (activeUserIdRef.current) clearRemoteStateCaches(window.localStorage, activeUserIdRef.current);
+-    window.localStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
++    if (activeUserIdRef.current) clearRemoteStateCaches(browserStorage, activeUserIdRef.current);
++    browserStorage.removeItem(LEGACY_REMOTE_STATE_KEY);
+     activeUserIdRef.current = null;
+     activeStorageKeyRef.current = null;
+     setStorageKey(null);
+diff --git a/lib/supabase/cache.ts b/lib/supabase/cache.ts
+--- a/lib/supabase/cache.ts
++++ b/lib/supabase/cache.ts
+@@ -1,4 +1,14 @@
+ export const LEGACY_REMOTE_STATE_KEY = "restok-state-v2";
++
++// Browser persistence is optional. A denied getter, private mode or quota failure
++// must not prevent an authorized remote context from loading or signing out.
++export const browserStorage = {
++  get length() { try { return window.localStorage.length; } catch { return 0; } },
++  key(index: number) { try { return window.localStorage.key(index); } catch { return null; } },
++  getItem(key: string) { try { return window.localStorage.getItem(key); } catch { return null; } },
++  setItem(key: string, value: string) { try { window.localStorage.setItem(key, value); } catch { /* remote state remains usable without cache */ } },
++  removeItem(key: string) { try { window.localStorage.removeItem(key); } catch { /* storage may be unavailable */ } },
++};
+ 
+ export function remoteStateStoragePrefix(userId: string) {
+   return `restok-state-v3:${encodeURIComponent(userId)}:`;
+diff --git a/lib/supabase/cache.test.ts b/lib/supabase/cache.test.ts
+--- a/lib/supabase/cache.test.ts
++++ b/lib/supabase/cache.test.ts
+@@ -1,5 +1,18 @@
+-import { describe, expect, it } from "vitest";
+-import { clearRemoteStateCaches, remoteStateStorageKey } from "@/lib/supabase/cache";
++import { describe, expect, it, vi } from "vitest";
++import { browserStorage, clearRemoteStateCaches, remoteStateStorageKey } from "@/lib/supabase/cache";
++
++it("treats denied storage methods and quota failure as optional persistence", () => {
++  const denied = () => { throw new Error("denied or quota exceeded"); };
++  vi.stubGlobal("window", { localStorage: { get length() { return denied(); }, key: denied, getItem: denied, setItem: denied, removeItem: denied } });
++  try {
++    expect(browserStorage.getItem("key")).toBeNull();
++    expect(browserStorage.key(0)).toBeNull();
++    expect(browserStorage.length).toBe(0);
++    expect(() => browserStorage.setItem("key", "value")).not.toThrow();
++    expect(() => browserStorage.removeItem("key")).not.toThrow();
++    expect(() => clearRemoteStateCaches(browserStorage, "person")).not.toThrow();
++  } finally { vi.unstubAllGlobals(); }
++});
+ 
+ describe("remote state cache scope", () => {
+   it("separates users that share a browser", () => {
+diff --git a/components/restok-app.household-context.test.tsx b/components/restok-app.household-context.test.tsx
+new file mode 100644
+--- /dev/null
++++ b/components/restok-app.household-context.test.tsx
+@@ -0,0 +1,146 @@
++/** @vitest-environment happy-dom */
++import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
++import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
++import type { RemoteContext } from "@/lib/supabase/data";
++import type { RestokState } from "@/lib/types";
++import { remoteStateStorageKey } from "@/lib/supabase/cache";
++
++const remote = vi.hoisted(() => ({ resolve: vi.fn(), snapshot: vi.fn(), invite: vi.fn(), households: vi.fn(), profile: vi.fn(), authChange: undefined as undefined | ((event: string, session: { user: { id: string } }) => void) }));
++vi.mock("@/lib/supabase/config", () => ({ isSupabaseConfigured: true }));
++vi.mock("@/lib/supabase/client", () => ({ getSupabaseBrowserClient: () => ({ auth: { onAuthStateChange: (callback: typeof remote.authChange) => { remote.authChange = callback; return { data: { subscription: { unsubscribe() {} } } }; } } }) }));
++vi.mock("@/lib/supabase/realtime", () => ({ subscribeToShoppingList: () => () => {} }));
++vi.mock("@/lib/supabase/data", () => ({
++  activeHouseholdStorageKey: (user: string) => `restok-active-household:${user}`,
++  resolveRemoteContext: remote.resolve, loadRemoteState: remote.snapshot, acceptHouseholdInvite: remote.invite,
++  loadUserHouseholds: remote.households, loadCurrentProfile: remote.profile,
++  persistList: vi.fn(), persistProduct: vi.fn(), persistProfileName: vi.fn(), createShoppingListWithItems: vi.fn(),
++  loadHouseholdMembers: async () => [], loadHouseholdInvites: async () => [],
++}));
++import RestokApp from "@/components/restok-app";
++
++const houses = ["a", "b"].map((id) => ({ id, name: `Casa ${id.toUpperCase()}`, role: "owner" as const, createdAt: "2026-01-01" }));
++let user = "person-one";
++function context(id: string): RemoteContext { return { userId: user, householdId: id, householdName: `Casa ${id.toUpperCase()}`, role: "owner", profileName: "Teste", email: null, client: {} } as RemoteContext; }
++function state(id: string): RestokState { return { products: [{ id: `product-${id}`, name: `Somente casa ${id}`, category: "Alimentos", defaultQuantity: 1, active: true }], lists: [] }; }
++const preference = () => `restok-active-household:${user}`;
++async function open() { render(<RestokApp />); await screen.findByRole("button", { name: "Perfil de Teste" }); }
++async function home() { fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]); }
++
++beforeEach(() => {
++  vi.resetAllMocks(); localStorage.clear(); user = "person-one";
++  window.history.replaceState(null, "", "/app");
++  remote.invite.mockResolvedValue(null);
++  remote.households.mockResolvedValue(houses);
++  remote.profile.mockResolvedValue({ userId: user, displayName: "Teste", email: null });
++  remote.resolve.mockImplementation(async (preferred?: string | null) => context(houses.find((house) => house.id === (preferred === undefined ? localStorage.getItem(preference()) : preferred))?.id ?? "a"));
++  remote.snapshot.mockImplementation(async (current: RemoteContext) => ({ ...current, state: state(current.householdId) }));
++});
++afterEach(() => { cleanup(); vi.restoreAllMocks(); localStorage.clear(); });
++
++describe("household boot and activation", () => {
++  it("restores the second authorized household after a fresh mount without an invite", async () => {
++    localStorage.setItem(preference(), "b");
++    await open(); await home();
++    expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
++    expect(remote.resolve).toHaveBeenCalledWith(undefined);
++    expect(localStorage.getItem(preference())).toBe("b");
++    cleanup(); await open(); await home();
++    expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
++  });
++
++  it.each(["malformed", "a".repeat(36)])("keeps preference for invalid/failed invitation %s and removes it from URL", async (invite) => {
++    localStorage.setItem(preference(), "b");
++    window.history.replaceState(null, "", `/app?invite=${invite}&flow=onboarding#home`);
++    await open();
++    expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
++    expect(screen.getByText(/Este convite é inválido/)).toBeTruthy();
++    expect(window.location.search).toBe("");
++    expect(remote.invite).toHaveBeenCalledTimes(invite === "malformed" ? 0 : 1);
++  });
++
++  it("prioritizes a successfully accepted invitation over saved selection", async () => {
++    localStorage.setItem(preference(), "a");
++    remote.invite.mockResolvedValue("b");
++    window.history.replaceState(null, "", `/app?invite=${"b".repeat(36)}#home`);
++    await open();
++    expect(remote.resolve).toHaveBeenCalledWith("b");
++    expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
++    expect(localStorage.getItem(preference())).toBe("b");
++  });
++
++  it("explains a revoked preference and removes only that user's invalid household cache", async () => {
++    localStorage.setItem(preference(), "revoked");
++    localStorage.setItem(remoteStateStorageKey(user, "revoked"), "old");
++    localStorage.setItem(remoteStateStorageKey("someone-else", "revoked"), "other");
++    await open();
++    expect(screen.getByText(/A casa selecionada não está mais disponível/)).toBeTruthy();
++    expect(localStorage.getItem(remoteStateStorageKey(user, "revoked"))).toBeNull();
++    expect(localStorage.getItem(remoteStateStorageKey("someone-else", "revoked"))).toBe("other");
++  });
++
++  it("loads remotely with unavailable browser storage", async () => {
++    remote.resolve.mockResolvedValue(context("a"));
++    const getter = vi.spyOn(window, "localStorage", "get").mockImplementation(() => { throw new Error("blocked"); });
++    await open(); await home();
++    expect(screen.getByRole("button", { name: "Editar Somente casa a" })).toBeTruthy();
++    expect(getter).toHaveBeenCalled();
++  });
++
++  it("does not reuse the previous account's preference or cached household", async () => {
++    localStorage.setItem(preference(), "b");
++    localStorage.setItem(remoteStateStorageKey(user, "a"), JSON.stringify(state("private")));
++    user = "person-two";
++    await open(); await home();
++    expect(screen.getByRole("button", { name: "Editar Somente casa a" })).toBeTruthy();
++    expect(screen.queryByRole("button", { name: "Editar Somente casa private" })).toBeNull();
++    expect(localStorage.getItem("restok-active-household:person-one")).toBe("b");
++  });
++
++  it.each([false, true])("keeps the selected tenant on snapshot failure (authorized cache %s)", async (cached) => {
++    localStorage.setItem(preference(), "b");
++    if (cached) localStorage.setItem(remoteStateStorageKey(user, "b"), JSON.stringify(state("b")));
++    remote.snapshot.mockResolvedValue(null);
++    await open(); await home();
++    expect(localStorage.getItem(preference())).toBe("b");
++    expect(screen.queryByRole("button", { name: "Editar Somente casa a" })).toBeNull();
++    if (cached) expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
++    else expect(screen.queryByRole("button", { name: "Editar Somente casa b" })).toBeNull();
++    expect(screen.getByText(cached ? /Exibindo o cache salvo desta casa/ : /Não foi possível carregar os dados da casa/)).toBeTruthy();
++  });
++
++  it("does not activate a new household when its snapshot fails", async () => {
++    await open(); await home();
++    remote.snapshot.mockResolvedValue(null);
++    fireEvent.click(screen.getByRole("button", { name: "Casas e pessoas" }));
++    fireEvent.change(screen.getByRole("combobox"), { target: { value: "b" } });
++    await screen.findByText(/A casa atual continua selecionada/);
++    expect(localStorage.getItem(preference())).toBe("a");
++    expect(screen.getByRole("button", { name: "Editar Somente casa a" })).toBeTruthy();
++  });
++
++  it("rejects a snapshot belonging to a different account or household", async () => {
++    localStorage.setItem(preference(), "b");
++    remote.snapshot.mockResolvedValue({ userId: "someone-else", householdId: "a", state: state("private") });
++    await open(); await home();
++    expect(screen.queryByRole("button", { name: "Editar Somente casa private" })).toBeNull();
++    expect(localStorage.getItem(preference())).toBe("b");
++  });
++
++  it("shows onboarding with no memberships and no fabricated products", async () => {
++    remote.resolve.mockResolvedValue(null);
++    remote.households.mockResolvedValue([]);
++    render(<RestokApp />);
++    expect(await screen.findByRole("heading", { name: "Escolha como começar" })).toBeTruthy();
++    expect(remote.snapshot).not.toHaveBeenCalled();
++    expect(screen.queryByRole("button", { name: "Editar Somente casa a" })).toBeNull();
++  });
++
++  it("immediately hides old data when auth changes to another account", async () => {
++    const reload = vi.spyOn(window.location, "reload").mockImplementation(() => {});
++    await open(); await home();
++    remote.authChange?.("SIGNED_IN", { user: { id: "person-two" } });
++    await waitFor(() => expect(reload).toHaveBeenCalledOnce());
++    expect(screen.queryByRole("button", { name: "Editar Somente casa a" })).toBeNull();
++    expect(localStorage.getItem(remoteStateStorageKey(user, "a"))).toBeNull();
++  });
++});
+diff --git a/lib/supabase/data.household-context.test.ts b/lib/supabase/data.household-context.test.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/supabase/data.household-context.test.ts
+@@ -0,0 +1,65 @@
++/** @vitest-environment happy-dom */
++import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
++
++const fixture = vi.hoisted(() => ({
++  user: "account-a", members: [] as { household_id: string; role: string }[], authError: false, membershipError: false, householdError: false,
++  from: vi.fn(), getUser: vi.fn(),
++}));
++vi.mock("@/lib/supabase/client", () => ({ getSupabaseBrowserClient: () => ({ auth: { getUser: fixture.getUser }, from: fixture.from }) }));
++import { activeHouseholdStorageKey, resolveRemoteContext } from "@/lib/supabase/data";
++
++beforeEach(() => {
++  vi.resetAllMocks(); localStorage.clear();
++  fixture.user = "account-a"; fixture.authError = false; fixture.membershipError = false; fixture.householdError = false;
++  fixture.members = [{ household_id: "first", role: "owner" }, { household_id: "second", role: "member" }];
++  fixture.getUser.mockImplementation(async () => ({ data: { user: fixture.authError ? null : { id: fixture.user, user_metadata: {} } }, error: fixture.authError ? {} : null }));
++  fixture.from.mockImplementation((table: string) => {
++    let id = "";
++    const query = {
++      select: () => query,
++      eq: (column: string, value: string) => { if (column === "id") id = value; return query; },
++      order: () => query,
++      maybeSingle: async () => ({ data: { display_name: "Teste" }, error: null }),
++      single: async () => ({ data: fixture.householdError ? null : { id, name: `Casa ${id}` }, error: fixture.householdError ? {} : null }),
++      then: (resolve: (value: unknown) => unknown) => Promise.resolve(resolve({ data: table === "household_members" ? fixture.members : [], error: fixture.membershipError ? {} : null })),
++    };
++    return query;
++  });
++});
++afterEach(() => { vi.restoreAllMocks(); localStorage.clear(); });
++
++describe("authorized household resolution", () => {
++  it("uses the saved authorized membership when preference is omitted", async () => {
++    localStorage.setItem(activeHouseholdStorageKey(fixture.user), "second");
++    expect(await resolveRemoteContext()).toMatchObject({ householdId: "second", userId: "account-a", role: "member" });
++  });
++  it("gives an explicit accepted/selected household priority over storage", async () => {
++    localStorage.setItem(activeHouseholdStorageKey(fixture.user), "second");
++    expect(await resolveRemoteContext("first")).toMatchObject({ householdId: "first" });
++  });
++  it("preserves the explicit null contract instead of consulting storage", async () => {
++    localStorage.setItem(activeHouseholdStorageKey(fixture.user), "second");
++    expect(await resolveRemoteContext(null)).toMatchObject({ householdId: "first" });
++  });
++  it.each([undefined, "revoked"])("only falls back to an authorized membership (%s)", async (preferred) => {
++    localStorage.setItem(activeHouseholdStorageKey(fixture.user), "revoked");
++    expect(await resolveRemoteContext(preferred)).toMatchObject({ householdId: "first" });
++  });
++  it("does not inherit another person's saved membership", async () => {
++    localStorage.setItem(activeHouseholdStorageKey("account-a"), "second");
++    fixture.user = "account-b";
++    expect(await resolveRemoteContext()).toMatchObject({ householdId: "first", userId: "account-b" });
++  });
++  it("still validates membership when the localStorage getter is denied", async () => {
++    const getter = vi.spyOn(window, "localStorage", "get").mockImplementation(() => { throw new Error("denied"); });
++    expect(await resolveRemoteContext()).toMatchObject({ householdId: "first" });
++    expect(getter).toHaveBeenCalled();
++  });
++  it.each(["auth", "membership", "household", "empty"])("fails closed on %s failure/absence", async (kind) => {
++    if (kind === "auth") fixture.authError = true;
++    if (kind === "membership") fixture.membershipError = true;
++    if (kind === "household") fixture.householdError = true;
++    if (kind === "empty") fixture.members = [];
++    expect(await resolveRemoteContext("second")).toBeNull();
++  });
++});
+diff --git a/tests/e2e/dev-context.mjs b/tests/e2e/dev-context.mjs
+new file mode 100644
+--- /dev/null
++++ b/tests/e2e/dev-context.mjs
+@@ -0,0 +1,133 @@
++/* global process, console, localStorage, window */
++// Requires fresh human authorization. Does not run seed/migrations or the hosted-refusing integration suite.
++import { readFile, mkdir, writeFile } from "node:fs/promises";
++import { pathToFileURL, URL } from "node:url";
++import path from "node:path";
++import { createClient } from "@supabase/supabase-js";
++import { createHash } from "node:crypto";
++import { execFileSync } from "node:child_process";
++
++if (process.env.RESTOK_DEV_CONTEXT_TEST !== "authorized") throw new Error("Current authorization marker required");
++const frontend = process.env.RESTOK_FRONTEND_URL ?? "http://localhost:3000";
++if (!["http://localhost:3000", "http://127.0.0.1:3001"].includes(frontend)) throw new Error("Unexpected frontend");
++const env = Object.fromEntries((await readFile(".env", "utf8")).split(/\r?\n/).filter((line) => /^[A-Z_]+=/.test(line)).map((line) => { const at = line.indexOf("="); return [line.slice(0, at), line.slice(at + 1).trim().replace(/^['"]|['"]$/g, "")]; }));
++if (new URL(env.NEXT_PUBLIC_SUPABASE_URL).hostname !== "gweynnnjcqafkhpynmrx.supabase.co") throw new Error("Unexpected backend; ask for authorization again");
++const sql = await readFile("supabase/seed.sql", "utf8");
++const credentials = [...sql.matchAll(/where lower\(email\)\s*=\s*'([^']+)'[\s\S]*?crypt\('([^']+)'/g)].map((match) => ({ email: match[1], password: match[2] }));
++if (credentials.length !== 2) throw new Error("Expected two seed accounts; never execute the seed automatically");
++const report = [];
++const sessions = [];
++for (const [index, credential] of credentials.entries()) {
++  const client = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
++  const { data, error } = await client.auth.signInWithPassword(credential);
++  if (error || !data.user) throw new Error(`Seed account ${index + 1} could not authenticate`);
++  const { data: memberships, error: membershipError } = await client.from("household_members").select("household_id,role,created_at").eq("user_id", data.user.id).order("created_at").order("household_id");
++  if (membershipError) throw new Error(`Membership read failed for account ${index + 1}`);
++  report.push({ account: index + 1, memberships: memberships.length, roles: memberships.map((row) => row.role) });
++  sessions.push({ client, memberships });
++}
++console.log(JSON.stringify(report));
++
++if (process.argv[2] === "inspect") process.exit(0);
++const { chromium } = await import(pathToFileURL(process.env.RESTOK_PLAYWRIGHT_MODULE).href);
++const browser = await chromium.launch({ executablePath: process.env.RESTOK_CHROMIUM_EXECUTABLE });
++const out = path.resolve("docs/restok-refactor-plan/evidence/pr02", process.argv[2] ?? "before");
++await mkdir(out, { recursive: true });
++const results = { kind: "INTEGRADO-RESTOK-DEV", frontend, buildLabel: process.env.RESTOK_BUILD_LABEL ?? "current development source", capturedAt: new Date().toISOString(), engine: browser.version(), viewport: { width: 1280, height: 800 }, accounts: report, captures: [], errors: [] };
++results.commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
++results.sourceEvidenceSha256 = createHash("sha256").update(process.argv[2] === "before" ? await readFile("docs/restok-refactor-plan/evidence/pr01/PR01.patch") : execFileSync("git", ["diff", "--binary"])).digest("hex");
++try {
++  for (const [index, credential] of credentials.entries()) {
++    const login = await browser.newContext();
++    const loginPage = await login.newPage();
++    await loginPage.goto(`${frontend}/login`);
++    await loginPage.locator("#email").fill(credential.email);
++    await loginPage.locator("#password").fill(credential.password);
++    await loginPage.getByRole("button", { name: "Entrar", exact: true }).click();
++    await loginPage.waitForURL("**/app**");
++    await loginPage.getByRole("button", { name: /^Perfil de/ }).waitFor();
++    const storageState = await login.storageState();
++    await login.close();
++    const context = await browser.newContext({ storageState, viewport: results.viewport, deviceScaleFactor: 1, reducedMotion: "no-preference", recordVideo: { dir: out, size: results.viewport } });
++    const page = await context.newPage();
++    page.on("pageerror", (error) => results.errors.push(error.message));
++    await page.goto(`${frontend}/app#home`);
++    await page.getByRole("button", { name: "Casas e pessoas", exact: true }).click();
++    const select = page.getByRole("combobox").first();
++    const options = await select.locator("option").evaluateAll((nodes) => nodes.map((node) => ({ value: node.value, text: node.textContent })));
++    if (options.length < 2) throw new Error(`Account ${index + 1} needs two existing authorized households`);
++    await select.selectOption(options[1].value);
++    await page.waitForFunction((selectedId) => Object.entries(localStorage).some(([key, value]) => key.startsWith("restok-active-household:") && value === selectedId), options[1].value);
++    await page.getByRole("dialog").waitFor({ state: "hidden" });
++    await page.getByRole("button", { name: "Casas e pessoas", exact: true }).click();
++    if (await page.locator("#active-household").inputValue() !== options[1].value) throw new Error("Household switch not reflected in UI");
++    const selected = await page.evaluate(() => Object.entries(localStorage).filter(([key]) => key.startsWith("restok-active-household:"))[0]?.[1]);
++    const beforeFile = `account-${index + 1}-selected.png`;
++    await page.waitForTimeout(350);
++    await page.screenshot({ path: path.join(out, beforeFile) });
++    await page.reload();
++    await page.getByRole("button", { name: "Casas e pessoas", exact: true }).click();
++    const after = await page.getByRole("combobox").first().inputValue();
++    const afterFile = `account-${index + 1}-reload.png`;
++    await page.waitForTimeout(350);
++    await page.screenshot({ path: path.join(out, afterFile) });
++    const result = { account: index + 1, selectedSecond: selected === options[1].value, preservedAfterReload: after === options[1].value, beforeFile, afterFile, scenarios: [] };
++    results.captures.push(result);
++    if (process.argv[2] === "after") {
++      if (!result.preservedAfterReload) throw new Error("UI-013 remains after correction");
++      async function selectedHousehold() {
++        await page.getByRole("button", { name: "Casas e pessoas", exact: true }).click();
++        return page.locator("#active-household").inputValue();
++      }
++      for (const invite of ["malformed", "0".repeat(36)]) {
++        await page.goto(`${frontend}/app?invite=${invite}#home`);
++        await page.getByText("Este convite é inválido, expirou, já foi usado ou foi revogado.").waitFor();
++        if (await selectedHousehold() !== options[1].value) throw new Error("Invalid invite lost saved selection");
++        result.scenarios.push({ id: invite === "malformed" ? "malformed-invite" : "invalid-invite", passed: true });
++      }
++      // Existing membership only: consume fresh invitations without adding/removing people.
++      const inviter = sessions.find((session) => session.memberships.some((row) => row.household_id === options[0].value && ["owner", "admin"].includes(row.role)));
++      if (!inviter) throw new Error("No authorized inviter for existing test household");
++      const invitation = await inviter.client.rpc("create_household_invite", { target_household: options[0].value });
++      if (invitation.error || typeof invitation.data !== "string") throw new Error("Could not create authorized test invite");
++      await page.goto(`${frontend}/app?invite=${invitation.data}#home`);
++      await page.getByText("Convite aceito. Esta casa está selecionada.").waitFor();
++      if (await selectedHousehold() !== options[0].value) throw new Error("Accepted invitation did not take precedence");
++      await page.waitForTimeout(350);
++      await page.screenshot({ path: path.join(out, `account-${index + 1}-accepted-invite.png`) });
++      await page.goto(`${frontend}/app?invite=${invitation.data}#home`);
++      await page.getByText("Este convite é inválido, expirou, já foi usado ou foi revogado.").waitFor();
++      if (await selectedHousehold() !== options[0].value) throw new Error("Used invitation lost saved selection");
++      result.scenarios.push({ id: "valid-and-used-invite", passed: true, newMemberships: 0, createdAndConsumedInvites: 1 });
++      await page.route("**/rest/v1/products?**", (route) => route.abort());
++      await page.reload();
++      await page.getByText("Sem conexão com o servidor. Exibindo o cache salvo desta casa.").waitFor();
++      if (await selectedHousehold() !== options[0].value) throw new Error("Snapshot failure changed household");
++      result.scenarios.push({ id: "snapshot-failure-with-cache", passed: true });
++      await page.unroute("**/rest/v1/products?**");
++      await page.evaluate(() => {
++        const key = Object.keys(localStorage).find((key) => key.startsWith("restok-active-household:"));
++        localStorage.setItem(key, "00000000-0000-0000-0000-000000000000");
++      });
++      await page.reload();
++      await page.getByText(/A casa selecionada não está mais disponível/).waitFor();
++      if (await selectedHousehold() !== options[0].value) throw new Error("Invalid preference fallback incorrect");
++      result.scenarios.push({ id: "unauthorized-saved-id", passed: true, membershipRevokedInDatabase: false });
++      const noStorage = await browser.newContext({ storageState });
++      await noStorage.addInitScript(() => Object.defineProperty(window, "localStorage", { get() { throw new Error("storage denied by test"); } }));
++      const isolated = await noStorage.newPage();
++      await isolated.goto(`${frontend}/app#home`);
++      await isolated.getByRole("button", { name: "Casas e pessoas", exact: true }).click();
++      if (await isolated.locator("#active-household").inputValue() !== options[0].value) throw new Error("Blocked storage prevents authorized fallback");
++      await noStorage.close();
++      result.scenarios.push({ id: "storage-getter-denied", passed: true });
++    }
++    const video = page.video();
++    await context.close();
++    await video.saveAs(path.join(out, `account-${index + 1}.webm`));
++    await video.delete();
++  }
++} finally {
++  await browser.close();
++  await writeFile(path.join(out, "result.json"), JSON.stringify(results, null, 2));
++}
+diff --git a/tests/e2e/DEV-CONTEXT.md b/tests/e2e/DEV-CONTEXT.md
+new file mode 100644
+--- /dev/null
++++ b/tests/e2e/DEV-CONTEXT.md
+@@ -0,0 +1,36 @@
++# Gate de contexto no restok-dev (PR 02)
++
++Este runner é separado do harness de fixtures e da suíte `test:supabase`.
++Ele acessa o backend real **somente após autorização humana atual**. A execução
++de 28/10/2026 foi autorizada nas respostas registradas em
++`docs/restok-refactor-plan/08-IMPLEMENTATION-PROGRESS.md`.
++
++`dev-context.mjs` exige `RESTOK_DEV_CONTEXT_TEST=authorized`, aceita apenas o
++hostname restok-dev explicitamente autorizado e frontend localhost3000 ou
++127.0.0.1:3001. Extrai as duas credenciais do seed para memória, sem executar SQL,
++imprimir credenciais ou salvar sessões. A gravação de vídeo começa depois do login.
++As contas do seed são fictícias. Não substituir essas contas por pessoas reais.
++
++- `node tests/e2e/dev-context.mjs inspect`: autenticação e leitura da quantidade/papéis.
++- `node tests/e2e/dev-context.mjs before`: troca/reload nas duas contas; sem criar convites.
++- `node tests/e2e/dev-context.mjs after`: valida troca/reload, convites malformado/inválido,
++  cria/consome **dois** convites para memberships existentes, verifica reutilização,
++  injeta falha de snapshot só no browser, testa preferência não autorizada e getter
++  localStorage bloqueado. Cada nova execução after cria mais dois convites.
++
++Usar as variáveis de Playwright/Chromium/ffmpeg descritas no README do harness.
++`RESTOK_FRONTEND_URL` e `RESTOK_BUILD_LABEL` identificam o frontend e o build.
++Nesta execução, antes/depois finais usaram `next start` em 127.0.0.1:3001: primeiro
++o build do PR01, depois o build do PR02. O servidor dev do usuário em3000 não foi
++reiniciado. Os processos temporários de QA foram encerrados ao concluir.
++
++Os resultados omitem IDs, emails, senhas, cookies e tokens de convite; screenshots
++mostram somente os nomes e email fictícios das contas de teste. Não salvar trace
++de requisições autenticadas sem redigir segredos. Manifestações de mídia ficam
++junto aos resultados: `manifest.json` e `result.json` em evidence/pr02/before e after.
++
++Limites: a preferência não autorizada é simulada no browser, sem revogar membership
++no banco. Troca de sessão durante uso é coberta por COMPONENT; o integrado usa duas
++sessões isoladas. Falha sem cache, zero memberships e snapshots de outro tenant
++têm cobertura local, não integração destrutiva. Esta execução não certifica a
++suíte completa de RLS, realtime concorrente, hardware, mailbox ou release.

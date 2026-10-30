@@ -1,0 +1,36 @@
+{
+  "base": "d94c9aa",
+  "sourcesInspected": 107,
+  "activeLegacyMatches": [],
+  "moves": [
+    {
+      "before": "public/fonts/geist-latin.woff2",
+      "after": "tests/e2e/legacy/assets/geist-latin.woff2",
+      "sha256": "1b5ebfb3a01a97343ac96873e6d59a8cb285c66012b6a1ac509cb2765e995ba8",
+      "identicalToGitBase": true,
+      "publicRemoved": true
+    },
+    {
+      "before": "public/fonts/Geist-OFL.txt",
+      "after": "tests/e2e/legacy/assets/Geist-OFL.txt",
+      "sha256": "c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90",
+      "identicalToGitBase": true,
+      "publicRemoved": true
+    },
+    {
+      "before": "public/landing/pantry-leaves.svg",
+      "after": "tests/e2e/legacy/assets/pantry-leaves.svg",
+      "sha256": "17f804556bbea683a61c3539e60662b1b5ef4a6cb4e397c803974a36e7c6c04d",
+      "identicalToGitBase": true,
+      "publicRemoved": true
+    }
+  ],
+  "checks": {
+    "tests": "228/228 in39 files",
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed webpack"
+  },
+  "backendChanges": false,
+  "visualEvidence": "inherited from PR14; no visual source changed in PR15"
+}

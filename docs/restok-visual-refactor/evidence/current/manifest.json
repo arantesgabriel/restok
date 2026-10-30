@@ -1,0 +1,4891 @@
+{
+  "kind": "CURRENT-COMPONENTS / E2E-FIXTURE / no backend",
+  "at": "2026-10-30T03:29:55.252Z",
+  "commit": "e4de8bcdf91ed98d6e82731a7bff4c3f076c7043",
+  "engine": "156.0.4314.50",
+  "dpr": 1,
+  "zoom": 1,
+  "captures": [
+    {
+      "id": "compra-filled",
+      "file": "320-640-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 296,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "320-640-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 296,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 640,
+          "bottom": 640
+        },
+        "panel": {
+          "x": 0,
+          "y": 38.40625,
+          "width": 320,
+          "height": 601.59375,
+          "bottom": 640
+        },
+        "body": {
+          "x": 0,
+          "y": 145.40625,
+          "width": 320,
+          "height": 417.59375,
+          "bottom": 563
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "320-640-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "320-640-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 640,
+          "bottom": 640
+        },
+        "panel": {
+          "x": 0,
+          "y": 38.40625,
+          "width": 320,
+          "height": 601.59375,
+          "bottom": 640
+        },
+        "body": {
+          "x": 0,
+          "y": 145.40625,
+          "width": 320,
+          "height": 494.59375,
+          "bottom": 640
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "320-640-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 640,
+          "bottom": 640
+        },
+        "panel": {
+          "x": 0,
+          "y": 38.40625,
+          "width": 320,
+          "height": 601.59375,
+          "bottom": 640
+        },
+        "body": {
+          "x": 0,
+          "y": 145.40625,
+          "width": 320,
+          "height": 494.59375,
+          "bottom": 640
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "320-640-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "320-640-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "320-640-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "320-640-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "320-640-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "320-640-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 777,
+        "rows": 33,
+        "completeVisibleRows": 1,
+        "firstRow": {
+          "x": 12,
+          "y": 429.5625,
+          "width": 296,
+          "height": 64.59375,
+          "bottom": 494.15625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 157.5625,
+          "bottom": 274.5625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "320-640-compra-money.png",
+      "route": "/app?scenario=money",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 201,
+        "rows": 2,
+        "completeVisibleRows": 1,
+        "firstRow": {
+          "x": 12,
+          "y": 385.1875,
+          "width": 296,
+          "height": 94.59375,
+          "bottom": 479.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 113.1875,
+          "bottom": 230.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-long-names",
+      "file": "320-640-casa-long-names.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 506,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "casa-no-result",
+      "file": "320-640-casa-no-result.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 139,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_7_\" aria-label=\"Buscar produtos da casa\" placeholder=\"Buscar produtos da casa\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "compra-no-result",
+      "file": "320-640-compra-no-result.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 167,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_2_\" aria-label=\"Buscar na lista\" placeholder=\"Buscar na lista\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "snapshot-error",
+      "file": "320-640-snapshot-error.png",
+      "route": "/app?scenario=error",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 125,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<summary><span role=\"status\">Dados da casa sem atualização · ver aviso</span></summary>"
+      }
+    },
+    {
+      "id": "loading",
+      "file": "320-640-loading.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 36,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend<button style=\"display: block; min-height: 44px;\">Liberar resposta da fixture</button></aside><main class=\"mx-auto max-w-lg px-5\"><div class=\"restok-theme _skeleton_10jq5_12\" role=\"status\" aria-label=\"Carregando seus dados…"
+      }
+    },
+    {
+      "id": "loading-resolved",
+      "file": "320-640-loading-resolved.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 296,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 296,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "bottom": 580
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "pessoas-focus",
+      "file": "320-640-pessoas-focus.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 640,
+          "bottom": 640
+        },
+        "panel": {
+          "x": 0,
+          "y": 38.40625,
+          "width": 320,
+          "height": 601.59375,
+          "bottom": 640
+        },
+        "body": {
+          "x": 0,
+          "y": 145.40625,
+          "width": 320,
+          "height": 494.59375,
+          "bottom": 640
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button aria-label=\"Fechar\" title=\"Fechar\" type=\"button\" class=\"restok-theme _button_1ubsf_1 _secondary_1ubsf_3 _icon_1ubsf_10\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\"><path d=\"M18 6 6 18\"></path><path d=\"m6 6 12 12\"></path></svg></but"
+      }
+    },
+    {
+      "id": "pessoas-reduced",
+      "file": "320-640-pessoas-reduced.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 0,
+        "firstRow": {
+          "x": 12,
+          "y": 490.984375,
+          "width": 296,
+          "height": 122,
+          "bottom": 612.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 640,
+          "bottom": 640
+        },
+        "panel": {
+          "x": 0,
+          "y": 38.40625,
+          "width": 320,
+          "height": 601.59375,
+          "bottom": 640
+        },
+        "body": {
+          "x": 0,
+          "y": 145.40625,
+          "width": 320,
+          "height": 494.59375,
+          "bottom": 640
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_c_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "390-844-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 366,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "390-844-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 366,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "bottom": 784
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844
+        },
+        "panel": {
+          "x": 0,
+          "y": 215,
+          "width": 390,
+          "height": 629,
+          "bottom": 844
+        },
+        "body": {
+          "x": 0,
+          "y": 322,
+          "width": 390,
+          "height": 445,
+          "bottom": 767
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "390-844-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "390-844-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844
+        },
+        "panel": {
+          "x": 0,
+          "y": 50.640625,
+          "width": 390,
+          "height": 793.359375,
+          "bottom": 844
+        },
+        "body": {
+          "x": 0,
+          "y": 157.640625,
+          "width": 390,
+          "height": 686.359375,
+          "bottom": 844
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "390-844-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844
+        },
+        "panel": {
+          "x": 0,
+          "y": 50.640625,
+          "width": 390,
+          "height": 793.359375,
+          "bottom": 844
+        },
+        "body": {
+          "x": 0,
+          "y": 157.640625,
+          "width": 390,
+          "height": 686.359375,
+          "bottom": 844
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "390-844-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "390-844-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "390-844-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "390-844-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "390-844-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "390-844-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 777,
+        "rows": 33,
+        "completeVisibleRows": 4,
+        "firstRow": {
+          "x": 12,
+          "y": 429.5625,
+          "width": 366,
+          "height": 64.59375,
+          "bottom": 494.15625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 157.5625,
+          "bottom": 274.5625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 703.8125,
+          "width": 390,
+          "height": 80.1875,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "390-844-compra-money.png",
+      "route": "/app?scenario=money",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 201,
+        "rows": 2,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 385.1875,
+          "width": 366,
+          "height": 76.59375,
+          "bottom": 461.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 113.1875,
+          "bottom": 230.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-long-names",
+      "file": "390-844-casa-long-names.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 506,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "casa-no-result",
+      "file": "390-844-casa-no-result.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 139,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_7_\" aria-label=\"Buscar produtos da casa\" placeholder=\"Buscar produtos da casa\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "compra-no-result",
+      "file": "390-844-compra-no-result.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 167,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_2_\" aria-label=\"Buscar na lista\" placeholder=\"Buscar na lista\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "snapshot-error",
+      "file": "390-844-snapshot-error.png",
+      "route": "/app?scenario=error",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 125,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<summary><span role=\"status\">Dados da casa sem atualização · ver aviso</span></summary>"
+      }
+    },
+    {
+      "id": "loading",
+      "file": "390-844-loading.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 36,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend<button style=\"display: block; min-height: 44px;\">Liberar resposta da fixture</button></aside><main class=\"mx-auto max-w-lg px-5\"><div class=\"restok-theme _skeleton_10jq5_12\" role=\"status\" aria-label=\"Carregando seus dados…"
+      }
+    },
+    {
+      "id": "loading-resolved",
+      "file": "390-844-loading-resolved.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 12,
+          "y": 367.1875,
+          "width": 366,
+          "height": 64.59375,
+          "bottom": 431.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 12,
+          "y": 117,
+          "width": 366,
+          "height": 95.1875,
+          "bottom": 212.1875
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "20px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "pessoas-focus",
+      "file": "390-844-pessoas-focus.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844
+        },
+        "panel": {
+          "x": 0,
+          "y": 50.640625,
+          "width": 390,
+          "height": 793.359375,
+          "bottom": 844
+        },
+        "body": {
+          "x": 0,
+          "y": 157.640625,
+          "width": 390,
+          "height": 686.359375,
+          "bottom": 844
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button aria-label=\"Fechar\" title=\"Fechar\" type=\"button\" class=\"restok-theme _button_1ubsf_1 _secondary_1ubsf_3 _icon_1ubsf_10\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\"><path d=\"M18 6 6 18\"></path><path d=\"m6 6 12 12\"></path></svg></but"
+      }
+    },
+    {
+      "id": "pessoas-reduced",
+      "file": "390-844-pessoas-reduced.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 12,
+          "y": 471.984375,
+          "width": 366,
+          "height": 122,
+          "bottom": 593.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "bottom": 844
+        },
+        "panel": {
+          "x": 0,
+          "y": 50.640625,
+          "width": 390,
+          "height": 793.359375,
+          "bottom": 844
+        },
+        "body": {
+          "x": 0,
+          "y": 157.640625,
+          "width": 390,
+          "height": 686.359375,
+          "bottom": 844
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_c_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "768-1024-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 7,
+        "firstRow": {
+          "x": 256,
+          "y": 427.390625,
+          "width": 488,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 256,
+          "y": 150.796875,
+          "width": 488,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 256,
+          "y": 943.609375,
+          "width": 488,
+          "height": 64.390625,
+          "bottom": 1008
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "768-1024-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 7,
+        "firstRow": {
+          "x": 256,
+          "y": 427.390625,
+          "width": 488,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 256,
+          "y": 150.796875,
+          "width": 488,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 256,
+          "y": 943.609375,
+          "width": 488,
+          "height": 64.390625,
+          "bottom": 1008
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "panel": {
+          "x": 128,
+          "y": 193,
+          "width": 512,
+          "height": 638,
+          "bottom": 831
+        },
+        "body": {
+          "x": 128,
+          "y": 295,
+          "width": 512,
+          "height": 443,
+          "bottom": 738
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "768-1024-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 8,
+        "firstRow": {
+          "x": 256,
+          "y": 421.984375,
+          "width": 488,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "768-1024-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 8,
+        "firstRow": {
+          "x": 256,
+          "y": 421.984375,
+          "width": 488,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "panel": {
+          "x": 32,
+          "y": 51.203125,
+          "width": 704,
+          "height": 921.59375,
+          "bottom": 972.796875
+        },
+        "body": {
+          "x": 32,
+          "y": 153.203125,
+          "width": 704,
+          "height": 819.59375,
+          "bottom": 972.796875
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "768-1024-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 8,
+        "firstRow": {
+          "x": 256,
+          "y": 421.984375,
+          "width": 488,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "panel": {
+          "x": 32,
+          "y": 51.203125,
+          "width": 704,
+          "height": 921.59375,
+          "bottom": 972.796875
+        },
+        "body": {
+          "x": 32,
+          "y": 153.203125,
+          "width": 704,
+          "height": 819.59375,
+          "bottom": 972.796875
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "768-1024-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "768-1024-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "768-1024-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "768-1024-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "768-1024-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1280-800-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 4,
+        "firstRow": {
+          "x": 260,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 260,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 256,
+          "y": 719.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 784
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "1280-800-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 4,
+        "firstRow": {
+          "x": 260,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 260,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 256,
+          "y": 719.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 784
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 800,
+          "bottom": 800
+        },
+        "panel": {
+          "x": 384,
+          "y": 81,
+          "width": 512,
+          "height": 638,
+          "bottom": 719
+        },
+        "body": {
+          "x": 384,
+          "y": 183,
+          "width": 512,
+          "height": 443,
+          "bottom": 626
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "1280-800-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 260,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "1280-800-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 260,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 800,
+          "bottom": 800
+        },
+        "panel": {
+          "x": 288,
+          "y": 40,
+          "width": 704,
+          "height": 720,
+          "bottom": 760
+        },
+        "body": {
+          "x": 288,
+          "y": 142,
+          "width": 704,
+          "height": 618,
+          "bottom": 760
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "1280-800-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 260,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 800,
+          "bottom": 800
+        },
+        "panel": {
+          "x": 288,
+          "y": 40,
+          "width": 704,
+          "height": 720,
+          "bottom": 760
+        },
+        "body": {
+          "x": 288,
+          "y": 142,
+          "width": 704,
+          "height": 618,
+          "bottom": 760
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "1280-800-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "1280-800-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "1280-800-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "1280-800-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "1280-800-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1440-900-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 340,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "1440-900-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 340,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "bottom": 900
+        },
+        "panel": {
+          "x": 464,
+          "y": 131,
+          "width": 512,
+          "height": 638,
+          "bottom": 769
+        },
+        "body": {
+          "x": 464,
+          "y": 233,
+          "width": 512,
+          "height": 443,
+          "bottom": 676
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "1440-900-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "1440-900-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "bottom": 900
+        },
+        "panel": {
+          "x": 368,
+          "y": 45,
+          "width": 704,
+          "height": 810,
+          "bottom": 855
+        },
+        "body": {
+          "x": 368,
+          "y": 147,
+          "width": 704,
+          "height": 708,
+          "bottom": 855
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "1440-900-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "bottom": 900
+        },
+        "panel": {
+          "x": 368,
+          "y": 45,
+          "width": 704,
+          "height": 810,
+          "bottom": 855
+        },
+        "body": {
+          "x": 368,
+          "y": 147,
+          "width": 704,
+          "height": 708,
+          "bottom": 855
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "1440-900-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "1440-900-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "1440-900-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "1440-900-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "1440-900-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "1440-900-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 777,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 340,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "1440-900-compra-money.png",
+      "route": "/app?scenario=money",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 201,
+        "rows": 2,
+        "completeVisibleRows": 2,
+        "firstRow": {
+          "x": 340,
+          "y": 445.390625,
+          "width": 992,
+          "height": 79.390625,
+          "bottom": 524.78125
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 123.59375,
+          "bottom": 274.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-long-names",
+      "file": "1440-900-casa-long-names.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 506,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "casa-no-result",
+      "file": "1440-900-casa-no-result.png",
+      "route": "/app?scenario=catalog#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 139,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_7_\" aria-label=\"Buscar produtos da casa\" placeholder=\"Buscar produtos da casa\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "compra-no-result",
+      "file": "1440-900-compra-no-result.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 167,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_2_\" aria-label=\"Buscar na lista\" placeholder=\"Buscar na lista\" class=\"_control_1ubsf_15\" type=\"search\" value=\"nenhum-corresponde\" style=\"\">"
+      }
+    },
+    {
+      "id": "snapshot-error",
+      "file": "1440-900-snapshot-error.png",
+      "route": "/app?scenario=error",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 125,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<summary><span role=\"status\">Dados da casa sem atualização · ver aviso</span></summary>"
+      }
+    },
+    {
+      "id": "loading",
+      "file": "1440-900-loading.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 36,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend<button style=\"display: block; min-height: 44px;\">Liberar resposta da fixture</button></aside><main class=\"mx-auto max-w-lg px-5\"><div class=\"restok-theme _skeleton_10jq5_12\" role=\"status\" aria-label=\"Carregando seus dados…"
+      }
+    },
+    {
+      "id": "loading-resolved",
+      "file": "1440-900-loading-resolved.png",
+      "route": "/app?scenario=loading",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 5,
+        "firstRow": {
+          "x": 340,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 340,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 336,
+          "y": 819.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 884
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "pessoas-focus",
+      "file": "1440-900-pessoas-focus.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "bottom": 900
+        },
+        "panel": {
+          "x": 368,
+          "y": 45,
+          "width": 704,
+          "height": 810,
+          "bottom": 855
+        },
+        "body": {
+          "x": 368,
+          "y": 147,
+          "width": 704,
+          "height": 708,
+          "bottom": 855
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button aria-label=\"Fechar\" title=\"Fechar\" type=\"button\" class=\"restok-theme _button_1ubsf_1 _secondary_1ubsf_3 _icon_1ubsf_10\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-x\"><path d=\"M18 6 6 18\"></path><path d=\"m6 6 12 12\"></path></svg></but"
+      }
+    },
+    {
+      "id": "pessoas-reduced",
+      "file": "1440-900-pessoas-reduced.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 6,
+        "firstRow": {
+          "x": 340,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "bottom": 900
+        },
+        "panel": {
+          "x": 368,
+          "y": 45,
+          "width": 704,
+          "height": 810,
+          "bottom": 855
+        },
+        "body": {
+          "x": 368,
+          "y": 147,
+          "width": 704,
+          "height": 708,
+          "bottom": 855
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_c_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1920-1080-compra-filled.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 780,
+        "rows": 33,
+        "completeVisibleRows": 7,
+        "firstRow": {
+          "x": 580,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 580,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 576,
+          "y": 999.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 1064
+        },
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "compra-editor",
+      "file": "1920-1080-compra-editor.png",
+      "route": "/app?scenario=long",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 839,
+        "rows": 33,
+        "completeVisibleRows": 7,
+        "firstRow": {
+          "x": 580,
+          "y": 427.390625,
+          "width": 992,
+          "height": 72,
+          "bottom": 499.390625
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "8px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": {
+          "x": 580,
+          "y": 150.796875,
+          "width": 992,
+          "height": 105.59375,
+          "bottom": 256.390625
+        },
+        "budgetStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgb(33, 63, 29)",
+          "padding": "8px 12px",
+          "borderRadius": "18px"
+        },
+        "dock": {
+          "x": 576,
+          "y": 999.609375,
+          "width": 1000,
+          "height": 64.390625,
+          "bottom": 1064
+        },
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "panel": {
+          "x": 704,
+          "y": 221,
+          "width": 512,
+          "height": 638,
+          "bottom": 859
+        },
+        "body": {
+          "x": 704,
+          "y": 323,
+          "width": 512,
+          "height": 443,
+          "bottom": 766
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<input id=\"_r_a_\" inputmode=\"decimal\" autocomplete=\"off\" data-initial-focus=\"true\" aria-invalid=\"false\" aria-describedby=\"_r_a_-hint\" placeholder=\"0,00\" class=\"_input_5amjc_5\" type=\"text\" value=\"3,96\" name=\"_r_a_\" style=\"\">"
+      }
+    },
+    {
+      "id": "casa-filled",
+      "file": "1920-1080-casa-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 502,
+        "rows": 33,
+        "completeVisibleRows": 9,
+        "firstRow": {
+          "x": 580,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "pessoas-filled",
+      "file": "1920-1080-pessoas-filled.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 9,
+        "firstRow": {
+          "x": 580,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "panel": {
+          "x": 608,
+          "y": 54,
+          "width": 704,
+          "height": 972,
+          "bottom": 1026
+        },
+        "body": {
+          "x": 608,
+          "y": 156,
+          "width": 704,
+          "height": 870,
+          "bottom": 1026
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "pessoas-bottom",
+      "file": "1920-1080-pessoas-bottom.png",
+      "route": "/app?scenario=long#home",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 567,
+        "rows": 33,
+        "completeVisibleRows": 9,
+        "firstRow": {
+          "x": 580,
+          "y": 421.984375,
+          "width": 992,
+          "height": 72,
+          "bottom": 493.984375
+        },
+        "rowStyle": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "12px 0px",
+          "borderRadius": "0px"
+        },
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "panel": {
+          "x": 608,
+          "y": 54,
+          "width": 704,
+          "height": 972,
+          "bottom": 1026
+        },
+        "body": {
+          "x": 608,
+          "y": 156,
+          "width": 704,
+          "height": 870,
+          "bottom": 1026
+        },
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h2 id=\"_r_e_\" tabindex=\"-1\" data-dialog-initial-focus=\"true\">Casas e pessoas</h2>"
+      }
+    },
+    {
+      "id": "historico-filled",
+      "file": "1920-1080-historico-filled.png",
+      "route": "/app?scenario=long#history",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 118,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    },
+    {
+      "id": "historico-detail",
+      "file": "1920-1080-historico-detail.png",
+      "route": "/app?scenario=long#history/list-august",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 498,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Compras de Agosto</h1>"
+      }
+    },
+    {
+      "id": "compra-empty",
+      "file": "1920-1080-compra-empty.png",
+      "route": "/app?scenario=empty",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": null,
+        "active": "<body><div id=\"root\"><aside role=\"note\" style=\"position: fixed; top: 0px; right: 0px; z-index: 9999; background: white; color: black; font-size: 10px;\">E2E-FIXTURE · sem backend</aside><div class=\"restok-theme _shell_1fmn1_1\"><a href=\"#restok-main\" class=\"_skip_1fmn1_23\">Ir para o conteúdo</a><div class=\"_frame_1fmn1_2\"><aside data-app-sidebar=\"true\" class=\"_sidebar_1fmn1_3\"><img alt=\"Restok\" widt"
+      }
+    },
+    {
+      "id": "casa-empty",
+      "file": "1920-1080-casa-empty.png",
+      "route": "/app?scenario=empty#home",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 142,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<button type=\"button\" class=\"restok-theme _button_1ubsf_1 _quiet_1ubsf_4 _item_12wb8_2\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-house\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"></path><path d=\"M3 10a2 2 0 0 "
+      }
+    },
+    {
+      "id": "historico-empty",
+      "file": "1920-1080-historico-empty.png",
+      "route": "/app?scenario=empty#history",
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "overflow": 0,
+        "nodeCount": 112,
+        "rows": 0,
+        "completeVisibleRows": 0,
+        "firstRow": null,
+        "rowStyle": null,
+        "budget": null,
+        "budgetStyle": null,
+        "dock": null,
+        "dialog": null,
+        "panel": null,
+        "body": null,
+        "h1": {
+          "font": "",
+          "fontFamily": "\"Restok Manrope\", system-ui, sans-serif",
+          "fontWeight": "700",
+          "fontSize": "24px",
+          "lineHeight": "28.8px",
+          "borderColor": "rgb(225, 233, 222)",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "borderRadius": "0px"
+        },
+        "active": "<h1 tabindex=\"-1\">Histórico</h1>"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "width": 320,
+      "id": "escape-return",
+      "passed": true
+    },
+    {
+      "width": 320,
+      "id": "reduced-motion",
+      "animations": "none"
+    },
+    {
+      "width": 390,
+      "id": "escape-return",
+      "passed": true
+    },
+    {
+      "width": 390,
+      "id": "reduced-motion",
+      "animations": "none"
+    },
+    {
+      "width": 1440,
+      "id": "escape-return",
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "id": "reduced-motion",
+      "animations": "none"
+    }
+  ],
+  "errors": []
+}

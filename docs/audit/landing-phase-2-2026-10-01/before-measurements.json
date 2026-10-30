@@ -1,0 +1,30 @@
+[
+  {
+    "clientWidth": 305,
+    "ctaBottom": 555.84375,
+    "scrollWidth": 305,
+    "showcaseTop": 587.84375,
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "ctaBottom": 456.8125,
+    "scrollWidth": 375,
+    "showcaseTop": 488.8125,
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "ctaBottom": 381.40625,
+    "scrollWidth": 753,
+    "showcaseTop": 413.40625,
+    "width": 768
+  },
+  {
+    "clientWidth": 1265,
+    "ctaBottom": 501.703125,
+    "scrollWidth": 1265,
+    "showcaseTop": 557.703125,
+    "width": 1280
+  }
+]

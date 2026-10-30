@@ -1,0 +1,98 @@
+[
+  {
+    "id": "U01",
+    "title": "Casa mobile",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232315.png",
+    "file": "supplied/U01.png",
+    "pixels": {
+      "width": 407,
+      "height": 842
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "adaf6b914c79d428e06d21da4c9105ccc833627f4bf50cfd064c7990b4ab9b67"
+  },
+  {
+    "id": "U02",
+    "title": "Histórico mobile",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232310.png",
+    "file": "supplied/U02.png",
+    "pixels": {
+      "width": 415,
+      "height": 842
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "a45cebdf00a67820a3cde1ea1a2cd7c6d027406fc68f1fbc1c82cb0c0ff3fe47"
+  },
+  {
+    "id": "U03",
+    "title": "Compra ativa vazia mobile",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232303.png",
+    "file": "supplied/U03.png",
+    "pixels": {
+      "width": 407,
+      "height": 843
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "64eb0deceaf5be74d4fb7b89bbaa88ad92cc3b414e9a01bac83c7afad58738ac"
+  },
+  {
+    "id": "U04",
+    "title": "Gestão desktop",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232251.png",
+    "file": "supplied/U04.png",
+    "pixels": {
+      "width": 1907,
+      "height": 908
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "74ff27a65e591e265cf33dd7b3e1ecdc30ff2d8a1639005aac00e51b8ec54ab4"
+  },
+  {
+    "id": "U05",
+    "title": "Casa desktop",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232244.png",
+    "file": "supplied/U05.png",
+    "pixels": {
+      "width": 1910,
+      "height": 905
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "fe652016b6743868b438895300068b5d4373808e48b865fd723e454d3e78ced6"
+  },
+  {
+    "id": "U06",
+    "title": "Histórico desktop",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232211.png",
+    "file": "supplied/U06.png",
+    "pixels": {
+      "width": 1913,
+      "height": 912
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "e71001b9e2ce1d7b1f3e86a59a61cd6c87720cd1cb05e0e44dc397ba35f9f852"
+  },
+  {
+    "id": "U07",
+    "title": "Compra ativa vazia desktop",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 232204.png",
+    "file": "supplied/U07.png",
+    "pixels": {
+      "width": 1914,
+      "height": 911
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "4e182e5c8f2a814d09a2e7a31971378de960d7cedc106695a0f5c654eeecac45"
+  },
+  {
+    "id": "U08",
+    "title": "Onboarding, fora das quatro telas",
+    "original": "C:/Users/Gabriel/Pictures/Screenshots/Captura de tela 2026-10-29 172043.png",
+    "file": "supplied/U08.png",
+    "pixels": {
+      "width": 1919,
+      "height": 690
+    },
+    "viewport": "Unknown: supplied screenshot is not browser geometry",
+    "sha256": "82e80b7db4fddcf0cfbc4f92f5642376e6ef4d831f19e155f8f0b086051aea19"
+  }
+]

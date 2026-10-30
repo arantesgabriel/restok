@@ -1,0 +1,44 @@
+ M components/app/app-shell.module.css
+ M components/app/app-shell.tsx
+ M components/app/navigation.module.css
+ M components/history/history-view.tsx
+ M components/products/products-home.tsx
+ M components/restok-app.category-sort.test.tsx
+ M components/restok-app.tsx
+ M components/shopping/budget-summary.tsx
+ M components/shopping/category-section.tsx
+ M components/shopping/item-row.tsx
+ M components/shopping/shopping-controls.module.css
+ M components/shopping/shopping-toolbar.tsx
+ M components/shopping/shopping-view.test.tsx
+ M components/shopping/shopping-view.tsx
+ M components/shopping/shopping.module.css
+ M components/shopping/status-toggle.tsx
+ M components/ui/controls.module.css
+ M components/ui/empty-state.tsx
+ M components/ui/feedback.module.css
+ M components/ui/primitives.test.tsx
+ M next-env.d.ts
+ M package-lock.json
+ M package.json
+ M styles/base.css
+ M tests/e2e/components.tsx
+ M tests/e2e/fixtures.ts
+ M tests/styles/global-migration.test.ts
+ M tsconfig.json
+?? components/shopping/shopping-context.tsx
+?? components/shopping/shopping-presentation.test.tsx
+?? docs/restok-lightness-density/
+?? docs/restok-refactor-plan/00-EXECUTIVE-SUMMARY.md
+?? docs/restok-refactor-plan/01-REPO-ARCHITECTURE-MAP.md
+?? docs/restok-refactor-plan/02-LEGACY-DESIGN-REMOVAL-MATRIX.md
+?? docs/restok-refactor-plan/03-UI-EVIDENCE-MATRIX.md
+?? docs/restok-refactor-plan/04-DESIGN-SYSTEM-IMPLEMENTATION-MAPPING.md
+?? docs/restok-refactor-plan/05-INSIDE-OUT-ROADMAP.md
+?? docs/restok-refactor-plan/06-QA-AND-REGRESSION-PLAN.md
+?? docs/restok-refactor-plan/07-OPEN-DECISIONS.md
+?? docs/restok-refactor-plan/evidence/pr01/preexisting.patch
+?? docs/restok-refactor-plan/evidence/pr11/recovery-standard-request.jpg
+?? docs/restok-refactor-plan/evidence/pr11/supabase-url-configured.jpg
+?? docs/restok-visual-refactor/
+?? supabase/seed.sql

@@ -1,0 +1,65 @@
+{
+  "unit": "PR07",
+  "newPurchase": {
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ],
+    "collections": [
+      33,
+      100
+    ],
+    "endOf100": "collection100-end.png; geometry JSON; keyboard-focused last label before footer"
+  },
+  "itemEditor": {
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ],
+    "invalid": "editor-invalid.png; negative price retained, no write"
+  },
+  "addItem": {
+    "widths": [
+      320,
+      390,
+      1280
+    ],
+    "stress": "name,999999 quantity,max allowed unit-price; canceled without saving"
+  },
+  "budget": {
+    "widths": [
+      320,
+      390,
+      1280
+    ],
+    "zero": true,
+    "invalid": true
+  },
+  "confirmAndComplete": {
+    "DOM": "observed in simulated flow; completion withheld until response",
+    "video": "not produced; capture failed",
+    "staticImages": "remaining"
+  },
+  "integrated": {
+    "static": [
+      "catalog",
+      "history",
+      "first purchase detail"
+    ],
+    "newRemoteWritesThisResumption": 0
+  },
+  "notSampled": [
+    "every state in all six viewports",
+    "physical mobile keyboard/safe area",
+    "new real screen-reader run",
+    "latency or frame-timing benchmark"
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "focus": "Referência zero PR0929 de out. · 1 item1 comprado0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+    "hash": "#history",
+    "step": "browser back from zero"
+  },
+  {
+    "focus": "Referência zero PR09",
+    "hash": "#history/e33235e9-3950-451c-bc27-9045465e0bb6",
+    "step": "browser forward to zero"
+  },
+  {
+    "focus": "Compra vazia PR0929 de out. · 0 itens0 comprados0 já tínhamos0 pendentesTotal registradoR$ 0,00",
+    "hash": "#history",
+    "step": "explicit back"
+  }
+]

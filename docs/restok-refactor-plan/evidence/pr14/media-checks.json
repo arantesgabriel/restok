@@ -1,0 +1,63 @@
+{
+  "video": "interaction.webm",
+  "method": "Sequential internal-browser captures of local invitation/join/update/reset, no interpolation or backend",
+  "sourceFrames": 120,
+  "encodedFrames": 130,
+  "containerFps": 25,
+  "clockOriginMs": 60,
+  "acquisitionMedianMs": 39.0,
+  "acquisitionMaxMs": 42,
+  "noInterpolation": true,
+  "canvasSize": [
+    375,
+    812
+  ],
+  "padding": "right/bottom only where CUA cropped scrollbar; original UI pixels never resized",
+  "checks": [
+    {
+      "timeSeconds": 0.6,
+      "precisionMs": 40,
+      "sourceIndex": 14,
+      "reference": "reference-015.png",
+      "decoded": "seek-015.png",
+      "mae": 0.6344882320744389,
+      "passed": true
+    },
+    {
+      "timeSeconds": 1.0,
+      "precisionMs": 40,
+      "sourceIndex": 21,
+      "reference": "reference-025.png",
+      "decoded": "seek-025.png",
+      "mae": 1.0005692391899288,
+      "passed": true
+    },
+    {
+      "timeSeconds": 2.4,
+      "precisionMs": 40,
+      "sourceIndex": 54,
+      "reference": "reference-060.png",
+      "decoded": "seek-060.png",
+      "mae": 0.6907367268746579,
+      "passed": true
+    },
+    {
+      "timeSeconds": 3.2,
+      "precisionMs": 40,
+      "sourceIndex": 74,
+      "reference": "reference-080.png",
+      "decoded": "seek-080.png",
+      "mae": 0.6860481663929939,
+      "passed": true
+    },
+    {
+      "timeSeconds": 4.0,
+      "precisionMs": 40,
+      "sourceIndex": 94,
+      "reference": "reference-100.png",
+      "decoded": "seek-100.png",
+      "mae": 0.7090695128626163,
+      "passed": true
+    }
+  ]
+}

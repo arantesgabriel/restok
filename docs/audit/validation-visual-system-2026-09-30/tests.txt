@@ -1,0 +1,40 @@
+
+> restok@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /Users/aidcrusadergabrielarantes/Documents/Fontes/restok
+
+ ✓ lib/utils.test.ts (7 tests) 10ms
+ ✓ components/login-showcase/showcase-timeline.test.ts (49 tests) 5ms
+ ✓ app/layout.test.tsx (1 test) 4ms
+ ✓ middleware.test.ts (2 tests) 3ms
+ ✓ components/login-showcase/showcase-data.test.ts (1 test) 4ms
+ ✓ components/household-manager.test.tsx (3 tests) 81ms
+ ✓ lib/supabase/data.household-members.test.ts (2 tests) 2ms
+ ✓ lib/auth/redirect.test.ts (3 tests) 3ms
+ ✓ components/restok-app.sign-out.test.tsx (2 tests) 283ms
+ ✓ lib/supabase/cache.test.ts (4 tests) 2ms
+ ✓ components/login-showcase/login-showcase.test.tsx (6 tests) 134ms
+ ✓ components/login-showcase/showcase-breakpoints.test.ts (4 tests) 1ms
+ ✓ components/restok-app.history.test.tsx (1 test) 407ms
+   ✓ purchase history > shows true item statuses, registered totals, missing prices, and prior unit-price comparison  406ms
+ ✓ components/restok-app.demo-sign-out.test.tsx (1 test) 455ms
+   ✓ demo sign out > clears local demo data without calling the auth server  454ms
+ ✓ components/restok-app.demo-mode.test.tsx (3 tests) 624ms
+   ✓ configured demo mode > opens as a local demo without loading account or household data  372ms
+ ✓ components/restok-app.motion-keyboard.test.tsx (2 tests) 445ms
+ ✓ components/restok-app.products.test.tsx (1 test) 723ms
+   ✓ recurring products > restores an inactive product to the next purchase selection  723ms
+ ✓ components/restok-app.purchase.test.tsx (3 tests) 704ms
+   ✓ purchase flow > shows registered totals, missing prices, and takes the footer action to pending items  308ms
+   ✓ purchase flow > keeps pending items distinct in the finish confirmation and saved summary  314ms
+ ✓ app/login/login-form.test.tsx (23 tests) 585ms
+ ✓ components/restok-app.category-sort.test.tsx (1 test) 726ms
+   ✓ house category order > lets each category keep its own alphabetical direction  725ms
+
+ Test Files  20 passed (20)
+      Tests  119 passed (119)
+   Start at  23:52:50
+   Duration  1.81s (transform 951ms, setup 0ms, collect 4.29s, tests 5.20s, environment 3.70s, prepare 1.29s)
+

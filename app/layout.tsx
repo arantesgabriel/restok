@@ -10,9 +10,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#f9faf5",
+  themeColor: "#F7FAF5",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><body>{children}</body></html>;
+  return <html lang="pt-BR" className="restok-theme" data-scroll-behavior="smooth"><body>{children}</body></html>;
 }

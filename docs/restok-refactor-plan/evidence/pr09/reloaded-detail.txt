@@ -1,0 +1,72 @@
+- button "Open Next.js Dev Tools":
+- alert
+- link "Ir para o conteúdo":
+  - /url: "#restok-main"
+- complementary:
+  - img "Restok"
+  - 'button "Casas e pessoas: QA PR08 visual 2026-10-29"':
+    - generic: Casa ativa
+    - text: QA PR08 visual 2026-10-29
+  - navigation "Navegação principal":
+    - button "Compra":
+      - text: Compra
+    - button "Histórico":
+      - text: Histórico
+    - button "Casa":
+      - text: Casa
+- main:
+  - generic: Histórico
+  - button "Perfil de Gabriel Teste": GT
+  - button "Voltar ao histórico":
+    - text: Voltar ao histórico
+  - paragraph:
+    - time: 29 de out. · outubro de 2026
+  - heading "Compra PR09 com nome longo para conferir leitura dos registros completos no histórico" [active] [level=1]
+  - paragraph: 5 itens nesta compra
+  - region "Resumo da compra concluída":
+    - paragraph: Total registrado
+    - paragraph: R$ 1.234.566.655.447,11
+    - paragraph: Soma dos itens comprados com preço informado.
+    - paragraph: 1 item comprado sem preço
+    - term: Comprados
+    - definition: "3"
+    - term: Já tínhamos
+    - definition: "1"
+    - term: Pendentes
+    - definition: "1"
+  - region "Alimentos":
+    - heading "Alimentos" [level=2]
+    - list:
+      - heading "Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A" [level=3]
+      - paragraph: "Quantidade: 999999"
+      - text: Comprado
+      - paragraph: Subtotal
+      - paragraph: R$ 1.234.566.655.432,11
+      - paragraph: R$ 1.234.567,89 / un.
+      - heading "Arroz QA PR08" [level=3]
+      - paragraph: "Quantidade: 3"
+      - text: Comprado
+      - paragraph: Subtotal
+      - paragraph: R$ 15,00
+      - paragraph: R$ 5,00 / un.
+      - paragraph: R$ 5,00 a mais por unidade que a compra anterior (R$ 0,00/un.)
+  - region "Bebidas":
+    - heading "Bebidas" [level=2]
+    - list:
+      - heading "Água QA PR08" [level=3]
+      - paragraph: "Quantidade: 1"
+      - text: Comprado
+      - paragraph: Subtotal
+      - paragraph: Sem preço informado
+  - region "Higiene":
+    - heading "Higiene" [level=2]
+    - list:
+      - heading "Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B" [level=3]
+      - paragraph: "Quantidade: 1"
+      - text: Pendente
+  - region "Limpeza":
+    - heading "Limpeza" [level=2]
+    - list:
+      - heading "Sabão editado QA PR08" [level=3]
+      - paragraph: "Quantidade: 3"
+      - text: Já temos

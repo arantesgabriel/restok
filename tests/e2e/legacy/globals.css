@@ -1,0 +1,85 @@
+@config "./tailwind.config.ts";
+@font-face { font-family: "Restok Geist"; src: url("./assets/geist-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: 250 250 247;
+  --surface: 250 250 247;
+  --ink: 23 26 24;
+  --muted: 82 100 91;
+  --line: 214 223 217;
+  --primary: 23 76 60;
+  --primary-strong: 18 62 49;
+  --sage: 234 243 238;
+  --terracotta: 150 63 54;
+  --focus: 23 76 60;
+  --soft: 184 216 199;
+  --warning: 117 81 25;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --motion-fast: 160ms;
+  --motion-base: 220ms;
+  --motion-slow: 280ms;
+  --motion-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+[data-dialog-motion], [data-toast-motion] {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity var(--motion-base) var(--motion-out), translate var(--motion-base) var(--motion-out);
+}
+
+dialog[data-state="closing"] [data-dialog-motion], [data-toast-motion][data-state="closing"] {
+  opacity: 0;
+  translate: 0 14px;
+}
+
+dialog[data-state="closing"] { pointer-events: none; }
+
+dialog[data-state="open"]::backdrop { animation: restok-backdrop-in var(--motion-fast) ease-out both; }
+dialog[data-state="closing"]::backdrop { animation: restok-backdrop-out var(--motion-fast) ease-in both; }
+
+@keyframes restok-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes restok-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+
+@starting-style {
+  dialog[data-state="open"] [data-dialog-motion], [data-toast-motion][data-state="open"] {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: rgb(var(--canvas)); scroll-behavior: smooth; }
+body { margin: 0; min-width: 0; background: rgb(var(--canvas)); color: rgb(var(--ink)); font-family: "Restok Geist", ui-sans-serif, system-ui, sans-serif; font-weight: var(--weight-regular); font-kerning: normal; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgb(var(--primary) / 0.2); color: rgb(var(--ink)); }
+
+@layer components {
+  .field-label { display: block; color: rgb(var(--ink)); font-size: 14px; font-weight: var(--weight-semibold); }
+  .field-input { display: block; width: 100%; min-height: 46px; border: 1px solid rgb(var(--line-strong)); border-radius: 8px; background: rgb(var(--surface)); padding: 10px 12px; font-size: 16px; color: rgb(var(--ink)); outline: none; transition: border-color var(--motion-fast) var(--motion-out), box-shadow var(--motion-fast) var(--motion-out); }
+  .field-input::placeholder { color: rgb(var(--muted)); opacity: 1; }
+  .field-input:focus { border-color: rgb(var(--primary)); box-shadow: 0 0 0 3px rgb(var(--focus) / 0.17); }
+  .checkbox { height: 20px; width: 20px; accent-color: rgb(var(--primary)); }
+  .status-badge { display: inline-flex; align-items: center; gap: 0.3rem; border-radius: 999px; padding: 0.2rem 0.45rem; font-size: 12px; font-weight: var(--weight-semibold); line-height: 1; }
+  .status-pending { color: rgb(var(--muted)); background: rgb(var(--line) / 0.65); }
+  .status-purchased { color: rgb(var(--primary)); background: rgb(var(--sage)); }
+  .status-already_have { color: rgb(var(--muted)); background: rgb(var(--canvas)); }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  [data-dialog-motion], [data-toast-motion], dialog::backdrop { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+
+:root { --line-strong: 112 135 123; --soft: 184 216 199; --motion-instant: 100ms; --radius-control: 8px; --radius-surface: 12px; --radius-sheet: 16px; }
+:where(button, a, input, select, textarea, summary):focus-visible { outline: 2px solid rgb(var(--primary)); outline-offset: 3px; }
+h1, h2, h3 { text-wrap: balance; }
+input::placeholder, textarea::placeholder { color: rgb(var(--muted)); opacity: 1; }

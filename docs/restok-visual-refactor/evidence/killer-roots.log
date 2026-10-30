@@ -1,0 +1,17 @@
+
+killer-scan  target: components/app components/ui components/shopping components/products components/history components/households
+files in target: 65 (44 interface)
+
+[OK]      impeccable   (AI tell)     zero
+[OK]      audit:design (token)       zero
+            via killer-scan built-in FALLBACK (raw hex/rgb/hsl, Tailwind palette); repo has no audit:design/lint:design script nor scripts/scan-design-*.mjs; token layer found (color custom properties in styles/tokens.css (--color-brand-rgb:)): palette classes bypass it
+[SKIPPED] copy         (tic)         visant-copy's copy-lint not found
+[FAIL]    noise        (chrome)      1 finding(s)
+            components/households/household-manager.tsx:53  same-info-twice  l.53 and l.57: 63% shared words
+
+gates: 3/4 ran [impeccable, audit:design (fallback), noise]; SKIPPED: copy (visant-copy's copy-lint not found)
+----------------------------------------------------------------
+ROOT FIRST: no finding in a shared piece. The findings are local to each screen.
+----------------------------------------------------------------
+GATE CLOSED: 1 detector(s) with findings. A gate finding becomes a fix, not a proposal.
+----------------------------------------------------------------

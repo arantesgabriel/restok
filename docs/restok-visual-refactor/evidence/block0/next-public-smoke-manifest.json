@@ -1,0 +1,148 @@
+{
+  "kind": "Next production public-route smoke / isolated build",
+  "at": "2026-10-30T04:11:48.132Z",
+  "engine": "156.0.4314.50",
+  "captures": [
+    {
+      "id": "landing",
+      "route": "/",
+      "file": "next-390x844-landing.png",
+      "status": 200,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0,
+      "heading": "A lista da casa.Do plano ao mercado.",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 18
+    },
+    {
+      "id": "login",
+      "route": "/login",
+      "file": "next-390x844-login.png",
+      "status": 200,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0,
+      "heading": "Entre na sua conta",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 9
+    },
+    {
+      "id": "reset",
+      "route": "/reset-password",
+      "file": "next-390x844-reset.png",
+      "status": 200,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0,
+      "heading": "Escolha uma nova senha",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 7
+    },
+    {
+      "id": "landing",
+      "route": "/",
+      "file": "next-1440x900-landing.png",
+      "status": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0,
+      "heading": "A lista da casa.Do plano ao mercado.",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 18
+    },
+    {
+      "id": "login",
+      "route": "/login",
+      "file": "next-1440x900-login.png",
+      "status": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0,
+      "heading": "Entre na sua conta",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 9
+    },
+    {
+      "id": "reset",
+      "route": "/reset-password",
+      "file": "next-1440x900-reset.png",
+      "status": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0,
+      "heading": "Escolha uma nova senha",
+      "headingColor": "rgb(24, 37, 26)",
+      "bodyColor": "rgb(24, 37, 26)",
+      "bodyFont": "\"Restok Manrope\", system-ui, sans-serif",
+      "themeCount": 7
+    }
+  ],
+  "checks": [
+    {
+      "id": "landing",
+      "width": 390,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 18
+    },
+    {
+      "id": "login",
+      "width": 390,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 9
+    },
+    {
+      "id": "reset",
+      "width": 390,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 7
+    },
+    {
+      "id": "landing",
+      "width": 1440,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 18
+    },
+    {
+      "id": "login",
+      "width": 1440,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 9
+    },
+    {
+      "id": "reset",
+      "width": 1440,
+      "passed": true,
+      "overflow": 0,
+      "themeCount": 7
+    }
+  ],
+  "errors": []
+}

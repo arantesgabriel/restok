@@ -1,0 +1,37 @@
+- alert
+- link "Ir para o conteúdo":
+  - /url: "#restok-main"
+- complementary:
+  - img "Restok"
+  - 'button "Casas e pessoas: QA Bloco3 PR07 2026-10-28T22-01-24"':
+    - generic: Casa ativa
+    - text: QA Bloco3 PR07 2026-10-28T22-01-24
+  - navigation "Navegação principal":
+    - button "Compra":
+      - text: Compra
+    - button "Histórico" [active]:
+      - text: Histórico
+    - button "Casa":
+      - text: Casa
+- main:
+  - generic: Histórico
+  - button "Perfil de Gabriel Teste": GT
+  - paragraph: O que já passou pelo caixa
+  - heading "Histórico" [level=1]
+  - paragraph: Preços anteriores ficam aqui para a próxima compra começar com contexto.
+  - button "QA PR07 segunda 28 de out. · 1 itens 0 comprados 0 já tínhamos 1 pendentes Total registrado R$ 0,00":
+    - generic: QA PR07 segunda
+    - generic: 28 de out. · 1 itens
+    - generic: 0 comprados
+    - generic: 0 já tínhamos
+    - generic: 1 pendentes
+    - generic: Total registrado
+    - generic: R$ 0,00
+  - button "QA PR07 primeira 28 de out. · 2 itens 1 comprados 0 já tínhamos 1 pendentes Total registrado R$ 15,00":
+    - generic: QA PR07 primeira
+    - generic: 28 de out. · 2 itens
+    - generic: 1 comprados
+    - generic: 0 já tínhamos
+    - generic: 1 pendentes
+    - generic: Total registrado
+    - generic: R$ 15,00

@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "canvas": "#FBFBF2",
+    "ink": "#122112",
+    "muted": "#546654",
+    "primary": "#145F30",
+    "sage": "#DAEFDA",
+    "line": "#CCDDCC",
+    "surface": "#FFFFFF"
+  },
+  "contrast": {
+    "muted_canvas": 5.911,
+    "resolved_muted_canvas": 3.226,
+    "muted_sage": 5.072,
+    "white_primary": 7.716,
+    "ink_canvas": 16.048,
+    "placeholder_surface_opacity_90": 4.879
+  },
+  "method": "OKLCH \u2192 linear sRGB \u2192 encoded sRGB; WCAG relative luminance; row opacity composited on canvas"
+}

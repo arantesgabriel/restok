@@ -1,0 +1,37 @@
+{
+  "checks": {
+    "diffCheck": "passed",
+    "typecheck": "passed, no incremental",
+    "build": "passed, webpack",
+    "lint": "passed",
+    "tests": 192,
+    "files": 35
+  },
+  "scope": "PR10 only",
+  "preserved": [
+    {
+      "path": "next-env.d.ts",
+      "sha256": "B8B3A344484B959AF5E4E3FC1A1609DAC3CB9ECE0CDEB6C145BE29BC4C491000"
+    },
+    {
+      "path": "package.json",
+      "sha256": "C3022F0EC95D4D314B2BCB0091B6B9A807F21E4F32B6FF761E1E4C30234FFD2B"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "88E3A55B083918AE03F5DCD803E8E41B875263113F099B31D7C143B3E239CCAF"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "EEF929BF342407AB7BE6770D9ACD75C5A5A1DC133A54A6A23B961649102E7259"
+    },
+    {
+      "path": "supabase/seed.sql",
+      "sha256": "F30A98D1C809F7B60F19E4F21549817B6CF0C9E231A06DE3278B5F210FCB2830"
+    }
+  ],
+  "base": "83091a4",
+  "remotePR": false,
+  "nextPR": "11 requires explicit authorization",
+  "limits": "See 14-PR10-REPORT.md"
+}

@@ -1,0 +1,151 @@
+{
+  "kind": "AppShell optional context region / isolated local Next fixture",
+  "at": "2026-10-30T04:01:37.596Z",
+  "commit": "e4de8bcdf91ed98d6e82731a7bff4c3f076c7043",
+  "engine": "156.0.4314.50",
+  "captures": [
+    {
+      "file": "shell-context-1024x768.png",
+      "route": "/block0-probe",
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "overflow": 0,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 232,
+          "height": 768,
+          "right": 232,
+          "bottom": 768,
+          "display": "flex"
+        },
+        "navigation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none"
+        },
+        "workspace": {
+          "x": 232,
+          "y": 64,
+          "width": 792,
+          "height": 388.96875,
+          "right": 1024,
+          "bottom": 452.96875,
+          "columns": "744px"
+        },
+        "work": {
+          "x": 256,
+          "y": 64,
+          "width": 744,
+          "height": 265.78125,
+          "right": 1000,
+          "bottom": 329.78125
+        },
+        "context": {
+          "x": 256,
+          "y": 361.78125,
+          "width": 744,
+          "height": 91.1875,
+          "right": 1000,
+          "bottom": 452.96875,
+          "display": "block",
+          "position": "static",
+          "label": "Contexto da tela"
+        }
+      }
+    },
+    {
+      "file": "shell-context-1280x800.png",
+      "route": "/block0-probe",
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "overflow": 0,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 232,
+          "height": 800,
+          "right": 232,
+          "bottom": 800,
+          "display": "flex"
+        },
+        "navigation": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0,
+          "display": "none"
+        },
+        "workspace": {
+          "x": 232,
+          "y": 64,
+          "width": 1048,
+          "height": 265.78125,
+          "right": 1280,
+          "bottom": 329.78125,
+          "columns": "712px 256px"
+        },
+        "work": {
+          "x": 256,
+          "y": 64,
+          "width": 712,
+          "height": 265.78125,
+          "right": 968,
+          "bottom": 329.78125
+        },
+        "context": {
+          "x": 1000,
+          "y": 88,
+          "width": 256,
+          "height": 43.1875,
+          "right": 1256,
+          "bottom": 131.1875,
+          "display": "block",
+          "position": "sticky",
+          "label": "Contexto da tela"
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "width": 1024,
+      "height": 768,
+      "id": "no-overflow",
+      "passed": true,
+      "overflow": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "id": "intermediate-navigation",
+      "passed": true
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "id": "no-overflow",
+      "passed": true,
+      "overflow": 0
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "id": "optional-context-column",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

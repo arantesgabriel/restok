@@ -1,0 +1,2015 @@
+{
+  "viewportSweeps": [
+    {
+      "label": "signup-320",
+      "bodyWidth": 320,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 320,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 226
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 226
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 186
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 280
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "signup-360",
+      "bodyWidth": 360,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 360,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 265
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 265
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 226
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 320
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "signup-375",
+      "bodyWidth": 375,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 375,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 280
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 280
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 240
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 335
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "signup-390",
+      "bodyWidth": 390,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 390,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 295
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 295
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 255
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 350
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "signup-412",
+      "bodyWidth": 412,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 412,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 317
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 317
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 277
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 372
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "signup-430",
+      "bodyWidth": 430,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 430,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 335
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 335
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 295
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 390
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "signup-768",
+      "bodyWidth": 768,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 768,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 345
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 345
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 305
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 400
+        }
+      ],
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "signup-1024",
+      "bodyWidth": 1024,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 1024,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 380
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 380
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 340
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 435
+        }
+      ],
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "signup-1280",
+      "bodyWidth": 1280,
+      "fonts": "\"Avenir Next\", \"Segoe UI\", ui-sans-serif, system-ui, -apple-system, \"system-ui\", sans-serif",
+      "scrollWidth": 1280,
+      "smallTargets": [
+        {
+          "h": 33,
+          "name": "restok.",
+          "w": 116
+        },
+        {
+          "h": 24,
+          "name": "Como vocês se chamam",
+          "w": 385
+        },
+        {
+          "h": 24,
+          "name": "voce@exemplo.com",
+          "w": 385
+        },
+        {
+          "h": 24,
+          "name": "Mínimo de 6 caracteres",
+          "w": 345
+        },
+        {
+          "h": 32,
+          "name": "Mostrar senha",
+          "w": 32
+        },
+        {
+          "h": 22,
+          "name": "Entrar",
+          "w": 40
+        },
+        {
+          "h": 20,
+          "name": "Experimentar com dados de exemplo",
+          "w": 440
+        }
+      ],
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "history",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "login",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "home",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 318,
+          "scrollWidth": 318
+        }
+      ],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 358,
+          "scrollWidth": 358
+        }
+      ],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 373,
+          "scrollWidth": 373
+        }
+      ],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 388,
+          "scrollWidth": 388
+        }
+      ],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 410,
+          "scrollWidth": 410
+        }
+      ],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 428,
+          "scrollWidth": 428
+        }
+      ],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 670,
+          "scrollWidth": 670
+        }
+      ],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 670,
+          "scrollWidth": 670
+        }
+      ],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "new-purchase",
+      "dialog": [
+        {
+          "clientWidth": 670,
+          "scrollWidth": 670
+        }
+      ],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 318,
+          "scrollWidth": 318
+        }
+      ],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 358,
+          "scrollWidth": 358
+        }
+      ],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 373,
+          "scrollWidth": 373
+        }
+      ],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 388,
+          "scrollWidth": 388
+        }
+      ],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 410,
+          "scrollWidth": 410
+        }
+      ],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 428,
+          "scrollWidth": 428
+        }
+      ],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "item-editor",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 318,
+          "scrollWidth": 318
+        }
+      ],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 358,
+          "scrollWidth": 358
+        }
+      ],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 373,
+          "scrollWidth": 373
+        }
+      ],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 388,
+          "scrollWidth": 388
+        }
+      ],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 410,
+          "scrollWidth": 410
+        }
+      ],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 428,
+          "scrollWidth": 428
+        }
+      ],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "add-sheet",
+      "dialog": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "landing",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "reset-password",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 320,
+      "viewport": {
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 360,
+      "viewport": {
+        "height": 844,
+        "width": 360
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 375,
+      "viewport": {
+        "height": 844,
+        "width": 375
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 390,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 412,
+      "viewport": {
+        "height": 844,
+        "width": 412
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 430,
+      "viewport": {
+        "height": 844,
+        "width": 430
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 768,
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 1024,
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "label": "shop-validation",
+      "dialog": [],
+      "scrollWidth": 1280,
+      "viewport": {
+        "height": 900,
+        "width": 1280
+      }
+    }
+  ],
+  "shoppingGeometry": [
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 304,
+        "w": 288,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 304,
+        "w": 56,
+        "x": 248,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 480.5,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 436.5
+        },
+        {
+          "bottom": 480.5,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 436.5
+        },
+        {
+          "bottom": 480.5,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 436.5
+        },
+        {
+          "bottom": 480.5,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 436.5
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 320,
+        "w": 320,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 320,
+      "visibleArticles": 1,
+      "w": 320
+    },
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 344,
+        "w": 328,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 344,
+        "w": 56,
+        "x": 288,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 388.25
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 360,
+        "w": 360,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 360,
+      "visibleArticles": 1,
+      "w": 360
+    },
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 359,
+        "w": 343,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 359,
+        "w": 56,
+        "x": 303,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 388.25
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 375,
+        "w": 375,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 375,
+      "visibleArticles": 1,
+      "w": 375
+    },
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 374,
+        "w": 358,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 374,
+        "w": 56,
+        "x": 318,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 388.25
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 390,
+        "w": 390,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 390,
+      "visibleArticles": 1,
+      "w": 390
+    },
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 396,
+        "w": 380,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 396,
+        "w": 56,
+        "x": 340,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 388.25
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 412,
+        "w": 412,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 412,
+      "visibleArticles": 1,
+      "w": 412
+    },
+    {
+      "cta": {
+        "bottom": 768,
+        "h": 44,
+        "right": 414,
+        "w": 398,
+        "x": 16,
+        "y": 724
+      },
+      "fab": {
+        "bottom": 691,
+        "h": 56,
+        "right": 414,
+        "w": 56,
+        "x": 358,
+        "y": 635
+      },
+      "filters": [
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Todos",
+          "right": 79.2421875,
+          "w": 63.2421875,
+          "x": 16,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Pendente",
+          "right": 170.109375,
+          "w": 82.8671875,
+          "x": 87.2421875,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Comprado",
+          "right": 267.65625,
+          "w": 89.546875,
+          "x": 178.109375,
+          "y": 388.25
+        },
+        {
+          "bottom": 432.25,
+          "h": 44,
+          "name": "Já temos",
+          "right": 355.4609375,
+          "w": 79.8046875,
+          "x": 275.65625,
+          "y": 388.25
+        }
+      ],
+      "overlapCTA": false,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 780,
+        "h": 119,
+        "right": 430,
+        "w": 430,
+        "x": 0,
+        "y": 661
+      },
+      "scrollWidth": 430,
+      "visibleArticles": 1,
+      "w": 430
+    },
+    {
+      "cta": {
+        "bottom": 867,
+        "h": 44,
+        "right": 719,
+        "w": 266,
+        "x": 453,
+        "y": 823
+      },
+      "fab": {
+        "bottom": 868,
+        "h": 56,
+        "right": 736,
+        "w": 56,
+        "x": 680,
+        "y": 812
+      },
+      "filters": [
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Todos",
+          "right": 355.2421875,
+          "w": 63.2421875,
+          "x": 292,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Pendente",
+          "right": 446.109375,
+          "w": 82.8671875,
+          "x": 363.2421875,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Comprado",
+          "right": 543.65625,
+          "w": 89.546875,
+          "x": 454.109375,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Já temos",
+          "right": 631.4609375,
+          "w": 79.8046875,
+          "x": 551.65625,
+          "y": 410.5
+        }
+      ],
+      "overlapCTA": true,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 880,
+        "h": 120,
+        "right": 736,
+        "w": 300,
+        "x": 436,
+        "y": 760
+      },
+      "scrollWidth": 768,
+      "visibleArticles": 2,
+      "w": 768
+    },
+    {
+      "cta": {
+        "bottom": 867,
+        "h": 44,
+        "right": 975,
+        "w": 266,
+        "x": 709,
+        "y": 823
+      },
+      "fab": {
+        "bottom": 868,
+        "h": 56,
+        "right": 992,
+        "w": 56,
+        "x": 936,
+        "y": 812
+      },
+      "filters": [
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Todos",
+          "right": 367.2421875,
+          "w": 63.2421875,
+          "x": 304,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Pendente",
+          "right": 458.109375,
+          "w": 82.8671875,
+          "x": 375.2421875,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Comprado",
+          "right": 555.65625,
+          "w": 89.546875,
+          "x": 466.109375,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Já temos",
+          "right": 643.4609375,
+          "w": 79.8046875,
+          "x": 563.65625,
+          "y": 410.5
+        }
+      ],
+      "overlapCTA": true,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 880,
+        "h": 120,
+        "right": 992,
+        "w": 300,
+        "x": 692,
+        "y": 760
+      },
+      "scrollWidth": 1024,
+      "visibleArticles": 2,
+      "w": 1024
+    },
+    {
+      "cta": {
+        "bottom": 867,
+        "h": 44,
+        "right": 1231,
+        "w": 266,
+        "x": 965,
+        "y": 823
+      },
+      "fab": {
+        "bottom": 868,
+        "h": 56,
+        "right": 1248,
+        "w": 56,
+        "x": 1192,
+        "y": 812
+      },
+      "filters": [
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Todos",
+          "right": 367.2421875,
+          "w": 63.2421875,
+          "x": 304,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Pendente",
+          "right": 458.109375,
+          "w": 82.8671875,
+          "x": 375.2421875,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Comprado",
+          "right": 555.65625,
+          "w": 89.546875,
+          "x": 466.109375,
+          "y": 410.5
+        },
+        {
+          "bottom": 454.5,
+          "h": 44,
+          "name": "Já temos",
+          "right": 643.4609375,
+          "w": 79.8046875,
+          "x": 563.65625,
+          "y": 410.5
+        }
+      ],
+      "overlapCTA": true,
+      "overlapPanel": true,
+      "panel": {
+        "bottom": 880,
+        "h": 120,
+        "right": 1248,
+        "w": 300,
+        "x": 948,
+        "y": 760
+      },
+      "scrollWidth": 1280,
+      "visibleArticles": 2,
+      "w": 1280
+    }
+  ],
+  "addSheetGeometry": [
+    {
+      "docWidth": 320,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 318,
+          "scrollWidth": 318
+        }
+      ],
+      "w": 320
+    },
+    {
+      "docWidth": 360,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 358,
+          "scrollWidth": 358
+        }
+      ],
+      "w": 360
+    },
+    {
+      "docWidth": 375,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 373,
+          "scrollWidth": 373
+        }
+      ],
+      "w": 375
+    },
+    {
+      "docWidth": 390,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 388,
+          "scrollWidth": 388
+        }
+      ],
+      "w": 390
+    },
+    {
+      "docWidth": 412,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 410,
+          "scrollWidth": 410
+        }
+      ],
+      "w": 412
+    },
+    {
+      "docWidth": 430,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 428,
+          "scrollWidth": 428
+        }
+      ],
+      "w": 430
+    },
+    {
+      "docWidth": 768,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "w": 768
+    },
+    {
+      "docWidth": 1024,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "w": 1024
+    },
+    {
+      "docWidth": 1280,
+      "focused": "Fechar",
+      "sections": [
+        {
+          "clientWidth": 510,
+          "scrollWidth": 510
+        }
+      ],
+      "w": 1280
+    }
+  ]
+}

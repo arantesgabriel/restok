@@ -1,0 +1,6177 @@
+{
+  "kind": "BLOCO 1 / COMPRA / E2E-FIXTURE / sem backend",
+  "createdAt": "2026-10-30T05:09:24.647Z",
+  "commit": "e4de8bcdf91ed98d6e82731a7bff4c3f076c7043",
+  "sourceDiffSha256": "3a7df4d0dfb1ad9f7539bd872b05a28cb2a38834278585f9e433d724f2299837",
+  "engine": "156.0.4314.50",
+  "dpr": 1,
+  "zoom": 1,
+  "fixture": "Vite 127.0.0.1:4173, componentes e CSS reais; data/Auth/realtime substituídos localmente",
+  "captures": [
+    {
+      "id": "compra-filled",
+      "file": "320-640-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 13,
+          "y": 427.984375,
+          "width": 294,
+          "height": 64,
+          "right": 307,
+          "bottom": 491.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 1,
+        "firstCategory": {
+          "x": 12,
+          "y": 377.984375,
+          "width": 296,
+          "height": 1537.1875,
+          "right": 308,
+          "bottom": 1915.171875
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 142.984375,
+          "right": 308,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 150.875,
+          "clientWidth": 151,
+          "scrollWidth": 151,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 2892.171875,
+          "right": 320,
+          "bottom": 2892.171875
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "320-640-compra-money.png",
+      "route": "/app?scenario=money",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 13,
+          "y": 467.984375,
+          "width": 294,
+          "height": 130.59375,
+          "right": 307,
+          "bottom": 598.578125
+        },
+        "firstRowHeight": 130.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": {
+          "x": 12,
+          "y": 421.984375,
+          "width": 296,
+          "height": 272.78125,
+          "right": 308,
+          "bottom": 694.765625
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 186.984375,
+          "right": 308,
+          "bottom": 311.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 163.265625,
+          "clientWidth": 163,
+          "scrollWidth": 163,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 15,00",
+          "fontSize": "20px",
+          "width": 84.734375,
+          "clientWidth": 85,
+          "scrollWidth": 85,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 854.765625,
+          "right": 320,
+          "bottom": 854.765625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-equal",
+      "file": "320-640-compra-money-equal.png",
+      "route": "/app?scenario=money-equal",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 13,
+          "y": 467.984375,
+          "width": 294,
+          "height": 111.59375,
+          "right": 307,
+          "bottom": 579.578125
+        },
+        "firstRowHeight": 111.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": {
+          "x": 12,
+          "y": 421.984375,
+          "width": 296,
+          "height": 158.59375,
+          "right": 308,
+          "bottom": 580.578125
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 186.984375,
+          "right": 308,
+          "bottom": 311.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 175.671875,
+          "clientWidth": 176,
+          "scrollWidth": 176,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 0,00",
+          "fontSize": "20px",
+          "width": 72.328125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 914.359375,
+          "right": 320,
+          "bottom": 914.359375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-over",
+      "file": "320-640-compra-money-over.png",
+      "route": "/app?scenario=money-over",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 13,
+          "y": 467.984375,
+          "width": 294,
+          "height": 111.59375,
+          "right": 307,
+          "bottom": 579.578125
+        },
+        "firstRowHeight": 111.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": {
+          "x": 12,
+          "y": 421.984375,
+          "width": 296,
+          "height": 158.59375,
+          "right": 308,
+          "bottom": 580.578125
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 186.984375,
+          "right": 308,
+          "bottom": 311.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 167.09375,
+          "clientWidth": 167,
+          "scrollWidth": 167,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 5,00",
+          "fontSize": "20px",
+          "width": 80.90625,
+          "clientWidth": 81,
+          "scrollWidth": 81,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 914.359375,
+          "right": 320,
+          "bottom": 914.359375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-high",
+      "file": "320-640-compra-money-high.png",
+      "route": "/app?scenario=money-high",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 1,
+        "firstRow": {
+          "x": 13,
+          "y": 473.984375,
+          "width": 294,
+          "height": 222.96875,
+          "right": 307,
+          "bottom": 696.953125
+        },
+        "firstRowHeight": 222.96875,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": {
+          "x": 12,
+          "y": 427.984375,
+          "width": 296,
+          "height": 269.96875,
+          "right": 308,
+          "bottom": 697.953125
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 192.984375,
+          "right": 308,
+          "bottom": 317.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "20px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 857.953125,
+          "right": 320,
+          "bottom": 857.953125
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "320-640-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 13,
+          "y": 473.375,
+          "width": 294,
+          "height": 64,
+          "right": 307,
+          "bottom": 537.375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": {
+          "x": 12,
+          "y": 423.375,
+          "width": 296,
+          "height": 1537.1875,
+          "right": 308,
+          "bottom": 1960.5625
+        },
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 188.375,
+          "right": 308,
+          "bottom": 313.375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "12px",
+          "width": 218,
+          "clientWidth": 218,
+          "scrollWidth": 218,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 3091.9375,
+          "right": 320,
+          "bottom": 3091.9375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress-long-total-row",
+      "file": "320-640-compra-stress-long-total-row.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 13,
+          "y": -1526.625,
+          "width": 294,
+          "height": 64,
+          "right": 307,
+          "bottom": -1462.625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 12,
+          "y": -1576.625,
+          "width": 296,
+          "height": 1537.1875,
+          "right": 308,
+          "bottom": -39.4375
+        },
+        "budget": {
+          "x": 12,
+          "y": -1875,
+          "width": 296,
+          "height": 188.375,
+          "right": 308,
+          "bottom": -1686.625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "12px",
+          "width": 218,
+          "clientWidth": 218,
+          "scrollWidth": 218,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": -1931,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": -1883
+        },
+        "main": {
+          "x": 0,
+          "y": -2000,
+          "width": 320,
+          "height": 3091.9375,
+          "right": 320,
+          "bottom": 1091.9375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-empty-active",
+      "file": "320-640-compra-empty-active.png",
+      "route": "/app?scenario=empty-list",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 640
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": {
+          "x": 12,
+          "y": 125,
+          "width": 296,
+          "height": 142.984375,
+          "right": 308,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 150.875,
+          "clientWidth": 151,
+          "scrollWidth": 151,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 499.8125,
+          "width": 320,
+          "height": 80.1875,
+          "right": 320,
+          "bottom": 580
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 12,
+          "y": 69,
+          "width": 235,
+          "height": 48,
+          "right": 247,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 743.984375,
+          "right": 320,
+          "bottom": 743.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "390-844-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "390-844-compra-money.png",
+      "route": "/app?scenario=money",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 112.59375,
+          "right": 373,
+          "bottom": 536.578125
+        },
+        "firstRowHeight": 112.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 223.59375,
+          "right": 374,
+          "bottom": 601.578125
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 225.265625,
+          "clientWidth": 225,
+          "scrollWidth": 225,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 15,00",
+          "fontSize": "20px",
+          "width": 84.734375,
+          "clientWidth": 85,
+          "scrollWidth": 85,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-equal",
+      "file": "390-844-compra-money-equal.png",
+      "route": "/app?scenario=money-equal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 111.59375,
+          "right": 373,
+          "bottom": 535.578125
+        },
+        "firstRowHeight": 111.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 158.59375,
+          "right": 374,
+          "bottom": 536.578125
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 237.671875,
+          "clientWidth": 238,
+          "scrollWidth": 238,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 0,00",
+          "fontSize": "20px",
+          "width": 72.328125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-over",
+      "file": "390-844-compra-money-over.png",
+      "route": "/app?scenario=money-over",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 111.59375,
+          "right": 373,
+          "bottom": 535.578125
+        },
+        "firstRowHeight": 111.59375,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 158.59375,
+          "right": 374,
+          "bottom": 536.578125
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "28px",
+          "width": 229.09375,
+          "clientWidth": 229,
+          "scrollWidth": 229,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 5,00",
+          "fontSize": "20px",
+          "width": 80.90625,
+          "clientWidth": 81,
+          "scrollWidth": 81,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-high",
+      "file": "390-844-compra-money-high.png",
+      "route": "/app?scenario=money-high",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 1,
+        "firstRow": {
+          "x": 17,
+          "y": 473.984375,
+          "width": 356,
+          "height": 183.78125,
+          "right": 373,
+          "bottom": 657.765625
+        },
+        "firstRowHeight": 183.78125,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 1,
+        "firstCategory": {
+          "x": 16,
+          "y": 427.984375,
+          "width": 358,
+          "height": 230.78125,
+          "right": 374,
+          "bottom": 658.765625
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 192.984375,
+          "right": 374,
+          "bottom": 317.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "20px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "390-844-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 469.375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 533.375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 3,
+        "firstCategory": {
+          "x": 16,
+          "y": 423.375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1942.375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 188.375,
+          "right": 374,
+          "bottom": 313.375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "12px",
+          "width": 280,
+          "clientWidth": 280,
+          "scrollWidth": 280,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 703.8125,
+          "width": 390,
+          "height": 80.1875,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 3036.15625,
+          "right": 390,
+          "bottom": 3036.15625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress-long-total-row",
+      "file": "390-844-compra-stress-long-total-row.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": -1391.625,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": -1327.625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 7,
+        "firstCategory": {
+          "x": 16,
+          "y": -1437.625,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 81.375
+        },
+        "budget": {
+          "x": 16,
+          "y": -1736,
+          "width": 358,
+          "height": 188.375,
+          "right": 374,
+          "bottom": -1547.625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "12px",
+          "width": 280,
+          "clientWidth": 280,
+          "scrollWidth": 280,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 703.8125,
+          "width": 390,
+          "height": 80.1875,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": -1792,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": -1744
+        },
+        "main": {
+          "x": 0,
+          "y": -1861,
+          "width": 390,
+          "height": 3036.15625,
+          "right": 390,
+          "bottom": 1175.15625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-empty-active",
+      "file": "390-844-compra-empty-active.png",
+      "route": "/app?scenario=empty-list",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-list100",
+      "file": "390-844-compra-list100.png",
+      "route": "/app?scenario=list100",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 100,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L · 033 como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 4871.34375,
+          "right": 374,
+          "bottom": 5249.328125
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 196,23",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 603,77",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 7802.890625,
+          "right": 390,
+          "bottom": 7802.890625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "768-1024-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "geometry": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 25,
+          "y": 462.78125,
+          "width": 718,
+          "height": 64,
+          "right": 743,
+          "bottom": 526.78125
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 6,
+        "firstCategory": {
+          "x": 24,
+          "y": 416.78125,
+          "width": 720,
+          "height": 1519,
+          "right": 744,
+          "bottom": 1935.78125
+        },
+        "budget": {
+          "x": 24,
+          "y": 135.796875,
+          "width": 720,
+          "height": 150.984375,
+          "right": 744,
+          "bottom": 286.78125
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 574.875,
+          "clientWidth": 575,
+          "scrollWidth": 575,
+          "parentWidth": 720,
+          "parentScrollWidth": 720,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 720,
+          "parentScrollWidth": 720,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 900.609375,
+          "width": 768,
+          "height": 63.390625,
+          "right": 768,
+          "bottom": 964
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 24,
+          "y": 69,
+          "width": 659,
+          "height": 28.796875,
+          "right": 683,
+          "bottom": 97.796875
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 2912.78125,
+          "right": 768,
+          "bottom": 2912.78125
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1024-768-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "documentWidth": 1024,
+        "bodyWidth": 1024,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": 531.1875,
+          "width": 742,
+          "height": 64,
+          "right": 999,
+          "bottom": 595.1875
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 3,
+        "firstCategory": {
+          "x": 256,
+          "y": 485.1875,
+          "width": 744,
+          "height": 1519,
+          "right": 1000,
+          "bottom": 2004.1875
+        },
+        "budget": {
+          "x": 256,
+          "y": 183.59375,
+          "width": 744,
+          "height": 171.59375,
+          "right": 1000,
+          "bottom": 355.1875
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "32px",
+          "width": 582.875,
+          "clientWidth": 583,
+          "scrollWidth": 583,
+          "parentWidth": 744,
+          "parentScrollWidth": 744,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 744,
+          "parentScrollWidth": 744,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": true,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 394.328125,
+          "height": 57.59375,
+          "right": 650.328125,
+          "bottom": 145.59375
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 792,
+          "height": 2869.1875,
+          "right": 1024,
+          "bottom": 2869.1875
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-no-pending",
+      "file": "1024-768-compra-no-pending.png",
+      "route": "/app?scenario=money-high",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "documentWidth": 1024,
+        "bodyWidth": 1024,
+        "horizontalOverflow": 0,
+        "rows": 1,
+        "firstRow": {
+          "x": 257,
+          "y": 531.1875,
+          "width": 742,
+          "height": 100.78125,
+          "right": 999,
+          "bottom": 631.96875
+        },
+        "firstRowHeight": 100.78125,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 1,
+        "firstCategory": {
+          "x": 256,
+          "y": 485.1875,
+          "width": 744,
+          "height": 147.78125,
+          "right": 1000,
+          "bottom": 632.96875
+        },
+        "budget": {
+          "x": 256,
+          "y": 183.59375,
+          "width": 744,
+          "height": 171.59375,
+          "right": 1000,
+          "bottom": 355.1875
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "32px",
+          "width": 521.8125,
+          "clientWidth": 522,
+          "scrollWidth": 522,
+          "parentWidth": 744,
+          "parentScrollWidth": 744,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "20px",
+          "width": 158.1875,
+          "clientWidth": 158,
+          "scrollWidth": 158,
+          "parentWidth": 744,
+          "parentScrollWidth": 744,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": true,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 380.84375,
+          "height": 57.59375,
+          "right": 636.84375,
+          "bottom": 145.59375
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 792,
+          "height": 768,
+          "right": 1024,
+          "bottom": 768
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1280-800-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "documentWidth": 1280,
+        "bodyWidth": 1280,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 710,
+          "height": 64,
+          "right": 967,
+          "bottom": 566.390625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 712,
+          "height": 1519,
+          "right": 968,
+          "bottom": 1975.390625
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 712,
+          "height": 171.59375,
+          "right": 968,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "32px",
+          "width": 550.875,
+          "clientWidth": 551,
+          "scrollWidth": 551,
+          "parentWidth": 712,
+          "parentScrollWidth": 712,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 712,
+          "parentScrollWidth": 712,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1000,
+          "y": 88,
+          "width": 256,
+          "height": 262.1875,
+          "right": 1256,
+          "bottom": 350.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 487.015625,
+          "height": 28.796875,
+          "right": 743.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1048,
+          "height": 2840.390625,
+          "right": 1280,
+          "bottom": 2840.390625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1440-900-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 64,
+          "right": 1127,
+          "bottom": 566.390625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 6,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 1519,
+          "right": 1128,
+          "bottom": 1975.390625
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "32px",
+          "width": 710.875,
+          "clientWidth": 711,
+          "scrollWidth": 711,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 262.1875,
+          "right": 1416,
+          "bottom": 350.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 2840.390625,
+          "right": 1440,
+          "bottom": 2840.390625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money",
+      "file": "1440-900-compra-money.png",
+      "route": "/app?scenario=money",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 79.390625,
+          "right": 1127,
+          "bottom": 581.78125
+        },
+        "firstRowHeight": 79.390625,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 190.390625,
+          "right": 1128,
+          "bottom": 646.78125
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "32px",
+          "width": 723.265625,
+          "clientWidth": 723,
+          "scrollWidth": 723,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 15,00",
+          "fontSize": "20px",
+          "width": 84.734375,
+          "clientWidth": 85,
+          "scrollWidth": 85,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "16px",
+          "width": 82.078125,
+          "clientWidth": 82,
+          "scrollWidth": 82,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 248.1875,
+          "right": 1416,
+          "bottom": 336.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-equal",
+      "file": "1440-900-compra-money-equal.png",
+      "route": "/app?scenario=money-equal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 78.390625,
+          "right": 1127,
+          "bottom": 580.78125
+        },
+        "firstRowHeight": 78.390625,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 125.390625,
+          "right": 1128,
+          "bottom": 581.78125
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "32px",
+          "width": 735.671875,
+          "clientWidth": 736,
+          "scrollWidth": 736,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 0,00",
+          "fontSize": "20px",
+          "width": 72.328125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "16px",
+          "width": 82.078125,
+          "clientWidth": 82,
+          "scrollWidth": 82,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 248.1875,
+          "right": 1416,
+          "bottom": 336.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-over",
+      "file": "1440-900-compra-money-over.png",
+      "route": "/app?scenario=money-over",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 2,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 78.390625,
+          "right": 1127,
+          "bottom": 580.78125
+        },
+        "firstRowHeight": 78.390625,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Cebola",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 2,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 125.390625,
+          "right": 1128,
+          "bottom": 581.78125
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 15,00",
+          "fontSize": "32px",
+          "width": 727.09375,
+          "clientWidth": 727,
+          "scrollWidth": 727,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 5,00",
+          "fontSize": "20px",
+          "width": 80.90625,
+          "clientWidth": 81,
+          "scrollWidth": 81,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": {
+          "text": "Sem preço",
+          "fontSize": "16px",
+          "width": 82.078125,
+          "clientWidth": 82,
+          "scrollWidth": 82,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "unpricedLabelAligned": true,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 248.1875,
+          "right": 1416,
+          "bottom": 336.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-money-high",
+      "file": "1440-900-compra-money-high.png",
+      "route": "/app?scenario=money-high",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 1,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 100.78125,
+          "right": 1127,
+          "bottom": 603.171875
+        },
+        "firstRowHeight": 100.78125,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Produto com nome extenso para conferir o alinhamento do valor completo em telas estreitas",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 1,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 147.78125,
+          "right": 1128,
+          "bottom": 604.171875
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "32px",
+          "width": 649.8125,
+          "clientWidth": 650,
+          "scrollWidth": 650,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "20px",
+          "width": 158.1875,
+          "clientWidth": 158,
+          "scrollWidth": 158,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 210.1875,
+          "right": 1416,
+          "bottom": 298.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress",
+      "file": "1440-900-compra-stress.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 64,
+          "right": 1127,
+          "bottom": 566.390625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 6,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 1519,
+          "right": 1128,
+          "bottom": 1975.390625
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "32px",
+          "width": 521.015625,
+          "clientWidth": 521,
+          "scrollWidth": 521,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "20px",
+          "width": 286.984375,
+          "clientWidth": 287,
+          "scrollWidth": 287,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 231.515625,
+          "clientWidth": 232,
+          "scrollWidth": 232,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 283.1875,
+          "right": 1416,
+          "bottom": 371.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 2877.171875,
+          "right": 1440,
+          "bottom": 2877.171875
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-stress-long-total-row",
+      "file": "1440-900-compra-stress-long-total-row.png",
+      "route": "/app?scenario=stress",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": -1323.609375,
+          "width": 870,
+          "height": 64,
+          "right": 1127,
+          "bottom": -1259.609375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 10,
+        "firstCategory": {
+          "x": 256,
+          "y": -1369.609375,
+          "width": 872,
+          "height": 1519,
+          "right": 1128,
+          "bottom": 149.390625
+        },
+        "budget": {
+          "x": 256,
+          "y": -1671.203125,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": -1499.609375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": "true",
+          "balance": "true"
+        },
+        "budgetTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "32px",
+          "width": 521.015625,
+          "clientWidth": 521,
+          "scrollWidth": 521,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "20px",
+          "width": 286.984375,
+          "clientWidth": 287,
+          "scrollWidth": 287,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 231.515625,
+          "clientWidth": 232,
+          "scrollWidth": 232,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 283.1875,
+          "right": 1416,
+          "bottom": 371.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": -1738,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": -1709.203125
+        },
+        "main": {
+          "x": 232,
+          "y": -1826,
+          "width": 1208,
+          "height": 2877.171875,
+          "right": 1440,
+          "bottom": 1051.171875
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-empty-active",
+      "file": "1440-900-compra-empty-active.png",
+      "route": "/app?scenario=empty-list",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "32px",
+          "width": 710.875,
+          "clientWidth": 711,
+          "scrollWidth": 711,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 210.1875,
+          "right": 1416,
+          "bottom": 298.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": true,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-list100",
+      "file": "1440-900-compra-list100.png",
+      "route": "/app?scenario=list100",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 100,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 870,
+          "height": 64,
+          "right": 1127,
+          "bottom": 566.390625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L · 033 como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 6,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 872,
+          "height": 4586.125,
+          "right": 1128,
+          "bottom": 5042.515625
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 872,
+          "height": 171.59375,
+          "right": 1128,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 196,23",
+          "fontSize": "32px",
+          "width": 710.875,
+          "clientWidth": 711,
+          "scrollWidth": 711,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 603,77",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1160,
+          "y": 88,
+          "width": 256,
+          "height": 262.1875,
+          "right": 1416,
+          "bottom": 350.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 647.015625,
+          "height": 28.796875,
+          "right": 903.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 7312.078125,
+          "right": 1440,
+          "bottom": 7312.078125
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-filled",
+      "file": "1920-1080-compra-filled.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "documentWidth": 1920,
+        "bodyWidth": 1920,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 257,
+          "y": 502.390625,
+          "width": 1350,
+          "height": 64,
+          "right": 1607,
+          "bottom": 566.390625
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 9,
+        "firstCategory": {
+          "x": 256,
+          "y": 456.390625,
+          "width": 1352,
+          "height": 1519,
+          "right": 1608,
+          "bottom": 1975.390625
+        },
+        "budget": {
+          "x": 256,
+          "y": 154.796875,
+          "width": 1352,
+          "height": 171.59375,
+          "right": 1608,
+          "bottom": 326.390625
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "32px",
+          "width": 1190.875,
+          "clientWidth": 1191,
+          "scrollWidth": 1191,
+          "parentWidth": 1352,
+          "parentScrollWidth": 1352,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 1352,
+          "parentScrollWidth": 1352,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": true,
+        "context": {
+          "x": 1640,
+          "y": 88,
+          "width": 256,
+          "height": 262.1875,
+          "right": 1896,
+          "bottom": 350.1875
+        },
+        "desktopAddVisible": true,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 256,
+          "y": 88,
+          "width": 1127.015625,
+          "height": 28.796875,
+          "right": 1383.015625,
+          "bottom": 116.796875
+        },
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1688,
+          "height": 2840.390625,
+          "right": 1920,
+          "bottom": 2840.390625
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-organize-focus",
+      "file": "390-844-compra-organize-focus.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "Organizar lista — atualmente por categoria"
+      }
+    },
+    {
+      "id": "compra-organize-hover",
+      "file": "390-844-compra-organize-hover.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-organize-pressed",
+      "file": "390-844-compra-organize-pressed.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "false",
+          "label": "Marcar Água com gás 1.5L como comprado",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "Organizar lista — atualmente por categoria"
+      }
+    },
+    {
+      "id": "compra-search-empty",
+      "file": "390-844-compra-search-empty.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por nome A–Z"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "Buscar na lista"
+      }
+    },
+    {
+      "id": "compra-item-editor",
+      "file": "390-844-compra-item-editor.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Suco Clight",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "INPUT"
+      }
+    },
+    {
+      "id": "compra-item-editor-reduced-motion",
+      "file": "390-844-compra-item-editor-reduced-motion.png",
+      "route": "/app?scenario=long",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 33,
+        "firstRow": {
+          "x": 17,
+          "y": 423.984375,
+          "width": 356,
+          "height": 64,
+          "right": 373,
+          "bottom": 487.984375
+        },
+        "firstRowHeight": 64,
+        "firstRowStatus": {
+          "pressed": "true",
+          "label": "Desfazer situação de Suco Clight",
+          "height": 44
+        },
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 4,
+        "firstCategory": {
+          "x": 16,
+          "y": 377.984375,
+          "width": 358,
+          "height": 1519,
+          "right": 374,
+          "bottom": 1896.984375
+        },
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por categoria"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 2873.984375,
+          "right": 390,
+          "bottom": 2873.984375
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "INPUT"
+      }
+    },
+    {
+      "id": "compra-load-error",
+      "file": "390-844-compra-load-error.png",
+      "route": "/app?scenario=error",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": null,
+        "budgetEditHeight": null,
+        "budgetLongFlags": null,
+        "budgetTotal": null,
+        "budgetBalance": null,
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": null,
+        "dockVisible": false,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": null,
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": null,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste"
+        ],
+        "heading": null,
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "SUMMARY"
+      }
+    },
+    {
+      "id": "compra-loading",
+      "file": "390-844-compra-loading.png",
+      "route": "/app?scenario=loading",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": null,
+        "budgetEditHeight": null,
+        "budgetLongFlags": null,
+        "budgetTotal": null,
+        "budgetBalance": null,
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": null,
+        "dockVisible": false,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": null,
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": null,
+        "menuTriggers": [],
+        "heading": null,
+        "main": null,
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "compra-load-error",
+      "file": "1440-900-compra-load-error.png",
+      "route": "/app?scenario=error",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": null,
+        "budgetEditHeight": null,
+        "budgetLongFlags": null,
+        "budgetTotal": null,
+        "budgetBalance": null,
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": null,
+        "dockVisible": false,
+        "sidebarVisible": true,
+        "contextVisible": false,
+        "context": null,
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": null,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste"
+        ],
+        "heading": null,
+        "main": {
+          "x": 232,
+          "y": 0,
+          "width": 1208,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "SUMMARY"
+      }
+    },
+    {
+      "id": "compra-loading",
+      "file": "1440-900-compra-loading.png",
+      "route": "/app?scenario=loading",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": null,
+        "budgetEditHeight": null,
+        "budgetLongFlags": null,
+        "budgetTotal": null,
+        "budgetBalance": null,
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": null,
+        "dockVisible": false,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": null,
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": null,
+        "menuTriggers": [],
+        "heading": null,
+        "main": null,
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "BODY"
+      }
+    },
+    {
+      "id": "smoke-landing",
+      "file": "smoke-390x844-landing.png",
+      "route": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "heading": "A lista da casa.Do plano ao mercado.",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "id": "smoke-login",
+      "file": "smoke-390x844-login.png",
+      "route": "/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "heading": "Entre na sua conta",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "id": "smoke-reset",
+      "file": "smoke-390x844-reset.png",
+      "route": "/reset-password",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "heading": "Escolha uma nova senha",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "id": "smoke-landing",
+      "file": "smoke-1440x900-landing.png",
+      "route": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "heading": "A lista da casa.Do plano ao mercado.",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "id": "smoke-login",
+      "file": "smoke-1440x900-login.png",
+      "route": "/login",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "heading": "Entre na sua conta",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    },
+    {
+      "id": "smoke-reset",
+      "file": "smoke-1440x900-reset.png",
+      "route": "/reset-password",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "status": 200,
+      "heading": "Escolha uma nova senha",
+      "horizontalOverflow": 0,
+      "font": "\"Restok Manrope\", system-ui, sans-serif"
+    }
+  ],
+  "checks": [
+    {
+      "id": "320x640-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "320x640-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "320x640-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "320x640-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "320x640-mobile-dock",
+      "passed": true,
+      "value": true
+    },
+    {
+      "id": "320x640-mobile-no-desktop-actions",
+      "passed": true,
+      "value": {
+        "add": false,
+        "pending": false
+      }
+    },
+    {
+      "id": "320x640-first-row-above-dock",
+      "passed": true,
+      "value": 1
+    },
+    {
+      "id": "320x640-compra-money-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-compra-money-equal-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-money-equal-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "320x640-compra-money-over-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-money-over-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 294,
+          "parentScrollWidth": 294,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "320x640-compra-money-high-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-money-high-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-money-high-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "20px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "320x640-compra-stress-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-stress-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-stress-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 264,
+          "clientWidth": 264,
+          "scrollWidth": 264,
+          "parentWidth": 296,
+          "parentScrollWidth": 296,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "320x640-stress-no-clipped-row-price",
+      "passed": true,
+      "value": {
+        "text": "R$ 9.999.989.999.990.000,00",
+        "fontSize": "12px",
+        "width": 218,
+        "clientWidth": 218,
+        "scrollWidth": 218,
+        "parentWidth": 294,
+        "parentScrollWidth": 294,
+        "overflows": false
+      }
+    },
+    {
+      "id": "320x640-compra-stress-long-total-row-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "320x640-stress-row-price-contained",
+      "passed": true,
+      "value": {
+        "rowWidth": 294,
+        "rowScrollWidth": 294,
+        "totalText": "R$ 9.999.989.999.990.000,00",
+        "totalWidth": 218,
+        "totalScrollWidth": 218,
+        "totalFontSize": "12px"
+      }
+    },
+    {
+      "id": "320x640-compra-empty-active-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "390x844-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "390x844-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "390x844-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "390x844-mobile-dock",
+      "passed": true,
+      "value": true
+    },
+    {
+      "id": "390x844-mobile-no-desktop-actions",
+      "passed": true,
+      "value": {
+        "add": false,
+        "pending": false
+      }
+    },
+    {
+      "id": "390x844-compra-money-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-money-equal-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-money-equal-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "390x844-compra-money-over-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-money-over-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "14px",
+          "width": 71.8125,
+          "clientWidth": 72,
+          "scrollWidth": 72,
+          "parentWidth": 356,
+          "parentScrollWidth": 356,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "390x844-compra-money-high-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-money-high-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-money-high-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "20px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "390x844-compra-stress-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-stress-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-stress-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "16px",
+          "width": 326,
+          "clientWidth": 326,
+          "scrollWidth": 326,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "390x844-stress-no-clipped-row-price",
+      "passed": true,
+      "value": {
+        "text": "R$ 9.999.989.999.990.000,00",
+        "fontSize": "12px",
+        "width": 280,
+        "clientWidth": 280,
+        "scrollWidth": 280,
+        "parentWidth": 356,
+        "parentScrollWidth": 356,
+        "overflows": false
+      }
+    },
+    {
+      "id": "390x844-compra-stress-long-total-row-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-stress-row-price-contained",
+      "passed": true,
+      "value": {
+        "rowWidth": 356,
+        "rowScrollWidth": 356,
+        "totalText": "R$ 9.999.989.999.990.000,00",
+        "totalWidth": 280,
+        "totalScrollWidth": 280,
+        "totalFontSize": "12px"
+      }
+    },
+    {
+      "id": "390x844-compra-empty-active-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-list100-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-list100-rendered",
+      "passed": true,
+      "value": 100
+    },
+    {
+      "id": "768x1024-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "768x1024-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "768x1024-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "768x1024-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "768x1024-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "768x1024-mobile-dock",
+      "passed": true,
+      "value": true
+    },
+    {
+      "id": "768x1024-mobile-no-desktop-actions",
+      "passed": true,
+      "value": {
+        "add": false,
+        "pending": false
+      }
+    },
+    {
+      "id": "1024x768-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1024x768-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "1024x768-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "1024x768-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "1024x768-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "1024x768-desktop-no-dock",
+      "passed": true,
+      "value": false
+    },
+    {
+      "id": "1024x768-intermediate-pending",
+      "passed": true,
+      "value": {
+        "pending": true,
+        "context": false
+      }
+    },
+    {
+      "id": "1024x768-compra-no-pending-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1024x768-no-pending-disabled",
+      "passed": true,
+      "value": {
+        "visible": true,
+        "disabled": true
+      }
+    },
+    {
+      "id": "1280x800-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1280x800-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "1280x800-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "1280x800-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "1280x800-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "1280x800-four-rows-above-fold",
+      "passed": true,
+      "value": 4
+    },
+    {
+      "id": "1280x800-desktop-no-dock",
+      "passed": true,
+      "value": false
+    },
+    {
+      "id": "1280x800-desktop-context",
+      "passed": true,
+      "value": {
+        "context": true,
+        "add": true
+      }
+    },
+    {
+      "id": "1440x900-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "1440x900-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "1440x900-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "1440x900-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "1440x900-desktop-no-dock",
+      "passed": true,
+      "value": false
+    },
+    {
+      "id": "1440x900-desktop-context",
+      "passed": true,
+      "value": {
+        "context": true,
+        "add": true
+      }
+    },
+    {
+      "id": "1440x900-compra-money-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-compra-money-equal-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-money-equal-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "16px",
+          "width": 82.078125,
+          "clientWidth": 82,
+          "scrollWidth": 82,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "1440x900-compra-money-over-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-money-over-unpriced-value-stays-explicit",
+      "passed": true,
+      "value": {
+        "label": {
+          "text": "Sem preço",
+          "fontSize": "16px",
+          "width": 82.078125,
+          "clientWidth": 82,
+          "scrollWidth": 82,
+          "parentWidth": 870,
+          "parentScrollWidth": 870,
+          "overflows": false
+        },
+        "aligned": true
+      }
+    },
+    {
+      "id": "1440x900-compra-money-high-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-money-high-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-money-high-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.999,99",
+          "fontSize": "32px",
+          "width": 649.8125,
+          "clientWidth": 650,
+          "scrollWidth": 650,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.899,99",
+          "fontSize": "20px",
+          "width": 158.1875,
+          "clientWidth": 158,
+          "scrollWidth": 158,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "1440x900-compra-stress-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-stress-no-page-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-stress-no-clipped-budget-text",
+      "passed": true,
+      "value": {
+        "total": {
+          "text": "R$ 9.999.989.999.990.000,00",
+          "fontSize": "32px",
+          "width": 521.015625,
+          "clientWidth": 521,
+          "scrollWidth": 521,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        },
+        "balance": {
+          "text": "R$ 9.999.989.999.989.200,00",
+          "fontSize": "20px",
+          "width": 286.984375,
+          "clientWidth": 287,
+          "scrollWidth": 287,
+          "parentWidth": 872,
+          "parentScrollWidth": 872,
+          "overflows": false
+        }
+      }
+    },
+    {
+      "id": "1440x900-stress-no-clipped-row-price",
+      "passed": true,
+      "value": {
+        "text": "R$ 9.999.989.999.990.000,00",
+        "fontSize": "16px",
+        "width": 231.515625,
+        "clientWidth": 232,
+        "scrollWidth": 232,
+        "parentWidth": 870,
+        "parentScrollWidth": 870,
+        "overflows": false
+      }
+    },
+    {
+      "id": "1440x900-compra-stress-long-total-row-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-stress-row-price-contained",
+      "passed": true,
+      "value": {
+        "rowWidth": 870,
+        "rowScrollWidth": 870,
+        "totalText": "R$ 9.999.989.999.990.000,00",
+        "totalWidth": 232,
+        "totalScrollWidth": 232,
+        "totalFontSize": "16px"
+      }
+    },
+    {
+      "id": "1440x900-compra-empty-active-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-compra-list100-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-list100-rendered",
+      "passed": true,
+      "value": 100
+    },
+    {
+      "id": "1920x1080-compra-filled-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1920x1080-purchase-rows",
+      "passed": true,
+      "value": 33
+    },
+    {
+      "id": "1920x1080-row-status-target",
+      "passed": true,
+      "value": {
+        "pressed": "false",
+        "label": "Marcar Água com gás 1.5L como comprado",
+        "height": 44
+      }
+    },
+    {
+      "id": "1920x1080-budget-edit-target",
+      "passed": true,
+      "value": 44
+    },
+    {
+      "id": "1920x1080-single-global-organize",
+      "passed": true,
+      "value": [
+        "Perfil de Pessoa de teste",
+        "Menu da compra",
+        "Organizar lista — atualmente por categoria"
+      ]
+    },
+    {
+      "id": "1920x1080-desktop-no-dock",
+      "passed": true,
+      "value": false
+    },
+    {
+      "id": "1920x1080-desktop-context",
+      "passed": true,
+      "value": {
+        "context": true,
+        "add": true
+      }
+    },
+    {
+      "id": "1920x1080-wide-layout-uses-viewport",
+      "passed": true,
+      "value": {
+        "mainRight": 1920,
+        "contentWidth": 1350,
+        "contextRight": 1896
+      }
+    },
+    {
+      "id": "390x844-compra-organize-focus-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "organize-keyboard-focus",
+      "passed": true,
+      "value": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "solid",
+        "outlineWidth": "2px",
+        "outlineOffset": "3px"
+      }
+    },
+    {
+      "id": "390x844-compra-organize-hover-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-organize-pressed-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-search-empty-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "search-empty-state",
+      "passed": true,
+      "value": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": 0,
+        "rows": 0,
+        "firstRow": null,
+        "firstRowHeight": null,
+        "firstRowStatus": null,
+        "firstRowActionHeight": null,
+        "completeRowsAboveDock": 0,
+        "firstCategory": null,
+        "budget": {
+          "x": 16,
+          "y": 125,
+          "width": 358,
+          "height": 142.984375,
+          "right": 374,
+          "bottom": 267.984375
+        },
+        "budgetEditHeight": 44,
+        "budgetLongFlags": {
+          "total": null,
+          "balance": null
+        },
+        "budgetTotal": {
+          "text": "R$ 0,00",
+          "fontSize": "28px",
+          "width": 212.875,
+          "clientWidth": 213,
+          "scrollWidth": 213,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "budgetBalance": {
+          "text": "R$ 800,00",
+          "fontSize": "20px",
+          "width": 97.125,
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "parentWidth": 358,
+          "parentScrollWidth": 358,
+          "overflows": false
+        },
+        "extremeRowTotal": null,
+        "unpricedLabel": null,
+        "unpricedLabelAligned": false,
+        "dock": {
+          "x": 0,
+          "y": 720.609375,
+          "width": 390,
+          "height": 63.390625,
+          "right": 390,
+          "bottom": 784
+        },
+        "dockVisible": true,
+        "sidebarVisible": false,
+        "contextVisible": false,
+        "context": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "right": 0,
+          "bottom": 0
+        },
+        "desktopAddVisible": false,
+        "intermediatePendingVisible": false,
+        "intermediatePendingDisabled": false,
+        "menuTriggers": [
+          "Perfil de Pessoa de teste",
+          "Menu da compra",
+          "Organizar lista — atualmente por nome A–Z"
+        ],
+        "heading": {
+          "x": 16,
+          "y": 69,
+          "width": 297,
+          "height": 48,
+          "right": 313,
+          "bottom": 117
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "fonts": "\"Restok Manrope\", system-ui, sans-serif",
+        "active": "Buscar na lista"
+      }
+    },
+    {
+      "id": "390x844-compra-item-editor-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-item-editor-reduced-motion-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "editor-reduced-motion",
+      "passed": true,
+      "value": {
+        "animation": "none",
+        "duration": "0s"
+      }
+    },
+    {
+      "id": "390x844-compra-load-error-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "390x844-compra-loading-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-compra-load-error-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "1440x900-compra-loading-no-horizontal-overflow",
+      "passed": true,
+      "value": 0
+    },
+    {
+      "id": "smoke-landing-390x844",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "A lista da casa.Do plano ao mercado.",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    },
+    {
+      "id": "smoke-login-390x844",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "Entre na sua conta",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    },
+    {
+      "id": "smoke-reset-390x844",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "Escolha uma nova senha",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    },
+    {
+      "id": "smoke-landing-1440x900",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "A lista da casa.Do plano ao mercado.",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    },
+    {
+      "id": "smoke-login-1440x900",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "Entre na sua conta",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    },
+    {
+      "id": "smoke-reset-1440x900",
+      "passed": true,
+      "value": {
+        "status": 200,
+        "heading": "Escolha uma nova senha",
+        "horizontalOverflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif"
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "id": "organize-hover",
+      "passed": true,
+      "value": "rgb(255, 255, 255)"
+    },
+    {
+      "id": "organize-pressed",
+      "passed": true,
+      "value": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "id": "organize-menu-escape",
+      "passed": true
+    },
+    {
+      "id": "global-sort",
+      "passed": true
+    },
+    {
+      "id": "clear-search",
+      "passed": true
+    },
+    {
+      "id": "purchased-filter",
+      "passed": true
+    },
+    {
+      "id": "restore-category-mode",
+      "passed": true
+    },
+    {
+      "id": "category-sort-independent",
+      "passed": true
+    },
+    {
+      "id": "mark-and-undo",
+      "passed": true
+    },
+    {
+      "id": "already-have",
+      "passed": true,
+      "item": "Suco Clight"
+    },
+    {
+      "id": "editor-escape-focus-return",
+      "passed": true
+    },
+    {
+      "id": "390x844-loading-release",
+      "passed": true
+    },
+    {
+      "id": "1440x900-loading-release",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "video": {
+    "file": "compra-interaction.mp4",
+    "source": "compra-interaction-source.webm",
+    "manifest": "journey-manifest.json",
+    "duration": 8.723233,
+    "seeks": [
+      {
+        "id": "initial",
+        "file": "journey-01-initial.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 0.44,
+        "sampledSeekSeconds": 0.44,
+        "frameIndex": 11,
+        "mae": 7.935789980732177,
+        "passed": true
+      },
+      {
+        "id": "filter-pending",
+        "file": "journey-02-filter-pending.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 1.4,
+        "sampledSeekSeconds": 1.4000000000000001,
+        "frameIndex": 35,
+        "mae": 7.999132947976879,
+        "passed": true
+      },
+      {
+        "id": "item-edited",
+        "file": "journey-03-item-edited.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 3.68,
+        "sampledSeekSeconds": 3.68,
+        "frameIndex": 92,
+        "mae": 8.476035645472061,
+        "passed": true
+      },
+      {
+        "id": "item-marked-in-fixture",
+        "file": "journey-04-item-marked-in-fixture.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 5.2,
+        "sampledSeekSeconds": 5.2,
+        "frameIndex": 130,
+        "mae": 8.50585260115607,
+        "passed": true
+      },
+      {
+        "id": "filter-all-after-mark",
+        "file": "journey-05-filter-all-after-mark.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 5.2,
+        "sampledSeekSeconds": 5.2,
+        "frameIndex": 130,
+        "mae": 8.50585260115607,
+        "passed": true
+      },
+      {
+        "id": "finish-confirmation-pending",
+        "file": "journey-06-finish-confirmation-pending.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 5.76,
+        "sampledSeekSeconds": 5.76,
+        "frameIndex": 144,
+        "mae": 6.8245664739884395,
+        "passed": true
+      },
+      {
+        "id": "receipt-fixture-only",
+        "file": "journey-07-receipt-fixture-only.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "seconds": 6.56,
+        "sampledSeekSeconds": 6.5600000000000005,
+        "frameIndex": 164,
+        "mae": 5.067124277456648,
+        "passed": true
+      }
+    ]
+  }
+}

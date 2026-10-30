@@ -1,0 +1,48 @@
+{
+  "kind": "INTEGRADO-RESTOK-DEV",
+  "frontend": "http://127.0.0.1:3001",
+  "buildLabel": "PR01 production baseline before PR02",
+  "capturedAt": "2026-10-28T15:04:36.202Z",
+  "engine": "156.0.8078.4",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "accounts": [
+    {
+      "account": 1,
+      "memberships": 3,
+      "roles": [
+        "owner",
+        "owner",
+        "owner"
+      ]
+    },
+    {
+      "account": 2,
+      "memberships": 3,
+      "roles": [
+        "member",
+        "member",
+        "owner"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "account": 1,
+      "selectedSecond": true,
+      "preservedAfterReload": false,
+      "beforeFile": "account-1-selected.png",
+      "afterFile": "account-1-reload.png"
+    },
+    {
+      "account": 2,
+      "selectedSecond": true,
+      "preservedAfterReload": false,
+      "beforeFile": "account-2-selected.png",
+      "afterFile": "account-2-reload.png"
+    }
+  ],
+  "errors": []
+}

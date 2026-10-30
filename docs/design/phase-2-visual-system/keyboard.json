@@ -1,0 +1,52 @@
+[
+  {
+    "insideDialog": true,
+    "label": "Aumentar quantidade",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": true,
+    "label": "",
+    "tag": "INPUT"
+  },
+  {
+    "insideDialog": true,
+    "label": "Pendente",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": true,
+    "label": "Comprado",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": true,
+    "label": "Já temos",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": true,
+    "label": "Nome e categoria",
+    "tag": "SUMMARY"
+  },
+  {
+    "insideDialog": true,
+    "label": "Adicionar ao carrinho",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": false,
+    "label": "Prévia · dados de exemploAs al",
+    "tag": "BODY"
+  },
+  {
+    "insideDialog": true,
+    "label": "Fechar",
+    "tag": "BUTTON"
+  },
+  {
+    "insideDialog": true,
+    "label": "Diminuir quantidade",
+    "tag": "BUTTON"
+  }
+]

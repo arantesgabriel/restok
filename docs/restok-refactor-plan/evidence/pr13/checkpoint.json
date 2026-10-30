@@ -1,0 +1,16 @@
+{
+  "browser": "Unavailable; no visual/manual evidence claimed",
+  "scope": "PR13 only",
+  "nextPR": "14 not authorized",
+  "dataSecurityChanges": [],
+  "release": "pending visual, reader, zoom and hardware gates",
+  "base": "302f851",
+  "checks": {
+    "lint": "passed",
+    "tests": 223,
+    "typecheck": "passed, no incremental",
+    "build": "passed, webpack",
+    "diffCheck": "passed",
+    "files": 38
+  }
+}

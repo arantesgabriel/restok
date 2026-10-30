@@ -1,0 +1,377 @@
+[
+  {
+    "screen": "Compra",
+    "budget": {
+      "bottom": 252.9403381347656,
+      "height": 132.96875,
+      "width": 358.0113525390625,
+      "x": 15.994318008422852,
+      "y": 119.97158813476562
+    },
+    "context": false,
+    "footer": {
+      "bottom": 47.982951164245605,
+      "height": 43.99147415161133,
+      "width": 43.99147415161133,
+      "x": 330.0141906738281,
+      "y": 3.991477012634278
+    },
+    "header": false,
+    "height": 844,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 51.9886360168457,
+      "height": 51.9886360168457,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "width": 390
+  },
+  {
+    "screen": "Compra",
+    "budget": {
+      "bottom": 317.74147033691406,
+      "height": 144.97158813476562,
+      "width": 544.2045288085938,
+      "x": 199.9857940673828,
+      "y": 172.76988220214844
+    },
+    "context": false,
+    "footer": {
+      "bottom": 1007.6419868469238,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 963.6505126953124
+    },
+    "header": false,
+    "height": 1024,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1023.6363525390624,
+      "height": 1023.6363525390624,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 768
+  },
+  {
+    "screen": "Compra",
+    "budget": {
+      "bottom": 265.7528305053711,
+      "height": 144.97158813476562,
+      "width": 767.8408813476562,
+      "x": 199.9857940673828,
+      "y": 120.78124237060548
+    },
+    "context": false,
+    "footer": {
+      "bottom": 752.1874580383301,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 708.1959838867188
+    },
+    "header": false,
+    "height": 768,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 768.1817626953125,
+      "height": 768.1817626953125,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 992
+  },
+  {
+    "screen": "Compra",
+    "budget": {
+      "bottom": 265.7528305053711,
+      "height": 144.97158813476562,
+      "width": 1040,
+      "x": 311.9886169433594,
+      "y": 120.78124237060548
+    },
+    "context": false,
+    "footer": {
+      "bottom": 884.0056343078613,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 840.01416015625
+    },
+    "header": false,
+    "height": 900,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 899.9999389648438,
+      "height": 899.9999389648438,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1440
+  },
+  {
+    "screen": "Compra",
+    "budget": {
+      "bottom": 265.7528305053711,
+      "height": 144.97158813476562,
+      "width": 1040,
+      "x": 551.9885864257812,
+      "y": 120.78124237060548
+    },
+    "context": false,
+    "footer": {
+      "bottom": 1064.005634307861,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 1020.01416015625
+    },
+    "header": false,
+    "height": 1080,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1080,
+      "height": 1080,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1920
+  },
+  {
+    "screen": "Casa",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 47.982951164245605,
+      "height": 43.99147415161133,
+      "width": 43.99147415161133,
+      "x": 330.0141906738281,
+      "y": 3.991477012634278
+    },
+    "header": false,
+    "height": 844,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 51.9886360168457,
+      "height": 51.9886360168457,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "width": 390
+  },
+  {
+    "screen": "Casa",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 1007.6419868469238,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 963.6505126953124
+    },
+    "header": false,
+    "height": 1024,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1023.6363525390624,
+      "height": 1023.6363525390624,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 768
+  },
+  {
+    "screen": "Casa",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 752.1874580383301,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 708.1959838867188
+    },
+    "header": false,
+    "height": 768,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 768.1817626953125,
+      "height": 768.1817626953125,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 992
+  },
+  {
+    "screen": "Casa",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 884.0056343078613,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 840.01416015625
+    },
+    "header": false,
+    "height": 900,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 899.9999389648438,
+      "height": 899.9999389648438,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1440
+  },
+  {
+    "screen": "Casa",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 1064.005634307861,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 1020.01416015625
+    },
+    "header": false,
+    "height": 1080,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1080,
+      "height": 1080,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1920
+  },
+  {
+    "screen": "Histórico",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 47.982951164245605,
+      "height": 43.99147415161133,
+      "width": 43.99147415161133,
+      "x": 330.0141906738281,
+      "y": 3.991477012634278
+    },
+    "header": false,
+    "height": 844,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 51.9886360168457,
+      "height": 51.9886360168457,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "width": 390
+  },
+  {
+    "screen": "Histórico",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 1007.6419868469238,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 963.6505126953124
+    },
+    "header": false,
+    "height": 1024,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1023.6363525390624,
+      "height": 1023.6363525390624,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 768
+  },
+  {
+    "screen": "Histórico",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 752.1874580383301,
+      "height": 43.99147415161133,
+      "width": 151.1079559326172,
+      "x": 11.988636016845703,
+      "y": 708.1959838867188
+    },
+    "header": false,
+    "height": 768,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 768.1817626953125,
+      "height": 768.1817626953125,
+      "width": 175.9943084716797,
+      "x": 0,
+      "y": 0
+    },
+    "width": 992
+  },
+  {
+    "screen": "Histórico",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 884.0056343078613,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 840.01416015625
+    },
+    "header": false,
+    "height": 900,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 899.9999389648438,
+      "height": 899.9999389648438,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1440
+  },
+  {
+    "screen": "Histórico",
+    "budget": null,
+    "context": false,
+    "footer": {
+      "bottom": 1064.005634307861,
+      "height": 43.99147415161133,
+      "width": 191.09375,
+      "x": 15.994318008422852,
+      "y": 1020.01416015625
+    },
+    "header": false,
+    "height": 1080,
+    "overflow": 0,
+    "sidebar": {
+      "bottom": 1080,
+      "height": 1080,
+      "width": 223.9914703369141,
+      "x": 0,
+      "y": 0
+    },
+    "width": 1920
+  }
+]

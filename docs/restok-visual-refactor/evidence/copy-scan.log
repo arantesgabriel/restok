@@ -1,0 +1,47 @@
+
+components\shopping\category-section.tsx
+  em-dash                 L10
+    Z–A
+    ↑ matched: "–"
+  em-dash                 L10
+    A–Z
+    ↑ matched: "–"
+
+components\shopping\shopping-toolbar.tsx
+  em-dash                 L9
+    A–Z
+    ↑ matched: "–"
+
+components\shopping\shopping-view.tsx
+  em-dash                 L16
+    Ordenar por nome A–Z
+    ↑ matched: "–"
+
+components\products\product-row.tsx
+  bullet-separator        L9
+    Inativo ·  
+    ↑ matched: "·"
+
+components\products\products-home.test.tsx
+  em-dash                 L25
+    keeps category direction while switching to global A–Z and back
+    ↑ matched: "–"
+  em-dash                 L28
+    A–Z
+    ↑ matched: "–"
+
+components\products\products-home.tsx
+  em-dash                 L28
+    A–Z
+    ↑ matched: "–"
+
+components\households\household-model.ts
+  bullet-separator        L6
+      ·   · desde  
+    ↑ matched: "·"
+
+How to fix:
+  em-dash: Dashes (travessão) are forbidden. Replace with a period, comma, colon or parentheses.
+  bullet-separator: The bullet separator (alt+7) is forbidden. In a metadata list, use periods and commas ("34 páginas. 9 etapas, 1 case"). In a label, a colon ("Fase 1: A Estratégia"). In a CTA with a price, a preposition ("Quero o e-book por R$ 47").
+
+✗ 9 occurrence(s) in 59 file(s).

@@ -1,0 +1,502 @@
+diff --git a/components/app/app-shell.module.css b/components/app/app-shell.module.css
+index 99699c1..f5b5f85 100644
+--- a/components/app/app-shell.module.css
++++ b/components/app/app-shell.module.css
+@@ -1,25 +1,173 @@
+-.shell { min-height:100dvh; background:var(--color-canvas); }
+-.frame { display:flex; max-width:80rem; min-height:100dvh; margin:auto; }
+-.sidebar { display:none; }
+-.main { flex:1; min-width:0; padding-bottom:calc(5rem + env(safe-area-inset-bottom)); }
+-.main[data-has-dock=true] { padding-bottom:calc(8.5rem + env(safe-area-inset-bottom)); }
+-.header { position:sticky; top:0; z-index:var(--z-dropdown); display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); min-height:3.25rem; padding:.25rem .75rem; padding-top:calc(.25rem + env(safe-area-inset-top)); border-bottom:1px solid var(--color-line); background:var(--color-canvas); }
+-.mobileHouse { flex:1; min-width:0; }
+-.mobileHouse button { padding:.5rem; font-size:var(--text-sm); }
+-.mobileHouse small { display:none; }
+-.pageContext { display:none; }
+-.accountActions { display:flex; align-items:center; gap:var(--space-2); }
+-.content { max-width:65rem; margin:auto; padding:var(--space-2) var(--space-3) var(--space-6); }
+-.notices { padding-inline:var(--space-3); }
+-.notices:empty { display:none; }
+-.notices > summary { min-height:var(--touch-target); padding:.5rem 0; font-size:var(--text-xs); color:var(--color-info); cursor:pointer; }
+-.navigation { position:fixed; inset-inline:0; bottom:0; z-index:var(--z-dock); height:calc(3.75rem + env(safe-area-inset-bottom)); padding:.25rem .5rem env(safe-area-inset-bottom); background:var(--color-canvas); border-top:1px solid var(--color-line); }
+-.dock { position:fixed; inset-inline:0; bottom:calc(3.75rem + env(safe-area-inset-bottom)); z-index:var(--z-dock); background:var(--color-surface); border-top:1px solid var(--color-line); padding:.5rem .75rem; }
+-.dockActions { display:flex; align-items:center; justify-content:space-between; gap:var(--space-2); }
+-.dockActions button { min-height:var(--touch-target); }
+-.pending.pending { flex:1; min-width:0; justify-content:flex-start; padding:.25rem; text-align:start; }
+-.pending span { display:block; font-size:var(--text-sm); }
+-.pending small { display:block; font-size:var(--text-xs); font-weight:400; }
+-.skip { position:fixed; top:var(--space-2); left:var(--space-2); z-index:var(--z-toast); padding:var(--space-3); background:var(--color-surface); color:var(--color-action); transform:translateY(-200%); }
+-.skip:focus { transform:none; }
+-@media(min-width:640px) { .sidebar { display:flex; flex-direction:column; gap:var(--space-6); width:14.5rem; flex-shrink:0; position:sticky; top:0; height:100dvh; overflow:auto; padding:var(--space-6) var(--space-4); border-right:1px solid var(--color-line); background:var(--color-surface-soft); } .mobileHouse { display:none; } .pageContext { display:block; font-size:var(--text-sm); color:var(--color-muted); } .header { min-height:4rem; padding:var(--space-2) var(--space-6); } .content { padding:var(--space-6); } .main,.main[data-has-dock=true] { padding-bottom:7rem; } .navigation { display:none; } .dock { left:calc(max(0px, (100vw - 80rem)/2) + 14.5rem + 1.5rem); right:calc(max(0px, (100vw - 80rem)/2) + 1.5rem); bottom:var(--space-4); border:1px solid var(--color-line-strong); border-radius:var(--radius-panel); padding:var(--space-2) var(--space-4); } .notices { padding-inline:var(--space-6); } }
++.shell {
++  --shell-gutter: var(--space-3);
++  min-height: 100dvh;
++  background: var(--color-canvas);
++}
++
++.frame {
++  display: flex;
++  width: 100%;
++  max-width: 90rem;
++  min-height: 100dvh;
++  margin-inline: auto;
++}
++
++.sidebar { display: none; }
++
++.main {
++  flex: 1;
++  min-width: 0;
++  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
++}
++
++.main[data-has-dock="true"] {
++  padding-bottom: calc(8.5rem + env(safe-area-inset-bottom));
++}
++
++.header {
++  position: sticky;
++  top: 0;
++  z-index: var(--z-dropdown);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: var(--space-2);
++  min-height: 3.25rem;
++  padding: .25rem var(--shell-gutter);
++  padding-top: calc(.25rem + env(safe-area-inset-top));
++  border-bottom: 1px solid var(--color-line);
++  background: var(--color-canvas);
++}
++
++.mobileHouse { flex: 1; min-width: 0; }
++.mobileHouse button { padding: .5rem; font-size: var(--text-sm); }
++.mobileHouse small { display: none; }
++.pageContext { display: none; }
++.accountActions { display: flex; align-items: center; gap: var(--space-2); }
++
++.notices { padding-inline: var(--shell-gutter); }
++.notices:empty { display: none; }
++.notices > summary {
++  min-height: var(--touch-target);
++  padding: .5rem 0;
++  font-size: var(--text-xs);
++  color: var(--color-info);
++  cursor: pointer;
++}
++
++.workspace {
++  display: grid;
++  grid-template-columns: minmax(0, 1fr);
++  gap: var(--space-8);
++  min-width: 0;
++  padding-inline: var(--shell-gutter);
++}
++
++.content {
++  width: min(100%, 65rem);
++  min-width: 0;
++  margin-inline: auto;
++  padding-block: var(--space-4) var(--space-6);
++}
++
++.context {
++  min-width: 0;
++  padding-block: var(--space-4);
++}
++
++.navigation {
++  position: fixed;
++  inset-inline: 0;
++  bottom: 0;
++  z-index: var(--z-dock);
++  height: calc(3.75rem + env(safe-area-inset-bottom));
++  padding: .25rem var(--shell-gutter) env(safe-area-inset-bottom);
++  border-top: 1px solid var(--color-line);
++  background: var(--color-canvas);
++}
++
++.dock {
++  position: fixed;
++  inset-inline: 0;
++  bottom: calc(3.75rem + env(safe-area-inset-bottom));
++  z-index: var(--z-dock);
++  padding: .5rem var(--shell-gutter);
++  border-top: 1px solid var(--color-line);
++  background: var(--color-surface);
++}
++
++.dockActions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
++.dockActions button { min-height: var(--touch-target); }
++.pending.pending { flex: 1; min-width: 0; justify-content: flex-start; padding: .25rem; text-align: start; }
++.pending span { display: block; font-size: var(--text-sm); }
++.pending small { display: block; font-size: var(--text-xs); font-weight: 400; }
++
++.skip {
++  position: fixed;
++  top: var(--space-2);
++  left: var(--space-2);
++  z-index: var(--z-toast);
++  padding: var(--space-3);
++  background: var(--color-surface);
++  color: var(--color-action);
++  transform: translateY(-200%);
++}
++
++.skip:focus { transform: none; }
++
++@media (min-width: 375px) {
++  .shell { --shell-gutter: var(--space-4); }
++}
++
++@media (min-width: 768px) {
++  .shell { --shell-gutter: var(--space-6); }
++}
++
++@media (min-width: 1024px) {
++  .sidebar {
++    position: sticky;
++    top: 0;
++    display: flex;
++    flex: 0 0 14.5rem;
++    flex-direction: column;
++    gap: var(--space-6);
++    height: 100dvh;
++    overflow: auto;
++    padding: var(--space-6) var(--space-4);
++    border-right: 1px solid var(--color-line);
++    background: var(--color-surface-soft);
++  }
++
++  .mobileHouse { display: none; }
++  .pageContext { display: block; font-size: var(--text-sm); color: var(--color-muted); }
++  .header { min-height: 4rem; padding-block: var(--space-2); }
++  .content { padding-block: var(--space-6); }
++  .context { padding-block: var(--space-6); }
++  .main, .main[data-has-dock="true"] { padding-bottom: 7rem; }
++  .navigation { display: none; }
++
++  .dock {
++    inset-inline: auto;
++    left: calc(max(0px, (100vw - 90rem) / 2) + 14.5rem + var(--space-6));
++    right: calc(max(0px, (100vw - 90rem) / 2) + var(--space-6));
++    bottom: var(--space-4);
++    padding: var(--space-2) var(--space-4);
++    border: 1px solid var(--color-line-strong);
++    border-radius: var(--radius-panel);
++  }
++}
++
++@media (min-width: 1200px) {
++  .workspace[data-has-context="true"] {
++    grid-template-columns: minmax(0, 1fr) 16rem;
++  }
++
++  .context {
++    position: sticky;
++    top: calc(4rem + var(--space-6));
++    align-self: start;
++    max-height: calc(100dvh - 7rem);
++    overflow: auto;
++    padding-block: 0;
++  }
++}
+diff --git a/components/app/app-shell.tsx b/components/app/app-shell.tsx
+index 42ee37a..b0ae5fb 100644
+--- a/components/app/app-shell.tsx
++++ b/components/app/app-shell.tsx
+@@ -4,6 +4,99 @@ import { BrandMark } from "@/components/ui/brand-mark";
+ import { HouseSwitcher } from "./house-switcher";
+ import { Navigation, type AppScreen } from "./navigation";
+ import styles from "./app-shell.module.css";
+-export function AppShell({screen,onChange,houseName,onHouseOpen,profile,feedback,notices,noticeTitle,children,dock,overlays,keyboardOpen}:{screen:AppScreen;onChange:(screen:AppScreen)=>void;houseName:string;onHouseOpen:()=>void;profile:ReactNode;feedback?:ReactNode;notices:ReactNode;noticeTitle?:string;children:ReactNode;dock?:ReactNode;overlays:ReactNode;keyboardOpen:boolean}) {
+-  return <RestokTheme className={styles.shell}><a href="#restok-main" className={styles.skip} onClick={event=>{event.preventDefault();document.getElementById("restok-main")?.focus();}}>Ir para o conteúdo</a><div className={styles.frame}><aside data-app-sidebar className={styles.sidebar}><BrandMark/><HouseSwitcher name={houseName} onOpen={onHouseOpen}/><Navigation screen={screen} onChange={onChange}/></aside><main id="restok-main" data-app-main data-dialog-return-focus tabIndex={-1} data-has-dock={Boolean(dock)} className={styles.main}><header data-app-header className={styles.header}><div className={styles.mobileHouse}><HouseSwitcher name={houseName} onOpen={onHouseOpen}/></div><span className={styles.pageContext}>{screen==="shop"?"Compra":screen==="history"?"Histórico":"Produtos da casa"}</span><div className={styles.accountActions}>{feedback}{profile}</div></header>{noticeTitle?<details className={styles.notices}><summary><span role="status">{noticeTitle}</span></summary>{notices}</details>:null}<div className={styles.content}>{children}</div></main></div>{!keyboardOpen?<div className={styles.navigation}><Navigation screen={screen} onChange={onChange}/></div>:null}{dock?<div data-shopping-dock className={styles.dock}>{dock}</div>:null}{overlays}</RestokTheme>;
++
++type AppShellProps = {
++  screen: AppScreen;
++  onChange: (screen: AppScreen) => void;
++  houseName: string;
++  onHouseOpen: () => void;
++  profile: ReactNode;
++  feedback?: ReactNode;
++  notices: ReactNode;
++  noticeTitle?: string;
++  children: ReactNode;
++  context?: ReactNode;
++  dock?: ReactNode;
++  overlays: ReactNode;
++  keyboardOpen: boolean;
++};
++
++export function AppShell({
++  screen,
++  onChange,
++  houseName,
++  onHouseOpen,
++  profile,
++  feedback,
++  notices,
++  noticeTitle,
++  children,
++  context,
++  dock,
++  overlays,
++  keyboardOpen,
++}: AppShellProps) {
++  const hasContext = context !== undefined && context !== null && context !== false;
++
++  return (
++    <RestokTheme className={styles.shell}>
++      <a
++        href="#restok-main"
++        className={styles.skip}
++        onClick={(event) => {
++          event.preventDefault();
++          document.getElementById("restok-main")?.focus();
++        }}
++      >
++        Ir para o conteúdo
++      </a>
++      <div className={styles.frame}>
++        <aside data-app-sidebar className={styles.sidebar}>
++          <BrandMark />
++          <HouseSwitcher name={houseName} onOpen={onHouseOpen} />
++          <Navigation screen={screen} onChange={onChange} />
++        </aside>
++        <main
++          id="restok-main"
++          data-app-main
++          data-dialog-return-focus
++          data-has-dock={Boolean(dock)}
++          tabIndex={-1}
++          className={styles.main}
++        >
++          <header data-app-header className={styles.header}>
++            <div className={styles.mobileHouse}>
++              <HouseSwitcher name={houseName} onOpen={onHouseOpen} />
++            </div>
++            <span className={styles.pageContext}>
++              {screen === "shop" ? "Compra" : screen === "history" ? "Histórico" : "Produtos da casa"}
++            </span>
++            <div className={styles.accountActions}>
++              {feedback}
++              {profile}
++            </div>
++          </header>
++          {noticeTitle ? (
++            <details className={styles.notices}>
++              <summary>
++                <span role="status">{noticeTitle}</span>
++              </summary>
++              {notices}
++            </details>
++          ) : null}
++          <div className={styles.workspace} data-has-context={hasContext ? "true" : undefined}>
++            <div data-app-work className={styles.content}>{children}</div>
++            {hasContext ? (
++              <aside data-app-context className={styles.context} aria-label="Contexto da tela">
++                {context}
++              </aside>
++            ) : null}
++          </div>
++        </main>
++      </div>
++      {!keyboardOpen ? <div className={styles.navigation}><Navigation screen={screen} onChange={onChange} /></div> : null}
++      {dock ? <div data-shopping-dock className={styles.dock}>{dock}</div> : null}
++      {overlays}
++    </RestokTheme>
++  );
+ }
+diff --git a/components/app/navigation.module.css b/components/app/navigation.module.css
+index 6045733..13df641 100644
+--- a/components/app/navigation.module.css
++++ b/components/app/navigation.module.css
+@@ -4,4 +4,4 @@
+ .switcher.switcher { width:100%; min-width:0; justify-content:space-between; text-align:start; }
+ .identity { flex:1; min-width:0; overflow-wrap:anywhere; }
+ .identity small { display:block; font-size:var(--text-xs); font-weight:400; color:var(--color-muted); }
+-@media(min-width:640px) { .nav { flex-direction:column; } .item.item { flex-direction:row; flex:none; justify-content:flex-start; gap:var(--space-3); padding:.75rem; font-size:var(--text-sm); } }
++@media(min-width:1024px) { .nav { flex-direction:column; } .item.item { flex-direction:row; flex:none; justify-content:flex-start; gap:var(--space-3); padding:.75rem; font-size:var(--text-sm); } }
+diff --git a/components/history/history-view.tsx b/components/history/history-view.tsx
+index 55cf1c9..eb4dc0e 100644
+--- a/components/history/history-view.tsx
++++ b/components/history/history-view.tsx
+@@ -30,6 +30,6 @@ export function HistoryView({ lists, onOpen, returnToId }: {
+           <span className={styles.recordTotal}><span className={styles.meta}>Total registrado</span><span className={styles.money}>{formatBRL(summary.total)}</span></span><ChevronRight size={18} aria-hidden="true" className={styles.chevron}/>
+         </button></li>;
+       })}</ol>
+-    </section>) : <EmptyState icon={<ShoppingBasket size={24}/>} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais."/>}
++    </section>) : <EmptyState variant="first-use" icon={<ShoppingBasket size={24}/>} title="O histórico começa na próxima compra" description="Finalize sua primeira compra para guardar preços e totais."/>}
+   </div>;
+ }
+diff --git a/components/products/products-home.tsx b/components/products/products-home.tsx
+index 0cb852f..09aca17 100644
+--- a/components/products/products-home.tsx
++++ b/components/products/products-home.tsx
+@@ -28,7 +28,7 @@ export function ProductsHome({products,lists,householdName,categorySort,onToggle
+     <div className={styles.toolbar}><SearchField label="Buscar produtos da casa" value={view.query} onValueChange={view.setQuery}/><div className={styles.toolbarActions}><OptionGroup label="Ordenar produtos" value={view.viewMode} onChange={view.setViewMode} options={[{value:"category",label:"Categoria"},{value:"alphabetical",label:"A–Z"}]}/><Button onClick={onAddProduct}><Plus size={17}/>Adicionar</Button></div></div>
+     <section aria-labelledby="products-heading"><h2 id="products-heading" data-products-heading tabIndex={-1} className={styles.sectionTitle}>Itens recorrentes <span>{view.active.length}</span></h2>
+       {view.query.trim()?<p role="status" className={styles.meta}>{view.resultCount} {view.resultCount===1?"produto encontrado":"produtos encontrados"}</p>:null}
+-      {view.active.length ? view.viewMode==="category" ? <div className={styles.groups}>{view.grouped.map(section=><section key={section.category}><header className={styles.categoryHeading}><h3>{section.category}</h3><IconButton label={`${section.category} em ordem ${section.direction==="desc"?"Z–A":"A–Z"}. Alternar ordem alfabética`} aria-pressed={section.direction==="desc"} onClick={()=>onToggleCategorySort(section.category)}>{section.direction==="desc"?<ArrowDownZA size={17}/>:<ArrowDownAZ size={17}/>}</IconButton></header><div className={styles.rows}>{section.products.map(renderRow)}</div></section>)}</div> : <div className={styles.rows}>{view.sorted.map(renderRow)}</div> : view.query.trim() ? !view.inactive.length ? <EmptyState icon={<Search size={24}/>} title="Nenhum produto encontrado" description="Tente outro nome ou limpe a busca."/> : null : <EmptyState icon={<PackagePlus size={24}/>} title="Sua lista está vazia" description={view.inactive.length?"Todos os produtos recorrentes estão inativos. Reative um item ou adicione um novo.":"Adicione os itens que não podem faltar em casa."} action={<Button onClick={onAddProduct}><Plus size={17}/>Adicionar item</Button>}/>}
++      {view.active.length ? view.viewMode==="category" ? <div className={styles.groups}>{view.grouped.map(section=><section key={section.category}><header className={styles.categoryHeading}><h3>{section.category}</h3><IconButton label={`${section.category} em ordem ${section.direction==="desc"?"Z–A":"A–Z"}. Alternar ordem alfabética`} aria-pressed={section.direction==="desc"} onClick={()=>onToggleCategorySort(section.category)}>{section.direction==="desc"?<ArrowDownZA size={17}/>:<ArrowDownAZ size={17}/>}</IconButton></header><div className={styles.rows}>{section.products.map(renderRow)}</div></section>)}</div> : <div className={styles.rows}>{view.sorted.map(renderRow)}</div> : view.query.trim() ? !view.inactive.length ? <EmptyState variant="compact" icon={<Search size={24}/>} title="Nenhum produto encontrado" description="Tente outro nome ou limpe a busca."/> : null : <EmptyState variant="first-use" icon={<PackagePlus size={24}/>} title="Sua lista está vazia" description={view.inactive.length?"Todos os produtos recorrentes estão inativos. Reative um item ou adicione um novo.":"Adicione os itens que não podem faltar em casa."}/>}
+     </section>
+     {view.inactive.length?<details open={view.active.length===0} className={styles.inactive}><summary data-inactive-products-summary>Produtos inativos <span>{view.inactive.length}</span></summary><div className={styles.rows}>{view.inactive.map(renderRow)}</div></details>:null}
+   </div>;
+diff --git a/components/restok-app.tsx b/components/restok-app.tsx
+index 394df7f..439c3a1 100644
+--- a/components/restok-app.tsx
++++ b/components/restok-app.tsx
+@@ -656,5 +656,5 @@ export default function RestokApp() {
+     {productEditor ? <ProductEditorSheet product={productEditor === "new" ? undefined : productEditor} onClose={() => requestSheetClose(() => setProductEditor(null))} onSave={saveProduct} /> : null}
+     {householdManagerOpen && activeHousehold ? <HouseholdManager key={activeHousehold.id} households={households.length ? households : [activeHousehold]} activeHousehold={activeHousehold} enabled={isSupabaseConfigured} onClose={() => requestSheetClose(() => setHouseholdManagerOpen(false))} onSelect={activateHousehold} onCreated={activateHousehold} onMembershipChanged={refreshMemberships} notify={setToast} /> : null}
+ </>}
+-  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
++  >{historyDetail ? <HistoryDetail list={historyDetail} lists={state.lists} onBack={() => { setHistoryDetail(null); setScreen("history"); }} /> : screen === "history" ? <HistoryView lists={state.lists} onOpen={setHistoryDetail} returnToId={historyReturnId} /> : screen === "home" ? <ProductsHome products={state.products} lists={state.lists} householdName={activeHousehold?.name ?? "Casa"} categorySort={categorySort} onToggleCategorySort={toggleCategorySort} onNewPurchase={() => setNewPurchaseOpen(true)} onAddProduct={() => setProductEditor("new")} onToggleProduct={toggleProduct} onEditProduct={setProductEditor} onManageHousehold={() => setHouseholdManagerOpen(true)} /> : activeList ? <ShoppingView list={activeList} lists={state.lists} view={shoppingView} categorySort={categorySort} resultsRef={purchaseResultsRef} onToggleSort={toggleCategorySort} onNew={()=>setNewPurchaseOpen(true)} onFinish={()=>setFinishOpen(true)} onBudget={()=>setBudgetEditor(activeList)} onAdd={()=>setAddItemOpen(true)} onEdit={setEditorItem} onPurchased={item=>setItemStatus(item,"purchased")} onAlreadyHave={item=>setItemStatus(item,"already_have")} onUndo={item=>setItemStatus(item,"pending")}/> : <EmptyState variant="first-use" icon={<ShoppingBasket size={23}/>} title="Sua próxima compra começa aqui" description="Crie uma compra a partir dos produtos da casa." action={<Button onClick={()=>setNewPurchaseOpen(true)}><Plus size={17}/>Nova compra</Button>}/>}</AppShell>;
+ }
+diff --git a/components/shopping/shopping-view.tsx b/components/shopping/shopping-view.tsx
+index 137bd34..d972095 100644
+--- a/components/shopping/shopping-view.tsx
++++ b/components/shopping/shopping-view.tsx
+@@ -13,5 +13,5 @@ import type { useShoppingView } from "./use-shopping-view";
+ import styles from "./shopping.module.css";
+ export function ShoppingView({list,lists,view,categorySort,resultsRef,onToggleSort,onNew,onFinish,onBudget,onAdd,onEdit,onPurchased,onAlreadyHave,onUndo}:{list:ShoppingList;lists:ShoppingList[];view:ReturnType<typeof useShoppingView>;categorySort:Partial<Record<CategoryName,NameSortDirection>>;resultsRef:RefObject<HTMLDivElement|null>;onToggleSort:(category:CategoryName)=>void;onNew:()=>void;onFinish:()=>void;onBudget:()=>void;onAdd:()=>void;onEdit:(item:ShoppingItem)=>void;onPurchased:(item:ShoppingItem)=>void;onAlreadyHave:(item:ShoppingItem)=>void;onUndo:(item:ShoppingItem)=>void}) {
+   const clear=()=>{view.setQuery("");view.setFilter("all");};
+-  return <div className={styles.view}><div className={styles.heading}><div><h1>{list.name}</h1><p data-resolved-count className={styles.count}>{listResolved(list)} de {list.items.length} resolvidos</p></div><ActionMenu label="Menu da compra" items={[{label:"Nova compra",icon:<Plus size={16}/>,onSelect:onNew},{label:"Finalizar compra",icon:<CheckCircle2 size={16}/>,onSelect:onFinish},{label:"Agrupar por categoria",icon:<ListFilter size={16}/>,onSelect:()=>view.setShopViewMode("category")},{label:"Ordenar por nome A–Z",icon:<ArrowDownAZ size={16}/>,onSelect:()=>view.setShopViewMode("alphabetical")}]}><Menu size={19}/></ActionMenu></div><BudgetSummary list={list} onEdit={onBudget} compact/><ShoppingToolbar view={view}/><div ref={resultsRef} data-purchase-results>{view.filteredItems.length?view.shopViewMode==="category"?CATEGORY_ORDER.map(category=>view.groups[category]?.length?<CategorySection key={category} category={category} direction={categorySort[category]??"asc"} items={sortByName(view.groups[category]??[],categorySort[category]??"asc")} lists={lists} onToggleSort={()=>onToggleSort(category)} onEdit={onEdit} onPurchased={onPurchased} onAlreadyHave={onAlreadyHave} onUndo={onUndo}/>:null):view.alphabeticalItems.map(item=><ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={()=>onEdit(item)} onPurchased={()=>onPurchased(item)} onAlreadyHave={()=>onAlreadyHave(item)} onUndo={()=>onUndo(item)}/>):<EmptyState icon={list.items.length?<Search size={24}/>:<ShoppingBasket size={24}/>} title={!list.items.length?"Sua lista ainda está vazia":view.query.trim()?"Nenhum item encontrado":view.filter==="all"?"Nenhum item encontrado":`Nenhum item em ${statusLabel(view.filter).toLocaleLowerCase("pt-BR")}`} description={!list.items.length?"Adicione itens para acompanhar a compra.":view.query.trim()?`Nada corresponde a “${view.query.trim()}”.`:"Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={list.items.length?clear:onAdd}>{list.items.length?view.query.trim()?"Limpar busca e filtros":"Limpar filtro":"Adicionar item"}</Button>}/>}</div></div>;
++  return <div className={styles.view}><div className={styles.heading}><div><h1>{list.name}</h1><p data-resolved-count className={styles.count}>{listResolved(list)} de {list.items.length} resolvidos</p></div><ActionMenu label="Menu da compra" items={[{label:"Nova compra",icon:<Plus size={16}/>,onSelect:onNew},{label:"Finalizar compra",icon:<CheckCircle2 size={16}/>,onSelect:onFinish},{label:"Agrupar por categoria",icon:<ListFilter size={16}/>,onSelect:()=>view.setShopViewMode("category")},{label:"Ordenar por nome A–Z",icon:<ArrowDownAZ size={16}/>,onSelect:()=>view.setShopViewMode("alphabetical")}]}><Menu size={19}/></ActionMenu></div><BudgetSummary list={list} onEdit={onBudget} compact/><ShoppingToolbar view={view}/><div ref={resultsRef} data-purchase-results>{view.filteredItems.length?view.shopViewMode==="category"?CATEGORY_ORDER.map(category=>view.groups[category]?.length?<CategorySection key={category} category={category} direction={categorySort[category]??"asc"} items={sortByName(view.groups[category]??[],categorySort[category]??"asc")} lists={lists} onToggleSort={()=>onToggleSort(category)} onEdit={onEdit} onPurchased={onPurchased} onAlreadyHave={onAlreadyHave} onUndo={onUndo}/>:null):view.alphabeticalItems.map(item=><ShoppingItemRow key={item.id} item={item} lists={lists} onEdit={()=>onEdit(item)} onPurchased={()=>onPurchased(item)} onAlreadyHave={()=>onAlreadyHave(item)} onUndo={()=>onUndo(item)}/>):<EmptyState variant={list.items.length?"compact":"first-use"} icon={list.items.length?<Search size={24}/>:<ShoppingBasket size={24}/>} title={!list.items.length?"Sua lista ainda está vazia":view.query.trim()?"Nenhum item encontrado":view.filter==="all"?"Nenhum item encontrado":`Nenhum item em ${statusLabel(view.filter).toLocaleLowerCase("pt-BR")}`} description={!list.items.length?"Adicione itens para acompanhar a compra.":view.query.trim()?`Nada corresponde a “${view.query.trim()}”.`:"Troque a situação selecionada para ver outros itens."} action={<Button variant="secondary" onClick={list.items.length?clear:onAdd}>{list.items.length?view.query.trim()?"Limpar busca e filtros":"Limpar filtro":"Adicionar item"}</Button>}/>}</div></div>;
+ }
+diff --git a/components/ui/controls.module.css b/components/ui/controls.module.css
+index c0c9d89..ed8631f 100644
+--- a/components/ui/controls.module.css
++++ b/components/ui/controls.module.css
+@@ -1,6 +1,6 @@
+ .button.button { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2); min-height:var(--touch-target); min-width:var(--touch-target); padding:.625rem 1rem; border:1px solid transparent; border-radius:var(--radius-control); font:600 var(--text-sm)/1.4 var(--font-body); cursor:pointer; transition:background-color var(--duration-feedback),border-color var(--duration-feedback),transform var(--duration-feedback); }
+ .primary.primary { background:var(--color-action); color:var(--color-surface); }
+-.secondary.secondary { background:var(--color-surface); color:var(--color-ink); border-color:var(--color-info); }
++.secondary.secondary { background:var(--color-surface); color:var(--color-ink); border-color:var(--color-line-strong); }
+ .quiet.quiet { background:transparent; color:var(--color-action); }
+ .danger.danger { background:var(--color-surface-danger); color:var(--color-danger); border-color:var(--color-danger); }
+ @media(hover:hover) and (pointer:fine) { .primary:hover { background:var(--color-brand); } .secondary:hover,.quiet:hover { background:var(--color-surface-brand); } .danger:hover { background:var(--color-danger); color:var(--color-surface); } }
+@@ -12,7 +12,7 @@
+ @keyframes spin { to { transform:rotate(360deg); } }
+ .field { display:grid; gap:var(--space-2); min-width:0; font-size:var(--text-sm); color:var(--color-ink); }
+ .label { font-weight:600; }
+-.control.control { box-sizing:border-box; width:100%; min-width:0; min-height:var(--touch-target); padding:.625rem .75rem; border:1px solid var(--color-info); border-radius:var(--radius-control); background:var(--color-surface); color:var(--color-ink); font:400 1rem/1.5 var(--font-body); }
++.control.control { box-sizing:border-box; width:100%; min-width:0; min-height:var(--touch-target); padding:.625rem .75rem; border:1px solid var(--color-line-strong); border-radius:var(--radius-control); background:var(--color-surface); color:var(--color-ink); font:400 1rem/1.5 var(--font-body); }
+ @media(hover:hover) and (pointer:fine) { .control:hover:not(:disabled) { border-color:var(--color-action); } }
+ .control:disabled { background:var(--color-surface-soft); cursor:not-allowed; }
+ .control[aria-invalid=true] { border-color:var(--color-danger); }
+diff --git a/components/ui/empty-state.tsx b/components/ui/empty-state.tsx
+index 985ceab..d6dfb44 100644
+--- a/components/ui/empty-state.tsx
++++ b/components/ui/empty-state.tsx
+@@ -1,4 +1,30 @@
+ import type { ReactNode } from "react";
+ import "@/styles/base.css";
+ import styles from "./feedback.module.css";
+-export function EmptyState({icon,title,description,action}:{icon:ReactNode;title:string;description:string;action?:ReactNode}) {return <div className={`restok-theme ${styles.empty}`}><span aria-hidden="true">{icon}</span><h2>{title}</h2><p>{description}</p>{action}</div>;}
++
++type EmptyStateProps = {
++  icon: ReactNode;
++  title: string;
++  description: string;
++  action?: ReactNode;
++  variant?: "first-use" | "compact";
++};
++
++export function EmptyState({
++  icon,
++  title,
++  description,
++  action,
++  variant = "first-use",
++}: EmptyStateProps) {
++  const variantClass = variant === "compact" ? styles.compact : styles.firstUse;
++
++  return (
++    <div data-empty-state data-variant={variant} className={`restok-theme ${styles.empty} ${variantClass}`}>
++      <span aria-hidden="true">{icon}</span>
++      <h2>{title}</h2>
++      <p>{description}</p>
++      {action}
++    </div>
++  );
++}
+diff --git a/components/ui/feedback.module.css b/components/ui/feedback.module.css
+index 0a22e4f..11bf50d 100644
+--- a/components/ui/feedback.module.css
++++ b/components/ui/feedback.module.css
+@@ -1,7 +1,12 @@
+-.empty { padding:var(--space-8) var(--space-4); border-block:1px solid var(--color-line); text-align:center; background:var(--color-surface-soft); }
++.empty { display:grid; justify-items:start; gap:var(--space-2); padding:var(--space-6) var(--space-4); text-align:start; background:transparent; }
+ .empty > span { display:inline-flex; color:var(--color-info); }
+-.empty h2 { margin:var(--space-3) 0 var(--space-2); font-size:var(--text-title); }
+-.empty p { margin:0 auto var(--space-4); max-width:32rem; color:var(--color-muted); font-size:var(--text-sm); }
++.empty h2 { margin:0; font-size:var(--text-title); font-weight:700; }
++.empty p { margin:0; max-width:32rem; color:var(--color-muted); font-size:var(--text-sm); }
++.firstUse { justify-items:center; text-align:center; }
++.firstUse p { margin-inline:auto; }
++.compact { padding-block:var(--space-4); border-block:1px solid var(--color-line); }
++.compact > span { display:none; }
++.compact h2 { font-size:var(--text-body); font-weight:600; }
+ .toast.toast { position:fixed; z-index:var(--z-toast); inset-inline:var(--space-4); bottom:calc(9rem + env(safe-area-inset-bottom)); margin:0 auto; max-width:28rem; padding:.75rem 1rem; border-radius:var(--radius-panel); background:var(--color-brand); color:var(--color-surface); box-shadow:var(--shadow-overlay); font-size:var(--text-sm); line-height:1.5; pointer-events:none; }
+ .toast { display:flex; align-items:center; gap:var(--space-2); }
+ .toast > span { flex:1; }
+diff --git a/components/ui/primitives.test.tsx b/components/ui/primitives.test.tsx
+index ee6c619..aa6e5fb 100644
+--- a/components/ui/primitives.test.tsx
++++ b/components/ui/primitives.test.tsx
+@@ -3,6 +3,7 @@ import { useState } from "react";
+ import { cleanup, fireEvent, render, screen, act } from "@testing-library/react";
+ import { afterEach, expect, it, vi } from "vitest";
+ import { Button } from "./button";
++import { EmptyState } from "./empty-state";
+ import { Field } from "./field";
+ import { SearchField } from "./search-field";
+ import { Tabs } from "./option-group";
+@@ -12,6 +13,7 @@ import { useDialogClose } from "./use-dialog-close";
+ import { Toast } from "./toast";
+ import { SyncStatus } from "./sync-status";
+ afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();});
++it("distinguishes compact results from first-use empty states",()=>{const clear=vi.fn();render(<><EmptyState variant="compact" icon={<span/>} title="Nenhum resultado" description="Ajuste a busca." action={<Button variant="secondary" onClick={clear}>Limpar busca</Button>}/><EmptyState variant="first-use" icon={<span/>} title="Primeira compra" description="Crie uma lista para começar."/></>);expect(screen.getByRole("heading",{name:"Nenhum resultado"}).closest("[data-empty-state]")?.getAttribute("data-variant")).toBe("compact");expect(screen.getByRole("heading",{name:"Primeira compra"}).closest("[data-empty-state]")?.getAttribute("data-variant")).toBe("first-use");fireEvent.click(screen.getByRole("button",{name:"Limpar busca"}));expect(clear).toHaveBeenCalledOnce();});
+ it("retains the action name while busy and prevents duplicate submission",()=>{const click=vi.fn();render(<Button busy onClick={click}>Salvar compra</Button>);const button=screen.getByRole("button",{name:"Salvar compra"});fireEvent.click(button);expect(click).not.toHaveBeenCalled();expect(button.getAttribute("aria-busy")).toBe("true");expect((button as HTMLButtonElement).disabled).toBe(true);});
+ it("associates the input with both its hint and persistent error",()=>{render(<Field label="Nome" hint="Até 80 caracteres" error="Informe o nome"/>);const input=screen.getByRole("textbox",{name:"Nome"});expect(input.getAttribute("aria-invalid")).toBe("true");const ids=input.getAttribute("aria-describedby")!.split(" ");expect(ids.map(id=>document.getElementById(id)?.textContent)).toEqual(["Até 80 caracteres","Informe o nome"]);expect(screen.getByRole("alert").textContent).toBe("Informe o nome");});
+ it("clears a search and restores focus without changing the selected filter",()=>{function Example(){const [value,setValue]=useState("café");return <SearchField label="Buscar produtos" value={value} onValueChange={setValue}/>;}render(<Example/>);fireEvent.click(screen.getByRole("button",{name:"Limpar buscar produtos"}));const input=screen.getByRole("searchbox");expect((input as HTMLInputElement).value).toBe("");expect(document.activeElement).toBe(input);});
+diff --git a/styles/base.css b/styles/base.css
+index 6e30a82..36acd96 100644
+--- a/styles/base.css
++++ b/styles/base.css
+@@ -15,7 +15,7 @@
+   src: url("/fonts/manrope/manrope-latin-ext-variable.woff2") format("woff2");
+   unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
+ }
+-.restok-theme {
++:where(.restok-theme) {
+   box-sizing: border-box;
+   color-scheme: light;
+   color: var(--color-ink);
+diff --git a/tests/e2e/components.tsx b/tests/e2e/components.tsx
+index 8f9ba1d..4c047db 100644
+--- a/tests/e2e/components.tsx
++++ b/tests/e2e/components.tsx
+@@ -37,7 +37,7 @@ function Preview() {
+     <section><h2>Entrada e validação</h2><div className="fields"><Field label="Nome da compra" value={name} onChange={event=>setName(event.target.value)} hint="Use um nome que a casa reconheça."/><Field label="Nome inválido" defaultValue="" error="Informe o nome antes de salvar."/><Field label="Campo indisponível" defaultValue="Aguardando permissão" disabled/><Select label="Categoria" defaultValue="Alimentos"><option>Alimentos</option><option>Limpeza</option></Select><MoneyField label="Preço de exemplo" value={money} onValueChange={setMoney}/><QuantityField quantity={quantity} onChange={setQuantity}/><SearchField label="Buscar exemplos" value={search} onValueChange={setSearch}/><Checkbox checked={checked} onChange={event=>setChecked(event.target.checked)}>Incluir na próxima compra</Checkbox><Checkbox checked disabled>Seleção indisponível</Checkbox></div></section>
+     <section><h2>Situação e filtros</h2><StatusToggle value={status} onChange={setStatus}/><div className="samples"><AlreadyHave name="Café de exemplo" onSelect={()=>setStatus("already_have")}/><p>Situação atual: {status}</p></div><OptionGroup label="Filtros de exemplo" value={filter} onChange={setFilter} options={[{value:"all",label:"Todos"},{value:"pending",label:"Pendente"},{value:"purchased",label:"Comprado"},{value:"already_have",label:"Já temos"}]}/><Tabs label="Abas de exemplo" value={tab} onChange={setTab} options={[{value:"controls",label:"Controles"},{value:"feedback",label:"Feedback"}]}><p>{tab==="controls"?"Controles disponíveis para a compra.":"O resultado aparece sem esperar uma animação."}</p></Tabs></section>
+     <BudgetSummary list={state.lists[0]} onEdit={()=>setToast(true)}/>
+-    <section><h2>Lista, vazio e espera real</h2><List label="Produtos ilustrativos">{["Café de casa com nome longo e embalagem de um quilo","Açúcar"].map(label=><ListRow key={label}><Checkbox defaultChecked>{label}</Checkbox></ListRow>)}</List><EmptyState icon={<PackagePlus/>} title="Nenhum resultado" description="Ajuste a busca para encontrar outro produto." action={<Button variant="secondary" onClick={()=>setSearch("")}>Limpar busca</Button>}/><SyncStatus state={failed?"error":busy?"pending":"success"} message={failed?"Não foi possível salvar. Sua edição está preservada.":busy?"Enviando confirmação local…":"Alteração confirmada no exemplo."} onRetry={failed?()=>{setFailed(false);setBusy(true);}:undefined}/>{busy?<><Skeleton label="Aguardando resposta do exemplo"/><Button onClick={()=>setBusy(false)}>Simular resposta recebida</Button></>:null}</section>
++    <section><h2>Lista, vazio e espera real</h2><List label="Produtos ilustrativos">{["Café de casa com nome longo e embalagem de um quilo","Açúcar"].map(label=><ListRow key={label}><Checkbox defaultChecked>{label}</Checkbox></ListRow>)}</List><EmptyState variant="compact" icon={<PackagePlus/>} title="Nenhum resultado" description="Ajuste a busca para encontrar outro produto." action={<Button variant="secondary" onClick={()=>setSearch("")}>Limpar busca</Button>}/><SyncStatus state={failed?"error":busy?"pending":"success"} message={failed?"Não foi possível salvar. Sua edição está preservada.":busy?"Enviando confirmação local…":"Alteração confirmada no exemplo."} onRetry={failed?()=>{setFailed(false);setBusy(true);}:undefined}/>{busy?<><Skeleton label="Aguardando resposta do exemplo"/><Button onClick={()=>setBusy(false)}>Simular resposta recebida</Button></>:null}</section>
+     <section><h2>Conteúdo longo com ações alcançáveis</h2><div className="samples"><Button onClick={()=>setSheet(33)}>Abrir 33 itens</Button><Button variant="secondary" onClick={()=>setSheet(100)}>Abrir 100 itens</Button></div><p role="status">Confirmações locais: {saved}</p></section>
+     <footer>Preview local. Sem autenticação, concessão de acesso ou persistência remota. As composições finais pertencem aos próximos PRs.</footer>
+     {sheet?<Sheet title={`Selecionar ${sheet} itens`} description="O conteúdo rola; título e confirmação permanecem acessíveis." onClose={()=>close(()=>setSheet(0))} footer={<Button onClick={()=>{if(close(()=>setSheet(0)))setSaved(saved+1);}}>Confirmar seleção</Button>}><div className="preview-sheet-list">{Array.from({length:sheet},(_,index)=><Checkbox key={index} defaultChecked>Produto ilustrativo {index+1} com nome que pode quebrar em mais de uma linha</Checkbox>)}</div></Sheet>:null}
+diff --git a/tests/styles/global-migration.test.ts b/tests/styles/global-migration.test.ts
+index 44df1d5..d3ea320 100644
+--- a/tests/styles/global-migration.test.ts
++++ b/tests/styles/global-migration.test.ts
+@@ -25,3 +25,8 @@ it("keeps historical CSS out of every production source import",()=>{
+   expect(forbidden).toEqual([]);
+   expect(read("app/layout.tsx")).toContain('className="restok-theme"');
+ });
++it("keeps inherited theme defaults below component color rules in the cascade",()=>{
++  const base=read("styles/base.css");
++  expect(base).toContain(":where(.restok-theme) {");
++  expect(base).toContain("color: var(--color-ink);");
++});

@@ -1,0 +1,8 @@
+
+----------------------------------------------------------------
+REFINE CLEAR: zero findings in 1 file(s).
+
+This is ONE detector, not the audit. It does not see the chosen form,
+overflow at 390px, or a screen nobody opened. To close the gate:
+  node ~/.claude/skills/visant-killer/scripts/killer-scan.mjs --report AUDIT.md <target>
+----------------------------------------------------------------

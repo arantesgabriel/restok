@@ -1,0 +1,124 @@
+{
+  "kind": "INTEGRADO-RESTOK-DEV",
+  "stage": "after",
+  "engine": "156.0.8078.4",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "zoom": 1,
+  "dpr": 1,
+  "motion": "no-preference (browser default before, explicit emulation after)",
+  "captures": [
+    {
+      "id": "account-1-selected",
+      "file": "account-1-selected.png",
+      "video": "account-1.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 6.0,
+        "frame": 150,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.68,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-1-reload",
+      "file": "account-1-reload.png",
+      "video": "account-1.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 9.32,
+        "frame": 233,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.135,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-1-accepted-invite",
+      "file": "account-1-accepted-invite.png",
+      "video": "account-1.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home (invite query removed before capture)",
+      "mediaSeek": {
+        "seconds": 17.88,
+        "frame": 447,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.106,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-2-selected",
+      "file": "account-2-selected.png",
+      "video": "account-2.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 10.16,
+        "frame": 254,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.986,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-2-reload",
+      "file": "account-2-reload.png",
+      "video": "account-2.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home",
+      "mediaSeek": {
+        "seconds": 10.16,
+        "frame": 254,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.986,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "account-2-accepted-invite",
+      "file": "account-2-accepted-invite.png",
+      "video": "account-2.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "route": "/app#home (invite query removed before capture)",
+      "mediaSeek": {
+        "seconds": 20.72,
+        "frame": 518,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.096,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    }
+  ],
+  "result": "result.json",
+  "provenanceNote": "Media manifest assembled during final review from recorded PNG/WebM names; seek is measured by verify-media.py. Before was PR01 production artifact; after PR02 production artifact. No sessions or invitation tokens stored."
+}

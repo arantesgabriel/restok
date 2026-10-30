@@ -1,0 +1,710 @@
+[
+  {
+    "buttons": [
+      {
+        "height": 80.78125,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 168.703125
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 0
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 640,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "buttons": [
+      {
+        "height": 61.1875,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 238.703125
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 844,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "buttons": [
+      {
+        "height": 0,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 0
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 1024,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "buttons": [
+      {
+        "height": 0,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 0
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 768,
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "buttons": [
+      {
+        "height": 0,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 0
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 800,
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "buttons": [
+      {
+        "height": 0,
+        "name": "Casas e pessoas: QA PR08 visual 2026-10-29",
+        "width": 0
+      },
+      {
+        "height": 44,
+        "name": "Dispensar aviso",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Perfil de Gabriel Teste",
+        "width": 52.296875
+      },
+      {
+        "height": 44,
+        "name": "Casas e pessoas",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Nova",
+        "width": 67.234375
+      },
+      {
+        "height": 44,
+        "name": "Categoria",
+        "width": 92.25
+      },
+      {
+        "height": 44,
+        "name": "A–Z",
+        "width": 51.84375
+      },
+      {
+        "height": 44,
+        "name": "Adicionar",
+        "width": 122.421875
+      },
+      {
+        "height": 44,
+        "name": "Alimentos em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Arroz QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Arroz QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 A",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Bebidas em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Água QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Água QA PR08",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Higiene em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Produto de teste com nome longo para conferir leitura completa no catálogo PR08 B",
+        "width": 97.609375
+      },
+      {
+        "height": 44,
+        "name": "Limpeza em ordem A–Z. Alternar ordem alfabética",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Editar Sabão QA PR08",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "name": "Desativar Sabão QA PR08",
+        "width": 97.609375
+      }
+    ],
+    "dpr": 1,
+    "height": 900,
+    "scrollWidth": 1425,
+    "width": 1440
+  }
+]

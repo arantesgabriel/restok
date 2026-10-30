@@ -1,0 +1,37 @@
+{
+  "guardWithoutSession": {
+    "request": "/app?demo=1",
+    "result": "/login?next=%2Fapp",
+    "appNavAbsent": true
+  },
+  "callbackWithoutCode": "invalid-link message observed",
+  "login": {
+    "existingFictitiousAccount": true,
+    "externalNextRejected": true,
+    "result": "/app",
+    "origin": "http://localhost:3001"
+  },
+  "profile": {
+    "unsaved80Cancelled": true,
+    "blankValidationLocal": true,
+    "remoteNameChanged": false
+  },
+  "keyboard": {
+    "dialogOpen": false,
+    "focused": "Perfil de Gabriel Teste",
+    "path": "/app",
+    "profileUnchanged": true
+  },
+  "recovery": {
+    "requests": 1,
+    "serviceAcknowledgedGenerically": true,
+    "deliveryVerified": false,
+    "linkUsed": false,
+    "credentialChangedByAgent": false
+  },
+  "gmail": {
+    "scope": "only recent Restok/Supabase/localhost recovery message, all folders",
+    "unrelatedMessageOpened": false,
+    "result": "no match at last observation"
+  }
+}

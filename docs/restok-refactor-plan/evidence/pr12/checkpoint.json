@@ -1,0 +1,19 @@
+{
+  "source": "current PR12 production build",
+  "tests": "219 full + final lifecycle7/7; new total220",
+  "build": "Webpack passed",
+  "assets": [
+    {
+      "extension": ".css",
+      "bytes": 81753.0,
+      "files": 6
+    },
+    {
+      "extension": ".js",
+      "bytes": 1312963.0,
+      "files": 28
+    }
+  ],
+  "browser": "blocked by kernel security environment, no new visual evidence",
+  "note": "Total emitted static assets, not per-route transfer or field performance"
+}

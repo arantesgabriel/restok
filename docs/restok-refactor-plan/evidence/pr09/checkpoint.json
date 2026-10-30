@@ -1,0 +1,86 @@
+{
+  "unit": "PR09",
+  "status": "implemented and locally validated; awaiting human review before PR10",
+  "date": "2026-10-29",
+  "timezone": "America/Sao_Paulo",
+  "base": "eb34201",
+  "scope": "History and detail only; preceding PR08 visual gate recorded separately",
+  "checks": {
+    "tests": {
+      "passed": 175,
+      "files": 34,
+      "newCases": 15
+    },
+    "historySubset": {
+      "passed": 16,
+      "files": 2
+    },
+    "lint": "passed",
+    "typecheck": "passed without incremental",
+    "build": "passed webpack after final CSS",
+    "diffCheck": "passed"
+  },
+  "before": {
+    "actualViewport": [
+      892,
+      790
+    ],
+    "nominalFilenameSizesAreNotActual": true
+  },
+  "after": {
+    "viewports": [
+      [
+        320,
+        640
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1024,
+        768
+      ],
+      [
+        1280,
+        800
+      ],
+      [
+        1440,
+        900
+      ]
+    ],
+    "horizontalOverflow": false
+  },
+  "video": {
+    "file": "interaction.webm",
+    "realFrames": 100,
+    "seekChecksPassed": 5,
+    "precisionMs": 40
+  },
+  "preexistingSha256": {
+    "next-env.d.ts": "b8b3a344484b959af5e4e3fc1a1609dac3cb9ece0cdeb6c145be29bc4c491000",
+    "package.json": "c3022f0ec95d4d314b2bcb0091b6b9a807f21e4f32b6ff761e1e4c30234ffd2b",
+    "package-lock.json": "88e3a55b083918ae03f5dcd803e8e41b875263113f099b31d7c143b3e239ccaf",
+    "tsconfig.json": "eef929bf342407ab7be6770d9acd75c5a5a1dc133a54a6a23b961649102e7259",
+    "supabase/seed.sql": "f30a98d1c809f7b60f19e4f21549817b6cf0c9e231a06de3278b5f210fcb2830"
+  },
+  "sourceSha256": {
+    "components/history/history-detail.tsx": "9f300faf42e40bc0439edf092ba37f6df3e4cb99ed599e85cbda5ed68880038f",
+    "components/history/history-model.ts": "f3be6e4392a797380b8a23bde5369c1e7031154a5ace8331e9a7e29c33320731",
+    "components/history/history-price-comparison.tsx": "b4921988016e09eba3a5386ea43d39b5cc34c133c188816c2017f9b85a28c9d7",
+    "components/history/history-view.tsx": "1c4f1691e4a59f14b9db95e9c4daa245a92126c7f5e20c451cc36846795b9e4e",
+    "components/history/history.module.css": "773acb42a20f949e791a835f796b3d36220a4dfe3ba856ac702c74b5834341b7",
+    "components/history/history.test.tsx": "fc5867e89c1bebf3fc11aa69c99ef2a0f5349c6c2ca7cbf6163345abba9bf569"
+  },
+  "limitations": [
+    "Before comparison measured at one real viewport",
+    "100 purchases covered by component tests; visual integration has three completed",
+    "No physical device, real screen reader, native zoom or global release certification"
+  ],
+  "next": "Stop before PR10; require explicit authorization"
+}

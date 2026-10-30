@@ -1,0 +1,175 @@
+{
+  "note": "Native viewport JPEGs from internal browser; capture pixels can omit scrollbar/edge area and need not equal measured CSS viewport. Originals never resized. Use geometry JSON for CSS fit.",
+  "images": [
+    {
+      "file": "1024-after-top.jpg",
+      "width": 1009,
+      "height": 757
+    },
+    {
+      "file": "1024-before-top.jpg",
+      "width": 1009,
+      "height": 757
+    },
+    {
+      "file": "1024-large-budget.jpg",
+      "width": 1009,
+      "height": 757
+    },
+    {
+      "file": "1280-after-top.jpg",
+      "width": 1265,
+      "height": 791
+    },
+    {
+      "file": "1280-before-top.jpg",
+      "width": 1265,
+      "height": 791
+    },
+    {
+      "file": "1280-large-budget.jpg",
+      "width": 1265,
+      "height": 791
+    },
+    {
+      "file": "1280-login-smoke.jpg",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "file": "1440-after-top.jpg",
+      "width": 1425,
+      "height": 891
+    },
+    {
+      "file": "1440-before-top.jpg",
+      "width": 1425,
+      "height": 891
+    },
+    {
+      "file": "1440-large-budget.jpg",
+      "width": 1425,
+      "height": 891
+    },
+    {
+      "file": "1440-shared-update.jpg",
+      "width": 1425,
+      "height": 891
+    },
+    {
+      "file": "320-after-top.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "320-before-top.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "320-footer.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "320-large-budget-check.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "320-large-budget.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "320-login-smoke.jpg",
+      "width": 305,
+      "height": 610
+    },
+    {
+      "file": "390-after-first-pass.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-after-top.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-before-top.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-faq-expanded.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-final-top.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-history-expanded.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-history-keyboard.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-invite-example.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-known-zero.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-large-budget.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-menu-open.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-planning-selected.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-price-error.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "390-purchased-unpriced.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "file": "768-after-top.jpg",
+      "width": 753,
+      "height": 1004
+    },
+    {
+      "file": "768-before-top.jpg",
+      "width": 753,
+      "height": 1004
+    },
+    {
+      "file": "768-large-budget.jpg",
+      "width": 753,
+      "height": 1004
+    }
+  ]
+}

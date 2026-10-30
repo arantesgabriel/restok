@@ -1,0 +1,40 @@
+- alert
+- link "Ir para o conteúdo":
+  - /url: "#restok-main"
+- complementary:
+  - img "Restok"
+  - 'button "Casas e pessoas: QA Bloco3 PR07 2026-10-28T22-01-24"':
+    - generic: Casa ativa
+    - text: QA Bloco3 PR07 2026-10-28T22-01-24
+  - navigation "Navegação principal":
+    - button "Compra":
+      - text: Compra
+    - button "Histórico":
+      - text: Histórico
+    - button "Casa" [active]:
+      - text: Casa
+- main:
+  - generic: Produtos da casa
+  - button "Perfil de Gabriel Teste": GT
+  - paragraph: QA Bloco3 PR07 2026-10-28T22-01-24
+  - heading "Produtos da casa" [level=1]
+  - paragraph: Sua próxima compra já sabe por onde começar.
+  - button "Casas e pessoas":
+  - paragraph: Compra em andamento
+  - paragraph: QA PR07 terceira vazia
+  - button "Nova"
+  - heading "Itens recorrentes 1" [level=2]
+  - group "Ordenar produtos":
+    - button "Categoria" [pressed]
+    - button "A–Z"
+  - button "Adicionar":
+    - text: Adicionar
+  - heading "Outros" [level=3]
+  - button "Outros em ordem A–Z. Alternar ordem alfabética":
+    - text: A–Z
+  - generic: QA PR07 recorrente
+  - generic: Outros · 3 un.
+  - button "Editar QA PR07 recorrente":
+  - button "Desativar QA PR07 recorrente":
+    - text: Desativar
+    - generic: QA PR07 recorrente

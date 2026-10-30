@@ -1,0 +1,177 @@
+[
+  {
+    "count": 33,
+    "before": {
+      "bodyHeight": 389,
+      "bodyScrollHeight": 1995,
+      "focused": "Selecionar 33 itens",
+      "footer": {
+        "bottom": 640.4039993286133,
+        "top": 563.43115234375
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 640,
+        "width": 320
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 563.43115234375,
+      "scrollTop": 1606.060546875
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 33 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 389,
+      "bodyScrollHeight": 6032,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 640.4039993286133,
+        "top": 563.43115234375
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 640,
+        "width": 320
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 563.43115234375,
+      "scrollTop": 5643.43408203125
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 602,
+      "bodyScrollHeight": 6013,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 844.4444046020508,
+        "top": 767.4715576171875
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 767.4715576171875,
+      "scrollTop": 5411.11083984375
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 719,
+      "bodyScrollHeight": 6029,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 973.027114868164,
+        "top": 880.0504760742188
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 1024,
+        "width": 768
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 880.0504760742188,
+      "scrollTop": 5310.10107421875
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 489,
+      "bodyScrollHeight": 6029,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 730.2398834228516,
+        "top": 637.2632446289062
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1024
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 637.2632446289062,
+      "scrollTop": 5540.40380859375
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 518,
+      "bodyScrollHeight": 6029,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 760.9532623291016,
+        "top": 667.9766235351562
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 801,
+        "width": 1280
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 667.9766235351562,
+      "scrollTop": 5511.11083984375
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  },
+  {
+    "count": 100,
+    "before": {
+      "bodyHeight": 608,
+      "bodyScrollHeight": 6029,
+      "focused": "Selecionar 100 itens",
+      "footer": {
+        "bottom": 855.9500885009766,
+        "top": 762.9734497070312
+      },
+      "overflow": false,
+      "viewport": {
+        "height": 901,
+        "width": 1440
+      }
+    },
+    "after": {
+      "focused": "Confirmar seleção",
+      "footerTop": 762.9734497070312,
+      "scrollTop": 5421.2119140625
+    },
+    "tab": "Fechar",
+    "shiftTab": "Confirmar seleção",
+    "returned": "Abrir 100 itens"
+  }
+]

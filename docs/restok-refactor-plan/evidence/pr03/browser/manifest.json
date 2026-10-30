@@ -1,0 +1,595 @@
+{
+  "engine": "156.0.8078.4",
+  "kind": "E2E-FIXTURE isolated foundations",
+  "captures": [
+    {
+      "id": "foundations",
+      "file": "320-640.png",
+      "video": "320-640.webm",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.36,
+        "frame": 9,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.255,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "320-640-focus.png",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    },
+    {
+      "id": "foundations",
+      "file": "390-844.png",
+      "video": "390-844.webm",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.2,
+        "frame": 5,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 2.392,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "390-844-focus.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    },
+    {
+      "id": "foundations",
+      "file": "768-1024.png",
+      "video": "768-1024.webm",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.16,
+        "frame": 4,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.953,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "768-1024-focus.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    },
+    {
+      "id": "foundations",
+      "file": "1024-768.png",
+      "video": "1024-768.webm",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.12,
+        "frame": 3,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.807,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "1024-768-focus.png",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    },
+    {
+      "id": "foundations",
+      "file": "1280-800.png",
+      "video": "1280-800.webm",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.56,
+        "frame": 14,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.61,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "1280-800-focus.png",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    },
+    {
+      "id": "foundations",
+      "file": "1440-900.png",
+      "video": "1440-900.webm",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "checks": {
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "muted",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 6.0383643762855455
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "min": 4.5,
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "min": 4.5,
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "min": 4.5,
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "min": 4.5,
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "min": 4.5,
+            "ratio": 4.814038469472451
+          },
+          {
+            "fg": "info",
+            "bg": "surface",
+            "min": 3,
+            "ratio": 5.1611879854109874
+          },
+          {
+            "fg": "action",
+            "bg": "canvas",
+            "min": 3,
+            "ratio": 7.662306045349419
+          }
+        ],
+        "overflow": false,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "weight800": true,
+        "legacyCss": false
+      },
+      "platformFonts": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      },
+      "mediaSeek": {
+        "seconds": 0.24,
+        "frame": 6,
+        "fps": 25.0,
+        "precisionSeconds": 0.04,
+        "meanAbsoluteErrorRgb": 1.622,
+        "method": "minimum RGB MAE across every decoded frame at width 80; original video timeline, not script time"
+      }
+    },
+    {
+      "id": "keyboard-focus",
+      "file": "1440-900-focus.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "evidenceKind": "PNG only: terminal focus frame was not recorded reliably in video; no seek certified"
+    }
+  ],
+  "errors": []
+}

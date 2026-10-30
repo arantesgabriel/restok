@@ -1,0 +1,38 @@
+[
+  {
+    "height": 640,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "height": 844,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 390
+  },
+  {
+    "height": 1024,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 768
+  },
+  {
+    "height": 768,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 1024
+  },
+  {
+    "height": 801,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "height": 901,
+    "overflow": false,
+    "scrollY": 0,
+    "width": 1440
+  }
+]

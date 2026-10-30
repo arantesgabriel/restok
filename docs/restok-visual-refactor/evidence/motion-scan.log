@@ -1,0 +1,5 @@
+motion-lint: clean — no feel-breaking patterns found.
+
+This is ONE detector, not the audit. It does not see the open screen:
+a stuck AnimatePresence slips past it and past every other one.
+The real gate: killer-scan --report AUDIT.md <target>

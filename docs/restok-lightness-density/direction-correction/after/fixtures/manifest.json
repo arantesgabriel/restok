@@ -1,0 +1,5213 @@
+{
+  "kind": "Components and CSS from workspace; isolated fixture data; no production backend",
+  "captures": [
+    {
+      "id": "long",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 330,
+        "y": 4,
+        "width": 44,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "money-over",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 330,
+        "y": 4,
+        "width": 44,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "stress",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 330,
+        "y": 4,
+        "width": 44,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 172.96875,
+        "bottom": 306.5625
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "empty-list",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 330,
+        "y": 4,
+        "width": 44,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 277.609375,
+        "y": 4,
+        "width": 96.390625,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice-open",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 22,
+          "y": 52,
+          "right": 374,
+          "bottom": 136,
+          "scrollWidth": 350,
+          "clientWidth": 350
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 277.609375,
+        "y": 4,
+        "width": 96.390625,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "confirmation-open",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 22,
+          "y": 60,
+          "right": 374,
+          "bottom": 151,
+          "scrollWidth": 350,
+          "clientWidth": 350
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 225.609375,
+        "y": 4,
+        "width": 148.390625,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 132.984375,
+        "bottom": 266.578125
+      },
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 306,
+        "height": 57.59375,
+        "bottom": 125.59375
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Casa",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 277.609375,
+        "y": 4,
+        "width": 96.390625,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": null,
+      "heading": {
+        "x": 16,
+        "y": 94,
+        "width": 302,
+        "height": 28.796875,
+        "bottom": 122.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Histórico",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      },
+      "footer": {
+        "x": 277.609375,
+        "y": 4,
+        "width": 96.390625,
+        "height": 44,
+        "bottom": 48
+      },
+      "budget": null,
+      "heading": {
+        "x": 16,
+        "y": 68,
+        "width": 358,
+        "height": 28.796875,
+        "bottom": 96.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "long",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "money-over",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "stress",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "empty-list",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 92,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 236.984375
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 492,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice-open",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 12,
+          "y": 798,
+          "right": 163,
+          "bottom": 956,
+          "scrollWidth": 151,
+          "clientWidth": 151
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 754,
+        "width": 151,
+        "height": 254,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "confirmation-open",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 12,
+          "y": 792,
+          "right": 163,
+          "bottom": 904,
+          "scrollWidth": 149,
+          "clientWidth": 149
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 860,
+        "width": 151,
+        "height": 148,
+        "bottom": 1008
+      },
+      "budget": {
+        "x": 200,
+        "y": 172.796875,
+        "width": 544,
+        "height": 144.984375,
+        "bottom": 317.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Casa",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      },
+      "budget": null,
+      "heading": {
+        "x": 200,
+        "y": 58,
+        "width": 340.25,
+        "height": 28.796875,
+        "bottom": 86.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Histórico",
+      "viewport": [
+        768,
+        1024
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 1024,
+        "bottom": 1024
+      },
+      "footer": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      },
+      "budget": null,
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 544,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "long",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "money-over",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "stress",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "empty-list",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 92,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 236.984375
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 716,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice-open",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 12,
+          "y": 542,
+          "right": 163,
+          "bottom": 700,
+          "scrollWidth": 151,
+          "clientWidth": 151
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 498,
+        "width": 151,
+        "height": 254,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "confirmation-open",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 12,
+          "y": 536,
+          "right": 163,
+          "bottom": 648,
+          "scrollWidth": 149,
+          "clientWidth": 149
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 604,
+        "width": 151,
+        "height": 148,
+        "bottom": 752
+      },
+      "budget": {
+        "x": 200,
+        "y": 120.796875,
+        "width": 768,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 417.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Casa",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      },
+      "budget": null,
+      "heading": {
+        "x": 200,
+        "y": 58,
+        "width": 340.25,
+        "height": 28.796875,
+        "bottom": 86.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Histórico",
+      "viewport": [
+        992,
+        768
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 176,
+        "height": 768,
+        "bottom": 768
+      },
+      "footer": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      },
+      "budget": null,
+      "heading": {
+        "x": 200,
+        "y": 32,
+        "width": 768,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "long",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "money-over",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "stress",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "empty-list",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 92,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 236.984375
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 988,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice-open",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 16,
+          "y": 695,
+          "right": 207,
+          "bottom": 832,
+          "scrollWidth": 191,
+          "clientWidth": 191
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 651,
+        "width": 191,
+        "height": 233,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "confirmation-open",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 16,
+          "y": 668,
+          "right": 207,
+          "bottom": 780,
+          "scrollWidth": 189,
+          "clientWidth": 189
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 736,
+        "width": 191,
+        "height": 148,
+        "bottom": 884
+      },
+      "budget": {
+        "x": 312,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Casa",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      },
+      "budget": null,
+      "heading": {
+        "x": 312,
+        "y": 58,
+        "width": 340.25,
+        "height": 28.796875,
+        "bottom": 86.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Histórico",
+      "viewport": [
+        1440,
+        900
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 900,
+        "bottom": 900
+      },
+      "footer": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      },
+      "budget": null,
+      "heading": {
+        "x": 312,
+        "y": 32,
+        "width": 1040,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "long",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "money-over",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "stress",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "id": "empty-list",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 92,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 236.984375
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 988,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "notice-open",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 16,
+          "y": 875,
+          "right": 207,
+          "bottom": 1012,
+          "scrollWidth": 191,
+          "clientWidth": 191
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 831,
+        "width": 191,
+        "height": 233,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "confirmation-open",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [
+        {
+          "x": 16,
+          "y": 848,
+          "right": 207,
+          "bottom": 960,
+          "scrollWidth": 189,
+          "clientWidth": 189
+        }
+      ],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 916,
+        "width": 191,
+        "height": 148,
+        "bottom": 1064
+      },
+      "budget": {
+        "x": 552,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 144.984375,
+        "bottom": 265.78125
+      },
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 689.546875,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "600",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Casa",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      },
+      "budget": null,
+      "heading": {
+        "x": 552,
+        "y": 58,
+        "width": 340.25,
+        "height": 28.796875,
+        "bottom": 86.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    },
+    {
+      "id": "Histórico",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "overflow": 0,
+      "panels": [],
+      "horizontalHeader": false,
+      "contextCount": 0,
+      "houseCount": 1,
+      "profileInSidebar": true,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 1080,
+        "bottom": 1080
+      },
+      "footer": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      },
+      "budget": null,
+      "heading": {
+        "x": 552,
+        "y": 32,
+        "width": 1040,
+        "height": 28.796875,
+        "bottom": 60.796875
+      },
+      "headingWeight": "700",
+      "purchasedBackground": null
+    }
+  ],
+  "checks": [
+    {
+      "name": "390/long: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/long: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/long: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 330,
+          "y": 4,
+          "width": 44,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/long: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390/money-over: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/money-over: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/money-over: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 330,
+          "y": 4,
+          "width": 44,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "390/money-over: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390: purchased status has no square fill",
+      "pass": true,
+      "value": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "390/stress: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/stress: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/stress: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 330,
+          "y": 4,
+          "width": 44,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 172.96875,
+          "bottom": 306.5625
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "390/stress: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390/empty-list: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/empty-list: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/empty-list: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 330,
+          "y": 4,
+          "width": 44,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/empty-list: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390/notice: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/notice: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/notice: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 277.609375,
+          "y": 4,
+          "width": 96.390625,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/notice: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390/notice-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/notice-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 22,
+          "y": 52,
+          "right": 374,
+          "bottom": 136,
+          "scrollWidth": 350,
+          "clientWidth": 350
+        }
+      ]
+    },
+    {
+      "name": "390/notice-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 22,
+            "y": 52,
+            "right": 374,
+            "bottom": 136,
+            "scrollWidth": 350,
+            "clientWidth": 350
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 277.609375,
+          "y": 4,
+          "width": 96.390625,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/notice-open: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390: relocated profile restores focus",
+      "pass": true
+    },
+    {
+      "name": "390: house switcher opens and closes",
+      "pass": true
+    },
+    {
+      "name": "390: finish retains pending warning",
+      "pass": true
+    },
+    {
+      "name": "390/confirmation-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/confirmation-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 22,
+          "y": 60,
+          "right": 374,
+          "bottom": 151,
+          "scrollWidth": 350,
+          "clientWidth": 350
+        }
+      ]
+    },
+    {
+      "name": "390/confirmation-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 22,
+            "y": 60,
+            "right": 374,
+            "bottom": 151,
+            "scrollWidth": 350,
+            "clientWidth": 350
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 225.609375,
+          "y": 4,
+          "width": 148.390625,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": {
+          "x": 16,
+          "y": 133.59375,
+          "width": 358,
+          "height": 132.984375,
+          "bottom": 266.578125
+        },
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 306,
+          "height": 57.59375,
+          "bottom": 125.59375
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/confirmation-open: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390: confirmation dismissal",
+      "pass": true
+    },
+    {
+      "name": "390/Casa: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/Casa: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/Casa: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 277.609375,
+          "y": 4,
+          "width": 96.390625,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": null,
+        "heading": {
+          "x": 16,
+          "y": 94,
+          "width": 302,
+          "height": 28.796875,
+          "bottom": 122.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/Casa: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "390/Histórico: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "390/Histórico: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "390/Histórico: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 52,
+          "bottom": 52
+        },
+        "footer": {
+          "x": 277.609375,
+          "y": 4,
+          "width": 96.390625,
+          "height": 44,
+          "bottom": 48
+        },
+        "budget": null,
+        "heading": {
+          "x": 16,
+          "y": 68,
+          "width": 358,
+          "height": 28.796875,
+          "bottom": 96.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "390/Histórico: compact mobile header",
+      "pass": true,
+      "value": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "bottom": 52
+      }
+    },
+    {
+      "name": "768/long: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/long: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/long: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 964,
+          "width": 151,
+          "height": 44,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/long: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768/money-over: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/money-over: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/money-over: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 964,
+          "width": 151,
+          "height": 44,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "768/money-over: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768: purchased status has no square fill",
+      "pass": true,
+      "value": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "768/stress: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/stress: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/stress: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 964,
+          "width": 151,
+          "height": 44,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "768/stress: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768/empty-list: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/empty-list: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/empty-list: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 964,
+          "width": 151,
+          "height": 44,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 92,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 236.984375
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 492,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/empty-list: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 964,
+        "width": 151,
+        "height": 44,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768/notice: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/notice: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/notice: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 912,
+          "width": 151,
+          "height": 96,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/notice: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768/notice-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/notice-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 12,
+          "y": 798,
+          "right": 163,
+          "bottom": 956,
+          "scrollWidth": 151,
+          "clientWidth": 151
+        }
+      ]
+    },
+    {
+      "name": "768/notice-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 12,
+            "y": 798,
+            "right": 163,
+            "bottom": 956,
+            "scrollWidth": 151,
+            "clientWidth": 151
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 754,
+          "width": 151,
+          "height": 254,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/notice-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 754,
+        "width": 151,
+        "height": 254,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768: relocated profile restores focus",
+      "pass": true
+    },
+    {
+      "name": "768: house switcher opens and closes",
+      "pass": true
+    },
+    {
+      "name": "768: finish retains pending warning",
+      "pass": true
+    },
+    {
+      "name": "768/confirmation-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/confirmation-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 12,
+          "y": 792,
+          "right": 163,
+          "bottom": 904,
+          "scrollWidth": 149,
+          "clientWidth": 149
+        }
+      ]
+    },
+    {
+      "name": "768/confirmation-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 12,
+            "y": 792,
+            "right": 163,
+            "bottom": 904,
+            "scrollWidth": 149,
+            "clientWidth": 149
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 860,
+          "width": 151,
+          "height": 148,
+          "bottom": 1008
+        },
+        "budget": {
+          "x": 200,
+          "y": 172.796875,
+          "width": 544,
+          "height": 144.984375,
+          "bottom": 317.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/confirmation-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 860,
+        "width": 151,
+        "height": 148,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768: confirmation dismissal",
+      "pass": true
+    },
+    {
+      "name": "768/Casa: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/Casa: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/Casa: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 912,
+          "width": 151,
+          "height": 96,
+          "bottom": 1008
+        },
+        "budget": null,
+        "heading": {
+          "x": 200,
+          "y": 58,
+          "width": 340.25,
+          "height": 28.796875,
+          "bottom": 86.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/Casa: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "768/Histórico: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "768/Histórico: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "768/Histórico: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 1024,
+          "bottom": 1024
+        },
+        "footer": {
+          "x": 12,
+          "y": 912,
+          "width": 151,
+          "height": 96,
+          "bottom": 1008
+        },
+        "budget": null,
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 544,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "768/Histórico: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 912,
+        "width": 151,
+        "height": 96,
+        "bottom": 1008
+      }
+    },
+    {
+      "name": "992/long: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/long: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/long: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 708,
+          "width": 151,
+          "height": 44,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/long: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992/money-over: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/money-over: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/money-over: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 708,
+          "width": 151,
+          "height": 44,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "992/money-over: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992: purchased status has no square fill",
+      "pass": true,
+      "value": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "992/stress: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/stress: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/stress: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 708,
+          "width": 151,
+          "height": 44,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "992/stress: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992/empty-list: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/empty-list: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/empty-list: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 708,
+          "width": 151,
+          "height": 44,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 92,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 236.984375
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 716,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/empty-list: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 708,
+        "width": 151,
+        "height": 44,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992/notice: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/notice: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/notice: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 656,
+          "width": 151,
+          "height": 96,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/notice: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992/notice-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/notice-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 12,
+          "y": 542,
+          "right": 163,
+          "bottom": 700,
+          "scrollWidth": 151,
+          "clientWidth": 151
+        }
+      ]
+    },
+    {
+      "name": "992/notice-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 12,
+            "y": 542,
+            "right": 163,
+            "bottom": 700,
+            "scrollWidth": 151,
+            "clientWidth": 151
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 498,
+          "width": 151,
+          "height": 254,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/notice-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 498,
+        "width": 151,
+        "height": 254,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992: relocated profile restores focus",
+      "pass": true
+    },
+    {
+      "name": "992: house switcher opens and closes",
+      "pass": true
+    },
+    {
+      "name": "992: finish retains pending warning",
+      "pass": true
+    },
+    {
+      "name": "992/confirmation-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/confirmation-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 12,
+          "y": 536,
+          "right": 163,
+          "bottom": 648,
+          "scrollWidth": 149,
+          "clientWidth": 149
+        }
+      ]
+    },
+    {
+      "name": "992/confirmation-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 12,
+            "y": 536,
+            "right": 163,
+            "bottom": 648,
+            "scrollWidth": 149,
+            "clientWidth": 149
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 604,
+          "width": 151,
+          "height": 148,
+          "bottom": 752
+        },
+        "budget": {
+          "x": 200,
+          "y": 120.796875,
+          "width": 768,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 417.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/confirmation-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 604,
+        "width": 151,
+        "height": 148,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992: confirmation dismissal",
+      "pass": true
+    },
+    {
+      "name": "992/Casa: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/Casa: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/Casa: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 656,
+          "width": 151,
+          "height": 96,
+          "bottom": 752
+        },
+        "budget": null,
+        "heading": {
+          "x": 200,
+          "y": 58,
+          "width": 340.25,
+          "height": 28.796875,
+          "bottom": 86.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/Casa: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "992/Histórico: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "992/Histórico: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "992/Histórico: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          992,
+          768
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 176,
+          "height": 768,
+          "bottom": 768
+        },
+        "footer": {
+          "x": 12,
+          "y": 656,
+          "width": 151,
+          "height": 96,
+          "bottom": 752
+        },
+        "budget": null,
+        "heading": {
+          "x": 200,
+          "y": 32,
+          "width": 768,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "992/Histórico: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 12,
+        "y": 656,
+        "width": 151,
+        "height": 96,
+        "bottom": 752
+      }
+    },
+    {
+      "name": "1440/long: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/long: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/long: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 840,
+          "width": 191,
+          "height": 44,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/long: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440/money-over: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/money-over: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/money-over: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 840,
+          "width": 191,
+          "height": 44,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "1440/money-over: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440: purchased status has no square fill",
+      "pass": true,
+      "value": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "1440/stress: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/stress: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/stress: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 840,
+          "width": 191,
+          "height": 44,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "1440/stress: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440/empty-list: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/empty-list: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/empty-list: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 840,
+          "width": 191,
+          "height": 44,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 92,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 236.984375
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 988,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/empty-list: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 840,
+        "width": 191,
+        "height": 44,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440/notice: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/notice: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/notice: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 788,
+          "width": 191,
+          "height": 96,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/notice: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440/notice-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/notice-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 16,
+          "y": 695,
+          "right": 207,
+          "bottom": 832,
+          "scrollWidth": 191,
+          "clientWidth": 191
+        }
+      ]
+    },
+    {
+      "name": "1440/notice-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 16,
+            "y": 695,
+            "right": 207,
+            "bottom": 832,
+            "scrollWidth": 191,
+            "clientWidth": 191
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 651,
+          "width": 191,
+          "height": 233,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/notice-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 651,
+        "width": 191,
+        "height": 233,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440: relocated profile restores focus",
+      "pass": true
+    },
+    {
+      "name": "1440: house switcher opens and closes",
+      "pass": true
+    },
+    {
+      "name": "1440: finish retains pending warning",
+      "pass": true
+    },
+    {
+      "name": "1440/confirmation-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/confirmation-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 16,
+          "y": 668,
+          "right": 207,
+          "bottom": 780,
+          "scrollWidth": 189,
+          "clientWidth": 189
+        }
+      ]
+    },
+    {
+      "name": "1440/confirmation-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 16,
+            "y": 668,
+            "right": 207,
+            "bottom": 780,
+            "scrollWidth": 189,
+            "clientWidth": 189
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 736,
+          "width": 191,
+          "height": 148,
+          "bottom": 884
+        },
+        "budget": {
+          "x": 312,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/confirmation-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 736,
+        "width": 191,
+        "height": 148,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440: confirmation dismissal",
+      "pass": true
+    },
+    {
+      "name": "1440/Casa: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/Casa: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/Casa: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 788,
+          "width": 191,
+          "height": 96,
+          "bottom": 884
+        },
+        "budget": null,
+        "heading": {
+          "x": 312,
+          "y": 58,
+          "width": 340.25,
+          "height": 28.796875,
+          "bottom": 86.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/Casa: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1440/Histórico: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1440/Histórico: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1440/Histórico: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 900,
+          "bottom": 900
+        },
+        "footer": {
+          "x": 16,
+          "y": 788,
+          "width": 191,
+          "height": 96,
+          "bottom": 884
+        },
+        "budget": null,
+        "heading": {
+          "x": 312,
+          "y": 32,
+          "width": 1040,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1440/Histórico: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 788,
+        "width": 191,
+        "height": 96,
+        "bottom": 884
+      }
+    },
+    {
+      "name": "1920/long: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/long: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/long: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 1020,
+          "width": 191,
+          "height": 44,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/long: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920/money-over: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/money-over: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/money-over: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 1020,
+          "width": 191,
+          "height": 44,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "1920/money-over: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920: purchased status has no square fill",
+      "pass": true,
+      "value": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "name": "1920/stress: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/stress: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/stress: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 1020,
+          "width": 191,
+          "height": 44,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "1920/stress: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920/empty-list: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/empty-list: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/empty-list: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 1020,
+          "width": 191,
+          "height": 44,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 92,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 236.984375
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 988,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/empty-list: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 1020,
+        "width": 191,
+        "height": 44,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920/notice: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/notice: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/notice: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 968,
+          "width": 191,
+          "height": 96,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/notice: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920/notice-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/notice-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 16,
+          "y": 875,
+          "right": 207,
+          "bottom": 1012,
+          "scrollWidth": 191,
+          "clientWidth": 191
+        }
+      ]
+    },
+    {
+      "name": "1920/notice-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 16,
+            "y": 875,
+            "right": 207,
+            "bottom": 1012,
+            "scrollWidth": 191,
+            "clientWidth": 191
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 831,
+          "width": 191,
+          "height": 233,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/notice-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 831,
+        "width": 191,
+        "height": 233,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920: relocated profile restores focus",
+      "pass": true
+    },
+    {
+      "name": "1920: house switcher opens and closes",
+      "pass": true
+    },
+    {
+      "name": "1920: finish retains pending warning",
+      "pass": true
+    },
+    {
+      "name": "1920/confirmation-open: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/confirmation-open: global messages fit viewport",
+      "pass": true,
+      "value": [
+        {
+          "x": 16,
+          "y": 848,
+          "right": 207,
+          "bottom": 960,
+          "scrollWidth": 189,
+          "clientWidth": 189
+        }
+      ]
+    },
+    {
+      "name": "1920/confirmation-open: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [
+          {
+            "x": 16,
+            "y": 848,
+            "right": 207,
+            "bottom": 960,
+            "scrollWidth": 189,
+            "clientWidth": 189
+          }
+        ],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 916,
+          "width": 191,
+          "height": 148,
+          "bottom": 1064
+        },
+        "budget": {
+          "x": 552,
+          "y": 120.796875,
+          "width": 1040,
+          "height": 144.984375,
+          "bottom": 265.78125
+        },
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 689.546875,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "600",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/confirmation-open: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 916,
+        "width": 191,
+        "height": 148,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920: confirmation dismissal",
+      "pass": true
+    },
+    {
+      "name": "1920/Casa: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/Casa: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/Casa: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 968,
+          "width": 191,
+          "height": 96,
+          "bottom": 1064
+        },
+        "budget": null,
+        "heading": {
+          "x": 552,
+          "y": 58,
+          "width": 340.25,
+          "height": 28.796875,
+          "bottom": 86.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/Casa: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      }
+    },
+    {
+      "name": "1920/Histórico: no overflow",
+      "pass": true,
+      "value": 0
+    },
+    {
+      "name": "1920/Histórico: global messages fit viewport",
+      "pass": true,
+      "value": []
+    },
+    {
+      "name": "1920/Histórico: single house/profile and no top header/context",
+      "pass": true,
+      "value": {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": 0,
+        "panels": [],
+        "horizontalHeader": false,
+        "contextCount": 0,
+        "houseCount": 1,
+        "profileInSidebar": true,
+        "sidebar": {
+          "x": 0,
+          "y": 0,
+          "width": 224,
+          "height": 1080,
+          "bottom": 1080
+        },
+        "footer": {
+          "x": 16,
+          "y": 968,
+          "width": 191,
+          "height": 96,
+          "bottom": 1064
+        },
+        "budget": null,
+        "heading": {
+          "x": 552,
+          "y": 32,
+          "width": 1040,
+          "height": 28.796875,
+          "bottom": 60.796875
+        },
+        "headingWeight": "700",
+        "purchasedBackground": null
+      }
+    },
+    {
+      "name": "1920/Histórico: globals at sidebar bottom",
+      "pass": true,
+      "value": {
+        "x": 16,
+        "y": 968,
+        "width": 191,
+        "height": 96,
+        "bottom": 1064
+      }
+    }
+  ],
+  "errors": []
+}
