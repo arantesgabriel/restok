@@ -91,13 +91,13 @@ describe("account sign out", () => {
   it("stays on the account when sign out fails or the network drops", async () => {
     signOut.mockResolvedValueOnce({ error: { message: "nope" } });
     fireEvent.click(await openAccountMenu());
-    await waitFor(()=>expect(screen.getAllByRole("status").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
+    await waitFor(()=>expect(screen.getAllByRole("alert").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
     expect(replace).not.toHaveBeenCalled();
 
     cleanup();
     signOut.mockRejectedValueOnce(new Error("offline"));
     fireEvent.click(await openAccountMenu());
-    await waitFor(()=>expect(screen.getAllByRole("status").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
+    await waitFor(()=>expect(screen.getAllByRole("alert").some(node=>node.textContent === "Não foi possível encerrar a sessão. Tente novamente.")).toBe(true));
     expect(replace).not.toHaveBeenCalled();
   });
 });

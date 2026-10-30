@@ -28,3 +28,7 @@
 @keyframes menuEnter { from { opacity:0; transform:translateX(8px); } to { opacity:1; transform:translateX(0); } }
 @media(min-width:640px) { .formPanel .footer > button { width:auto; min-width:9rem; } }
 @media(prefers-reduced-motion:reduce) { .menu { animation:none; } }
+
+.formPanel .header { align-items:center; padding-bottom:var(--space-3); }
+.formPanel .body { padding-bottom:var(--space-4); }
+.formPanel .footer { padding-top:var(--space-3); }

@@ -65,7 +65,7 @@ describe("household boot and activation", () => {
     window.history.replaceState(null, "", `/app?invite=${invite}&flow=onboarding#home`);
     await open();
     expect(screen.getByRole("button", { name: "Editar Somente casa b" })).toBeTruthy();
-    expect(screen.getAllByRole("status").some(node=>/Este convite é inválido/.test(node.textContent ?? ""))).toBe(true);
+    expect(screen.getAllByRole("alert").some(node=>/Este convite é inválido/.test(node.textContent ?? ""))).toBe(true);
     expect(window.location.search).toBe("");
     expect(remote.invite).toHaveBeenCalledTimes(invite === "malformed" ? 0 : 1);
   });
@@ -85,7 +85,7 @@ describe("household boot and activation", () => {
     localStorage.setItem(remoteStateStorageKey(user, "revoked"), "old");
     localStorage.setItem(remoteStateStorageKey("someone-else", "revoked"), "other");
     await open();
-    expect(screen.getAllByRole("status").some(node=>/A casa selecionada não está mais disponível/.test(node.textContent ?? ""))).toBe(true);
+    expect(screen.getAllByRole("alert").some(node=>/A casa selecionada não está mais disponível/.test(node.textContent ?? ""))).toBe(true);
     expect(localStorage.getItem(remoteStateStorageKey(user, "revoked"))).toBeNull();
     expect(localStorage.getItem(remoteStateStorageKey("someone-else", "revoked"))).toBe("other");
   });
@@ -125,7 +125,7 @@ describe("household boot and activation", () => {
     remote.snapshot.mockResolvedValue(null);
     fireEvent.click(screen.getByRole("button", { name: "Casas e pessoas" }));
     fireEvent.change(screen.getByRole("combobox"), { target: { value: "b" } });
-    await waitFor(()=>expect(screen.getAllByRole("status").some(node=>/A casa atual continua selecionada/.test(node.textContent ?? ""))).toBe(true));
+    await waitFor(()=>expect(screen.getAllByRole("alert").some(node=>/A casa atual continua selecionada/.test(node.textContent ?? ""))).toBe(true));
     expect(localStorage.getItem(preference())).toBe("a");
     expect(screen.getByRole("button", { name: "Editar Somente casa a" })).toBeTruthy();
   });
