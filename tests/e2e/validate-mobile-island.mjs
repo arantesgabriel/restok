@@ -1,7 +1,7 @@
 /* global process, console, document, innerWidth, scrollY, getComputedStyle, window */
 import { chromium } from "./runtime.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
-const out="docs/restok-mobile-island/evidence";await mkdir(out,{recursive:true});
+const out=process.env.RESTOK_QA_OUT ?? "docs/restok-mobile-island/evidence";await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.RESTOK_CHROMIUM_EXECUTABLE});
 const report={checks:[],errors:[]};const check=(name,pass,actual)=>report.checks.push({name,pass,actual});
 try{
@@ -19,6 +19,8 @@ try{
       await page.mouse.wheel(0,350);await page.waitForFunction(()=>scrollY>100);await page.locator('[data-mobile-navigation="compact"]').waitFor();
       check(`${width}: downward scroll compacts`,await island.getAttribute("data-mobile-navigation")==="compact");
       const compact=await island.evaluate(e=>({surface:getComputedStyle(e,"::before").transform,duration:getComputedStyle(e,"::before").transitionDuration,buttons:[...e.querySelectorAll("button")].map(b=>{const r=b.getBoundingClientRect();return {w:r.width,h:r.height};})}));
+      const selected=await island.locator("[aria-current=page]").evaluate(e=>({name:e.textContent,background:getComputedStyle(e.querySelector("svg")).backgroundColor,color:getComputedStyle(e.querySelector("svg")).color}));
+      check(`${width}: selection stays visible while compact`,selected.name==="Compra" && selected.background==="rgb(45, 90, 39)" && selected.color==="rgb(255, 255, 255)",selected);
       check(`${width}: compact shrinks surface`,compact.surface.startsWith("matrix(0.88"),compact.surface);
       check(`${width}: reduced motion`,compact.duration==="0s",compact.duration);
       check(`${width}: compact keeps44px targets`,compact.buttons.every(b=>b.w>=44&&b.h>=44),compact.buttons);
@@ -27,10 +29,12 @@ try{
       await page.mouse.wheel(0,-120);await page.locator('[data-mobile-navigation="compact"]').waitFor();check(`${width}: upward scroll compacts`,await island.getAttribute("data-mobile-navigation")==="compact");
       await island.getByRole("button",{name:"Casa",exact:true}).click();await page.getByRole("heading",{name:"Produtos da casa",exact:true}).waitFor();
       check(`${width}: one tap also navigates`,await island.getAttribute("data-mobile-navigation")==="expanded");
+      await page.mouse.move(200,300);await page.mouse.wheel(0,150);await page.locator('[data-mobile-navigation="compact"]').waitFor();
+      const homeSelected=await island.locator("[aria-current=page]").evaluate(e=>({name:e.textContent,background:getComputedStyle(e.querySelector("svg")).backgroundColor}));check(`${width}: Casa remains selected during scroll`,homeSelected.name==="Casa" && homeSelected.background==="rgb(45, 90, 39)",homeSelected);
       await page.screenshot({path:`${out}/${width}-home.png`});
       await island.getByRole("button",{name:"Compra",exact:true}).click();await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
       const row=await page.locator("[data-shopping-row]").last().boundingBox(),dock=await page.locator("[data-shopping-dock]").boundingBox(),nav=await island.boundingBox();
-      check(`${width}: last row clears dock`,row.y+row.height<=dock.y+1,{row,dock});check(`${width}: dock clears island`,dock.y+dock.height<=nav.y,{dock,nav});
+      check(`${width}: last row clears island`,row.y+row.height<=nav.y+1,{row,nav});check(`${width}: island sits above action card`,nav.y+nav.height+7<=dock.y,{dock,nav});
       await page.screenshot({path:`${out}/${width}-last-row.png`});
     }
     await context.close();
