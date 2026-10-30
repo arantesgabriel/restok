@@ -7,6 +7,17 @@ import { seedState } from "@/tests/fixtures/shopping";
 import { formatBRL } from "@/lib/utils";
 
 afterEach(cleanup);
+it("matches the demo's purchased-to-owned and owned-to-purchased shortcuts without inventing writes",()=>{
+  const onPurchased=vi.fn(),onAlreadyHave=vi.fn(),onUndo=vi.fn();
+  const item={...seedState.lists[0].items[0],name:"Arroz",status:"purchased" as const};
+  const props={lists:[],onEdit:vi.fn(),onPurchased,onAlreadyHave,onUndo};
+  const view=render(<ShoppingItemRow {...props} item={item}/>);
+  fireEvent.click(screen.getByRole("button",{name:"Marcar Arroz como já temos"}));expect(onAlreadyHave).toHaveBeenCalledOnce();
+  view.rerender(<ShoppingItemRow {...props} item={{...item,status:"already_have"}}/>);
+  expect(screen.getByRole("button",{name:"Retirar Arroz de Já temos"}).getAttribute("aria-pressed")).toBe("true");
+  fireEvent.click(screen.getByRole("button",{name:"Marcar Arroz como comprado"}));expect(onPurchased).toHaveBeenCalledOnce();
+  fireEvent.click(screen.getByRole("button",{name:"Retirar Arroz de Já temos"}));expect(onUndo).toHaveBeenCalledOnce();
+});
 
 function purchase(budget: number) {
   const source = seedState.lists[0].items[2];
@@ -29,7 +40,7 @@ it("orders the budget summary, keeps unknown prices out of the total, and expose
   expect(budget?.getAttribute("data-budget-over")).toBe("false");
   expect(budget?.querySelector("strong")?.textContent).toBe(formatBRL(15));
   expect(progress.getAttribute("aria-valuenow")).toBe("100");
-  expect(container.textContent).toContain("Disponível");
+  expect(container.textContent).toContain("Ainda disponíveis");
   expect(container.textContent).toContain("1 item comprado sem preço");
   fireEvent.click(screen.getByRole("button", { name: "Editar meta da compra" }));
   expect(onEdit).toHaveBeenCalledOnce();

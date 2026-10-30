@@ -27,6 +27,8 @@ describe("house category order", () => {
     const view = render(<RestokApp />);
     await screen.findByRole("button", { name: "Perfil de Ana" });
 
+    fireEvent.click(screen.getByRole("button", { name: /Organizar lista/ }));
+    fireEvent.click(screen.getByRole("menuitem", { name: "Agrupar por categoria" }));
     const alimentos = () => namesIn("Alimentos");
     const higiene = () => namesIn("Higiene");
     expect(alimentos().indexOf("Água com gás 1.5L")).toBeLessThan(alimentos().indexOf("Óleo"));
@@ -40,6 +42,7 @@ describe("house category order", () => {
     expect(JSON.parse(localStorage.getItem(categoryNameSortKey("test-house")) ?? "{}")).toEqual({ Alimentos: "desc" });
 
     fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
+    fireEvent.click(screen.getByRole("button",{name:"Organizar produtos"})); fireEvent.click(screen.getByRole("menuitem",{name:"Agrupar por categoria"}));
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
     expect(namesIn("Higiene").indexOf("Bucha de Pia")).toBeLessThan(namesIn("Higiene").indexOf("Shampoo"));
     fireEvent.click(screen.getAllByRole("button", { name: "Compra" })[0]);
@@ -62,6 +65,7 @@ describe("house category order", () => {
     render(<RestokApp />);
     await screen.findByRole("button", { name: "Perfil de Ana" });
     fireEvent.click(screen.getAllByRole("button", { name: "Casa" })[0]);
+    fireEvent.click(screen.getByRole("button",{name:"Organizar produtos"})); fireEvent.click(screen.getByRole("menuitem",{name:"Agrupar por categoria"}));
     await waitFor(() => expect(screen.getByRole("button", { name: "Alimentos em ordem Z–A. Alternar ordem alfabética" })).toBeTruthy());
     expect(namesIn("Alimentos").indexOf("Óleo")).toBeLessThan(namesIn("Alimentos").indexOf("Água com gás 1.5L"));
     expect(namesIn("Higiene").indexOf("Bucha de Pia")).toBeLessThan(namesIn("Higiene").indexOf("Shampoo"));

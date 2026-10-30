@@ -64,7 +64,7 @@ describe("history surfaces",()=>{
     const lists=Array.from({length:100},(_,index)=>purchase(`Compra ${index}`,new Date(Date.UTC(2026,0,index+1,12)).toISOString()));
     const onOpen=vi.fn();
     render(<HistoryView lists={lists} onOpen={onOpen} returnToId="Compra 42"/>);
-    const records=screen.getAllByRole("button");
+    const records=screen.getAllByRole("listitem").map(item=>within(item).getByRole("button"));
     expect(records).toHaveLength(100);
     expect(records[0].textContent).toContain("Compra 99");
     expect(document.activeElement?.textContent).toContain("Compra 42");

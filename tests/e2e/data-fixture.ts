@@ -10,7 +10,7 @@ export const releaseEvidenceLoad = () => releaseLoad?.();
 let writeAttempt = 0;
 let releaseWrite: (() => void) | undefined;
 export const releaseEvidenceWrite = () => releaseWrite?.();
-const context = { userId: "fixture-person", householdId: "fixture-house", householdName: "Casa ilustrativa", profileName: "Pessoa de teste", email: null, role: "owner", client: {} } as RemoteContext;
+const context = { userId: "fixture-person", householdId: "fixture-house", householdName: scenario === "demo-v6" ? "Nossa Casa" : "Casa ilustrativa", profileName: "Pessoa de teste", email: null, role: "owner", client: {} } as RemoteContext;
 export const activeHouseholdStorageKey = (userId: string) => `restok-active-household:${userId}`;
 export const resolveRemoteContext = async () => context;
 export const loadCurrentProfile = async () => ({ userId: context.userId, email: null, displayName: context.profileName });
@@ -46,3 +46,5 @@ export const changeHouseholdMemberRole = async () => false;
 export const removeHouseholdMember = async () => false;
 export const leaveHousehold = async () => false;
 export const transferHouseholdOwnership = async () => false;
+
+export const deleteShoppingItem = async (itemId:string,listId:string) => {state.lists=state.lists.map(list=>list.id===listId ? {...list,items:list.items.filter(item=>item.id!==itemId)} : list);return {ok:true,synced:true} as const;};

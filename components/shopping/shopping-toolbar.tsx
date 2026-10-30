@@ -1,4 +1,4 @@
-import { ArrowDownAZ, ListFilter } from "lucide-react";
+import { ArrowDownAZ, ListFilter, SlidersHorizontal } from "lucide-react";
 import { ActionMenu } from "@/components/ui/action-menu";
 import { Button } from "@/components/ui/button";
 import { SearchField } from "@/components/ui/search-field";
@@ -14,15 +14,15 @@ export function ShoppingToolbar({ view }: { view: ReturnType<typeof useShoppingV
       <div className={styles.searchRow}>
         <SearchField label="Buscar na lista" value={view.query} onValueChange={view.setQuery} />
         <ActionMenu
-          label={`Organizar lista — atualmente ${modeIsCategory ? "por categoria" : "por nome A–Z"}`}
+          label={`Organizar lista — atualmente ${modeIsCategory ? "por categoria" : view.shopViewMode === "list" ? "na ordem da compra" : "por nome A–Z"}`}
           triggerClassName={styles.organize}
           items={[
-            modeIsCategory
-              ? { label: "Ordenar por nome A–Z", icon: <ArrowDownAZ size={16} />, onSelect: () => view.setShopViewMode("alphabetical") }
-              : { label: "Agrupar por categoria", icon: <ListFilter size={16} />, onSelect: () => view.setShopViewMode("category") },
+            { label: "Ordem da compra", onSelect: () => view.setShopViewMode("list") },
+            { label: "Ordenar por nome A–Z", icon: <ArrowDownAZ size={16} />, onSelect: () => view.setShopViewMode("alphabetical") },
+            { label: "Agrupar por categoria", icon: <ListFilter size={16} />, onSelect: () => view.setShopViewMode("category") },
           ]}
         >
-          {modeIsCategory ? <ListFilter size={18} aria-hidden="true" /> : <ArrowDownAZ size={18} aria-hidden="true" />}
+          {modeIsCategory ? <ListFilter size={18} aria-hidden="true" /> : view.shopViewMode === "alphabetical" ? <ArrowDownAZ size={18} aria-hidden="true" /> : <SlidersHorizontal size={18} aria-hidden="true" />}
           <span>Organizar</span>
         </ActionMenu>
       </div>
@@ -35,7 +35,7 @@ export function ShoppingToolbar({ view }: { view: ReturnType<typeof useShoppingV
             aria-pressed={view.filter === value}
             onClick={() => view.setFilter(value)}
           >
-            {value === "all" ? "Todos" : statusLabel(value)}
+            {value === "all" ? "Todos" : value === "pending" ? "Pendentes" : value === "purchased" ? "Comprados" : statusLabel(value)}
           </Button>
         ))}
       </div>

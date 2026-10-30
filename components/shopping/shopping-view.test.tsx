@@ -12,7 +12,7 @@ it("keeps a single first-item action and preserves finish in the menu for an emp
   const {container}=render(<RestokApp/>);
   await screen.findByRole("button",{name:"Perfil de Ana"});
   expect(container.querySelector("[data-shopping-dock]")).toBeNull();
-  expect(screen.queryByRole("complementary",{name:"Contexto da tela"})).toBeNull();
+  expect(screen.getByRole("complementary",{name:"Contexto da tela"})).toBeTruthy();
   fireEvent.click(screen.getByRole("button",{name:"Menu da compra"}));
   fireEvent.click(screen.getByRole("menuitem",{name:"Finalizar compra"}));
   expect(await screen.findByRole("dialog")).toBeTruthy();
@@ -28,9 +28,9 @@ it("shows a known zero total in its row and keeps all four filters actionable",a
   fireEvent.click(filters.getByRole("button",{name:"Já temos"}));
   expect(screen.getByRole("button",{name:"Editar Arroz de casa"})).toBeTruthy();
   expect(screen.queryByRole("button",{name:"Editar Café grátis"})).toBeNull();
-  fireEvent.click(filters.getByRole("button",{name:"Comprado"}));
+  fireEvent.click(filters.getByRole("button",{name:"Comprados"}));
   expect(screen.getByRole("button",{name:"Editar Café grátis"})).toBeTruthy();
-  fireEvent.click(filters.getByRole("button",{name:"Pendente"}));
+  fireEvent.click(filters.getByRole("button",{name:"Pendentes"}));
   expect(screen.getByRole("button",{name:"Editar Pão pendente"})).toBeTruthy();
   fireEvent.click(filters.getByRole("button",{name:"Todos"}));
   expect(screen.getByRole("button",{name:"Editar Café grátis"})).toBeTruthy();
@@ -38,6 +38,9 @@ it("shows a known zero total in its row and keeps all four filters actionable",a
 });
 it("keeps one global organization menu and retains each category direction locally",async()=>{
   const {container}=render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
+  expect(container.querySelector("[data-category-section]")).toBeNull();
+  fireEvent.click(screen.getByRole("button",{name:/Organizar lista/}));
+  fireEvent.click(screen.getByRole("menuitem",{name:"Agrupar por categoria"}));
   expect(container.querySelectorAll("[data-category-section]").length).toBeGreaterThan(0);
   fireEvent.click(screen.getByRole("button",{name:/Organizar lista/}));
   fireEvent.click(screen.getByRole("menuitem",{name:"Ordenar por nome A–Z"}));
@@ -47,11 +50,11 @@ it("keeps one global organization menu and retains each category direction local
   expect(container.querySelectorAll("[data-category-section]").length).toBeGreaterThan(0);
   expect(persistList).not.toHaveBeenCalled();
 });
-it("keeps progress and finish in the purchase header without a redundant summary panel",async()=>{
+it("keeps useful reference summary and the real progress/finish actions",async()=>{
   render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
-  expect(screen.queryByRole("complementary",{name:"Contexto da tela"})).toBeNull();
+  expect(screen.getByRole("region",{name:"Resumo da compra"})).toBeTruthy();
   fireEvent.click(screen.getByRole("button",{name:"Ver 1 pendente"}));
-  expect(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Pendente"}).getAttribute("aria-pressed")).toBe("true");
+  expect(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Pendentes"}).getAttribute("aria-pressed")).toBe("true");
   fireEvent.click(screen.getAllByRole("button",{name:"Finalizar compra"})[0]);
   const dialog=await screen.findByRole("dialog");
   expect(within(dialog).getByText(/Ainda existem 1 itens pendentes/)).toBeTruthy();
@@ -61,7 +64,7 @@ it("keeps progress and finish in the purchase header without a redundant summary
 });
 it("clears a search without resetting the chosen status or writing data",async()=>{
   render(<RestokApp/>);await screen.findByRole("button",{name:"Perfil de Ana"});
-  fireEvent.click(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Comprado"}));
+  fireEvent.click(within(screen.getByRole("group",{name:"Filtros da lista"})).getByRole("button",{name:"Comprados"}));
   const input=screen.getByRole("searchbox",{name:"Buscar na lista"});
   fireEvent.change(input,{target:{value:"não existe"}});
   expect(screen.getByRole("heading",{name:"Nenhum item encontrado"})).toBeTruthy();
@@ -84,7 +87,8 @@ it("mounts each global control once in the shared responsive navigation region",
   const {container}=render(<RestokApp/>);
   const profile=await screen.findByRole("button",{name:"Perfil de Ana"});
   expect(screen.getAllByRole("button",{name:"Perfil de Ana"})).toHaveLength(1);
-  expect(container.querySelectorAll('button[aria-label^="Casas e pessoas:"]')).toHaveLength(0);
+  expect(container.querySelectorAll('button[aria-label^="Casas e pessoas:"]')).toHaveLength(1);
+  expect(screen.getByRole("button",{name:"Casas e pessoas: Casa"}).closest("[data-app-sidebar]")).toBeTruthy();
   expect(profile.closest("[data-global-controls]")?.closest("[data-app-sidebar]")).toBeTruthy();
   expect(container.querySelector("#restok-main > header")).toBeNull();
   fireEvent.click(profile);

@@ -69,7 +69,7 @@ Users,
 } from "lucide-react";
 import { useCallback,useEffect,useLayoutEffect,useRef,useState } from "react";
 
-type AppScreen = "shop" | "history" | "home";
+type AppScreen = "shop" | "history" | "home" | "people";
 type ProductViewMode = "category" | "alphabetical";
 type WriteOperation = { key: string; token: string; label: string; status: "pending" | "failed"; retry: () => void };
 
