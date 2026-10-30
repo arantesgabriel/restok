@@ -49,19 +49,23 @@ export function AppShell({
   const hasContext = context !== undefined && context !== null && context !== false;
   const hasDock = Boolean(dock);
   const mainRef = useRef<HTMLElement>(null);
-  const dockRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const hasFooter = !keyboardOpen || hasDock;
   useEffect(() => {
-    const element = dockRef.current;
-    if (!hasDock || !element) return;
+    const element = footerRef.current;
+    if (!hasFooter || !element) {
+      mainRef.current?.style.setProperty("--shell-measured-footer-height", "0px");
+      return;
+    }
     const measure = () => {
       const height = element.getBoundingClientRect().height;
-      if (height > 0) mainRef.current?.style.setProperty("--shell-measured-dock-height", `${height}px`);
+      if (height > 0) mainRef.current?.style.setProperty("--shell-measured-footer-height", `${height}px`);
     };
     measure();
     const observer = typeof ResizeObserver === "undefined" ? undefined : new ResizeObserver(measure);
     observer?.observe(element);
     return () => observer?.disconnect();
-  }, [hasDock]);
+  }, [hasFooter, hasDock, keyboardOpen]);
 
   return (
     <RestokTheme className={styles.shell}>
@@ -137,8 +141,10 @@ export function AppShell({
         </main>
         </div>
       </div>
-      {!keyboardOpen ? <div className={styles.navigation}><MobileNavigation screen={screen} onChange={onChange} /></div> : null}
-      {dock ? <div ref={dockRef} data-shopping-dock className={styles.dock}>{dock}</div> : null}
+      {hasFooter ? <div ref={footerRef} data-mobile-footer className={styles.mobileFooter}>
+        {!keyboardOpen ? <div className={styles.navigation}><MobileNavigation screen={screen} onChange={onChange} /></div> : null}
+        {dock ? <div data-shopping-dock className={styles.dock}>{dock}</div> : null}
+      </div> : null}
       {overlays}
     </RestokTheme>
   );

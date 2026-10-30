@@ -95,3 +95,7 @@ Referência: código original e navegação pela publicação v6. Evidências, v
 ### Navegação mobile em ilha (30/10/2026)
 
 Nova instrução do usuário substitui o header móvel com seletor de casa: manter apenas logo e perfil nessa largura. Navegação inferior vira cápsula flutuante; inicia expandida para descoberta, compacta em scroll do usuário para cima ou para baixo e expande com toque/foco. Todos os destinos permanecem acionáveis em um toque e com alvos de pelo menos 44px. Animação usa transform/opacity e os tokens existentes; sem transição com reduced motion. Área reservada no layout mantém dock, safe area e última linha acessíveis. Desktop e regras de dados preservados. Evidências: docs/restok-mobile-island/REPORT.md.
+
+### Correção do rodapé mobile (30/10/2026)
+
+O usuário considerou estranha a ilha abaixo do card de ações. A ilha deve ficar acima do card de pendentes/Adicionar item (ou do catálogo), num único conjunto fixo com separação de 8px. Medir o conjunto completo para reservar o conteúdo e a safe area. O ícone da seção ativa mantém destaque verde mesmo com a ilha compacta; rolagem não pode apagar o estado selecionado. Esta instrução substitui a ordem anterior. Evidências: docs/restok-mobile-footer/REPORT.md.

@@ -37,3 +37,5 @@
 @media(prefers-reduced-motion:reduce) { .island::before,.island .item.item,.island .item svg,.island .item span { transition:none; } }
 .island[data-mobile-navigation=compact] .item:first-child svg { transform:translate(14px,7px); }
 .island[data-mobile-navigation=compact] .item:last-child svg { transform:translate(-14px,7px); }
+
+.island[data-mobile-navigation=compact] .item[aria-current=page] svg { color:var(--color-on-action); background:var(--color-action); border-radius:50%; box-shadow:0 0 0 7px var(--color-action); }
