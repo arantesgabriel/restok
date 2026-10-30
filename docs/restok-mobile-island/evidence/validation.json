@@ -1,0 +1,297 @@
+{
+  "checks": [
+    {
+      "name": "320: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "320: header hides house",
+      "pass": true
+    },
+    {
+      "name": "320: profile remains available",
+      "pass": true
+    },
+    {
+      "name": "320: downward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "320: compact shrinks surface",
+      "pass": true,
+      "actual": "matrix(0.88, 0, 0, 0.88, 0, 0)"
+    },
+    {
+      "name": "320: reduced motion",
+      "pass": true,
+      "actual": "0s"
+    },
+    {
+      "name": "320: compact keeps44px targets",
+      "pass": true,
+      "actual": [
+        {
+          "w": 92,
+          "h": 49.390625
+        },
+        {
+          "w": 92,
+          "h": 49.390625
+        },
+        {
+          "w": 92,
+          "h": 49.390625
+        }
+      ]
+    },
+    {
+      "name": "320: one tap expands",
+      "pass": true
+    },
+    {
+      "name": "320: upward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "320: one tap also navigates",
+      "pass": true
+    },
+    {
+      "name": "320: last row clears dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "x": 13,
+          "y": 330.0625,
+          "width": 294,
+          "height": 87.78125
+        },
+        "dock": {
+          "x": 0,
+          "y": 503,
+          "width": 320,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "320: dock clears island",
+      "pass": true,
+      "actual": {
+        "dock": {
+          "x": 0,
+          "y": 503,
+          "width": 320,
+          "height": 57
+        },
+        "nav": {
+          "x": 12,
+          "y": 566.609375,
+          "width": 296,
+          "height": 61.390625
+        }
+      }
+    },
+    {
+      "name": "390: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390: header hides house",
+      "pass": true
+    },
+    {
+      "name": "390: profile remains available",
+      "pass": true
+    },
+    {
+      "name": "390: downward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "390: compact shrinks surface",
+      "pass": true,
+      "actual": "matrix(0.88, 0, 0, 0.88, 0, 0)"
+    },
+    {
+      "name": "390: reduced motion",
+      "pass": true,
+      "actual": "0s"
+    },
+    {
+      "name": "390: compact keeps44px targets",
+      "pass": true,
+      "actual": [
+        {
+          "w": 108,
+          "h": 49.390625
+        },
+        {
+          "w": 108,
+          "h": 49.390625
+        },
+        {
+          "w": 108,
+          "h": 49.390625
+        }
+      ]
+    },
+    {
+      "name": "390: one tap expands",
+      "pass": true
+    },
+    {
+      "name": "390: upward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "390: one tap also navigates",
+      "pass": true
+    },
+    {
+      "name": "390: last row clears dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "x": 17,
+          "y": 554.859375,
+          "width": 356,
+          "height": 66.796875
+        },
+        "dock": {
+          "x": 0,
+          "y": 707,
+          "width": 390,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "390: dock clears island",
+      "pass": true,
+      "actual": {
+        "dock": {
+          "x": 0,
+          "y": 707,
+          "width": 390,
+          "height": 57
+        },
+        "nav": {
+          "x": 23,
+          "y": 770.609375,
+          "width": 344,
+          "height": 61.390625
+        }
+      }
+    },
+    {
+      "name": "768: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768: header hides house",
+      "pass": true
+    },
+    {
+      "name": "768: profile remains available",
+      "pass": true
+    },
+    {
+      "name": "768: downward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "768: compact shrinks surface",
+      "pass": true,
+      "actual": "matrix(0.88, 0, 0, 0.88, 0, 0)"
+    },
+    {
+      "name": "768: reduced motion",
+      "pass": true,
+      "actual": "0s"
+    },
+    {
+      "name": "768: compact keeps44px targets",
+      "pass": true,
+      "actual": [
+        {
+          "w": 108,
+          "h": 49.390625
+        },
+        {
+          "w": 108,
+          "h": 49.390625
+        },
+        {
+          "w": 108,
+          "h": 49.390625
+        }
+      ]
+    },
+    {
+      "name": "768: one tap expands",
+      "pass": true
+    },
+    {
+      "name": "768: upward scroll compacts",
+      "pass": true
+    },
+    {
+      "name": "768: one tap also navigates",
+      "pass": true
+    },
+    {
+      "name": "768: last row clears dock",
+      "pass": true,
+      "actual": {
+        "row": {
+          "x": 17,
+          "y": 619.390625,
+          "width": 734,
+          "height": 68.1875
+        },
+        "dock": {
+          "x": 0,
+          "y": 763,
+          "width": 768,
+          "height": 57
+        }
+      }
+    },
+    {
+      "name": "768: dock clears island",
+      "pass": true,
+      "actual": {
+        "dock": {
+          "x": 0,
+          "y": 763,
+          "width": 768,
+          "height": 57
+        },
+        "nav": {
+          "x": 212,
+          "y": 826.609375,
+          "width": 344,
+          "height": 61.390625
+        }
+      }
+    },
+    {
+      "name": "1440: no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "desktop keeps house selector",
+      "pass": true
+    },
+    {
+      "name": "desktop hides island",
+      "pass": true
+    },
+    {
+      "name": "390: native touch scroll compacts",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

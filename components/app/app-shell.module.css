@@ -116,3 +116,11 @@
   .globalTop { width:100%; }
   .globalTop > button[class] { width:100%; max-width:100%; }
 }
+@media(max-width:1023px) {
+  .globalTop > button[class] { display:none; }
+  .globalTop { justify-content:flex-start; }
+  .profileTrigger.profileTrigger { width:var(--touch-target); min-width:var(--touch-target); }
+  .shell { --shell-navigation-height:5rem; }
+  .navigation { inset-inline:auto; left:50%; bottom:calc(12px + env(safe-area-inset-bottom)); width:min(344px,calc(100% - 24px)); height:auto; padding:0; border:0; background:transparent; transform:translateX(-50%); }
+}
+@media(max-width:1023px) { .globalTop > button[class] { display:none; } }
