@@ -75,3 +75,30 @@ it("rejects an empty new budget then creates a purchase with zero",async()=>{
   await waitFor(()=>expect(createShoppingListWithItems).toHaveBeenCalled());
   expect(vi.mocked(createShoppingListWithItems).mock.calls[0][0].budget).toBe(0);
 });
+
+it("preserves an entered price when choosing already-have and reopening the editor",async()=>{
+  const dialog=await openEditor();
+  const input=within(dialog).getByLabelText("Preço unitário") as HTMLInputElement;
+  fireEvent.change(input,{target:{value:"4,50"}});
+  fireEvent.click(within(dialog).getByRole("button",{name:"Já temos"}));
+  expect(input.value).toBe("4,50");
+  fireEvent.click(within(dialog).getByRole("button",{name:"Salvar item"}));
+  await waitFor(()=>expect(persistList).toHaveBeenCalled());
+  expect(vi.mocked(persistList).mock.calls[0][0].items[0]).toMatchObject({unitPrice:4.5,status:"already_have"});
+  const row=screen.getByRole("button",{name:"Editar Produto recorrente"}).closest("[data-shopping-row]");
+  expect(row?.querySelector("[data-item-total]")?.textContent).toContain("13,50");
+  fireEvent.click(screen.getByRole("button",{name:"Editar Produto recorrente"}));
+  const reopened=await screen.findByRole("dialog",{name:"Produto recorrente"});
+  expect((within(reopened).getByLabelText("Preço unitário") as HTMLInputElement).value).toBe("4,50");
+});
+it("keeps the saved price when undoing a purchase and marking it already-have",async()=>{
+  const dialog=await openEditor();
+  fireEvent.change(within(dialog).getByLabelText("Preço unitário"),{target:{value:"5,00"}});
+  fireEvent.click(within(dialog).getByRole("button",{name:/Adicionar ao carrinho/}));
+  await waitFor(()=>expect(persistList).toHaveBeenCalled());
+  fireEvent.click(screen.getByRole("button",{name:"Desfazer situação de Produto recorrente"}));
+  fireEvent.click(screen.getByRole("button",{name:"Marcar Produto recorrente como já temos"}));
+  await waitFor(()=>expect(vi.mocked(persistList).mock.calls.at(-1)?.[0].items[0]).toMatchObject({unitPrice:5,status:"already_have"}));
+  const row=screen.getByRole("button",{name:"Editar Produto recorrente"}).closest("[data-shopping-row]");
+  expect(row?.querySelector("[data-item-total]")?.textContent).toContain("15,00");
+});

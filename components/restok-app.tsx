@@ -479,7 +479,7 @@ export default function RestokApp() {
   };
 
   const setItemStatus = (item: ShoppingItem, status: ItemStatus) => {
-    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status, unitPrice: status === "purchased" ? current.unitPrice : undefined } : current));
+    const updated = updateActiveItems((items) => items.map((current) => current.id === item.id ? { ...current, status } : current));
     if (updated) persistUpdatedList(updated, status === "already_have" ? "Marcado como já temos" : status === "purchased" ? "Adicionado ao carrinho" : "Situação desfeita");
   };
   const addItem = (item: Omit<ShoppingItem, "id" | "sortOrder">, addToHome: boolean) => {

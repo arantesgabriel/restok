@@ -1,7 +1,7 @@
 "use client";
 
 import type { ShoppingItem, ShoppingList } from "@/lib/types";
-import { formatBRL, formatPercent, itemSubtotal, latestPriceFor } from "@/lib/utils";
+import { formatBRL, formatPercent, latestPriceFor } from "@/lib/utils";
 import { AlreadyHave } from "./already-have";
 import { ShoppingStatusButton, StatusBadge } from "./status-toggle";
 import styles from "./shopping.module.css";
@@ -30,8 +30,8 @@ export type ItemRowProps = {
 };
 
 export function ShoppingItemRow({ item, lists, onEdit, onPurchased, onAlreadyHave, onUndo }: ItemRowProps) {
-  const priced = item.status === "purchased" && item.unitPrice !== undefined;
-  const total = priced ? formatBRL(itemSubtotal(item)) : null;
+  const priced = item.unitPrice !== undefined;
+  const total = priced ? formatBRL(item.quantity * item.unitPrice!) : null;
 
   return (
     <article
@@ -64,7 +64,7 @@ export function ShoppingItemRow({ item, lists, onEdit, onPurchased, onAlreadyHav
       <div className={styles.rowActions}>
         {item.status === "pending" ? <AlreadyHave name={item.name} onSelect={onAlreadyHave} /> : null}
       </div>
-      {total ? <strong data-item-total className={styles.price}>{total}</strong> : item.status === "purchased" ? <span data-item-price-missing-label className={styles.price}>Sem preço</span> : null}
+      {total ? <strong data-item-total className={styles.price} title={item.status !== "purchased" ? "Preço informado. Não incluído no total registrado." : undefined}>{total}</strong> : item.status === "purchased" ? <span data-item-price-missing-label className={styles.price}>Sem preço</span> : null}
     </article>
   );
 }

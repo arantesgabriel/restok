@@ -32,6 +32,7 @@ export function ItemEditorSheet({
   const [category, setCategory] = useState<CategoryName>(item.category);
   const [status, setStatus] = useState<ItemStatus>(item.status);
   const [error, setError] = useState("");
+  const [statusChanged, setStatusChanged] = useState(false);
   const previous = latestPriceFor(item.productId, lists);
   const parsedPrice = parseMoney(price);
   const numericPrice = parsedPrice.ok ? parsedPrice.value : undefined;
@@ -41,11 +42,11 @@ export function ItemEditorSheet({
     if (!parsedPrice.ok) { setError("Informe um preço válido, igual ou maior que zero, com até duas casas decimais."); return; }
     if (!isValidQuantity(quantity)) return;
     if (!onClose()) return;
-    const nextStatus = statusAfterPrice(status, numericPrice);
-    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: nextStatus === "purchased" ? numericPrice : undefined, status: nextStatus });
+    const nextStatus = statusChanged ? status : statusAfterPrice(status, numericPrice);
+    onSave({ ...item, name: name.trim() || item.name, category, quantity: Math.max(1, quantity), unitPrice: numericPrice, status: nextStatus });
   };
 
-  return <Sheet formLayout title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}>{numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>}>
+  return <Sheet formLayout title={item.name} description="Atualize rápido enquanto você anda pelo mercado." onClose={onClose} footer={<Button type="submit" form={formId} className={styles.full}>{!statusChanged && numericPrice !== undefined && parsedPrice.ok && status === "pending" ? "Adicionar ao carrinho" : status === "purchased" ? "Atualizar carrinho" : "Salvar item"}<Check size={17} /></Button>}>
     <form id={formId} onSubmit={submit} className={styles.form}>
       {error && !error.startsWith("Informe um preço") ? <p role="alert" className={styles.error}>{error}</p> : null}
       <div className={styles.quantity}>
@@ -53,7 +54,7 @@ export function ItemEditorSheet({
         <QuantityStepper quantity={quantity} onChange={setQuantity} />
       </div>
       <MoneyField label="Preço unitário" value={price} onValueChange={(value) => { setPrice(value); setError(""); }} initialFocus error={error.startsWith("Informe um preço") ? error : undefined} hint={previous !== undefined ? `Anterior ${formatBRL(previous)} por unidade. Ao informar um preço, o item vira comprado.` : "Ao informar um preço, inclusive zero, o item vira comprado."} />
-      <StatusToggle value={status} onChange={(value) => { setStatus(value); if(value !== "purchased") setPrice(""); }}/>
+      <StatusToggle value={status} onChange={(value) => { setStatus(value); setStatusChanged(true); }}/>
       <details className={styles.details}>
         <summary className={styles.summary}><span>Mais detalhes</span><ChevronDown size={16} className={styles.chevron} /></summary>
         <div className={styles.detailFields}>
