@@ -1,0 +1,1439 @@
+{
+  "stage": "after",
+  "at": "2026-10-30T11:20:59.689Z",
+  "kind": "Isolated real CSS/components, no backend",
+  "commit": "e1565f8b3399a8eb500a06657dafdc165653536b",
+  "diffSha256": "58eefc62defb3a3bb53e7449a5c8c99678647f78ab58c28841e497a52756057a",
+  "captures": [
+    {
+      "file": "320-640-foundations.png",
+      "viewport": {
+        "width": 320,
+        "height": 640
+      },
+      "dpr": 1
+    },
+    {
+      "file": "390-844-foundations.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 1
+    },
+    {
+      "file": "1440-900-foundations.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1
+    },
+    {
+      "file": "1920-1080-foundations.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dpr": 1
+    },
+    {
+      "file": "reference-320-640.png",
+      "kind": "Original v6 app canvas; laboratory scale removed; local Manrope substitution",
+      "mode": {
+        "width": 320,
+        "height": 640
+      }
+    },
+    {
+      "file": "reference-390-844.png",
+      "kind": "Original v6 app canvas; laboratory scale removed; local Manrope substitution",
+      "mode": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "reference-1440-900.png",
+      "kind": "Original v6 app canvas; laboratory scale removed; local Manrope substitution",
+      "mode": {
+        "width": 1440,
+        "height": 900
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "320: foundations fit",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "fontLoaded": true,
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "ratio": 4.814038469472451
+          }
+        ],
+        "gutter": ".75rem"
+      }
+    },
+    {
+      "name": "320: text contrast",
+      "pass": true,
+      "actual": [
+        {
+          "fg": "ink",
+          "bg": "canvas",
+          "ratio": 15.13036227777003
+        },
+        {
+          "fg": "surface",
+          "bg": "action",
+          "ratio": 8.066560306180639
+        },
+        {
+          "fg": "highlight",
+          "bg": "brand",
+          "ratio": 7.146365179171468
+        },
+        {
+          "fg": "info",
+          "bg": "canvas",
+          "ratio": 4.902535950980073
+        },
+        {
+          "fg": "danger",
+          "bg": "surface-danger",
+          "ratio": 4.961337123899306
+        },
+        {
+          "fg": "warning",
+          "bg": "surface-warning",
+          "ratio": 4.814038469472451
+        }
+      ]
+    },
+    {
+      "name": "320: 17 canonical colors",
+      "pass": true,
+      "actual": [
+        {
+          "role": "brand",
+          "expected": "rgb(33, 63, 29)",
+          "actual": "rgb(33, 63, 29)",
+          "pass": true
+        },
+        {
+          "role": "action",
+          "expected": "rgb(45, 90, 39)",
+          "actual": "rgb(45, 90, 39)",
+          "pass": true
+        },
+        {
+          "role": "highlight",
+          "expected": "rgb(180, 211, 167)",
+          "actual": "rgb(180, 211, 167)",
+          "pass": true
+        },
+        {
+          "role": "info",
+          "expected": "rgb(79, 117, 102)",
+          "actual": "rgb(79, 117, 102)",
+          "pass": true
+        },
+        {
+          "role": "canvas",
+          "expected": "rgb(247, 250, 245)",
+          "actual": "rgb(247, 250, 245)",
+          "pass": true
+        },
+        {
+          "role": "surface",
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "pass": true
+        },
+        {
+          "role": "ink",
+          "expected": "rgb(24, 37, 26)",
+          "actual": "rgb(24, 37, 26)",
+          "pass": true
+        },
+        {
+          "role": "muted",
+          "expected": "rgb(82, 100, 82)",
+          "actual": "rgb(82, 100, 82)",
+          "pass": true
+        },
+        {
+          "role": "line",
+          "expected": "rgb(225, 233, 222)",
+          "actual": "rgb(225, 233, 222)",
+          "pass": true
+        },
+        {
+          "role": "line-strong",
+          "expected": "rgb(201, 217, 197)",
+          "actual": "rgb(201, 217, 197)",
+          "pass": true
+        },
+        {
+          "role": "surface-soft",
+          "expected": "rgb(240, 245, 237)",
+          "actual": "rgb(240, 245, 237)",
+          "pass": true
+        },
+        {
+          "role": "surface-brand",
+          "expected": "rgb(232, 242, 227)",
+          "actual": "rgb(232, 242, 227)",
+          "pass": true
+        },
+        {
+          "role": "surface-info",
+          "expected": "rgb(234, 242, 237)",
+          "actual": "rgb(234, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "danger",
+          "expected": "rgb(185, 65, 50)",
+          "actual": "rgb(185, 65, 50)",
+          "pass": true
+        },
+        {
+          "role": "surface-danger",
+          "expected": "rgb(255, 242, 237)",
+          "actual": "rgb(255, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "warning",
+          "expected": "rgb(148, 97, 39)",
+          "actual": "rgb(148, 97, 39)",
+          "pass": true
+        },
+        {
+          "role": "surface-warning",
+          "expected": "rgb(253, 244, 229)",
+          "actual": "rgb(253, 244, 229)",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "320: responsive gutter token",
+      "pass": true,
+      "actual": "12px"
+    },
+    {
+      "name": "320: real Manrope glyphs",
+      "pass": true,
+      "actual": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "320: keyboard focus",
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "width": "2px",
+        "color": "rgb(45, 90, 39)",
+        "offset": "3px",
+        "shadow": "none"
+      }
+    },
+    {
+      "name": "320: Produto visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": null,
+        "edge": "rgb(225, 233, 222)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "320: Preço inválido visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "320: error edge survives focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "320: Preço unitário visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "320: Quantidade visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "320: light icons",
+      "pass": true,
+      "actual": "1.75px"
+    },
+    {
+      "name": "320: reduced motion",
+      "pass": true,
+      "actual": {
+        "feedback": "0ms",
+        "state": "0ms",
+        "enter": "0ms",
+        "exit": "0ms"
+      }
+    },
+    {
+      "name": "320: budget cascade",
+      "pass": true,
+      "actual": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(33, 63, 29)"
+      }
+    },
+    {
+      "name": "320: compra fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: casa fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: historico fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: login fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: landing fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: foundations fit",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "fontLoaded": true,
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "ratio": 4.814038469472451
+          }
+        ],
+        "gutter": "1rem"
+      }
+    },
+    {
+      "name": "390: text contrast",
+      "pass": true,
+      "actual": [
+        {
+          "fg": "ink",
+          "bg": "canvas",
+          "ratio": 15.13036227777003
+        },
+        {
+          "fg": "surface",
+          "bg": "action",
+          "ratio": 8.066560306180639
+        },
+        {
+          "fg": "highlight",
+          "bg": "brand",
+          "ratio": 7.146365179171468
+        },
+        {
+          "fg": "info",
+          "bg": "canvas",
+          "ratio": 4.902535950980073
+        },
+        {
+          "fg": "danger",
+          "bg": "surface-danger",
+          "ratio": 4.961337123899306
+        },
+        {
+          "fg": "warning",
+          "bg": "surface-warning",
+          "ratio": 4.814038469472451
+        }
+      ]
+    },
+    {
+      "name": "390: 17 canonical colors",
+      "pass": true,
+      "actual": [
+        {
+          "role": "brand",
+          "expected": "rgb(33, 63, 29)",
+          "actual": "rgb(33, 63, 29)",
+          "pass": true
+        },
+        {
+          "role": "action",
+          "expected": "rgb(45, 90, 39)",
+          "actual": "rgb(45, 90, 39)",
+          "pass": true
+        },
+        {
+          "role": "highlight",
+          "expected": "rgb(180, 211, 167)",
+          "actual": "rgb(180, 211, 167)",
+          "pass": true
+        },
+        {
+          "role": "info",
+          "expected": "rgb(79, 117, 102)",
+          "actual": "rgb(79, 117, 102)",
+          "pass": true
+        },
+        {
+          "role": "canvas",
+          "expected": "rgb(247, 250, 245)",
+          "actual": "rgb(247, 250, 245)",
+          "pass": true
+        },
+        {
+          "role": "surface",
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "pass": true
+        },
+        {
+          "role": "ink",
+          "expected": "rgb(24, 37, 26)",
+          "actual": "rgb(24, 37, 26)",
+          "pass": true
+        },
+        {
+          "role": "muted",
+          "expected": "rgb(82, 100, 82)",
+          "actual": "rgb(82, 100, 82)",
+          "pass": true
+        },
+        {
+          "role": "line",
+          "expected": "rgb(225, 233, 222)",
+          "actual": "rgb(225, 233, 222)",
+          "pass": true
+        },
+        {
+          "role": "line-strong",
+          "expected": "rgb(201, 217, 197)",
+          "actual": "rgb(201, 217, 197)",
+          "pass": true
+        },
+        {
+          "role": "surface-soft",
+          "expected": "rgb(240, 245, 237)",
+          "actual": "rgb(240, 245, 237)",
+          "pass": true
+        },
+        {
+          "role": "surface-brand",
+          "expected": "rgb(232, 242, 227)",
+          "actual": "rgb(232, 242, 227)",
+          "pass": true
+        },
+        {
+          "role": "surface-info",
+          "expected": "rgb(234, 242, 237)",
+          "actual": "rgb(234, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "danger",
+          "expected": "rgb(185, 65, 50)",
+          "actual": "rgb(185, 65, 50)",
+          "pass": true
+        },
+        {
+          "role": "surface-danger",
+          "expected": "rgb(255, 242, 237)",
+          "actual": "rgb(255, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "warning",
+          "expected": "rgb(148, 97, 39)",
+          "actual": "rgb(148, 97, 39)",
+          "pass": true
+        },
+        {
+          "role": "surface-warning",
+          "expected": "rgb(253, 244, 229)",
+          "actual": "rgb(253, 244, 229)",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "390: responsive gutter token",
+      "pass": true,
+      "actual": "16px"
+    },
+    {
+      "name": "390: real Manrope glyphs",
+      "pass": true,
+      "actual": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "390: keyboard focus",
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "width": "2px",
+        "color": "rgb(45, 90, 39)",
+        "offset": "3px",
+        "shadow": "none"
+      }
+    },
+    {
+      "name": "390: Produto visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": null,
+        "edge": "rgb(225, 233, 222)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "390: Preço inválido visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "390: error edge survives focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "390: Preço unitário visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "390: Quantidade visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "390: light icons",
+      "pass": true,
+      "actual": "1.75px"
+    },
+    {
+      "name": "390: reduced motion",
+      "pass": true,
+      "actual": {
+        "feedback": "0ms",
+        "state": "0ms",
+        "enter": "0ms",
+        "exit": "0ms"
+      }
+    },
+    {
+      "name": "390: budget cascade",
+      "pass": true,
+      "actual": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(33, 63, 29)"
+      }
+    },
+    {
+      "name": "390: compra fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: casa fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: historico fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: login fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: landing fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: foundations fit",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "fontLoaded": true,
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "ratio": 4.814038469472451
+          }
+        ],
+        "gutter": "1.5rem"
+      }
+    },
+    {
+      "name": "1440: text contrast",
+      "pass": true,
+      "actual": [
+        {
+          "fg": "ink",
+          "bg": "canvas",
+          "ratio": 15.13036227777003
+        },
+        {
+          "fg": "surface",
+          "bg": "action",
+          "ratio": 8.066560306180639
+        },
+        {
+          "fg": "highlight",
+          "bg": "brand",
+          "ratio": 7.146365179171468
+        },
+        {
+          "fg": "info",
+          "bg": "canvas",
+          "ratio": 4.902535950980073
+        },
+        {
+          "fg": "danger",
+          "bg": "surface-danger",
+          "ratio": 4.961337123899306
+        },
+        {
+          "fg": "warning",
+          "bg": "surface-warning",
+          "ratio": 4.814038469472451
+        }
+      ]
+    },
+    {
+      "name": "1440: 17 canonical colors",
+      "pass": true,
+      "actual": [
+        {
+          "role": "brand",
+          "expected": "rgb(33, 63, 29)",
+          "actual": "rgb(33, 63, 29)",
+          "pass": true
+        },
+        {
+          "role": "action",
+          "expected": "rgb(45, 90, 39)",
+          "actual": "rgb(45, 90, 39)",
+          "pass": true
+        },
+        {
+          "role": "highlight",
+          "expected": "rgb(180, 211, 167)",
+          "actual": "rgb(180, 211, 167)",
+          "pass": true
+        },
+        {
+          "role": "info",
+          "expected": "rgb(79, 117, 102)",
+          "actual": "rgb(79, 117, 102)",
+          "pass": true
+        },
+        {
+          "role": "canvas",
+          "expected": "rgb(247, 250, 245)",
+          "actual": "rgb(247, 250, 245)",
+          "pass": true
+        },
+        {
+          "role": "surface",
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "pass": true
+        },
+        {
+          "role": "ink",
+          "expected": "rgb(24, 37, 26)",
+          "actual": "rgb(24, 37, 26)",
+          "pass": true
+        },
+        {
+          "role": "muted",
+          "expected": "rgb(82, 100, 82)",
+          "actual": "rgb(82, 100, 82)",
+          "pass": true
+        },
+        {
+          "role": "line",
+          "expected": "rgb(225, 233, 222)",
+          "actual": "rgb(225, 233, 222)",
+          "pass": true
+        },
+        {
+          "role": "line-strong",
+          "expected": "rgb(201, 217, 197)",
+          "actual": "rgb(201, 217, 197)",
+          "pass": true
+        },
+        {
+          "role": "surface-soft",
+          "expected": "rgb(240, 245, 237)",
+          "actual": "rgb(240, 245, 237)",
+          "pass": true
+        },
+        {
+          "role": "surface-brand",
+          "expected": "rgb(232, 242, 227)",
+          "actual": "rgb(232, 242, 227)",
+          "pass": true
+        },
+        {
+          "role": "surface-info",
+          "expected": "rgb(234, 242, 237)",
+          "actual": "rgb(234, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "danger",
+          "expected": "rgb(185, 65, 50)",
+          "actual": "rgb(185, 65, 50)",
+          "pass": true
+        },
+        {
+          "role": "surface-danger",
+          "expected": "rgb(255, 242, 237)",
+          "actual": "rgb(255, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "warning",
+          "expected": "rgb(148, 97, 39)",
+          "actual": "rgb(148, 97, 39)",
+          "pass": true
+        },
+        {
+          "role": "surface-warning",
+          "expected": "rgb(253, 244, 229)",
+          "actual": "rgb(253, 244, 229)",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "1440: responsive gutter token",
+      "pass": true,
+      "actual": "24px"
+    },
+    {
+      "name": "1440: real Manrope glyphs",
+      "pass": true,
+      "actual": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440: keyboard focus",
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "width": "2px",
+        "color": "rgb(45, 90, 39)",
+        "offset": "3px",
+        "shadow": "none"
+      }
+    },
+    {
+      "name": "1440: Produto visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": null,
+        "edge": "rgb(225, 233, 222)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1440: Preço inválido visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1440: error edge survives focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1440: Preço unitário visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "1440: Quantidade visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "1440: light icons",
+      "pass": true,
+      "actual": "1.75px"
+    },
+    {
+      "name": "1440: reduced motion",
+      "pass": true,
+      "actual": {
+        "feedback": "0ms",
+        "state": "0ms",
+        "enter": "0ms",
+        "exit": "0ms"
+      }
+    },
+    {
+      "name": "1440: budget cascade",
+      "pass": true,
+      "actual": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(33, 63, 29)"
+      }
+    },
+    {
+      "name": "1440: compra fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: casa fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: historico fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: login fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: landing fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: foundations fit",
+      "pass": true,
+      "actual": {
+        "overflow": 0,
+        "font": "\"Restok Manrope\", system-ui, sans-serif",
+        "fontLoaded": true,
+        "pairs": [
+          {
+            "fg": "ink",
+            "bg": "canvas",
+            "ratio": 15.13036227777003
+          },
+          {
+            "fg": "surface",
+            "bg": "action",
+            "ratio": 8.066560306180639
+          },
+          {
+            "fg": "highlight",
+            "bg": "brand",
+            "ratio": 7.146365179171468
+          },
+          {
+            "fg": "info",
+            "bg": "canvas",
+            "ratio": 4.902535950980073
+          },
+          {
+            "fg": "danger",
+            "bg": "surface-danger",
+            "ratio": 4.961337123899306
+          },
+          {
+            "fg": "warning",
+            "bg": "surface-warning",
+            "ratio": 4.814038469472451
+          }
+        ],
+        "gutter": "1.5rem"
+      }
+    },
+    {
+      "name": "1920: text contrast",
+      "pass": true,
+      "actual": [
+        {
+          "fg": "ink",
+          "bg": "canvas",
+          "ratio": 15.13036227777003
+        },
+        {
+          "fg": "surface",
+          "bg": "action",
+          "ratio": 8.066560306180639
+        },
+        {
+          "fg": "highlight",
+          "bg": "brand",
+          "ratio": 7.146365179171468
+        },
+        {
+          "fg": "info",
+          "bg": "canvas",
+          "ratio": 4.902535950980073
+        },
+        {
+          "fg": "danger",
+          "bg": "surface-danger",
+          "ratio": 4.961337123899306
+        },
+        {
+          "fg": "warning",
+          "bg": "surface-warning",
+          "ratio": 4.814038469472451
+        }
+      ]
+    },
+    {
+      "name": "1920: 17 canonical colors",
+      "pass": true,
+      "actual": [
+        {
+          "role": "brand",
+          "expected": "rgb(33, 63, 29)",
+          "actual": "rgb(33, 63, 29)",
+          "pass": true
+        },
+        {
+          "role": "action",
+          "expected": "rgb(45, 90, 39)",
+          "actual": "rgb(45, 90, 39)",
+          "pass": true
+        },
+        {
+          "role": "highlight",
+          "expected": "rgb(180, 211, 167)",
+          "actual": "rgb(180, 211, 167)",
+          "pass": true
+        },
+        {
+          "role": "info",
+          "expected": "rgb(79, 117, 102)",
+          "actual": "rgb(79, 117, 102)",
+          "pass": true
+        },
+        {
+          "role": "canvas",
+          "expected": "rgb(247, 250, 245)",
+          "actual": "rgb(247, 250, 245)",
+          "pass": true
+        },
+        {
+          "role": "surface",
+          "expected": "rgb(255, 255, 255)",
+          "actual": "rgb(255, 255, 255)",
+          "pass": true
+        },
+        {
+          "role": "ink",
+          "expected": "rgb(24, 37, 26)",
+          "actual": "rgb(24, 37, 26)",
+          "pass": true
+        },
+        {
+          "role": "muted",
+          "expected": "rgb(82, 100, 82)",
+          "actual": "rgb(82, 100, 82)",
+          "pass": true
+        },
+        {
+          "role": "line",
+          "expected": "rgb(225, 233, 222)",
+          "actual": "rgb(225, 233, 222)",
+          "pass": true
+        },
+        {
+          "role": "line-strong",
+          "expected": "rgb(201, 217, 197)",
+          "actual": "rgb(201, 217, 197)",
+          "pass": true
+        },
+        {
+          "role": "surface-soft",
+          "expected": "rgb(240, 245, 237)",
+          "actual": "rgb(240, 245, 237)",
+          "pass": true
+        },
+        {
+          "role": "surface-brand",
+          "expected": "rgb(232, 242, 227)",
+          "actual": "rgb(232, 242, 227)",
+          "pass": true
+        },
+        {
+          "role": "surface-info",
+          "expected": "rgb(234, 242, 237)",
+          "actual": "rgb(234, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "danger",
+          "expected": "rgb(185, 65, 50)",
+          "actual": "rgb(185, 65, 50)",
+          "pass": true
+        },
+        {
+          "role": "surface-danger",
+          "expected": "rgb(255, 242, 237)",
+          "actual": "rgb(255, 242, 237)",
+          "pass": true
+        },
+        {
+          "role": "warning",
+          "expected": "rgb(148, 97, 39)",
+          "actual": "rgb(148, 97, 39)",
+          "pass": true
+        },
+        {
+          "role": "surface-warning",
+          "expected": "rgb(253, 244, 229)",
+          "actual": "rgb(253, 244, 229)",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "1920: responsive gutter token",
+      "pass": true,
+      "actual": "24px"
+    },
+    {
+      "name": "1920: real Manrope glyphs",
+      "pass": true,
+      "actual": {
+        "fonts": [
+          {
+            "familyName": "Manrope ExtraLight",
+            "postScriptName": "Manrope-ExtraLight-Bold",
+            "isCustomFont": true,
+            "glyphCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920: keyboard focus",
+      "pass": true,
+      "actual": {
+        "visible": true,
+        "width": "2px",
+        "color": "rgb(45, 90, 39)",
+        "offset": "3px",
+        "shadow": "none"
+      }
+    },
+    {
+      "name": "1920: Produto visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": null,
+        "edge": "rgb(225, 233, 222)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1920: Preço inválido visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1920: error edge survives focus",
+      "pass": true,
+      "actual": {
+        "invalid": "true",
+        "edge": "rgb(185, 65, 50)",
+        "outline": "2px",
+        "wrapperOutline": "3px",
+        "wrapperColor": "rgb(24, 37, 26)"
+      }
+    },
+    {
+      "name": "1920: Preço unitário visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "1920: Quantidade visible focus",
+      "pass": true,
+      "actual": {
+        "invalid": "false",
+        "edge": "rgb(24, 37, 26)",
+        "outline": "0px",
+        "wrapperOutline": "2px",
+        "wrapperColor": "rgb(45, 90, 39)"
+      }
+    },
+    {
+      "name": "1920: light icons",
+      "pass": true,
+      "actual": "1.75px"
+    },
+    {
+      "name": "1920: reduced motion",
+      "pass": true,
+      "actual": {
+        "feedback": "0ms",
+        "state": "0ms",
+        "enter": "0ms",
+        "exit": "0ms"
+      }
+    },
+    {
+      "name": "1920: budget cascade",
+      "pass": true,
+      "actual": {
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(33, 63, 29)"
+      }
+    },
+    {
+      "name": "1920: compra fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: casa fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: historico fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: login fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: landing fits",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "fallback fits",
+      "pass": true,
+      "actual": null
+    }
+  ],
+  "errors": [],
+  "engine": "156.0.4314.50",
+  "sourceHash": "86981c844a69f5d65625aaab62421321809f4d45f29ebb3177673bd984d3883d",
+  "sources": [
+    {
+      "file": "styles/tokens.css",
+      "sha256": "86981c844a69f5d65625aaab62421321809f4d45f29ebb3177673bd984d3883d"
+    },
+    {
+      "file": "styles/base.css",
+      "sha256": "5226c5f40ec1f2fb888090f2730b73dc98a24a05cbed484f093439913a025f41"
+    },
+    {
+      "file": "styles/responsive.css",
+      "sha256": "5385f9015e01a0df6588ba1e2f783005e053d997bd81853f53ccdc5b372db476"
+    },
+    {
+      "file": "styles/motion.css",
+      "sha256": "95d323a25d7492b36893666c59c276b71f7c782de3f8d4ae72cab16ea0279313"
+    },
+    {
+      "file": "components/ui/numeric-fields.module.css",
+      "sha256": "91721a8e7edd16bf4425c389092cf23cee1e4fec70a86520e0c690b390140213"
+    },
+    {
+      "file": "tailwind.raiz.config.ts",
+      "sha256": "e9a637ece96ce05d9895068e14a15de762cdfcd303067bf0f58f892944859173"
+    },
+    {
+      "file": "tests/e2e/foundations.tsx",
+      "sha256": "7f6bb28de6355c17f7a3fa62d504b972ad5ebe577d2fcd3cf67f5879cc7af9fd"
+    },
+    {
+      "file": "tests/e2e/foundations.css",
+      "sha256": "3fdb419d256957c313023271f7efe44c9e695abc7fcc21a85076aef475180d6a"
+    },
+    {
+      "file": "tests/e2e/capture-phase1.mjs",
+      "sha256": "daff457ed7ed219a995f304ee9c5cb54cad77c3cf9172efb207dc85909413b3f"
+    }
+  ],
+  "artifacts": [
+    "1440-900-casa.png",
+    "1440-900-compra.png",
+    "1440-900-field-error.png",
+    "1440-900-field-money.png",
+    "1440-900-field-normal.png",
+    "1440-900-field-quantity.png",
+    "1440-900-focus.png",
+    "1440-900-foundations.png",
+    "1440-900-historico.png",
+    "1440-900-landing.png",
+    "1440-900-login.png",
+    "1920-1080-casa.png",
+    "1920-1080-compra.png",
+    "1920-1080-field-error.png",
+    "1920-1080-field-money.png",
+    "1920-1080-field-normal.png",
+    "1920-1080-field-quantity.png",
+    "1920-1080-focus.png",
+    "1920-1080-foundations.png",
+    "1920-1080-historico.png",
+    "1920-1080-landing.png",
+    "1920-1080-login.png",
+    "320-640-casa.png",
+    "320-640-compra.png",
+    "320-640-field-error.png",
+    "320-640-field-money.png",
+    "320-640-field-normal.png",
+    "320-640-field-quantity.png",
+    "320-640-focus.png",
+    "320-640-foundations.png",
+    "320-640-historico.png",
+    "320-640-landing.png",
+    "320-640-login.png",
+    "320-fallback.png",
+    "390-844-casa.png",
+    "390-844-compra.png",
+    "390-844-field-error.png",
+    "390-844-field-money.png",
+    "390-844-field-normal.png",
+    "390-844-field-quantity.png",
+    "390-844-focus.png",
+    "390-844-foundations.png",
+    "390-844-historico.png",
+    "390-844-landing.png",
+    "390-844-login.png",
+    "reference-1440-900.png",
+    "reference-320-640.png",
+    "reference-390-844.png"
+  ]
+}

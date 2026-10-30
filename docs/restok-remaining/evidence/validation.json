@@ -1,0 +1,437 @@
+{
+  "checks": [
+    {
+      "name": "320: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "320: overflow",
+      "pass": true
+    },
+    {
+      "name": "320: mobile dock",
+      "pass": true
+    },
+    {
+      "name": "320: catalog search",
+      "pass": true
+    },
+    {
+      "name": "320: category filter",
+      "pass": true
+    },
+    {
+      "name": "320: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "320: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "320: native touch reveals delete",
+      "pass": true
+    },
+    {
+      "name": "320: swipe does not delete automatically",
+      "pass": true
+    },
+    {
+      "name": "320: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "320: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "320: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "320: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "320: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "320: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "320: member list",
+      "pass": true
+    },
+    {
+      "name": "390: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "390: overflow",
+      "pass": true
+    },
+    {
+      "name": "390: mobile dock",
+      "pass": true
+    },
+    {
+      "name": "390: catalog search",
+      "pass": true
+    },
+    {
+      "name": "390: category filter",
+      "pass": true
+    },
+    {
+      "name": "390: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "390: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "390: native touch reveals delete",
+      "pass": true
+    },
+    {
+      "name": "390: swipe does not delete automatically",
+      "pass": true
+    },
+    {
+      "name": "390: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "390: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "390: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "390: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "390: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "390: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "390: member list",
+      "pass": true
+    },
+    {
+      "name": "768: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "768: overflow",
+      "pass": true
+    },
+    {
+      "name": "768: mobile dock",
+      "pass": true
+    },
+    {
+      "name": "768: catalog search",
+      "pass": true
+    },
+    {
+      "name": "768: category filter",
+      "pass": true
+    },
+    {
+      "name": "768: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "768: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "768: native touch reveals delete",
+      "pass": true
+    },
+    {
+      "name": "768: swipe does not delete automatically",
+      "pass": true
+    },
+    {
+      "name": "768: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "768: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "768: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "768: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "768: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "768: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "768: member list",
+      "pass": true
+    },
+    {
+      "name": "1024: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "1024: overflow",
+      "pass": true
+    },
+    {
+      "name": "1024: topbar",
+      "pass": true
+    },
+    {
+      "name": "1024: four sidebar routes",
+      "pass": true
+    },
+    {
+      "name": "1024: catalog search",
+      "pass": true
+    },
+    {
+      "name": "1024: category filter",
+      "pass": true
+    },
+    {
+      "name": "1024: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "1024: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "1024: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "1024: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "1024: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "1024: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "1024: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "1024: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "1024: member list",
+      "pass": true
+    },
+    {
+      "name": "1280: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "1280: overflow",
+      "pass": true
+    },
+    {
+      "name": "1280: topbar",
+      "pass": true
+    },
+    {
+      "name": "1280: four sidebar routes",
+      "pass": true
+    },
+    {
+      "name": "1280: catalog search",
+      "pass": true
+    },
+    {
+      "name": "1280: category filter",
+      "pass": true
+    },
+    {
+      "name": "1280: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "1280: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "1280: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "1280: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "1280: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "1280: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "1280: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "1280: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "1280: member list",
+      "pass": true
+    },
+    {
+      "name": "1440: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "1440: overflow",
+      "pass": true
+    },
+    {
+      "name": "1440: topbar",
+      "pass": true
+    },
+    {
+      "name": "1440: four sidebar routes",
+      "pass": true
+    },
+    {
+      "name": "1440: catalog search",
+      "pass": true
+    },
+    {
+      "name": "1440: category filter",
+      "pass": true
+    },
+    {
+      "name": "1440: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "1440: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "1440: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "1440: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "1440: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "1440: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "1440: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "1440: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "1440: member list",
+      "pass": true
+    },
+    {
+      "name": "1920: catalog rows",
+      "pass": true
+    },
+    {
+      "name": "1920: overflow",
+      "pass": true
+    },
+    {
+      "name": "1920: topbar",
+      "pass": true
+    },
+    {
+      "name": "1920: four sidebar routes",
+      "pass": true
+    },
+    {
+      "name": "1920: catalog search",
+      "pass": true
+    },
+    {
+      "name": "1920: category filter",
+      "pass": true
+    },
+    {
+      "name": "1920: duplicate pending product blocked",
+      "pass": true
+    },
+    {
+      "name": "1920: catalog add to purchase",
+      "pass": true
+    },
+    {
+      "name": "1920: cancel keeps item",
+      "pass": true
+    },
+    {
+      "name": "1920: confirm removes only selected item",
+      "pass": true
+    },
+    {
+      "name": "1920: purchased total recalculated",
+      "pass": true
+    },
+    {
+      "name": "1920: history detail preserves snapshots",
+      "pass": true
+    },
+    {
+      "name": "1920: history back focuses record",
+      "pass": true
+    },
+    {
+      "name": "1920: actual house selector",
+      "pass": true
+    },
+    {
+      "name": "1920: member list",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

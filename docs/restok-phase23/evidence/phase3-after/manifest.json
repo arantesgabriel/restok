@@ -1,0 +1,6362 @@
+{
+  "stage": "phase3-after",
+  "at": "2026-10-30T11:47:22.538Z",
+  "kind": "Isolated real components/CSS, local fixtures only",
+  "fixture": "demo-v6: original names, quantity, price, status, budget; categories mapped to real domain",
+  "dpr": 1,
+  "reducedMotion": "reduce",
+  "checks": [
+    {
+      "name": "320/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "320: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "320: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      }
+    },
+    {
+      "name": "320: dock only below1024",
+      "pass": true,
+      "actual": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ]
+    },
+    {
+      "name": "320: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: at least one full shopping row above dock",
+      "pass": true,
+      "actual": [
+        {
+          "x": 12,
+          "y": 430.390625,
+          "width": 296,
+          "height": 64,
+          "top": 430.390625,
+          "right": 308,
+          "bottom": 494.390625,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 494.390625,
+          "width": 296,
+          "height": 83.78125,
+          "top": 494.390625,
+          "right": 308,
+          "bottom": 578.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 578.171875,
+          "width": 296,
+          "height": 64,
+          "top": 578.171875,
+          "right": 308,
+          "bottom": 642.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 642.171875,
+          "width": 296,
+          "height": 64,
+          "top": 642.171875,
+          "right": 308,
+          "bottom": 706.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 706.171875,
+          "width": 296,
+          "height": 64,
+          "top": 706.171875,
+          "right": 308,
+          "bottom": 770.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 770.171875,
+          "width": 296,
+          "height": 64,
+          "top": 770.171875,
+          "right": 308,
+          "bottom": 834.171875,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "name": "320/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "320/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "320/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "320/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "320: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "320/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "320: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 563,
+        "bottom": 640,
+        "height": 77
+      }
+    },
+    {
+      "name": "320: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 12,
+        "y": 56,
+        "width": 296,
+        "height": 136
+      }
+    },
+    {
+      "name": "320: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "320/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 296,
+        "context": 0,
+        "visible": false
+      }
+    },
+    {
+      "name": "320/money: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/money: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 15,00Meta de R$ 0,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320/money: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 12,
+          "y": 403.375,
+          "width": 296,
+          "height": 64
+        },
+        "dock": {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875
+        }
+      }
+    },
+    {
+      "name": "320/money: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 132.015625
+      }
+    },
+    {
+      "name": "320/money-equal: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/money-equal: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320: exact budget",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320/money-equal: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 12,
+          "y": 385.375,
+          "width": 296,
+          "height": 82.78125
+        },
+        "dock": {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875
+        }
+      }
+    },
+    {
+      "name": "320/money-equal: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 132.015625
+      }
+    },
+    {
+      "name": "320/money-over: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/money-over: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320: excess preserved",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320/money-over: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 12,
+          "y": 385.375,
+          "width": 296,
+          "height": 82.78125
+        },
+        "dock": {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875
+        }
+      }
+    },
+    {
+      "name": "320/money-over: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 132.015625
+      }
+    },
+    {
+      "name": "320/stress: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "320/stress: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta de R$ 800,00Editar meta",
+        "overflow": [
+          {
+            "text": "R$ 9.999.989.999.990.000,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 9.999.989.999.989.200,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "320/stress: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 12,
+          "y": 330.953125,
+          "width": 296,
+          "height": 96.390625
+        },
+        "dock": {
+          "x": 0,
+          "y": 467,
+          "width": 320,
+          "height": 113
+        }
+      }
+    },
+    {
+      "name": "320/stress: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 167.265625,
+        "available": 296
+      }
+    },
+    {
+      "name": "320: shared toast consumes real confirmed state",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "390: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "390: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      }
+    },
+    {
+      "name": "390: dock only below1024",
+      "pass": true,
+      "actual": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ]
+    },
+    {
+      "name": "390: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "390/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "390/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "390/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "390: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "390/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "390: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 767,
+        "bottom": 844,
+        "height": 77
+      }
+    },
+    {
+      "name": "390: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 22,
+        "y": 56,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "390: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "390/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 358,
+        "context": 0,
+        "visible": false
+      }
+    },
+    {
+      "name": "390/money: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/money: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 15,00Meta de R$ 0,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390/money: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 16,
+          "y": 547.375,
+          "width": 358,
+          "height": 64
+        },
+        "dock": {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72
+        }
+      }
+    },
+    {
+      "name": "390/money: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 194.015625
+      }
+    },
+    {
+      "name": "390/money-equal: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/money-equal: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390: exact budget",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390/money-equal: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 16,
+          "y": 602.375,
+          "width": 358,
+          "height": 64
+        },
+        "dock": {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72
+        }
+      }
+    },
+    {
+      "name": "390/money-equal: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 194.015625
+      }
+    },
+    {
+      "name": "390/money-over: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/money-over: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390: excess preserved",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390/money-over: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 16,
+          "y": 602.375,
+          "width": 358,
+          "height": 64
+        },
+        "dock": {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72
+        }
+      }
+    },
+    {
+      "name": "390/money-over: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 46.484375,
+        "available": 194.015625
+      }
+    },
+    {
+      "name": "390/stress: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "390/stress: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta de R$ 800,00Editar meta",
+        "overflow": [
+          {
+            "text": "R$ 9.999.989.999.990.000,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 9.999.989.999.989.200,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "390/stress: last row clear of dock",
+      "pass": true,
+      "actual": {
+        "last": {
+          "x": 16,
+          "y": 553.046875,
+          "width": 358,
+          "height": 78.390625
+        },
+        "dock": {
+          "x": 0,
+          "y": 671,
+          "width": 390,
+          "height": 113
+        }
+      }
+    },
+    {
+      "name": "390/stress: dock amount never splits digits",
+      "pass": true,
+      "actual": {
+        "lines": 1,
+        "width": 167.265625,
+        "available": 358
+      }
+    },
+    {
+      "name": "390: shared toast consumes real confirmed state",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "768: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "768: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      }
+    },
+    {
+      "name": "768: dock only below1024",
+      "pass": true,
+      "actual": [
+        {
+          "x": 0,
+          "y": 892,
+          "width": 768,
+          "height": 72,
+          "top": 892,
+          "right": 768,
+          "bottom": 964,
+          "left": 0
+        }
+      ]
+    },
+    {
+      "name": "768: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "768/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "768/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "768/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "768: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "768/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "768: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 879.796875,
+        "bottom": 972.796875,
+        "height": 93
+      }
+    },
+    {
+      "name": "768: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 400,
+        "y": 56,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "768: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "768/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "768: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 736,
+        "context": 0,
+        "visible": false
+      }
+    },
+    {
+      "name": "1024/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1024: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1024: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      }
+    },
+    {
+      "name": "1024: dock only below1024",
+      "pass": true,
+      "actual": []
+    },
+    {
+      "name": "1024: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1024/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1024/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1024/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1024: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1024/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1024: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 636.59375,
+        "bottom": 729.59375,
+        "height": 93
+      }
+    },
+    {
+      "name": "1024: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 517,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "1024: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1024/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1024: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 748,
+        "context": 0,
+        "visible": false
+      }
+    },
+    {
+      "name": "1280/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1280: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1280: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      }
+    },
+    {
+      "name": "1280: dock only below1024",
+      "pass": true,
+      "actual": []
+    },
+    {
+      "name": "1280: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1280/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1280/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1280/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1280: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1280/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1280: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 667,
+        "bottom": 760,
+        "height": 93
+      }
+    },
+    {
+      "name": "1280: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 549,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "1280: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1280/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1280: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 716,
+        "context": 256,
+        "visible": true
+      }
+    },
+    {
+      "name": "1440/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1440: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1440: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      }
+    },
+    {
+      "name": "1440: dock only below1024",
+      "pass": true,
+      "actual": []
+    },
+    {
+      "name": "1440: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1440/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1440/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1440/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1440: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1440/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1440: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 762,
+        "bottom": 855,
+        "height": 93
+      }
+    },
+    {
+      "name": "1440: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 649,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "1440: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1440/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 876,
+        "context": 256,
+        "visible": true
+      }
+    },
+    {
+      "name": "1440/money: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/money: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 15,00Meta de R$ 0,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440/money-equal: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/money-equal: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440: exact budget",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440/money-over: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/money-over: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440: excess preserved",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440/stress: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1440/stress: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta de R$ 800,00Editar meta",
+        "overflow": [
+          {
+            "text": "R$ 9.999.989.999.990.000,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 9.999.989.999.989.200,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1440: shared toast consumes real confirmed state",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/compra: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: one house selector",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1920: one visible navigation",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "name": "1920: sidebar uses useful width",
+      "pass": true,
+      "actual": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      }
+    },
+    {
+      "name": "1920: dock only below1024",
+      "pass": true,
+      "actual": []
+    },
+    {
+      "name": "1920: same reference total",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/casa: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/historico: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/pessoas: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: management returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/Nome da compra: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1920/Nome da compra: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 47,
+        "border": "rgb(201, 217, 197)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1920/Nome inválido: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1920/Nome inválido: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 46,
+        "border": "rgb(185, 65, 50)",
+        "focus": "2px",
+        "wrapperFocus": "3px"
+      }
+    },
+    {
+      "name": "1920: hover preserves error",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/Preço de exemplo: input16 and touch44",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1920/Preço de exemplo: visible keyboard focus",
+      "pass": true,
+      "actual": {
+        "font": "16px",
+        "height": 44,
+        "border": "rgb(24, 37, 26)",
+        "focus": "0px",
+        "wrapperFocus": "2px"
+      }
+    },
+    {
+      "name": "1920: disabled and busy protected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: toast focus on dark",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/sheet100: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: sheet footer reachable",
+      "pass": true,
+      "actual": {
+        "top": 933,
+        "bottom": 1026,
+        "height": 93
+      }
+    },
+    {
+      "name": "1920: sheet returns focus",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/menu: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: menu keyboard",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920: menu focus return",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/notice: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: notice stays in viewport",
+      "pass": true,
+      "actual": {
+        "x": 16,
+        "y": 829,
+        "width": 352,
+        "height": 115
+      }
+    },
+    {
+      "name": "1920: notice Escape",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "1920/optional-context: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920: optional context only with room",
+      "pass": true,
+      "actual": {
+        "work": 1040,
+        "context": 256,
+        "visible": true
+      }
+    },
+    {
+      "name": "1920/money: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/money: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 15,00Meta de R$ 0,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920/money-equal: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/money-equal: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920: exact budget",
+      "pass": true,
+      "actual": {
+        "over": "false",
+        "text": "Total registradoR$ 15,00DisponívelR$ 0,00Meta de R$ 15,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 0,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920/money-over: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/money-over: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920: excess preserved",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 15,00Acima da metaR$ 5,00Meta de R$ 10,001 item comprado sem preçoEditar meta",
+        "overflow": [
+          {
+            "text": "R$ 15,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 5,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920/stress: no overflow",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "name": "1920/stress: complete financial digits",
+      "pass": true,
+      "actual": {
+        "over": "true",
+        "text": "Total registradoR$ 9.999.989.999.990.000,00Acima da metaR$ 9.999.989.999.989.200,00Meta de R$ 800,00Editar meta",
+        "overflow": [
+          {
+            "text": "R$ 9.999.989.999.990.000,00",
+            "overflows": false
+          },
+          {
+            "text": "R$ 9.999.989.999.989.200,00",
+            "overflows": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "1920: shared toast consumes real confirmed state",
+      "pass": true,
+      "actual": null
+    }
+  ],
+  "captures": [
+    {
+      "file": "320-640-compra.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 1446.125,
+        "top": 52,
+        "right": 308,
+        "bottom": 1498.125,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 114,
+        "width": 296,
+        "height": 144.390625,
+        "top": 114,
+        "right": 308,
+        "bottom": 258.390625,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 430.390625,
+          "width": 296,
+          "height": 64,
+          "top": 430.390625,
+          "right": 308,
+          "bottom": 494.390625,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 494.390625,
+          "width": 296,
+          "height": 83.78125,
+          "top": 494.390625,
+          "right": 308,
+          "bottom": 578.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 578.171875,
+          "width": 296,
+          "height": 64,
+          "top": 578.171875,
+          "right": 308,
+          "bottom": 642.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 642.171875,
+          "width": 296,
+          "height": 64,
+          "top": 642.171875,
+          "right": 308,
+          "bottom": 706.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 706.171875,
+          "width": 296,
+          "height": 64,
+          "top": 706.171875,
+          "right": 308,
+          "bottom": 770.171875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 770.171875,
+          "width": 296,
+          "height": 64,
+          "top": 770.171875,
+          "right": 308,
+          "bottom": 834.171875,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "320-640-casa.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 1173.546875,
+        "top": 52,
+        "right": 308,
+        "bottom": 1225.546875,
+        "left": 12
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "320-640-historico.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 314.796875,
+        "top": 52,
+        "right": 308,
+        "bottom": 366.796875,
+        "left": 12
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "320-640-pessoas.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 314.796875,
+        "top": 52,
+        "right": 308,
+        "bottom": 366.796875,
+        "left": 12
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "320-640-sheet100.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 16,
+        "y": -341.21875,
+        "width": 288,
+        "height": 154.390625,
+        "top": -341.21875,
+        "right": 304,
+        "bottom": -186.828125,
+        "left": 16
+      },
+      "rows": []
+    },
+    {
+      "file": "320-640-menu.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 16,
+        "y": 1680.78125,
+        "width": 288,
+        "height": 154.390625,
+        "top": 1680.78125,
+        "right": 304,
+        "bottom": 1835.171875,
+        "left": 16
+      },
+      "rows": []
+    },
+    {
+      "file": "320-640-notice.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 4094.171875,
+        "top": 52,
+        "right": 308,
+        "bottom": 4146.171875,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 127.59375,
+        "width": 296,
+        "height": 144.390625,
+        "top": 127.59375,
+        "right": 308,
+        "bottom": 271.984375,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 443.984375,
+          "width": 296,
+          "height": 119.78125,
+          "top": 443.984375,
+          "right": 308,
+          "bottom": 563.765625,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 563.765625,
+          "width": 296,
+          "height": 97.390625,
+          "top": 563.765625,
+          "right": 308,
+          "bottom": 661.15625,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 661.15625,
+          "width": 296,
+          "height": 119.78125,
+          "top": 661.15625,
+          "right": 308,
+          "bottom": 780.9375,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 780.9375,
+          "width": 296,
+          "height": 97.390625,
+          "top": 780.9375,
+          "right": 308,
+          "bottom": 878.328125,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 878.328125,
+          "width": 296,
+          "height": 97.390625,
+          "top": 878.328125,
+          "right": 308,
+          "bottom": 975.71875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 975.71875,
+          "width": 296,
+          "height": 97.390625,
+          "top": 975.71875,
+          "right": 308,
+          "bottom": 1073.109375,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "320-640-optional-context.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 125.1875,
+        "top": 52,
+        "right": 308,
+        "bottom": 177.1875,
+        "left": 12
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "320-640-money.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 595.375,
+        "top": 52,
+        "right": 308,
+        "bottom": 647.375,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 127.59375,
+        "width": 296,
+        "height": 144.390625,
+        "top": 127.59375,
+        "right": 308,
+        "bottom": 271.984375,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 443.984375,
+          "width": 296,
+          "height": 115.390625,
+          "top": 443.984375,
+          "right": 308,
+          "bottom": 559.375,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 559.375,
+          "width": 296,
+          "height": 64,
+          "top": 559.375,
+          "right": 308,
+          "bottom": 623.375,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "320-640-money-equal.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 669.15625,
+        "top": 52,
+        "right": 308,
+        "bottom": 721.15625,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 127.59375,
+        "width": 296,
+        "height": 144.390625,
+        "top": 127.59375,
+        "right": 308,
+        "bottom": 271.984375,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 443.984375,
+          "width": 296,
+          "height": 96.390625,
+          "top": 443.984375,
+          "right": 308,
+          "bottom": 540.375,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 614.375,
+          "width": 296,
+          "height": 82.78125,
+          "top": 614.375,
+          "right": 308,
+          "bottom": 697.15625,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "320-640-money-over.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 669.15625,
+        "top": 52,
+        "right": 308,
+        "bottom": 721.15625,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 507.8125,
+          "width": 320,
+          "height": 72.1875,
+          "top": 507.8125,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 127.59375,
+        "width": 296,
+        "height": 144.390625,
+        "top": 127.59375,
+        "right": 308,
+        "bottom": 271.984375,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 443.984375,
+          "width": 296,
+          "height": 96.390625,
+          "top": 443.984375,
+          "right": 308,
+          "bottom": 540.375,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 614.375,
+          "width": 296,
+          "height": 82.78125,
+          "top": 614.375,
+          "right": 308,
+          "bottom": 697.15625,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "320-640-stress.png",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 52,
+        "top": 0,
+        "right": 320,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 12,
+        "y": 52,
+        "width": 296,
+        "height": 4275.34375,
+        "top": 52,
+        "right": 308,
+        "bottom": 4327.34375,
+        "left": 12
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 467,
+          "width": 320,
+          "height": 113,
+          "top": 467,
+          "right": 320,
+          "bottom": 580,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 12,
+        "y": 127.59375,
+        "width": 296,
+        "height": 214.78125,
+        "top": 127.59375,
+        "right": 308,
+        "bottom": 342.375,
+        "left": 12
+      },
+      "rows": [
+        {
+          "x": 12,
+          "y": 514.375,
+          "width": 296,
+          "height": 119.78125,
+          "top": 514.375,
+          "right": 308,
+          "bottom": 634.15625,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 634.15625,
+          "width": 296,
+          "height": 97.390625,
+          "top": 634.15625,
+          "right": 308,
+          "bottom": 731.546875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 731.546875,
+          "width": 296,
+          "height": 119.78125,
+          "top": 731.546875,
+          "right": 308,
+          "bottom": 851.328125,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 851.328125,
+          "width": 296,
+          "height": 97.390625,
+          "top": 851.328125,
+          "right": 308,
+          "bottom": 948.71875,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 948.71875,
+          "width": 296,
+          "height": 97.390625,
+          "top": 948.71875,
+          "right": 308,
+          "bottom": 1046.109375,
+          "left": 12
+        },
+        {
+          "x": 12,
+          "y": 1046.109375,
+          "width": 296,
+          "height": 97.390625,
+          "top": 1046.109375,
+          "right": 308,
+          "bottom": 1143.5,
+          "left": 12
+        }
+      ]
+    },
+    {
+      "file": "390-844-compra.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 1378.390625,
+        "top": 52,
+        "right": 374,
+        "bottom": 1430.390625,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 120,
+        "width": 358,
+        "height": 144.390625,
+        "top": 120,
+        "right": 374,
+        "bottom": 264.390625,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 436.390625,
+          "width": 358,
+          "height": 64,
+          "top": 436.390625,
+          "right": 374,
+          "bottom": 500.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 500.390625,
+          "width": 358,
+          "height": 64,
+          "top": 500.390625,
+          "right": 374,
+          "bottom": 564.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 564.390625,
+          "width": 358,
+          "height": 64,
+          "top": 564.390625,
+          "right": 374,
+          "bottom": 628.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 628.390625,
+          "width": 358,
+          "height": 64,
+          "top": 628.390625,
+          "right": 374,
+          "bottom": 692.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 692.390625,
+          "width": 358,
+          "height": 64,
+          "top": 692.390625,
+          "right": 374,
+          "bottom": 756.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 756.390625,
+          "width": 358,
+          "height": 64,
+          "top": 756.390625,
+          "right": 374,
+          "bottom": 820.390625,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "390-844-casa.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 1147.984375,
+        "top": 52,
+        "right": 374,
+        "bottom": 1199.984375,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "390-844-historico.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 320.796875,
+        "top": 52,
+        "right": 374,
+        "bottom": 372.796875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "390-844-pessoas.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 320.796875,
+        "top": 52,
+        "right": 374,
+        "bottom": 372.796875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "390-844-sheet100.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 16,
+        "y": -64.609375,
+        "width": 358,
+        "height": 144.390625,
+        "top": -64.609375,
+        "right": 374,
+        "bottom": 79.78125,
+        "left": 16
+      },
+      "rows": []
+    },
+    {
+      "file": "390-844-menu.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 16,
+        "y": 1783.390625,
+        "width": 358,
+        "height": 144.390625,
+        "top": 1783.390625,
+        "right": 374,
+        "bottom": 1927.78125,
+        "left": 16
+      },
+      "rows": []
+    },
+    {
+      "file": "390-844-notice.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 3408.265625,
+        "top": 52,
+        "right": 374,
+        "bottom": 3460.265625,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 144.390625,
+        "top": 133.59375,
+        "right": 374,
+        "bottom": 277.984375,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 449.984375,
+          "width": 358,
+          "height": 79.390625,
+          "top": 449.984375,
+          "right": 374,
+          "bottom": 529.375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 529.375,
+          "width": 358,
+          "height": 79.390625,
+          "top": 529.375,
+          "right": 374,
+          "bottom": 608.765625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 608.765625,
+          "width": 358,
+          "height": 79.390625,
+          "top": 608.765625,
+          "right": 374,
+          "bottom": 688.15625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 688.15625,
+          "width": 358,
+          "height": 79.390625,
+          "top": 688.15625,
+          "right": 374,
+          "bottom": 767.546875,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 767.546875,
+          "width": 358,
+          "height": 79.390625,
+          "top": 767.546875,
+          "right": 374,
+          "bottom": 846.9375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 846.9375,
+          "width": 358,
+          "height": 79.390625,
+          "top": 846.9375,
+          "right": 374,
+          "bottom": 926.328125,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "390-844-optional-context.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 131.1875,
+        "top": 52,
+        "right": 374,
+        "bottom": 183.1875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "390-844-money.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 583.375,
+        "top": 52,
+        "right": 374,
+        "bottom": 635.375,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 144.390625,
+        "top": 133.59375,
+        "right": 374,
+        "bottom": 277.984375,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 449.984375,
+          "width": 358,
+          "height": 97.390625,
+          "top": 449.984375,
+          "right": 374,
+          "bottom": 547.375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 547.375,
+          "width": 358,
+          "height": 64,
+          "top": 547.375,
+          "right": 374,
+          "bottom": 611.375,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "390-844-money-equal.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 638.375,
+        "top": 52,
+        "right": 374,
+        "bottom": 690.375,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 144.390625,
+        "top": 133.59375,
+        "right": 374,
+        "bottom": 277.984375,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 449.984375,
+          "width": 358,
+          "height": 78.390625,
+          "top": 449.984375,
+          "right": 374,
+          "bottom": 528.375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 602.375,
+          "width": 358,
+          "height": 64,
+          "top": 602.375,
+          "right": 374,
+          "bottom": 666.375,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "390-844-money-over.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 638.375,
+        "top": 52,
+        "right": 374,
+        "bottom": 690.375,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 712,
+          "width": 390,
+          "height": 72,
+          "top": 712,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 144.390625,
+        "top": 133.59375,
+        "right": 374,
+        "bottom": 277.984375,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 449.984375,
+          "width": 358,
+          "height": 78.390625,
+          "top": 449.984375,
+          "right": 374,
+          "bottom": 528.375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 602.375,
+          "width": 358,
+          "height": 64,
+          "top": 602.375,
+          "right": 374,
+          "bottom": 666.375,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "390-844-stress.png",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 52,
+        "top": 0,
+        "right": 390,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 358,
+        "height": 3571.4375,
+        "top": 52,
+        "right": 374,
+        "bottom": 3623.4375,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 671,
+          "width": 390,
+          "height": 113,
+          "top": 671,
+          "right": 390,
+          "bottom": 784,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 133.59375,
+        "width": 358,
+        "height": 214.78125,
+        "top": 133.59375,
+        "right": 374,
+        "bottom": 348.375,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 520.375,
+          "width": 358,
+          "height": 79.390625,
+          "top": 520.375,
+          "right": 374,
+          "bottom": 599.765625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 599.765625,
+          "width": 358,
+          "height": 79.390625,
+          "top": 599.765625,
+          "right": 374,
+          "bottom": 679.15625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 679.15625,
+          "width": 358,
+          "height": 79.390625,
+          "top": 679.15625,
+          "right": 374,
+          "bottom": 758.546875,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 758.546875,
+          "width": 358,
+          "height": 79.390625,
+          "top": 758.546875,
+          "right": 374,
+          "bottom": 837.9375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 837.9375,
+          "width": 358,
+          "height": 79.390625,
+          "top": 837.9375,
+          "right": 374,
+          "bottom": 917.328125,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 917.328125,
+          "width": 358,
+          "height": 79.390625,
+          "top": 917.328125,
+          "right": 374,
+          "bottom": 996.71875,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "768-1024-compra.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 1406.390625,
+        "top": 52,
+        "right": 752,
+        "bottom": 1458.390625,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 892,
+          "width": 768,
+          "height": 72,
+          "top": 892,
+          "right": 768,
+          "bottom": 964,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 128,
+        "width": 736,
+        "height": 144.390625,
+        "top": 128,
+        "right": 752,
+        "bottom": 272.390625,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 464.390625,
+          "width": 736,
+          "height": 64,
+          "top": 464.390625,
+          "right": 752,
+          "bottom": 528.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 528.390625,
+          "width": 736,
+          "height": 64,
+          "top": 528.390625,
+          "right": 752,
+          "bottom": 592.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 592.390625,
+          "width": 736,
+          "height": 64,
+          "top": 592.390625,
+          "right": 752,
+          "bottom": 656.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 656.390625,
+          "width": 736,
+          "height": 64,
+          "top": 656.390625,
+          "right": 752,
+          "bottom": 720.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 720.390625,
+          "width": 736,
+          "height": 64,
+          "top": 720.390625,
+          "right": 752,
+          "bottom": 784.390625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 784.390625,
+          "width": 736,
+          "height": 64,
+          "top": 784.390625,
+          "right": 752,
+          "bottom": 848.390625,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "768-1024-casa.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 1070.984375,
+        "top": 52,
+        "right": 752,
+        "bottom": 1122.984375,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "768-1024-historico.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 254.796875,
+        "top": 52,
+        "right": 752,
+        "bottom": 306.796875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "768-1024-pessoas.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 254.796875,
+        "top": 52,
+        "right": 752,
+        "bottom": 306.796875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "768-1024-sheet100.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 32,
+        "y": 177.390625,
+        "width": 704,
+        "height": 144.390625,
+        "top": 177.390625,
+        "right": 736,
+        "bottom": 321.78125,
+        "left": 32
+      },
+      "rows": []
+    },
+    {
+      "file": "768-1024-menu.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 32,
+        "y": 1383.390625,
+        "width": 704,
+        "height": 144.390625,
+        "top": 1383.390625,
+        "right": 736,
+        "bottom": 1527.78125,
+        "left": 32
+      },
+      "rows": []
+    },
+    {
+      "file": "768-1024-notice.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 3274.28125,
+        "top": 52,
+        "right": 752,
+        "bottom": 3326.28125,
+        "left": 16
+      },
+      "dock": [
+        {
+          "x": 0,
+          "y": 892,
+          "width": 768,
+          "height": 72,
+          "top": 892,
+          "right": 768,
+          "bottom": 964,
+          "left": 0
+        }
+      ],
+      "budget": {
+        "x": 16,
+        "y": 128,
+        "width": 736,
+        "height": 144.390625,
+        "top": 128,
+        "right": 752,
+        "bottom": 272.390625,
+        "left": 16
+      },
+      "rows": [
+        {
+          "x": 16,
+          "y": 464.390625,
+          "width": 736,
+          "height": 79.390625,
+          "top": 464.390625,
+          "right": 752,
+          "bottom": 543.78125,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 543.78125,
+          "width": 736,
+          "height": 79.390625,
+          "top": 543.78125,
+          "right": 752,
+          "bottom": 623.171875,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 623.171875,
+          "width": 736,
+          "height": 79.390625,
+          "top": 623.171875,
+          "right": 752,
+          "bottom": 702.5625,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 702.5625,
+          "width": 736,
+          "height": 79.390625,
+          "top": 702.5625,
+          "right": 752,
+          "bottom": 781.953125,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 781.953125,
+          "width": 736,
+          "height": 79.390625,
+          "top": 781.953125,
+          "right": 752,
+          "bottom": 861.34375,
+          "left": 16
+        },
+        {
+          "x": 16,
+          "y": 861.34375,
+          "width": 736,
+          "height": 79.390625,
+          "top": 861.34375,
+          "right": 752,
+          "bottom": 940.734375,
+          "left": 16
+        }
+      ]
+    },
+    {
+      "file": "768-1024-optional-context.png",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 52,
+        "top": 0,
+        "right": 768,
+        "bottom": 52,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 16,
+        "y": 52,
+        "width": 736,
+        "height": 107.1875,
+        "top": 52,
+        "right": 752,
+        "bottom": 159.1875,
+        "left": 16
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1024-768-compra.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 1475.1875,
+        "top": 0,
+        "right": 1000,
+        "bottom": 1475.1875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": {
+        "x": 252,
+        "y": 120.796875,
+        "width": 748,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1000,
+        "bottom": 281.1875,
+        "left": 252
+      },
+      "rows": [
+        {
+          "x": 252,
+          "y": 473.1875,
+          "width": 748,
+          "height": 64,
+          "top": 473.1875,
+          "right": 1000,
+          "bottom": 537.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 537.1875,
+          "width": 748,
+          "height": 64,
+          "top": 537.1875,
+          "right": 1000,
+          "bottom": 601.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 601.1875,
+          "width": 748,
+          "height": 64,
+          "top": 601.1875,
+          "right": 1000,
+          "bottom": 665.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 665.1875,
+          "width": 748,
+          "height": 64,
+          "top": 665.1875,
+          "right": 1000,
+          "bottom": 729.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 729.1875,
+          "width": 748,
+          "height": 64,
+          "top": 729.1875,
+          "right": 1000,
+          "bottom": 793.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 793.1875,
+          "width": 748,
+          "height": 64,
+          "top": 793.1875,
+          "right": 1000,
+          "bottom": 857.1875,
+          "left": 252
+        }
+      ]
+    },
+    {
+      "file": "1024-768-casa.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 1094.984375,
+        "top": 0,
+        "right": 1000,
+        "bottom": 1094.984375,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1024-768-historico.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1000,
+        "bottom": 278.796875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1024-768-pessoas.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1000,
+        "bottom": 278.796875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1024-768-sheet100.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 32,
+        "y": -73.609375,
+        "width": 960,
+        "height": 160.390625,
+        "top": -73.609375,
+        "right": 992,
+        "bottom": 86.78125,
+        "left": 32
+      },
+      "rows": []
+    },
+    {
+      "file": "1024-768-menu.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 32,
+        "y": 1164.390625,
+        "width": 960,
+        "height": 160.390625,
+        "top": 1164.390625,
+        "right": 992,
+        "bottom": 1324.78125,
+        "left": 32
+      },
+      "rows": []
+    },
+    {
+      "file": "1024-768-notice.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 3371.875,
+        "top": 0,
+        "right": 1000,
+        "bottom": 3371.875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": {
+        "x": 252,
+        "y": 149.59375,
+        "width": 748,
+        "height": 160.390625,
+        "top": 149.59375,
+        "right": 1000,
+        "bottom": 309.984375,
+        "left": 252
+      },
+      "rows": [
+        {
+          "x": 252,
+          "y": 501.984375,
+          "width": 748,
+          "height": 79.390625,
+          "top": 501.984375,
+          "right": 1000,
+          "bottom": 581.375,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 581.375,
+          "width": 748,
+          "height": 79.390625,
+          "top": 581.375,
+          "right": 1000,
+          "bottom": 660.765625,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 660.765625,
+          "width": 748,
+          "height": 79.390625,
+          "top": 660.765625,
+          "right": 1000,
+          "bottom": 740.15625,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 740.15625,
+          "width": 748,
+          "height": 79.390625,
+          "top": 740.15625,
+          "right": 1000,
+          "bottom": 819.546875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 819.546875,
+          "width": 748,
+          "height": 79.390625,
+          "top": 819.546875,
+          "right": 1000,
+          "bottom": 898.9375,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 898.9375,
+          "width": 748,
+          "height": 79.390625,
+          "top": 898.9375,
+          "right": 1000,
+          "bottom": 978.328125,
+          "left": 252
+        }
+      ]
+    },
+    {
+      "file": "1024-768-optional-context.png",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 768,
+        "top": 0,
+        "right": 228,
+        "bottom": 768,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 748,
+        "height": 131.1875,
+        "top": 0,
+        "right": 1000,
+        "bottom": 131.1875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1280-800-compra.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 1004,
+        "height": 1475.1875,
+        "top": 0,
+        "right": 1256,
+        "bottom": 1475.1875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": {
+        "x": 252,
+        "y": 120.796875,
+        "width": 1004,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1256,
+        "bottom": 281.1875,
+        "left": 252
+      },
+      "rows": [
+        {
+          "x": 252,
+          "y": 473.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 473.1875,
+          "right": 1256,
+          "bottom": 537.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 537.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 537.1875,
+          "right": 1256,
+          "bottom": 601.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 601.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 601.1875,
+          "right": 1256,
+          "bottom": 665.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 665.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 665.1875,
+          "right": 1256,
+          "bottom": 729.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 729.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 729.1875,
+          "right": 1256,
+          "bottom": 793.1875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 793.1875,
+          "width": 1004,
+          "height": 64,
+          "top": 793.1875,
+          "right": 1256,
+          "bottom": 857.1875,
+          "left": 252
+        }
+      ]
+    },
+    {
+      "file": "1280-800-casa.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 1004,
+        "height": 1094.984375,
+        "top": 0,
+        "right": 1256,
+        "bottom": 1094.984375,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1280-800-historico.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 1004,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1256,
+        "bottom": 278.796875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1280-800-pessoas.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 1004,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1256,
+        "bottom": 278.796875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1280-800-sheet100.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 96,
+        "y": -41.609375,
+        "width": 1088,
+        "height": 160.390625,
+        "top": -41.609375,
+        "right": 1184,
+        "bottom": 118.78125,
+        "left": 96
+      },
+      "rows": []
+    },
+    {
+      "file": "1280-800-menu.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 96,
+        "y": 1180.390625,
+        "width": 1088,
+        "height": 160.390625,
+        "top": 1180.390625,
+        "right": 1184,
+        "bottom": 1340.78125,
+        "left": 96
+      },
+      "rows": []
+    },
+    {
+      "file": "1280-800-notice.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 1004,
+        "height": 3343.078125,
+        "top": 0,
+        "right": 1256,
+        "bottom": 3343.078125,
+        "left": 252
+      },
+      "dock": [],
+      "budget": {
+        "x": 252,
+        "y": 120.796875,
+        "width": 1004,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1256,
+        "bottom": 281.1875,
+        "left": 252
+      },
+      "rows": [
+        {
+          "x": 252,
+          "y": 473.1875,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 473.1875,
+          "right": 1256,
+          "bottom": 552.578125,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 552.578125,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 552.578125,
+          "right": 1256,
+          "bottom": 631.96875,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 631.96875,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 631.96875,
+          "right": 1256,
+          "bottom": 711.359375,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 711.359375,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 711.359375,
+          "right": 1256,
+          "bottom": 790.75,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 790.75,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 790.75,
+          "right": 1256,
+          "bottom": 870.140625,
+          "left": 252
+        },
+        {
+          "x": 252,
+          "y": 870.140625,
+          "width": 1004,
+          "height": 79.390625,
+          "top": 870.140625,
+          "right": 1256,
+          "bottom": 949.53125,
+          "left": 252
+        }
+      ]
+    },
+    {
+      "file": "1280-800-optional-context.png",
+      "width": 1280,
+      "height": 800,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 800,
+        "top": 0,
+        "right": 228,
+        "bottom": 800,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 716,
+        "height": 131.1875,
+        "top": 0,
+        "right": 968,
+        "bottom": 131.1875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1440-900-compra.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 1475.1875,
+        "top": 0,
+        "right": 1354,
+        "bottom": 1475.1875,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 281.1875,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 473.1875,
+          "right": 1354,
+          "bottom": 537.1875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 537.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 537.1875,
+          "right": 1354,
+          "bottom": 601.1875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 601.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 601.1875,
+          "right": 1354,
+          "bottom": 665.1875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 665.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 665.1875,
+          "right": 1354,
+          "bottom": 729.1875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 729.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 729.1875,
+          "right": 1354,
+          "bottom": 793.1875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 793.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 793.1875,
+          "right": 1354,
+          "bottom": 857.1875,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1440-900-casa.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 1094.984375,
+        "top": 0,
+        "right": 1354,
+        "bottom": 1094.984375,
+        "left": 314
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1440-900-historico.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1354,
+        "bottom": 278.796875,
+        "left": 314
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1440-900-pessoas.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1354,
+        "bottom": 278.796875,
+        "left": 314
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1440-900-sheet100.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 176,
+        "y": 58.390625,
+        "width": 1088,
+        "height": 160.390625,
+        "top": 58.390625,
+        "right": 1264,
+        "bottom": 218.78125,
+        "left": 176
+      },
+      "rows": []
+    },
+    {
+      "file": "1440-900-menu.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 176,
+        "y": 1230.390625,
+        "width": 1088,
+        "height": 160.390625,
+        "top": 1230.390625,
+        "right": 1264,
+        "bottom": 1390.78125,
+        "left": 176
+      },
+      "rows": []
+    },
+    {
+      "file": "1440-900-notice.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 3343.078125,
+        "top": 0,
+        "right": 1354,
+        "bottom": 3343.078125,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 281.1875,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 473.1875,
+          "right": 1354,
+          "bottom": 552.578125,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 552.578125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 552.578125,
+          "right": 1354,
+          "bottom": 631.96875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 631.96875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 631.96875,
+          "right": 1354,
+          "bottom": 711.359375,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 711.359375,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 711.359375,
+          "right": 1354,
+          "bottom": 790.75,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 790.75,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 790.75,
+          "right": 1354,
+          "bottom": 870.140625,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 870.140625,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 870.140625,
+          "right": 1354,
+          "bottom": 949.53125,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1440-900-optional-context.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 252,
+        "y": 0,
+        "width": 876,
+        "height": 107.1875,
+        "top": 0,
+        "right": 1128,
+        "bottom": 107.1875,
+        "left": 252
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1440-900-money.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 648.578125,
+        "top": 0,
+        "right": 1354,
+        "bottom": 648.578125,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 281.1875,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 473.1875,
+          "right": 1354,
+          "bottom": 552.578125,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 552.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 552.578125,
+          "right": 1354,
+          "bottom": 616.578125,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1440-900-money-equal.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 721.578125,
+        "top": 0,
+        "right": 1354,
+        "bottom": 721.578125,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 281.1875,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 78.390625,
+          "top": 473.1875,
+          "right": 1354,
+          "bottom": 551.578125,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 625.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 625.578125,
+          "right": 1354,
+          "bottom": 689.578125,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1440-900-money-over.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 721.578125,
+        "top": 0,
+        "right": 1354,
+        "bottom": 721.578125,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 281.1875,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 78.390625,
+          "top": 473.1875,
+          "right": 1354,
+          "bottom": 551.578125,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 625.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 625.578125,
+          "right": 1354,
+          "bottom": 689.578125,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1440-900-stress.png",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 900,
+        "top": 0,
+        "right": 228,
+        "bottom": 900,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 314,
+        "y": 0,
+        "width": 1040,
+        "height": 3413.46875,
+        "top": 0,
+        "right": 1354,
+        "bottom": 3413.46875,
+        "left": 314
+      },
+      "dock": [],
+      "budget": {
+        "x": 314,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 230.78125,
+        "top": 120.796875,
+        "right": 1354,
+        "bottom": 351.578125,
+        "left": 314
+      },
+      "rows": [
+        {
+          "x": 314,
+          "y": 543.578125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 543.578125,
+          "right": 1354,
+          "bottom": 622.96875,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 622.96875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 622.96875,
+          "right": 1354,
+          "bottom": 702.359375,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 702.359375,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 702.359375,
+          "right": 1354,
+          "bottom": 781.75,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 781.75,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 781.75,
+          "right": 1354,
+          "bottom": 861.140625,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 861.140625,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 861.140625,
+          "right": 1354,
+          "bottom": 940.53125,
+          "left": 314
+        },
+        {
+          "x": 314,
+          "y": 940.53125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 940.53125,
+          "right": 1354,
+          "bottom": 1019.921875,
+          "left": 314
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-compra.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 1475.1875,
+        "top": 0,
+        "right": 1594,
+        "bottom": 1475.1875,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 281.1875,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 473.1875,
+          "right": 1594,
+          "bottom": 537.1875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 537.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 537.1875,
+          "right": 1594,
+          "bottom": 601.1875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 601.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 601.1875,
+          "right": 1594,
+          "bottom": 665.1875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 665.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 665.1875,
+          "right": 1594,
+          "bottom": 729.1875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 729.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 729.1875,
+          "right": 1594,
+          "bottom": 793.1875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 793.1875,
+          "width": 1040,
+          "height": 64,
+          "top": 793.1875,
+          "right": 1594,
+          "bottom": 857.1875,
+          "left": 554
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-casa.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 1094.984375,
+        "top": 0,
+        "right": 1594,
+        "bottom": 1094.984375,
+        "left": 554
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1920-1080-historico.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1594,
+        "bottom": 278.796875,
+        "left": 554
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1920-1080-pessoas.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 278.796875,
+        "top": 0,
+        "right": 1594,
+        "bottom": 278.796875,
+        "left": 554
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1920-1080-sheet100.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 416,
+        "y": 238.390625,
+        "width": 1088,
+        "height": 160.390625,
+        "top": 238.390625,
+        "right": 1504,
+        "bottom": 398.78125,
+        "left": 416
+      },
+      "rows": []
+    },
+    {
+      "file": "1920-1080-menu.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": null,
+      "houseCount": 1,
+      "navigations": 1,
+      "work": null,
+      "dock": [],
+      "budget": {
+        "x": 416,
+        "y": 1244.390625,
+        "width": 1088,
+        "height": 160.390625,
+        "top": 1244.390625,
+        "right": 1504,
+        "bottom": 1404.78125,
+        "left": 416
+      },
+      "rows": []
+    },
+    {
+      "file": "1920-1080-notice.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 3343.078125,
+        "top": 0,
+        "right": 1594,
+        "bottom": 3343.078125,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 281.1875,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 473.1875,
+          "right": 1594,
+          "bottom": 552.578125,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 552.578125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 552.578125,
+          "right": 1594,
+          "bottom": 631.96875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 631.96875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 631.96875,
+          "right": 1594,
+          "bottom": 711.359375,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 711.359375,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 711.359375,
+          "right": 1594,
+          "bottom": 790.75,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 790.75,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 790.75,
+          "right": 1594,
+          "bottom": 870.140625,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 870.140625,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 870.140625,
+          "right": 1594,
+          "bottom": 949.53125,
+          "left": 554
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-optional-context.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 410,
+        "y": 0,
+        "width": 1040,
+        "height": 107.1875,
+        "top": 0,
+        "right": 1450,
+        "bottom": 107.1875,
+        "left": 410
+      },
+      "dock": [],
+      "budget": null,
+      "rows": []
+    },
+    {
+      "file": "1920-1080-money.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 648.578125,
+        "top": 0,
+        "right": 1594,
+        "bottom": 648.578125,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 281.1875,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 473.1875,
+          "right": 1594,
+          "bottom": 552.578125,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 552.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 552.578125,
+          "right": 1594,
+          "bottom": 616.578125,
+          "left": 554
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-money-equal.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 721.578125,
+        "top": 0,
+        "right": 1594,
+        "bottom": 721.578125,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 281.1875,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 78.390625,
+          "top": 473.1875,
+          "right": 1594,
+          "bottom": 551.578125,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 625.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 625.578125,
+          "right": 1594,
+          "bottom": 689.578125,
+          "left": 554
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-money-over.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 721.578125,
+        "top": 0,
+        "right": 1594,
+        "bottom": 721.578125,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 160.390625,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 281.1875,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 473.1875,
+          "width": 1040,
+          "height": 78.390625,
+          "top": 473.1875,
+          "right": 1594,
+          "bottom": 551.578125,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 625.578125,
+          "width": 1040,
+          "height": 64,
+          "top": 625.578125,
+          "right": 1594,
+          "bottom": 689.578125,
+          "left": 554
+        }
+      ]
+    },
+    {
+      "file": "1920-1080-stress.png",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 228,
+        "height": 1080,
+        "top": 0,
+        "right": 228,
+        "bottom": 1080,
+        "left": 0
+      },
+      "houseCount": 1,
+      "navigations": 1,
+      "work": {
+        "x": 554,
+        "y": 0,
+        "width": 1040,
+        "height": 3413.46875,
+        "top": 0,
+        "right": 1594,
+        "bottom": 3413.46875,
+        "left": 554
+      },
+      "dock": [],
+      "budget": {
+        "x": 554,
+        "y": 120.796875,
+        "width": 1040,
+        "height": 230.78125,
+        "top": 120.796875,
+        "right": 1594,
+        "bottom": 351.578125,
+        "left": 554
+      },
+      "rows": [
+        {
+          "x": 554,
+          "y": 543.578125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 543.578125,
+          "right": 1594,
+          "bottom": 622.96875,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 622.96875,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 622.96875,
+          "right": 1594,
+          "bottom": 702.359375,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 702.359375,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 702.359375,
+          "right": 1594,
+          "bottom": 781.75,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 781.75,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 781.75,
+          "right": 1594,
+          "bottom": 861.140625,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 861.140625,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 861.140625,
+          "right": 1594,
+          "bottom": 940.53125,
+          "left": 554
+        },
+        {
+          "x": 554,
+          "y": 940.53125,
+          "width": 1040,
+          "height": 79.390625,
+          "top": 940.53125,
+          "right": 1594,
+          "bottom": 1019.921875,
+          "left": 554
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "engine": "156.0.4314.50",
+  "artifacts": [
+    "1024-768-button-states.png",
+    "1024-768-casa.png",
+    "1024-768-components-full.png",
+    "1024-768-compra.png",
+    "1024-768-historico.png",
+    "1024-768-menu.png",
+    "1024-768-notice.png",
+    "1024-768-optional-context.png",
+    "1024-768-pessoas.png",
+    "1024-768-sheet100.png",
+    "1024-768-toast.png",
+    "1280-800-button-states.png",
+    "1280-800-casa.png",
+    "1280-800-components-full.png",
+    "1280-800-compra.png",
+    "1280-800-historico.png",
+    "1280-800-menu.png",
+    "1280-800-notice.png",
+    "1280-800-optional-context.png",
+    "1280-800-pessoas.png",
+    "1280-800-sheet100.png",
+    "1280-800-toast.png",
+    "1440-900-button-states.png",
+    "1440-900-casa.png",
+    "1440-900-components-full.png",
+    "1440-900-compra.png",
+    "1440-900-confirmed-state.png",
+    "1440-900-historico.png",
+    "1440-900-menu.png",
+    "1440-900-money-equal.png",
+    "1440-900-money-over.png",
+    "1440-900-money.png",
+    "1440-900-notice.png",
+    "1440-900-optional-context.png",
+    "1440-900-pessoas.png",
+    "1440-900-sheet100.png",
+    "1440-900-stress.png",
+    "1440-900-toast.png",
+    "1920-1080-button-states.png",
+    "1920-1080-casa.png",
+    "1920-1080-components-full.png",
+    "1920-1080-compra.png",
+    "1920-1080-confirmed-state.png",
+    "1920-1080-historico.png",
+    "1920-1080-menu.png",
+    "1920-1080-money-equal.png",
+    "1920-1080-money-over.png",
+    "1920-1080-money.png",
+    "1920-1080-notice.png",
+    "1920-1080-optional-context.png",
+    "1920-1080-pessoas.png",
+    "1920-1080-sheet100.png",
+    "1920-1080-stress.png",
+    "1920-1080-toast.png",
+    "320-640-button-states.png",
+    "320-640-casa.png",
+    "320-640-components-full.png",
+    "320-640-compra.png",
+    "320-640-confirmed-state.png",
+    "320-640-historico.png",
+    "320-640-menu.png",
+    "320-640-money-equal.png",
+    "320-640-money-over.png",
+    "320-640-money.png",
+    "320-640-notice.png",
+    "320-640-optional-context.png",
+    "320-640-pessoas.png",
+    "320-640-sheet100.png",
+    "320-640-stress.png",
+    "320-640-toast.png",
+    "390-844-button-states.png",
+    "390-844-casa.png",
+    "390-844-components-full.png",
+    "390-844-compra.png",
+    "390-844-confirmed-state.png",
+    "390-844-historico.png",
+    "390-844-menu.png",
+    "390-844-money-equal.png",
+    "390-844-money-over.png",
+    "390-844-money.png",
+    "390-844-notice.png",
+    "390-844-optional-context.png",
+    "390-844-pessoas.png",
+    "390-844-sheet100.png",
+    "390-844-stress.png",
+    "390-844-toast.png",
+    "768-1024-button-states.png",
+    "768-1024-casa.png",
+    "768-1024-components-full.png",
+    "768-1024-compra.png",
+    "768-1024-historico.png",
+    "768-1024-menu.png",
+    "768-1024-notice.png",
+    "768-1024-optional-context.png",
+    "768-1024-pessoas.png",
+    "768-1024-sheet100.png",
+    "768-1024-toast.png"
+  ],
+  "sources": [
+    {
+      "file": "components/app/app-shell.tsx",
+      "sha256": "06539bd7adbd64bd27e7e6663e2e2549eb134ab0a5fbd76ae24a1f51c0c8b41f"
+    },
+    {
+      "file": "components/app/app-shell.module.css",
+      "sha256": "abbb7de68c279074c145ffd1b102a13566e6a608303e42291247472429f90175"
+    },
+    {
+      "file": "components/app/navigation.module.css",
+      "sha256": "5e6bef0ecba077db8dfd973817cbdba31e609e1df8af26427d0ccad3253f12a9"
+    },
+    {
+      "file": "components/ui/controls.module.css",
+      "sha256": "a8deab249240cc87b7137b8f8a7d66e25e3502f839f7447c830c464d566dd199"
+    },
+    {
+      "file": "components/ui/numeric-fields.module.css",
+      "sha256": "867a6d3d58670ca988785ca49a82b8a926332a7a9ff492ddf1f749698f14d965"
+    },
+    {
+      "file": "components/ui/feedback.module.css",
+      "sha256": "0a9b1e299fa00124b436f525901c613690149aa27d8d1ea8e0c1370021120c60"
+    },
+    {
+      "file": "components/ui/overlay.module.css",
+      "sha256": "e053cf089f742b894414cbfe6dcfcceb6a0772c6906f95af7d153e323ab450be"
+    },
+    {
+      "file": "components/ui/search-field.tsx",
+      "sha256": "2cd61b01bd36a519a287b488ce516f2cb520b92d37753311f505d240b004c677"
+    },
+    {
+      "file": "components/ui/action-menu.tsx",
+      "sha256": "f0b0cfe3a9b761c09a3d181451058cc1264190b3959d3b3de97eb6816e0b75f6"
+    },
+    {
+      "file": "components/shopping/item-row.tsx",
+      "sha256": "c4f90230795de9b0772b0301987b297b5caa0db97715a98e3118257cda69d2ba"
+    },
+    {
+      "file": "components/shopping/shopping-dock.tsx",
+      "sha256": "f14a2bedcf0717177a62f17b0e63e09f00c759b31d07053b1fd3ee44e232de54"
+    },
+    {
+      "file": "components/products/product-row.tsx",
+      "sha256": "64fc7679edcb8760d2cf9c19ddb876ad2d75eabeb0e0d6e86769c85ae900aa56"
+    },
+    {
+      "file": "components/shopping/shopping-controls.module.css",
+      "sha256": "5dd8290c37af04ca9c6400ce8c651d4d4ad9ddb30dfd74daff1197ee13c4066e"
+    },
+    {
+      "file": "components/shopping/shopping.module.css",
+      "sha256": "1bf82b1a3921f503d697a0c74aaf03ec0c3eb27f2171a3d1c245f6d5ab81416f"
+    },
+    {
+      "file": "components/products/products.module.css",
+      "sha256": "9ff88e5578640d0ae3f0c7a9f75570e3ec4f835f4690333059e13ddbe56329a7"
+    },
+    {
+      "file": "components/restok-app.tsx",
+      "sha256": "efa237bcb5cecb44de951a7a352985152d7384e613d1cf07e24d1d6fdb3d7d37"
+    }
+  ]
+}

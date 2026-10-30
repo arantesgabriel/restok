@@ -1,0 +1,84 @@
+{
+  "at": "2026-10-30T13:49:16.368Z",
+  "tests": {
+    "passed": 254,
+    "failed": 0
+  },
+  "interactions": {
+    "checks": 108,
+    "failed": [],
+    "errors": []
+  },
+  "purchase": {
+    "checks": 192,
+    "failed": [],
+    "errors": []
+  },
+  "build": {
+    "ok": true,
+    "elapsedMs": 34068,
+    "kind": "Isolated Next production build, no backend configured"
+  },
+  "sources": [
+    {
+      "file": "components/restok-app.tsx",
+      "sha256": "79daef289b0bcac82c2bb970d13f425fe8394c0a24385841e3d4740b9036f157"
+    },
+    {
+      "file": "components/app/app-shell.tsx",
+      "sha256": "a8857fe7c23eba5135af3064bc3d5c4b3a47170334eb325ccb65bdab0d1cb598"
+    },
+    {
+      "file": "components/app/app-shell.module.css",
+      "sha256": "98f8c4608eaed327d16e80ce5f5fd114658144a0ff513d8d90e631bba1ddcd6b"
+    },
+    {
+      "file": "components/app/navigation.tsx",
+      "sha256": "ef6e689bd93d1bf1675e05e2c0fd60ccce342981a22c30850c7cf2e44520b6a4"
+    },
+    {
+      "file": "components/products/products-home.tsx",
+      "sha256": "07ffcf15e94872970741ef7ebf1a30531231b73a630924073b1558fdd2f85b62"
+    },
+    {
+      "file": "components/products/product-row.tsx",
+      "sha256": "8adb2551e68565be3e211b05817a25c88428364b2dfe167a111c2239507ad917"
+    },
+    {
+      "file": "components/products/products.module.css",
+      "sha256": "7f97d9436ca098f96109955a6dba064aa20ff1051597c70e42ef8f4b73c45597"
+    },
+    {
+      "file": "components/history/history-view.tsx",
+      "sha256": "9c23d76f52ba5a282b5e351a7089fc80f2d1b3a6ec14fe89f457b6505d29d226"
+    },
+    {
+      "file": "components/history/history.module.css",
+      "sha256": "6511d3f4adc6b688668f76f35183da848ececce2ec82eac367e6d1ece382ce14"
+    },
+    {
+      "file": "components/households/household-manager.tsx",
+      "sha256": "90195341a64c33f13a68f00ceeda4949103bb15839c9fc1e856a7affba9b6eb9"
+    },
+    {
+      "file": "components/households/households.module.css",
+      "sha256": "31a1eebee965a56834d1bb29319dc9e4ca0e125a4135092a0117a45dac6bbca8"
+    },
+    {
+      "file": "components/shopping/item-row.tsx",
+      "sha256": "2ed9d9f69fcc13f0ea9172556d902ff4e7a8cb75a637df59ef23d0a06da6d342"
+    },
+    {
+      "file": "components/shopping/shopping.module.css",
+      "sha256": "f647b13caa456c0b965b4518d9581fce385f0ce9b3e359f38cd25794ff3bb205"
+    },
+    {
+      "file": "lib/supabase/data.ts",
+      "sha256": "63c9ef8c97b5589d526894760fdc9a4a6ddeaaf86eb0c806cb7143eac151220a"
+    }
+  ],
+  "deployment": {
+    "requestedMethod": "Internal browser, Vercel production",
+    "status": "blocked: internal browser controller kernel assets initialization error"
+  }
+}

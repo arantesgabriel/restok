@@ -1,0 +1,13 @@
+{
+  "checks": 192,
+  "failed": 0,
+  "errors": [],
+  "sourcesMatch": true,
+  "outsideScopeUnchanged": true,
+  "build": {
+    "ok": true,
+    "elapsedMs": 34381,
+    "kind": "Isolated Next production build, no backend configured"
+  },
+  "temporaryBuildDirectories": []
+}
