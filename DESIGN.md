@@ -91,3 +91,7 @@ Casa usa catálogo plano, busca, categorias, ordenação opcional, edição pelo
 A solicitação adicional autoriza excluir itens da compra: lixeira desktop, gesto horizontal no mobile para revelar a ação e confirmação antes de excluir. Teclado e leitor de tela acessam o mesmo botão. A exclusão usa RLS, casa/lista/ID e fila existente, preserva o catálogo e não demanda migração. Dados da demonstração são usados somente no adaptador de QA.
 
 Referência: código original e navegação pela publicação v6. Evidências, verificações e diferenças materiais: docs/restok-remaining/REPORT.md. Commits, push e deploy em produção foram expressamente solicitados. Não presumir aprovação visual do usuário.
+
+### Navegação mobile em ilha (30/10/2026)
+
+Nova instrução do usuário substitui o header móvel com seletor de casa: manter apenas logo e perfil nessa largura. Navegação inferior vira cápsula flutuante; inicia expandida para descoberta, compacta em scroll do usuário para cima ou para baixo e expande com toque/foco. Todos os destinos permanecem acionáveis em um toque e com alvos de pelo menos 44px. Animação usa transform/opacity e os tokens existentes; sem transição com reduced motion. Área reservada no layout mantém dock, safe area e última linha acessíveis. Desktop e regras de dados preservados. Evidências: docs/restok-mobile-island/REPORT.md.

@@ -23,3 +23,17 @@
 }
 .item.item { min-height:44px; }
 @media(min-width:1024px) { .item.item { font-size:13px; } }
+/* Mobile island keeps its hit area stable; only its surface and contents morph. */
+.island { position:relative; isolation:isolate; width:100%; padding:6px; }
+.island::before { content:""; position:absolute; inset:0; z-index:-1; border:1px solid var(--color-line-strong); border-radius:999px; background:var(--color-surface); box-shadow:var(--shadow-overlay); transition:transform var(--duration-state) var(--ease-enter); }
+.island .nav { min-height:48px; }
+.island .item.item { min-height:48px; border-radius:999px; transition:transform var(--duration-state) var(--ease-enter),background-color var(--duration-feedback) var(--ease-feedback); }
+.island .item svg,.island .item span { transition:transform var(--duration-state) var(--ease-enter),opacity var(--duration-feedback) var(--ease-feedback); }
+.island .item span { font-size:11px; }
+.island[data-mobile-navigation=compact]::before { transform:scale(.88,.88); }
+.island[data-mobile-navigation=compact] .item[aria-current=page] { background:transparent; }
+.island[data-mobile-navigation=compact] .item svg { transform:translateY(7px); }
+.island[data-mobile-navigation=compact] .item span { opacity:0; transform:translateY(4px); }
+@media(prefers-reduced-motion:reduce) { .island::before,.island .item.item,.island .item svg,.island .item span { transition:none; } }
+.island[data-mobile-navigation=compact] .item:first-child svg { transform:translate(14px,7px); }
+.island[data-mobile-navigation=compact] .item:last-child svg { transform:translate(-14px,7px); }

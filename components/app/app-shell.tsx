@@ -4,6 +4,7 @@ import { RestokTheme } from "@/components/ui/theme";
 import { CircleAlert, ChevronRight } from "lucide-react";
 import { HouseSwitcher } from "./house-switcher";
 import { Navigation, type AppScreen } from "./navigation";
+import { MobileNavigation } from "./mobile-navigation";
 import styles from "./app-shell.module.css";
 
 type AppShellProps = {
@@ -136,7 +137,7 @@ export function AppShell({
         </main>
         </div>
       </div>
-      {!keyboardOpen ? <div className={styles.navigation}><Navigation screen={screen} onChange={onChange} /></div> : null}
+      {!keyboardOpen ? <div className={styles.navigation}><MobileNavigation screen={screen} onChange={onChange} /></div> : null}
       {dock ? <div ref={dockRef} data-shopping-dock className={styles.dock}>{dock}</div> : null}
       {overlays}
     </RestokTheme>
