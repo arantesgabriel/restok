@@ -1,0 +1,702 @@
+{
+  "provenance": {
+    "type": "exact_demonstration_data",
+    "source": "original/dist/r2.js",
+    "commit": "f0214b71d9497caa62ccaa3b804579f7cd757959",
+    "realProductionData": false
+  },
+  "homeItems": [
+    {
+      "id": 1,
+      "name": "Arroz integral",
+      "qty": 1,
+      "detail": "1 pacote · 1 kg",
+      "price": 18.9,
+      "state": "done",
+      "cat": "Mercearia"
+    },
+    {
+      "id": 2,
+      "name": "Café em pó",
+      "qty": 2,
+      "detail": "2 pacotes · 500 g",
+      "price": 22.9,
+      "state": "todo",
+      "cat": "Mercearia"
+    },
+    {
+      "id": 3,
+      "name": "Leite integral",
+      "qty": 6,
+      "detail": "6 unidades · 1 L",
+      "price": 5.29,
+      "state": "todo",
+      "cat": "Laticínios"
+    },
+    {
+      "id": 4,
+      "name": "Banana prata",
+      "qty": 1,
+      "detail": "1 cacho",
+      "price": null,
+      "state": "todo",
+      "cat": "Hortifruti"
+    },
+    {
+      "id": 5,
+      "name": "Ovos caipiras",
+      "qty": 1,
+      "detail": "1 dúzia",
+      "price": 16.5,
+      "state": "done",
+      "cat": "Hortifruti"
+    },
+    {
+      "id": 6,
+      "name": "Detergente neutro",
+      "qty": 2,
+      "detail": "2 unidades · 500 ml",
+      "price": 2.89,
+      "state": "done",
+      "cat": "Limpeza"
+    },
+    {
+      "id": 7,
+      "name": "Pão de forma",
+      "qty": 1,
+      "detail": "1 unidade",
+      "price": 9.5,
+      "state": "done",
+      "cat": "Padaria"
+    },
+    {
+      "id": 8,
+      "name": "Queijo minas",
+      "qty": 1,
+      "detail": "1 pacote · 400 g",
+      "price": 23.4,
+      "state": "todo",
+      "cat": "Laticínios"
+    },
+    {
+      "id": 9,
+      "name": "Tomate italiano",
+      "qty": 1,
+      "detail": "1 kg",
+      "price": null,
+      "state": "todo",
+      "cat": "Hortifruti"
+    },
+    {
+      "id": 10,
+      "name": "Manteiga sem sal",
+      "qty": 1,
+      "detail": "1 pote · 200 g",
+      "price": 13.9,
+      "state": "todo",
+      "cat": "Laticínios"
+    },
+    {
+      "id": 11,
+      "name": "Macarrão penne",
+      "qty": 2,
+      "detail": "2 pacotes · 500 g",
+      "price": 5.75,
+      "state": "todo",
+      "cat": "Mercearia"
+    },
+    {
+      "id": 12,
+      "name": "Sabão em pó",
+      "qty": 1,
+      "detail": "1 pacote · 1 kg",
+      "price": null,
+      "state": "have",
+      "cat": "Limpeza"
+    },
+    {
+      "id": 13,
+      "name": "Maçã gala",
+      "qty": 1,
+      "detail": "1 kg",
+      "price": 9.8,
+      "state": "todo",
+      "cat": "Hortifruti"
+    },
+    {
+      "id": 14,
+      "name": "Azeite extravirgem",
+      "qty": 1,
+      "detail": "1 garrafa · 500 ml",
+      "price": 37.9,
+      "state": "todo",
+      "cat": "Mercearia"
+    }
+  ],
+  "homeCatalog": [
+    {
+      "id": 101,
+      "name": "Café em pó",
+      "cat": "Mercearia",
+      "detail": "500 g",
+      "qty": 2,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 102,
+      "name": "Arroz integral",
+      "cat": "Mercearia",
+      "detail": "1 kg",
+      "qty": 1,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 103,
+      "name": "Leite integral",
+      "cat": "Laticínios",
+      "detail": "1 L",
+      "qty": 6,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 104,
+      "name": "Queijo minas",
+      "cat": "Laticínios",
+      "detail": "400 g",
+      "qty": 1,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 105,
+      "name": "Ovos caipiras",
+      "cat": "Hortifruti",
+      "detail": "1 dúzia",
+      "qty": 1,
+      "have": true,
+      "active": true
+    },
+    {
+      "id": 106,
+      "name": "Banana prata",
+      "cat": "Hortifruti",
+      "detail": "1 cacho",
+      "qty": 1,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 107,
+      "name": "Detergente neutro",
+      "cat": "Limpeza",
+      "detail": "500 ml",
+      "qty": 2,
+      "have": true,
+      "active": true
+    },
+    {
+      "id": 108,
+      "name": "Sabão em pó",
+      "cat": "Limpeza",
+      "detail": "1 kg",
+      "qty": 1,
+      "have": true,
+      "active": true
+    },
+    {
+      "id": 109,
+      "name": "Pão de forma",
+      "cat": "Padaria",
+      "detail": "1 pacote",
+      "qty": 1,
+      "have": false,
+      "active": true
+    },
+    {
+      "id": 110,
+      "name": "Azeite extravirgem",
+      "cat": "Mercearia",
+      "detail": "500 ml",
+      "qty": 1,
+      "have": false,
+      "active": true
+    }
+  ],
+  "houses": {
+    "home": {
+      "name": "Nossa Casa",
+      "budget": 180,
+      "items": [
+        {
+          "id": 1,
+          "name": "Arroz integral",
+          "qty": 1,
+          "detail": "1 pacote · 1 kg",
+          "price": 18.9,
+          "state": "done",
+          "cat": "Mercearia"
+        },
+        {
+          "id": 2,
+          "name": "Café em pó",
+          "qty": 2,
+          "detail": "2 pacotes · 500 g",
+          "price": 22.9,
+          "state": "todo",
+          "cat": "Mercearia"
+        },
+        {
+          "id": 3,
+          "name": "Leite integral",
+          "qty": 6,
+          "detail": "6 unidades · 1 L",
+          "price": 5.29,
+          "state": "todo",
+          "cat": "Laticínios"
+        },
+        {
+          "id": 4,
+          "name": "Banana prata",
+          "qty": 1,
+          "detail": "1 cacho",
+          "price": null,
+          "state": "todo",
+          "cat": "Hortifruti"
+        },
+        {
+          "id": 5,
+          "name": "Ovos caipiras",
+          "qty": 1,
+          "detail": "1 dúzia",
+          "price": 16.5,
+          "state": "done",
+          "cat": "Hortifruti"
+        },
+        {
+          "id": 6,
+          "name": "Detergente neutro",
+          "qty": 2,
+          "detail": "2 unidades · 500 ml",
+          "price": 2.89,
+          "state": "done",
+          "cat": "Limpeza"
+        },
+        {
+          "id": 7,
+          "name": "Pão de forma",
+          "qty": 1,
+          "detail": "1 unidade",
+          "price": 9.5,
+          "state": "done",
+          "cat": "Padaria"
+        },
+        {
+          "id": 8,
+          "name": "Queijo minas",
+          "qty": 1,
+          "detail": "1 pacote · 400 g",
+          "price": 23.4,
+          "state": "todo",
+          "cat": "Laticínios"
+        },
+        {
+          "id": 9,
+          "name": "Tomate italiano",
+          "qty": 1,
+          "detail": "1 kg",
+          "price": null,
+          "state": "todo",
+          "cat": "Hortifruti"
+        },
+        {
+          "id": 10,
+          "name": "Manteiga sem sal",
+          "qty": 1,
+          "detail": "1 pote · 200 g",
+          "price": 13.9,
+          "state": "todo",
+          "cat": "Laticínios"
+        },
+        {
+          "id": 11,
+          "name": "Macarrão penne",
+          "qty": 2,
+          "detail": "2 pacotes · 500 g",
+          "price": 5.75,
+          "state": "todo",
+          "cat": "Mercearia"
+        },
+        {
+          "id": 12,
+          "name": "Sabão em pó",
+          "qty": 1,
+          "detail": "1 pacote · 1 kg",
+          "price": null,
+          "state": "have",
+          "cat": "Limpeza"
+        },
+        {
+          "id": 13,
+          "name": "Maçã gala",
+          "qty": 1,
+          "detail": "1 kg",
+          "price": 9.8,
+          "state": "todo",
+          "cat": "Hortifruti"
+        },
+        {
+          "id": 14,
+          "name": "Azeite extravirgem",
+          "qty": 1,
+          "detail": "1 garrafa · 500 ml",
+          "price": 37.9,
+          "state": "todo",
+          "cat": "Mercearia"
+        }
+      ],
+      "catalog": [
+        {
+          "id": 101,
+          "name": "Café em pó",
+          "cat": "Mercearia",
+          "detail": "500 g",
+          "qty": 2,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 102,
+          "name": "Arroz integral",
+          "cat": "Mercearia",
+          "detail": "1 kg",
+          "qty": 1,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 103,
+          "name": "Leite integral",
+          "cat": "Laticínios",
+          "detail": "1 L",
+          "qty": 6,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 104,
+          "name": "Queijo minas",
+          "cat": "Laticínios",
+          "detail": "400 g",
+          "qty": 1,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 105,
+          "name": "Ovos caipiras",
+          "cat": "Hortifruti",
+          "detail": "1 dúzia",
+          "qty": 1,
+          "have": true,
+          "active": true
+        },
+        {
+          "id": 106,
+          "name": "Banana prata",
+          "cat": "Hortifruti",
+          "detail": "1 cacho",
+          "qty": 1,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 107,
+          "name": "Detergente neutro",
+          "cat": "Limpeza",
+          "detail": "500 ml",
+          "qty": 2,
+          "have": true,
+          "active": true
+        },
+        {
+          "id": 108,
+          "name": "Sabão em pó",
+          "cat": "Limpeza",
+          "detail": "1 kg",
+          "qty": 1,
+          "have": true,
+          "active": true
+        },
+        {
+          "id": 109,
+          "name": "Pão de forma",
+          "cat": "Padaria",
+          "detail": "1 pacote",
+          "qty": 1,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 110,
+          "name": "Azeite extravirgem",
+          "cat": "Mercearia",
+          "detail": "500 ml",
+          "qty": 1,
+          "have": false,
+          "active": true
+        }
+      ],
+      "members": [
+        {
+          "id": "gabriel",
+          "name": "Gabriel Arantes",
+          "email": "gabriel@exemplo.com",
+          "role": "owner",
+          "joined": "Desde 14 de outubro"
+        },
+        {
+          "id": "mariana",
+          "name": "Mariana de Oliveira Carvalho",
+          "email": "mariana@exemplo.com",
+          "role": "member",
+          "joined": "Desde 18 de outubro"
+        }
+      ],
+      "history": [
+        {
+          "id": "oct1",
+          "title": "Compra do início de outubro",
+          "date": "14 out 2026",
+          "month": "Outubro 2026",
+          "total": 193.42,
+          "count": 19,
+          "compared": "+ R$ 12,40 em relação à anterior",
+          "rows": [
+            {
+              "name": "Café em pó",
+              "qty": 2,
+              "price": 22.9,
+              "delta": 1,
+              "previous": 21.9
+            },
+            {
+              "name": "Leite integral",
+              "qty": 6,
+              "price": 5.29,
+              "delta": -0.6,
+              "previous": 5.89
+            },
+            {
+              "name": "Arroz integral",
+              "qty": 1,
+              "price": 18.9,
+              "delta": null
+            }
+          ]
+        },
+        {
+          "id": "sep1",
+          "title": "Compra de setembro",
+          "date": "26 set 2026",
+          "month": "Setembro 2026",
+          "total": 181.02,
+          "count": 17,
+          "compared": "Referência para comparação",
+          "rows": [
+            {
+              "name": "Café em pó",
+              "qty": 2,
+              "price": 21.9,
+              "delta": null
+            },
+            {
+              "name": "Leite integral",
+              "qty": 6,
+              "price": 5.89,
+              "delta": null
+            }
+          ]
+        },
+        {
+          "id": "sep2",
+          "title": "Reposição rápida",
+          "date": "09 set 2026",
+          "month": "Setembro 2026",
+          "total": 54.8,
+          "count": 6,
+          "compared": "6 itens registrados",
+          "rows": [
+            {
+              "name": "Queijo minas",
+              "qty": 1,
+              "price": 23.4,
+              "delta": null
+            },
+            {
+              "name": "Pão de forma",
+              "qty": 1,
+              "price": 9.5,
+              "delta": null
+            }
+          ]
+        }
+      ]
+    },
+    "campo": {
+      "name": "Casa de Campo",
+      "budget": 120,
+      "items": [
+        {
+          "id": 201,
+          "name": "Água mineral",
+          "qty": 3,
+          "detail": "3 galões · 5 L",
+          "price": 8.5,
+          "state": "todo",
+          "cat": "Bebidas"
+        },
+        {
+          "id": 202,
+          "name": "Carvão vegetal",
+          "qty": 1,
+          "detail": "1 saco · 3 kg",
+          "price": null,
+          "state": "todo",
+          "cat": "Utilidades"
+        },
+        {
+          "id": 203,
+          "name": "Papel toalha",
+          "qty": 2,
+          "detail": "2 rolos",
+          "price": 6,
+          "state": "have",
+          "cat": "Limpeza"
+        }
+      ],
+      "catalog": [
+        {
+          "id": 301,
+          "name": "Água mineral",
+          "cat": "Bebidas",
+          "detail": "Galão 5 L",
+          "qty": 3,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 302,
+          "name": "Carvão vegetal",
+          "cat": "Utilidades",
+          "detail": "Saco 3 kg",
+          "qty": 1,
+          "have": false,
+          "active": true
+        },
+        {
+          "id": 303,
+          "name": "Papel toalha",
+          "cat": "Limpeza",
+          "detail": "Rolo",
+          "qty": 2,
+          "have": true,
+          "active": true
+        }
+      ],
+      "members": [
+        {
+          "id": "gabriel",
+          "name": "Gabriel Arantes",
+          "email": "gabriel@exemplo.com",
+          "role": "owner",
+          "joined": "Desde 20 de outubro"
+        }
+      ],
+      "history": []
+    }
+  },
+  "screenMeta": {
+    "compra": {
+      "title": "Compra",
+      "subtitle": "Primeira dobra, preço e estados",
+      "icon": "basket",
+      "why": "A lista é a tarefa principal. Total, meta e filtros ocupam menos altura; ações persistentes não encobrem produtos.",
+      "rules": [
+        "Uma linha inteira acima do dock em 320 px.",
+        "Preço zero diferente de preço ausente.",
+        "Confirmação de item sem saltos ou espera artificial."
+      ],
+      "findings": [
+        "UI-001 · Visibilidade",
+        "UI-003/004 · Preço",
+        "UI-010 · Meta"
+      ]
+    },
+    "casa": {
+      "title": "Casa",
+      "subtitle": "Catálogo e recorrência",
+      "icon": "home",
+      "why": "Busca local, categorias e ações organizadas eliminam o esforço de encontrar produtos recorrentes.",
+      "rules": [
+        "Busca disponível antes da lista.",
+        "Ações de adicionar e Já temos distintas.",
+        "Estados vazios informativos por filtro."
+      ],
+      "findings": [
+        "UI-009 · Busca",
+        "UI-008 · Quantidade",
+        "UI-005 · Densidade"
+      ]
+    },
+    "historico": {
+      "title": "Histórico",
+      "subtitle": "Compras e comparação",
+      "icon": "history",
+      "why": "Cada compra tem identidade, data, total e detalhe. Variações de preço aparecem junto ao produto, não em gráficos decorativos.",
+      "rules": [
+        "Leitura cronológica e agrupamento mensal.",
+        "Diferenças sempre contextualizadas por unidade.",
+        "Estado vazio claro em casas sem compras."
+      ],
+      "findings": [
+        "UI-005 · Desktop",
+        "UI-004 · Valor",
+        "UI-011 · Feedback"
+      ]
+    },
+    "pessoas": {
+      "title": "Casas e pessoas",
+      "subtitle": "Identidade e permissões",
+      "icon": "people",
+      "why": "O nome completo precede papel e controles de acesso. A casa ativa aparece em todas as telas, inclusive após recarga simulada.",
+      "rules": [
+        "Identidade em bloco próprio, com quebra de linha.",
+        "Confirmação antes de alterações sensíveis.",
+        "Troca de casa com contexto explícito."
+      ],
+      "findings": [
+        "UI-002 · Identidade",
+        "UI-013 · Casa ativa",
+        "UI-006 · Conta individual"
+      ]
+    }
+  },
+  "paletteOptions": {
+    "eucalipto": {
+      "name": "Raiz & Eucalipto",
+      "short": "Eucalipto",
+      "tag": "Consolidado v1",
+      "desc": "Marca #213F1D, ações #2D5A27, destaque sálvia #B4D3A7 e informações secundárias #4F7566. Paleta única para o handoff técnico.",
+      "colors": [
+        "#213F1D",
+        "#2D5A27",
+        "#B4D3A7",
+        "#F7FAF5",
+        "#4F7566"
+      ]
+    }
+  }
+}

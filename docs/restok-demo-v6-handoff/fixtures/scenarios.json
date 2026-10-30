@@ -1,0 +1,122 @@
+{
+  "provenance": {
+    "type": "derived_qa_matrix",
+    "note": "The tests are suggestions; they have not been executed. synthetic=true means not in the published seed."
+  },
+  "cases": [
+    {
+      "id": "compra_home",
+      "house": "home",
+      "view": "compra",
+      "fixture": "houses.home.items"
+    },
+    {
+      "id": "catalog_home",
+      "house": "home",
+      "view": "casa",
+      "fixture": "houses.home.catalog"
+    },
+    {
+      "id": "history_home",
+      "house": "home",
+      "view": "historico",
+      "fixture": "houses.home.history"
+    },
+    {
+      "id": "people_home",
+      "house": "home",
+      "view": "pessoas",
+      "fixture": "houses.home.members"
+    },
+    {
+      "id": "compra_campo",
+      "house": "campo",
+      "view": "compra",
+      "fixture": "houses.campo.items"
+    },
+    {
+      "id": "catalog_campo",
+      "house": "campo",
+      "view": "casa",
+      "fixture": "houses.campo.catalog"
+    },
+    {
+      "id": "history_empty_campo",
+      "house": "campo",
+      "view": "historico",
+      "fixture": "houses.campo.history"
+    },
+    {
+      "id": "people_campo",
+      "house": "campo",
+      "view": "pessoas",
+      "fixture": "houses.campo.members"
+    },
+    {
+      "id": "todo_filter",
+      "house": "home",
+      "view": "compra",
+      "stateOverride": {
+        "purchaseFilter": "todo"
+      }
+    },
+    {
+      "id": "done_filter",
+      "house": "home",
+      "view": "compra",
+      "stateOverride": {
+        "purchaseFilter": "done"
+      }
+    },
+    {
+      "id": "have_filter",
+      "house": "home",
+      "view": "compra",
+      "stateOverride": {
+        "purchaseFilter": "have"
+      }
+    },
+    {
+      "id": "coffee_search",
+      "house": "home",
+      "view": "compra",
+      "stateOverride": {
+        "q": "Café"
+      }
+    },
+    {
+      "id": "empty_search",
+      "house": "home",
+      "view": "casa",
+      "stateOverride": {
+        "q": "Produto inexistente"
+      }
+    },
+    {
+      "id": "oct_history_detail",
+      "house": "home",
+      "view": "historico",
+      "stateOverride": {
+        "historyDetail": "oct1"
+      }
+    },
+    {
+      "id": "budget_zero",
+      "house": "home",
+      "view": "compra",
+      "synthetic": true,
+      "fixtureOverride": {
+        "budget": 0
+      }
+    },
+    {
+      "id": "budget_exceeded",
+      "house": "home",
+      "view": "compra",
+      "synthetic": true,
+      "fixtureOverride": {
+        "budget": 1
+      }
+    }
+  ]
+}

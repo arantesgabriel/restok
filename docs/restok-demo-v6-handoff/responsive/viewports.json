@@ -1,0 +1,64 @@
+{
+  "_provenance": {
+    "commit": "f0214b71d9497caa62ccaa3b804579f7cd757959",
+    "sources": ["original/dist/r2.js", "original/dist/r26.css", "original/dist/r27.css", "original/dist/handoff/RESTOK_DESIGN_SYSTEM_V1.md"],
+    "warning": "Original modes use a JavaScript device switch. 1920 is a derived QA scenario, not a published design mode."
+  },
+  "modes": [
+    {
+      "id": "320",
+      "size": {"width": 320, "height": 640},
+      "origin": "original_exact",
+      "appClass": "app a compact",
+      "layout": "mobile_compact",
+      "sidebar": false,
+      "bottomDock": true,
+      "contentPadding": {"top": 10, "right": 12, "bottom": 110, "left": 12},
+      "mobileHeaderHeight": 48,
+      "budgetAmountFontSize": 23,
+      "shoppingRowMinHeight": 53
+    },
+    {
+      "id": "390",
+      "size": {"width": 390, "height": 844},
+      "origin": "original_exact",
+      "appClass": "app a",
+      "layout": "mobile",
+      "sidebar": false,
+      "bottomDock": true,
+      "contentPadding": {"top": 16, "right": 16, "bottom": 115, "left": 16},
+      "budgetAmountFontSize": 27,
+      "shoppingRowMinHeight": 62
+    },
+    {
+      "id": "1440",
+      "size": {"width": 1440, "height": 900},
+      "origin": "original_exact",
+      "appClass": "app a desktop",
+      "layout": "desktop",
+      "sidebar": true,
+      "sidebarWidth": 228,
+      "contextWidth": 254,
+      "contentMaxWidth": 1240,
+      "gridGap": 32,
+      "contentPadding": {"top": 32, "right": 38, "bottom": 80, "left": 38}
+    },
+    {
+      "id": "1920",
+      "size": {"width": 1920, "height": 1080},
+      "origin": "derived_qa_not_original_mode",
+      "appClass": "desktop (real application)",
+      "layout": "desktop_wide",
+      "sidebar": true,
+      "sidebarWidth": 228,
+      "contextWidth": 254,
+      "contentMaxWidth": 1240,
+      "gridGap": 32,
+      "contentPadding": {"top": 32, "right": 38, "bottom": 80, "left": 38},
+      "note": "Desktop-style inheritance for validation, not approved 1920-specific tokens."
+    }
+  ],
+  "canonicalTokens": "original/dist/handoff/tokens.v1.json",
+  "browserLabCssBreakpoints": [440, 560, 700, 780, 820, 1050, 1100],
+  "implementationNote": "Recreate responsive logic in the real frontend. Demo classes depend on JS device controls and embedded scaling."
+}

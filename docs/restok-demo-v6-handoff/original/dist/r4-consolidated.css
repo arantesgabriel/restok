@@ -1,0 +1,16 @@
+/* Round of consolidation: one locked identity, one visual handoff.
+   The product screen CSS remains a functional visual prototype, not production CSS. */
+.r4-identity-lock{display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:var(--color-green-dark);font-size:12px}
+.r4-identity-lock strong{font-weight:800}
+.r4-lock-dot{width:10px;height:10px;flex:none;border-radius:100%;background:var(--color-highlight);border:1px solid var(--color-border-strong);box-shadow:0 0 0 3px var(--color-wash)}
+.r4-lock-tag{color:var(--color-accent);background:var(--color-green-wash);font-size:10px;font-weight:700;border-radius:4px;padding:4px 7px}
+.r4-handoff-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.r4-doc-link{min-height:38px;display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:8px;background:var(--color-green-dark);color:var(--color-surface);font-size:11px;font-weight:700;text-decoration:none;transition:background .16s}
+.r4-doc-link:hover{background:var(--color-accent)}
+.r4-doc-link:focus-visible{outline:2px solid var(--color-info);outline-offset:3px}
+.audit a{color:var(--color-accent);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+@media(max-width:700px){
+  .r4-handoff-tools{width:100%;justify-content:space-between}
+  .r4-doc-link{min-height:40px}
+}
+@media(prefers-reduced-motion:reduce){.r4-doc-link{transition:none}}
